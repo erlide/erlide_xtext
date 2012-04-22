@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.erlide.common.guiceModule">
+      <module
+            class="org.erlide.project.ui.ErlideProjectUiModule">
+      </module>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.erlide.project.ui.ErlangPerspective"
+            icon="icons/full/obj16/perspective.gif"
+            id="org.erlide.project.ui.erlangPerspective"
+            name="Erlang">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="org.erlide.project.ui.erlangPerspective">
+         <perspectiveShortcut id="org.eclipse.ui.resourcePerspective"/>
+         <actionSet
+               id="org.eclipse.debug.ui.debugActionSet">
+         </actionSet>
+         <actionSet
+               id="org.eclipse.debug.ui.launchActionSet">
+         </actionSet>
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+         <perspectiveShortcut id="org.erlide.project.ui.erlangPerspective"/>
+      </perspectiveExtension>
+   </extension>
+</plugin>

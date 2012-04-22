@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="erlangBuilder"
+         name="Erlang Project Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="org.erlide.builder.ErlangBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="erlangNature"
+         name="Erlang Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.erlide.builder.ErlangNature">
+         </run>
+      </runtime>
+      <builder
+            id="org.erlide.builder.erlangBuilder">
+      </builder>
+   </extension>
+   <extension
+         id="erlangProblem"
+         name="Erlang Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+
+</plugin>

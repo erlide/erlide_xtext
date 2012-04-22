@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.erlide.erlang.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0
+Bundle-SymbolicName: org.erlide.erlang.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.xtext;bundle-version="2.3.0",
+ org.eclipse.xtext.junit4,
+ org.eclipse.xtext.ui.junit,
+ org.junit4,
+ org.eclipselabs.xtext.utils.unittesting;bundle-version="0.9.2",
+ org.erlide.erlang;bundle-version="0.101.0",
+ org.erlide.erlang.ui;bundle-version="0.101.0"
+Import-Package: com.google.common.collect,
+ org.apache.commons.logging,
+ org.apache.log4j,
+ org.eclipse.xtend2.lib,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.erlide,
+ org.erlide.erlang

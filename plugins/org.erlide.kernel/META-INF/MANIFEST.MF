@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Kernel
+Bundle-SymbolicName: org.erlide.kernel
+Bundle-Version: 0.101.0.qualifier
+Bundle-Activator: org.erlide.kernel.Activator
+Require-Bundle: org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

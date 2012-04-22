@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="org.erlide.project.ui.addNature">
+         <action
+               label="Add Erlang Nature"
+               class="org.erlide.builder.ui.ToggleNatureAction"
+               menubarPath="org.eclipse.ui.projectConfigure/additions"
+               enablesFor="+"
+               id="org.erlide.project.ui.addAddNatureAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

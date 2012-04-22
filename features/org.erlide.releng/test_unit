@@ -1,0 +1,27 @@
+# this script runs all unit tests, i.e. that don't need Eclipse
+
+# arguments:
+# WORKSPACE - location of the source code root
+# JAVA_HOME - location of JDK
+# BUCKMINSTER - location of the Bucky installation
+# TARGET - location of eclipse installation that defines the target system 
+
+WORKSPACE=$1
+JAVA_HOME=$2
+BUCKMINSTER=$3
+TARGET=$4 
+
+SITE_PRJ=org.erlide.releng
+SITE_PRJ_PATH=${WORKSPACE}/features/${SITE_PRJ}
+
+cp ${SITE_PRJ_PATH}/bucky_test ${SITE_PRJ_PATH}/_bucky_test
+sed -e "s%#{WORKSPACE}%${WORKSPACE}%g" -e "s%#{TARGET}%${TARGET}%g" -e "s%#{JAVA_HOME}%${JAVA_HOME}%g" -e "s%#{JAVA_BASE}%${JAVA_BASE}%g" -e "s%#{SITE_PRJ}%${SITE_PRJ}%g" ${SITE_PRJ_PATH}/bucky_test > ${SITE_PRJ_PATH}/_bucky_test
+
+cp ${SITE_PRJ_PATH}/buckminster.properties ${SITE_PRJ_PATH}/_buckminster.properties
+echo "buckminster.output.root=${WORKSPACE}/buckminster.output" >> ${SITE_PRJ_PATH}/_buckminster.properties
+echo "buckminster.temp.root=${WORKSPACE}/buckminster.temp" >> ${SITE_PRJ_PATH}/_buckminster.properties
+ 
+LAUNCHER=`find -L ${BUCKMINSTER}/plugins/ -name "org.eclipse.equinox.launcher_*.jar" -type f | head -n 1` 
+
+${JAVA_HOME}/bin/java -jar ${LAUNCHER} -application org.eclipse.buckminster.cmdline.headless -data ${WORKSPACE} --loglevel info -S ${SITE_PRJ_PATH}/_bucky_test
+

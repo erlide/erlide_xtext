@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="guiceModule" name="Guice module" schema="schema/guiceModule.exsd"/>
+   <extension
+         point="org.erlide.common.guiceModule">
+      <module
+            class="org.erlide.common.CommonModule">
+      </module>
+   </extension>
+
+</plugin>

@@ -1,0 +1,579 @@
+grammar org.erlide.Erlang hidden(WS, SL_COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+generate erlang "http://www.erlide.org/Erlang"
+
+Module:
+	(forms += Form)*
+;
+
+Form:
+	  Attribute 
+	| Function
+	| ConditionalFormBlock
+	| {MacroForm} name=Macro /*TODO: macro args*/ FULL_STOP 
+;
+
+ConditionalFormBlock:
+	condition=IfdefAttribute 
+		ifForms+=Form* 
+	(=> hasElse?=ElseAttribute 
+		elseForms+=Form*
+	)? 
+	end=EndifAttribute
+;
+
+AbstractElement:
+	Module | Form
+;
+
+// Attributes
+
+Attribute:
+	  ModuleAttribute
+	| DefineAttribute
+	| UndefAttribute
+	| IncludeAttribute
+	| FileAttribute
+	| RecordAttribute
+	| AbstractTypeAttribute	
+	| CustomAttribute
+;
+
+AbstractDefineAttribute:
+	  DefineAttribute
+	| UndefAttribute
+;
+
+DefineAttribute:
+    '-' => tag='define' 		    
+		'(' name=AtomOrVar 
+		    ('(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' )? 
+	    	(',' value=Guard?)? 
+		')'
+	FULL_STOP		 
+;
+
+UndefAttribute:
+	'-' => tag='undef' '(' name=[DefineAttribute|AtomOrVar] ')' FULL_STOP
+;
+
+IfdefAttribute:
+	'-' => tag=('ifdef'|'ifndef') '(' ref=[DefineAttribute|AtomOrVar] ')' FULL_STOP
+;
+
+EndifAttribute:
+	'-' => tag='endif'	FULL_STOP
+;
+
+ElseAttribute:
+	'-' => tag='else' FULL_STOP
+;
+
+IncludeAttribute:
+	'-' => tag=('include'|'include_lib') '(' value=[Module|STRING] ')' FULL_STOP
+;
+
+FileAttribute:
+	'-' => tag='file' '(' file=STRING ',' line=INTEGER ')' FULL_STOP
+;
+
+ModuleAttribute:
+	'-' => tag='module' '(' name=Name ')' FULL_STOP
+;
+
+RecordAttribute:
+	'-' => tag='record' '(' name=NameVar ',' ('{' (fields+=RecordFieldDef (',' fields+=RecordFieldDef)*)? '}' | recordMacro=[DefineAttribute|Macro]) ')' FULL_STOP  
+;
+
+AbstractTypeAttribute:
+  	  SpecAttribute
+	| TypeAttribute
+;
+
+SpecAttribute:
+	'-' => tag=('spec'|'callback') 
+	(
+  		      type=SpecFun signatures=TypeSigs
+  		| '(' type=SpecFun signatures=TypeSigs ')'
+	)
+	FULL_STOP
+;
+
+TypeAttribute:
+	'-' => tag=('type'|'opaque') 
+	(
+  	    	name=NameVar '(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' '::' type=TopType 
+  	  | '(' name=NameVar '(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' '::' type=TopType ')'
+	)
+	FULL_STOP
+;
+
+CustomAttribute:
+	'-' tag=ATOM '(' (value+=Expression (',' value+=Expression)*)? ')' FULL_STOP
+;
+
+// Functions
+
+Function:
+	name=Name clauses+=FunctionClause ( ';' clauses+=FunctionClause )* FULL_STOP
+;
+
+// validate that all names for a function are identical
+FunctionClause:
+	  ref=Name? '(' (params+=Expression (',' params+=Expression)*)? ')' 
+	  ('when'? guard=Guard)? // no 'when' if guard is a macro
+	  '->' body+=LExpression (',' body+=LExpression)*
+;
+
+Guard:
+	guards+=Expressions (';' guards+=Expressions)*
+;
+
+Expressions:
+	exprs+=LExpression (',' exprs+=LExpression)*
+;
+
+LExpression returns Expression:
+	  => line?=LineExpr expr=Expression
+	| Expression
+;
+
+LineExpr:
+	'?' 'line'  
+;
+
+Expression returns Expression:
+	  {CatchExpr} 'catch' expr=Expression 
+	| Expr100 
+;
+
+Expr100 returns Expression: // right-associative
+	Expr150 
+	(   {MatchExpr.opLeft=current} op='=' opRight=Expr100
+	  | {BinOp.opLeft=current} op='!' opRight=Expr100
+	)?;
+
+Expr150 returns Expression:
+	Expr160 ({BinOp.opLeft=current} op='orelse' opRight=Expr160)*;
+
+Expr160 returns Expression:
+	Expr200 ({BinOp.opLeft=current} op='andalso' opRight2=Expr200)*;
+
+Expr200 returns Expression: // non-associative
+	Expr300 ({BinOp.opLeft=current} op=CompOp opRight=Expr300)?;
+
+Expr300 returns Expression: 
+	Expr400 ({BinOp.opLeft=current} op=ListOp opRight=Expr400)*;
+
+Expr400 returns Expression:
+	Expr500 ({AddOp.opLeft=current} op=AddOp opRight=Expr500)*;
+
+Expr500 returns Expression:
+	UnaryExpr ({MultOp.opLeft=current} op=MultOp opRight=UnaryExpr)*;
+
+UnaryExpr returns Expression:
+	  {UnaryExpr} op=PrefixOp operand=Expr700
+	| Expr700
+;
+
+Expr700 returns Expression:
+	Expr800 (	 
+		  '(' {FunCall.target=current} (args+=Expression (',' args+=Expression)*)? ')'
+		| ('#' {RecordExpr.ref=current} record=RecordExpr )+ 
+	)? 
+;
+
+Expr800 returns Expression: // non-associative
+	ExprMax ({RemoteTarget.module=current} ':' function=ExprMax)?
+;
+
+ExprMax returns Expression:
+	  TermExpression
+	| '(' Expression ')' 
+	| {BlockExpr} 'begin' body+=LExpression (',' body+=LExpression)* 'end' 
+	| IfExpr 
+	| CaseExpr 
+	| ReceiveExpr 
+	| FunExpr 
+	| TryExpr
+	| CondExpr
+	| QueryExpr
+	| LetExpr
+;
+
+TermExpression returns Expression:	  
+	  Tuple
+	| => MacroCall
+	| => ListComprehension 
+	| List 
+	| => BinaryComprehension 
+	| Binary 
+	| '#' RecordExpr
+	| LiteralExpression
+;
+
+MacroCall:
+	  name=[DefineAttribute|Macro] '(' (args+=Expression (',' args+=Expression)*)? ')'  
+;
+
+RecordExpr:
+	rec=[RecordAttribute|NameVar] (field=[RecordFieldDef|QName] | tuple=RecordTuple)
+;
+
+// NYI
+QueryExpr:
+	{QueryExpr} 'query'
+;
+
+// NYI
+CondExpr:
+	{CondExpr} 'cond'
+;
+
+// NYI
+LetExpr:
+	{LetExpr} 'let'
+;
+
+RecordTuple:
+	{RecordTuple} '{' (fields+=RecordField (',' fields+=RecordField)*)? '}';
+
+RecordFieldDef:
+	name=NameVar ('=' value=Expression)? ('::' type=TopType)?
+;
+
+RecordField:
+	ref=[RecordFieldDef|NameVar] ('=' value=Expression)? ('::' type=TopType)?
+;
+
+LiteralExpressionNoNumber returns Expression:
+	  {Atom} value=[AbstractElement|AtomOrKw]
+	| {Variable} value=VARIABLE 
+	| {Char} value=CHAR 
+	| {MacroExpr} value=[DefineAttribute|Macro] 
+	| {ErlString} value=ErlString
+;
+
+LiteralExpression returns Expression:
+	  LiteralExpressionNoNumber
+	| {Integer} value=INTEGER 
+	| {Float} value=FLOAT
+;
+
+PatternExpression returns Expression:
+	TermExpression (
+		({MatchExpr.opLeft=current} op='=' opRight=TermExpression)+
+	  | ({FunCall.target=current} '(' (args+=Expression (',' args+=Expression)*)? ')') 
+	)?
+;
+
+ErlString returns ecore::EString:
+	STRING (STRING | Macro)* 
+;
+
+IfExpr:
+	'if' clauses+=IfClause (';' clauses+=IfClause)* 'end'
+;
+
+IfClause:
+	guard=Guard '->' body+=LExpression (',' body+=LExpression)*
+;
+
+CaseExpr:
+	'case' expr=Expression 'of' clauses+=CrClause (';' clauses+=CrClause)* 'end'
+;
+
+CrClause:
+	expr=Expression ('when' guard=Guard)? '->' body+=LExpression (',' body+=LExpression)*
+;
+
+ReceiveExpr:
+	'receive' 
+	( clauses+=CrClause (';' clauses+=CrClause)*
+		('after' after_expr=Expression '->' after_body+=LExpression (',' after_body+=LExpression)*)? 
+	  | 'after' after_expr=Expression '->' after_body+=LExpression (',' after_body+=LExpression)*
+	) 
+	'end'
+;
+
+FunExpr:
+	'fun' (RefFun | InlineFun)
+;
+
+RefFun:
+	(module=LiteralExpressionNoNumber ':')? function=LiteralExpressionNoNumber '/' arity=IntMacro
+;
+
+InlineFun returns FunExpr:
+	clauses+=FunctionClause (';' clauses+=FunctionClause)* 'end'
+;
+
+TryExpr:
+	'try' body+=LExpression (',' body+=LExpression)* 
+	('of' of_clauses+=CrClause (';' of_clauses+=CrClause)*)? 
+	( 'catch' catch+=TryClause (';' catch+=TryClause)* ('after' after_body+=LExpression (',' after_body+=LExpression)*)? 
+	  | 'after' after_body+=LExpression (',' after_body+=LExpression)*
+    )   
+	'end'
+;
+
+TryClause:
+	(=> (hdr=NameVar ':')?) cond=PatternExpression 	
+	('when' guard=Guard)? '->' body+=LExpression (',' body+=LExpression)*
+;
+
+List returns ErlList:
+	'[' 
+	(
+	  {List} 
+	  | elements+=Expression (',' elements+=Expression)* ('|' tail=Expression)? 
+	)
+	']'
+;
+
+ListComprehension:
+	'[' element=Expression '||' generators+=LCExpr (',' generators+=LCExpr)* ']'
+;
+
+Tuple:
+	'{' 
+	(   {Tuple} 
+		| elements+=Expression (',' elements+=Expression)*
+	)
+	'}';
+
+BinaryComprehension:
+	'<<' expr=TermExpression '||' generators+=LCExpr (',' generators+=LCExpr)* '>>'
+;
+
+Binary:
+	'<<' (     
+		  {Binary}
+		| elements+=BinaryItem (',' elements+=BinaryItem)*
+	) '>>'
+;
+
+BinaryItem:
+	expr=UnaryExprMax (=> ':' size=ExprMax)? (=> '/' types+=BitType ('-' type+=BitType)*)? 
+;
+
+BitType:
+	name=Name (':' size=INT)?
+;
+
+UnaryExprMax returns Expression:
+	  {UnaryExpr} op=PrefixOp operand=ExprMax
+	| ExprMax
+;
+
+LCExpr:
+	o1=Expression (op=('<-'|'<=') o2=Expression)? 
+;
+
+// Operators
+
+AddOp:
+	'+' | '-' | 'bor' | 'bxor' | 'bsl' | 'bsr' | 'or' | 'xor';
+
+MultOp:
+	'*' | '/' | 'div' | 'rem' | 'band' | 'and';
+
+PrefixOp:
+	'+' | '-' | 'bnot' | 'not';
+
+ListOp:
+	'++' | '--';
+
+CompOp:
+	'==' | '/=' | '=<' | '<' | '>=' | '>' | '=:=' | '=/=';
+
+// Literals
+
+Name:
+	AtomOrKw | Macro 
+;
+
+QName hidden():
+	'.' Name 
+;
+
+NameVar:
+	AtomOrVar | Macro 
+;
+
+AtomOrVar:
+    AtomOrKw | VARIABLE
+;
+
+Macro:
+    ('?'|'??') (ATOM | KW1 | VARIABLE)
+;
+
+AtomOrKw: 
+	ATOM | KW
+;
+
+KW:
+	KW1 | 'line'
+;
+
+KW1:
+	'spec' | 'endif' | 'ifdef' | 'ifndef' | 'type' | 'opaque' | 'record' 
+	| 'undef' | 'module' | 'include' | 'include_lib' | 'define'  
+	| 'file' | 'callback' | 'else' 
+;
+
+RealKw:
+	  'after' | 'and' | 'andalso' | 'band' | 'begin' | 'bnot' | 'bor' | 'bsl' 
+	| 'bsr' | 'bxor' | 'case' | 'catch' | 'cond' | 'div' | 'end' | 'fun' 
+	| 'if' | 'let' | 'not' | 'of' | 'or' | 'orelse' | 'query' | 'receive' 
+	| 'rem' | 'try' | 'when' | 'xor';
+
+terminal ATOM:
+	  AtomStarter InWordChar* 
+	| "'" ('\\' Escape | !('\\' | "'"))* ("'" | EOF)
+;
+
+terminal STRING:
+	'"' ('\\' Escape | !('\\' | '"'))* ('"' | EOF);
+
+terminal VARIABLE:
+	('A'..'Z' | '_') InWordChar*;
+
+terminal SL_COMMENT:
+	'%' !('\n' | '\r')* ('\r'? '\n' | EOF);
+
+terminal WS:
+	(!('!'..'~'|'\u00a1'..'\u00ff'))+
+;
+
+terminal FULL_STOP:
+	'.' (WS | SL_COMMENT | EOF)
+;
+
+IntMacro:
+	INT | Macro | VARIABLE
+;
+
+INTEGER:
+	  INT 
+	| BASED_INT 
+;
+
+terminal BASED_INT:
+	('1'..'3')? ('0'..'9') '#' ('0'..'9' | 'a'..'z' | 'A'..'Z')+
+;
+
+terminal INT:
+	('0'..'9')+ 
+;
+
+FLOAT hidden():
+	INT '.' ( EXT_INT | INT ) 
+;
+
+terminal EXT_INT:
+	INT ('e' | 'E') ('+' | '-')? INT
+;
+
+terminal CHAR:
+	'$' ('\\' Escape | .);
+
+terminal fragment InWordChar:
+     'a'..'z' | 'A'..'Z' | '_' | '@' | '0'..'9' | 'ß'..'ö' | 'ø'..'ÿ' | 'À'..'Ö' | 'Ø'..'Þ'
+;
+
+terminal fragment AtomStarter:
+    'a'..'z' | 'ß'..'ö' | 'ø'..'ÿ'
+;
+
+terminal fragment Escape:
+	( 'b' | 'd' | 'e' | 'f' | 'n' | 'r' | 's' | 't' | 'v'
+		| ('0'..'7' ('0'..'7' '0'..'7'?)?)
+		| ('x'|'X') HexDigit HexDigit
+		| ('x'|'X') '{' HexDigit+ '}'
+		| '^' ('a'..'z' | 'A'..'Z' | ']')
+		| .
+	)
+;
+
+terminal fragment HexDigit:
+	'0'..'9' | 'A'..'F' | 'a'..'f'
+;
+
+// Type language
+
+SpecFun:
+	(m=NameVar ':')? f=NameVar ('/' a=IntMacro '::')?;
+
+TypeSigs:
+	items+=TypeSig (';' items+=TypeSig)*;
+
+TypeSig:
+	decl=FunType ('when' guards=TypeGuards)?;
+
+FunType:
+	'(' args=TopTypes? ')' '->' return=TopType;
+
+TopTypes:
+	items+=TopType (',' items+=TopType)*;
+
+TypeGuards:
+	items+=TypeGuard (',' items+=TypeGuard)*;
+
+TypeGuard:
+	name=Name '(' types=TopTypes ')' | name=VARIABLE '::' type=TopType;
+
+TopType:
+	(var=VARIABLE '::')? type=Type100;
+
+Type100:
+	Type200 (=> ({TopType.leftOperand=current} op='|') rightOperand=Type200)*;
+
+Type200:
+	Type300 (=> ({TopType.leftOperand=current} op='..') rightOperand=Type300)*;
+
+Type300:
+	Type400 (=> ({TopType.leftOperand=current} op=AddOp) rightOperand=Type400)*;
+
+Type400:
+	Type500 (=> ({TopType.leftOperand=current} op=MultOp) rightOperand=Type500)*;
+
+Type500:
+	  {UnaryType} op=PrefixOp operand=Type
+	| Type
+;
+
+Type:
+	'(' TopType ')' 
+	| {RemoteType} (m=[Module|Name] ':')? name=Name ('(' args=TopTypes? ')')? 
+	| name=VARIABLE 
+	| value=INTEGER 
+	| '[' {ListType} (type=TopType	(',' '...')?)? ']' 
+	| '{' {TupleType} types=TopTypes? '}' 
+	| '#' {RecordType} rec=Name '{' (fields+=FieldType (',' fields+=FieldType)*)? '}' 
+	| BinaryType
+	| 'fun' {FunType} '(' type=FunType100? ')' 
+;
+
+FieldType:
+	name=Name '::' type=TopType;
+
+BinaryType:
+	'<<' {BinaryType}
+	(type+=BinBaseType (',' type+=BinUnitType)? | type+=BinUnitType)? 
+	'>>'
+;
+
+BinBaseType:
+	name=VARIABLE ':' type=Type;
+
+BinUnitType:
+	name=VARIABLE ':' m=VARIABLE '*' type=Type;
+
+FunType100:
+	{FunTypeList} '(' ('...' | items=TopTypes)? ')' '->' return=TopType;
+
+
+	

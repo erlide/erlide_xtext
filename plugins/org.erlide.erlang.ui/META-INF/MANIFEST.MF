@@ -1,0 +1,37 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.erlide.erlang.ui
+Bundle-Vendor: My Company
+Bundle-Version: 0.101.0.qualifier
+Bundle-SymbolicName: org.erlide.erlang.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.erlide.erlang;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.eclipse.xtext.builder,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.xtend,
+ org.eclipse.xpand,
+ org.eclipse.compare,
+ org.eclipse.ui.navigator,
+ org.eclipse.ui.navigator.resources
+Import-Package: org.apache.commons.logging,
+ org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.erlide.ui,
+ org.erlide.ui.contentassist,
+ org.erlide.ui.contentassist.antlr,
+ org.erlide.ui.contentassist.antlr.internal,
+ org.erlide.ui.internal,
+ org.erlide.ui.labeling,
+ org.erlide.ui.outline,
+ org.erlide.ui.quickfix,
+ org.erlide.ui.syntaxcoloring
+Bundle-Activator: org.erlide.ui.internal.ErlangActivator

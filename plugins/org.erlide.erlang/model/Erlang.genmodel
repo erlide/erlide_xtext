@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.erlide.erlang/src"
+    modelPluginID="org.erlide.erlang" modelName="Erlang" rootImplementsInterface=""
+    importerID="org.eclipse.emf.importer.java" complianceLevel="6.0" copyrightFields="false"
+    language="" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    classNamePattern="">
+  <foreignModel>@model</foreignModel>
+  <genPackages prefix="Erlang" basePackage="org.erlide" disposableProviderFactory="true"
+      ecorePackage="erlang.ecore#/">
+    <genClasses ecoreClass="erlang.ecore#//Module">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//Module/forms"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Form"/>
+    <genClasses ecoreClass="erlang.ecore#//ConditionalFormBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ConditionalFormBlock/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ConditionalFormBlock/ifForms"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//ConditionalFormBlock/hasElse"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ConditionalFormBlock/elseForms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ConditionalFormBlock/end"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//AbstractElement"/>
+    <genClasses ecoreClass="erlang.ecore#//Attribute"/>
+    <genClasses ecoreClass="erlang.ecore#//AbstractDefineAttribute"/>
+    <genClasses ecoreClass="erlang.ecore#//DefineAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//DefineAttribute/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//DefineAttribute/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//DefineAttribute/args"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//DefineAttribute/value"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//UndefAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//UndefAttribute/tag"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erlang.ecore#//UndefAttribute/name"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//IfdefAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//IfdefAttribute/tag"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erlang.ecore#//IfdefAttribute/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//EndifAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//EndifAttribute/tag"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//ElseAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//ElseAttribute/tag"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//IncludeAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//IncludeAttribute/tag"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erlang.ecore#//IncludeAttribute/value"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//FileAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//FileAttribute/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//FileAttribute/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//FileAttribute/line"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//ModuleAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//ModuleAttribute/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//ModuleAttribute/name"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//RecordAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//RecordAttribute/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//RecordAttribute/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordAttribute/fields"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordAttribute/recordMacro"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//AbstractTypeAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//AbstractTypeAttribute/tag"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//SpecAttribute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//SpecAttribute/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//SpecAttribute/signatures"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//TypeAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//TypeAttribute/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TypeAttribute/args"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TypeAttribute/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//CustomAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//CustomAttribute/tag"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//CustomAttribute/value"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//Function/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//Function/clauses"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//FunctionClause">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//FunctionClause/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FunctionClause/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FunctionClause/guard"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FunctionClause/body"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Guard">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//Guard/guards"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Expressions">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//Expressions/exprs"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Expression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//Expression/line"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//Expression/expr"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//MacroCall">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erlang.ecore#//MacroCall/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//MacroCall/args"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//RecordExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordExpr/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordExpr/record"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordExpr/rec"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordExpr/field"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordExpr/tuple"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//QueryExpr"/>
+    <genClasses ecoreClass="erlang.ecore#//CondExpr"/>
+    <genClasses ecoreClass="erlang.ecore#//LetExpr"/>
+    <genClasses ecoreClass="erlang.ecore#//RecordTuple">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordTuple/fields"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//RecordFieldDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//RecordFieldDef/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordFieldDef/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordFieldDef/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//RecordField">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordField/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordField/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordField/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//IfExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//IfExpr/clauses"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//IfClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//IfClause/guard"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//IfClause/body"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//CaseExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//CaseExpr/clauses"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//CrClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//CrClause/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//CrClause/guard"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//CrClause/body"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//ReceiveExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ReceiveExpr/clauses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ReceiveExpr/after_expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ReceiveExpr/after_body"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//FunExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FunExpr/clauses"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//RefFun">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RefFun/module"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RefFun/function"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//RefFun/arity"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//TryExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TryExpr/body"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TryExpr/of_clauses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TryExpr/catch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TryExpr/after_body"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//TryClause">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//TryClause/hdr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TryClause/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TryClause/guard"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TryClause/body"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//ErlList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ErlList/elements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ErlList/tail"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//ListComprehension">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ListComprehension/element"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ListComprehension/generators"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Tuple">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//Tuple/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//BinaryComprehension">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BinaryComprehension/generators"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Binary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//Binary/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//BinaryItem">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BinaryItem/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BinaryItem/size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BinaryItem/types"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BinaryItem/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//BitType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//BitType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//BitType/size"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//LCExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//LCExpr/o1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//LCExpr/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//LCExpr/o2"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//SpecFun">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//SpecFun/m"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//SpecFun/f"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//SpecFun/a"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//TypeSigs">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TypeSigs/items"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//TypeSig">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TypeSig/decl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TypeSig/guards"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//FunType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FunType/args"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FunType/return"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FunType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//TopTypes">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TopTypes/items"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//TypeGuards">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TypeGuards/items"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//TypeGuard">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//TypeGuard/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TypeGuard/types"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TypeGuard/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//TopType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//TopType/var"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TopType/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TopType/leftOperand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//TopType/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TopType/rightOperand"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Type100"/>
+    <genClasses ecoreClass="erlang.ecore#//Type200"/>
+    <genClasses ecoreClass="erlang.ecore#//Type300"/>
+    <genClasses ecoreClass="erlang.ecore#//Type400"/>
+    <genClasses ecoreClass="erlang.ecore#//Type500"/>
+    <genClasses ecoreClass="erlang.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//Type/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//Type/value"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//FieldType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//FieldType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FieldType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//BinaryType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BinaryType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//BinBaseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//BinBaseType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BinBaseType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//BinUnitType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//BinUnitType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//BinUnitType/m"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BinUnitType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//FunType100"/>
+    <genClasses ecoreClass="erlang.ecore#//MacroForm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//MacroForm/name"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//CatchExpr"/>
+    <genClasses ecoreClass="erlang.ecore#//MatchExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//MatchExpr/opLeft"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//MatchExpr/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//MatchExpr/opRight"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//BinOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BinOp/opLeft"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//BinOp/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BinOp/opRight"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BinOp/opRight2"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//AddOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//AddOp/opLeft"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//AddOp/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//AddOp/opRight"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//MultOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//MultOp/opLeft"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//MultOp/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//MultOp/opRight"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//UnaryExpr">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//UnaryExpr/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//UnaryExpr/operand"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//FunCall">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FunCall/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FunCall/args"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//RemoteTarget">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RemoteTarget/module"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RemoteTarget/function"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//BlockExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//BlockExpr/body"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Atom">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erlang.ecore#//Atom/value"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//Variable/value"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Char">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//Char/value"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//MacroExpr">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erlang.ecore#//MacroExpr/value"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//ErlString">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//ErlString/value"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Integer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//Integer/value"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//Float">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//Float/value"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//List"/>
+    <genClasses ecoreClass="erlang.ecore#//UnaryType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//UnaryType/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//UnaryType/operand"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//RemoteType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erlang.ecore#//RemoteType/m"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RemoteType/args"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//ListType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//ListType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//TupleType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//TupleType/types"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//RecordType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erlang.ecore#//RecordType/rec"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//RecordType/fields"/>
+    </genClasses>
+    <genClasses ecoreClass="erlang.ecore#//FunTypeList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FunTypeList/items"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erlang.ecore#//FunTypeList/return"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
