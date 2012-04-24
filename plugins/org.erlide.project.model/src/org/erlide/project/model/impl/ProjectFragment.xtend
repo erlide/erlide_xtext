@@ -1,7 +1,6 @@
 package org.erlide.project.model.impl
 
 import java.util.Collection
-import java.util.Collections
 import java.util.List
 import org.eclipse.core.runtime.IPath
 import org.erlide.project.model.ICodeFolder
@@ -9,6 +8,8 @@ import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelElement
 import org.erlide.project.model.IErlangProject
 import org.erlide.project.model.IProjectFragment
+
+import static extension java.util.Collections.*
 
 public class ProjectFragment extends ErlangModelElement implements
         IProjectFragment {
@@ -30,19 +31,19 @@ public class ProjectFragment extends ErlangModelElement implements
     }
 
     override Collection<ICodeFolder> getSourceFolders() {
-        return Collections::unmodifiableCollection(sourceFolders);
+        return sourceFolders.unmodifiableCollection
     }
 
     override Collection<ICodeFolder> getIncludeFolders() {
-        return Collections::unmodifiableCollection(includeFolders);
+        return includeFolders.unmodifiableCollection
     }
 
     override String getName() {
-        return name;
+        return name
     }
 
     override IErlangModelElement getParent() {
-        return project;
+        return project
     }
 
 } // ProjectFragment
