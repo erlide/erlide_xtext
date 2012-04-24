@@ -12,6 +12,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure4;
@@ -58,7 +59,7 @@ public class SimpleErlangBuilder {
     String _head = IterableExtensions.<String>head(parts);
     final List<String> heads = ((List<String>)Conversions.doWrapArray(_head.split(":")));
     int _size = parts.size();
-    final boolean warning = (_size == 3);
+    final boolean warning = IntegerExtensions.operator_equals(_size, 3);
     String _xifexpression = null;
     if (warning) {
       String _get = parts.get(2);

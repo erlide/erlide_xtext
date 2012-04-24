@@ -200,12 +200,11 @@
    <extension
          point="org.eclipse.ui.newWizards">
       <wizard
-            category="org.eclipse.xtext.projectwiz"
-            class="org.erlide.ui.ErlangExecutableExtensionFactory:org.erlide.ui.wizard.ErlangNewProjectWizard"
-            icon="icons/editor.gif"
-            id="org.erlide.ui.wizard.ErlangNewProjectWizard"
-            name="Erlang Project"
-            project="true">
+            category="org.erlide.project.ui.wizards.newWizards"
+            class="org.erlide.ui.ErlangExecutableExtensionFactory:org.erlide.ui.wizards.NewErlangModuleWizard"
+            icon="icons/full/obj16/erlang_NewModule.png"
+            id="org.erlide.project.ui.wizards.newmodule"
+            name="Module">
       </wizard>
    </extension>
 
