@@ -23,7 +23,17 @@ Require-Bundle: org.erlide.erlang;visibility:=reexport,
  org.eclipse.ui.navigator,
  org.eclipse.ui.navigator.resources
 Import-Package: org.apache.commons.logging,
- org.apache.log4j
+ org.apache.log4j,
+ com.google.common.annotations,
+ com.google.common.base,
+ com.google.common.base.internal,
+ com.google.common.cache,
+ com.google.common.collect,
+ com.google.common.eventbus,
+ com.google.common.io,
+ com.google.common.net,
+ com.google.common.primitives,
+ com.google.common.util.concurrent
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.erlide.ui,
  org.erlide.ui.contentassist,
