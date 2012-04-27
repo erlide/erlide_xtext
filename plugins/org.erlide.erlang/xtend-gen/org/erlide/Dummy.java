@@ -1,7 +1,6 @@
 package org.erlide;
 
 import org.eclipse.xtext.xbase.lib.InputOutput;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class Dummy {
@@ -11,7 +10,7 @@ public class Dummy {
     long _currentTimeMillis = System.currentTimeMillis();
     this.time = _currentTimeMillis;
     long _shiftRight = (this.time >> 2);
-    String _plus = StringExtensions.operator_plus(">>>", Long.valueOf(_shiftRight));
+    String _plus = (">>>" + Long.valueOf(_shiftRight));
     InputOutput.<String>println(_plus);
   }
 }

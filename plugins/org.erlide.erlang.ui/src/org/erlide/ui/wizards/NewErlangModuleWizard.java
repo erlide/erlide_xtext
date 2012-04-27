@@ -1,6 +1,5 @@
 package org.erlide.ui.wizards;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,6 +18,8 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.ISetSelectionTarget;
+
+import com.google.common.collect.Lists;
 
 public class NewErlangModuleWizard extends Wizard implements IWorkbenchWizard,
         INewWizard {
@@ -77,7 +78,7 @@ public class NewErlangModuleWizard extends Wizard implements IWorkbenchWizard,
         }
 
         // get all the view and editor parts
-        final List parts = new ArrayList();
+        final List<IWorkbenchPart> parts = Lists.newArrayList();
         IWorkbenchPartReference refs[] = page.getViewReferences();
         for (int i = 0; i < refs.length; i++) {
             final IWorkbenchPart part = refs[i].getPart(false);
@@ -93,9 +94,9 @@ public class NewErlangModuleWizard extends Wizard implements IWorkbenchWizard,
         }
 
         final ISelection selection = new StructuredSelection(resource);
-        final Iterator itr = parts.iterator();
+        final Iterator<IWorkbenchPart> itr = parts.iterator();
         while (itr.hasNext()) {
-            final IWorkbenchPart part = (IWorkbenchPart) itr.next();
+            final IWorkbenchPart part = itr.next();
 
             // get the part's ISetSelectionTarget implementation
             ISetSelectionTarget target = null;
@@ -110,6 +111,7 @@ public class NewErlangModuleWizard extends Wizard implements IWorkbenchWizard,
                 // select and reveal resource
                 final ISetSelectionTarget finalTarget = target;
                 window.getShell().getDisplay().asyncExec(new Runnable() {
+                    @Override
                     public void run() {
                         finalTarget.selectReveal(selection);
                     }
