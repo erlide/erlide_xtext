@@ -1,10 +1,9 @@
 package org.erlide.project.model.impl
 
 import java.util.Collection
-import java.util.List
+import java.util.Set
 import org.eclipse.core.runtime.IPath
 import org.erlide.project.model.ICodeFolder
-import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelElement
 import org.erlide.project.model.IErlangProject
 import org.erlide.project.model.IProjectFragment
@@ -15,19 +14,18 @@ public class ProjectFragment extends ErlangModelElement implements
         IProjectFragment {
 
     IErlangProject project
-    IErlangModel model
-    List<ICodeFolder> sourceFolders
-    List<ICodeFolder> includeFolders
+    String name
+    protected Set<ICodeFolder> sourceFolders
+    Set<ICodeFolder> includeFolders
     IPath docFolder
     IPath privDir
-    String name
 
     new(IErlangProject project, String name) {
         super()
         this.project = project
         this.name = name
-        sourceFolders = newArrayList()
-        includeFolders = newArrayList()
+        sourceFolders = newHashSet()
+        includeFolders = newHashSet()
     }
 
     override Collection<ICodeFolder> getSourceFolders() {
@@ -44,6 +42,30 @@ public class ProjectFragment extends ErlangModelElement implements
 
     override IErlangModelElement getParent() {
         return project
+    }
+
+    def void addSourceFolder(ICodeFolder folder) {
+        sourceFolders.add(folder)
+    }
+
+    def removeSourceFolder(ICodeFolder folder) {
+        sourceFolders.remove(folder)
+    }
+
+    def void addIncludeFolder(ICodeFolder folder) {
+        sourceFolders.add(folder)
+    }
+    
+    def removeIncludeFolder(ICodeFolder folder) {
+        sourceFolders.remove(folder)
+    }
+    
+    def void setDocFolder(IPath path) {
+        docFolder = path
+    }
+    
+    def void setPrivDir(IPath path) {
+        privDir = path
     }
 
 } // ProjectFragment
