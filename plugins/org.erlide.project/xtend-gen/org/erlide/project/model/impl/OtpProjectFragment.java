@@ -5,7 +5,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.erlide.project.model.ErlangModelException;
 import org.erlide.project.model.ICodeFolder;
 import org.erlide.project.model.IErlangProject;
@@ -42,7 +41,7 @@ public class OtpProjectFragment extends ProjectFragment {
   public void addSourceFolder(final ICodeFolder folder) {
     try {
       int _size = this.sourceFolders.size();
-      boolean _greaterThan = IntegerExtensions.operator_greaterThan(_size, 0);
+      boolean _greaterThan = (_size > 0);
       if (_greaterThan) {
         ErlangModelException _erlangModelException = new ErlangModelException("OtpProjectFragment can only have one source folder");
         throw _erlangModelException;
