@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Builder
+Bundle-Name: Erlang builder
 Bundle-SymbolicName: org.erlide.builder;singleton:=true
 Bundle-Version: 0.101.0.qualifier
 Bundle-Activator: org.erlide.builder.BuilderPlugin
@@ -20,3 +20,4 @@ Import-Package: com.google.common.annotations,
  com.google.common.net,
  com.google.common.primitives,
  com.google.common.util.concurrent
+Bundle-Vendor: erlide.org

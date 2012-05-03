@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Launching Ui
+Bundle-Name: Erlang launching support UI
 Bundle-SymbolicName: org.erlide.launching.ui
 Bundle-Version: 0.101.0.qualifier
 Bundle-Activator: org.erlide.launching.ui.LaunchingUiPlugin
@@ -8,3 +8,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: erlide.org

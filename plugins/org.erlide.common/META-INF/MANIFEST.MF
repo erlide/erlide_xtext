@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Common
+Bundle-Name: Erlide common utilities
 Bundle-SymbolicName: org.erlide.common;singleton:=true
 Bundle-Version: 0.101.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
@@ -25,3 +25,4 @@ Import-Package: com.google.inject;version="1.3.0",
  com.google.common.util.concurrent
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.erlide.common.CommonPlugin
+Bundle-Vendor: erlide.org
