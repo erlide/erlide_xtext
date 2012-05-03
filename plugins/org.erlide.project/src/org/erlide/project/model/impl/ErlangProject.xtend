@@ -4,6 +4,7 @@ import java.util.Collection
 import java.util.Collections
 import java.util.List
 import org.eclipse.core.resources.IProject
+import org.erlide.common.util.ErlLogger
 import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelElement
 import org.erlide.project.model.IErlangProject
@@ -17,13 +18,13 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
     List<IProjectFragment> binaryFragments
     IProject workspaceProject
 
-    new(IErlangModel model, IProject workspaceProject) {
+    new(IErlangModel model, IProject project) {
         super()
         this.model = model
         referencedProjects = newArrayList()
         sourceFragments = newArrayList()
         binaryFragments = newArrayList()
-        this.workspaceProject = workspaceProject
+        workspaceProject = project
     }
 
     override List<IErlangProject> getReferencedProjects() {
@@ -63,7 +64,10 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
     }
     
     override realize() {
-        // create project
+        if(workspaceProject == null) {
+            // create project
+            ErlLogger::error("Workspace project must exist for %s", name)
+        }
         sourceFragments.forEach[realize]
         // binaryFragments 
     }

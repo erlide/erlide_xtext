@@ -67,7 +67,9 @@ public class CodeFolder extends ErlangModelElement implements ICodeFolder {
     
     override realize() {
         // create folder
+        ErlangModelFactory::createFolder(path)
         sourceUnits.forEach[realize]
+        ErlangModelFactory::createFolder(outputPath)
     }
 
 } // CodeFolder

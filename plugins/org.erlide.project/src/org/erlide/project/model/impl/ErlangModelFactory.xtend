@@ -11,6 +11,7 @@ import org.erlide.project.model.IErlangModelFactory
 import org.erlide.project.model.IErlangProject
 import org.erlide.project.model.IExternalErlangProject
 import org.erlide.project.model.IProjectFragment
+import java.io.File
 
 public class ErlangModelFactory implements IErlangModelFactory {
 
@@ -56,5 +57,31 @@ public class ErlangModelFactory implements IErlangModelFactory {
             String name) {
         return new BinaryCodeUnit(folder, name)
     }
+
+    def static void createFolder(IPath fullPath) {
+        if(fullPath==null) {
+            return
+        }
+        try {
+            var File f = new File(fullPath.toString)
+            f.mkdirs
+        } catch (Exception e) {
+            println("could not create folder "+fullPath.toString)            
+        }
+    }
+    
+    def static void createFile(IPath fullPath) {
+        if(fullPath==null) {
+            return
+        }
+        try {
+        var File f = new File(fullPath.toString)
+        f.createNewFile
+        } catch (Exception e) {
+            println("could not create file "+fullPath.toString)            
+        }
+    }
+    
+    
 
 } // ErlModelFactory

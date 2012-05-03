@@ -28,4 +28,14 @@ public class OtpProjectFragmentTests {
     fragment.addSourceFolder(folder);
     fragment.addSourceFolder(folder);
   }
+  
+  @Test
+  public void realizeOtpFragment() {
+    OtpProjectFragment _otpProjectFragment = new OtpProjectFragment(null, "myFrag");
+    final OtpProjectFragment fragment = _otpProjectFragment;
+    Path _path = new Path("");
+    CodeFolder _codeFolder = new CodeFolder(_path);
+    final CodeFolder folder = _codeFolder;
+    fragment.addSourceFolder(folder);
+  }
 }

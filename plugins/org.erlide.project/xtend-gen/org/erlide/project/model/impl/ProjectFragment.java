@@ -14,6 +14,7 @@ import org.erlide.project.model.IErlangModelElement;
 import org.erlide.project.model.IErlangProject;
 import org.erlide.project.model.IProjectFragment;
 import org.erlide.project.model.impl.ErlangModelElement;
+import org.erlide.project.model.impl.ErlangModelFactory;
 
 @SuppressWarnings("all")
 public class ProjectFragment extends ErlangModelElement implements IProjectFragment {
@@ -98,5 +99,7 @@ public class ProjectFragment extends ErlangModelElement implements IProjectFragm
         }
       };
     IterableExtensions.<ICodeFolder>forEach(this.includeFolders, _function_1);
+    ErlangModelFactory.createFolder(this.docPath);
+    ErlangModelFactory.createFolder(this.privPath);
   }
 }

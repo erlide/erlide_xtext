@@ -15,6 +15,7 @@ import org.erlide.project.model.ICodeUnit;
 import org.erlide.project.model.IErlangModelElement;
 import org.erlide.project.model.IProjectFragment;
 import org.erlide.project.model.impl.ErlangModelElement;
+import org.erlide.project.model.impl.ErlangModelFactory;
 
 @SuppressWarnings("all")
 public class CodeFolder extends ErlangModelElement implements ICodeFolder {
@@ -97,11 +98,13 @@ public class CodeFolder extends ErlangModelElement implements ICodeFolder {
   }
   
   public void realize() {
+    ErlangModelFactory.createFolder(this.path);
     final Procedure1<ICodeUnit> _function = new Procedure1<ICodeUnit>() {
         public void apply(final ICodeUnit it) {
           it.realize();
         }
       };
     IterableExtensions.<ICodeUnit>forEach(this.sourceUnits, _function);
+    ErlangModelFactory.createFolder(this.outputPath);
   }
 }

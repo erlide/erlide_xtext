@@ -8,7 +8,9 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.erlide.common.util.ErlLogger;
 import org.erlide.project.model.IErlangModel;
 import org.erlide.project.model.IErlangModelElement;
 import org.erlide.project.model.IErlangProject;
@@ -27,7 +29,7 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
   
   private IProject workspaceProject;
   
-  public ErlangProject(final IErlangModel model, final IProject workspaceProject) {
+  public ErlangProject(final IErlangModel model, final IProject project) {
     super();
     this.model = model;
     ArrayList<IErlangProject> _newArrayList = CollectionLiterals.<IErlangProject>newArrayList();
@@ -36,7 +38,7 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
     this.sourceFragments = _newArrayList_1;
     ArrayList<IProjectFragment> _newArrayList_2 = CollectionLiterals.<IProjectFragment>newArrayList();
     this.binaryFragments = _newArrayList_2;
-    this.workspaceProject = workspaceProject;
+    this.workspaceProject = project;
   }
   
   public List<IErlangProject> getReferencedProjects() {
@@ -78,6 +80,11 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
   }
   
   public void realize() {
+    boolean _equals = ObjectExtensions.operator_equals(this.workspaceProject, null);
+    if (_equals) {
+      String _name = this.getName();
+      ErlLogger.error("Workspace project must exist for %s", _name);
+    }
     final Procedure1<IProjectFragment> _function = new Procedure1<IProjectFragment>() {
         public void apply(final IProjectFragment it) {
           it.realize();

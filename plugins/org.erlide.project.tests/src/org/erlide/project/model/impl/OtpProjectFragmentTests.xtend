@@ -20,4 +20,13 @@ class OtpProjectFragmentTests {
         fragment.addSourceFolder(folder)
         fragment.addSourceFolder(folder)
     }
+    
+    @Test
+    def void realizeOtpFragment() {
+        val fragment = new OtpProjectFragment(null, "myFrag")      
+        val folder = new CodeFolder(new Path(""))
+        fragment.addSourceFolder(folder)
+    }
+    
+    
 }

@@ -75,8 +75,10 @@ public class ProjectFragment extends ErlangModelElement implements
     override realize() {
         sourceFolders.forEach[realize]
         includeFolders.forEach[realize]
-        // create docPath
+        //create docPath
+        ErlangModelFactory::createFolder(docPath)
         // create privPath
+        ErlangModelFactory::createFolder(privPath)
     }
 
 } // ProjectFragment

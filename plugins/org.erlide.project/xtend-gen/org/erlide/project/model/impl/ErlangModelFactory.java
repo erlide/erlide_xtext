@@ -1,9 +1,14 @@
 package org.erlide.project.model.impl;
 
+import java.io.File;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.erlide.project.model.IBinaryCodeUnit;
 import org.erlide.project.model.ICodeFolder;
 import org.erlide.project.model.ICodeUnit;
@@ -68,5 +73,49 @@ public class ErlangModelFactory implements IErlangModelFactory {
   public IBinaryCodeUnit createBinaryCodeUnit(final ICodeFolder folder, final String name) {
     BinaryCodeUnit _binaryCodeUnit = new BinaryCodeUnit(folder, name);
     return _binaryCodeUnit;
+  }
+  
+  public static void createFolder(final IPath fullPath) {
+    boolean _equals = ObjectExtensions.operator_equals(fullPath, null);
+    if (_equals) {
+      return;
+    }
+    try {
+      String _string = fullPath.toString();
+      File _file = new File(_string);
+      File f = _file;
+      f.mkdirs();
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+        String _string_1 = fullPath.toString();
+        String _plus = StringExtensions.operator_plus("could not create folder ", _string_1);
+        InputOutput.<String>println(_plus);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+  }
+  
+  public static void createFile(final IPath fullPath) {
+    boolean _equals = ObjectExtensions.operator_equals(fullPath, null);
+    if (_equals) {
+      return;
+    }
+    try {
+      String _string = fullPath.toString();
+      File _file = new File(_string);
+      File f = _file;
+      f.createNewFile();
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+        String _string_1 = fullPath.toString();
+        String _plus = StringExtensions.operator_plus("could not create file ", _string_1);
+        InputOutput.<String>println(_plus);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
   }
 }

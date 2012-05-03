@@ -20,7 +20,7 @@ public class OtpProjectFragment extends ProjectFragment {
    * TODO maybe we want this to be done in builder? here we can have just basic setters and getters
    */
   public OtpProjectFragment(final IErlangProject project, final String name, final IPath root) {
-    super(project, name);
+    this(project, name);
     Path _path = new Path("src");
     CodeFolder _codeFolder = new CodeFolder(_path);
     HashSet<ICodeFolder> _newHashSet = CollectionLiterals.<ICodeFolder>newHashSet(_codeFolder);

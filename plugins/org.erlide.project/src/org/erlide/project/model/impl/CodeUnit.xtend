@@ -5,6 +5,9 @@ import org.erlide.project.model.ICodeFolder
 import org.erlide.project.model.ICodeUnit
 import org.erlide.project.model.IErlangModelElement
 import org.eclipse.core.resources.IFile
+import org.eclipse.core.resources.ResourcesPlugin
+import org.erlide.common.util.ErlLogger
+import java.util.List
 
 public class CodeUnit extends ErlangModelElement implements ICodeUnit {
 
@@ -30,10 +33,17 @@ public class CodeUnit extends ErlangModelElement implements ICodeUnit {
     }
 
     override getResource() {
+        if(file==null) {
+            val List<IFile> possibleFiles = ResourcesPlugin::workspace.root.findFilesForLocation(path)
+            if(possibleFiles.size == 1) {
+                file = possibleFiles.head
+            }
+            ErlLogger::warn("not able to find file %s", path)
+        }
         return file
     }
     
     override realize() {
-        throw new UnsupportedOperationException("Code unit creation is not yet implemented")
+        ErlangModelFactory::createFile(path)
     }
 } // CodeUnit

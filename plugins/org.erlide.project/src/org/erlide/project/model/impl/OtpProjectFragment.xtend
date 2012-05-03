@@ -13,9 +13,8 @@ public class OtpProjectFragment extends ProjectFragment {
      * 
      * TODO maybe we want this to be done in builder? here we can have just basic setters and getters
      */
-    new(IErlangProject project,
-            String name, IPath root) {
-        super(project, name)
+    new(IErlangProject project, String name, IPath root) {
+        this(project, name)
         sourceFolders = <ICodeFolder>newHashSet(new CodeFolder(new Path("src")))
         sourceFolders = <ICodeFolder>newHashSet(new CodeFolder(new Path("include")))
         docPath = new Path("doc")

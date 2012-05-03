@@ -41,7 +41,7 @@ class ModelResourceListener implements IResourceChangeListener {
     }
     
     def dispatch void updateModel(ICodeFolder folder, IResourceChangeEvent event) {
-        folder.codeUnits.forEach [ updateModel(event) ]
+        folder.getCodeUnits.forEach [ updateModel(event) ]
     }
     
     def dispatch void updateModel(ICodeUnit unit, IResourceChangeEvent event) {
