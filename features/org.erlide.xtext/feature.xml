@@ -52,7 +52,7 @@
       <import plugin="org.eclipse.emf.common" version="2.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.osgi"/>
       <import plugin="org.erlide.common" version="0.101.0" match="greaterOrEqual"/>
-      <import plugin="org.erlide.project.model" version="0.101.0" match="greaterOrEqual"/>
+      <import plugin="org.erlide.project" version="0.101.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.erlide.builder" version="0.101.0" match="greaterOrEqual"/>
       <import plugin="org.erlide.jinterface" version="0.15.2" match="greaterOrEqual"/>
@@ -90,7 +90,7 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.erlide.project.model"
+         id="org.erlide.project"
          download-size="0"
          install-size="0"
          version="0.0.0"
