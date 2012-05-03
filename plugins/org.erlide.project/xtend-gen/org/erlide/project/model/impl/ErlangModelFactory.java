@@ -18,8 +18,8 @@ import org.erlide.project.model.impl.CodeFolder;
 import org.erlide.project.model.impl.CodeUnit;
 import org.erlide.project.model.impl.ErlangModel;
 import org.erlide.project.model.impl.ErlangProject;
-import org.erlide.project.model.impl.ErlangProjectFragment;
 import org.erlide.project.model.impl.ExternalErlangProject;
+import org.erlide.project.model.impl.GenericProjectFragment;
 
 @SuppressWarnings("all")
 public class ErlangModelFactory implements IErlangModelFactory {
@@ -46,13 +46,13 @@ public class ErlangModelFactory implements IErlangModelFactory {
   }
   
   public ICodeFolder createCodeFolder(final IProjectFragment project, final IPath path) {
-    CodeFolder _codeFolder = new CodeFolder();
+    CodeFolder _codeFolder = new CodeFolder(path);
     return _codeFolder;
   }
   
   public IProjectFragment createErlangProjectFragment(final IErlangProject project, final String name) {
-    ErlangProjectFragment _erlangProjectFragment = new ErlangProjectFragment(project, name);
-    return _erlangProjectFragment;
+    GenericProjectFragment _genericProjectFragment = new GenericProjectFragment(project, name);
+    return _genericProjectFragment;
   }
   
   public IProjectFragment createBterlProjectFragment(final IErlangProject project, final String name, final IProjectFragment parent) {

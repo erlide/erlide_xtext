@@ -4,11 +4,13 @@ import org.eclipse.core.runtime.IPath
 import org.erlide.project.model.ICodeFolder
 import org.erlide.project.model.ICodeUnit
 import org.erlide.project.model.IErlangModelElement
+import org.eclipse.core.resources.IFile
 
 public class CodeUnit extends ErlangModelElement implements ICodeUnit {
 
     ICodeFolder folder
     String name
+    IFile file 
 
     new(ICodeFolder folder, String name) {
         this.folder = folder
@@ -27,4 +29,11 @@ public class CodeUnit extends ErlangModelElement implements ICodeUnit {
         return folder
     }
 
+    override getResource() {
+        return file
+    }
+    
+    override realize() {
+        throw new UnsupportedOperationException("Code unit creation is not yet implemented")
+    }
 } // CodeUnit

@@ -33,5 +33,13 @@ class ErlangModelElement implements IErlangModelElement {
     override getParent() {
         throw new UnsupportedOperationException("Auto-generated function stub")
     }
+
+    override getResource() {
+        throw new UnsupportedOperationException("Abstract operation")
+    }
+    
+    override realize() {
+        throw new UnsupportedOperationException("Abstract operation")
+    }
     
 }

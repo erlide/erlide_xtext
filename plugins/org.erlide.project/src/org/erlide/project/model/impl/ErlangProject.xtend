@@ -58,4 +58,13 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
         return model
     }
 
+    override getResource() {
+        return workspaceProject
+    }
+    
+    override realize() {
+        // create project
+        sourceFragments.forEach[realize]
+        // binaryFragments 
+    }
 } // ErlangProject

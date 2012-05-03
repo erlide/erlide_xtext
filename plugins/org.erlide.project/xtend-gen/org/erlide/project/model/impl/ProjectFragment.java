@@ -4,8 +4,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.project.model.ICodeFolder;
 import org.erlide.project.model.IErlangModelElement;
 import org.erlide.project.model.IErlangProject;
@@ -20,11 +23,11 @@ public class ProjectFragment extends ErlangModelElement implements IProjectFragm
   
   protected Set<ICodeFolder> sourceFolders;
   
-  private Set<ICodeFolder> includeFolders;
+  protected Set<ICodeFolder> includeFolders;
   
-  private IPath docFolder;
+  protected IPath docPath;
   
-  private IPath privDir;
+  protected IPath privPath;
   
   public ProjectFragment(final IErlangProject project, final String name) {
     super();
@@ -70,11 +73,30 @@ public class ProjectFragment extends ErlangModelElement implements IProjectFragm
     return _remove;
   }
   
-  public void setDocFolder(final IPath path) {
-    this.docFolder = path;
+  public void setDocPath(final IPath path) {
+    this.docPath = path;
   }
   
-  public void setPrivDir(final IPath path) {
-    this.privDir = path;
+  public void setPrivPath(final IPath path) {
+    this.privPath = path;
+  }
+  
+  public IResource getResource() {
+    return null;
+  }
+  
+  public void realize() {
+    final Procedure1<ICodeFolder> _function = new Procedure1<ICodeFolder>() {
+        public void apply(final ICodeFolder it) {
+          it.realize();
+        }
+      };
+    IterableExtensions.<ICodeFolder>forEach(this.sourceFolders, _function);
+    final Procedure1<ICodeFolder> _function_1 = new Procedure1<ICodeFolder>() {
+        public void apply(final ICodeFolder it) {
+          it.realize();
+        }
+      };
+    IterableExtensions.<ICodeFolder>forEach(this.includeFolders, _function_1);
   }
 }

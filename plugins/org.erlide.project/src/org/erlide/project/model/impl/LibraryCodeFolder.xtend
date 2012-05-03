@@ -5,8 +5,8 @@ import org.erlide.project.model.IProjectFragment
 
 public class LibraryCodeFolder extends CodeFolder {
 
-    new(IProjectFragment project, IPath path) {
-        super()
+    new(IProjectFragment fragment, IPath path) {
+        super(path)
     }
 
 } // LibraryCodeFolder

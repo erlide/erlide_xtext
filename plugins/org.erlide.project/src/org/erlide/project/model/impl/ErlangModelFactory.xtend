@@ -34,12 +34,12 @@ public class ErlangModelFactory implements IErlangModelFactory {
 
     override ICodeFolder createCodeFolder(IProjectFragment project,
             IPath path) {
-        return new CodeFolder()
+        return new CodeFolder(path)
     }
 
     override IProjectFragment createErlangProjectFragment(
             IErlangProject project, String name) {
-        return new ErlangProjectFragment(project, name)
+        return new GenericProjectFragment(project, name)
     }
 
     override IProjectFragment createBterlProjectFragment(

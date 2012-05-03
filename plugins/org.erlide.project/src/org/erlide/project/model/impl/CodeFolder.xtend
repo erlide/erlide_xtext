@@ -16,8 +16,9 @@ public class CodeFolder extends ErlangModelElement implements ICodeFolder {
     IPath outputPath = null
     IProjectFragment fragment
 
-    new() {
+    new(IPath aPath) {
         super()
+        path = aPath
     }
     
     override List<ICodeUnit> getCodeUnits() {
@@ -58,6 +59,15 @@ public class CodeFolder extends ErlangModelElement implements ICodeFolder {
 
     override IErlangModelElement getParent() {
         return fragment
+    }
+
+    override getResource() {
+        return folder
+    }
+    
+    override realize() {
+        // create folder
+        sourceUnits.forEach[realize]
     }
 
 } // CodeFolder

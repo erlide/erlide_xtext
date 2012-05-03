@@ -6,7 +6,7 @@ import org.erlide.project.model.impl.CodeFolder;
 
 @SuppressWarnings("all")
 public class LibraryCodeFolder extends CodeFolder {
-  public LibraryCodeFolder(final IProjectFragment project, final IPath path) {
-    super();
+  public LibraryCodeFolder(final IProjectFragment fragment, final IPath path) {
+    super(path);
   }
 }

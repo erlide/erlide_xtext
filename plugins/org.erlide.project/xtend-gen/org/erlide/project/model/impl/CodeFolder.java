@@ -3,10 +3,13 @@ package org.erlide.project.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.project.model.ICodeFolder;
 import org.erlide.project.model.ICodeUnit;
 import org.erlide.project.model.IErlangModelElement;
@@ -25,8 +28,9 @@ public class CodeFolder extends ErlangModelElement implements ICodeFolder {
   
   private IProjectFragment fragment;
   
-  public CodeFolder() {
+  public CodeFolder(final IPath aPath) {
     super();
+    this.path = aPath;
   }
   
   public List<ICodeUnit> getCodeUnits() {
@@ -86,5 +90,18 @@ public class CodeFolder extends ErlangModelElement implements ICodeFolder {
   
   public IErlangModelElement getParent() {
     return this.fragment;
+  }
+  
+  public IResource getResource() {
+    return this.folder;
+  }
+  
+  public void realize() {
+    final Procedure1<ICodeUnit> _function = new Procedure1<ICodeUnit>() {
+        public void apply(final ICodeUnit it) {
+          it.realize();
+        }
+      };
+    IterableExtensions.<ICodeUnit>forEach(this.sourceUnits, _function);
   }
 }

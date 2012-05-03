@@ -5,7 +5,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.project.model.IErlangModel;
 import org.erlide.project.model.IErlangModelElement;
 import org.erlide.project.model.IErlangProject;
@@ -68,5 +71,18 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
   
   public IErlangModelElement getParent() {
     return this.model;
+  }
+  
+  public IResource getResource() {
+    return this.workspaceProject;
+  }
+  
+  public void realize() {
+    final Procedure1<IProjectFragment> _function = new Procedure1<IProjectFragment>() {
+        public void apply(final IProjectFragment it) {
+          it.realize();
+        }
+      };
+    IterableExtensions.<IProjectFragment>forEach(this.sourceFragments, _function);
   }
 }

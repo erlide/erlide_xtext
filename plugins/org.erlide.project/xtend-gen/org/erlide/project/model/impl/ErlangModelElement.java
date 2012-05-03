@@ -1,5 +1,6 @@
 package org.erlide.project.model.impl;
 
+import org.eclipse.core.resources.IResource;
 import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.erlide.project.model.IErlangModel;
 import org.erlide.project.model.IErlangModelElement;
@@ -43,6 +44,16 @@ public class ErlangModelElement implements IErlangModelElement {
   
   public IErlangModelElement getParent() {
     UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
+    throw _unsupportedOperationException;
+  }
+  
+  public IResource getResource() {
+    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Abstract operation");
+    throw _unsupportedOperationException;
+  }
+  
+  public void realize() {
+    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Abstract operation");
     throw _unsupportedOperationException;
   }
 }

@@ -16,9 +16,9 @@ public class ProjectFragment extends ErlangModelElement implements
     IErlangProject project
     String name
     protected Set<ICodeFolder> sourceFolders
-    Set<ICodeFolder> includeFolders
-    IPath docFolder
-    IPath privDir
+    protected Set<ICodeFolder> includeFolders
+    protected IPath docPath
+    protected IPath privPath
 
     new(IErlangProject project, String name) {
         super()
@@ -60,12 +60,23 @@ public class ProjectFragment extends ErlangModelElement implements
         sourceFolders.remove(folder)
     }
     
-    def void setDocFolder(IPath path) {
-        docFolder = path
+    def void setDocPath(IPath path) {
+        docPath = path
     }
     
-    def void setPrivDir(IPath path) {
-        privDir = path
+    def void setPrivPath(IPath path) {
+        privPath = path
+    }
+
+    override getResource() {
+        return null
+    }
+    
+    override realize() {
+        sourceFolders.forEach[realize]
+        includeFolders.forEach[realize]
+        // create docPath
+        // create privPath
     }
 
 } // ProjectFragment

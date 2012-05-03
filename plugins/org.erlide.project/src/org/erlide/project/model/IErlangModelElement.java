@@ -1,5 +1,7 @@
 package org.erlide.project.model;
 
+import org.eclipse.core.resources.IResource;
+
 public interface IErlangModelElement {
 
     String getName();
@@ -9,5 +11,12 @@ public interface IErlangModelElement {
     IErlangProject getProject();
 
     IErlangModel getModel();
+
+    IResource getResource();
+
+    /**
+     * Creates the necessary resources, if they don't exist yet.
+     */
+    void realize();
 
 } // IErlModelElement
