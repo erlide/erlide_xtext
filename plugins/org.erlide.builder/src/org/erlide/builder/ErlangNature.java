@@ -8,7 +8,7 @@ import org.eclipse.core.runtime.CoreException;
 
 public class ErlangNature implements IProjectNature {
 
-    public static final String NATURE_ID = "org.erlide.project.ui.erlangNature";
+    public static final String NATURE_ID = "org.erlide.builder.erlangNature";
 
     private IProject project;
 

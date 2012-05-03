@@ -26,7 +26,7 @@
       </builder>
    </extension>
    <extension
-         id="erlangProblem"
+         id="erlangBuildProblem"
          name="Erlang Problem"
          point="org.eclipse.core.resources.markers">
       <super
