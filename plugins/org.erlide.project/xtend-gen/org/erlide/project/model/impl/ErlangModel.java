@@ -1,6 +1,5 @@
 package org.erlide.project.model.impl;
 
-import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -8,6 +7,7 @@ import java.util.List;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.erlide.project.model.IErlangModel;
 import org.erlide.project.model.IErlangModelElement;
 import org.erlide.project.model.IErlangProject;
@@ -33,7 +33,7 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
   public IErlangProject getErlangProject(final IProject project) {
     for (final IErlangProject prj : this.projects) {
       IProject _workspaceProject = prj.getWorkspaceProject();
-      boolean _equals = Objects.equal(_workspaceProject, project);
+      boolean _equals = ObjectExtensions.operator_equals(_workspaceProject, project);
       if (_equals) {
         return prj;
       }
