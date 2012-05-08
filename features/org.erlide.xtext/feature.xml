@@ -25,11 +25,10 @@
       <import plugin="org.eclipse.core.runtime" version="3.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.7.101" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.filesystem" version="1.3.100" match="greaterOrEqual"/>
-      <import plugin="org.erlide.libs" version="1.7.2" match="greaterOrEqual"/>
+      <import plugin="org.erlide.libs" version="1.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.wb.core.lib"/>
       <import plugin="com.google.inject"/>
-      <import plugin="javax.inject"/>
       <import plugin="org.apache.log4j" version="1.2.15" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecore" version="2.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.util"/>
       <import plugin="org.eclipse.emf.common" version="2.7.0" match="greaterOrEqual"/>
@@ -57,9 +56,8 @@
       <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.6.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.filesystem" version="1.3.1" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.wb.core.lib"/>
-      <import plugin="org.erlide.libs" version="1.8.0" match="greaterOrEqual"/>
       <import plugin="com.google.guava" version="11.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext" version="2.3.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -126,6 +124,13 @@
 
    <plugin
          id="com.google.guava"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.erlide.kernel"
          download-size="0"
          install-size="0"
          version="0.0.0"
