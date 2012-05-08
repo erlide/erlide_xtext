@@ -1,5 +1,6 @@
 package org.erlide.project.model.impl;
 
+import com.google.common.base.Objects;
 import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -9,9 +10,7 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.IntegerExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.erlide.common.util.ErlLogger;
 import org.erlide.project.model.ICodeFolder;
 import org.erlide.project.model.ICodeUnit;
@@ -47,14 +46,14 @@ public class CodeUnit extends ErlangModelElement implements ICodeUnit {
   }
   
   public IResource getResource() {
-    boolean _equals = ObjectExtensions.operator_equals(this.file, null);
+    boolean _equals = Objects.equal(this.file, null);
     if (_equals) {
       IWorkspace _workspace = ResourcesPlugin.getWorkspace();
       IWorkspaceRoot _root = _workspace.getRoot();
       IPath _path = this.getPath();
       final List<IFile> possibleFiles = ((List<IFile>)Conversions.doWrapArray(_root.findFilesForLocation(_path)));
       int _size = possibleFiles.size();
-      boolean _equals_1 = IntegerExtensions.operator_equals(_size, 1);
+      boolean _equals_1 = (_size == 1);
       if (_equals_1) {
         IFile _head = IterableExtensions.<IFile>head(possibleFiles);
         this.file = _head;

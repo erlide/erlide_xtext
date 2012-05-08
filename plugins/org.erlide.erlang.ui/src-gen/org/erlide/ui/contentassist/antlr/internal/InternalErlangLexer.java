@@ -3750,8 +3750,8 @@ public class InternalErlangLexer extends Lexer {
             "\1\72\16\uffff\1\74\1\73",
             "\1\76",
             "\1\100\20\uffff\1\101",
-            "\1\106\3\uffff\1\110\10\uffff\1\107\1\103\3\uffff\1\105\4\uffff"+
-            "\1\104",
+            "\1\106\3\uffff\1\110\10\uffff\1\107\1\103\3\uffff\1\105\4"+
+            "\uffff\1\104",
             "\1\111",
             "",
             "\1\112",
@@ -3767,8 +3767,8 @@ public class InternalErlangLexer extends Lexer {
             "\1\140",
             "\1\141",
             "\1\142\13\uffff\1\143",
-            "\41\145\4\uffff\1\145\10\uffff\1\144\120\uffff\42\145\137\uffff"+
-            "\uff00\145",
+            "\41\145\4\uffff\1\145\10\uffff\1\144\120\uffff\42\145\137"+
+            "\uffff\uff00\145",
             "",
             "",
             "",
@@ -3802,8 +3802,8 @@ public class InternalErlangLexer extends Lexer {
             "\1\174",
             "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\4\50\1\175\25\50"+
             "\105\uffff\27\50\1\uffff\37\50\1\uffff\10\50",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
             "",
             "",
@@ -3869,46 +3869,46 @@ public class InternalErlangLexer extends Lexer {
             "\1\u00a1",
             "\1\u00a2",
             "\1\u00a3",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00a5",
             "\1\u00a6",
             "",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00a8",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00ab",
             "\1\u00ac",
             "\1\u00ad",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00b0",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00b3\11\uffff\1\u00b2",
             "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\1\u00b4\31\50\105"+
             "\uffff\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00b6",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00b8",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\10\50\1\u00ba\21"+
             "\50\105\uffff\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00bc",
             "\1\u00bd",
             "\1\u00be",
             "\1\u00bf",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
             "",
             "\1\u00c1",
@@ -3916,28 +3916,28 @@ public class InternalErlangLexer extends Lexer {
             "\1\u00c3",
             "\1\u00c4",
             "\1\u00c5",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00c7",
             "\1\u00c8",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
             "\1\u00cc",
             "\1\u00cd",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00d1",
             "",
             "",
@@ -3949,29 +3949,29 @@ public class InternalErlangLexer extends Lexer {
             "",
             "\1\u00d6",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
             "\1\u00d8",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00da",
             "\1\u00db",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00de",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00e0",
             "\1\u00e1",
             "",
             "\1\u00e2",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
             "",
             "",
@@ -3980,47 +3980,47 @@ public class InternalErlangLexer extends Lexer {
             "",
             "",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00e7",
             "\1\u00e8",
             "\1\u00e9",
             "\1\u00ea",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00ee",
             "",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00f1",
             "\1\u00f2",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "\1\u00f7",
             "\1\u00f8",
             "",
             "",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
             "",
             "\12\50\6\uffff\33\50\4\uffff\1\u00fa\1\uffff\32\50\105\uffff"+
@@ -4030,22 +4030,22 @@ public class InternalErlangLexer extends Lexer {
             "",
             "",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
             "\1\u00ff",
             "",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             "",
             "",
             "\1\u0101",
             "",
             "\1\u0102",
-            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff\27"+
-            "\50\1\uffff\37\50\1\uffff\10\50",
+            "\12\50\6\uffff\33\50\4\uffff\1\50\1\uffff\32\50\105\uffff"+
+            "\27\50\1\uffff\37\50\1\uffff\10\50",
             ""
     };
 

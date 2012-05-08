@@ -1,7 +1,6 @@
 package org.erlide.project.model.impl;
 
 import org.eclipse.core.resources.IResource;
-import org.eclipse.xtext.xbase.lib.BooleanExtensions;
 import org.erlide.project.model.IErlangModel;
 import org.erlide.project.model.IErlangModelElement;
 import org.erlide.project.model.IErlangProject;
@@ -24,14 +23,14 @@ public class ErlangModelElement implements IErlangModelElement {
     IErlangModelElement crt = this;
     Class<? extends Object> _class = crt.getClass();
     boolean _isAssignableFrom = _class.isAssignableFrom(clazz);
-    boolean _not = BooleanExtensions.operator_not(_isAssignableFrom);
+    boolean _not = (!_isAssignableFrom);
     boolean _while = _not;
     while (_while) {
       IErlangModelElement _parent = crt.getParent();
       crt = _parent;
       Class<? extends Object> _class_1 = crt.getClass();
       boolean _isAssignableFrom_1 = _class_1.isAssignableFrom(clazz);
-      boolean _not_1 = BooleanExtensions.operator_not(_isAssignableFrom_1);
+      boolean _not_1 = (!_isAssignableFrom_1);
       _while = _not_1;
     }
     return ((T) crt);

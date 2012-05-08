@@ -1,5 +1,6 @@
 package org.erlide.project.model.impl;
 
+import com.google.common.base.Objects;
 import java.io.File;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
@@ -7,8 +8,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.erlide.project.model.IBinaryCodeUnit;
 import org.erlide.project.model.ICodeFolder;
 import org.erlide.project.model.ICodeUnit;
@@ -76,7 +75,7 @@ public class ErlangModelFactory implements IErlangModelFactory {
   }
   
   public static void createFolder(final IPath fullPath) {
-    boolean _equals = ObjectExtensions.operator_equals(fullPath, null);
+    boolean _equals = Objects.equal(fullPath, null);
     if (_equals) {
       return;
     }
@@ -89,7 +88,7 @@ public class ErlangModelFactory implements IErlangModelFactory {
       if (_t instanceof Exception) {
         final Exception e = (Exception)_t;
         String _string_1 = fullPath.toString();
-        String _plus = StringExtensions.operator_plus("could not create folder ", _string_1);
+        String _plus = ("could not create folder " + _string_1);
         InputOutput.<String>println(_plus);
       } else {
         throw Exceptions.sneakyThrow(_t);
@@ -98,7 +97,7 @@ public class ErlangModelFactory implements IErlangModelFactory {
   }
   
   public static void createFile(final IPath fullPath) {
-    boolean _equals = ObjectExtensions.operator_equals(fullPath, null);
+    boolean _equals = Objects.equal(fullPath, null);
     if (_equals) {
       return;
     }
@@ -111,7 +110,7 @@ public class ErlangModelFactory implements IErlangModelFactory {
       if (_t instanceof Exception) {
         final Exception e = (Exception)_t;
         String _string_1 = fullPath.toString();
-        String _plus = StringExtensions.operator_plus("could not create file ", _string_1);
+        String _plus = ("could not create file " + _string_1);
         InputOutput.<String>println(_plus);
       } else {
         throw Exceptions.sneakyThrow(_t);
