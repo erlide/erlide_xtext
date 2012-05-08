@@ -1,6 +1,5 @@
 package org.erlide.project.model.impl;
 
-import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.core.resources.IFolder;
@@ -9,6 +8,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.project.model.ICodeFolder;
 import org.erlide.project.model.ICodeUnit;
@@ -35,7 +35,7 @@ public class CodeFolder extends ErlangModelElement implements ICodeFolder {
   }
   
   public List<ICodeUnit> getCodeUnits() {
-    boolean _equals = Objects.equal(this.sourceUnits, null);
+    boolean _equals = ObjectExtensions.operator_equals(this.sourceUnits, null);
     if (_equals) {
       ArrayList<ICodeUnit> _newArrayList = CollectionLiterals.<ICodeUnit>newArrayList();
       this.sourceUnits = _newArrayList;

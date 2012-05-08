@@ -102,7 +102,7 @@ public final class TypeConverter {
         try {
             return Class.forName(arg);
         } catch (final ClassNotFoundException e) {
-            ErlLogger.warn("Rpc TypeConverter: can't find class " + arg);
+            ErlLogger_2.warn("Rpc TypeConverter: can't find class " + arg);
             return Object.class;
         }
     }
@@ -421,12 +421,12 @@ public final class TypeConverter {
 
                 }
             }
-            ErlLogger.debug(" *** deprecated use of java2erlang: "
+            ErlLogger_2.debug(" *** deprecated use of java2erlang: "
                     + obj.getClass().getSimpleName() + " " + el);
             if (el == null) {
-                ErlLogger.debug("$$$");
+                ErlLogger_2.debug("$$$");
                 for (final StackTraceElement ste : st) {
-                    ErlLogger.debug("   " + ste);
+                    ErlLogger_2.debug("   " + ste);
                 }
             }
         }

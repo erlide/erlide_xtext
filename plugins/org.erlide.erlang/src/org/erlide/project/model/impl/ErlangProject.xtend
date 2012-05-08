@@ -25,7 +25,7 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
         sourceFragments = newArrayList()
         binaryFragments = newArrayList()
         workspaceProject = project
-    }
+     }
 
     override List<IErlangProject> getReferencedProjects() {
         return referencedProjects
@@ -64,8 +64,8 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
     }
     
     override realize() {
-        if(workspaceProject == null) {
-            // create project
+        if(workspaceProject != null) {
+            // create project 
             ErlLogger::error("Workspace project must exist for %s", name)
         }
         sourceFragments.forEach[realize]

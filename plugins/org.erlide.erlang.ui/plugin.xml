@@ -202,7 +202,7 @@
       <wizard
             category="org.erlide.project.ui.wizards.newWizards"
             class="org.erlide.ui.ErlangExecutableExtensionFactory:org.erlide.ui.wizards.NewErlangModuleWizard"
-            icon="icons/full/obj16/erlang_NewModule.png"
+            icon="platform:/plugin/org.erlide.common.ui/icons/full/obj16/erlang_NewModule.png"
             id="org.erlide.project.ui.wizards.newmodule"
             name="Module">
       </wizard>
@@ -284,7 +284,7 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             class="org.erlide.project.ui.ErlangPerspective"
-            icon="icons/full/obj16/perspective.gif"
+            icon="platform:/plugin/org.erlide.common.ui/icons/full/obj16/perspective.gif"
             id="org.erlide.project.ui.erlangPerspective"
             name="Erlang">
       </perspective>
@@ -320,7 +320,7 @@
             class="org.erlide.ui.wizards.NewErlangProjectWizard"
             finalPerspective="org.erlide.project.ui.erlangPerspective"
             hasPages="true"
-            icon="icons/full/obj16/newproject.png"
+            icon="platform:/plugin/org.erlide.common.ui/icons/full/obj16/newproject.png"
             id="org.erlide.project.ui.wizards.newproject"
             name="Erlang Project"
             project="true">
@@ -331,10 +331,10 @@
       <wizard
             category="org.erlide.project.ui.wizards.newWizards"
             class="org.erlide.ui.wizards.NewOtpErlangProjectWizard"
-            descriptionImage="icons/erl/erlang160.gif"
+            descriptionImage="platform:/plugin/org.erlide.common.ui/icons/erl/erlang160.gif"
             finalPerspective="org.erlide.project.ui.erlangPerspective"
             hasPages="true"
-            icon="icons/full/obj16/newproject.png"
+            icon="platform:/plugin/org.erlide.common.ui/icons/full/obj16/newproject.png"
             id="org.erlide.project.ui.wizards.newotpproject"
             name="Erlang OTP Project"
             project="true">

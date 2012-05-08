@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Common UI
+Bundle-SymbolicName: org.erlide.common.ui
+Bundle-Version: 0.101.0.qualifier
+Bundle-Activator: org.erlide.common.ui.Activator
+Bundle-Vendor: erlide.org
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

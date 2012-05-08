@@ -22,17 +22,17 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
-public class ErlLogger {
+public class ErlLogger_2 {
 
-    private static ErlLogger instance;
+    private static ErlLogger_2 instance;
     private Logger logger;
     private String logDir;
     private ConsoleHandler consoleHandler = null;
     private FileHandler fileHandler = null;
 
-    public static ErlLogger getInstance() {
+    public static ErlLogger_2 getInstance() {
         if (instance == null) {
-            instance = new ErlLogger();
+            instance = new ErlLogger_2();
         }
         return instance;
     }
@@ -116,7 +116,7 @@ public class ErlLogger {
         getInstance().log(Level.SEVERE, exception);
     }
 
-    private ErlLogger() {
+    private ErlLogger_2() {
         final ErlSimpleFormatter erlSimpleFormatter = new ErlSimpleFormatter();
         logger = Logger.getLogger("org.erlide");
         logger.setUseParentHandlers(false);
@@ -150,7 +150,7 @@ public class ErlLogger {
         int i = 2;
         do {
             el = st[i++];
-        } while (el.getClassName().equals(ErlLogger.class.getName()));
+        } while (el.getClassName().equals(ErlLogger_2.class.getName()));
         return el;
     }
 

@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.erlide.jinterface.rpc;
 
-import org.erlide.jinterface.ErlLogger;
+import org.erlide.jinterface.ErlLogger_2;
 import org.erlide.jinterface.TypeConverter;
 import org.erlide.jinterface.internal.rpc.RpcFutureImpl;
 
@@ -295,7 +295,7 @@ public final class RpcHelper {
     }
 
     public void debugLogCallArgs(final String fmt, final Object... args0) {
-        ErlLogger.debug(fmt, args0);
+        ErlLogger_2.debug(fmt, args0);
     }
 
     private OtpErlangObject[] convertArgs(final String signature,
@@ -335,12 +335,12 @@ public final class RpcHelper {
     }
 
     private void debug(final String s) {
-        ErlLogger.debug(s);
+        ErlLogger_2.debug(s);
     }
 
     @SuppressWarnings("unused")
     private void warn(final Exception e) {
-        ErlLogger.debug(e);
+        ErlLogger_2.debug(e);
     }
 
     public void makeAsyncCbCall(final OtpNode node, final String peer,
@@ -359,7 +359,7 @@ public final class RpcHelper {
                     cb.run(result);
                 } catch (final RpcException e) {
                     // TODO do we want to treat a timeout differently?
-                    ErlLogger.error("Could not execute RPC " + module + ":"
+                    ErlLogger_2.error("Could not execute RPC " + module + ":"
                             + fun + " : " + e.getMessage());
                 }
             }

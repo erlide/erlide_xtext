@@ -1,6 +1,6 @@
 package org.erlide.jinterface.rpc;
 
-import org.erlide.jinterface.ErlLogger;
+import org.erlide.jinterface.ErlLogger_2;
 
 import com.ericsson.otp.erlang.OtpErlangAtom;
 import com.ericsson.otp.erlang.OtpErlangExit;
@@ -37,9 +37,9 @@ public final class RpcEventProcessor implements Runnable {
             } catch (final OtpErlangExit e) {
                 terminated = true;
             } catch (final Exception e) {
-                ErlLogger.warn("RpcEventProcessor %s got exception:",
+                ErlLogger_2.warn("RpcEventProcessor %s got exception:",
                         mbox.self());
-                ErlLogger.warn(e);
+                ErlLogger_2.warn(e);
             }
 
         }
