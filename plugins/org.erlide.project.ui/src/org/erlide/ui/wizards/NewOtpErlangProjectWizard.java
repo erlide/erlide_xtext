@@ -34,5 +34,4 @@ public class NewOtpErlangProjectWizard extends Wizard implements INewWizard {
         // TODO: create project
         return true;
     }
-
 }

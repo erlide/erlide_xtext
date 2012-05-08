@@ -3,10 +3,13 @@ package org.erlide.project.model;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
 
+import com.google.inject.Singleton;
+
 /**
  * The <b>Factory</b> for the model. It provides a create method for each
  * non-abstract class of the model.
  */
+@Singleton
 public interface IErlangModelFactory {
 
     IErlangModel getModel();
