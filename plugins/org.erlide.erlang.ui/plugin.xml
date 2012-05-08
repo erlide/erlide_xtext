@@ -280,4 +280,71 @@
      </viewerContentBinding>
   </extension-->
 
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.erlide.project.ui.ErlangPerspective"
+            icon="icons/full/obj16/perspective.gif"
+            id="org.erlide.project.ui.erlangPerspective"
+            name="Erlang">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="org.erlide.project.ui.erlangPerspective">
+         <perspectiveShortcut id="org.eclipse.ui.resourcePerspective"/>
+         <actionSet
+               id="org.eclipse.debug.ui.debugActionSet">
+         </actionSet>
+         <actionSet
+               id="org.eclipse.debug.ui.launchActionSet">
+         </actionSet>
+         <newWizardShortcut
+               id="org.erlide.project.ui.wizards.newotpproject">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="org.erlide.project.ui.wizards.newproject">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="org.erlide.project.ui.wizards.newmodule">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+         <perspectiveShortcut id="org.erlide.project.ui.erlangPerspective"/>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.erlide.project.ui.wizards.newWizards"
+            class="org.erlide.ui.wizards.NewErlangProjectWizard"
+            finalPerspective="org.erlide.project.ui.erlangPerspective"
+            hasPages="true"
+            icon="icons/full/obj16/newproject.png"
+            id="org.erlide.project.ui.wizards.newproject"
+            name="Erlang Project"
+            project="true">
+         <description>
+            Create a new Erlang project.
+         </description>
+      </wizard>
+      <wizard
+            category="org.erlide.project.ui.wizards.newWizards"
+            class="org.erlide.ui.wizards.NewOtpErlangProjectWizard"
+            descriptionImage="icons/erl/erlang160.gif"
+            finalPerspective="org.erlide.project.ui.erlangPerspective"
+            hasPages="true"
+            icon="icons/full/obj16/newproject.png"
+            id="org.erlide.project.ui.wizards.newotpproject"
+            name="Erlang OTP Project"
+            project="true">
+         <description>
+            Create a new Erlang project with a standard OTP structure.
+         </description>
+      </wizard>
+      <category
+            id="org.erlide.project.ui.wizards.newWizards"
+            name="Erlang">
+      </category>
+   </extension>
 </plugin>

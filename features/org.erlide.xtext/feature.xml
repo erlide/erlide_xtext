@@ -25,13 +25,19 @@
       <import plugin="org.eclipse.core.runtime" version="3.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.7.101" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.filesystem" version="1.3.100" match="greaterOrEqual"/>
+      <import plugin="org.erlide.libs" version="1.7.2" match="greaterOrEqual"/>
+      <import plugin="com.google.inject"/>
+      <import plugin="javax.inject"/>
       <import plugin="org.apache.log4j" version="1.2.15" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.util"/>
+      <import plugin="org.eclipse.emf.common" version="2.7.0" match="greaterOrEqual"/>
       <import plugin="org.antlr.runtime"/>
       <import plugin="org.eclipse.xtext.common.types"/>
+      <import plugin="org.erlide.common" version="0.101.0" match="greaterOrEqual"/>
       <import plugin="org.apache.commons.logging"/>
-      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.eclipse.osgi"/>
       <import plugin="org.eclipse.xtext.ui"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
@@ -45,21 +51,15 @@
       <import plugin="org.eclipse.compare"/>
       <import plugin="org.eclipse.ui.navigator"/>
       <import plugin="org.eclipse.ui.navigator.resources"/>
-      <import plugin="org.erlide.libs" version="1.7.2" match="greaterOrEqual"/>
-      <import plugin="com.google.inject"/>
-      <import plugin="javax.inject"/>
-      <import plugin="org.eclipse.emf.ecore" version="2.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.common" version="2.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.osgi"/>
-      <import plugin="org.erlide.common" version="0.101.0" match="greaterOrEqual"/>
-      <import plugin="org.erlide.project" version="0.101.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.erlide.builder" version="0.101.0" match="greaterOrEqual"/>
       <import plugin="org.erlide.jinterface" version="0.15.2" match="greaterOrEqual"/>
-      <import plugin="com.google.guava"/>
       <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.6.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.filesystem" version="1.3.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.wb.core.lib"/>
+      <import plugin="org.erlide.libs" version="1.8.0" match="greaterOrEqual"/>
+      <import plugin="com.google.guava" version="11.0.1" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -88,20 +88,6 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
-
-   <plugin
-         id="org.erlide.project"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.erlide.project.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="org.erlide.builder"

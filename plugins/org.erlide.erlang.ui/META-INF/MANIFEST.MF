@@ -36,13 +36,17 @@ Import-Package: org.apache.commons.logging,
  com.google.common.primitives,
  com.google.common.util.concurrent
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.erlide.ui,
+Export-Package: org.erlide.project.ui,
+ org.erlide.ui,
  org.erlide.ui.contentassist,
  org.erlide.ui.contentassist.antlr,
  org.erlide.ui.contentassist.antlr.internal,
+ org.erlide.ui.folding,
  org.erlide.ui.internal,
  org.erlide.ui.labeling,
+ org.erlide.ui.navigator,
  org.erlide.ui.outline,
  org.erlide.ui.quickfix,
- org.erlide.ui.syntaxcoloring
+ org.erlide.ui.syntaxcoloring,
+ org.erlide.ui.wizards
 Bundle-Activator: org.erlide.ui.internal.ErlangActivator

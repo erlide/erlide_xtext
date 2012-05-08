@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Tests
-Bundle-SymbolicName: org.erlide.project.tests
-Bundle-Version: 0.101.0.qualifier
-Fragment-Host: org.erlide.project;bundle-version="0.101.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.junit;version="4.8.0"
