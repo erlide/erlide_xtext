@@ -1,5 +1,6 @@
 package org.erlide.project.model.impl;
 
+import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -8,7 +9,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.common.util.ErlLogger;
 import org.erlide.project.model.IErlangModel;
@@ -80,7 +80,7 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
   }
   
   public void realize() {
-    boolean _notEquals = ObjectExtensions.operator_notEquals(this.workspaceProject, null);
+    boolean _notEquals = (!Objects.equal(this.workspaceProject, null));
     if (_notEquals) {
       String _name = this.getName();
       ErlLogger.error("Workspace project must exist for %s", _name);
