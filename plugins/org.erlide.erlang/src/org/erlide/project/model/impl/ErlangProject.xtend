@@ -65,8 +65,8 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
     
     override realize() {
         if(workspaceProject != null) {
-            // create project 
             ErlLogger::error("Workspace project must exist for %s", name)
+            // TODO create project 
         }
         sourceFragments.forEach[realize]
         // binaryFragments 
