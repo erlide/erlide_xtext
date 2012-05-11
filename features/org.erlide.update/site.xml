@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.erlide.xtext_0.101.0.201205111454.jar" id="org.erlide.xtext" version="0.101.0.201205111454">
+      <category name="erlide"/>
+   </feature>
+   <category-def name="erlide" label="Erlide"/>
+</site>
