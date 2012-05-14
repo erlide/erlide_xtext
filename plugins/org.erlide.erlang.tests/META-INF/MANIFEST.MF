@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.erlide.erlang;bundle-version="0.101.0",
  org.erlide.erlang.ui;bundle-version="0.101.0",
  org.erlide.libs;bundle-version="1.108.1",
- org.erlide.jinterface;bundle-version="0.115.2"
+ org.erlide.jinterface;bundle-version="0.115.2",
+ org.erlide.testing.libs;bundle-version="0.101.0"
 Import-Package: com.google.common.annotations,
  com.google.common.base,
  com.google.common.cache,
