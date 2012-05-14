@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="aopalliance.jar"/>
+	<classpathentry exported="true" kind="lib" path="javax.inject.jar"/>
 	<classpathentry exported="true" kind="lib" path="guice-3.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="guice-assistedinject-3.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="guice-grapher-3.0.jar"/>
