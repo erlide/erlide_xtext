@@ -18,7 +18,7 @@ public class ErlangModelElement implements IErlangModelElement {
     return this.<IErlangModel>getParentOfType(IErlangModel.class);
   }
   
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings(value = "unchecked")
   private <T extends Object> T getParentOfType(final Class<? extends T> clazz) {
     IErlangModelElement crt = this;
     Class<? extends Object> _class = crt.getClass();

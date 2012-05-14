@@ -27,9 +27,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+@RunWith(value = XtextRunner.class)
+@InjectWith(value = ErlangInjectorProvider.class)
 @SuppressWarnings("all")
-@RunWith(XtextRunner.class)
-@InjectWith(ErlangInjectorProvider.class)
 public class ParserTest {
   @Inject
   private ParseHelper<Module> parser;
