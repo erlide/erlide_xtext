@@ -1,7 +1,5 @@
 # workspace is already configured
 
-emma -l org.erlide.erlang.tests/junit_erlang.launch -o #{WORKSPACE}/output/junit_result_erlang.xml --xml #{WORKSPACE}/output/coverage_report_erlang.xml --flatXML
-#emma -l org.erlide.testing/junit_jinterface.launch -o #{WORKSPACE}/output/junit_result_jinterface.xml --xml #{WORKSPACE}/output/coverage_report_jinterface.xml --flatXML
-#emma -l org.erlide.testing/junit_core.launch -o #{WORKSPACE}/output/junit_result_core.xml --xml #{WORKSPACE}/output/coverage_report_core.xml --flatXML
-#emma -l org.erlide.testing/junit_ui.launch -o #{WORKSPACE}/output/junit_result_ui.xml --xml #{WORKSPACE}/output/coverage_report_ui.xml --flatXML
+emma -l org.erlide.erlang.tests/erlang_tests.launch -o #{WORKSPACE}/output/junit_result_erlang.xml --xml #{WORKSPACE}/output/coverage_report_erlang.xml --flatXML
+emma -m -l org.erlide.acceptance.tests/acceptance_tests.launch -o #{WORKSPACE}/output/junit_result_acceptance.xml --xml #{WORKSPACE}/output/coverage_report_acceptance.xml --flatXML
 

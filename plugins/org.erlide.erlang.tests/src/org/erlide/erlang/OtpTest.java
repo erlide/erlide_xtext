@@ -16,6 +16,7 @@ import org.erlide.ErlangInjectorProvider;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,6 +25,7 @@ import com.google.common.collect.Maps;
 
 @RunWith(XtextRunner2.class)
 @InjectWith(ErlangInjectorProvider.class)
+@Ignore
 public class OtpTest extends XtextTest {
     private static final boolean TESTS = false;
     private final String root;

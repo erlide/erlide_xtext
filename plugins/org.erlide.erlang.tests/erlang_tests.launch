@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.junit.launchconfig">
+<listAttribute key="com.mountainminds.eclemma.core.SCOPE_IDS">
+<listEntry value="=org.erlide.jinterface/src"/>
+<listEntry value="=org.erlide.erlang.tests/resources"/>
+<listEntry value="=org.erlide.erlang.ui/src-gen"/>
+<listEntry value="=org.erlide.erlang/src"/>
+<listEntry value="=org.erlide.erlang/xtend-gen"/>
+<listEntry value="=org.erlide.erlang/src-gen"/>
+<listEntry value="=org.erlide.erlang.ui/src"/>
+</listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/org.erlide.erlang.tests"/>
 </listAttribute>
