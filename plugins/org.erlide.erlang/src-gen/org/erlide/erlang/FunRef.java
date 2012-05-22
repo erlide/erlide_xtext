@@ -2,27 +2,26 @@
  */
 package org.erlide.erlang;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Spec Fun</b></em>'.
+ * A representation of the model object '<em><b>Fun Ref</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.SpecFun#getModule <em>Module</em>}</li>
- *   <li>{@link org.erlide.erlang.SpecFun#getFunction <em>Function</em>}</li>
- *   <li>{@link org.erlide.erlang.SpecFun#getArity <em>Arity</em>}</li>
+ *   <li>{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}</li>
+ *   <li>{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}</li>
+ *   <li>{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.erlide.erlang.ErlangPackage#getSpecFun()
+ * @see org.erlide.erlang.ErlangPackage#getFunRef()
  * @model
  * @generated
  */
-public interface SpecFun extends EObject
+public interface FunRef extends FunExpr
 {
   /**
    * Returns the value of the '<em><b>Module</b></em>' attribute.
@@ -34,14 +33,14 @@ public interface SpecFun extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Module</em>' attribute.
    * @see #setModule(String)
-   * @see org.erlide.erlang.ErlangPackage#getSpecFun_Module()
+   * @see org.erlide.erlang.ErlangPackage#getFunRef_Module()
    * @model
    * @generated
    */
   String getModule();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.SpecFun#getModule <em>Module</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Module</em>' attribute.
@@ -60,14 +59,14 @@ public interface SpecFun extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Function</em>' attribute.
    * @see #setFunction(String)
-   * @see org.erlide.erlang.ErlangPackage#getSpecFun_Function()
+   * @see org.erlide.erlang.ErlangPackage#getFunRef_Function()
    * @model
    * @generated
    */
   String getFunction();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.SpecFun#getFunction <em>Function</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Function</em>' attribute.
@@ -86,14 +85,14 @@ public interface SpecFun extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Arity</em>' attribute.
    * @see #setArity(String)
-   * @see org.erlide.erlang.ErlangPackage#getSpecFun_Arity()
+   * @see org.erlide.erlang.ErlangPackage#getFunRef_Arity()
    * @model
    * @generated
    */
   String getArity();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.SpecFun#getArity <em>Arity</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Arity</em>' attribute.
@@ -102,4 +101,4 @@ public interface SpecFun extends EObject
    */
   void setArity(String value);
 
-} // SpecFun
+} // FunRef

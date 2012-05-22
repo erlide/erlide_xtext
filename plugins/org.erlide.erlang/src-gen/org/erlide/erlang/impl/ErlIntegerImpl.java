@@ -8,22 +8,23 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.erlide.erlang.ErlInteger;
 import org.erlide.erlang.ErlangPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Integer</b></em>'.
+ * An implementation of the model object '<em><b>Erl Integer</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.IntegerImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ErlIntegerImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class IntegerImpl extends ExpressionImpl implements org.erlide.erlang.Integer
+public class ErlIntegerImpl extends ExpressionImpl implements ErlInteger
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -50,7 +51,7 @@ public class IntegerImpl extends ExpressionImpl implements org.erlide.erlang.Int
    * <!-- end-user-doc -->
    * @generated
    */
-  protected IntegerImpl()
+  protected ErlIntegerImpl()
   {
     super();
   }
@@ -63,7 +64,7 @@ public class IntegerImpl extends ExpressionImpl implements org.erlide.erlang.Int
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.INTEGER;
+    return ErlangPackage.Literals.ERL_INTEGER;
   }
 
   /**
@@ -86,7 +87,7 @@ public class IntegerImpl extends ExpressionImpl implements org.erlide.erlang.Int
     String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.INTEGER__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ERL_INTEGER__VALUE, oldValue, value));
   }
 
   /**
@@ -99,7 +100,7 @@ public class IntegerImpl extends ExpressionImpl implements org.erlide.erlang.Int
   {
     switch (featureID)
     {
-      case ErlangPackage.INTEGER__VALUE:
+      case ErlangPackage.ERL_INTEGER__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -115,7 +116,7 @@ public class IntegerImpl extends ExpressionImpl implements org.erlide.erlang.Int
   {
     switch (featureID)
     {
-      case ErlangPackage.INTEGER__VALUE:
+      case ErlangPackage.ERL_INTEGER__VALUE:
         setValue((String)newValue);
         return;
     }
@@ -132,7 +133,7 @@ public class IntegerImpl extends ExpressionImpl implements org.erlide.erlang.Int
   {
     switch (featureID)
     {
-      case ErlangPackage.INTEGER__VALUE:
+      case ErlangPackage.ERL_INTEGER__VALUE:
         setValue(VALUE_EDEFAULT);
         return;
     }
@@ -149,7 +150,7 @@ public class IntegerImpl extends ExpressionImpl implements org.erlide.erlang.Int
   {
     switch (featureID)
     {
-      case ErlangPackage.INTEGER__VALUE:
+      case ErlangPackage.ERL_INTEGER__VALUE:
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
@@ -172,4 +173,4 @@ public class IntegerImpl extends ExpressionImpl implements org.erlide.erlang.Int
     return result.toString();
   }
 
-} //IntegerImpl
+} //ErlIntegerImpl

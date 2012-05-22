@@ -14,8 +14,8 @@ import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISyn
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.erlide.services.ErlangGrammarAccess;
 
-@SuppressWarnings("restriction")
-public class AbstractErlangSyntacticSequencer extends AbstractSyntacticSequencer {
+@SuppressWarnings("all")
+public class ErlangSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ErlangGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_DefineAttribute_CommaKeyword_5_0_q;
@@ -44,13 +44,31 @@ public class AbstractErlangSyntacticSequencer extends AbstractSyntacticSequencer
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if(ruleCall.getRule() == grammarAccess.getFULL_STOPRule())
 			return getFULL_STOPToken(semanticObject, ruleCall, node);
+		else if(ruleCall.getRule() == grammarAccess.getLineExprRule())
+			return getLineExprToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
+	/**
+	 * terminal FULL_STOP:
+	 * 	'.' (WS | SL_COMMENT | EOF)
+	 * ;
+	 */
 	protected String getFULL_STOPToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return ".";
+	}
+	
+	/**
+	 * LineExpr:
+	 * 	'?' 'line'  
+	 * ;
+	 */
+	protected String getLineExprToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "?line";
 	}
 	
 	@Override

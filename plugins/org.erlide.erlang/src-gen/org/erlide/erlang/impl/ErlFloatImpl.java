@@ -8,22 +8,23 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.erlide.erlang.ErlFloat;
 import org.erlide.erlang.ErlangPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Float</b></em>'.
+ * An implementation of the model object '<em><b>Erl Float</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.FloatImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ErlFloatImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class FloatImpl extends ExpressionImpl implements org.erlide.erlang.Float
+public class ErlFloatImpl extends ExpressionImpl implements ErlFloat
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -50,7 +51,7 @@ public class FloatImpl extends ExpressionImpl implements org.erlide.erlang.Float
    * <!-- end-user-doc -->
    * @generated
    */
-  protected FloatImpl()
+  protected ErlFloatImpl()
   {
     super();
   }
@@ -63,7 +64,7 @@ public class FloatImpl extends ExpressionImpl implements org.erlide.erlang.Float
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.FLOAT;
+    return ErlangPackage.Literals.ERL_FLOAT;
   }
 
   /**
@@ -86,7 +87,7 @@ public class FloatImpl extends ExpressionImpl implements org.erlide.erlang.Float
     String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FLOAT__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ERL_FLOAT__VALUE, oldValue, value));
   }
 
   /**
@@ -99,7 +100,7 @@ public class FloatImpl extends ExpressionImpl implements org.erlide.erlang.Float
   {
     switch (featureID)
     {
-      case ErlangPackage.FLOAT__VALUE:
+      case ErlangPackage.ERL_FLOAT__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -115,7 +116,7 @@ public class FloatImpl extends ExpressionImpl implements org.erlide.erlang.Float
   {
     switch (featureID)
     {
-      case ErlangPackage.FLOAT__VALUE:
+      case ErlangPackage.ERL_FLOAT__VALUE:
         setValue((String)newValue);
         return;
     }
@@ -132,7 +133,7 @@ public class FloatImpl extends ExpressionImpl implements org.erlide.erlang.Float
   {
     switch (featureID)
     {
-      case ErlangPackage.FLOAT__VALUE:
+      case ErlangPackage.ERL_FLOAT__VALUE:
         setValue(VALUE_EDEFAULT);
         return;
     }
@@ -149,7 +150,7 @@ public class FloatImpl extends ExpressionImpl implements org.erlide.erlang.Float
   {
     switch (featureID)
     {
-      case ErlangPackage.FLOAT__VALUE:
+      case ErlangPackage.ERL_FLOAT__VALUE:
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
@@ -172,4 +173,4 @@ public class FloatImpl extends ExpressionImpl implements org.erlide.erlang.Float
     return result.toString();
   }
 
-} //FloatImpl
+} //ErlFloatImpl

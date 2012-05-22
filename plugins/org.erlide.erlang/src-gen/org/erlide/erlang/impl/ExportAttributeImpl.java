@@ -18,52 +18,61 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.Module;
-import org.erlide.erlang.RemoteType;
-import org.erlide.erlang.TopType;
+import org.erlide.erlang.ExportAttribute;
+import org.erlide.erlang.FunRef;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Remote Type</b></em>'.
+ * An implementation of the model object '<em><b>Export Attribute</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.RemoteTypeImpl#getM <em>M</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.RemoteTypeImpl#getArgs <em>Args</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ExportAttributeImpl#getTag <em>Tag</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ExportAttributeImpl#getFuns <em>Funs</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RemoteTypeImpl extends TypeImpl implements RemoteType
+public class ExportAttributeImpl extends AttributeImpl implements ExportAttribute
 {
   /**
-   * The cached value of the '{@link #getM() <em>M</em>}' reference.
+   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getM()
+   * @see #getTag()
    * @generated
    * @ordered
    */
-  protected Module m;
+  protected static final String TAG_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
+   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getArgs()
+   * @see #getTag()
    * @generated
    * @ordered
    */
-  protected EList<TopType> args;
+  protected String tag = TAG_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getFuns() <em>Funs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFuns()
+   * @generated
+   * @ordered
+   */
+  protected EList<FunRef> funs;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected RemoteTypeImpl()
+  protected ExportAttributeImpl()
   {
     super();
   }
@@ -76,7 +85,7 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.REMOTE_TYPE;
+    return ErlangPackage.Literals.EXPORT_ATTRIBUTE;
   }
 
   /**
@@ -84,19 +93,9 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
    * <!-- end-user-doc -->
    * @generated
    */
-  public Module getM()
+  public String getTag()
   {
-    if (m != null && m.eIsProxy())
-    {
-      InternalEObject oldM = (InternalEObject)m;
-      m = (Module)eResolveProxy(oldM);
-      if (m != oldM)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.REMOTE_TYPE__M, oldM, m));
-      }
-    }
-    return m;
+    return tag;
   }
 
   /**
@@ -104,22 +103,12 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
    * <!-- end-user-doc -->
    * @generated
    */
-  public Module basicGetM()
+  public void setTag(String newTag)
   {
-    return m;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setM(Module newM)
-  {
-    Module oldM = m;
-    m = newM;
+    String oldTag = tag;
+    tag = newTag;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.REMOTE_TYPE__M, oldM, m));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.EXPORT_ATTRIBUTE__TAG, oldTag, tag));
   }
 
   /**
@@ -127,13 +116,13 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TopType> getArgs()
+  public EList<FunRef> getFuns()
   {
-    if (args == null)
+    if (funs == null)
     {
-      args = new EObjectContainmentEList<TopType>(TopType.class, this, ErlangPackage.REMOTE_TYPE__ARGS);
+      funs = new EObjectContainmentEList<FunRef>(FunRef.class, this, ErlangPackage.EXPORT_ATTRIBUTE__FUNS);
     }
-    return args;
+    return funs;
   }
 
   /**
@@ -146,8 +135,8 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
   {
     switch (featureID)
     {
-      case ErlangPackage.REMOTE_TYPE__ARGS:
-        return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
+      case ErlangPackage.EXPORT_ATTRIBUTE__FUNS:
+        return ((InternalEList<?>)getFuns()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -162,11 +151,10 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
   {
     switch (featureID)
     {
-      case ErlangPackage.REMOTE_TYPE__M:
-        if (resolve) return getM();
-        return basicGetM();
-      case ErlangPackage.REMOTE_TYPE__ARGS:
-        return getArgs();
+      case ErlangPackage.EXPORT_ATTRIBUTE__TAG:
+        return getTag();
+      case ErlangPackage.EXPORT_ATTRIBUTE__FUNS:
+        return getFuns();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -182,12 +170,12 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
   {
     switch (featureID)
     {
-      case ErlangPackage.REMOTE_TYPE__M:
-        setM((Module)newValue);
+      case ErlangPackage.EXPORT_ATTRIBUTE__TAG:
+        setTag((String)newValue);
         return;
-      case ErlangPackage.REMOTE_TYPE__ARGS:
-        getArgs().clear();
-        getArgs().addAll((Collection<? extends TopType>)newValue);
+      case ErlangPackage.EXPORT_ATTRIBUTE__FUNS:
+        getFuns().clear();
+        getFuns().addAll((Collection<? extends FunRef>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -203,11 +191,11 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
   {
     switch (featureID)
     {
-      case ErlangPackage.REMOTE_TYPE__M:
-        setM((Module)null);
+      case ErlangPackage.EXPORT_ATTRIBUTE__TAG:
+        setTag(TAG_EDEFAULT);
         return;
-      case ErlangPackage.REMOTE_TYPE__ARGS:
-        getArgs().clear();
+      case ErlangPackage.EXPORT_ATTRIBUTE__FUNS:
+        getFuns().clear();
         return;
     }
     super.eUnset(featureID);
@@ -223,12 +211,29 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
   {
     switch (featureID)
     {
-      case ErlangPackage.REMOTE_TYPE__M:
-        return m != null;
-      case ErlangPackage.REMOTE_TYPE__ARGS:
-        return args != null && !args.isEmpty();
+      case ErlangPackage.EXPORT_ATTRIBUTE__TAG:
+        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
+      case ErlangPackage.EXPORT_ATTRIBUTE__FUNS:
+        return funs != null && !funs.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //RemoteTypeImpl
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (tag: ");
+    result.append(tag);
+    result.append(')');
+    return result.toString();
+  }
+
+} //ExportAttributeImpl

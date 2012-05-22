@@ -2,18 +2,24 @@
  */
 package org.erlide.erlang.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.FunTypeList;
 import org.erlide.erlang.TopType;
-import org.erlide.erlang.TopTypes;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,14 +38,14 @@ import org.erlide.erlang.TopTypes;
 public class FunTypeListImpl extends FunType100Impl implements FunTypeList
 {
   /**
-   * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference.
+   * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getItems()
    * @generated
    * @ordered
    */
-  protected TopTypes items;
+  protected EList<TopType> items;
 
   /**
    * The cached value of the '{@link #getReturn() <em>Return</em>}' containment reference.
@@ -77,47 +83,13 @@ public class FunTypeListImpl extends FunType100Impl implements FunTypeList
    * <!-- end-user-doc -->
    * @generated
    */
-  public TopTypes getItems()
+  public EList<TopType> getItems()
   {
+    if (items == null)
+    {
+      items = new EObjectContainmentEList<TopType>(TopType.class, this, ErlangPackage.FUN_TYPE_LIST__ITEMS);
+    }
     return items;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetItems(TopTypes newItems, NotificationChain msgs)
-  {
-    TopTypes oldItems = items;
-    items = newItems;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_TYPE_LIST__ITEMS, oldItems, newItems);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setItems(TopTypes newItems)
-  {
-    if (newItems != items)
-    {
-      NotificationChain msgs = null;
-      if (items != null)
-        msgs = ((InternalEObject)items).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUN_TYPE_LIST__ITEMS, null, msgs);
-      if (newItems != null)
-        msgs = ((InternalEObject)newItems).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUN_TYPE_LIST__ITEMS, null, msgs);
-      msgs = basicSetItems(newItems, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_TYPE_LIST__ITEMS, newItems, newItems));
   }
 
   /**
@@ -179,7 +151,7 @@ public class FunTypeListImpl extends FunType100Impl implements FunTypeList
     switch (featureID)
     {
       case ErlangPackage.FUN_TYPE_LIST__ITEMS:
-        return basicSetItems(null, msgs);
+        return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
       case ErlangPackage.FUN_TYPE_LIST__RETURN:
         return basicSetReturn(null, msgs);
     }
@@ -209,13 +181,15 @@ public class FunTypeListImpl extends FunType100Impl implements FunTypeList
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case ErlangPackage.FUN_TYPE_LIST__ITEMS:
-        setItems((TopTypes)newValue);
+        getItems().clear();
+        getItems().addAll((Collection<? extends TopType>)newValue);
         return;
       case ErlangPackage.FUN_TYPE_LIST__RETURN:
         setReturn((TopType)newValue);
@@ -235,7 +209,7 @@ public class FunTypeListImpl extends FunType100Impl implements FunTypeList
     switch (featureID)
     {
       case ErlangPackage.FUN_TYPE_LIST__ITEMS:
-        setItems((TopTypes)null);
+        getItems().clear();
         return;
       case ErlangPackage.FUN_TYPE_LIST__RETURN:
         setReturn((TopType)null);
@@ -255,7 +229,7 @@ public class FunTypeListImpl extends FunType100Impl implements FunTypeList
     switch (featureID)
     {
       case ErlangPackage.FUN_TYPE_LIST__ITEMS:
-        return items != null;
+        return items != null && !items.isEmpty();
       case ErlangPackage.FUN_TYPE_LIST__RETURN:
         return return_ != null;
     }

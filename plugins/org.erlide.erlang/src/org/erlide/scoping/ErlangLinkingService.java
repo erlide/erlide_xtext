@@ -10,11 +10,11 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.Form;
 import org.erlide.erlang.FunCall;
+import org.erlide.erlang.FunRef;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.ModuleAttribute;
 import org.erlide.erlang.RecordExpr;
 import org.erlide.erlang.RecordField;
-import org.erlide.erlang.RefFun;
 import org.erlide.erlang.RemoteTarget;
 
 import com.google.inject.Inject;
@@ -56,8 +56,8 @@ public class ErlangLinkingService extends DefaultLinkingService {
                 result = getName(getModule(atom)) + ":"
                         + NodeModelUtils.getTokenText(node) + "/" + arity;
             }
-        } else if (element instanceof RefFun) {
-            final RefFun ref = (RefFun) element;
+        } else if (element instanceof FunRef) {
+            final FunRef ref = (FunRef) element;
             System.out.println("REF:: "
                     + NodeModelUtils.compactDump(NodeModelUtils.getNode(ref),
                             true));

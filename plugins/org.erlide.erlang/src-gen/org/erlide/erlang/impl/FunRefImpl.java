@@ -7,27 +7,26 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.SpecFun;
+import org.erlide.erlang.FunRef;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Spec Fun</b></em>'.
+ * An implementation of the model object '<em><b>Fun Ref</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.SpecFunImpl#getModule <em>Module</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.SpecFunImpl#getFunction <em>Function</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.SpecFunImpl#getArity <em>Arity</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.FunRefImpl#getModule <em>Module</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.FunRefImpl#getFunction <em>Function</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.FunRefImpl#getArity <em>Arity</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
+public class FunRefImpl extends FunExprImpl implements FunRef
 {
   /**
    * The default value of the '{@link #getModule() <em>Module</em>}' attribute.
@@ -94,7 +93,7 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
    * <!-- end-user-doc -->
    * @generated
    */
-  protected SpecFunImpl()
+  protected FunRefImpl()
   {
     super();
   }
@@ -107,7 +106,7 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.SPEC_FUN;
+    return ErlangPackage.Literals.FUN_REF;
   }
 
   /**
@@ -130,7 +129,7 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
     String oldModule = module;
     module = newModule;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__MODULE, oldModule, module));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__MODULE, oldModule, module));
   }
 
   /**
@@ -153,7 +152,7 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
     String oldFunction = function;
     function = newFunction;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__FUNCTION, oldFunction, function));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__FUNCTION, oldFunction, function));
   }
 
   /**
@@ -176,7 +175,7 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
     String oldArity = arity;
     arity = newArity;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__ARITY, oldArity, arity));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__ARITY, oldArity, arity));
   }
 
   /**
@@ -189,11 +188,11 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_FUN__MODULE:
+      case ErlangPackage.FUN_REF__MODULE:
         return getModule();
-      case ErlangPackage.SPEC_FUN__FUNCTION:
+      case ErlangPackage.FUN_REF__FUNCTION:
         return getFunction();
-      case ErlangPackage.SPEC_FUN__ARITY:
+      case ErlangPackage.FUN_REF__ARITY:
         return getArity();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -209,13 +208,13 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_FUN__MODULE:
+      case ErlangPackage.FUN_REF__MODULE:
         setModule((String)newValue);
         return;
-      case ErlangPackage.SPEC_FUN__FUNCTION:
+      case ErlangPackage.FUN_REF__FUNCTION:
         setFunction((String)newValue);
         return;
-      case ErlangPackage.SPEC_FUN__ARITY:
+      case ErlangPackage.FUN_REF__ARITY:
         setArity((String)newValue);
         return;
     }
@@ -232,13 +231,13 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_FUN__MODULE:
+      case ErlangPackage.FUN_REF__MODULE:
         setModule(MODULE_EDEFAULT);
         return;
-      case ErlangPackage.SPEC_FUN__FUNCTION:
+      case ErlangPackage.FUN_REF__FUNCTION:
         setFunction(FUNCTION_EDEFAULT);
         return;
-      case ErlangPackage.SPEC_FUN__ARITY:
+      case ErlangPackage.FUN_REF__ARITY:
         setArity(ARITY_EDEFAULT);
         return;
     }
@@ -255,11 +254,11 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_FUN__MODULE:
+      case ErlangPackage.FUN_REF__MODULE:
         return MODULE_EDEFAULT == null ? module != null : !MODULE_EDEFAULT.equals(module);
-      case ErlangPackage.SPEC_FUN__FUNCTION:
+      case ErlangPackage.FUN_REF__FUNCTION:
         return FUNCTION_EDEFAULT == null ? function != null : !FUNCTION_EDEFAULT.equals(function);
-      case ErlangPackage.SPEC_FUN__ARITY:
+      case ErlangPackage.FUN_REF__ARITY:
         return ARITY_EDEFAULT == null ? arity != null : !ARITY_EDEFAULT.equals(arity);
     }
     return super.eIsSet(featureID);
@@ -286,4 +285,4 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
     return result.toString();
   }
 
-} //SpecFunImpl
+} //FunRefImpl

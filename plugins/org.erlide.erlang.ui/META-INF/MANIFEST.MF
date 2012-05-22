@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.xtext.ui,
  org.eclipse.ui.navigator.resources,
  org.erlide.erlang;visibility:=reexport,
  org.erlide.libs;bundle-version="1.8.0",
- org.erlide.common.ui;bundle-version="0.101.0"
+ org.erlide.common.ui;bundle-version="0.101.0",
+ org.antlr.runtime
 Import-Package: com.google.common.annotations,
  com.google.common.base,
  com.google.common.base.internal,
@@ -36,8 +37,7 @@ Import-Package: com.google.common.annotations,
  org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.erlide.project.ui,
- org.erlide.ui,
+Export-Package: org.erlide.ui,
  org.erlide.ui.contentassist,
  org.erlide.ui.contentassist.antlr,
  org.erlide.ui.contentassist.antlr.internal,

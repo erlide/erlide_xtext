@@ -1,4 +1,4 @@
-package org.erlide.project.ui;
+package org.erlide.ui;
 
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;

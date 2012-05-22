@@ -2,19 +2,25 @@
  */
 package org.erlide.erlang.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.FunType;
 import org.erlide.erlang.FunType100;
 import org.erlide.erlang.TopType;
-import org.erlide.erlang.TopTypes;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,14 +40,14 @@ import org.erlide.erlang.TopTypes;
 public class FunTypeImpl extends TypeImpl implements FunType
 {
   /**
-   * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference.
+   * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getArgs()
    * @generated
    * @ordered
    */
-  protected TopTypes args;
+  protected EList<TopType> args;
 
   /**
    * The cached value of the '{@link #getReturn() <em>Return</em>}' containment reference.
@@ -89,47 +95,13 @@ public class FunTypeImpl extends TypeImpl implements FunType
    * <!-- end-user-doc -->
    * @generated
    */
-  public TopTypes getArgs()
+  public EList<TopType> getArgs()
   {
+    if (args == null)
+    {
+      args = new EObjectContainmentEList<TopType>(TopType.class, this, ErlangPackage.FUN_TYPE__ARGS);
+    }
     return args;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetArgs(TopTypes newArgs, NotificationChain msgs)
-  {
-    TopTypes oldArgs = args;
-    args = newArgs;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_TYPE__ARGS, oldArgs, newArgs);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setArgs(TopTypes newArgs)
-  {
-    if (newArgs != args)
-    {
-      NotificationChain msgs = null;
-      if (args != null)
-        msgs = ((InternalEObject)args).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUN_TYPE__ARGS, null, msgs);
-      if (newArgs != null)
-        msgs = ((InternalEObject)newArgs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUN_TYPE__ARGS, null, msgs);
-      msgs = basicSetArgs(newArgs, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_TYPE__ARGS, newArgs, newArgs));
   }
 
   /**
@@ -239,7 +211,7 @@ public class FunTypeImpl extends TypeImpl implements FunType
     switch (featureID)
     {
       case ErlangPackage.FUN_TYPE__ARGS:
-        return basicSetArgs(null, msgs);
+        return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
       case ErlangPackage.FUN_TYPE__RETURN:
         return basicSetReturn(null, msgs);
       case ErlangPackage.FUN_TYPE__TYPE:
@@ -273,13 +245,15 @@ public class FunTypeImpl extends TypeImpl implements FunType
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case ErlangPackage.FUN_TYPE__ARGS:
-        setArgs((TopTypes)newValue);
+        getArgs().clear();
+        getArgs().addAll((Collection<? extends TopType>)newValue);
         return;
       case ErlangPackage.FUN_TYPE__RETURN:
         setReturn((TopType)newValue);
@@ -302,7 +276,7 @@ public class FunTypeImpl extends TypeImpl implements FunType
     switch (featureID)
     {
       case ErlangPackage.FUN_TYPE__ARGS:
-        setArgs((TopTypes)null);
+        getArgs().clear();
         return;
       case ErlangPackage.FUN_TYPE__RETURN:
         setReturn((TopType)null);
@@ -325,7 +299,7 @@ public class FunTypeImpl extends TypeImpl implements FunType
     switch (featureID)
     {
       case ErlangPackage.FUN_TYPE__ARGS:
-        return args != null;
+        return args != null && !args.isEmpty();
       case ErlangPackage.FUN_TYPE__RETURN:
         return return_ != null;
       case ErlangPackage.FUN_TYPE__TYPE:

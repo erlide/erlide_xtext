@@ -2,16 +2,20 @@
  */
 package org.erlide.erlang.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.TopTypes;
+import org.erlide.erlang.TopType;
 import org.erlide.erlang.TupleType;
 
 /**
@@ -30,14 +34,14 @@ import org.erlide.erlang.TupleType;
 public class TupleTypeImpl extends TypeImpl implements TupleType
 {
   /**
-   * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference.
+   * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTypes()
    * @generated
    * @ordered
    */
-  protected TopTypes types;
+  protected EList<TopType> types;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,47 +69,13 @@ public class TupleTypeImpl extends TypeImpl implements TupleType
    * <!-- end-user-doc -->
    * @generated
    */
-  public TopTypes getTypes()
+  public EList<TopType> getTypes()
   {
+    if (types == null)
+    {
+      types = new EObjectContainmentEList<TopType>(TopType.class, this, ErlangPackage.TUPLE_TYPE__TYPES);
+    }
     return types;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetTypes(TopTypes newTypes, NotificationChain msgs)
-  {
-    TopTypes oldTypes = types;
-    types = newTypes;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.TUPLE_TYPE__TYPES, oldTypes, newTypes);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTypes(TopTypes newTypes)
-  {
-    if (newTypes != types)
-    {
-      NotificationChain msgs = null;
-      if (types != null)
-        msgs = ((InternalEObject)types).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TUPLE_TYPE__TYPES, null, msgs);
-      if (newTypes != null)
-        msgs = ((InternalEObject)newTypes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TUPLE_TYPE__TYPES, null, msgs);
-      msgs = basicSetTypes(newTypes, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TUPLE_TYPE__TYPES, newTypes, newTypes));
   }
 
   /**
@@ -119,7 +89,7 @@ public class TupleTypeImpl extends TypeImpl implements TupleType
     switch (featureID)
     {
       case ErlangPackage.TUPLE_TYPE__TYPES:
-        return basicSetTypes(null, msgs);
+        return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -145,13 +115,15 @@ public class TupleTypeImpl extends TypeImpl implements TupleType
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case ErlangPackage.TUPLE_TYPE__TYPES:
-        setTypes((TopTypes)newValue);
+        getTypes().clear();
+        getTypes().addAll((Collection<? extends TopType>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -168,7 +140,7 @@ public class TupleTypeImpl extends TypeImpl implements TupleType
     switch (featureID)
     {
       case ErlangPackage.TUPLE_TYPE__TYPES:
-        setTypes((TopTypes)null);
+        getTypes().clear();
         return;
     }
     super.eUnset(featureID);
@@ -185,7 +157,7 @@ public class TupleTypeImpl extends TypeImpl implements TupleType
     switch (featureID)
     {
       case ErlangPackage.TUPLE_TYPE__TYPES:
-        return types != null;
+        return types != null && !types.isEmpty();
     }
     return super.eIsSet(featureID);
   }

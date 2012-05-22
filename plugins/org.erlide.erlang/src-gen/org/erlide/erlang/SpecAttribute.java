@@ -2,6 +2,7 @@
  */
 package org.erlide.erlang;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,7 +12,7 @@ package org.erlide.erlang;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.SpecAttribute#getType <em>Type</em>}</li>
+ *   <li>{@link org.erlide.erlang.SpecAttribute#getRef <em>Ref</em>}</li>
  *   <li>{@link org.erlide.erlang.SpecAttribute#getSignatures <em>Signatures</em>}</li>
  * </ul>
  * </p>
@@ -23,55 +24,45 @@ package org.erlide.erlang;
 public interface SpecAttribute extends AbstractTypeAttribute
 {
   /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Ref</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(SpecFun)
-   * @see org.erlide.erlang.ErlangPackage#getSpecAttribute_Type()
+   * @return the value of the '<em>Ref</em>' containment reference.
+   * @see #setRef(SpecFun)
+   * @see org.erlide.erlang.ErlangPackage#getSpecAttribute_Ref()
    * @model containment="true"
    * @generated
    */
-  SpecFun getType();
+  SpecFun getRef();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.SpecAttribute#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link org.erlide.erlang.SpecAttribute#getRef <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
-   * @see #getType()
+   * @param value the new value of the '<em>Ref</em>' containment reference.
+   * @see #getRef()
    * @generated
    */
-  void setType(SpecFun value);
+  void setRef(SpecFun value);
 
   /**
-   * Returns the value of the '<em><b>Signatures</b></em>' containment reference.
+   * Returns the value of the '<em><b>Signatures</b></em>' containment reference list.
+   * The list contents are of type {@link org.erlide.erlang.TypeSig}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Signatures</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Signatures</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Signatures</em>' containment reference.
-   * @see #setSignatures(TypeSigs)
+   * @return the value of the '<em>Signatures</em>' containment reference list.
    * @see org.erlide.erlang.ErlangPackage#getSpecAttribute_Signatures()
    * @model containment="true"
    * @generated
    */
-  TypeSigs getSignatures();
-
-  /**
-   * Sets the value of the '{@link org.erlide.erlang.SpecAttribute#getSignatures <em>Signatures</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Signatures</em>' containment reference.
-   * @see #getSignatures()
-   * @generated
-   */
-  void setSignatures(TypeSigs value);
+  EList<TypeSig> getSignatures();
 
 } // SpecAttribute

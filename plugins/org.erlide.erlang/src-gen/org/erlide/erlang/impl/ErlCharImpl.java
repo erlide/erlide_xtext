@@ -8,23 +8,23 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.erlide.erlang.Char;
+import org.erlide.erlang.ErlChar;
 import org.erlide.erlang.ErlangPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Char</b></em>'.
+ * An implementation of the model object '<em><b>Erl Char</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.CharImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ErlCharImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CharImpl extends ExpressionImpl implements Char
+public class ErlCharImpl extends ExpressionImpl implements ErlChar
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -51,7 +51,7 @@ public class CharImpl extends ExpressionImpl implements Char
    * <!-- end-user-doc -->
    * @generated
    */
-  protected CharImpl()
+  protected ErlCharImpl()
   {
     super();
   }
@@ -64,7 +64,7 @@ public class CharImpl extends ExpressionImpl implements Char
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.CHAR;
+    return ErlangPackage.Literals.ERL_CHAR;
   }
 
   /**
@@ -87,7 +87,7 @@ public class CharImpl extends ExpressionImpl implements Char
     String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.CHAR__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ERL_CHAR__VALUE, oldValue, value));
   }
 
   /**
@@ -100,7 +100,7 @@ public class CharImpl extends ExpressionImpl implements Char
   {
     switch (featureID)
     {
-      case ErlangPackage.CHAR__VALUE:
+      case ErlangPackage.ERL_CHAR__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -116,7 +116,7 @@ public class CharImpl extends ExpressionImpl implements Char
   {
     switch (featureID)
     {
-      case ErlangPackage.CHAR__VALUE:
+      case ErlangPackage.ERL_CHAR__VALUE:
         setValue((String)newValue);
         return;
     }
@@ -133,7 +133,7 @@ public class CharImpl extends ExpressionImpl implements Char
   {
     switch (featureID)
     {
-      case ErlangPackage.CHAR__VALUE:
+      case ErlangPackage.ERL_CHAR__VALUE:
         setValue(VALUE_EDEFAULT);
         return;
     }
@@ -150,7 +150,7 @@ public class CharImpl extends ExpressionImpl implements Char
   {
     switch (featureID)
     {
-      case ErlangPackage.CHAR__VALUE:
+      case ErlangPackage.ERL_CHAR__VALUE:
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
@@ -173,4 +173,4 @@ public class CharImpl extends ExpressionImpl implements Char
     return result.toString();
   }
 
-} //CharImpl
+} //ErlCharImpl

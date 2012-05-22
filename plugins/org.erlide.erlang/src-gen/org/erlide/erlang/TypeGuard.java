@@ -2,6 +2,8 @@
  */
 package org.erlide.erlang;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -51,30 +53,20 @@ public interface TypeGuard extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Types</b></em>' containment reference.
+   * Returns the value of the '<em><b>Types</b></em>' containment reference list.
+   * The list contents are of type {@link org.erlide.erlang.TopType}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Types</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Types</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Types</em>' containment reference.
-   * @see #setTypes(TopTypes)
+   * @return the value of the '<em>Types</em>' containment reference list.
    * @see org.erlide.erlang.ErlangPackage#getTypeGuard_Types()
    * @model containment="true"
    * @generated
    */
-  TopTypes getTypes();
-
-  /**
-   * Sets the value of the '{@link org.erlide.erlang.TypeGuard#getTypes <em>Types</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Types</em>' containment reference.
-   * @see #getTypes()
-   * @generated
-   */
-  void setTypes(TopTypes value);
+  EList<TopType> getTypes();
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.

@@ -7,15 +7,16 @@ Bundle-SymbolicName: org.erlide.erlang.tests; singleton:=true
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui;bundle-version="3.7.0",
  org.eclipse.xtext;bundle-version="2.3.0",
- org.eclipse.xtext.junit4,
- org.eclipse.xtext.ui.junit,
- org.junit4,
- org.eclipselabs.xtext.utils.unittesting;bundle-version="0.9.2",
  org.erlide.erlang;bundle-version="0.101.0",
  org.erlide.erlang.ui;bundle-version="0.101.0",
  org.erlide.libs;bundle-version="1.108.1",
  org.erlide.jinterface;bundle-version="0.115.2",
- org.erlide.testing.libs;bundle-version="0.101.0"
+ org.erlide.testing.libs;bundle-version="0.101.0",
+ org.eclipse.xtext.junit4,
+ org.eclipse.xtext.ui.junit,
+ org.eclipselabs.xtext.utils.unittesting;bundle-version="0.9.2",
+ org.junit4,
+ org.eclipse.ui.workbench;resolution:=optional
 Import-Package: com.google.common.annotations,
  com.google.common.base,
  com.google.common.cache,
@@ -26,7 +27,16 @@ Import-Package: com.google.common.annotations,
  org.apache.commons.logging,
  org.apache.log4j,
  org.eclipse.xtend2.lib,
- org.eclipse.xtext.xbase.lib
+ org.eclipse.xtext.xbase.lib,
+ org.junit;version="4.5.0",
+ org.junit.runner;version="4.5.0",
+ org.junit.runner.manipulation;version="4.5.0",
+ org.junit.runner.notification;version="4.5.0",
+ org.junit.runners;version="4.5.0",
+ org.junit.runners.model;version="4.5.0",
+ org.hamcrest,
+ org.hamcrest.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.erlide,
- org.erlide.erlang
+ org.erlide.erlang,
+ org.erlide.erlang.util

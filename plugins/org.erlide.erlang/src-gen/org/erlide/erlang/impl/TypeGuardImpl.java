@@ -2,8 +2,12 @@
  */
 package org.erlide.erlang.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -11,9 +15,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.TopType;
-import org.erlide.erlang.TopTypes;
 import org.erlide.erlang.TypeGuard;
 
 /**
@@ -54,14 +60,14 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference.
+   * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTypes()
    * @generated
    * @ordered
    */
-  protected TopTypes types;
+  protected EList<TopType> types;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -122,47 +128,13 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
    * <!-- end-user-doc -->
    * @generated
    */
-  public TopTypes getTypes()
+  public EList<TopType> getTypes()
   {
+    if (types == null)
+    {
+      types = new EObjectContainmentEList<TopType>(TopType.class, this, ErlangPackage.TYPE_GUARD__TYPES);
+    }
     return types;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetTypes(TopTypes newTypes, NotificationChain msgs)
-  {
-    TopTypes oldTypes = types;
-    types = newTypes;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE_GUARD__TYPES, oldTypes, newTypes);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTypes(TopTypes newTypes)
-  {
-    if (newTypes != types)
-    {
-      NotificationChain msgs = null;
-      if (types != null)
-        msgs = ((InternalEObject)types).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TYPE_GUARD__TYPES, null, msgs);
-      if (newTypes != null)
-        msgs = ((InternalEObject)newTypes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TYPE_GUARD__TYPES, null, msgs);
-      msgs = basicSetTypes(newTypes, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE_GUARD__TYPES, newTypes, newTypes));
   }
 
   /**
@@ -224,7 +196,7 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
     switch (featureID)
     {
       case ErlangPackage.TYPE_GUARD__TYPES:
-        return basicSetTypes(null, msgs);
+        return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
       case ErlangPackage.TYPE_GUARD__TYPE:
         return basicSetType(null, msgs);
     }
@@ -256,6 +228,7 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -265,7 +238,8 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
         setName((String)newValue);
         return;
       case ErlangPackage.TYPE_GUARD__TYPES:
-        setTypes((TopTypes)newValue);
+        getTypes().clear();
+        getTypes().addAll((Collection<? extends TopType>)newValue);
         return;
       case ErlangPackage.TYPE_GUARD__TYPE:
         setType((TopType)newValue);
@@ -288,7 +262,7 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
         setName(NAME_EDEFAULT);
         return;
       case ErlangPackage.TYPE_GUARD__TYPES:
-        setTypes((TopTypes)null);
+        getTypes().clear();
         return;
       case ErlangPackage.TYPE_GUARD__TYPE:
         setType((TopType)null);
@@ -310,7 +284,7 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
       case ErlangPackage.TYPE_GUARD__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ErlangPackage.TYPE_GUARD__TYPES:
-        return types != null;
+        return types != null && !types.isEmpty();
       case ErlangPackage.TYPE_GUARD__TYPE:
         return type != null;
     }

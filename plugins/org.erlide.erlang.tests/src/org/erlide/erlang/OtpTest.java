@@ -29,7 +29,7 @@ import com.google.common.collect.Maps;
 public class OtpTest extends XtextTest {
     private static final boolean TESTS = false;
     private final String root;
-    private static boolean SIMPLE = true;
+    private static boolean SIMPLE = false;
 
     private static Collection<String> apps = Lists.newArrayList("common_test",
             "cosEventDomain", "cosTime", "dialyzer", "erl_interface", "hipe",
@@ -77,7 +77,7 @@ public class OtpTest extends XtextTest {
     @Before
     public void setup() {
         ignoreFormattingDifferences();
-        // ignoreSerializationDifferences();
+        //ignoreSerializationDifferences();
     }
 
     private FluentIssueCollection doTest(final String file) {
@@ -112,9 +112,10 @@ public class OtpTest extends XtextTest {
         System.out.println(">>>> " + ok1 + " / " + files.size());
     }
 
-    private Collection<String> findAllFiles(final File root, final boolean tests) {
+    private Collection<String> findAllFiles(final File aRoot,
+            final boolean tests) {
         final java.util.List<String> result = Lists.newArrayList();
-        traverse(root, result, tests);
+        traverse(aRoot, result, tests);
         return result;
     }
 
@@ -172,27 +173,27 @@ public class OtpTest extends XtextTest {
     }
 
     @Test
-    public void testdialyzer() {
+    public void testDialyzer() {
         testDir("dialyzer");
     }
 
     @Test
-    public void tester_interface() {
+    public void testErl_interface() {
         testDir("erl_interface");
     }
 
     @Test
-    public void testhipe() {
+    public void testHipe() {
         testDir("hipe");
     }
 
     @Test
-    public void testjinterface() {
+    public void testJinterface() {
         testDir("jinterface");
     }
 
     @Test
-    public void testobserver() {
+    public void testObserver() {
         testDir("observer");
     }
 

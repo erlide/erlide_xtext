@@ -7,7 +7,7 @@ import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
 import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
-import org.eclipse.xtext.serializer.sequencer.AbstractSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
@@ -26,7 +26,7 @@ import org.erlide.erlang.BitType;
 import org.erlide.erlang.BlockExpr;
 import org.erlide.erlang.CaseExpr;
 import org.erlide.erlang.CatchExpr;
-import org.erlide.erlang.Char;
+import org.erlide.erlang.CompilerOptionsAttribute;
 import org.erlide.erlang.CondExpr;
 import org.erlide.erlang.ConditionalFormBlock;
 import org.erlide.erlang.CrClause;
@@ -34,15 +34,20 @@ import org.erlide.erlang.CustomAttribute;
 import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ElseAttribute;
 import org.erlide.erlang.EndifAttribute;
+import org.erlide.erlang.ErlChar;
+import org.erlide.erlang.ErlFloat;
+import org.erlide.erlang.ErlInteger;
 import org.erlide.erlang.ErlList;
 import org.erlide.erlang.ErlString;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.ExportAttribute;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.Expressions;
 import org.erlide.erlang.FieldType;
 import org.erlide.erlang.FileAttribute;
 import org.erlide.erlang.FunCall;
 import org.erlide.erlang.FunExpr;
+import org.erlide.erlang.FunRef;
 import org.erlide.erlang.FunType;
 import org.erlide.erlang.FunTypeList;
 import org.erlide.erlang.Function;
@@ -51,10 +56,10 @@ import org.erlide.erlang.Guard;
 import org.erlide.erlang.IfClause;
 import org.erlide.erlang.IfExpr;
 import org.erlide.erlang.IfdefAttribute;
+import org.erlide.erlang.ImportAttribute;
 import org.erlide.erlang.IncludeAttribute;
 import org.erlide.erlang.LCExpr;
 import org.erlide.erlang.LetExpr;
-import org.erlide.erlang.List;
 import org.erlide.erlang.ListComprehension;
 import org.erlide.erlang.ListType;
 import org.erlide.erlang.MacroCall;
@@ -72,13 +77,11 @@ import org.erlide.erlang.RecordField;
 import org.erlide.erlang.RecordFieldDef;
 import org.erlide.erlang.RecordTuple;
 import org.erlide.erlang.RecordType;
-import org.erlide.erlang.RefFun;
 import org.erlide.erlang.RemoteTarget;
 import org.erlide.erlang.RemoteType;
 import org.erlide.erlang.SpecAttribute;
 import org.erlide.erlang.SpecFun;
 import org.erlide.erlang.TopType;
-import org.erlide.erlang.TopTypes;
 import org.erlide.erlang.TryClause;
 import org.erlide.erlang.TryExpr;
 import org.erlide.erlang.Tuple;
@@ -88,38 +91,17 @@ import org.erlide.erlang.TypeAttribute;
 import org.erlide.erlang.TypeGuard;
 import org.erlide.erlang.TypeGuards;
 import org.erlide.erlang.TypeSig;
-import org.erlide.erlang.TypeSigs;
 import org.erlide.erlang.UnaryExpr;
 import org.erlide.erlang.UnaryType;
 import org.erlide.erlang.UndefAttribute;
 import org.erlide.erlang.Variable;
 import org.erlide.services.ErlangGrammarAccess;
 
-@SuppressWarnings("restriction")
-public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
+@SuppressWarnings("all")
+public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 
 	@Inject
-	protected ErlangGrammarAccess grammarAccess;
-	
-	@Inject
-	protected ISemanticSequencerDiagnosticProvider diagnosticProvider;
-	
-	@Inject
-	protected ITransientValueService transientValues;
-	
-	@Inject
-	@GenericSequencer
-	protected Provider<ISemanticSequencer> genericSequencerProvider;
-	
-	protected ISemanticSequencer genericSequencer;
-	
-	
-	@Override
-	public void init(ISemanticSequencer sequencer, ISemanticSequenceAcceptor sequenceAcceptor, Acceptor errorAcceptor) {
-		super.init(sequencer, sequenceAcceptor, errorAcceptor);
-		this.genericSequencer = genericSequencerProvider.get();
-		this.genericSequencer.init(sequencer, sequenceAcceptor, errorAcceptor);
-	}
+	private ErlangGrammarAccess grammarAccess;
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == ErlangPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
@@ -420,39 +402,12 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
-			case ErlangPackage.CHAR:
-				if(context == grammarAccess.getExpr100Rule() ||
-				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
-				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
-				   context == grammarAccess.getExpr150Rule() ||
-				   context == grammarAccess.getExpr150Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr160Rule() ||
-				   context == grammarAccess.getExpr160Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr200Rule() ||
-				   context == grammarAccess.getExpr200Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr300Rule() ||
-				   context == grammarAccess.getExpr300Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr400Rule() ||
-				   context == grammarAccess.getExpr400Access().getAddOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr500Rule() ||
-				   context == grammarAccess.getExpr500Access().getMultOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr700Rule() ||
-				   context == grammarAccess.getExpr700Access().getFunCallTargetAction_1_0_1() ||
-				   context == grammarAccess.getExpr700Access().getRecordExprRefAction_1_1_1() ||
-				   context == grammarAccess.getExpr800Rule() ||
-				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
-				   context == grammarAccess.getExprMaxRule() ||
-				   context == grammarAccess.getExpressionRule() ||
-				   context == grammarAccess.getLExpressionRule() ||
-				   context == grammarAccess.getLiteralExpressionRule() ||
-				   context == grammarAccess.getLiteralExpressionNoNumberRule() ||
-				   context == grammarAccess.getPatternExpressionRule() ||
-				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
-				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
-				   context == grammarAccess.getTermExpressionRule() ||
-				   context == grammarAccess.getUnaryExprRule() ||
-				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_LiteralExpressionNoNumber(context, (Char) semanticObject); 
+			case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE:
+				if(context == grammarAccess.getAbstractElementRule() ||
+				   context == grammarAccess.getAttributeRule() ||
+				   context == grammarAccess.getCompilerOptionsAttributeRule() ||
+				   context == grammarAccess.getFormRule()) {
+					sequence_CompilerOptionsAttribute(context, (CompilerOptionsAttribute) semanticObject); 
 					return; 
 				}
 				else break;
@@ -532,6 +487,112 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
+			case ErlangPackage.ERL_CHAR:
+				if(context == grammarAccess.getExpr100Rule() ||
+				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
+				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
+				   context == grammarAccess.getExpr150Rule() ||
+				   context == grammarAccess.getExpr150Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr160Rule() ||
+				   context == grammarAccess.getExpr160Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr200Rule() ||
+				   context == grammarAccess.getExpr200Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr300Rule() ||
+				   context == grammarAccess.getExpr300Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr400Rule() ||
+				   context == grammarAccess.getExpr400Access().getAddOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr500Rule() ||
+				   context == grammarAccess.getExpr500Access().getMultOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr700Rule() ||
+				   context == grammarAccess.getExpr700Access().getFunCallTargetAction_1_0_1() ||
+				   context == grammarAccess.getExpr700Access().getRecordExprRefAction_1_1_1() ||
+				   context == grammarAccess.getExpr800Rule() ||
+				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
+				   context == grammarAccess.getExprMaxRule() ||
+				   context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getLExpressionRule() ||
+				   context == grammarAccess.getLiteralExpressionRule() ||
+				   context == grammarAccess.getLiteralExpressionNoNumberRule() ||
+				   context == grammarAccess.getPatternExpressionRule() ||
+				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
+				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
+				   context == grammarAccess.getTermExpressionRule() ||
+				   context == grammarAccess.getUnaryExprRule() ||
+				   context == grammarAccess.getUnaryExprMaxRule()) {
+					sequence_LiteralExpressionNoNumber(context, (ErlChar) semanticObject); 
+					return; 
+				}
+				else break;
+			case ErlangPackage.ERL_FLOAT:
+				if(context == grammarAccess.getExpr100Rule() ||
+				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
+				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
+				   context == grammarAccess.getExpr150Rule() ||
+				   context == grammarAccess.getExpr150Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr160Rule() ||
+				   context == grammarAccess.getExpr160Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr200Rule() ||
+				   context == grammarAccess.getExpr200Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr300Rule() ||
+				   context == grammarAccess.getExpr300Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr400Rule() ||
+				   context == grammarAccess.getExpr400Access().getAddOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr500Rule() ||
+				   context == grammarAccess.getExpr500Access().getMultOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr700Rule() ||
+				   context == grammarAccess.getExpr700Access().getFunCallTargetAction_1_0_1() ||
+				   context == grammarAccess.getExpr700Access().getRecordExprRefAction_1_1_1() ||
+				   context == grammarAccess.getExpr800Rule() ||
+				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
+				   context == grammarAccess.getExprMaxRule() ||
+				   context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getLExpressionRule() ||
+				   context == grammarAccess.getLiteralExpressionRule() ||
+				   context == grammarAccess.getPatternExpressionRule() ||
+				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
+				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
+				   context == grammarAccess.getTermExpressionRule() ||
+				   context == grammarAccess.getUnaryExprRule() ||
+				   context == grammarAccess.getUnaryExprMaxRule()) {
+					sequence_LiteralExpression(context, (ErlFloat) semanticObject); 
+					return; 
+				}
+				else break;
+			case ErlangPackage.ERL_INTEGER:
+				if(context == grammarAccess.getExpr100Rule() ||
+				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
+				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
+				   context == grammarAccess.getExpr150Rule() ||
+				   context == grammarAccess.getExpr150Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr160Rule() ||
+				   context == grammarAccess.getExpr160Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr200Rule() ||
+				   context == grammarAccess.getExpr200Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr300Rule() ||
+				   context == grammarAccess.getExpr300Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr400Rule() ||
+				   context == grammarAccess.getExpr400Access().getAddOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr500Rule() ||
+				   context == grammarAccess.getExpr500Access().getMultOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr700Rule() ||
+				   context == grammarAccess.getExpr700Access().getFunCallTargetAction_1_0_1() ||
+				   context == grammarAccess.getExpr700Access().getRecordExprRefAction_1_1_1() ||
+				   context == grammarAccess.getExpr800Rule() ||
+				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
+				   context == grammarAccess.getExprMaxRule() ||
+				   context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getLExpressionRule() ||
+				   context == grammarAccess.getLiteralExpressionRule() ||
+				   context == grammarAccess.getPatternExpressionRule() ||
+				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
+				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
+				   context == grammarAccess.getTermExpressionRule() ||
+				   context == grammarAccess.getUnaryExprRule() ||
+				   context == grammarAccess.getUnaryExprMaxRule()) {
+					sequence_LiteralExpression(context, (ErlInteger) semanticObject); 
+					return; 
+				}
+				else break;
 			case ErlangPackage.ERL_LIST:
 				if(context == grammarAccess.getExpr100Rule() ||
 				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
@@ -563,7 +624,7 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getTermExpressionRule() ||
 				   context == grammarAccess.getUnaryExprRule() ||
 				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_List(context, (ErlList) semanticObject); 
+					sequence_LExpression(context, (ErlList) semanticObject); 
 					return; 
 				}
 				else break;
@@ -603,6 +664,15 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
+			case ErlangPackage.EXPORT_ATTRIBUTE:
+				if(context == grammarAccess.getAbstractElementRule() ||
+				   context == grammarAccess.getAttributeRule() ||
+				   context == grammarAccess.getExportAttributeRule() ||
+				   context == grammarAccess.getFormRule()) {
+					sequence_ExportAttribute(context, (ExportAttribute) semanticObject); 
+					return; 
+				}
+				else break;
 			case ErlangPackage.EXPRESSION:
 				if(context == grammarAccess.getLExpressionRule()) {
 					sequence_LExpression(context, (Expression) semanticObject); 
@@ -627,41 +697,6 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getFileAttributeRule() ||
 				   context == grammarAccess.getFormRule()) {
 					sequence_FileAttribute(context, (FileAttribute) semanticObject); 
-					return; 
-				}
-				else break;
-			case ErlangPackage.FLOAT:
-				if(context == grammarAccess.getExpr100Rule() ||
-				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
-				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
-				   context == grammarAccess.getExpr150Rule() ||
-				   context == grammarAccess.getExpr150Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr160Rule() ||
-				   context == grammarAccess.getExpr160Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr200Rule() ||
-				   context == grammarAccess.getExpr200Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr300Rule() ||
-				   context == grammarAccess.getExpr300Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr400Rule() ||
-				   context == grammarAccess.getExpr400Access().getAddOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr500Rule() ||
-				   context == grammarAccess.getExpr500Access().getMultOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr700Rule() ||
-				   context == grammarAccess.getExpr700Access().getFunCallTargetAction_1_0_1() ||
-				   context == grammarAccess.getExpr700Access().getRecordExprRefAction_1_1_1() ||
-				   context == grammarAccess.getExpr800Rule() ||
-				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
-				   context == grammarAccess.getExprMaxRule() ||
-				   context == grammarAccess.getExpressionRule() ||
-				   context == grammarAccess.getLExpressionRule() ||
-				   context == grammarAccess.getLiteralExpressionRule() ||
-				   context == grammarAccess.getPatternExpressionRule() ||
-				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
-				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
-				   context == grammarAccess.getTermExpressionRule() ||
-				   context == grammarAccess.getUnaryExprRule() ||
-				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_LiteralExpression(context, (org.erlide.erlang.Float) semanticObject); 
 					return; 
 				}
 				else break;
@@ -728,6 +763,38 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getUnaryExprRule() ||
 				   context == grammarAccess.getUnaryExprMaxRule()) {
 					sequence_InlineFun(context, (FunExpr) semanticObject); 
+					return; 
+				}
+				else break;
+			case ErlangPackage.FUN_REF:
+				if(context == grammarAccess.getExpr100Rule() ||
+				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
+				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
+				   context == grammarAccess.getExpr150Rule() ||
+				   context == grammarAccess.getExpr150Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr160Rule() ||
+				   context == grammarAccess.getExpr160Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr200Rule() ||
+				   context == grammarAccess.getExpr200Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr300Rule() ||
+				   context == grammarAccess.getExpr300Access().getBinOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr400Rule() ||
+				   context == grammarAccess.getExpr400Access().getAddOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr500Rule() ||
+				   context == grammarAccess.getExpr500Access().getMultOpOpLeftAction_1_0() ||
+				   context == grammarAccess.getExpr700Rule() ||
+				   context == grammarAccess.getExpr700Access().getFunCallTargetAction_1_0_1() ||
+				   context == grammarAccess.getExpr700Access().getRecordExprRefAction_1_1_1() ||
+				   context == grammarAccess.getExpr800Rule() ||
+				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
+				   context == grammarAccess.getExprMaxRule() ||
+				   context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getFunExprRule() ||
+				   context == grammarAccess.getFunRefRule() ||
+				   context == grammarAccess.getLExpressionRule() ||
+				   context == grammarAccess.getUnaryExprRule() ||
+				   context == grammarAccess.getUnaryExprMaxRule()) {
+					sequence_FunRef(context, (FunRef) semanticObject); 
 					return; 
 				}
 				else break;
@@ -819,47 +886,21 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
+			case ErlangPackage.IMPORT_ATTRIBUTE:
+				if(context == grammarAccess.getAbstractElementRule() ||
+				   context == grammarAccess.getAttributeRule() ||
+				   context == grammarAccess.getFormRule() ||
+				   context == grammarAccess.getImportAttributeRule()) {
+					sequence_ImportAttribute(context, (ImportAttribute) semanticObject); 
+					return; 
+				}
+				else break;
 			case ErlangPackage.INCLUDE_ATTRIBUTE:
 				if(context == grammarAccess.getAbstractElementRule() ||
 				   context == grammarAccess.getAttributeRule() ||
 				   context == grammarAccess.getFormRule() ||
 				   context == grammarAccess.getIncludeAttributeRule()) {
 					sequence_IncludeAttribute(context, (IncludeAttribute) semanticObject); 
-					return; 
-				}
-				else break;
-			case ErlangPackage.INTEGER:
-				if(context == grammarAccess.getExpr100Rule() ||
-				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
-				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
-				   context == grammarAccess.getExpr150Rule() ||
-				   context == grammarAccess.getExpr150Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr160Rule() ||
-				   context == grammarAccess.getExpr160Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr200Rule() ||
-				   context == grammarAccess.getExpr200Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr300Rule() ||
-				   context == grammarAccess.getExpr300Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr400Rule() ||
-				   context == grammarAccess.getExpr400Access().getAddOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr500Rule() ||
-				   context == grammarAccess.getExpr500Access().getMultOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr700Rule() ||
-				   context == grammarAccess.getExpr700Access().getFunCallTargetAction_1_0_1() ||
-				   context == grammarAccess.getExpr700Access().getRecordExprRefAction_1_1_1() ||
-				   context == grammarAccess.getExpr800Rule() ||
-				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
-				   context == grammarAccess.getExprMaxRule() ||
-				   context == grammarAccess.getExpressionRule() ||
-				   context == grammarAccess.getLExpressionRule() ||
-				   context == grammarAccess.getLiteralExpressionRule() ||
-				   context == grammarAccess.getPatternExpressionRule() ||
-				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
-				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
-				   context == grammarAccess.getTermExpressionRule() ||
-				   context == grammarAccess.getUnaryExprRule() ||
-				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_LiteralExpression(context, (org.erlide.erlang.Integer) semanticObject); 
 					return; 
 				}
 				else break;
@@ -897,41 +938,6 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 				   context == grammarAccess.getUnaryExprRule() ||
 				   context == grammarAccess.getUnaryExprMaxRule()) {
 					sequence_LExpression(context, (LetExpr) semanticObject); 
-					return; 
-				}
-				else break;
-			case ErlangPackage.LIST:
-				if(context == grammarAccess.getExpr100Rule() ||
-				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
-				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
-				   context == grammarAccess.getExpr150Rule() ||
-				   context == grammarAccess.getExpr150Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr160Rule() ||
-				   context == grammarAccess.getExpr160Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr200Rule() ||
-				   context == grammarAccess.getExpr200Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr300Rule() ||
-				   context == grammarAccess.getExpr300Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr400Rule() ||
-				   context == grammarAccess.getExpr400Access().getAddOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr500Rule() ||
-				   context == grammarAccess.getExpr500Access().getMultOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr700Rule() ||
-				   context == grammarAccess.getExpr700Access().getFunCallTargetAction_1_0_1() ||
-				   context == grammarAccess.getExpr700Access().getRecordExprRefAction_1_1_1() ||
-				   context == grammarAccess.getExpr800Rule() ||
-				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
-				   context == grammarAccess.getExprMaxRule() ||
-				   context == grammarAccess.getExpressionRule() ||
-				   context == grammarAccess.getLExpressionRule() ||
-				   context == grammarAccess.getListRule() ||
-				   context == grammarAccess.getPatternExpressionRule() ||
-				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
-				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
-				   context == grammarAccess.getTermExpressionRule() ||
-				   context == grammarAccess.getUnaryExprRule() ||
-				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_LExpression(context, (List) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1289,38 +1295,6 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 					return; 
 				}
 				else break;
-			case ErlangPackage.REF_FUN:
-				if(context == grammarAccess.getExpr100Rule() ||
-				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
-				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
-				   context == grammarAccess.getExpr150Rule() ||
-				   context == grammarAccess.getExpr150Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr160Rule() ||
-				   context == grammarAccess.getExpr160Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr200Rule() ||
-				   context == grammarAccess.getExpr200Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr300Rule() ||
-				   context == grammarAccess.getExpr300Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr400Rule() ||
-				   context == grammarAccess.getExpr400Access().getAddOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr500Rule() ||
-				   context == grammarAccess.getExpr500Access().getMultOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr700Rule() ||
-				   context == grammarAccess.getExpr700Access().getFunCallTargetAction_1_0_1() ||
-				   context == grammarAccess.getExpr700Access().getRecordExprRefAction_1_1_1() ||
-				   context == grammarAccess.getExpr800Rule() ||
-				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
-				   context == grammarAccess.getExprMaxRule() ||
-				   context == grammarAccess.getExpressionRule() ||
-				   context == grammarAccess.getFunExprRule() ||
-				   context == grammarAccess.getLExpressionRule() ||
-				   context == grammarAccess.getRefFunRule() ||
-				   context == grammarAccess.getUnaryExprRule() ||
-				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_RefFun(context, (RefFun) semanticObject); 
-					return; 
-				}
-				else break;
 			case ErlangPackage.REMOTE_TARGET:
 				if(context == grammarAccess.getExpr100Rule() ||
 				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
@@ -1407,12 +1381,6 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 				else if(context == grammarAccess.getType100Rule() ||
 				   context == grammarAccess.getType100Access().getTopTypeLeftOperandAction_1_0_0_0()) {
 					sequence_Type400(context, (TopType) semanticObject); 
-					return; 
-				}
-				else break;
-			case ErlangPackage.TOP_TYPES:
-				if(context == grammarAccess.getTopTypesRule()) {
-					sequence_TopTypes(context, (TopTypes) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1543,12 +1511,6 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 			case ErlangPackage.TYPE_SIG:
 				if(context == grammarAccess.getTypeSigRule()) {
 					sequence_TypeSig(context, (TypeSig) semanticObject); 
-					return; 
-				}
-				else break;
-			case ErlangPackage.TYPE_SIGS:
-				if(context == grammarAccess.getTypeSigsRule()) {
-					sequence_TypeSigs(context, (TypeSigs) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1737,6 +1699,25 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (tag='compile' options=Expression)
+	 */
+	protected void sequence_CompilerOptionsAttribute(EObject context, CompilerOptionsAttribute semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.COMPILER_OPTIONS_ATTRIBUTE__TAG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.COMPILER_OPTIONS_ATTRIBUTE__TAG));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.COMPILER_OPTIONS_ATTRIBUTE__OPTIONS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.COMPILER_OPTIONS_ATTRIBUTE__OPTIONS));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getCompilerOptionsAttributeAccess().getTagCompileKeyword_1_0(), semanticObject.getTag());
+		feeder.accept(grammarAccess.getCompilerOptionsAttributeAccess().getOptionsExpressionParserRuleCall_3_0(), semanticObject.getOptions());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (condition=IfdefAttribute ifForms+=Form* (hasElse?=ElseAttribute elseForms+=Form*)? end=EndifAttribute)
 	 */
 	protected void sequence_ConditionalFormBlock(EObject context, ConditionalFormBlock semanticObject) {
@@ -1800,6 +1781,15 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_1_0(), semanticObject.getTag());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (tag='export' (funs+=FunRef funs+=FunRef*)?)
+	 */
+	protected void sequence_ExportAttribute(EObject context, ExportAttribute semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1967,7 +1957,16 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (items=TopTypes? return=TopType)
+	 *     (module=NameVar? function=NameVar arity=IntMacro)
+	 */
+	protected void sequence_FunRef(EObject context, FunRef semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((items+=TopType items+=TopType*)? return=TopType)
 	 */
 	protected void sequence_FunType100(EObject context, FunTypeList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1976,7 +1975,7 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (args=TopTypes? return=TopType)
+	 *     ((args+=TopType args+=TopType*)? return=TopType)
 	 */
 	protected void sequence_FunType(EObject context, FunType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2039,6 +2038,15 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (tag='import' module=Name (funs+=FunRef funs+=FunRef*)?)
+	 */
+	protected void sequence_ImportAttribute(EObject context, ImportAttribute semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     ((tag='include' | tag='include_lib') value=[Module|STRING])
 	 */
 	protected void sequence_IncludeAttribute(EObject context, IncludeAttribute semanticObject) {
@@ -2084,6 +2092,15 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     {ErlList}
+	 */
+	protected void sequence_LExpression(EObject context, ErlList semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (line?=LineExpr expr=Expression)
 	 */
 	protected void sequence_LExpression(EObject context, Expression semanticObject) {
@@ -2106,15 +2123,6 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	 *     {LetExpr}
 	 */
 	protected void sequence_LExpression(EObject context, LetExpr semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {List}
-	 */
-	protected void sequence_LExpression(EObject context, List semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2148,15 +2156,6 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (elements+=Expression elements+=Expression* tail=Expression?)
-	 */
-	protected void sequence_List(EObject context, ErlList semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     value=[AbstractElement|AtomOrKw]
 	 */
 	protected void sequence_LiteralExpressionNoNumber(EObject context, Atom semanticObject) {
@@ -2168,7 +2167,7 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     value=CHAR
 	 */
-	protected void sequence_LiteralExpressionNoNumber(EObject context, Char semanticObject) {
+	protected void sequence_LiteralExpressionNoNumber(EObject context, ErlChar semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2204,7 +2203,7 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     value=FLOAT
 	 */
-	protected void sequence_LiteralExpression(EObject context, org.erlide.erlang.Float semanticObject) {
+	protected void sequence_LiteralExpression(EObject context, ErlFloat semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2213,7 +2212,7 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	 * Constraint:
 	 *     value=INTEGER
 	 */
-	protected void sequence_LiteralExpression(EObject context, org.erlide.erlang.Integer semanticObject) {
+	protected void sequence_LiteralExpression(EObject context, ErlInteger semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2332,16 +2331,10 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (module=LiteralExpressionNoNumber? function=LiteralExpressionNoNumber arity=IntMacro)
-	 */
-	protected void sequence_RefFun(EObject context, RefFun semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     ((tag='spec' | tag='callback') ((type=SpecFun signatures=TypeSigs) | (type=SpecFun signatures=TypeSigs)))
+	 *     (
+	 *         (tag='spec' | tag='callback') 
+	 *         ((ref=SpecFun signatures+=TypeSig signatures+=TypeSig*) | (ref=SpecFun signatures+=TypeSig signatures+=TypeSig*))
+	 *     )
 	 */
 	protected void sequence_SpecAttribute(EObject context, SpecAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2350,7 +2343,7 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (m=NameVar? f=NameVar a=IntMacro?)
+	 *     (module=NameVar? function=NameVar arity=IntMacro?)
 	 */
 	protected void sequence_SpecFun(EObject context, SpecFun semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2362,15 +2355,6 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	 *     (var=VARIABLE? type=Type100)
 	 */
 	protected void sequence_TopType(EObject context, TopType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (items+=TopType items+=TopType*)
-	 */
-	protected void sequence_TopTypes(EObject context, TopTypes semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2449,7 +2433,7 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((name=Name types=TopTypes) | (name=VARIABLE type=TopType))
+	 *     ((name=Name types+=TopType types+=TopType*) | (name=VARIABLE type=TopType))
 	 */
 	protected void sequence_TypeGuard(EObject context, TypeGuard semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2470,15 +2454,6 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	 *     (decl=FunType guards=TypeGuards?)
 	 */
 	protected void sequence_TypeSig(EObject context, TypeSig semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (items+=TypeSig items+=TypeSig*)
-	 */
-	protected void sequence_TypeSigs(EObject context, TypeSigs semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2512,7 +2487,7 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (m=[Module|Name]? name=Name args=TopTypes?)
+	 *     (m=[Module|Name]? name=Name (args+=TopType args+=TopType*)?)
 	 */
 	protected void sequence_Type(EObject context, RemoteType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2521,7 +2496,7 @@ public class AbstractErlangSemanticSequencer extends AbstractSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (types=TopTypes?)
+	 *     ((types+=TopType types+=TopType*)?)
 	 */
 	protected void sequence_Type(EObject context, TupleType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

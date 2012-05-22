@@ -158,6 +158,33 @@ public interface ErlangFactory extends EFactory
   RecordAttribute createRecordAttribute();
 
   /**
+   * Returns a new object of class '<em>Export Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Export Attribute</em>'.
+   * @generated
+   */
+  ExportAttribute createExportAttribute();
+
+  /**
+   * Returns a new object of class '<em>Import Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Import Attribute</em>'.
+   * @generated
+   */
+  ImportAttribute createImportAttribute();
+
+  /**
+   * Returns a new object of class '<em>Compiler Options Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Compiler Options Attribute</em>'.
+   * @generated
+   */
+  CompilerOptionsAttribute createCompilerOptionsAttribute();
+
+  /**
    * Returns a new object of class '<em>Abstract Type Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -365,13 +392,13 @@ public interface ErlangFactory extends EFactory
   FunExpr createFunExpr();
 
   /**
-   * Returns a new object of class '<em>Ref Fun</em>'.
+   * Returns a new object of class '<em>Fun Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Ref Fun</em>'.
+   * @return a new object of class '<em>Fun Ref</em>'.
    * @generated
    */
-  RefFun createRefFun();
+  FunRef createFunRef();
 
   /**
    * Returns a new object of class '<em>Try Expr</em>'.
@@ -473,15 +500,6 @@ public interface ErlangFactory extends EFactory
   SpecFun createSpecFun();
 
   /**
-   * Returns a new object of class '<em>Type Sigs</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Type Sigs</em>'.
-   * @generated
-   */
-  TypeSigs createTypeSigs();
-
-  /**
    * Returns a new object of class '<em>Type Sig</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -498,15 +516,6 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   FunType createFunType();
-
-  /**
-   * Returns a new object of class '<em>Top Types</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Top Types</em>'.
-   * @generated
-   */
-  TopTypes createTopTypes();
 
   /**
    * Returns a new object of class '<em>Type Guards</em>'.
@@ -743,13 +752,13 @@ public interface ErlangFactory extends EFactory
   Variable createVariable();
 
   /**
-   * Returns a new object of class '<em>Char</em>'.
+   * Returns a new object of class '<em>Erl Char</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Char</em>'.
+   * @return a new object of class '<em>Erl Char</em>'.
    * @generated
    */
-  Char createChar();
+  ErlChar createErlChar();
 
   /**
    * Returns a new object of class '<em>Macro Expr</em>'.
@@ -770,31 +779,22 @@ public interface ErlangFactory extends EFactory
   ErlString createErlString();
 
   /**
-   * Returns a new object of class '<em>Integer</em>'.
+   * Returns a new object of class '<em>Erl Integer</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Integer</em>'.
+   * @return a new object of class '<em>Erl Integer</em>'.
    * @generated
    */
-  Integer createInteger();
+  ErlInteger createErlInteger();
 
   /**
-   * Returns a new object of class '<em>Float</em>'.
+   * Returns a new object of class '<em>Erl Float</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Float</em>'.
+   * @return a new object of class '<em>Erl Float</em>'.
    * @generated
    */
-  Float createFloat();
-
-  /**
-   * Returns a new object of class '<em>List</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>List</em>'.
-   * @generated
-   */
-  List createList();
+  ErlFloat createErlFloat();
 
   /**
    * Returns a new object of class '<em>Unary Type</em>'.

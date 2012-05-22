@@ -5,7 +5,7 @@ generate erlang "http://www.erlide.org/Erlang"
 
 Module:
 	(forms += Form)*
-;
+;  
 
 Form:
 	  Attribute 
@@ -32,11 +32,14 @@ AbstractElement:
 Attribute:
 	  ModuleAttribute
 	| DefineAttribute
-	| UndefAttribute
+	| UndefAttribute 
 	| IncludeAttribute
 	| FileAttribute
 	| RecordAttribute
 	| AbstractTypeAttribute	
+	| ExportAttribute
+	| ImportAttribute
+	| CompilerOptionsAttribute
 	| CustomAttribute
 ;
 
@@ -83,7 +86,27 @@ ModuleAttribute:
 ;
 
 RecordAttribute:
-	'-' => tag='record' '(' name=NameVar ',' ('{' (fields+=RecordFieldDef (',' fields+=RecordFieldDef)*)? '}' | recordMacro=[DefineAttribute|Macro]) ')' FULL_STOP  
+	'-' => tag='record' '(' name=NameVar ',' 
+		('{' (fields+=RecordFieldDef (',' fields+=RecordFieldDef)*)? '}' | recordMacro=[DefineAttribute|Macro]) 
+	')' 
+	FULL_STOP  
+;
+
+ExportAttribute:
+	'-' => tag='export' 
+		'(' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
+	FULL_STOP
+;
+
+ImportAttribute:
+	'-' => tag='import' 
+		'(' module=Name ',' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
+	FULL_STOP
+;
+
+CompilerOptionsAttribute:
+	'-' => tag='compile' '(' options=Expression ')' 
+	FULL_STOP
 ;
 
 AbstractTypeAttribute:
@@ -94,8 +117,8 @@ AbstractTypeAttribute:
 SpecAttribute:
 	'-' => tag=('spec'|'callback') 
 	(
-  		      type=SpecFun signatures=TypeSigs
-  		| '(' type=SpecFun signatures=TypeSigs ')'
+  		      ref=SpecFun signatures+=TypeSig (';' signatures+=TypeSig)*
+  		| '(' ref=SpecFun signatures+=TypeSig (';' signatures+=TypeSig)* ')'
 	)
 	FULL_STOP
 ;
@@ -250,15 +273,15 @@ RecordField:
 LiteralExpressionNoNumber returns Expression:
 	  {Atom} value=[AbstractElement|AtomOrKw]
 	| {Variable} value=VARIABLE 
-	| {Char} value=CHAR 
+	| {ErlChar} value=CHAR 
 	| {MacroExpr} value=[DefineAttribute|Macro] 
 	| {ErlString} value=ErlString
 ;
 
 LiteralExpression returns Expression:
 	  LiteralExpressionNoNumber
-	| {Integer} value=INTEGER 
-	| {Float} value=FLOAT
+	| {ErlInteger} value=INTEGER 
+	| {ErlFloat} value=FLOAT
 ;
 
 PatternExpression returns Expression:
@@ -298,11 +321,11 @@ ReceiveExpr:
 ;
 
 FunExpr:
-	'fun' (RefFun | InlineFun)
+	'fun' (FunRef | InlineFun)
 ;
 
-RefFun:
-	(module=LiteralExpressionNoNumber ':')? function=LiteralExpressionNoNumber '/' arity=IntMacro
+FunRef:
+	(module=NameVar ':')? function=NameVar '/' arity=IntMacro
 ;
 
 InlineFun returns FunExpr:
@@ -326,7 +349,7 @@ TryClause:
 List returns ErlList:
 	'[' 
 	(
-	  {List} 
+	  {ErlList} 
 	  | elements+=Expression (',' elements+=Expression)* ('|' tail=Expression)? 
 	)
 	']'
@@ -421,7 +444,7 @@ KW:
 KW1:
 	'spec' | 'endif' | 'ifdef' | 'ifndef' | 'type' | 'opaque' | 'record' 
 	| 'undef' | 'module' | 'include' | 'include_lib' | 'define'  
-	| 'file' | 'callback' | 'else' 
+	| 'file' | 'callback' | 'else' | 'export' | 'import' | 'compile'
 ;
 
 RealKw:
@@ -431,15 +454,15 @@ RealKw:
 	| 'rem' | 'try' | 'when' | 'xor';
 
 terminal ATOM:
-	  AtomStarter InWordChar* 
-	| "'" ('\\' Escape | !('\\' | "'"))* ("'" | EOF)
+	  ATOM_STARTER IN_WORD_CHAR* 
+	| "'" ('\\' ESCAPE | !('\\' | "'"))* ("'" | EOF)
 ;
 
 terminal STRING:
-	'"' ('\\' Escape | !('\\' | '"'))* ('"' | EOF);
+	'"' ('\\' ESCAPE | !('\\' | '"'))* ('"' | EOF);
 
 terminal VARIABLE:
-	('A'..'Z' | '_') InWordChar*;
+	('A'..'Z' | '_') IN_WORD_CHAR*;
 
 terminal SL_COMMENT:
 	'%' !('\n' | '\r')* ('\r'? '\n' | EOF);
@@ -478,52 +501,46 @@ terminal EXT_INT:
 ;
 
 terminal CHAR:
-	'$' ('\\' Escape | .);
+	'$' ('\\' ESCAPE | .);
 
-terminal fragment InWordChar:
+terminal fragment IN_WORD_CHAR:
      'a'..'z' | 'A'..'Z' | '_' | '@' | '0'..'9' | 'ß'..'ö' | 'ø'..'ÿ' | 'À'..'Ö' | 'Ø'..'Þ'
 ;
 
-terminal fragment AtomStarter:
+terminal fragment ATOM_STARTER:
     'a'..'z' | 'ß'..'ö' | 'ø'..'ÿ'
 ;
 
-terminal fragment Escape:
+terminal fragment ESCAPE:
 	( 'b' | 'd' | 'e' | 'f' | 'n' | 'r' | 's' | 't' | 'v'
 		| ('0'..'7' ('0'..'7' '0'..'7'?)?)
-		| ('x'|'X') HexDigit HexDigit
-		| ('x'|'X') '{' HexDigit+ '}'
+		| ('x'|'X') HEX_DIGIT HEX_DIGIT
+		| ('x'|'X') '{' HEX_DIGIT+ '}'
 		| '^' ('a'..'z' | 'A'..'Z' | ']')
 		| .
 	)
 ;
 
-terminal fragment HexDigit:
+terminal fragment HEX_DIGIT:
 	'0'..'9' | 'A'..'F' | 'a'..'f'
 ;
 
 // Type language
 
 SpecFun:
-	(m=NameVar ':')? f=NameVar ('/' a=IntMacro '::')?;
-
-TypeSigs:
-	items+=TypeSig (';' items+=TypeSig)*;
+	(module=NameVar ':')? function=NameVar ('/' arity=IntMacro '::')?;
 
 TypeSig:
 	decl=FunType ('when' guards=TypeGuards)?;
 
 FunType:
-	'(' args=TopTypes? ')' '->' return=TopType;
-
-TopTypes:
-	items+=TopType (',' items+=TopType)*;
+	'(' (args+=TopType (',' args+=TopType)*)? ')' '->' return=TopType;
 
 TypeGuards:
 	items+=TypeGuard (',' items+=TypeGuard)*;
 
 TypeGuard:
-	name=Name '(' types=TopTypes ')' | name=VARIABLE '::' type=TopType;
+	name=Name '(' types+=TopType (',' types+=TopType)* ')' | name=VARIABLE '::' type=TopType;
 
 TopType:
 	(var=VARIABLE '::')? type=Type100;
@@ -547,11 +564,11 @@ Type500:
 
 Type:
 	'(' TopType ')' 
-	| {RemoteType} (m=[Module|Name] ':')? name=Name ('(' args=TopTypes? ')')? 
+	| {RemoteType} (m=[Module|Name] ':')? name=Name ('(' (args+=TopType (',' args+=TopType)*)? ')')? 
 	| name=VARIABLE 
 	| value=INTEGER 
 	| '[' {ListType} (type=TopType	(',' '...')?)? ']' 
-	| '{' {TupleType} types=TopTypes? '}' 
+	| '{' {TupleType} (types+=TopType (',' types+=TopType)*)? '}' 
 	| '#' {RecordType} rec=Name '{' (fields+=FieldType (',' fields+=FieldType)*)? '}' 
 	| BinaryType
 	| 'fun' {FunType} '(' type=FunType100? ')' 
@@ -573,7 +590,7 @@ BinUnitType:
 	name=VARIABLE ':' m=VARIABLE '*' type=Type;
 
 FunType100:
-	{FunTypeList} '(' ('...' | items=TopTypes)? ')' '->' return=TopType;
+	{FunTypeList} '(' ('...' | (items+=TopType (',' items+=TopType)*))? ')' '->' return=TopType;
 
 
 	

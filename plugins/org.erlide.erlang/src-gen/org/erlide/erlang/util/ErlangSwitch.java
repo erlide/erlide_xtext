@@ -7,97 +7,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.erlide.erlang.AbstractDefineAttribute;
-import org.erlide.erlang.AbstractElement;
-import org.erlide.erlang.AbstractTypeAttribute;
-import org.erlide.erlang.AddOp;
-import org.erlide.erlang.Atom;
-import org.erlide.erlang.Attribute;
-import org.erlide.erlang.BinBaseType;
-import org.erlide.erlang.BinOp;
-import org.erlide.erlang.BinUnitType;
-import org.erlide.erlang.Binary;
-import org.erlide.erlang.BinaryComprehension;
-import org.erlide.erlang.BinaryItem;
-import org.erlide.erlang.BinaryType;
-import org.erlide.erlang.BitType;
-import org.erlide.erlang.BlockExpr;
-import org.erlide.erlang.CaseExpr;
-import org.erlide.erlang.CatchExpr;
-import org.erlide.erlang.Char;
-import org.erlide.erlang.CondExpr;
-import org.erlide.erlang.ConditionalFormBlock;
-import org.erlide.erlang.CrClause;
-import org.erlide.erlang.CustomAttribute;
-import org.erlide.erlang.DefineAttribute;
-import org.erlide.erlang.ElseAttribute;
-import org.erlide.erlang.EndifAttribute;
-import org.erlide.erlang.ErlList;
-import org.erlide.erlang.ErlString;
-import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.Expression;
-import org.erlide.erlang.Expressions;
-import org.erlide.erlang.FieldType;
-import org.erlide.erlang.FileAttribute;
-import org.erlide.erlang.Form;
-import org.erlide.erlang.FunCall;
-import org.erlide.erlang.FunExpr;
-import org.erlide.erlang.FunType;
-import org.erlide.erlang.FunType100;
-import org.erlide.erlang.FunTypeList;
-import org.erlide.erlang.Function;
-import org.erlide.erlang.FunctionClause;
-import org.erlide.erlang.Guard;
-import org.erlide.erlang.IfClause;
-import org.erlide.erlang.IfExpr;
-import org.erlide.erlang.IfdefAttribute;
-import org.erlide.erlang.IncludeAttribute;
-import org.erlide.erlang.LCExpr;
-import org.erlide.erlang.LetExpr;
-import org.erlide.erlang.List;
-import org.erlide.erlang.ListComprehension;
-import org.erlide.erlang.ListType;
-import org.erlide.erlang.MacroCall;
-import org.erlide.erlang.MacroExpr;
-import org.erlide.erlang.MacroForm;
-import org.erlide.erlang.MatchExpr;
-import org.erlide.erlang.Module;
-import org.erlide.erlang.ModuleAttribute;
-import org.erlide.erlang.MultOp;
-import org.erlide.erlang.QueryExpr;
-import org.erlide.erlang.ReceiveExpr;
-import org.erlide.erlang.RecordAttribute;
-import org.erlide.erlang.RecordExpr;
-import org.erlide.erlang.RecordField;
-import org.erlide.erlang.RecordFieldDef;
-import org.erlide.erlang.RecordTuple;
-import org.erlide.erlang.RecordType;
-import org.erlide.erlang.RefFun;
-import org.erlide.erlang.RemoteTarget;
-import org.erlide.erlang.RemoteType;
-import org.erlide.erlang.SpecAttribute;
-import org.erlide.erlang.SpecFun;
-import org.erlide.erlang.TopType;
-import org.erlide.erlang.TopTypes;
-import org.erlide.erlang.TryClause;
-import org.erlide.erlang.TryExpr;
-import org.erlide.erlang.Tuple;
-import org.erlide.erlang.TupleType;
-import org.erlide.erlang.Type;
-import org.erlide.erlang.Type100;
-import org.erlide.erlang.Type200;
-import org.erlide.erlang.Type300;
-import org.erlide.erlang.Type400;
-import org.erlide.erlang.Type500;
-import org.erlide.erlang.TypeAttribute;
-import org.erlide.erlang.TypeGuard;
-import org.erlide.erlang.TypeGuards;
-import org.erlide.erlang.TypeSig;
-import org.erlide.erlang.TypeSigs;
-import org.erlide.erlang.UnaryExpr;
-import org.erlide.erlang.UnaryType;
-import org.erlide.erlang.UndefAttribute;
-import org.erlide.erlang.Variable;
+import org.erlide.erlang.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -293,6 +203,36 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ErlangPackage.EXPORT_ATTRIBUTE:
+      {
+        ExportAttribute exportAttribute = (ExportAttribute)theEObject;
+        T result = caseExportAttribute(exportAttribute);
+        if (result == null) result = caseAttribute(exportAttribute);
+        if (result == null) result = caseForm(exportAttribute);
+        if (result == null) result = caseAbstractElement(exportAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ErlangPackage.IMPORT_ATTRIBUTE:
+      {
+        ImportAttribute importAttribute = (ImportAttribute)theEObject;
+        T result = caseImportAttribute(importAttribute);
+        if (result == null) result = caseAttribute(importAttribute);
+        if (result == null) result = caseForm(importAttribute);
+        if (result == null) result = caseAbstractElement(importAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE:
+      {
+        CompilerOptionsAttribute compilerOptionsAttribute = (CompilerOptionsAttribute)theEObject;
+        T result = caseCompilerOptionsAttribute(compilerOptionsAttribute);
+        if (result == null) result = caseAttribute(compilerOptionsAttribute);
+        if (result == null) result = caseForm(compilerOptionsAttribute);
+        if (result == null) result = caseAbstractElement(compilerOptionsAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ErlangPackage.ABSTRACT_TYPE_ATTRIBUTE:
       {
         AbstractTypeAttribute abstractTypeAttribute = (AbstractTypeAttribute)theEObject;
@@ -479,12 +419,12 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.REF_FUN:
+      case ErlangPackage.FUN_REF:
       {
-        RefFun refFun = (RefFun)theEObject;
-        T result = caseRefFun(refFun);
-        if (result == null) result = caseFunExpr(refFun);
-        if (result == null) result = caseExpression(refFun);
+        FunRef funRef = (FunRef)theEObject;
+        T result = caseFunRef(funRef);
+        if (result == null) result = caseFunExpr(funRef);
+        if (result == null) result = caseExpression(funRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -571,13 +511,6 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.TYPE_SIGS:
-      {
-        TypeSigs typeSigs = (TypeSigs)theEObject;
-        T result = caseTypeSigs(typeSigs);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ErlangPackage.TYPE_SIG:
       {
         TypeSig typeSig = (TypeSig)theEObject;
@@ -595,13 +528,6 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = caseType300(funType);
         if (result == null) result = caseType200(funType);
         if (result == null) result = caseType100(funType);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.TOP_TYPES:
-      {
-        TopTypes topTypes = (TopTypes)theEObject;
-        T result = caseTopTypes(topTypes);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -827,11 +753,11 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.CHAR:
+      case ErlangPackage.ERL_CHAR:
       {
-        Char char_ = (Char)theEObject;
-        T result = caseChar(char_);
-        if (result == null) result = caseExpression(char_);
+        ErlChar erlChar = (ErlChar)theEObject;
+        T result = caseErlChar(erlChar);
+        if (result == null) result = caseExpression(erlChar);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -851,28 +777,19 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.INTEGER:
+      case ErlangPackage.ERL_INTEGER:
       {
-        org.erlide.erlang.Integer integer = (org.erlide.erlang.Integer)theEObject;
-        T result = caseInteger(integer);
-        if (result == null) result = caseExpression(integer);
+        ErlInteger erlInteger = (ErlInteger)theEObject;
+        T result = caseErlInteger(erlInteger);
+        if (result == null) result = caseExpression(erlInteger);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.FLOAT:
+      case ErlangPackage.ERL_FLOAT:
       {
-        org.erlide.erlang.Float float_ = (org.erlide.erlang.Float)theEObject;
-        T result = caseFloat(float_);
-        if (result == null) result = caseExpression(float_);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.LIST:
-      {
-        List list = (List)theEObject;
-        T result = caseList(list);
-        if (result == null) result = caseErlList(list);
-        if (result == null) result = caseExpression(list);
+        ErlFloat erlFloat = (ErlFloat)theEObject;
+        T result = caseErlFloat(erlFloat);
+        if (result == null) result = caseExpression(erlFloat);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1188,6 +1105,54 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseRecordAttribute(RecordAttribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Export Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Export Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExportAttribute(ExportAttribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Import Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Import Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseImportAttribute(ImportAttribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Compiler Options Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Compiler Options Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCompilerOptionsAttribute(CompilerOptionsAttribute object)
   {
     return null;
   }
@@ -1561,17 +1526,17 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Ref Fun</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Fun Ref</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Ref Fun</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Fun Ref</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRefFun(RefFun object)
+  public T caseFunRef(FunRef object)
   {
     return null;
   }
@@ -1753,22 +1718,6 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Type Sigs</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Type Sigs</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTypeSigs(TypeSigs object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Type Sig</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1796,22 +1745,6 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFunType(FunType object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Top Types</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Top Types</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTopTypes(TopTypes object)
   {
     return null;
   }
@@ -2233,17 +2166,17 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Char</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Erl Char</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Char</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Erl Char</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseChar(Char object)
+  public T caseErlChar(ErlChar object)
   {
     return null;
   }
@@ -2281,49 +2214,33 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Integer</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Erl Integer</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Integer</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Erl Integer</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseInteger(org.erlide.erlang.Integer object)
+  public T caseErlInteger(ErlInteger object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Float</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Erl Float</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Float</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Erl Float</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFloat(org.erlide.erlang.Float object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>List</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>List</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseList(List object)
+  public T caseErlFloat(ErlFloat object)
   {
     return null;
   }

@@ -283,7 +283,7 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            class="org.erlide.project.ui.ErlangPerspective"
+            class="org.erlide.ui.ErlangPerspective"
             icon="platform:/plugin/org.erlide.common.ui/icons/full/obj16/perspective.gif"
             id="org.erlide.project.ui.erlangPerspective"
             name="Erlang">

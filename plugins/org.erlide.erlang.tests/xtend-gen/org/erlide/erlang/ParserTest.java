@@ -236,7 +236,6 @@ public class ParserTest {
       int _size = body.size();
       Assert.assertEquals(1, _size);
       final Expression expr = IterableExtensions.<Expression>head(body);
-      InputOutput.<Expression>println(expr);
       Assert.assertTrue((expr instanceof Atom));
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);

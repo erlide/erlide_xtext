@@ -2,6 +2,7 @@
  */
 package org.erlide.erlang;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,30 +24,20 @@ package org.erlide.erlang;
 public interface FunTypeList extends FunType100
 {
   /**
-   * Returns the value of the '<em><b>Items</b></em>' containment reference.
+   * Returns the value of the '<em><b>Items</b></em>' containment reference list.
+   * The list contents are of type {@link org.erlide.erlang.TopType}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Items</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Items</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Items</em>' containment reference.
-   * @see #setItems(TopTypes)
+   * @return the value of the '<em>Items</em>' containment reference list.
    * @see org.erlide.erlang.ErlangPackage#getFunTypeList_Items()
    * @model containment="true"
    * @generated
    */
-  TopTypes getItems();
-
-  /**
-   * Sets the value of the '{@link org.erlide.erlang.FunTypeList#getItems <em>Items</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Items</em>' containment reference.
-   * @see #getItems()
-   * @generated
-   */
-  void setItems(TopTypes value);
+  EList<TopType> getItems();
 
   /**
    * Returns the value of the '<em><b>Return</b></em>' containment reference.

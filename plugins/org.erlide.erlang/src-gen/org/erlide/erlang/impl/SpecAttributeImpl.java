@@ -2,18 +2,25 @@
  */
 package org.erlide.erlang.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.SpecAttribute;
 import org.erlide.erlang.SpecFun;
-import org.erlide.erlang.TypeSigs;
+import org.erlide.erlang.TypeSig;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +29,7 @@ import org.erlide.erlang.TypeSigs;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.SpecAttributeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.SpecAttributeImpl#getRef <em>Ref</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.SpecAttributeImpl#getSignatures <em>Signatures</em>}</li>
  * </ul>
  * </p>
@@ -32,24 +39,24 @@ import org.erlide.erlang.TypeSigs;
 public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements SpecAttribute
 {
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected SpecFun type;
+  protected SpecFun ref;
 
   /**
-   * The cached value of the '{@link #getSignatures() <em>Signatures</em>}' containment reference.
+   * The cached value of the '{@link #getSignatures() <em>Signatures</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getSignatures()
    * @generated
    * @ordered
    */
-  protected TypeSigs signatures;
+  protected EList<TypeSig> signatures;
 
   /**
    * <!-- begin-user-doc -->
@@ -77,9 +84,9 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
    * <!-- end-user-doc -->
    * @generated
    */
-  public SpecFun getType()
+  public SpecFun getRef()
   {
-    return type;
+    return ref;
   }
 
   /**
@@ -87,13 +94,13 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(SpecFun newType, NotificationChain msgs)
+  public NotificationChain basicSetRef(SpecFun newRef, NotificationChain msgs)
   {
-    SpecFun oldType = type;
-    type = newType;
+    SpecFun oldRef = ref;
+    ref = newRef;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_ATTRIBUTE__TYPE, oldType, newType);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_ATTRIBUTE__REF, oldRef, newRef);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -104,20 +111,20 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(SpecFun newType)
+  public void setRef(SpecFun newRef)
   {
-    if (newType != type)
+    if (newRef != ref)
     {
       NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_ATTRIBUTE__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_ATTRIBUTE__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_ATTRIBUTE__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_ATTRIBUTE__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_ATTRIBUTE__TYPE, newType, newType));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_ATTRIBUTE__REF, newRef, newRef));
   }
 
   /**
@@ -125,47 +132,13 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
    * <!-- end-user-doc -->
    * @generated
    */
-  public TypeSigs getSignatures()
+  public EList<TypeSig> getSignatures()
   {
+    if (signatures == null)
+    {
+      signatures = new EObjectContainmentEList<TypeSig>(TypeSig.class, this, ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES);
+    }
     return signatures;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSignatures(TypeSigs newSignatures, NotificationChain msgs)
-  {
-    TypeSigs oldSignatures = signatures;
-    signatures = newSignatures;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES, oldSignatures, newSignatures);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSignatures(TypeSigs newSignatures)
-  {
-    if (newSignatures != signatures)
-    {
-      NotificationChain msgs = null;
-      if (signatures != null)
-        msgs = ((InternalEObject)signatures).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES, null, msgs);
-      if (newSignatures != null)
-        msgs = ((InternalEObject)newSignatures).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES, null, msgs);
-      msgs = basicSetSignatures(newSignatures, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES, newSignatures, newSignatures));
   }
 
   /**
@@ -178,10 +151,10 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_ATTRIBUTE__TYPE:
-        return basicSetType(null, msgs);
+      case ErlangPackage.SPEC_ATTRIBUTE__REF:
+        return basicSetRef(null, msgs);
       case ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES:
-        return basicSetSignatures(null, msgs);
+        return ((InternalEList<?>)getSignatures()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -196,8 +169,8 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_ATTRIBUTE__TYPE:
-        return getType();
+      case ErlangPackage.SPEC_ATTRIBUTE__REF:
+        return getRef();
       case ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES:
         return getSignatures();
     }
@@ -209,16 +182,18 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_ATTRIBUTE__TYPE:
-        setType((SpecFun)newValue);
+      case ErlangPackage.SPEC_ATTRIBUTE__REF:
+        setRef((SpecFun)newValue);
         return;
       case ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES:
-        setSignatures((TypeSigs)newValue);
+        getSignatures().clear();
+        getSignatures().addAll((Collection<? extends TypeSig>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -234,11 +209,11 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_ATTRIBUTE__TYPE:
-        setType((SpecFun)null);
+      case ErlangPackage.SPEC_ATTRIBUTE__REF:
+        setRef((SpecFun)null);
         return;
       case ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES:
-        setSignatures((TypeSigs)null);
+        getSignatures().clear();
         return;
     }
     super.eUnset(featureID);
@@ -254,10 +229,10 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_ATTRIBUTE__TYPE:
-        return type != null;
+      case ErlangPackage.SPEC_ATTRIBUTE__REF:
+        return ref != null;
       case ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES:
-        return signatures != null;
+        return signatures != null && !signatures.isEmpty();
     }
     return super.eIsSet(featureID);
   }

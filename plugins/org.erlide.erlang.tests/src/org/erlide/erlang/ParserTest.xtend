@@ -20,7 +20,7 @@ class ParserTest {
 	@Test
 	def void moduleAttributeTest() {
 		val model = parser.parse('''
-		-module(x).
+		    -module(x).
 		''')
 		val entity = model.forms.head as ModuleAttribute
 		assertEquals(entity.tag, "module")
@@ -31,7 +31,7 @@ class ParserTest {
 	@Test
 	def void moduleAttributeTest1() {
 		val model = parser.parse('''
-		x+1.
+		    x+1.
 		''')
 		print(model)
 	}
@@ -39,7 +39,7 @@ class ParserTest {
 	@Test
 	def void specAttributeTest() {
 		val model = parser.parse('''
-		-spec f()-> void().
+		    -spec f()-> void().
 		''')
 		val entity = model.forms.head as SpecAttribute
 		assertEquals(entity.tag, "spec")
@@ -50,7 +50,7 @@ class ParserTest {
 	@Test
 	def void typeAttributeTest() {
 		val model = parser.parse('''
-		-type myType() :: integer().
+		    -type myType() :: integer().
 		''')
 		val entity = model.forms.head as TypeAttribute
 		assertEquals(entity.tag, "type")
@@ -61,7 +61,7 @@ class ParserTest {
 	@Test
 	def void recordAttributeTest() {
 		val model = parser.parse('''
-		-record(x, {a, b}).
+		    -record(x, {a, b}).
 		''')
 		val entity = model.forms.head as RecordAttribute
 		assertEquals(entity.tag, "record")
@@ -72,7 +72,7 @@ class ParserTest {
 	@Test
 	def void defineAttributeTest_1() {
 		val model = parser.parse('''
-		-define(X, ofx, abb). 
+		    -define(X, ofx, abb). 
 		''')
 		val entity = model.forms.head as DefineAttribute
 		assertEquals(entity.tag, "define")
@@ -83,7 +83,7 @@ class ParserTest {
 	@Test
 	def void defineAttributeTest_2() {
 		val model = parser.parse('''
-		-define(X).
+		    -define(X).
 		''')
 		val entity = model.forms.head as DefineAttribute
 		assertEquals(entity.tag, "define")
@@ -95,7 +95,7 @@ class ParserTest {
 	@Test
 	def void genericAttributeTest_1() {
 		val model = parser.parse('''
-		-myTag([x, aa, bb]).
+		    -myTag([x, aa, bb]).
 		''')
 		val entity = model.forms.head as CustomAttribute
 		assertEquals(entity.tag, "myTag")
@@ -106,7 +106,7 @@ class ParserTest {
 	@Test
 	def void LineAttributeTest_1() {
 		val model = parser.parse('''
-		f() -> ?line ok, ok, ?line ok.
+		    f() -> ?line ok, ok, ?line ok.
 		''')
 		val fun = model.forms.head as Function
 		val body = fun.clauses.head.body
@@ -118,7 +118,7 @@ class ParserTest {
 	@Test
 	def void fullStopTest_1() {
 		val model = parser.parse('''
-		f() -> ok.% comment
+		    f() -> ok.% comment
 		''')
 		val fun = model.forms.head as Function
 		val body = fun.clauses.head.body
@@ -130,12 +130,12 @@ class ParserTest {
 	@Test
 	def void fullStopTest_2() {
 		val model = parser.parse('''
-		f() -> ok.''')
+		    f() -> ok.''')
 		val fun = model.forms.head as Function
 		val body = fun.clauses.head.body
 		assertEquals(1, body.size)
 		val expr = body.head
-		println(expr)
+//		println(expr)
 		assertTrue(expr instanceof Atom) 
 	}
 

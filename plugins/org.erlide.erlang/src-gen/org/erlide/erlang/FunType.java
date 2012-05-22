@@ -2,6 +2,7 @@
  */
 package org.erlide.erlang;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,30 +25,20 @@ package org.erlide.erlang;
 public interface FunType extends Type
 {
   /**
-   * Returns the value of the '<em><b>Args</b></em>' containment reference.
+   * Returns the value of the '<em><b>Args</b></em>' containment reference list.
+   * The list contents are of type {@link org.erlide.erlang.TopType}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Args</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Args</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Args</em>' containment reference.
-   * @see #setArgs(TopTypes)
+   * @return the value of the '<em>Args</em>' containment reference list.
    * @see org.erlide.erlang.ErlangPackage#getFunType_Args()
    * @model containment="true"
    * @generated
    */
-  TopTypes getArgs();
-
-  /**
-   * Sets the value of the '{@link org.erlide.erlang.FunType#getArgs <em>Args</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Args</em>' containment reference.
-   * @see #getArgs()
-   * @generated
-   */
-  void setArgs(TopTypes value);
+  EList<TopType> getArgs();
 
   /**
    * Returns the value of the '<em><b>Return</b></em>' containment reference.

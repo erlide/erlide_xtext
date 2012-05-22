@@ -10,98 +10,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.erlide.erlang.AbstractDefineAttribute;
-import org.erlide.erlang.AbstractElement;
-import org.erlide.erlang.AbstractTypeAttribute;
-import org.erlide.erlang.AddOp;
-import org.erlide.erlang.Atom;
-import org.erlide.erlang.Attribute;
-import org.erlide.erlang.BinBaseType;
-import org.erlide.erlang.BinOp;
-import org.erlide.erlang.BinUnitType;
-import org.erlide.erlang.Binary;
-import org.erlide.erlang.BinaryComprehension;
-import org.erlide.erlang.BinaryItem;
-import org.erlide.erlang.BinaryType;
-import org.erlide.erlang.BitType;
-import org.erlide.erlang.BlockExpr;
-import org.erlide.erlang.CaseExpr;
-import org.erlide.erlang.CatchExpr;
-import org.erlide.erlang.Char;
-import org.erlide.erlang.CondExpr;
-import org.erlide.erlang.ConditionalFormBlock;
-import org.erlide.erlang.CrClause;
-import org.erlide.erlang.CustomAttribute;
-import org.erlide.erlang.DefineAttribute;
-import org.erlide.erlang.ElseAttribute;
-import org.erlide.erlang.EndifAttribute;
-import org.erlide.erlang.ErlList;
-import org.erlide.erlang.ErlString;
-import org.erlide.erlang.ErlangFactory;
-import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.Expression;
-import org.erlide.erlang.Expressions;
-import org.erlide.erlang.FieldType;
-import org.erlide.erlang.FileAttribute;
-import org.erlide.erlang.Form;
-import org.erlide.erlang.FunCall;
-import org.erlide.erlang.FunExpr;
-import org.erlide.erlang.FunType;
-import org.erlide.erlang.FunType100;
-import org.erlide.erlang.FunTypeList;
-import org.erlide.erlang.Function;
-import org.erlide.erlang.FunctionClause;
-import org.erlide.erlang.Guard;
-import org.erlide.erlang.IfClause;
-import org.erlide.erlang.IfExpr;
-import org.erlide.erlang.IfdefAttribute;
-import org.erlide.erlang.IncludeAttribute;
-import org.erlide.erlang.LCExpr;
-import org.erlide.erlang.LetExpr;
-import org.erlide.erlang.List;
-import org.erlide.erlang.ListComprehension;
-import org.erlide.erlang.ListType;
-import org.erlide.erlang.MacroCall;
-import org.erlide.erlang.MacroExpr;
-import org.erlide.erlang.MacroForm;
-import org.erlide.erlang.MatchExpr;
-import org.erlide.erlang.Module;
-import org.erlide.erlang.ModuleAttribute;
-import org.erlide.erlang.MultOp;
-import org.erlide.erlang.QueryExpr;
-import org.erlide.erlang.ReceiveExpr;
-import org.erlide.erlang.RecordAttribute;
-import org.erlide.erlang.RecordExpr;
-import org.erlide.erlang.RecordField;
-import org.erlide.erlang.RecordFieldDef;
-import org.erlide.erlang.RecordTuple;
-import org.erlide.erlang.RecordType;
-import org.erlide.erlang.RefFun;
-import org.erlide.erlang.RemoteTarget;
-import org.erlide.erlang.RemoteType;
-import org.erlide.erlang.SpecAttribute;
-import org.erlide.erlang.SpecFun;
-import org.erlide.erlang.TopType;
-import org.erlide.erlang.TopTypes;
-import org.erlide.erlang.TryClause;
-import org.erlide.erlang.TryExpr;
-import org.erlide.erlang.Tuple;
-import org.erlide.erlang.TupleType;
-import org.erlide.erlang.Type;
-import org.erlide.erlang.Type100;
-import org.erlide.erlang.Type200;
-import org.erlide.erlang.Type300;
-import org.erlide.erlang.Type400;
-import org.erlide.erlang.Type500;
-import org.erlide.erlang.TypeAttribute;
-import org.erlide.erlang.TypeGuard;
-import org.erlide.erlang.TypeGuards;
-import org.erlide.erlang.TypeSig;
-import org.erlide.erlang.TypeSigs;
-import org.erlide.erlang.UnaryExpr;
-import org.erlide.erlang.UnaryType;
-import org.erlide.erlang.UndefAttribute;
-import org.erlide.erlang.Variable;
+import org.erlide.erlang.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -170,6 +79,9 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.FILE_ATTRIBUTE: return createFileAttribute();
       case ErlangPackage.MODULE_ATTRIBUTE: return createModuleAttribute();
       case ErlangPackage.RECORD_ATTRIBUTE: return createRecordAttribute();
+      case ErlangPackage.EXPORT_ATTRIBUTE: return createExportAttribute();
+      case ErlangPackage.IMPORT_ATTRIBUTE: return createImportAttribute();
+      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE: return createCompilerOptionsAttribute();
       case ErlangPackage.ABSTRACT_TYPE_ATTRIBUTE: return createAbstractTypeAttribute();
       case ErlangPackage.SPEC_ATTRIBUTE: return createSpecAttribute();
       case ErlangPackage.TYPE_ATTRIBUTE: return createTypeAttribute();
@@ -193,7 +105,7 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.CR_CLAUSE: return createCrClause();
       case ErlangPackage.RECEIVE_EXPR: return createReceiveExpr();
       case ErlangPackage.FUN_EXPR: return createFunExpr();
-      case ErlangPackage.REF_FUN: return createRefFun();
+      case ErlangPackage.FUN_REF: return createFunRef();
       case ErlangPackage.TRY_EXPR: return createTryExpr();
       case ErlangPackage.TRY_CLAUSE: return createTryClause();
       case ErlangPackage.ERL_LIST: return createErlList();
@@ -205,10 +117,8 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.BIT_TYPE: return createBitType();
       case ErlangPackage.LC_EXPR: return createLCExpr();
       case ErlangPackage.SPEC_FUN: return createSpecFun();
-      case ErlangPackage.TYPE_SIGS: return createTypeSigs();
       case ErlangPackage.TYPE_SIG: return createTypeSig();
       case ErlangPackage.FUN_TYPE: return createFunType();
-      case ErlangPackage.TOP_TYPES: return createTopTypes();
       case ErlangPackage.TYPE_GUARDS: return createTypeGuards();
       case ErlangPackage.TYPE_GUARD: return createTypeGuard();
       case ErlangPackage.TOP_TYPE: return createTopType();
@@ -235,12 +145,11 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.BLOCK_EXPR: return createBlockExpr();
       case ErlangPackage.ATOM: return createAtom();
       case ErlangPackage.VARIABLE: return createVariable();
-      case ErlangPackage.CHAR: return createChar();
+      case ErlangPackage.ERL_CHAR: return createErlChar();
       case ErlangPackage.MACRO_EXPR: return createMacroExpr();
       case ErlangPackage.ERL_STRING: return createErlString();
-      case ErlangPackage.INTEGER: return createInteger();
-      case ErlangPackage.FLOAT: return createFloat();
-      case ErlangPackage.LIST: return createList();
+      case ErlangPackage.ERL_INTEGER: return createErlInteger();
+      case ErlangPackage.ERL_FLOAT: return createErlFloat();
       case ErlangPackage.UNARY_TYPE: return createUnaryType();
       case ErlangPackage.REMOTE_TYPE: return createRemoteType();
       case ErlangPackage.LIST_TYPE: return createListType();
@@ -415,6 +324,39 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     RecordAttributeImpl recordAttribute = new RecordAttributeImpl();
     return recordAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExportAttribute createExportAttribute()
+  {
+    ExportAttributeImpl exportAttribute = new ExportAttributeImpl();
+    return exportAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ImportAttribute createImportAttribute()
+  {
+    ImportAttributeImpl importAttribute = new ImportAttributeImpl();
+    return importAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CompilerOptionsAttribute createCompilerOptionsAttribute()
+  {
+    CompilerOptionsAttributeImpl compilerOptionsAttribute = new CompilerOptionsAttributeImpl();
+    return compilerOptionsAttribute;
   }
 
   /**
@@ -675,10 +617,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RefFun createRefFun()
+  public FunRef createFunRef()
   {
-    RefFunImpl refFun = new RefFunImpl();
-    return refFun;
+    FunRefImpl funRef = new FunRefImpl();
+    return funRef;
   }
 
   /**
@@ -807,17 +749,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public TypeSigs createTypeSigs()
-  {
-    TypeSigsImpl typeSigs = new TypeSigsImpl();
-    return typeSigs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public TypeSig createTypeSig()
   {
     TypeSigImpl typeSig = new TypeSigImpl();
@@ -833,17 +764,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     FunTypeImpl funType = new FunTypeImpl();
     return funType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TopTypes createTopTypes()
-  {
-    TopTypesImpl topTypes = new TopTypesImpl();
-    return topTypes;
   }
 
   /**
@@ -1137,10 +1057,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Char createChar()
+  public ErlChar createErlChar()
   {
-    CharImpl char_ = new CharImpl();
-    return char_;
+    ErlCharImpl erlChar = new ErlCharImpl();
+    return erlChar;
   }
 
   /**
@@ -1170,10 +1090,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public org.erlide.erlang.Integer createInteger()
+  public ErlInteger createErlInteger()
   {
-    IntegerImpl integer = new IntegerImpl();
-    return integer;
+    ErlIntegerImpl erlInteger = new ErlIntegerImpl();
+    return erlInteger;
   }
 
   /**
@@ -1181,21 +1101,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public org.erlide.erlang.Float createFloat()
+  public ErlFloat createErlFloat()
   {
-    FloatImpl float_ = new FloatImpl();
-    return float_;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public List createList()
-  {
-    ListImpl list = new ListImpl();
-    return list;
+    ErlFloatImpl erlFloat = new ErlFloatImpl();
+    return erlFloat;
   }
 
   /**
