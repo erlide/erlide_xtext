@@ -1,4 +1,4 @@
-package ui;
+package org.erlide.ui;
 
 import static com.windowtester.runtime.swt.locator.eclipse.EclipseLocators.view;
 import static com.windowtester.runtime.swt.locator.eclipse.EclipseLocators.workbench;

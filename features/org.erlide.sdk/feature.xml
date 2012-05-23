@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.erlide.sdk"
-      label="Sdk"
-      version="1.0.0.qualifier">
+      label="Erlide Sdk"
+      version="0.101.0.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -15,6 +15,10 @@
    <license url="http://www.example.com/license">
       [Enter License Description here.]
    </license>
+
+   <includes
+         id="org.erlide.xtext"
+         version="0.0.0"/>
 
    <requires>
       <import plugin="org.erlide.erlang"/>

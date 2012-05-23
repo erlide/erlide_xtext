@@ -1,0 +1,6 @@
+setpref targetPlatformPath="${target.platform}"
+resolve "${projects.location}/features/org.erlide.buckminster/project.cquery"
+build -c -t
+perform "org.erlide.site#site.p2"
+emma -l "org.erlide.erlang.tests/erlang_tests.launch"  --flatXML --output "${buckminster.output.root}/test.results/junit_erlang_tests.xml" --xml "${buckminster.output.root}/test.results/coverage_erlang_tests.xml"
+emma -m -l "org.erlide.acceptance.tests/acceptance_tests.launch"  --flatXML --output "${buckminster.output.root}/test.results/junit_acceptance_tests.xml" --xml "${buckminster.output.root}/test.results/coverage_acceptance_tests.xml"

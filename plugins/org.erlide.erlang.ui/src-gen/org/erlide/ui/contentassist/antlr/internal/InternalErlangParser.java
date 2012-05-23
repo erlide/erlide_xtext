@@ -83701,9 +83701,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     static final String DFA128_specialS =
         "\56\uffff}>";
     static final String[] DFA128_transitionS = {
-            "\1\30\1\25\1\1\2\30\2\uffff\1\30\6\uffff\1\4\1\5\1\13\1\14\1"+
-            "\2\1\17\1\6\1\7\34\uffff\1\26\1\27\1\24\1\3\1\10\1\11\1\12\1"+
-            "\15\1\16\1\20\1\21\1\22\1\23\4\uffff\1\30\1\uffff\1\30\6\uffff"+
+            "\1\30\1\25\1\1\2\30\2\uffff\1\30\6\uffff\1\4\1\5\1\13\1\14"+
+            "\1\2\1\17\1\6\1\7\34\uffff\1\26\1\27\1\24\1\3\1\10\1\11\1\12"+
+            "\1\15\1\16\1\20\1\21\1\22\1\23\4\uffff\1\30\1\uffff\1\30\6\uffff"+
             "\1\30\20\uffff\1\30",
             "\1\30\10\uffff\2\30\2\uffff\1\31\5\uffff\1\30",
             "\1\30\10\uffff\2\30\2\uffff\1\31\5\uffff\1\30",
@@ -83901,65 +83901,65 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             "\1\1\13\uffff\1\4\1\5\1\13\1\14\1\2\1\17\1\6\1\7\34\uffff\1"+
             "\25\1\26\1\24\1\3\1\10\1\11\1\12\1\15\1\16\1\20\1\21\1\22\1"+
             "\23",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
             "\1\54\1\31\13\uffff\1\34\1\35\1\43\1\44\1\32\1\47\1\36\1\37"+
             "\37\uffff\1\33\1\40\1\41\1\42\1\45\1\46\1\50\1\51\1\52\1\53",
@@ -83967,65 +83967,65 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             "\37\uffff\1\33\1\40\1\41\1\42\1\45\1\46\1\50\1\51\1\52\1\53",
             "",
             "",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30"
     };
 

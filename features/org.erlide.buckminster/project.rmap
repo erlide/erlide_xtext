@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0" xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
+  <rm:property key="projects.location" value="${workspace.root}"/>
+  <rm:property key="xtext.unittest.p2.repository" value="http://xtext-utils.eclipselabs.org.codespot.com/git.distribution/releases/unittesting-0.9.x"/>
+
+  <rm:locator pattern="^org.erlide(?:\..+)?$" searchPathRef="project"/>
+  <rm:locator pattern="^org\.eclipselabs\.xtext\.utils\.unittesting.*" searchPathRef="xunittest"/>
+
+  <rm:searchPath name="project">
+    <rm:provider componentTypes="osgi.bundle,buckminster" readerType="local" mutable="false">
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="{0}/plugins/{1}">
+        <bc:propertyRef key="projects.location"/>
+        <bc:propertyRef key="buckminster.component"/>
+      </rm:uri>
+    </rm:provider>
+    <rm:provider componentTypes="eclipse.feature,buckminster" readerType="local" mutable="false">
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="{0}/features/{1}">
+        <bc:propertyRef key="projects.location"/>
+        <bc:propertyRef key="buckminster.component"/>
+      </rm:uri>
+    </rm:provider>
+  </rm:searchPath>
+  <rm:searchPath name="xunittest">
+    <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:uri format="{0}">
+        <bc:propertyRef key="xtext.unittest.p2.repository"/>
+      </rm:uri>
+    </rm:provider>
+  </rm:searchPath>
+
+
+  <rm:property key="windowtester.p2.repository" value="http://dl.google.com/eclipse/inst/windowtester/beta/3.7"/>
+  <rm:locator pattern="^com\.windowtester.*" searchPathRef="windowtester"/>
+  <rm:searchPath name="windowtester">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="{0}">
+        <bc:propertyRef key="windowtester.p2.repository"/>
+      </rm:uri>
+    </rm:provider>
+  </rm:searchPath>
+</rm:rmap>
