@@ -9,11 +9,13 @@ WORKSPACE=$1
 JAVA_HOME=$2
 BUCKMINSTER=$3
 TARGET=$4 
+erlang_R14=$5
+
 
 SITE_PRJ=org.erlide.releng
 SITE_PRJ_PATH=${WORKSPACE}/features/${SITE_PRJ}
 
-cp ${SITE_PRJ_PATH}/bucky_build ${SITE_PRJ_PATH}/_bucky_build
+sed -e "s%#{erlang_R14}%${erlang_R14}%g" ${SITE_PRJ_PATH}/erl.epf > ${SITE_PRJ_PATH}/_erl.epf
 sed -e "s%#{WORKSPACE}%${WORKSPACE}%g" -e "s%#{TARGET}%${TARGET}%g" -e "s%#{JAVA_HOME}%${JAVA_HOME}%g" -e "s%#{JAVA_BASE}%${JAVA_BASE}%g" -e "s%#{SITE_PRJ}%${SITE_PRJ}%g" -e "s%#{SITE_PRJ_PATH}%${SITE_PRJ_PATH}%g" ${SITE_PRJ_PATH}/bucky_build > ${SITE_PRJ_PATH}/_bucky_build
 
 cp ${SITE_PRJ_PATH}/buckminster.properties ${SITE_PRJ_PATH}/_buckminster.properties

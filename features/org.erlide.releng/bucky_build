@@ -2,6 +2,7 @@ setpref targetPlatformPath=#{TARGET}
 
 installJRE --location #{JAVA_HOME} --name erlide_jre
 
+importpreferences -F #{SITE_PRJ_PATH}/_erl.epf -S instance
 importpreferences -F #{WORKSPACE}/meta/config/java_compiler.epf -S instance
 
 import #{SITE_PRJ_PATH}/site.cquery
