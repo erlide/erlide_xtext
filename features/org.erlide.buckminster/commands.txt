@@ -1,4 +1,9 @@
 setpref targetPlatformPath="${target.platform}"
+
+installJRE --location "${java}" --name erlide_jre
+importpreferences -F "${WORKSPACE}/features/org.erlide.buckminster/erl.epf" -S instance
+importpreferences -F "${WORKSPACE}/meta/config/java_compiler.epf" -S instance
+
 resolve "${projects.location}/features/org.erlide.buckminster/project.cquery"
 build -c -t
 perform "org.erlide.site#site.p2"

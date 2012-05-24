@@ -21,6 +21,10 @@
       <discovery label="Xtext update site" url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/milestones"/>
    </url>
 
+   <includes
+         id="org.erlide.xtext.headless"
+         version="0.0.0"/>
+
    <requires>
       <import plugin="org.eclipse.core.runtime" version="3.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.7.101" match="greaterOrEqual"/>
@@ -60,34 +64,7 @@
    </requires>
 
    <plugin
-         id="org.erlide.common"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.erlide.erlang"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.erlide.erlang.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.erlide.libs"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.erlide.builder"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -101,21 +78,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.erlide.launching"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.erlide.launching.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.erlide.jinterface"
          download-size="0"
          install-size="0"
          version="0.0.0"

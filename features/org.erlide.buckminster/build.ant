@@ -26,21 +26,20 @@
 	</target>
 		
 	<target name="buckminster" depends="cleanup" description="build, assuming target platform is there">
+		<echo message="Updatesite output in: ${build.root}/buckminster.output/org.erlide.site_*-eclipse.feature/site.p2/"/>
 		<exec executable="${buckminster.home}/buckminster">
 			<arg line="-vm ${java}/bin/java" />
 			<arg value="-Dprojects.location=${projects.location}" />
 			<arg value="-Dbuckminster.output.root=${build.root}/buckminster.output" />
 			<arg value="-Dbuckminster.temp.root=${build.root}/buckminster.temp" />
 			<arg value="-Dtarget.platform=${target.platform}" />
-			<!--arg value="-Dhttp.proxyHost=www-proxy.ericsson.se" />
-			<arg value="-Dhttp.proxyPort=8080" /-->
+			<arg value="-Djava=${java}" />
+			<arg value="-DWORKSPACE=${WORKSPACE}" />
 			<arg line="-data '${build.root}/buckminster.workspace'" />
 			<arg line="-configuration '${build.root}/configuration'" />
 			<arg line="-S '${commands.file}'" />
 			<!--arg line="-L 'debug'" /-->
 		</exec>
-		<echo message=" "/>
-		<echo message="Updatesite output in: ${build.root}/buckminster.output/org.erlide.site_*-eclipse.feature/site.p2/"/>
 	</target>
 
 	<target name="target.platform" depends="" description="fetch target platform">
@@ -50,9 +49,7 @@
 			<arg value="-Dprojects.location=${projects.location}" />
 			<arg value="-Dbuckminster.output.root=${build.root}/buckminster.output" />
 			<arg value="-Dbuckminster.temp.root=${build.root}/buckminster.temp" />
-			<arg value="-Dtarget.platform=buildroot/${target.platform}" />
-			<!--arg value="-Dhttp.proxyHost=www-proxy.ericsson.se" />
-			<arg value="-Dhttp.proxyPort=8080" /-->
+			<arg value="-Dtarget.platform=${target.platform}" />
 			<arg line="-data '${build.root}/buckminster.workspace'" />
 			<arg line="-configuration '${build.root}/configuration'" />
 			<arg line="-S '${target.platform.file}'" />
