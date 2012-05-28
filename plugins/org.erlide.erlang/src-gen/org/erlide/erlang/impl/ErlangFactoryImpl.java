@@ -67,7 +67,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.MODULE: return createModule();
       case ErlangPackage.FORM: return createForm();
       case ErlangPackage.CONDITIONAL_FORM_BLOCK: return createConditionalFormBlock();
-      case ErlangPackage.ABSTRACT_ELEMENT: return createAbstractElement();
       case ErlangPackage.ATTRIBUTE: return createAttribute();
       case ErlangPackage.ABSTRACT_DEFINE_ATTRIBUTE: return createAbstractDefineAttribute();
       case ErlangPackage.DEFINE_ATTRIBUTE: return createDefineAttribute();
@@ -75,13 +74,15 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.IFDEF_ATTRIBUTE: return createIfdefAttribute();
       case ErlangPackage.ENDIF_ATTRIBUTE: return createEndifAttribute();
       case ErlangPackage.ELSE_ATTRIBUTE: return createElseAttribute();
+      case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE: return createAbstractIncludeAttribute();
       case ErlangPackage.INCLUDE_ATTRIBUTE: return createIncludeAttribute();
+      case ErlangPackage.INCLUDE_LIB_ATTRIBUTE: return createIncludeLibAttribute();
       case ErlangPackage.FILE_ATTRIBUTE: return createFileAttribute();
       case ErlangPackage.MODULE_ATTRIBUTE: return createModuleAttribute();
       case ErlangPackage.RECORD_ATTRIBUTE: return createRecordAttribute();
       case ErlangPackage.EXPORT_ATTRIBUTE: return createExportAttribute();
       case ErlangPackage.IMPORT_ATTRIBUTE: return createImportAttribute();
-      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE: return createCompilerOptionsAttribute();
+      case ErlangPackage.COMPILE_ATTRIBUTE: return createCompileAttribute();
       case ErlangPackage.ABSTRACT_TYPE_ATTRIBUTE: return createAbstractTypeAttribute();
       case ErlangPackage.SPEC_ATTRIBUTE: return createSpecAttribute();
       case ErlangPackage.TYPE_ATTRIBUTE: return createTypeAttribute();
@@ -110,9 +111,9 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.TRY_CLAUSE: return createTryClause();
       case ErlangPackage.ERL_LIST: return createErlList();
       case ErlangPackage.LIST_COMPREHENSION: return createListComprehension();
-      case ErlangPackage.TUPLE: return createTuple();
+      case ErlangPackage.ERL_TUPLE: return createErlTuple();
       case ErlangPackage.BINARY_COMPREHENSION: return createBinaryComprehension();
-      case ErlangPackage.BINARY: return createBinary();
+      case ErlangPackage.ERL_BINARY: return createErlBinary();
       case ErlangPackage.BINARY_ITEM: return createBinaryItem();
       case ErlangPackage.BIT_TYPE: return createBitType();
       case ErlangPackage.LC_EXPR: return createLCExpr();
@@ -199,17 +200,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public AbstractElement createAbstractElement()
-  {
-    AbstractElementImpl abstractElement = new AbstractElementImpl();
-    return abstractElement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Attribute createAttribute()
   {
     AttributeImpl attribute = new AttributeImpl();
@@ -287,10 +277,32 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public AbstractIncludeAttribute createAbstractIncludeAttribute()
+  {
+    AbstractIncludeAttributeImpl abstractIncludeAttribute = new AbstractIncludeAttributeImpl();
+    return abstractIncludeAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public IncludeAttribute createIncludeAttribute()
   {
     IncludeAttributeImpl includeAttribute = new IncludeAttributeImpl();
     return includeAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IncludeLibAttribute createIncludeLibAttribute()
+  {
+    IncludeLibAttributeImpl includeLibAttribute = new IncludeLibAttributeImpl();
+    return includeLibAttribute;
   }
 
   /**
@@ -353,10 +365,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public CompilerOptionsAttribute createCompilerOptionsAttribute()
+  public CompileAttribute createCompileAttribute()
   {
-    CompilerOptionsAttributeImpl compilerOptionsAttribute = new CompilerOptionsAttributeImpl();
-    return compilerOptionsAttribute;
+    CompileAttributeImpl compileAttribute = new CompileAttributeImpl();
+    return compileAttribute;
   }
 
   /**
@@ -672,10 +684,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Tuple createTuple()
+  public ErlTuple createErlTuple()
   {
-    TupleImpl tuple = new TupleImpl();
-    return tuple;
+    ErlTupleImpl erlTuple = new ErlTupleImpl();
+    return erlTuple;
   }
 
   /**
@@ -694,10 +706,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Binary createBinary()
+  public ErlBinary createErlBinary()
   {
-    BinaryImpl binary = new BinaryImpl();
-    return binary;
+    ErlBinaryImpl erlBinary = new ErlBinaryImpl();
+    return erlBinary;
   }
 
   /**

@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.erlide.erlang.AbstractDefineAttribute;
-import org.erlide.erlang.AbstractElement;
+import org.erlide.erlang.AbstractIncludeAttribute;
 import org.erlide.erlang.AbstractTypeAttribute;
 import org.erlide.erlang.AddOp;
 import org.erlide.erlang.Atom;
@@ -18,7 +18,6 @@ import org.erlide.erlang.Attribute;
 import org.erlide.erlang.BinBaseType;
 import org.erlide.erlang.BinOp;
 import org.erlide.erlang.BinUnitType;
-import org.erlide.erlang.Binary;
 import org.erlide.erlang.BinaryComprehension;
 import org.erlide.erlang.BinaryItem;
 import org.erlide.erlang.BinaryType;
@@ -26,7 +25,7 @@ import org.erlide.erlang.BitType;
 import org.erlide.erlang.BlockExpr;
 import org.erlide.erlang.CaseExpr;
 import org.erlide.erlang.CatchExpr;
-import org.erlide.erlang.CompilerOptionsAttribute;
+import org.erlide.erlang.CompileAttribute;
 import org.erlide.erlang.CondExpr;
 import org.erlide.erlang.ConditionalFormBlock;
 import org.erlide.erlang.CrClause;
@@ -34,11 +33,13 @@ import org.erlide.erlang.CustomAttribute;
 import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ElseAttribute;
 import org.erlide.erlang.EndifAttribute;
+import org.erlide.erlang.ErlBinary;
 import org.erlide.erlang.ErlChar;
 import org.erlide.erlang.ErlFloat;
 import org.erlide.erlang.ErlInteger;
 import org.erlide.erlang.ErlList;
 import org.erlide.erlang.ErlString;
+import org.erlide.erlang.ErlTuple;
 import org.erlide.erlang.ErlangFactory;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.ExportAttribute;
@@ -61,6 +62,7 @@ import org.erlide.erlang.IfExpr;
 import org.erlide.erlang.IfdefAttribute;
 import org.erlide.erlang.ImportAttribute;
 import org.erlide.erlang.IncludeAttribute;
+import org.erlide.erlang.IncludeLibAttribute;
 import org.erlide.erlang.LCExpr;
 import org.erlide.erlang.LetExpr;
 import org.erlide.erlang.ListComprehension;
@@ -87,7 +89,6 @@ import org.erlide.erlang.SpecFun;
 import org.erlide.erlang.TopType;
 import org.erlide.erlang.TryClause;
 import org.erlide.erlang.TryExpr;
-import org.erlide.erlang.Tuple;
 import org.erlide.erlang.TupleType;
 import org.erlide.erlang.Type;
 import org.erlide.erlang.Type100;
@@ -132,13 +133,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * @generated
    */
   private EClass conditionalFormBlockEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass abstractElementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -194,7 +188,21 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass abstractIncludeAttributeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass includeAttributeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass includeLibAttributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -236,7 +244,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass compilerOptionsAttributeEClass = null;
+  private EClass compileAttributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -439,7 +447,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass tupleEClass = null;
+  private EClass erlTupleEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -453,7 +461,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass binaryEClass = null;
+  private EClass erlBinaryEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -914,16 +922,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAbstractElement()
-  {
-    return abstractElementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getAttribute()
   {
     return attributeEClass;
@@ -1094,6 +1092,36 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getAbstractIncludeAttribute()
+  {
+    return abstractIncludeAttributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAbstractIncludeAttribute_Tag()
+  {
+    return (EAttribute)abstractIncludeAttributeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAbstractIncludeAttribute_Value()
+  {
+    return (EAttribute)abstractIncludeAttributeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getIncludeAttribute()
   {
     return includeAttributeEClass;
@@ -1104,19 +1132,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getIncludeAttribute_Tag()
+  public EClass getIncludeLibAttribute()
   {
-    return (EAttribute)includeAttributeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getIncludeAttribute_Value()
-  {
-    return (EReference)includeAttributeEClass.getEStructuralFeatures().get(1);
+    return includeLibAttributeEClass;
   }
 
   /**
@@ -1314,9 +1332,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getCompilerOptionsAttribute()
+  public EClass getCompileAttribute()
   {
-    return compilerOptionsAttributeEClass;
+    return compileAttributeEClass;
   }
 
   /**
@@ -1324,9 +1342,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCompilerOptionsAttribute_Tag()
+  public EAttribute getCompileAttribute_Tag()
   {
-    return (EAttribute)compilerOptionsAttributeEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)compileAttributeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1334,9 +1352,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCompilerOptionsAttribute_Options()
+  public EReference getCompileAttribute_Options()
   {
-    return (EReference)compilerOptionsAttributeEClass.getEStructuralFeatures().get(1);
+    return (EReference)compileAttributeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2204,9 +2222,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getTuple()
+  public EClass getErlTuple()
   {
-    return tupleEClass;
+    return erlTupleEClass;
   }
 
   /**
@@ -2214,9 +2232,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTuple_Elements()
+  public EReference getErlTuple_Elements()
   {
-    return (EReference)tupleEClass.getEStructuralFeatures().get(0);
+    return (EReference)erlTupleEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2244,9 +2262,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getBinary()
+  public EClass getErlBinary()
   {
-    return binaryEClass;
+    return erlBinaryEClass;
   }
 
   /**
@@ -2254,9 +2272,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBinary_Elements()
+  public EReference getErlBinary_Elements()
   {
-    return (EReference)binaryEClass.getEStructuralFeatures().get(0);
+    return (EReference)erlBinaryEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3471,8 +3489,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(conditionalFormBlockEClass, CONDITIONAL_FORM_BLOCK__ELSE_FORMS);
     createEReference(conditionalFormBlockEClass, CONDITIONAL_FORM_BLOCK__END);
 
-    abstractElementEClass = createEClass(ABSTRACT_ELEMENT);
-
     attributeEClass = createEClass(ATTRIBUTE);
 
     abstractDefineAttributeEClass = createEClass(ABSTRACT_DEFINE_ATTRIBUTE);
@@ -3497,9 +3513,13 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     elseAttributeEClass = createEClass(ELSE_ATTRIBUTE);
     createEAttribute(elseAttributeEClass, ELSE_ATTRIBUTE__TAG);
 
+    abstractIncludeAttributeEClass = createEClass(ABSTRACT_INCLUDE_ATTRIBUTE);
+    createEAttribute(abstractIncludeAttributeEClass, ABSTRACT_INCLUDE_ATTRIBUTE__TAG);
+    createEAttribute(abstractIncludeAttributeEClass, ABSTRACT_INCLUDE_ATTRIBUTE__VALUE);
+
     includeAttributeEClass = createEClass(INCLUDE_ATTRIBUTE);
-    createEAttribute(includeAttributeEClass, INCLUDE_ATTRIBUTE__TAG);
-    createEReference(includeAttributeEClass, INCLUDE_ATTRIBUTE__VALUE);
+
+    includeLibAttributeEClass = createEClass(INCLUDE_LIB_ATTRIBUTE);
 
     fileAttributeEClass = createEClass(FILE_ATTRIBUTE);
     createEAttribute(fileAttributeEClass, FILE_ATTRIBUTE__TAG);
@@ -3525,9 +3545,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEAttribute(importAttributeEClass, IMPORT_ATTRIBUTE__MODULE);
     createEReference(importAttributeEClass, IMPORT_ATTRIBUTE__FUNS);
 
-    compilerOptionsAttributeEClass = createEClass(COMPILER_OPTIONS_ATTRIBUTE);
-    createEAttribute(compilerOptionsAttributeEClass, COMPILER_OPTIONS_ATTRIBUTE__TAG);
-    createEReference(compilerOptionsAttributeEClass, COMPILER_OPTIONS_ATTRIBUTE__OPTIONS);
+    compileAttributeEClass = createEClass(COMPILE_ATTRIBUTE);
+    createEAttribute(compileAttributeEClass, COMPILE_ATTRIBUTE__TAG);
+    createEReference(compileAttributeEClass, COMPILE_ATTRIBUTE__OPTIONS);
 
     abstractTypeAttributeEClass = createEClass(ABSTRACT_TYPE_ATTRIBUTE);
     createEAttribute(abstractTypeAttributeEClass, ABSTRACT_TYPE_ATTRIBUTE__TAG);
@@ -3643,14 +3663,14 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(listComprehensionEClass, LIST_COMPREHENSION__ELEMENT);
     createEReference(listComprehensionEClass, LIST_COMPREHENSION__GENERATORS);
 
-    tupleEClass = createEClass(TUPLE);
-    createEReference(tupleEClass, TUPLE__ELEMENTS);
+    erlTupleEClass = createEClass(ERL_TUPLE);
+    createEReference(erlTupleEClass, ERL_TUPLE__ELEMENTS);
 
     binaryComprehensionEClass = createEClass(BINARY_COMPREHENSION);
     createEReference(binaryComprehensionEClass, BINARY_COMPREHENSION__GENERATORS);
 
-    binaryEClass = createEClass(BINARY);
-    createEReference(binaryEClass, BINARY__ELEMENTS);
+    erlBinaryEClass = createEClass(ERL_BINARY);
+    createEReference(erlBinaryEClass, ERL_BINARY__ELEMENTS);
 
     binaryItemEClass = createEClass(BINARY_ITEM);
     createEReference(binaryItemEClass, BINARY_ITEM__EXPR);
@@ -3842,21 +3862,21 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    moduleEClass.getESuperTypes().add(this.getAbstractElement());
-    formEClass.getESuperTypes().add(this.getAbstractElement());
     conditionalFormBlockEClass.getESuperTypes().add(this.getForm());
     attributeEClass.getESuperTypes().add(this.getForm());
     defineAttributeEClass.getESuperTypes().add(this.getAttribute());
     defineAttributeEClass.getESuperTypes().add(this.getAbstractDefineAttribute());
     undefAttributeEClass.getESuperTypes().add(this.getAttribute());
     undefAttributeEClass.getESuperTypes().add(this.getAbstractDefineAttribute());
-    includeAttributeEClass.getESuperTypes().add(this.getAttribute());
+    abstractIncludeAttributeEClass.getESuperTypes().add(this.getAttribute());
+    includeAttributeEClass.getESuperTypes().add(this.getAbstractIncludeAttribute());
+    includeLibAttributeEClass.getESuperTypes().add(this.getAbstractIncludeAttribute());
     fileAttributeEClass.getESuperTypes().add(this.getAttribute());
     moduleAttributeEClass.getESuperTypes().add(this.getAttribute());
     recordAttributeEClass.getESuperTypes().add(this.getAttribute());
     exportAttributeEClass.getESuperTypes().add(this.getAttribute());
     importAttributeEClass.getESuperTypes().add(this.getAttribute());
-    compilerOptionsAttributeEClass.getESuperTypes().add(this.getAttribute());
+    compileAttributeEClass.getESuperTypes().add(this.getAttribute());
     abstractTypeAttributeEClass.getESuperTypes().add(this.getAttribute());
     specAttributeEClass.getESuperTypes().add(this.getAbstractTypeAttribute());
     typeAttributeEClass.getESuperTypes().add(this.getAbstractTypeAttribute());
@@ -3875,9 +3895,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     tryExprEClass.getESuperTypes().add(this.getExpression());
     erlListEClass.getESuperTypes().add(this.getExpression());
     listComprehensionEClass.getESuperTypes().add(this.getExpression());
-    tupleEClass.getESuperTypes().add(this.getExpression());
+    erlTupleEClass.getESuperTypes().add(this.getExpression());
     binaryComprehensionEClass.getESuperTypes().add(this.getExpression());
-    binaryEClass.getESuperTypes().add(this.getExpression());
+    erlBinaryEClass.getESuperTypes().add(this.getExpression());
     funTypeEClass.getESuperTypes().add(this.getType());
     topTypeEClass.getESuperTypes().add(this.getType100());
     topTypeEClass.getESuperTypes().add(this.getType200());
@@ -3927,8 +3947,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getConditionalFormBlock_ElseForms(), this.getForm(), null, "elseForms", null, 0, -1, ConditionalFormBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConditionalFormBlock_End(), this.getEndifAttribute(), null, "end", null, 0, 1, ConditionalFormBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(abstractElementEClass, AbstractElement.class, "AbstractElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(abstractDefineAttributeEClass, AbstractDefineAttribute.class, "AbstractDefineAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3953,9 +3971,13 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEClass(elseAttributeEClass, ElseAttribute.class, "ElseAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getElseAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, ElseAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(abstractIncludeAttributeEClass, AbstractIncludeAttribute.class, "AbstractIncludeAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAbstractIncludeAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, AbstractIncludeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAbstractIncludeAttribute_Value(), ecorePackage.getEString(), "value", null, 0, 1, AbstractIncludeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(includeAttributeEClass, IncludeAttribute.class, "IncludeAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getIncludeAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, IncludeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getIncludeAttribute_Value(), this.getModule(), null, "value", null, 0, 1, IncludeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(includeLibAttributeEClass, IncludeLibAttribute.class, "IncludeLibAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(fileAttributeEClass, FileAttribute.class, "FileAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFileAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, FileAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3981,9 +4003,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEAttribute(getImportAttribute_Module(), ecorePackage.getEString(), "module", null, 0, 1, ImportAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getImportAttribute_Funs(), this.getFunRef(), null, "funs", null, 0, -1, ImportAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(compilerOptionsAttributeEClass, CompilerOptionsAttribute.class, "CompilerOptionsAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCompilerOptionsAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, CompilerOptionsAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCompilerOptionsAttribute_Options(), this.getExpression(), null, "options", null, 0, 1, CompilerOptionsAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(compileAttributeEClass, CompileAttribute.class, "CompileAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCompileAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, CompileAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCompileAttribute_Options(), this.getExpression(), null, "options", null, 0, 1, CompileAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(abstractTypeAttributeEClass, AbstractTypeAttribute.class, "AbstractTypeAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAbstractTypeAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, AbstractTypeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4099,14 +4121,14 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getListComprehension_Element(), this.getExpression(), null, "element", null, 0, 1, ListComprehension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getListComprehension_Generators(), this.getLCExpr(), null, "generators", null, 0, -1, ListComprehension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(tupleEClass, Tuple.class, "Tuple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTuple_Elements(), this.getExpression(), null, "elements", null, 0, -1, Tuple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(erlTupleEClass, ErlTuple.class, "ErlTuple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getErlTuple_Elements(), this.getExpression(), null, "elements", null, 0, -1, ErlTuple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(binaryComprehensionEClass, BinaryComprehension.class, "BinaryComprehension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBinaryComprehension_Generators(), this.getLCExpr(), null, "generators", null, 0, -1, BinaryComprehension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(binaryEClass, Binary.class, "Binary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBinary_Elements(), this.getBinaryItem(), null, "elements", null, 0, -1, Binary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(erlBinaryEClass, ErlBinary.class, "ErlBinary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getErlBinary_Elements(), this.getBinaryItem(), null, "elements", null, 0, -1, ErlBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(binaryItemEClass, BinaryItem.class, "BinaryItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBinaryItem_Expr(), this.getExpression(), null, "expr", null, 0, 1, BinaryItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4226,7 +4248,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getBlockExpr_Body(), this.getExpression(), null, "body", null, 0, -1, BlockExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(atomEClass, Atom.class, "Atom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAtom_Value(), this.getAbstractElement(), null, "value", null, 0, 1, Atom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAtom_Value(), this.getForm(), null, "value", null, 0, 1, Atom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariable_Value(), ecorePackage.getEString(), "value", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

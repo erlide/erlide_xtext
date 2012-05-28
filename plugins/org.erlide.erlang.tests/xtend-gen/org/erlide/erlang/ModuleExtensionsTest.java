@@ -7,10 +7,13 @@ import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.ErlangInjectorProvider;
+import org.erlide.erlang.Atom;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.CustomAttribute;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.FunRef;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.IsFunRefMatcher;
@@ -273,6 +276,190 @@ public class ModuleExtensionsTest {
       Matcher<Function> _nullValue = Matchers.<Function>nullValue();
       Matcher<Function> _is = Matchers.<Function>is(_nullValue);
       MatcherAssert.<Function>assertThat(bar1, _is);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void getIncludes() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("-module(x).");
+      _builder.newLine();
+      _builder.append("-include(\"bar.hrl\").");
+      _builder.newLine();
+      final Module module = this.parser.parse(_builder);
+      final Collection<String> bar1 = ModelExtensions.getIncludes(module);
+      String _head = IterableExtensions.<String>head(bar1);
+      Matcher<? super String> _is = Matchers.<String>is("\"bar.hrl\"");
+      MatcherAssert.<String>assertThat(_head, _is);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void getIncludeLibs() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("-module(x).");
+      _builder.newLine();
+      _builder.append("-include_lib(\"foo.hrl\").");
+      _builder.newLine();
+      final Module module = this.parser.parse(_builder);
+      final Collection<String> bar1 = ModelExtensions.getIncludeLibs(module);
+      String _head = IterableExtensions.<String>head(bar1);
+      Matcher<? super String> _is = Matchers.<String>is("\"foo.hrl\"");
+      MatcherAssert.<String>assertThat(_head, _is);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void exportsAll() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("-module(x).");
+      _builder.newLine();
+      _builder.append("-compile(export_all).");
+      _builder.newLine();
+      final Module module = this.parser.parse(_builder);
+      final boolean bar1 = ModelExtensions.exportsAll(module);
+      Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(true));
+      MatcherAssert.<Boolean>assertThat(Boolean.valueOf(bar1), _is);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void exportsAll_no() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("-module(x).");
+      _builder.newLine();
+      final Module module = this.parser.parse(_builder);
+      final boolean bar1 = ModelExtensions.exportsAll(module);
+      Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(false));
+      MatcherAssert.<Boolean>assertThat(Boolean.valueOf(bar1), _is);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void exportsAll_2() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("-module(x).");
+      _builder.newLine();
+      _builder.append("-compile([debug_info, export_all]).");
+      _builder.newLine();
+      final Module module = this.parser.parse(_builder);
+      final boolean bar1 = ModelExtensions.exportsAll(module);
+      Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(true));
+      MatcherAssert.<Boolean>assertThat(Boolean.valueOf(bar1), _is);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void getParseTransform() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("-module(x).");
+      _builder.newLine();
+      _builder.append("-compile({parse_transform, x}).");
+      _builder.newLine();
+      final Module module = this.parser.parse(_builder);
+      final Collection<Atom> bar1 = ModelExtensions.getParseTransforms(module);
+      Atom _head = IterableExtensions.<Atom>head(bar1);
+      String _sourceText = ModelExtensions.getSourceText(_head);
+      Matcher<? super String> _is = Matchers.<String>is("x");
+      MatcherAssert.<String>assertThat(_sourceText, _is);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void getParseTransform_2() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("-module(x).");
+      _builder.newLine();
+      _builder.append("-compile([debug_info, {parse_transform, x}]).");
+      _builder.newLine();
+      final Module module = this.parser.parse(_builder);
+      final Collection<Atom> bar1 = ModelExtensions.getParseTransforms(module);
+      int _size = bar1.size();
+      Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(1));
+      MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
+      Atom _head = IterableExtensions.<Atom>head(bar1);
+      String _sourceText = ModelExtensions.getSourceText(_head);
+      Matcher<? super String> _is_1 = Matchers.<String>is("x");
+      MatcherAssert.<String>assertThat(_sourceText, _is_1);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void getParseTransform_3() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("-module(x).");
+      _builder.newLine();
+      _builder.append("-compile([{parse_transform, x}]).");
+      _builder.newLine();
+      _builder.append("-compile({parse_transform, y}).");
+      _builder.newLine();
+      final Module module = this.parser.parse(_builder);
+      final Collection<Atom> bar1 = ModelExtensions.getParseTransforms(module);
+      int _size = bar1.size();
+      Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
+      MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
+      final Function1<Atom,String> _function = new Function1<Atom,String>() {
+          public String apply(final Atom it) {
+            String _sourceText = ModelExtensions.getSourceText(it);
+            return _sourceText;
+          }
+        };
+      Iterable<String> _map = IterableExtensions.<Atom, String>map(bar1, _function);
+      Matcher<Iterable<? super String>> _hasItem = Matchers.<String>hasItem("x");
+      MatcherAssert.<Iterable<String>>assertThat(_map, _hasItem);
+      final Function1<Atom,String> _function_1 = new Function1<Atom,String>() {
+          public String apply(final Atom it) {
+            String _sourceText = ModelExtensions.getSourceText(it);
+            return _sourceText;
+          }
+        };
+      Iterable<String> _map_1 = IterableExtensions.<Atom, String>map(bar1, _function_1);
+      Matcher<Iterable<? super String>> _hasItem_1 = Matchers.<String>hasItem("y");
+      MatcherAssert.<Iterable<String>>assertThat(_map_1, _hasItem_1);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void getCompileOptions() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("-module(x).");
+      _builder.newLine();
+      _builder.append("-compile([debug_info, {parse_transform, x}]).");
+      _builder.newLine();
+      _builder.append("-compile([debug_info, {parse_transform, x}]).");
+      _builder.newLine();
+      final Module module = this.parser.parse(_builder);
+      final Collection<Expression> opts = ModelExtensions.getCompileOptions(module);
+      int _size = opts.size();
+      Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
+      MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }

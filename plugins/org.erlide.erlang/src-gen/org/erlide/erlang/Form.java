@@ -2,6 +2,7 @@
  */
 package org.erlide.erlang;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +14,6 @@ package org.erlide.erlang;
  * @model
  * @generated
  */
-public interface Form extends AbstractElement
+public interface Form extends EObject
 {
 } // Form

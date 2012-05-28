@@ -14,24 +14,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.erlide.erlang.Binary;
 import org.erlide.erlang.BinaryItem;
+import org.erlide.erlang.ErlBinary;
 import org.erlide.erlang.ErlangPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Binary</b></em>'.
+ * An implementation of the model object '<em><b>Erl Binary</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.BinaryImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ErlBinaryImpl#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class BinaryImpl extends ExpressionImpl implements Binary
+public class ErlBinaryImpl extends ExpressionImpl implements ErlBinary
 {
   /**
    * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
@@ -48,7 +48,7 @@ public class BinaryImpl extends ExpressionImpl implements Binary
    * <!-- end-user-doc -->
    * @generated
    */
-  protected BinaryImpl()
+  protected ErlBinaryImpl()
   {
     super();
   }
@@ -61,7 +61,7 @@ public class BinaryImpl extends ExpressionImpl implements Binary
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.BINARY;
+    return ErlangPackage.Literals.ERL_BINARY;
   }
 
   /**
@@ -73,7 +73,7 @@ public class BinaryImpl extends ExpressionImpl implements Binary
   {
     if (elements == null)
     {
-      elements = new EObjectContainmentEList<BinaryItem>(BinaryItem.class, this, ErlangPackage.BINARY__ELEMENTS);
+      elements = new EObjectContainmentEList<BinaryItem>(BinaryItem.class, this, ErlangPackage.ERL_BINARY__ELEMENTS);
     }
     return elements;
   }
@@ -88,7 +88,7 @@ public class BinaryImpl extends ExpressionImpl implements Binary
   {
     switch (featureID)
     {
-      case ErlangPackage.BINARY__ELEMENTS:
+      case ErlangPackage.ERL_BINARY__ELEMENTS:
         return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -104,7 +104,7 @@ public class BinaryImpl extends ExpressionImpl implements Binary
   {
     switch (featureID)
     {
-      case ErlangPackage.BINARY__ELEMENTS:
+      case ErlangPackage.ERL_BINARY__ELEMENTS:
         return getElements();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -121,7 +121,7 @@ public class BinaryImpl extends ExpressionImpl implements Binary
   {
     switch (featureID)
     {
-      case ErlangPackage.BINARY__ELEMENTS:
+      case ErlangPackage.ERL_BINARY__ELEMENTS:
         getElements().clear();
         getElements().addAll((Collection<? extends BinaryItem>)newValue);
         return;
@@ -139,7 +139,7 @@ public class BinaryImpl extends ExpressionImpl implements Binary
   {
     switch (featureID)
     {
-      case ErlangPackage.BINARY__ELEMENTS:
+      case ErlangPackage.ERL_BINARY__ELEMENTS:
         getElements().clear();
         return;
     }
@@ -156,10 +156,10 @@ public class BinaryImpl extends ExpressionImpl implements Binary
   {
     switch (featureID)
     {
-      case ErlangPackage.BINARY__ELEMENTS:
+      case ErlangPackage.ERL_BINARY__ELEMENTS:
         return elements != null && !elements.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //BinaryImpl
+} //ErlBinaryImpl

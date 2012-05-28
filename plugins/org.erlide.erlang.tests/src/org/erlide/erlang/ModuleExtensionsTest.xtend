@@ -8,9 +8,9 @@ import org.erlide.ErlangInjectorProvider
 import org.junit.Test
 import org.junit.runner.RunWith
 
+import static org.erlide.erlang.IsFunRefMatcher.*
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
-import static org.erlide.erlang.IsFunRefMatcher.*
 
 import static extension org.erlide.erlang.ModelExtensions.*
 
@@ -152,4 +152,187 @@ class ModuleExtensionsTest {
         assertThat(bar1, is(nullValue))
     }
  
+   @Test
+    def void getIncludes() {
+        val module = parser.parse('''
+            -module(x).
+            -include("bar.hrl").
+        ''')
+
+        val bar1 = module.includes
+        assertThat(bar1.head, is("\"bar.hrl\""))
+    }
+ 
+   @Test
+    def void getIncludeLibs() {
+        val module = parser.parse('''
+            -module(x).
+            -include_lib("foo.hrl").
+        ''')
+
+        val bar1 = module.includeLibs
+        assertThat(bar1.head, is("\"foo.hrl\""))
+    }
+ 
+   @Test
+    def void exportsAll() {
+        val module = parser.parse('''
+            -module(x).
+            -compile(export_all).
+        ''')
+
+        val bar1 = module.exportsAll
+        assertThat(bar1, is(true))
+    }
+ 
+   @Test
+    def void exportsAll_no() {
+        val module = parser.parse('''
+            -module(x).
+        ''')
+
+        val bar1 = module.exportsAll
+        assertThat(bar1, is(false))
+    }
+ 
+   @Test
+    def void exportsAll_2() {
+        val module = parser.parse('''
+            -module(x).
+            -compile([debug_info, export_all]).
+        ''')
+
+        val bar1 = module.exportsAll
+        assertThat(bar1, is(true))
+    }
+ 
+   @Test
+    def void getParseTransform() {
+        val module = parser.parse('''
+            -module(x).
+            -compile({parse_transform, x}).
+        ''')
+
+        val bar1 = module.parseTransforms
+        assertThat(bar1.head.sourceText, is("x"))
+    }
+ 
+   @Test
+    def void getParseTransform_2() {
+        val module = parser.parse('''
+            -module(x).
+            -compile([debug_info, {parse_transform, x}]).
+        ''')
+
+        val bar1 = module.parseTransforms
+        assertThat(bar1.size, is(1))
+        assertThat(bar1.head.sourceText, is("x"))
+    }
+ 
+    @Test
+    def void getParseTransform_3() {
+        val module = parser.parse('''
+            -module(x).
+            -compile([{parse_transform, x}]).
+            -compile({parse_transform, y}).
+        ''')
+
+        val bar1 = module.parseTransforms
+        assertThat(bar1.size, is(2))
+        assertThat(bar1.map[sourceText], hasItem("x"))
+        assertThat(bar1.map[sourceText], hasItem("y"))
+    }
+ 
+   @Test
+    def void getCompileOptions() {
+        val module = parser.parse('''
+            -module(x).
+            -compile([debug_info, {parse_transform, x}]).
+            -compile([debug_info, {parse_transform, x}]).
+        ''')
+
+        val opts = module.compileOptions
+        assertThat(opts.size, is(2))
+    }
+ 
+ 
+//    @Test
+//    def void getCompilerOptions_none() {
+//        val module = parser.parse('''
+//            -module(x).
+//        ''')
+//
+//        val opts = module.compilerOptions
+//        assertThat(opts.size, is(0))
+//    }
+// 
+//    @Test
+//    def void getCompilerOptions_one() {
+//        val module = parser.parse('''
+//            -module(x).
+//            -compile(export_all).
+//        ''')
+//
+//        val opts = module.compilerOptions
+//        assertThat(opts.size, is(1))
+//        assertThat(opts.head.name, is("export_all"))
+//    }
+//
+//    @Test
+//    def void getCompilerOptions_two() {
+//        val module = parser.parse('''
+//            -module(x).
+//            -compile(export_all).
+//            -compile(debug_info).
+//        ''')
+//
+//        val opts = module.compilerOptions
+//        assertThat(opts.size, is(2))
+//        assertThat(opts.head.name, is("export_all"))
+//        assertThat(opts.tail.head.name, is("debug_info"))
+//    }
+//
+//    @Test
+//    def void getCompilerOptions_many() {
+//        val module = parser.parse('''
+//            -module(x).
+//            -compile(export_all).
+//            -compile([debug_info, warn_export_all]).
+//        ''')
+//
+//        val opts = module.compilerOptions
+//        assertThat(opts.size, is(3))
+//        assertThat(opts.head.name, is("export_all"))
+//        assertThat(opts.tail.head.name, is("debug_info"))
+//        assertThat(opts.tail.tail.head.name, is("warn_export_all"))
+//    }
+//
+//    @Test
+//    def void getCompilerOptions_many_merged() {
+//        val module = parser.parse('''
+//            -module(x).
+//            -compile([debug_info, export_all]).
+//            -compile([debug_info, warn_export_all]).
+//        ''')
+//
+//        val opts = module.compilerOptions
+//        assertThat(opts.size, is(3))
+//        assertThat(opts.head.name, is("debug_info"))
+//        assertThat(opts.tail.head.name, is("export_all"))
+//        assertThat(opts.tail.tail.head.name, is("warn_export_all"))
+//    }
+//
+//    @Test
+//    def void getCompilerOptions_tuple() {
+//        val module = parser.parse('''
+//            -module(x).
+//            -compile([{d, Macro}]).
+//        ''')
+//
+//        val opts = module.compilerOptions
+//        assertThat(opts.size, is(1))
+//        val opt = opts.head as DefineOption
+//        assertThat(opt.name, is("d"))
+//    }
+
 }

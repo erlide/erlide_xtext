@@ -50,15 +50,6 @@ public interface ErlangFactory extends EFactory
   ConditionalFormBlock createConditionalFormBlock();
 
   /**
-   * Returns a new object of class '<em>Abstract Element</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Abstract Element</em>'.
-   * @generated
-   */
-  AbstractElement createAbstractElement();
-
-  /**
    * Returns a new object of class '<em>Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -122,6 +113,15 @@ public interface ErlangFactory extends EFactory
   ElseAttribute createElseAttribute();
 
   /**
+   * Returns a new object of class '<em>Abstract Include Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Abstract Include Attribute</em>'.
+   * @generated
+   */
+  AbstractIncludeAttribute createAbstractIncludeAttribute();
+
+  /**
    * Returns a new object of class '<em>Include Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -129,6 +129,15 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   IncludeAttribute createIncludeAttribute();
+
+  /**
+   * Returns a new object of class '<em>Include Lib Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Include Lib Attribute</em>'.
+   * @generated
+   */
+  IncludeLibAttribute createIncludeLibAttribute();
 
   /**
    * Returns a new object of class '<em>File Attribute</em>'.
@@ -176,13 +185,13 @@ public interface ErlangFactory extends EFactory
   ImportAttribute createImportAttribute();
 
   /**
-   * Returns a new object of class '<em>Compiler Options Attribute</em>'.
+   * Returns a new object of class '<em>Compile Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Compiler Options Attribute</em>'.
+   * @return a new object of class '<em>Compile Attribute</em>'.
    * @generated
    */
-  CompilerOptionsAttribute createCompilerOptionsAttribute();
+  CompileAttribute createCompileAttribute();
 
   /**
    * Returns a new object of class '<em>Abstract Type Attribute</em>'.
@@ -437,13 +446,13 @@ public interface ErlangFactory extends EFactory
   ListComprehension createListComprehension();
 
   /**
-   * Returns a new object of class '<em>Tuple</em>'.
+   * Returns a new object of class '<em>Erl Tuple</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Tuple</em>'.
+   * @return a new object of class '<em>Erl Tuple</em>'.
    * @generated
    */
-  Tuple createTuple();
+  ErlTuple createErlTuple();
 
   /**
    * Returns a new object of class '<em>Binary Comprehension</em>'.
@@ -455,13 +464,13 @@ public interface ErlangFactory extends EFactory
   BinaryComprehension createBinaryComprehension();
 
   /**
-   * Returns a new object of class '<em>Binary</em>'.
+   * Returns a new object of class '<em>Erl Binary</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Binary</em>'.
+   * @return a new object of class '<em>Erl Binary</em>'.
    * @generated
    */
-  Binary createBinary();
+  ErlBinary createErlBinary();
 
   /**
    * Returns a new object of class '<em>Binary Item</em>'.

@@ -4,28 +4,26 @@ package org.erlide.erlang.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.erlide.erlang.AbstractElement;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.IncludeLibAttribute;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Abstract Element</b></em>'.
+ * An implementation of the model object '<em><b>Include Lib Attribute</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class AbstractElementImpl extends MinimalEObjectImpl.Container implements AbstractElement
+public class IncludeLibAttributeImpl extends AbstractIncludeAttributeImpl implements IncludeLibAttribute
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AbstractElementImpl()
+  protected IncludeLibAttributeImpl()
   {
     super();
   }
@@ -38,7 +36,7 @@ public class AbstractElementImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.ABSTRACT_ELEMENT;
+    return ErlangPackage.Literals.INCLUDE_LIB_ATTRIBUTE;
   }
 
-} //AbstractElementImpl
+} //IncludeLibAttributeImpl

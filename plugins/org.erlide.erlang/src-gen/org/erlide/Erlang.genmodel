@@ -18,7 +18,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ConditionalFormBlock/elseForms"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ConditionalFormBlock/end"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//AbstractElement"/>
     <genClasses ecoreClass="Erlang.ecore#//Attribute"/>
     <genClasses ecoreClass="Erlang.ecore#//AbstractDefineAttribute"/>
     <genClasses ecoreClass="Erlang.ecore#//DefineAttribute">
@@ -41,10 +40,12 @@
     <genClasses ecoreClass="Erlang.ecore#//ElseAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ElseAttribute/tag"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//IncludeAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//IncludeAttribute/tag"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//IncludeAttribute/value"/>
+    <genClasses ecoreClass="Erlang.ecore#//AbstractIncludeAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//AbstractIncludeAttribute/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//AbstractIncludeAttribute/value"/>
     </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//IncludeAttribute"/>
+    <genClasses ecoreClass="Erlang.ecore#//IncludeLibAttribute"/>
     <genClasses ecoreClass="Erlang.ecore#//FileAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FileAttribute/tag"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FileAttribute/file"/>
@@ -69,9 +70,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ImportAttribute/module"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ImportAttribute/funs"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//CompilerOptionsAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//CompilerOptionsAttribute/tag"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//CompilerOptionsAttribute/options"/>
+    <genClasses ecoreClass="Erlang.ecore#//CompileAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//CompileAttribute/tag"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//CompileAttribute/options"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//AbstractTypeAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//AbstractTypeAttribute/tag"/>
@@ -184,14 +185,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ListComprehension/element"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ListComprehension/generators"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//Tuple">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Tuple/elements"/>
+    <genClasses ecoreClass="Erlang.ecore#//ErlTuple">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ErlTuple/elements"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BinaryComprehension">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinaryComprehension/generators"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//Binary">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Binary/elements"/>
+    <genClasses ecoreClass="Erlang.ecore#//ErlBinary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ErlBinary/elements"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BinaryItem">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinaryItem/expr"/>

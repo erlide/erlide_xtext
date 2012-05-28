@@ -5,22 +5,22 @@ package org.erlide.erlang;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Compiler Options Attribute</b></em>'.
+ * A representation of the model object '<em><b>Compile Attribute</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.CompilerOptionsAttribute#getTag <em>Tag</em>}</li>
- *   <li>{@link org.erlide.erlang.CompilerOptionsAttribute#getOptions <em>Options</em>}</li>
+ *   <li>{@link org.erlide.erlang.CompileAttribute#getTag <em>Tag</em>}</li>
+ *   <li>{@link org.erlide.erlang.CompileAttribute#getOptions <em>Options</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.erlide.erlang.ErlangPackage#getCompilerOptionsAttribute()
+ * @see org.erlide.erlang.ErlangPackage#getCompileAttribute()
  * @model
  * @generated
  */
-public interface CompilerOptionsAttribute extends Attribute
+public interface CompileAttribute extends Attribute
 {
   /**
    * Returns the value of the '<em><b>Tag</b></em>' attribute.
@@ -32,14 +32,14 @@ public interface CompilerOptionsAttribute extends Attribute
    * <!-- end-user-doc -->
    * @return the value of the '<em>Tag</em>' attribute.
    * @see #setTag(String)
-   * @see org.erlide.erlang.ErlangPackage#getCompilerOptionsAttribute_Tag()
+   * @see org.erlide.erlang.ErlangPackage#getCompileAttribute_Tag()
    * @model
    * @generated
    */
   String getTag();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.CompilerOptionsAttribute#getTag <em>Tag</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.CompileAttribute#getTag <em>Tag</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Tag</em>' attribute.
@@ -58,14 +58,14 @@ public interface CompilerOptionsAttribute extends Attribute
    * <!-- end-user-doc -->
    * @return the value of the '<em>Options</em>' containment reference.
    * @see #setOptions(Expression)
-   * @see org.erlide.erlang.ErlangPackage#getCompilerOptionsAttribute_Options()
+   * @see org.erlide.erlang.ErlangPackage#getCompileAttribute_Options()
    * @model containment="true"
    * @generated
    */
   Expression getOptions();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.CompilerOptionsAttribute#getOptions <em>Options</em>}' containment reference.
+   * Sets the value of the '{@link org.erlide.erlang.CompileAttribute#getOptions <em>Options</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Options</em>' containment reference.
@@ -74,4 +74,4 @@ public interface CompilerOptionsAttribute extends Attribute
    */
   void setOptions(Expression value);
 
-} // CompilerOptionsAttribute
+} // CompileAttribute

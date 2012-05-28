@@ -1,9 +1,15 @@
 package org.erlide.erlang
 
+import com.google.common.collect.Iterables
 import java.util.Collection
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
-import com.google.common.collect.Iterables
+
+import static extension org.erlide.common.util.IterableExtensions2.*
+import static extension org.erlide.erlang.ModelExtensions.*
+import java.util.Set
+import java.util.Comparator
+
 class ModelExtensions {
     
     // Module
@@ -18,7 +24,7 @@ class ModelExtensions {
     }
 
     def static boolean isHeader(Module module) {
-        getName(module) == null
+        module.name == null
     }
 
     def static Collection<Attribute> getAttributes(Module module) {
@@ -32,32 +38,36 @@ class ModelExtensions {
     }
 
     def static Collection<ExportAttribute> getExportAttributes(Module module) {
-    	getAttributes(module, typeof(ExportAttribute))
+    	module.getAttributes(typeof(ExportAttribute))
     }
 
     def static Collection<ImportAttribute> getImportAttributes(Module module) {
-    	getAttributes(module, typeof(ImportAttribute))
+    	module.getAttributes(typeof(ImportAttribute))
     }
 
 	def static Collection<SpecAttribute> getSpecs(Module module) {
-		getAttributes(module, typeof(SpecAttribute))
+		module.getAttributes(typeof(SpecAttribute))
 	}
 	
-    def private static <T> Collection<T> getAttributes(Module module, Class<T> type) {
-        module.eContents.filter(type).toList
-    }
-
+	def static Collection<String> getIncludes(Module module) {
+		module.getAttributes(typeof(IncludeAttribute)).map[value].toList
+	}
+	
+	def static Collection<String> getIncludeLibs(Module module) {
+		module.getAttributes(typeof(IncludeLibAttribute)).map[value].toList
+	}
+	
     def static boolean exportsFunction(Module module, Function function) {
-        getExportedFunctions(module).contains(function)
+        module.exportedFunctions.contains(function)
     } 
 
     def static boolean exports(Module module, FunRef function) {
-        getExportedFunctions(module).contains(function)
+        module.exportedFunctions.contains(function)
     } 
 
 	def static Collection<Function> getExportedFunctions(Module module) {
-		val exportAttributes = getExportedFunRefs(module)
-		exportAttributes.map[getFunction(module, it)].toList
+		val exportedRefs = getExportedFunRefs(module)
+		exportedRefs.map[module.getFunction(it)].toList
 	}
 	
 	def static Collection<FunRef> getExportedFunRefs(Module module) {
@@ -67,29 +77,35 @@ class ModelExtensions {
 	
 	def static Function getFunction(Module module, String fname, int farity) {
 		module.eContents.filter(typeof(Function)).findFirst[
-			name==fname && getArity(it)==farity
+			it.name==fname && it.arity==farity
 		]
 	}
 	
  	def static Function getFunction(Module module, FunRef ref) {
- 		getFunction(module, ref.function, Integer::parseInt(ref.arity))
+ 		module.getFunction(ref.function, Integer::parseInt(ref.arity))
  	}
     
  	def static Function getFunction(Module module, SpecFun ref) {
- 		getFunction(module, ref.function, Integer::parseInt(ref.arity))
+ 		module.getFunction(ref.function, Integer::parseInt(ref.arity))
  	}
  	
- 	def static Collection<CompilerOptionsAttribute> getCompilerOptions(Module module) {
-		getAttributes(module, typeof(CompilerOptionsAttribute))
- 	}
+    def static boolean exportsAll(Module module) {
+    	module.compileOptions.hasAny[it.hasAtom("export_all")]
+    }
     
+	def static Collection<Atom> getParseTransforms(Module module) {
+		val options = module.compileOptions
+		val tuples = options.filter(typeof(ErlTuple))
+		tuples.filter[it.parseTransformTuple].map[elements.tail.head as Atom].toList
+	}
+
  	def static SpecAttribute getSpec(Module module, String fname, int farity) {
 		val specs = getSpecs(module)
 		specs.findFirst[
-			ref.function==fname && getSpecArity(it)==farity
+			ref.function==fname && it.specArity==farity
 		]		
 	}
-
+	
     // Function
     
     def static int getArity(Function fun) {
@@ -97,14 +113,14 @@ class ModelExtensions {
     }
     
     def static boolean isExported(Function function) {
-    	exportsFunction(getModule(function), function)
+    	function.module.exportsFunction(function)
     }
  
  	def static SpecAttribute getSpec(Function function) {
-		val module = getModule(function)
-		val specs = getSpecs(module)
+		val module = function.module
+		val specs = module.specs
 		specs.findFirst[
-			ref.function==function.name && getSpecArity(it)==getArity(function)
+			ref.function==function.name && it.specArity==function.arity
 		]		
 	}
 
@@ -115,13 +131,12 @@ class ModelExtensions {
     }
 
     def static dispatch Module getModule(EObject element) {
-        val parent = element.eContainer
-        getModule(parent)
+        element.eContainer.module
     }
  
-    def static String getSourceName(EObject atom) {
-        val nodes = NodeModelUtils::getNode(atom).leafNodes
-        nodes.filter[!isHidden].head.text
+    def static String getSourceText(EObject obj) {
+        val nodes = NodeModelUtils::getNode(obj).leafNodes
+        nodes.filter[!isHidden].map[text].join
    }
  
  	def static int getSpecArity(SpecAttribute spec) {
@@ -132,4 +147,46 @@ class ModelExtensions {
  		}
  	}
    
+   // Utilities
+   
+    def private static <T> Collection<T> getAttributes(Module module, Class<T> type) {
+        module.eContents.filter(type).toList
+    }
+
+ 	def private static Collection<Expression> getRawCompileOptions(Module module) {
+		module.getAttributes(typeof(CompileAttribute)).map[options].toList
+ 	}
+    
+    def private static dispatch Set<Expression> merge(Set<Expression> acc, ErlList x) {
+    	acc.addAll(x.elements)
+    	acc
+    }
+    def private static dispatch Set<Expression> merge(Set<Expression> acc, Expression x) {
+    	acc.add(x)
+    	acc
+    }
+    
+  	def static Collection<Expression> getCompileOptions(Module module) {
+ 		val Set<Expression> seed = newTreeSet[a, b | a.sourceText.compareTo(b.sourceText)]
+		module.rawCompileOptions.fold(seed)[acc, item | merge(acc, item)]
+ 	}
+    
+    def private static dispatch boolean hasAtom(Atom atom, String s){
+		atom.sourceText == s    	
+    }
+    def private static dispatch boolean hasAtom(ErlList list, String s){
+		list.elements.hasAny[it.hasAtom(s)]    	
+    }
+    def private static dispatch boolean hasAtom(Expression expr, String s){
+		false    	
+    }
+
+	def private static boolean parseTransformTuple(ErlTuple expr) {
+		if(expr.elements.size!=2 || !(expr.elements.head instanceof Atom)) return false
+		val hd = expr.elements.head as Atom
+		hd.sourceText=="parse_transform" && expr.elements.tail.head instanceof Atom
+	}
+	
 }
+
+

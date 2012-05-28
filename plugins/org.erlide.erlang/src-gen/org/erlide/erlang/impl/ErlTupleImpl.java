@@ -14,24 +14,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.erlide.erlang.ErlTuple;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
-import org.erlide.erlang.Tuple;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Tuple</b></em>'.
+ * An implementation of the model object '<em><b>Erl Tuple</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.TupleImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ErlTupleImpl#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class TupleImpl extends ExpressionImpl implements Tuple
+public class ErlTupleImpl extends ExpressionImpl implements ErlTuple
 {
   /**
    * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
@@ -48,7 +48,7 @@ public class TupleImpl extends ExpressionImpl implements Tuple
    * <!-- end-user-doc -->
    * @generated
    */
-  protected TupleImpl()
+  protected ErlTupleImpl()
   {
     super();
   }
@@ -61,7 +61,7 @@ public class TupleImpl extends ExpressionImpl implements Tuple
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.TUPLE;
+    return ErlangPackage.Literals.ERL_TUPLE;
   }
 
   /**
@@ -73,7 +73,7 @@ public class TupleImpl extends ExpressionImpl implements Tuple
   {
     if (elements == null)
     {
-      elements = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.TUPLE__ELEMENTS);
+      elements = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.ERL_TUPLE__ELEMENTS);
     }
     return elements;
   }
@@ -88,7 +88,7 @@ public class TupleImpl extends ExpressionImpl implements Tuple
   {
     switch (featureID)
     {
-      case ErlangPackage.TUPLE__ELEMENTS:
+      case ErlangPackage.ERL_TUPLE__ELEMENTS:
         return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -104,7 +104,7 @@ public class TupleImpl extends ExpressionImpl implements Tuple
   {
     switch (featureID)
     {
-      case ErlangPackage.TUPLE__ELEMENTS:
+      case ErlangPackage.ERL_TUPLE__ELEMENTS:
         return getElements();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -121,7 +121,7 @@ public class TupleImpl extends ExpressionImpl implements Tuple
   {
     switch (featureID)
     {
-      case ErlangPackage.TUPLE__ELEMENTS:
+      case ErlangPackage.ERL_TUPLE__ELEMENTS:
         getElements().clear();
         getElements().addAll((Collection<? extends Expression>)newValue);
         return;
@@ -139,7 +139,7 @@ public class TupleImpl extends ExpressionImpl implements Tuple
   {
     switch (featureID)
     {
-      case ErlangPackage.TUPLE__ELEMENTS:
+      case ErlangPackage.ERL_TUPLE__ELEMENTS:
         getElements().clear();
         return;
     }
@@ -156,10 +156,10 @@ public class TupleImpl extends ExpressionImpl implements Tuple
   {
     switch (featureID)
     {
-      case ErlangPackage.TUPLE__ELEMENTS:
+      case ErlangPackage.ERL_TUPLE__ELEMENTS:
         return elements != null && !elements.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //TupleImpl
+} //ErlTupleImpl

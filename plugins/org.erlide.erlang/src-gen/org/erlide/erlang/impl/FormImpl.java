@@ -4,6 +4,8 @@ package org.erlide.erlang.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Form;
 
@@ -16,7 +18,7 @@ import org.erlide.erlang.Form;
  *
  * @generated
  */
-public class FormImpl extends AbstractElementImpl implements Form
+public class FormImpl extends MinimalEObjectImpl.Container implements Form
 {
   /**
    * <!-- begin-user-doc -->

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="erlang" nsURI="http://www.erlide.org/Erlang" nsPrefix="erlang">
-  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//AbstractElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Module">
     <eStructuralFeatures xsi:type="ecore:EReference" name="forms" upperBound="-1"
         eType="#//Form" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Form" eSuperTypes="#//AbstractElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Form"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalFormBlock" eSuperTypes="#//Form">
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//IfdefAttribute"
         containment="true"/>
@@ -17,7 +17,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//EndifAttribute"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//Form"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractDefineAttribute"/>
   <eClassifiers xsi:type="ecore:EClass" name="DefineAttribute" eSuperTypes="#//Attribute #//AbstractDefineAttribute">
@@ -42,10 +41,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="ElseAttribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IncludeAttribute" eSuperTypes="#//Attribute">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractIncludeAttribute" eSuperTypes="#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Module"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IncludeAttribute" eSuperTypes="#//AbstractIncludeAttribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IncludeLibAttribute" eSuperTypes="#//AbstractIncludeAttribute"/>
   <eClassifiers xsi:type="ecore:EClass" name="FileAttribute" eSuperTypes="#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="file" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -73,7 +74,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="funs" upperBound="-1" eType="#//FunRef"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CompilerOptionsAttribute" eSuperTypes="#//Attribute">
+  <eClassifiers xsi:type="ecore:EClass" name="CompileAttribute" eSuperTypes="#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="options" eType="#//Expression"
         containment="true"/>
@@ -232,7 +233,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="generators" upperBound="-1"
         eType="#//LCExpr" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Tuple" eSuperTypes="#//Expression">
+  <eClassifiers xsi:type="ecore:EClass" name="ErlTuple" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
@@ -240,7 +241,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="generators" upperBound="-1"
         eType="#//LCExpr" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Binary" eSuperTypes="#//Expression">
+  <eClassifiers xsi:type="ecore:EClass" name="ErlBinary" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//BinaryItem" containment="true"/>
   </eClassifiers>
@@ -390,7 +391,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Atom" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//AbstractElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Form"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

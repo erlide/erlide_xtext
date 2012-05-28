@@ -57,25 +57,6 @@ public interface ErlangPackage extends EPackage
   ErlangPackage eINSTANCE = org.erlide.erlang.impl.ErlangPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.AbstractElementImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getAbstractElement()
-   * @generated
-   */
-  int ABSTRACT_ELEMENT = 3;
-
-  /**
-   * The number of structural features of the '<em>Abstract Element</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_ELEMENT_FEATURE_COUNT = 0;
-
-  /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ModuleImpl <em>Module</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -92,7 +73,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE__FORMS = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int MODULE__FORMS = 0;
 
   /**
    * The number of structural features of the '<em>Module</em>' class.
@@ -101,7 +82,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+  int MODULE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.FormImpl <em>Form</em>}' class.
@@ -120,7 +101,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int FORM_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ConditionalFormBlockImpl <em>Conditional Form Block</em>}' class.
@@ -194,7 +175,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getAttribute()
    * @generated
    */
-  int ATTRIBUTE = 4;
+  int ATTRIBUTE = 3;
 
   /**
    * The number of structural features of the '<em>Attribute</em>' class.
@@ -213,7 +194,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getAbstractDefineAttribute()
    * @generated
    */
-  int ABSTRACT_DEFINE_ATTRIBUTE = 5;
+  int ABSTRACT_DEFINE_ATTRIBUTE = 4;
 
   /**
    * The number of structural features of the '<em>Abstract Define Attribute</em>' class.
@@ -232,7 +213,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getDefineAttribute()
    * @generated
    */
-  int DEFINE_ATTRIBUTE = 6;
+  int DEFINE_ATTRIBUTE = 5;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -287,7 +268,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getUndefAttribute()
    * @generated
    */
-  int UNDEF_ATTRIBUTE = 7;
+  int UNDEF_ATTRIBUTE = 6;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -324,7 +305,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getIfdefAttribute()
    * @generated
    */
-  int IFDEF_ATTRIBUTE = 8;
+  int IFDEF_ATTRIBUTE = 7;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -361,7 +342,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getEndifAttribute()
    * @generated
    */
-  int ENDIF_ATTRIBUTE = 9;
+  int ENDIF_ATTRIBUTE = 8;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -389,7 +370,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getElseAttribute()
    * @generated
    */
-  int ELSE_ATTRIBUTE = 10;
+  int ELSE_ATTRIBUTE = 9;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -410,6 +391,43 @@ public interface ErlangPackage extends EPackage
   int ELSE_ATTRIBUTE_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.erlide.erlang.impl.AbstractIncludeAttributeImpl <em>Abstract Include Attribute</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.erlide.erlang.impl.AbstractIncludeAttributeImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getAbstractIncludeAttribute()
+   * @generated
+   */
+  int ABSTRACT_INCLUDE_ATTRIBUTE = 10;
+
+  /**
+   * The feature id for the '<em><b>Tag</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_INCLUDE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_INCLUDE_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Abstract Include Attribute</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_INCLUDE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link org.erlide.erlang.impl.IncludeAttributeImpl <em>Include Attribute</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -426,16 +444,16 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INCLUDE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int INCLUDE_ATTRIBUTE__TAG = ABSTRACT_INCLUDE_ATTRIBUTE__TAG;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' reference.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INCLUDE_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 1;
+  int INCLUDE_ATTRIBUTE__VALUE = ABSTRACT_INCLUDE_ATTRIBUTE__VALUE;
 
   /**
    * The number of structural features of the '<em>Include Attribute</em>' class.
@@ -444,7 +462,44 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INCLUDE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
+  int INCLUDE_ATTRIBUTE_FEATURE_COUNT = ABSTRACT_INCLUDE_ATTRIBUTE_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.erlide.erlang.impl.IncludeLibAttributeImpl <em>Include Lib Attribute</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.erlide.erlang.impl.IncludeLibAttributeImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getIncludeLibAttribute()
+   * @generated
+   */
+  int INCLUDE_LIB_ATTRIBUTE = 12;
+
+  /**
+   * The feature id for the '<em><b>Tag</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INCLUDE_LIB_ATTRIBUTE__TAG = ABSTRACT_INCLUDE_ATTRIBUTE__TAG;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INCLUDE_LIB_ATTRIBUTE__VALUE = ABSTRACT_INCLUDE_ATTRIBUTE__VALUE;
+
+  /**
+   * The number of structural features of the '<em>Include Lib Attribute</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INCLUDE_LIB_ATTRIBUTE_FEATURE_COUNT = ABSTRACT_INCLUDE_ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.FileAttributeImpl <em>File Attribute</em>}' class.
@@ -454,7 +509,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFileAttribute()
    * @generated
    */
-  int FILE_ATTRIBUTE = 12;
+  int FILE_ATTRIBUTE = 13;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -500,7 +555,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getModuleAttribute()
    * @generated
    */
-  int MODULE_ATTRIBUTE = 13;
+  int MODULE_ATTRIBUTE = 14;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -537,7 +592,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRecordAttribute()
    * @generated
    */
-  int RECORD_ATTRIBUTE = 14;
+  int RECORD_ATTRIBUTE = 15;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -592,7 +647,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getExportAttribute()
    * @generated
    */
-  int EXPORT_ATTRIBUTE = 15;
+  int EXPORT_ATTRIBUTE = 16;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -629,7 +684,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getImportAttribute()
    * @generated
    */
-  int IMPORT_ATTRIBUTE = 16;
+  int IMPORT_ATTRIBUTE = 17;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -668,14 +723,14 @@ public interface ErlangPackage extends EPackage
   int IMPORT_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.CompilerOptionsAttributeImpl <em>Compiler Options Attribute</em>}' class.
+   * The meta object id for the '{@link org.erlide.erlang.impl.CompileAttributeImpl <em>Compile Attribute</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.CompilerOptionsAttributeImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getCompilerOptionsAttribute()
+   * @see org.erlide.erlang.impl.CompileAttributeImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getCompileAttribute()
    * @generated
    */
-  int COMPILER_OPTIONS_ATTRIBUTE = 17;
+  int COMPILE_ATTRIBUTE = 18;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -684,7 +739,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPILER_OPTIONS_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int COMPILE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Options</b></em>' containment reference.
@@ -693,16 +748,16 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPILER_OPTIONS_ATTRIBUTE__OPTIONS = ATTRIBUTE_FEATURE_COUNT + 1;
+  int COMPILE_ATTRIBUTE__OPTIONS = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Compiler Options Attribute</em>' class.
+   * The number of structural features of the '<em>Compile Attribute</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPILER_OPTIONS_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
+  int COMPILE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.AbstractTypeAttributeImpl <em>Abstract Type Attribute</em>}' class.
@@ -712,7 +767,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getAbstractTypeAttribute()
    * @generated
    */
-  int ABSTRACT_TYPE_ATTRIBUTE = 18;
+  int ABSTRACT_TYPE_ATTRIBUTE = 19;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -740,7 +795,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getSpecAttribute()
    * @generated
    */
-  int SPEC_ATTRIBUTE = 19;
+  int SPEC_ATTRIBUTE = 20;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -786,7 +841,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTypeAttribute()
    * @generated
    */
-  int TYPE_ATTRIBUTE = 20;
+  int TYPE_ATTRIBUTE = 21;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -841,7 +896,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getCustomAttribute()
    * @generated
    */
-  int CUSTOM_ATTRIBUTE = 21;
+  int CUSTOM_ATTRIBUTE = 22;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -878,7 +933,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunction()
    * @generated
    */
-  int FUNCTION = 22;
+  int FUNCTION = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -915,7 +970,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunctionClause()
    * @generated
    */
-  int FUNCTION_CLAUSE = 23;
+  int FUNCTION_CLAUSE = 24;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' attribute.
@@ -970,7 +1025,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getGuard()
    * @generated
    */
-  int GUARD = 24;
+  int GUARD = 25;
 
   /**
    * The feature id for the '<em><b>Guards</b></em>' containment reference list.
@@ -998,7 +1053,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getExpressions()
    * @generated
    */
-  int EXPRESSIONS = 25;
+  int EXPRESSIONS = 26;
 
   /**
    * The feature id for the '<em><b>Exprs</b></em>' containment reference list.
@@ -1026,7 +1081,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 26;
+  int EXPRESSION = 27;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1063,7 +1118,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMacroCall()
    * @generated
    */
-  int MACRO_CALL = 27;
+  int MACRO_CALL = 28;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1118,7 +1173,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRecordExpr()
    * @generated
    */
-  int RECORD_EXPR = 28;
+  int RECORD_EXPR = 29;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1200,7 +1255,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getQueryExpr()
    * @generated
    */
-  int QUERY_EXPR = 29;
+  int QUERY_EXPR = 30;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1237,7 +1292,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getCondExpr()
    * @generated
    */
-  int COND_EXPR = 30;
+  int COND_EXPR = 31;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1274,7 +1329,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getLetExpr()
    * @generated
    */
-  int LET_EXPR = 31;
+  int LET_EXPR = 32;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1311,7 +1366,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRecordTuple()
    * @generated
    */
-  int RECORD_TUPLE = 32;
+  int RECORD_TUPLE = 33;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -1339,7 +1394,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRecordFieldDef()
    * @generated
    */
-  int RECORD_FIELD_DEF = 33;
+  int RECORD_FIELD_DEF = 34;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1385,7 +1440,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRecordField()
    * @generated
    */
-  int RECORD_FIELD = 34;
+  int RECORD_FIELD = 35;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -1431,7 +1486,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getIfExpr()
    * @generated
    */
-  int IF_EXPR = 35;
+  int IF_EXPR = 36;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1477,7 +1532,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getIfClause()
    * @generated
    */
-  int IF_CLAUSE = 36;
+  int IF_CLAUSE = 37;
 
   /**
    * The feature id for the '<em><b>Guard</b></em>' containment reference.
@@ -1514,7 +1569,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getCaseExpr()
    * @generated
    */
-  int CASE_EXPR = 37;
+  int CASE_EXPR = 38;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1560,7 +1615,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getCrClause()
    * @generated
    */
-  int CR_CLAUSE = 38;
+  int CR_CLAUSE = 39;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -1606,7 +1661,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getReceiveExpr()
    * @generated
    */
-  int RECEIVE_EXPR = 39;
+  int RECEIVE_EXPR = 40;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1670,7 +1725,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunExpr()
    * @generated
    */
-  int FUN_EXPR = 40;
+  int FUN_EXPR = 41;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1716,7 +1771,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunRef()
    * @generated
    */
-  int FUN_REF = 41;
+  int FUN_REF = 42;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1789,7 +1844,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTryExpr()
    * @generated
    */
-  int TRY_EXPR = 42;
+  int TRY_EXPR = 43;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1862,7 +1917,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTryClause()
    * @generated
    */
-  int TRY_CLAUSE = 43;
+  int TRY_CLAUSE = 44;
 
   /**
    * The feature id for the '<em><b>Hdr</b></em>' attribute.
@@ -1917,7 +1972,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlList()
    * @generated
    */
-  int ERL_LIST = 44;
+  int ERL_LIST = 45;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1972,7 +2027,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getListComprehension()
    * @generated
    */
-  int LIST_COMPREHENSION = 45;
+  int LIST_COMPREHENSION = 46;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2020,14 +2075,14 @@ public interface ErlangPackage extends EPackage
   int LIST_COMPREHENSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.TupleImpl <em>Tuple</em>}' class.
+   * The meta object id for the '{@link org.erlide.erlang.impl.ErlTupleImpl <em>Erl Tuple</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.TupleImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getTuple()
+   * @see org.erlide.erlang.impl.ErlTupleImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlTuple()
    * @generated
    */
-  int TUPLE = 46;
+  int ERL_TUPLE = 47;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2036,7 +2091,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TUPLE__LINE = EXPRESSION__LINE;
+  int ERL_TUPLE__LINE = EXPRESSION__LINE;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -2045,7 +2100,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TUPLE__EXPR = EXPRESSION__EXPR;
+  int ERL_TUPLE__EXPR = EXPRESSION__EXPR;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2054,16 +2109,16 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TUPLE__ELEMENTS = EXPRESSION_FEATURE_COUNT + 0;
+  int ERL_TUPLE__ELEMENTS = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Tuple</em>' class.
+   * The number of structural features of the '<em>Erl Tuple</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TUPLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+  int ERL_TUPLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.BinaryComprehensionImpl <em>Binary Comprehension</em>}' class.
@@ -2073,7 +2128,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryComprehension()
    * @generated
    */
-  int BINARY_COMPREHENSION = 47;
+  int BINARY_COMPREHENSION = 48;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2112,14 +2167,14 @@ public interface ErlangPackage extends EPackage
   int BINARY_COMPREHENSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.BinaryImpl <em>Binary</em>}' class.
+   * The meta object id for the '{@link org.erlide.erlang.impl.ErlBinaryImpl <em>Erl Binary</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.BinaryImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinary()
+   * @see org.erlide.erlang.impl.ErlBinaryImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlBinary()
    * @generated
    */
-  int BINARY = 48;
+  int ERL_BINARY = 49;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2128,7 +2183,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BINARY__LINE = EXPRESSION__LINE;
+  int ERL_BINARY__LINE = EXPRESSION__LINE;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -2137,7 +2192,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BINARY__EXPR = EXPRESSION__EXPR;
+  int ERL_BINARY__EXPR = EXPRESSION__EXPR;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2146,16 +2201,16 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BINARY__ELEMENTS = EXPRESSION_FEATURE_COUNT + 0;
+  int ERL_BINARY__ELEMENTS = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Binary</em>' class.
+   * The number of structural features of the '<em>Erl Binary</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BINARY_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+  int ERL_BINARY_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.BinaryItemImpl <em>Binary Item</em>}' class.
@@ -2165,7 +2220,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryItem()
    * @generated
    */
-  int BINARY_ITEM = 49;
+  int BINARY_ITEM = 50;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -2220,7 +2275,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBitType()
    * @generated
    */
-  int BIT_TYPE = 50;
+  int BIT_TYPE = 51;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2257,7 +2312,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getLCExpr()
    * @generated
    */
-  int LC_EXPR = 51;
+  int LC_EXPR = 52;
 
   /**
    * The feature id for the '<em><b>O1</b></em>' containment reference.
@@ -2303,7 +2358,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getSpecFun()
    * @generated
    */
-  int SPEC_FUN = 52;
+  int SPEC_FUN = 53;
 
   /**
    * The feature id for the '<em><b>Module</b></em>' attribute.
@@ -2349,7 +2404,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTypeSig()
    * @generated
    */
-  int TYPE_SIG = 53;
+  int TYPE_SIG = 54;
 
   /**
    * The feature id for the '<em><b>Decl</b></em>' containment reference.
@@ -2386,7 +2441,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType100()
    * @generated
    */
-  int TYPE100 = 58;
+  int TYPE100 = 59;
 
   /**
    * The number of structural features of the '<em>Type100</em>' class.
@@ -2405,7 +2460,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType200()
    * @generated
    */
-  int TYPE200 = 59;
+  int TYPE200 = 60;
 
   /**
    * The number of structural features of the '<em>Type200</em>' class.
@@ -2424,7 +2479,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType300()
    * @generated
    */
-  int TYPE300 = 60;
+  int TYPE300 = 61;
 
   /**
    * The number of structural features of the '<em>Type300</em>' class.
@@ -2443,7 +2498,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType400()
    * @generated
    */
-  int TYPE400 = 61;
+  int TYPE400 = 62;
 
   /**
    * The number of structural features of the '<em>Type400</em>' class.
@@ -2462,7 +2517,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType500()
    * @generated
    */
-  int TYPE500 = 62;
+  int TYPE500 = 63;
 
   /**
    * The number of structural features of the '<em>Type500</em>' class.
@@ -2481,7 +2536,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType()
    * @generated
    */
-  int TYPE = 63;
+  int TYPE = 64;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2518,7 +2573,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunType()
    * @generated
    */
-  int FUN_TYPE = 54;
+  int FUN_TYPE = 55;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2582,7 +2637,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTypeGuards()
    * @generated
    */
-  int TYPE_GUARDS = 55;
+  int TYPE_GUARDS = 56;
 
   /**
    * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -2610,7 +2665,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTypeGuard()
    * @generated
    */
-  int TYPE_GUARD = 56;
+  int TYPE_GUARD = 57;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2656,7 +2711,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTopType()
    * @generated
    */
-  int TOP_TYPE = 57;
+  int TOP_TYPE = 58;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2738,7 +2793,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFieldType()
    * @generated
    */
-  int FIELD_TYPE = 64;
+  int FIELD_TYPE = 65;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2775,7 +2830,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryType()
    * @generated
    */
-  int BINARY_TYPE = 65;
+  int BINARY_TYPE = 66;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2821,7 +2876,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinBaseType()
    * @generated
    */
-  int BIN_BASE_TYPE = 66;
+  int BIN_BASE_TYPE = 67;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2858,7 +2913,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinUnitType()
    * @generated
    */
-  int BIN_UNIT_TYPE = 67;
+  int BIN_UNIT_TYPE = 68;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2904,7 +2959,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunType100()
    * @generated
    */
-  int FUN_TYPE100 = 68;
+  int FUN_TYPE100 = 69;
 
   /**
    * The number of structural features of the '<em>Fun Type100</em>' class.
@@ -2923,7 +2978,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMacroForm()
    * @generated
    */
-  int MACRO_FORM = 69;
+  int MACRO_FORM = 70;
 
   /**
    * The feature id for the '<em><b>Call</b></em>' containment reference.
@@ -2951,7 +3006,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getCatchExpr()
    * @generated
    */
-  int CATCH_EXPR = 70;
+  int CATCH_EXPR = 71;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2988,7 +3043,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMatchExpr()
    * @generated
    */
-  int MATCH_EXPR = 71;
+  int MATCH_EXPR = 72;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3052,7 +3107,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinOp()
    * @generated
    */
-  int BIN_OP = 72;
+  int BIN_OP = 73;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3125,7 +3180,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getAddOp()
    * @generated
    */
-  int ADD_OP = 73;
+  int ADD_OP = 74;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3189,7 +3244,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMultOp()
    * @generated
    */
-  int MULT_OP = 74;
+  int MULT_OP = 75;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3253,7 +3308,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getUnaryExpr()
    * @generated
    */
-  int UNARY_EXPR = 75;
+  int UNARY_EXPR = 76;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3308,7 +3363,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunCall()
    * @generated
    */
-  int FUN_CALL = 76;
+  int FUN_CALL = 77;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3363,7 +3418,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRemoteTarget()
    * @generated
    */
-  int REMOTE_TARGET = 77;
+  int REMOTE_TARGET = 78;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3418,7 +3473,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBlockExpr()
    * @generated
    */
-  int BLOCK_EXPR = 78;
+  int BLOCK_EXPR = 79;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3464,7 +3519,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtom()
    * @generated
    */
-  int ATOM = 79;
+  int ATOM = 80;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3510,7 +3565,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getVariable()
    * @generated
    */
-  int VARIABLE = 80;
+  int VARIABLE = 81;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3556,7 +3611,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlChar()
    * @generated
    */
-  int ERL_CHAR = 81;
+  int ERL_CHAR = 82;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3602,7 +3657,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMacroExpr()
    * @generated
    */
-  int MACRO_EXPR = 82;
+  int MACRO_EXPR = 83;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3648,7 +3703,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlString()
    * @generated
    */
-  int ERL_STRING = 83;
+  int ERL_STRING = 84;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3694,7 +3749,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlInteger()
    * @generated
    */
-  int ERL_INTEGER = 84;
+  int ERL_INTEGER = 85;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3740,7 +3795,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlFloat()
    * @generated
    */
-  int ERL_FLOAT = 85;
+  int ERL_FLOAT = 86;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3786,7 +3841,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getUnaryType()
    * @generated
    */
-  int UNARY_TYPE = 86;
+  int UNARY_TYPE = 87;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -3823,7 +3878,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRemoteType()
    * @generated
    */
-  int REMOTE_TYPE = 87;
+  int REMOTE_TYPE = 88;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3878,7 +3933,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getListType()
    * @generated
    */
-  int LIST_TYPE = 88;
+  int LIST_TYPE = 89;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3924,7 +3979,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTupleType()
    * @generated
    */
-  int TUPLE_TYPE = 89;
+  int TUPLE_TYPE = 90;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3970,7 +4025,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRecordType()
    * @generated
    */
-  int RECORD_TYPE = 90;
+  int RECORD_TYPE = 91;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4025,7 +4080,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunTypeList()
    * @generated
    */
-  int FUN_TYPE_LIST = 91;
+  int FUN_TYPE_LIST = 92;
 
   /**
    * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -4150,16 +4205,6 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EReference getConditionalFormBlock_End();
-
-  /**
-   * Returns the meta object for class '{@link org.erlide.erlang.AbstractElement <em>Abstract Element</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Abstract Element</em>'.
-   * @see org.erlide.erlang.AbstractElement
-   * @generated
-   */
-  EClass getAbstractElement();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.Attribute <em>Attribute</em>}'.
@@ -4342,6 +4387,38 @@ public interface ErlangPackage extends EPackage
   EAttribute getElseAttribute_Tag();
 
   /**
+   * Returns the meta object for class '{@link org.erlide.erlang.AbstractIncludeAttribute <em>Abstract Include Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Abstract Include Attribute</em>'.
+   * @see org.erlide.erlang.AbstractIncludeAttribute
+   * @generated
+   */
+  EClass getAbstractIncludeAttribute();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.erlide.erlang.AbstractIncludeAttribute#getTag <em>Tag</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Tag</em>'.
+   * @see org.erlide.erlang.AbstractIncludeAttribute#getTag()
+   * @see #getAbstractIncludeAttribute()
+   * @generated
+   */
+  EAttribute getAbstractIncludeAttribute_Tag();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.erlide.erlang.AbstractIncludeAttribute#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.erlide.erlang.AbstractIncludeAttribute#getValue()
+   * @see #getAbstractIncludeAttribute()
+   * @generated
+   */
+  EAttribute getAbstractIncludeAttribute_Value();
+
+  /**
    * Returns the meta object for class '{@link org.erlide.erlang.IncludeAttribute <em>Include Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4352,26 +4429,14 @@ public interface ErlangPackage extends EPackage
   EClass getIncludeAttribute();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.IncludeAttribute#getTag <em>Tag</em>}'.
+   * Returns the meta object for class '{@link org.erlide.erlang.IncludeLibAttribute <em>Include Lib Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.IncludeAttribute#getTag()
-   * @see #getIncludeAttribute()
+   * @return the meta object for class '<em>Include Lib Attribute</em>'.
+   * @see org.erlide.erlang.IncludeLibAttribute
    * @generated
    */
-  EAttribute getIncludeAttribute_Tag();
-
-  /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.IncludeAttribute#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Value</em>'.
-   * @see org.erlide.erlang.IncludeAttribute#getValue()
-   * @see #getIncludeAttribute()
-   * @generated
-   */
-  EReference getIncludeAttribute_Value();
+  EClass getIncludeLibAttribute();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.FileAttribute <em>File Attribute</em>}'.
@@ -4578,36 +4643,36 @@ public interface ErlangPackage extends EPackage
   EReference getImportAttribute_Funs();
 
   /**
-   * Returns the meta object for class '{@link org.erlide.erlang.CompilerOptionsAttribute <em>Compiler Options Attribute</em>}'.
+   * Returns the meta object for class '{@link org.erlide.erlang.CompileAttribute <em>Compile Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Compiler Options Attribute</em>'.
-   * @see org.erlide.erlang.CompilerOptionsAttribute
+   * @return the meta object for class '<em>Compile Attribute</em>'.
+   * @see org.erlide.erlang.CompileAttribute
    * @generated
    */
-  EClass getCompilerOptionsAttribute();
+  EClass getCompileAttribute();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.CompilerOptionsAttribute#getTag <em>Tag</em>}'.
+   * Returns the meta object for the attribute '{@link org.erlide.erlang.CompileAttribute#getTag <em>Tag</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.CompilerOptionsAttribute#getTag()
-   * @see #getCompilerOptionsAttribute()
+   * @see org.erlide.erlang.CompileAttribute#getTag()
+   * @see #getCompileAttribute()
    * @generated
    */
-  EAttribute getCompilerOptionsAttribute_Tag();
+  EAttribute getCompileAttribute_Tag();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.erlide.erlang.CompilerOptionsAttribute#getOptions <em>Options</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.CompileAttribute#getOptions <em>Options</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Options</em>'.
-   * @see org.erlide.erlang.CompilerOptionsAttribute#getOptions()
-   * @see #getCompilerOptionsAttribute()
+   * @see org.erlide.erlang.CompileAttribute#getOptions()
+   * @see #getCompileAttribute()
    * @generated
    */
-  EReference getCompilerOptionsAttribute_Options();
+  EReference getCompileAttribute_Options();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.AbstractTypeAttribute <em>Abstract Type Attribute</em>}'.
@@ -5528,25 +5593,25 @@ public interface ErlangPackage extends EPackage
   EReference getListComprehension_Generators();
 
   /**
-   * Returns the meta object for class '{@link org.erlide.erlang.Tuple <em>Tuple</em>}'.
+   * Returns the meta object for class '{@link org.erlide.erlang.ErlTuple <em>Erl Tuple</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Tuple</em>'.
-   * @see org.erlide.erlang.Tuple
+   * @return the meta object for class '<em>Erl Tuple</em>'.
+   * @see org.erlide.erlang.ErlTuple
    * @generated
    */
-  EClass getTuple();
+  EClass getErlTuple();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.Tuple#getElements <em>Elements</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.ErlTuple#getElements <em>Elements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Elements</em>'.
-   * @see org.erlide.erlang.Tuple#getElements()
-   * @see #getTuple()
+   * @see org.erlide.erlang.ErlTuple#getElements()
+   * @see #getErlTuple()
    * @generated
    */
-  EReference getTuple_Elements();
+  EReference getErlTuple_Elements();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.BinaryComprehension <em>Binary Comprehension</em>}'.
@@ -5570,25 +5635,25 @@ public interface ErlangPackage extends EPackage
   EReference getBinaryComprehension_Generators();
 
   /**
-   * Returns the meta object for class '{@link org.erlide.erlang.Binary <em>Binary</em>}'.
+   * Returns the meta object for class '{@link org.erlide.erlang.ErlBinary <em>Erl Binary</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Binary</em>'.
-   * @see org.erlide.erlang.Binary
+   * @return the meta object for class '<em>Erl Binary</em>'.
+   * @see org.erlide.erlang.ErlBinary
    * @generated
    */
-  EClass getBinary();
+  EClass getErlBinary();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.Binary#getElements <em>Elements</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.ErlBinary#getElements <em>Elements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Elements</em>'.
-   * @see org.erlide.erlang.Binary#getElements()
-   * @see #getBinary()
+   * @see org.erlide.erlang.ErlBinary#getElements()
+   * @see #getErlBinary()
    * @generated
    */
-  EReference getBinary_Elements();
+  EReference getErlBinary_Elements();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.BinaryItem <em>Binary Item</em>}'.
@@ -6936,16 +7001,6 @@ public interface ErlangPackage extends EPackage
     EReference CONDITIONAL_FORM_BLOCK__END = eINSTANCE.getConditionalFormBlock_End();
 
     /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.AbstractElementImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getAbstractElement()
-     * @generated
-     */
-    EClass ABSTRACT_ELEMENT = eINSTANCE.getAbstractElement();
-
-    /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.AttributeImpl <em>Attribute</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7096,6 +7151,32 @@ public interface ErlangPackage extends EPackage
     EAttribute ELSE_ATTRIBUTE__TAG = eINSTANCE.getElseAttribute_Tag();
 
     /**
+     * The meta object literal for the '{@link org.erlide.erlang.impl.AbstractIncludeAttributeImpl <em>Abstract Include Attribute</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.erlide.erlang.impl.AbstractIncludeAttributeImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getAbstractIncludeAttribute()
+     * @generated
+     */
+    EClass ABSTRACT_INCLUDE_ATTRIBUTE = eINSTANCE.getAbstractIncludeAttribute();
+
+    /**
+     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ABSTRACT_INCLUDE_ATTRIBUTE__TAG = eINSTANCE.getAbstractIncludeAttribute_Tag();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ABSTRACT_INCLUDE_ATTRIBUTE__VALUE = eINSTANCE.getAbstractIncludeAttribute_Value();
+
+    /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.IncludeAttributeImpl <em>Include Attribute</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7106,20 +7187,14 @@ public interface ErlangPackage extends EPackage
     EClass INCLUDE_ATTRIBUTE = eINSTANCE.getIncludeAttribute();
 
     /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
+     * The meta object literal for the '{@link org.erlide.erlang.impl.IncludeLibAttributeImpl <em>Include Lib Attribute</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.erlide.erlang.impl.IncludeLibAttributeImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getIncludeLibAttribute()
      * @generated
      */
-    EAttribute INCLUDE_ATTRIBUTE__TAG = eINSTANCE.getIncludeAttribute_Tag();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference INCLUDE_ATTRIBUTE__VALUE = eINSTANCE.getIncludeAttribute_Value();
+    EClass INCLUDE_LIB_ATTRIBUTE = eINSTANCE.getIncludeLibAttribute();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.FileAttributeImpl <em>File Attribute</em>}' class.
@@ -7284,14 +7359,14 @@ public interface ErlangPackage extends EPackage
     EReference IMPORT_ATTRIBUTE__FUNS = eINSTANCE.getImportAttribute_Funs();
 
     /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.CompilerOptionsAttributeImpl <em>Compiler Options Attribute</em>}' class.
+     * The meta object literal for the '{@link org.erlide.erlang.impl.CompileAttributeImpl <em>Compile Attribute</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.CompilerOptionsAttributeImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getCompilerOptionsAttribute()
+     * @see org.erlide.erlang.impl.CompileAttributeImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getCompileAttribute()
      * @generated
      */
-    EClass COMPILER_OPTIONS_ATTRIBUTE = eINSTANCE.getCompilerOptionsAttribute();
+    EClass COMPILE_ATTRIBUTE = eINSTANCE.getCompileAttribute();
 
     /**
      * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
@@ -7299,7 +7374,7 @@ public interface ErlangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMPILER_OPTIONS_ATTRIBUTE__TAG = eINSTANCE.getCompilerOptionsAttribute_Tag();
+    EAttribute COMPILE_ATTRIBUTE__TAG = eINSTANCE.getCompileAttribute_Tag();
 
     /**
      * The meta object literal for the '<em><b>Options</b></em>' containment reference feature.
@@ -7307,7 +7382,7 @@ public interface ErlangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPILER_OPTIONS_ATTRIBUTE__OPTIONS = eINSTANCE.getCompilerOptionsAttribute_Options();
+    EReference COMPILE_ATTRIBUTE__OPTIONS = eINSTANCE.getCompileAttribute_Options();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.AbstractTypeAttributeImpl <em>Abstract Type Attribute</em>}' class.
@@ -8054,14 +8129,14 @@ public interface ErlangPackage extends EPackage
     EReference LIST_COMPREHENSION__GENERATORS = eINSTANCE.getListComprehension_Generators();
 
     /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.TupleImpl <em>Tuple</em>}' class.
+     * The meta object literal for the '{@link org.erlide.erlang.impl.ErlTupleImpl <em>Erl Tuple</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.TupleImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getTuple()
+     * @see org.erlide.erlang.impl.ErlTupleImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlTuple()
      * @generated
      */
-    EClass TUPLE = eINSTANCE.getTuple();
+    EClass ERL_TUPLE = eINSTANCE.getErlTuple();
 
     /**
      * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
@@ -8069,7 +8144,7 @@ public interface ErlangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TUPLE__ELEMENTS = eINSTANCE.getTuple_Elements();
+    EReference ERL_TUPLE__ELEMENTS = eINSTANCE.getErlTuple_Elements();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.BinaryComprehensionImpl <em>Binary Comprehension</em>}' class.
@@ -8090,14 +8165,14 @@ public interface ErlangPackage extends EPackage
     EReference BINARY_COMPREHENSION__GENERATORS = eINSTANCE.getBinaryComprehension_Generators();
 
     /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.BinaryImpl <em>Binary</em>}' class.
+     * The meta object literal for the '{@link org.erlide.erlang.impl.ErlBinaryImpl <em>Erl Binary</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.BinaryImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinary()
+     * @see org.erlide.erlang.impl.ErlBinaryImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlBinary()
      * @generated
      */
-    EClass BINARY = eINSTANCE.getBinary();
+    EClass ERL_BINARY = eINSTANCE.getErlBinary();
 
     /**
      * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
@@ -8105,7 +8180,7 @@ public interface ErlangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference BINARY__ELEMENTS = eINSTANCE.getBinary_Elements();
+    EReference ERL_BINARY__ELEMENTS = eINSTANCE.getErlBinary_Elements();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.BinaryItemImpl <em>Binary Item</em>}' class.

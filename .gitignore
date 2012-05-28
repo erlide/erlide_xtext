@@ -2,5 +2,6 @@
 *.beam
 bin/
 *._trace
-buildroot
+buildroot/
+*.smap
 

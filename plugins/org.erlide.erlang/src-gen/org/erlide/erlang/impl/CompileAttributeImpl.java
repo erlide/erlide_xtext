@@ -10,25 +10,25 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.erlide.erlang.CompilerOptionsAttribute;
+import org.erlide.erlang.CompileAttribute;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Compiler Options Attribute</b></em>'.
+ * An implementation of the model object '<em><b>Compile Attribute</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.CompilerOptionsAttributeImpl#getTag <em>Tag</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.CompilerOptionsAttributeImpl#getOptions <em>Options</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.CompileAttributeImpl#getTag <em>Tag</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.CompileAttributeImpl#getOptions <em>Options</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CompilerOptionsAttributeImpl extends AttributeImpl implements CompilerOptionsAttribute
+public class CompileAttributeImpl extends AttributeImpl implements CompileAttribute
 {
   /**
    * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
@@ -65,7 +65,7 @@ public class CompilerOptionsAttributeImpl extends AttributeImpl implements Compi
    * <!-- end-user-doc -->
    * @generated
    */
-  protected CompilerOptionsAttributeImpl()
+  protected CompileAttributeImpl()
   {
     super();
   }
@@ -78,7 +78,7 @@ public class CompilerOptionsAttributeImpl extends AttributeImpl implements Compi
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.COMPILER_OPTIONS_ATTRIBUTE;
+    return ErlangPackage.Literals.COMPILE_ATTRIBUTE;
   }
 
   /**
@@ -101,7 +101,7 @@ public class CompilerOptionsAttributeImpl extends AttributeImpl implements Compi
     String oldTag = tag;
     tag = newTag;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__TAG, oldTag, tag));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.COMPILE_ATTRIBUTE__TAG, oldTag, tag));
   }
 
   /**
@@ -125,7 +125,7 @@ public class CompilerOptionsAttributeImpl extends AttributeImpl implements Compi
     options = newOptions;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__OPTIONS, oldOptions, newOptions);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS, oldOptions, newOptions);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -142,14 +142,14 @@ public class CompilerOptionsAttributeImpl extends AttributeImpl implements Compi
     {
       NotificationChain msgs = null;
       if (options != null)
-        msgs = ((InternalEObject)options).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__OPTIONS, null, msgs);
+        msgs = ((InternalEObject)options).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS, null, msgs);
       if (newOptions != null)
-        msgs = ((InternalEObject)newOptions).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__OPTIONS, null, msgs);
+        msgs = ((InternalEObject)newOptions).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS, null, msgs);
       msgs = basicSetOptions(newOptions, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__OPTIONS, newOptions, newOptions));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS, newOptions, newOptions));
   }
 
   /**
@@ -162,7 +162,7 @@ public class CompilerOptionsAttributeImpl extends AttributeImpl implements Compi
   {
     switch (featureID)
     {
-      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__OPTIONS:
+      case ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS:
         return basicSetOptions(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -178,9 +178,9 @@ public class CompilerOptionsAttributeImpl extends AttributeImpl implements Compi
   {
     switch (featureID)
     {
-      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__TAG:
+      case ErlangPackage.COMPILE_ATTRIBUTE__TAG:
         return getTag();
-      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__OPTIONS:
+      case ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS:
         return getOptions();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -196,10 +196,10 @@ public class CompilerOptionsAttributeImpl extends AttributeImpl implements Compi
   {
     switch (featureID)
     {
-      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__TAG:
+      case ErlangPackage.COMPILE_ATTRIBUTE__TAG:
         setTag((String)newValue);
         return;
-      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__OPTIONS:
+      case ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS:
         setOptions((Expression)newValue);
         return;
     }
@@ -216,10 +216,10 @@ public class CompilerOptionsAttributeImpl extends AttributeImpl implements Compi
   {
     switch (featureID)
     {
-      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__TAG:
+      case ErlangPackage.COMPILE_ATTRIBUTE__TAG:
         setTag(TAG_EDEFAULT);
         return;
-      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__OPTIONS:
+      case ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS:
         setOptions((Expression)null);
         return;
     }
@@ -236,9 +236,9 @@ public class CompilerOptionsAttributeImpl extends AttributeImpl implements Compi
   {
     switch (featureID)
     {
-      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__TAG:
+      case ErlangPackage.COMPILE_ATTRIBUTE__TAG:
         return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
-      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE__OPTIONS:
+      case ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS:
         return options != null;
     }
     return super.eIsSet(featureID);
@@ -261,4 +261,4 @@ public class CompilerOptionsAttributeImpl extends AttributeImpl implements Compi
     return result.toString();
   }
 
-} //CompilerOptionsAttributeImpl
+} //CompileAttributeImpl

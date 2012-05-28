@@ -76,7 +76,6 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         Module module = (Module)theEObject;
         T result = caseModule(module);
-        if (result == null) result = caseAbstractElement(module);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -84,7 +83,6 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         Form form = (Form)theEObject;
         T result = caseForm(form);
-        if (result == null) result = caseAbstractElement(form);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -93,14 +91,6 @@ public class ErlangSwitch<T> extends Switch<T>
         ConditionalFormBlock conditionalFormBlock = (ConditionalFormBlock)theEObject;
         T result = caseConditionalFormBlock(conditionalFormBlock);
         if (result == null) result = caseForm(conditionalFormBlock);
-        if (result == null) result = caseAbstractElement(conditionalFormBlock);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.ABSTRACT_ELEMENT:
-      {
-        AbstractElement abstractElement = (AbstractElement)theEObject;
-        T result = caseAbstractElement(abstractElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -109,7 +99,6 @@ public class ErlangSwitch<T> extends Switch<T>
         Attribute attribute = (Attribute)theEObject;
         T result = caseAttribute(attribute);
         if (result == null) result = caseForm(attribute);
-        if (result == null) result = caseAbstractElement(attribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -127,7 +116,6 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = caseAttribute(defineAttribute);
         if (result == null) result = caseAbstractDefineAttribute(defineAttribute);
         if (result == null) result = caseForm(defineAttribute);
-        if (result == null) result = caseAbstractElement(defineAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -138,7 +126,6 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = caseAttribute(undefAttribute);
         if (result == null) result = caseAbstractDefineAttribute(undefAttribute);
         if (result == null) result = caseForm(undefAttribute);
-        if (result == null) result = caseAbstractElement(undefAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -163,13 +150,32 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE:
+      {
+        AbstractIncludeAttribute abstractIncludeAttribute = (AbstractIncludeAttribute)theEObject;
+        T result = caseAbstractIncludeAttribute(abstractIncludeAttribute);
+        if (result == null) result = caseAttribute(abstractIncludeAttribute);
+        if (result == null) result = caseForm(abstractIncludeAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ErlangPackage.INCLUDE_ATTRIBUTE:
       {
         IncludeAttribute includeAttribute = (IncludeAttribute)theEObject;
         T result = caseIncludeAttribute(includeAttribute);
+        if (result == null) result = caseAbstractIncludeAttribute(includeAttribute);
         if (result == null) result = caseAttribute(includeAttribute);
         if (result == null) result = caseForm(includeAttribute);
-        if (result == null) result = caseAbstractElement(includeAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ErlangPackage.INCLUDE_LIB_ATTRIBUTE:
+      {
+        IncludeLibAttribute includeLibAttribute = (IncludeLibAttribute)theEObject;
+        T result = caseIncludeLibAttribute(includeLibAttribute);
+        if (result == null) result = caseAbstractIncludeAttribute(includeLibAttribute);
+        if (result == null) result = caseAttribute(includeLibAttribute);
+        if (result == null) result = caseForm(includeLibAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -179,7 +185,6 @@ public class ErlangSwitch<T> extends Switch<T>
         T result = caseFileAttribute(fileAttribute);
         if (result == null) result = caseAttribute(fileAttribute);
         if (result == null) result = caseForm(fileAttribute);
-        if (result == null) result = caseAbstractElement(fileAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -189,7 +194,6 @@ public class ErlangSwitch<T> extends Switch<T>
         T result = caseModuleAttribute(moduleAttribute);
         if (result == null) result = caseAttribute(moduleAttribute);
         if (result == null) result = caseForm(moduleAttribute);
-        if (result == null) result = caseAbstractElement(moduleAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -199,7 +203,6 @@ public class ErlangSwitch<T> extends Switch<T>
         T result = caseRecordAttribute(recordAttribute);
         if (result == null) result = caseAttribute(recordAttribute);
         if (result == null) result = caseForm(recordAttribute);
-        if (result == null) result = caseAbstractElement(recordAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -209,7 +212,6 @@ public class ErlangSwitch<T> extends Switch<T>
         T result = caseExportAttribute(exportAttribute);
         if (result == null) result = caseAttribute(exportAttribute);
         if (result == null) result = caseForm(exportAttribute);
-        if (result == null) result = caseAbstractElement(exportAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -219,17 +221,15 @@ public class ErlangSwitch<T> extends Switch<T>
         T result = caseImportAttribute(importAttribute);
         if (result == null) result = caseAttribute(importAttribute);
         if (result == null) result = caseForm(importAttribute);
-        if (result == null) result = caseAbstractElement(importAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.COMPILER_OPTIONS_ATTRIBUTE:
+      case ErlangPackage.COMPILE_ATTRIBUTE:
       {
-        CompilerOptionsAttribute compilerOptionsAttribute = (CompilerOptionsAttribute)theEObject;
-        T result = caseCompilerOptionsAttribute(compilerOptionsAttribute);
-        if (result == null) result = caseAttribute(compilerOptionsAttribute);
-        if (result == null) result = caseForm(compilerOptionsAttribute);
-        if (result == null) result = caseAbstractElement(compilerOptionsAttribute);
+        CompileAttribute compileAttribute = (CompileAttribute)theEObject;
+        T result = caseCompileAttribute(compileAttribute);
+        if (result == null) result = caseAttribute(compileAttribute);
+        if (result == null) result = caseForm(compileAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -239,7 +239,6 @@ public class ErlangSwitch<T> extends Switch<T>
         T result = caseAbstractTypeAttribute(abstractTypeAttribute);
         if (result == null) result = caseAttribute(abstractTypeAttribute);
         if (result == null) result = caseForm(abstractTypeAttribute);
-        if (result == null) result = caseAbstractElement(abstractTypeAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -250,7 +249,6 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = caseAbstractTypeAttribute(specAttribute);
         if (result == null) result = caseAttribute(specAttribute);
         if (result == null) result = caseForm(specAttribute);
-        if (result == null) result = caseAbstractElement(specAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -261,7 +259,6 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = caseAbstractTypeAttribute(typeAttribute);
         if (result == null) result = caseAttribute(typeAttribute);
         if (result == null) result = caseForm(typeAttribute);
-        if (result == null) result = caseAbstractElement(typeAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -271,7 +268,6 @@ public class ErlangSwitch<T> extends Switch<T>
         T result = caseCustomAttribute(customAttribute);
         if (result == null) result = caseAttribute(customAttribute);
         if (result == null) result = caseForm(customAttribute);
-        if (result == null) result = caseAbstractElement(customAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -280,7 +276,6 @@ public class ErlangSwitch<T> extends Switch<T>
         Function function = (Function)theEObject;
         T result = caseFunction(function);
         if (result == null) result = caseForm(function);
-        if (result == null) result = caseAbstractElement(function);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -459,11 +454,11 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.TUPLE:
+      case ErlangPackage.ERL_TUPLE:
       {
-        Tuple tuple = (Tuple)theEObject;
-        T result = caseTuple(tuple);
-        if (result == null) result = caseExpression(tuple);
+        ErlTuple erlTuple = (ErlTuple)theEObject;
+        T result = caseErlTuple(erlTuple);
+        if (result == null) result = caseExpression(erlTuple);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -475,11 +470,11 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.BINARY:
+      case ErlangPackage.ERL_BINARY:
       {
-        Binary binary = (Binary)theEObject;
-        T result = caseBinary(binary);
-        if (result == null) result = caseExpression(binary);
+        ErlBinary erlBinary = (ErlBinary)theEObject;
+        T result = caseErlBinary(erlBinary);
+        if (result == null) result = caseExpression(erlBinary);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -661,7 +656,6 @@ public class ErlangSwitch<T> extends Switch<T>
         MacroForm macroForm = (MacroForm)theEObject;
         T result = caseMacroForm(macroForm);
         if (result == null) result = caseForm(macroForm);
-        if (result == null) result = caseAbstractElement(macroForm);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -918,22 +912,6 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAbstractElement(AbstractElement object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1046,6 +1024,22 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Abstract Include Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Abstract Include Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAbstractIncludeAttribute(AbstractIncludeAttribute object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Include Attribute</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1057,6 +1051,22 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseIncludeAttribute(IncludeAttribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Include Lib Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Include Lib Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIncludeLibAttribute(IncludeLibAttribute object)
   {
     return null;
   }
@@ -1142,17 +1152,17 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Compiler Options Attribute</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Compile Attribute</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Compiler Options Attribute</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Compile Attribute</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseCompilerOptionsAttribute(CompilerOptionsAttribute object)
+  public T caseCompileAttribute(CompileAttribute object)
   {
     return null;
   }
@@ -1606,17 +1616,17 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Tuple</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Erl Tuple</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Tuple</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Erl Tuple</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseTuple(Tuple object)
+  public T caseErlTuple(ErlTuple object)
   {
     return null;
   }
@@ -1638,17 +1648,17 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Binary</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Erl Binary</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Binary</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Erl Binary</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseBinary(Binary object)
+  public T caseErlBinary(ErlBinary object)
   {
     return null;
   }
