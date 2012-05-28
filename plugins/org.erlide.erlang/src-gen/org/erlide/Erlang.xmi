@@ -96,7 +96,7 @@
         <terminal xsi:type="xtext:Keyword" value="define"/>
       </elements>
       <elements xsi:type="xtext:Keyword" value="("/>
-      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="macroName" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.81"/>
       </elements>
       <elements xsi:type="xtext:Group" cardinality="?">
@@ -134,7 +134,7 @@
         <terminal xsi:type="xtext:Keyword" value="undef"/>
       </elements>
       <elements xsi:type="xtext:Keyword" value="("/>
-      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="ref" operator="=">
         <terminal xsi:type="xtext:CrossReference">
           <type metamodel="//@metamodelDeclarations.1">
             <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//DefineAttribute"/>
@@ -978,7 +978,7 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//MacroCall"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="macroName" operator="=">
         <terminal xsi:type="xtext:CrossReference">
           <type metamodel="//@metamodelDeclarations.1">
             <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//DefineAttribute"/>

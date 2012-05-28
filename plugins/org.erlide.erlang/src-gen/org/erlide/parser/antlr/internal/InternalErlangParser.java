@@ -1286,7 +1286,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDefineAttribute"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:441:1: ruleDefineAttribute returns [EObject current=null] : (otherlv_0= '-' ( ( ( 'define' ) )=> (lv_tag_1_0= 'define' ) ) otherlv_2= '(' ( (lv_name_3_0= ruleAtomOrVar ) ) (otherlv_4= '(' ( ( (lv_args_5_0= rulePatternExpression ) ) (otherlv_6= ',' ( (lv_args_7_0= rulePatternExpression ) ) )* )? otherlv_8= ')' )? (otherlv_9= ',' ( (lv_value_10_0= ruleGuard ) )? )? otherlv_11= ')' this_FULL_STOP_12= RULE_FULL_STOP ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:441:1: ruleDefineAttribute returns [EObject current=null] : (otherlv_0= '-' ( ( ( 'define' ) )=> (lv_tag_1_0= 'define' ) ) otherlv_2= '(' ( (lv_macroName_3_0= ruleAtomOrVar ) ) (otherlv_4= '(' ( ( (lv_args_5_0= rulePatternExpression ) ) (otherlv_6= ',' ( (lv_args_7_0= rulePatternExpression ) ) )* )? otherlv_8= ')' )? (otherlv_9= ',' ( (lv_value_10_0= ruleGuard ) )? )? otherlv_11= ')' this_FULL_STOP_12= RULE_FULL_STOP ) ;
     public final EObject ruleDefineAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -1299,7 +1299,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
         Token otherlv_9=null;
         Token otherlv_11=null;
         Token this_FULL_STOP_12=null;
-        AntlrDatatypeRuleToken lv_name_3_0 = null;
+        AntlrDatatypeRuleToken lv_macroName_3_0 = null;
 
         EObject lv_args_5_0 = null;
 
@@ -1311,11 +1311,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:444:28: ( (otherlv_0= '-' ( ( ( 'define' ) )=> (lv_tag_1_0= 'define' ) ) otherlv_2= '(' ( (lv_name_3_0= ruleAtomOrVar ) ) (otherlv_4= '(' ( ( (lv_args_5_0= rulePatternExpression ) ) (otherlv_6= ',' ( (lv_args_7_0= rulePatternExpression ) ) )* )? otherlv_8= ')' )? (otherlv_9= ',' ( (lv_value_10_0= ruleGuard ) )? )? otherlv_11= ')' this_FULL_STOP_12= RULE_FULL_STOP ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:445:1: (otherlv_0= '-' ( ( ( 'define' ) )=> (lv_tag_1_0= 'define' ) ) otherlv_2= '(' ( (lv_name_3_0= ruleAtomOrVar ) ) (otherlv_4= '(' ( ( (lv_args_5_0= rulePatternExpression ) ) (otherlv_6= ',' ( (lv_args_7_0= rulePatternExpression ) ) )* )? otherlv_8= ')' )? (otherlv_9= ',' ( (lv_value_10_0= ruleGuard ) )? )? otherlv_11= ')' this_FULL_STOP_12= RULE_FULL_STOP )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:444:28: ( (otherlv_0= '-' ( ( ( 'define' ) )=> (lv_tag_1_0= 'define' ) ) otherlv_2= '(' ( (lv_macroName_3_0= ruleAtomOrVar ) ) (otherlv_4= '(' ( ( (lv_args_5_0= rulePatternExpression ) ) (otherlv_6= ',' ( (lv_args_7_0= rulePatternExpression ) ) )* )? otherlv_8= ')' )? (otherlv_9= ',' ( (lv_value_10_0= ruleGuard ) )? )? otherlv_11= ')' this_FULL_STOP_12= RULE_FULL_STOP ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:445:1: (otherlv_0= '-' ( ( ( 'define' ) )=> (lv_tag_1_0= 'define' ) ) otherlv_2= '(' ( (lv_macroName_3_0= ruleAtomOrVar ) ) (otherlv_4= '(' ( ( (lv_args_5_0= rulePatternExpression ) ) (otherlv_6= ',' ( (lv_args_7_0= rulePatternExpression ) ) )* )? otherlv_8= ')' )? (otherlv_9= ',' ( (lv_value_10_0= ruleGuard ) )? )? otherlv_11= ')' this_FULL_STOP_12= RULE_FULL_STOP )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:445:1: (otherlv_0= '-' ( ( ( 'define' ) )=> (lv_tag_1_0= 'define' ) ) otherlv_2= '(' ( (lv_name_3_0= ruleAtomOrVar ) ) (otherlv_4= '(' ( ( (lv_args_5_0= rulePatternExpression ) ) (otherlv_6= ',' ( (lv_args_7_0= rulePatternExpression ) ) )* )? otherlv_8= ')' )? (otherlv_9= ',' ( (lv_value_10_0= ruleGuard ) )? )? otherlv_11= ')' this_FULL_STOP_12= RULE_FULL_STOP )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:445:3: otherlv_0= '-' ( ( ( 'define' ) )=> (lv_tag_1_0= 'define' ) ) otherlv_2= '(' ( (lv_name_3_0= ruleAtomOrVar ) ) (otherlv_4= '(' ( ( (lv_args_5_0= rulePatternExpression ) ) (otherlv_6= ',' ( (lv_args_7_0= rulePatternExpression ) ) )* )? otherlv_8= ')' )? (otherlv_9= ',' ( (lv_value_10_0= ruleGuard ) )? )? otherlv_11= ')' this_FULL_STOP_12= RULE_FULL_STOP
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:445:1: (otherlv_0= '-' ( ( ( 'define' ) )=> (lv_tag_1_0= 'define' ) ) otherlv_2= '(' ( (lv_macroName_3_0= ruleAtomOrVar ) ) (otherlv_4= '(' ( ( (lv_args_5_0= rulePatternExpression ) ) (otherlv_6= ',' ( (lv_args_7_0= rulePatternExpression ) ) )* )? otherlv_8= ')' )? (otherlv_9= ',' ( (lv_value_10_0= ruleGuard ) )? )? otherlv_11= ')' this_FULL_STOP_12= RULE_FULL_STOP )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:445:3: otherlv_0= '-' ( ( ( 'define' ) )=> (lv_tag_1_0= 'define' ) ) otherlv_2= '(' ( (lv_macroName_3_0= ruleAtomOrVar ) ) (otherlv_4= '(' ( ( (lv_args_5_0= rulePatternExpression ) ) (otherlv_6= ',' ( (lv_args_7_0= rulePatternExpression ) ) )* )? otherlv_8= ')' )? (otherlv_9= ',' ( (lv_value_10_0= ruleGuard ) )? )? otherlv_11= ')' this_FULL_STOP_12= RULE_FULL_STOP
             {
             otherlv_0=(Token)match(input,18,FOLLOW_18_in_ruleDefineAttribute962); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -1355,19 +1355,19 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                   	newLeafNode(otherlv_2, grammarAccess.getDefineAttributeAccess().getLeftParenthesisKeyword_2());
                   
             }
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:474:1: ( (lv_name_3_0= ruleAtomOrVar ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:475:1: (lv_name_3_0= ruleAtomOrVar )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:474:1: ( (lv_macroName_3_0= ruleAtomOrVar ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:475:1: (lv_macroName_3_0= ruleAtomOrVar )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:475:1: (lv_name_3_0= ruleAtomOrVar )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:476:3: lv_name_3_0= ruleAtomOrVar
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:475:1: (lv_macroName_3_0= ruleAtomOrVar )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:476:3: lv_macroName_3_0= ruleAtomOrVar
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getDefineAttributeAccess().getNameAtomOrVarParserRuleCall_3_0()); 
+              	        newCompositeNode(grammarAccess.getDefineAttributeAccess().getMacroNameAtomOrVarParserRuleCall_3_0()); 
               	    
             }
             pushFollow(FOLLOW_ruleAtomOrVar_in_ruleDefineAttribute1041);
-            lv_name_3_0=ruleAtomOrVar();
+            lv_macroName_3_0=ruleAtomOrVar();
 
             state._fsp--;
             if (state.failed) return current;
@@ -1378,8 +1378,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
               	        }
                      		set(
                      			current, 
-                     			"name",
-                      		lv_name_3_0, 
+                     			"macroName",
+                      		lv_macroName_3_0, 
                       		"AtomOrVar");
               	        afterParserOrEnumRuleCall();
               	    
@@ -1752,7 +1752,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getUndefAttributeAccess().getNameDefineAttributeCrossReference_3_0()); 
+              	        newCompositeNode(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeCrossReference_3_0()); 
               	    
             }
             pushFollow(FOLLOW_ruleAtomOrVar_in_ruleUndefAttribute1351);
@@ -10456,7 +10456,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getMacroCallAccess().getNameDefineAttributeCrossReference_0_0()); 
+              	        newCompositeNode(grammarAccess.getMacroCallAccess().getMacroNameDefineAttributeCrossReference_0_0()); 
               	    
             }
             pushFollow(FOLLOW_ruleMacro_in_ruleMacroCall8629);
@@ -26464,8 +26464,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
         "\15\uffff}>";
     static final String[] DFA6_transitionS = {
             "\1\1",
-            "\1\6\14\uffff\1\12\3\uffff\1\2\4\uffff\2\14\1\11\1\10\1\5\2"+
-            "\uffff\1\4\2\uffff\1\13\1\7\2\3\1\uffff\2\3",
+            "\1\6\14\uffff\1\12\3\uffff\1\2\4\uffff\2\14\1\11\1\10\1\5"+
+            "\2\uffff\1\4\2\uffff\1\13\1\7\2\3\1\uffff\2\3",
             "",
             "",
             "",
@@ -26525,8 +26525,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA59_specialS =
         "\14\uffff}>";
     static final String[] DFA59_transitionS = {
-            "\6\1\10\uffff\1\1\1\2\2\uffff\13\1\1\uffff\2\1\1\uffff\4\1\1"+
-            "\uffff\2\1\3\uffff\2\1\5\uffff\1\1\1\uffff\1\3\1\uffff\1\12"+
+            "\6\1\10\uffff\1\1\1\2\2\uffff\13\1\1\uffff\2\1\1\uffff\4\1"+
+            "\1\uffff\2\1\3\uffff\2\1\5\uffff\1\1\1\uffff\1\3\1\uffff\1\12"+
             "\1\11\1\13\1\4\1\5\1\uffff\1\6\1\uffff\1\7\1\uffff\1\10\2\uffff"+
             "\1\1\34\uffff\1\1",
             "",
@@ -26588,9 +26588,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA60_specialS =
         "\2\uffff\1\0\1\1\1\2\1\3\37\uffff}>";
     static final String[] DFA60_transitionS = {
-            "\6\7\10\uffff\1\7\3\uffff\12\7\1\1\1\uffff\1\7\1\4\1\uffff\4"+
-            "\7\1\uffff\2\7\3\uffff\1\2\1\7\5\uffff\1\6\20\uffff\1\5\34\uffff"+
-            "\1\3",
+            "\6\7\10\uffff\1\7\3\uffff\12\7\1\1\1\uffff\1\7\1\4\1\uffff"+
+            "\4\7\1\uffff\2\7\3\uffff\1\2\1\7\5\uffff\1\6\20\uffff\1\5\34"+
+            "\uffff\1\3",
             "",
             "\1\uffff",
             "\1\uffff",
@@ -26746,9 +26746,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA87_specialS =
         "\27\uffff}>";
     static final String[] DFA87_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\1\26\2\uffff\1\11\1\4\1\5\1\3\1\20\1"+
-            "\13\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1"+
-            "\17\1\uffff\1\6\1\7\3\uffff\1\25\1\24\63\uffff\1\25",
+            "\1\1\1\25\13\uffff\1\15\1\26\2\uffff\1\11\1\4\1\5\1\3\1\20"+
+            "\1\13\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2"+
+            "\1\17\1\uffff\1\6\1\7\3\uffff\1\25\1\24\63\uffff\1\25",
             "\1\26\43\uffff\1\25\13\uffff\1\25",
             "\1\26\43\uffff\1\25\13\uffff\1\25",
             "\1\26\43\uffff\1\25\13\uffff\1\25",
@@ -26819,9 +26819,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA88_specialS =
         "\56\uffff}>";
     static final String[] DFA88_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13\1"+
-            "\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1"+
-            "\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
+            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13"+
+            "\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17"+
+            "\1\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
             "\1\31\13\uffff\1\30",
             "\1\31\13\uffff\1\30",
             "\1\31\13\uffff\1\30",
@@ -26843,11 +26843,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\31\13\uffff\1\30",
             "\1\31\13\uffff\1\30",
             "\1\31\13\uffff\1\30",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -26917,13 +26917,13 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA98_acceptS =
         "\30\uffff\1\2\1\1\24\uffff";
     static final String DFA98_specialS =
-        "\1\uffff\1\11\1\27\1\15\1\3\1\41\1\32\1\36\1\47\1\10\1\23\1\33\1"+
-        "\45\1\6\1\21\1\31\1\43\1\1\1\17\1\25\1\12\1\4\4\uffff\1\20\1\40"+
+        "\1\uffff\1\11\1\27\1\15\1\3\1\41\1\32\1\36\1\47\1\10\1\23\1\33"+
+        "\1\45\1\6\1\21\1\31\1\43\1\1\1\17\1\25\1\12\1\4\4\uffff\1\20\1\40"+
         "\1\5\1\30\1\50\1\16\1\24\1\42\1\34\1\0\1\46\1\22\1\2\1\35\1\13\1"+
         "\44\1\26\1\14\1\37\1\7}>";
     static final String[] DFA98_transitionS = {
-            "\1\30\1\1\1\25\3\30\10\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1"+
-            "\20\1\13\1\14\1\16\1\12\1\10\1\30\1\uffff\1\21\1\30\1\uffff"+
+            "\1\30\1\1\1\25\3\30\10\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3"+
+            "\1\20\1\13\1\14\1\16\1\12\1\10\1\30\1\uffff\1\21\1\30\1\uffff"+
             "\1\22\1\23\1\2\1\17\1\uffff\1\6\1\7\3\uffff\1\26\1\24\5\uffff"+
             "\1\30\20\uffff\1\30\34\uffff\1\27",
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
@@ -26947,11 +26947,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -27649,9 +27649,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA133_specialS =
         "\56\uffff}>";
     static final String[] DFA133_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13\1"+
-            "\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1"+
-            "\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
+            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13"+
+            "\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17"+
+            "\1\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
             "\1\31\43\uffff\1\30\13\uffff\1\31",
             "\1\31\43\uffff\1\30\13\uffff\1\31",
             "\1\31\43\uffff\1\30\13\uffff\1\31",
@@ -27673,11 +27673,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\31\43\uffff\1\30\13\uffff\1\31",
             "\1\31\43\uffff\1\30\13\uffff\1\31",
             "\1\31\43\uffff\1\30\13\uffff\1\31",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -27849,8 +27849,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA147_specialS =
         "\55\uffff}>";
     static final String[] DFA147_transitionS = {
-            "\1\1\14\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13\1\14\1"+
-            "\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1\uffff"+
+            "\1\1\14\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13\1\14"+
+            "\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1\uffff"+
             "\1\6\1\7\3\uffff\1\25\1\24\63\uffff\1\26",
             "\1\30\15\uffff\1\30\1\uffff\3\30\13\uffff\1\30\2\uffff\1\30"+
             "\4\uffff\1\30\3\uffff\1\30\11\uffff\1\27\13\uffff\1\30\1\uffff"+
@@ -27912,11 +27912,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\30\15\uffff\1\30\1\uffff\3\30\13\uffff\1\30\2\uffff\1\30"+
             "\4\uffff\1\30\3\uffff\1\30\11\uffff\1\27\13\uffff\1\30\1\uffff"+
             "\1\30\2\uffff\1\30\2\uffff\14\30\16\uffff\1\30",
-            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\33\1\50\1"+
-            "\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
+            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\33\1\50"+
+            "\1\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
             "\1\47\1\uffff\1\36\1\37",
-            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\33\1\50\1"+
-            "\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
+            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\33\1\50"+
+            "\1\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
             "\1\47\1\uffff\1\36\1\37",
             "",
             "",

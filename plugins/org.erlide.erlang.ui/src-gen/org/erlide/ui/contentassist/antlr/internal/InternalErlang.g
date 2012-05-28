@@ -5105,9 +5105,9 @@ rule__DefineAttribute__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getDefineAttributeAccess().getNameAssignment_3()); }
-(rule__DefineAttribute__NameAssignment_3)
-{ after(grammarAccess.getDefineAttributeAccess().getNameAssignment_3()); }
+{ before(grammarAccess.getDefineAttributeAccess().getMacroNameAssignment_3()); }
+(rule__DefineAttribute__MacroNameAssignment_3)
+{ after(grammarAccess.getDefineAttributeAccess().getMacroNameAssignment_3()); }
 )
 
 ;
@@ -5641,9 +5641,9 @@ rule__UndefAttribute__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getUndefAttributeAccess().getNameAssignment_3()); }
-(rule__UndefAttribute__NameAssignment_3)
-{ after(grammarAccess.getUndefAttributeAccess().getNameAssignment_3()); }
+{ before(grammarAccess.getUndefAttributeAccess().getRefAssignment_3()); }
+(rule__UndefAttribute__RefAssignment_3)
+{ after(grammarAccess.getUndefAttributeAccess().getRefAssignment_3()); }
 )
 
 ;
@@ -13458,9 +13458,9 @@ rule__MacroCall__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getMacroCallAccess().getNameAssignment_0()); }
-(rule__MacroCall__NameAssignment_0)
-{ after(grammarAccess.getMacroCallAccess().getNameAssignment_0()); }
+{ before(grammarAccess.getMacroCallAccess().getMacroNameAssignment_0()); }
+(rule__MacroCall__MacroNameAssignment_0)
+{ after(grammarAccess.getMacroCallAccess().getMacroNameAssignment_0()); }
 )
 
 ;
@@ -25722,14 +25722,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__DefineAttribute__NameAssignment_3
+rule__DefineAttribute__MacroNameAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getDefineAttributeAccess().getNameAtomOrVarParserRuleCall_3_0()); }
-	ruleAtomOrVar{ after(grammarAccess.getDefineAttributeAccess().getNameAtomOrVarParserRuleCall_3_0()); }
+{ before(grammarAccess.getDefineAttributeAccess().getMacroNameAtomOrVarParserRuleCall_3_0()); }
+	ruleAtomOrVar{ after(grammarAccess.getDefineAttributeAccess().getMacroNameAtomOrVarParserRuleCall_3_0()); }
 )
 
 ;
@@ -25805,18 +25805,18 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__UndefAttribute__NameAssignment_3
+rule__UndefAttribute__RefAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getUndefAttributeAccess().getNameDefineAttributeCrossReference_3_0()); }
+{ before(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeCrossReference_3_0()); }
 (
-{ before(grammarAccess.getUndefAttributeAccess().getNameDefineAttributeAtomOrVarParserRuleCall_3_0_1()); }
-	ruleAtomOrVar{ after(grammarAccess.getUndefAttributeAccess().getNameDefineAttributeAtomOrVarParserRuleCall_3_0_1()); }
+{ before(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeAtomOrVarParserRuleCall_3_0_1()); }
+	ruleAtomOrVar{ after(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeAtomOrVarParserRuleCall_3_0_1()); }
 )
-{ after(grammarAccess.getUndefAttributeAccess().getNameDefineAttributeCrossReference_3_0()); }
+{ after(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeCrossReference_3_0()); }
 )
 
 ;
@@ -27237,18 +27237,18 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MacroCall__NameAssignment_0
+rule__MacroCall__MacroNameAssignment_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getMacroCallAccess().getNameDefineAttributeCrossReference_0_0()); }
+{ before(grammarAccess.getMacroCallAccess().getMacroNameDefineAttributeCrossReference_0_0()); }
 (
-{ before(grammarAccess.getMacroCallAccess().getNameDefineAttributeMacroParserRuleCall_0_0_1()); }
-	ruleMacro{ after(grammarAccess.getMacroCallAccess().getNameDefineAttributeMacroParserRuleCall_0_0_1()); }
+{ before(grammarAccess.getMacroCallAccess().getMacroNameDefineAttributeMacroParserRuleCall_0_0_1()); }
+	ruleMacro{ after(grammarAccess.getMacroCallAccess().getMacroNameDefineAttributeMacroParserRuleCall_0_0_1()); }
 )
-{ after(grammarAccess.getMacroCallAccess().getNameDefineAttributeCrossReference_0_0()); }
+{ after(grammarAccess.getMacroCallAccess().getMacroNameDefineAttributeCrossReference_0_0()); }
 )
 
 ;

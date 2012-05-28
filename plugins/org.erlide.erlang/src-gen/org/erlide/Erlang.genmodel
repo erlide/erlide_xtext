@@ -22,13 +22,13 @@
     <genClasses ecoreClass="Erlang.ecore#//AbstractDefineAttribute"/>
     <genClasses ecoreClass="Erlang.ecore#//DefineAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//DefineAttribute/tag"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//DefineAttribute/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//DefineAttribute/macroName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//DefineAttribute/args"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//DefineAttribute/value"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//UndefAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//UndefAttribute/tag"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//UndefAttribute/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//UndefAttribute/ref"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//IfdefAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//IfdefAttribute/tag"/>
@@ -111,7 +111,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Expression/expr"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//MacroCall">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//MacroCall/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//MacroCall/macroName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//MacroCall/args"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//RecordExpr">

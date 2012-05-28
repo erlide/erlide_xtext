@@ -21,7 +21,7 @@ import org.erlide.erlang.UndefAttribute;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.erlide.erlang.impl.UndefAttributeImpl#getTag <em>Tag</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.UndefAttributeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.UndefAttributeImpl#getRef <em>Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,14 +50,14 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
   protected String tag = TAG_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected DefineAttribute name;
+  protected DefineAttribute ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -108,19 +108,19 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public DefineAttribute getName()
+  public DefineAttribute getRef()
   {
-    if (name != null && name.eIsProxy())
+    if (ref != null && ref.eIsProxy())
     {
-      InternalEObject oldName = (InternalEObject)name;
-      name = (DefineAttribute)eResolveProxy(oldName);
-      if (name != oldName)
+      InternalEObject oldRef = (InternalEObject)ref;
+      ref = (DefineAttribute)eResolveProxy(oldRef);
+      if (ref != oldRef)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.UNDEF_ATTRIBUTE__NAME, oldName, name));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.UNDEF_ATTRIBUTE__REF, oldRef, ref));
       }
     }
-    return name;
+    return ref;
   }
 
   /**
@@ -128,9 +128,9 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public DefineAttribute basicGetName()
+  public DefineAttribute basicGetRef()
   {
-    return name;
+    return ref;
   }
 
   /**
@@ -138,12 +138,12 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(DefineAttribute newName)
+  public void setRef(DefineAttribute newRef)
   {
-    DefineAttribute oldName = name;
-    name = newName;
+    DefineAttribute oldRef = ref;
+    ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.UNDEF_ATTRIBUTE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.UNDEF_ATTRIBUTE__REF, oldRef, ref));
   }
 
   /**
@@ -158,9 +158,9 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
     {
       case ErlangPackage.UNDEF_ATTRIBUTE__TAG:
         return getTag();
-      case ErlangPackage.UNDEF_ATTRIBUTE__NAME:
-        if (resolve) return getName();
-        return basicGetName();
+      case ErlangPackage.UNDEF_ATTRIBUTE__REF:
+        if (resolve) return getRef();
+        return basicGetRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -178,8 +178,8 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
       case ErlangPackage.UNDEF_ATTRIBUTE__TAG:
         setTag((String)newValue);
         return;
-      case ErlangPackage.UNDEF_ATTRIBUTE__NAME:
-        setName((DefineAttribute)newValue);
+      case ErlangPackage.UNDEF_ATTRIBUTE__REF:
+        setRef((DefineAttribute)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -198,8 +198,8 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
       case ErlangPackage.UNDEF_ATTRIBUTE__TAG:
         setTag(TAG_EDEFAULT);
         return;
-      case ErlangPackage.UNDEF_ATTRIBUTE__NAME:
-        setName((DefineAttribute)null);
+      case ErlangPackage.UNDEF_ATTRIBUTE__REF:
+        setRef((DefineAttribute)null);
         return;
     }
     super.eUnset(featureID);
@@ -217,8 +217,8 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
     {
       case ErlangPackage.UNDEF_ATTRIBUTE__TAG:
         return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
-      case ErlangPackage.UNDEF_ATTRIBUTE__NAME:
-        return name != null;
+      case ErlangPackage.UNDEF_ATTRIBUTE__REF:
+        return ref != null;
     }
     return super.eIsSet(featureID);
   }

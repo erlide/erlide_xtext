@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.erlide.erlang.DefineAttribute#getTag <em>Tag</em>}</li>
- *   <li>{@link org.erlide.erlang.DefineAttribute#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.DefineAttribute#getMacroName <em>Macro Name</em>}</li>
  *   <li>{@link org.erlide.erlang.DefineAttribute#getArgs <em>Args</em>}</li>
  *   <li>{@link org.erlide.erlang.DefineAttribute#getValue <em>Value</em>}</li>
  * </ul>
@@ -52,30 +52,30 @@ public interface DefineAttribute extends Attribute, AbstractDefineAttribute
   void setTag(String value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Macro Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Macro Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.erlide.erlang.ErlangPackage#getDefineAttribute_Name()
+   * @return the value of the '<em>Macro Name</em>' attribute.
+   * @see #setMacroName(String)
+   * @see org.erlide.erlang.ErlangPackage#getDefineAttribute_MacroName()
    * @model
    * @generated
    */
-  String getName();
+  String getMacroName();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.DefineAttribute#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.DefineAttribute#getMacroName <em>Macro Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Macro Name</em>' attribute.
+   * @see #getMacroName()
    * @generated
    */
-  void setName(String value);
+  void setMacroName(String value);
 
   /**
    * Returns the value of the '<em><b>Args</b></em>' containment reference list.

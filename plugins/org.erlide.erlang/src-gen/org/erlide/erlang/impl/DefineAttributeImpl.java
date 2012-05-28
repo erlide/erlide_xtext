@@ -30,7 +30,7 @@ import org.erlide.erlang.Guard;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.erlide.erlang.impl.DefineAttributeImpl#getTag <em>Tag</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.DefineAttributeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.DefineAttributeImpl#getMacroName <em>Macro Name</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.DefineAttributeImpl#getArgs <em>Args</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.DefineAttributeImpl#getValue <em>Value</em>}</li>
  * </ul>
@@ -61,24 +61,24 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
   protected String tag = TAG_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getMacroName() <em>Macro Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getMacroName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String MACRO_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getMacroName() <em>Macro Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getMacroName()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String macroName = MACRO_NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
@@ -149,9 +149,9 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public String getMacroName()
   {
-    return name;
+    return macroName;
   }
 
   /**
@@ -159,12 +159,12 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setMacroName(String newMacroName)
   {
-    String oldName = name;
-    name = newName;
+    String oldMacroName = macroName;
+    macroName = newMacroName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.DEFINE_ATTRIBUTE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.DEFINE_ATTRIBUTE__MACRO_NAME, oldMacroName, macroName));
   }
 
   /**
@@ -259,8 +259,8 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
     {
       case ErlangPackage.DEFINE_ATTRIBUTE__TAG:
         return getTag();
-      case ErlangPackage.DEFINE_ATTRIBUTE__NAME:
-        return getName();
+      case ErlangPackage.DEFINE_ATTRIBUTE__MACRO_NAME:
+        return getMacroName();
       case ErlangPackage.DEFINE_ATTRIBUTE__ARGS:
         return getArgs();
       case ErlangPackage.DEFINE_ATTRIBUTE__VALUE:
@@ -283,8 +283,8 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
       case ErlangPackage.DEFINE_ATTRIBUTE__TAG:
         setTag((String)newValue);
         return;
-      case ErlangPackage.DEFINE_ATTRIBUTE__NAME:
-        setName((String)newValue);
+      case ErlangPackage.DEFINE_ATTRIBUTE__MACRO_NAME:
+        setMacroName((String)newValue);
         return;
       case ErlangPackage.DEFINE_ATTRIBUTE__ARGS:
         getArgs().clear();
@@ -310,8 +310,8 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
       case ErlangPackage.DEFINE_ATTRIBUTE__TAG:
         setTag(TAG_EDEFAULT);
         return;
-      case ErlangPackage.DEFINE_ATTRIBUTE__NAME:
-        setName(NAME_EDEFAULT);
+      case ErlangPackage.DEFINE_ATTRIBUTE__MACRO_NAME:
+        setMacroName(MACRO_NAME_EDEFAULT);
         return;
       case ErlangPackage.DEFINE_ATTRIBUTE__ARGS:
         getArgs().clear();
@@ -335,8 +335,8 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
     {
       case ErlangPackage.DEFINE_ATTRIBUTE__TAG:
         return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
-      case ErlangPackage.DEFINE_ATTRIBUTE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ErlangPackage.DEFINE_ATTRIBUTE__MACRO_NAME:
+        return MACRO_NAME_EDEFAULT == null ? macroName != null : !MACRO_NAME_EDEFAULT.equals(macroName);
       case ErlangPackage.DEFINE_ATTRIBUTE__ARGS:
         return args != null && !args.isEmpty();
       case ErlangPackage.DEFINE_ATTRIBUTE__VALUE:
@@ -358,8 +358,8 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (tag: ");
     result.append(tag);
-    result.append(", name: ");
-    result.append(name);
+    result.append(", macroName: ");
+    result.append(macroName);
     result.append(')');
     return result.toString();
   }

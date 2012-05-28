@@ -474,16 +474,16 @@ ruleDefineAttribute returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getDefineAttributeAccess().getNameAtomOrVarParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getDefineAttributeAccess().getMacroNameAtomOrVarParserRuleCall_3_0()); 
 	    }
-		lv_name_3_0=ruleAtomOrVar		{
+		lv_macroName_3_0=ruleAtomOrVar		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getDefineAttributeRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_3_0, 
+       			"macroName",
+        		lv_macroName_3_0, 
         		"AtomOrVar");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -625,7 +625,7 @@ ruleUndefAttribute returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getUndefAttributeAccess().getNameDefineAttributeCrossReference_3_0()); 
+	        newCompositeNode(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeCrossReference_3_0()); 
 	    }
 		ruleAtomOrVar		{ 
 	        afterParserOrEnumRuleCall();
@@ -3857,7 +3857,7 @@ ruleMacroCall returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getMacroCallAccess().getNameDefineAttributeCrossReference_0_0()); 
+	        newCompositeNode(grammarAccess.getMacroCallAccess().getMacroNameDefineAttributeCrossReference_0_0()); 
 	    }
 		ruleMacro		{ 
 	        afterParserOrEnumRuleCall();

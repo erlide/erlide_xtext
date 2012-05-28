@@ -225,13 +225,13 @@ public interface ErlangPackage extends EPackage
   int DEFINE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Macro Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__NAME = ATTRIBUTE_FEATURE_COUNT + 1;
+  int DEFINE_ATTRIBUTE__MACRO_NAME = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -280,13 +280,13 @@ public interface ErlangPackage extends EPackage
   int UNDEF_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' reference.
+   * The feature id for the '<em><b>Ref</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int UNDEF_ATTRIBUTE__NAME = ATTRIBUTE_FEATURE_COUNT + 1;
+  int UNDEF_ATTRIBUTE__REF = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Undef Attribute</em>' class.
@@ -1139,13 +1139,13 @@ public interface ErlangPackage extends EPackage
   int MACRO_CALL__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' reference.
+   * The feature id for the '<em><b>Macro Name</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MACRO_CALL__NAME = EXPRESSION_FEATURE_COUNT + 0;
+  int MACRO_CALL__MACRO_NAME = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -4248,15 +4248,15 @@ public interface ErlangPackage extends EPackage
   EAttribute getDefineAttribute_Tag();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.DefineAttribute#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.erlide.erlang.DefineAttribute#getMacroName <em>Macro Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.erlide.erlang.DefineAttribute#getName()
+   * @return the meta object for the attribute '<em>Macro Name</em>'.
+   * @see org.erlide.erlang.DefineAttribute#getMacroName()
    * @see #getDefineAttribute()
    * @generated
    */
-  EAttribute getDefineAttribute_Name();
+  EAttribute getDefineAttribute_MacroName();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.erlide.erlang.DefineAttribute#getArgs <em>Args</em>}'.
@@ -4302,15 +4302,15 @@ public interface ErlangPackage extends EPackage
   EAttribute getUndefAttribute_Tag();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.UndefAttribute#getName <em>Name</em>}'.
+   * Returns the meta object for the reference '{@link org.erlide.erlang.UndefAttribute#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Name</em>'.
-   * @see org.erlide.erlang.UndefAttribute#getName()
+   * @return the meta object for the reference '<em>Ref</em>'.
+   * @see org.erlide.erlang.UndefAttribute#getRef()
    * @see #getUndefAttribute()
    * @generated
    */
-  EReference getUndefAttribute_Name();
+  EReference getUndefAttribute_Ref();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.IfdefAttribute <em>Ifdef Attribute</em>}'.
@@ -4973,15 +4973,15 @@ public interface ErlangPackage extends EPackage
   EClass getMacroCall();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.MacroCall#getName <em>Name</em>}'.
+   * Returns the meta object for the reference '{@link org.erlide.erlang.MacroCall#getMacroName <em>Macro Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Name</em>'.
-   * @see org.erlide.erlang.MacroCall#getName()
+   * @return the meta object for the reference '<em>Macro Name</em>'.
+   * @see org.erlide.erlang.MacroCall#getMacroName()
    * @see #getMacroCall()
    * @generated
    */
-  EReference getMacroCall_Name();
+  EReference getMacroCall_MacroName();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.erlide.erlang.MacroCall#getArgs <em>Args</em>}'.
@@ -7039,12 +7039,12 @@ public interface ErlangPackage extends EPackage
     EAttribute DEFINE_ATTRIBUTE__TAG = eINSTANCE.getDefineAttribute_Tag();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Macro Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DEFINE_ATTRIBUTE__NAME = eINSTANCE.getDefineAttribute_Name();
+    EAttribute DEFINE_ATTRIBUTE__MACRO_NAME = eINSTANCE.getDefineAttribute_MacroName();
 
     /**
      * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.
@@ -7081,12 +7081,12 @@ public interface ErlangPackage extends EPackage
     EAttribute UNDEF_ATTRIBUTE__TAG = eINSTANCE.getUndefAttribute_Tag();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference UNDEF_ATTRIBUTE__NAME = eINSTANCE.getUndefAttribute_Name();
+    EReference UNDEF_ATTRIBUTE__REF = eINSTANCE.getUndefAttribute_Ref();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.IfdefAttributeImpl <em>Ifdef Attribute</em>}' class.
@@ -7629,12 +7629,12 @@ public interface ErlangPackage extends EPackage
     EClass MACRO_CALL = eINSTANCE.getMacroCall();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Macro Name</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MACRO_CALL__NAME = eINSTANCE.getMacroCall_Name();
+    EReference MACRO_CALL__MACRO_NAME = eINSTANCE.getMacroCall_MacroName();
 
     /**
      * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.

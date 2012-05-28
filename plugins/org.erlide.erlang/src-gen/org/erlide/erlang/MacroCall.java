@@ -12,7 +12,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.MacroCall#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.MacroCall#getMacroName <em>Macro Name</em>}</li>
  *   <li>{@link org.erlide.erlang.MacroCall#getArgs <em>Args</em>}</li>
  * </ul>
  * </p>
@@ -24,30 +24,30 @@ import org.eclipse.emf.common.util.EList;
 public interface MacroCall extends Expression
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' reference.
+   * Returns the value of the '<em><b>Macro Name</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' reference isn't clear,
+   * If the meaning of the '<em>Macro Name</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' reference.
-   * @see #setName(DefineAttribute)
-   * @see org.erlide.erlang.ErlangPackage#getMacroCall_Name()
+   * @return the value of the '<em>Macro Name</em>' reference.
+   * @see #setMacroName(DefineAttribute)
+   * @see org.erlide.erlang.ErlangPackage#getMacroCall_MacroName()
    * @model
    * @generated
    */
-  DefineAttribute getName();
+  DefineAttribute getMacroName();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.MacroCall#getName <em>Name</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.MacroCall#getMacroName <em>Macro Name</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' reference.
-   * @see #getName()
+   * @param value the new value of the '<em>Macro Name</em>' reference.
+   * @see #getMacroName()
    * @generated
    */
-  void setName(DefineAttribute value);
+  void setMacroName(DefineAttribute value);
 
   /**
    * Returns the value of the '<em><b>Args</b></em>' containment reference list.

@@ -2,13 +2,11 @@ package org.erlide.erlang
 
 import com.google.common.collect.Iterables
 import java.util.Collection
+import java.util.Set
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 
-import static extension org.erlide.common.util.IterableExtensions2.*
 import static extension org.erlide.erlang.ModelExtensions.*
-import java.util.Set
-import java.util.Comparator
 
 class ModelExtensions {
     
@@ -90,7 +88,7 @@ class ModelExtensions {
  	}
  	
     def static boolean exportsAll(Module module) {
-    	module.compileOptions.hasAny[it.hasAtom("export_all")]
+    	module.compileOptions.exists[it.hasAtom("export_all")]
     }
     
 	def static Collection<Atom> getParseTransforms(Module module) {
@@ -175,7 +173,7 @@ class ModelExtensions {
 		atom.sourceText == s    	
     }
     def private static dispatch boolean hasAtom(ErlList list, String s){
-		list.elements.hasAny[it.hasAtom(s)]    	
+		list.elements.exists[it.hasAtom(s)]    	
     }
     def private static dispatch boolean hasAtom(Expression expr, String s){
 		false    	
@@ -184,7 +182,7 @@ class ModelExtensions {
 	def private static boolean parseTransformTuple(ErlTuple expr) {
 		if(expr.elements.size!=2 || !(expr.elements.head instanceof Atom)) return false
 		val hd = expr.elements.head as Atom
-		hd.sourceText=="parse_transform" && expr.elements.tail.head instanceof Atom
+		return hd.sourceText=="parse_transform" && expr.elements.tail.head instanceof Atom
 	}
 	
 }

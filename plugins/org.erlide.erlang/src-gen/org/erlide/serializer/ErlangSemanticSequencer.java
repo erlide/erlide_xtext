@@ -1740,7 +1740,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (tag='define' name=AtomOrVar (args+=PatternExpression args+=PatternExpression*)? value=Guard?)
+	 *     (tag='define' macroName=AtomOrVar (args+=PatternExpression args+=PatternExpression*)? value=Guard?)
 	 */
 	protected void sequence_DefineAttribute(EObject context, DefineAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2243,7 +2243,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (name=[DefineAttribute|Macro] (args+=Expression args+=Expression*)?)
+	 *     (macroName=[DefineAttribute|Macro] (args+=Expression args+=Expression*)?)
 	 */
 	protected void sequence_MacroCall(EObject context, MacroCall semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2556,19 +2556,19 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (tag='undef' name=[DefineAttribute|AtomOrVar])
+	 *     (tag='undef' ref=[DefineAttribute|AtomOrVar])
 	 */
 	protected void sequence_UndefAttribute(EObject context, UndefAttribute semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.UNDEF_ATTRIBUTE__TAG) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.UNDEF_ATTRIBUTE__TAG));
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.UNDEF_ATTRIBUTE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.UNDEF_ATTRIBUTE__NAME));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.UNDEF_ATTRIBUTE__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.UNDEF_ATTRIBUTE__REF));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getUndefAttributeAccess().getTagUndefKeyword_1_0(), semanticObject.getTag());
-		feeder.accept(grammarAccess.getUndefAttributeAccess().getNameDefineAttributeAtomOrVarParserRuleCall_3_0_1(), semanticObject.getName());
+		feeder.accept(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeAtomOrVarParserRuleCall_3_0_1(), semanticObject.getRef());
 		feeder.finish();
 	}
 }

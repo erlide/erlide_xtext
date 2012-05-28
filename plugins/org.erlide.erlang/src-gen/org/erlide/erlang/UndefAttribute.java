@@ -12,7 +12,7 @@ package org.erlide.erlang;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.erlide.erlang.UndefAttribute#getTag <em>Tag</em>}</li>
- *   <li>{@link org.erlide.erlang.UndefAttribute#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.UndefAttribute#getRef <em>Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,29 +49,29 @@ public interface UndefAttribute extends Attribute, AbstractDefineAttribute
   void setTag(String value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' reference.
+   * Returns the value of the '<em><b>Ref</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' reference isn't clear,
+   * If the meaning of the '<em>Ref</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' reference.
-   * @see #setName(DefineAttribute)
-   * @see org.erlide.erlang.ErlangPackage#getUndefAttribute_Name()
+   * @return the value of the '<em>Ref</em>' reference.
+   * @see #setRef(DefineAttribute)
+   * @see org.erlide.erlang.ErlangPackage#getUndefAttribute_Ref()
    * @model
    * @generated
    */
-  DefineAttribute getName();
+  DefineAttribute getRef();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.UndefAttribute#getName <em>Name</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.UndefAttribute#getRef <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' reference.
-   * @see #getName()
+   * @param value the new value of the '<em>Ref</em>' reference.
+   * @see #getRef()
    * @generated
    */
-  void setName(DefineAttribute value);
+  void setRef(DefineAttribute value);
 
 } // UndefAttribute

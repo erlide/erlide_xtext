@@ -29,7 +29,7 @@ import org.erlide.erlang.MacroCall;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.MacroCallImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.MacroCallImpl#getMacroName <em>Macro Name</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.MacroCallImpl#getArgs <em>Args</em>}</li>
  * </ul>
  * </p>
@@ -39,14 +39,14 @@ import org.erlide.erlang.MacroCall;
 public class MacroCallImpl extends ExpressionImpl implements MacroCall
 {
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' reference.
+   * The cached value of the '{@link #getMacroName() <em>Macro Name</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getMacroName()
    * @generated
    * @ordered
    */
-  protected DefineAttribute name;
+  protected DefineAttribute macroName;
 
   /**
    * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
@@ -84,19 +84,19 @@ public class MacroCallImpl extends ExpressionImpl implements MacroCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public DefineAttribute getName()
+  public DefineAttribute getMacroName()
   {
-    if (name != null && name.eIsProxy())
+    if (macroName != null && macroName.eIsProxy())
     {
-      InternalEObject oldName = (InternalEObject)name;
-      name = (DefineAttribute)eResolveProxy(oldName);
-      if (name != oldName)
+      InternalEObject oldMacroName = (InternalEObject)macroName;
+      macroName = (DefineAttribute)eResolveProxy(oldMacroName);
+      if (macroName != oldMacroName)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.MACRO_CALL__NAME, oldName, name));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.MACRO_CALL__MACRO_NAME, oldMacroName, macroName));
       }
     }
-    return name;
+    return macroName;
   }
 
   /**
@@ -104,9 +104,9 @@ public class MacroCallImpl extends ExpressionImpl implements MacroCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public DefineAttribute basicGetName()
+  public DefineAttribute basicGetMacroName()
   {
-    return name;
+    return macroName;
   }
 
   /**
@@ -114,12 +114,12 @@ public class MacroCallImpl extends ExpressionImpl implements MacroCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(DefineAttribute newName)
+  public void setMacroName(DefineAttribute newMacroName)
   {
-    DefineAttribute oldName = name;
-    name = newName;
+    DefineAttribute oldMacroName = macroName;
+    macroName = newMacroName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO_CALL__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO_CALL__MACRO_NAME, oldMacroName, macroName));
   }
 
   /**
@@ -162,9 +162,9 @@ public class MacroCallImpl extends ExpressionImpl implements MacroCall
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_CALL__NAME:
-        if (resolve) return getName();
-        return basicGetName();
+      case ErlangPackage.MACRO_CALL__MACRO_NAME:
+        if (resolve) return getMacroName();
+        return basicGetMacroName();
       case ErlangPackage.MACRO_CALL__ARGS:
         return getArgs();
     }
@@ -182,8 +182,8 @@ public class MacroCallImpl extends ExpressionImpl implements MacroCall
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_CALL__NAME:
-        setName((DefineAttribute)newValue);
+      case ErlangPackage.MACRO_CALL__MACRO_NAME:
+        setMacroName((DefineAttribute)newValue);
         return;
       case ErlangPackage.MACRO_CALL__ARGS:
         getArgs().clear();
@@ -203,8 +203,8 @@ public class MacroCallImpl extends ExpressionImpl implements MacroCall
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_CALL__NAME:
-        setName((DefineAttribute)null);
+      case ErlangPackage.MACRO_CALL__MACRO_NAME:
+        setMacroName((DefineAttribute)null);
         return;
       case ErlangPackage.MACRO_CALL__ARGS:
         getArgs().clear();
@@ -223,8 +223,8 @@ public class MacroCallImpl extends ExpressionImpl implements MacroCall
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_CALL__NAME:
-        return name != null;
+      case ErlangPackage.MACRO_CALL__MACRO_NAME:
+        return macroName != null;
       case ErlangPackage.MACRO_CALL__ARGS:
         return args != null && !args.isEmpty();
     }

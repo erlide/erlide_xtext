@@ -329,12 +329,12 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConditionalFormBlockAccess().getElseFormsAssignment_2_1(), "rule__ConditionalFormBlock__ElseFormsAssignment_2_1");
 					put(grammarAccess.getConditionalFormBlockAccess().getEndAssignment_3(), "rule__ConditionalFormBlock__EndAssignment_3");
 					put(grammarAccess.getDefineAttributeAccess().getTagAssignment_1(), "rule__DefineAttribute__TagAssignment_1");
-					put(grammarAccess.getDefineAttributeAccess().getNameAssignment_3(), "rule__DefineAttribute__NameAssignment_3");
+					put(grammarAccess.getDefineAttributeAccess().getMacroNameAssignment_3(), "rule__DefineAttribute__MacroNameAssignment_3");
 					put(grammarAccess.getDefineAttributeAccess().getArgsAssignment_4_1_0(), "rule__DefineAttribute__ArgsAssignment_4_1_0");
 					put(grammarAccess.getDefineAttributeAccess().getArgsAssignment_4_1_1_1(), "rule__DefineAttribute__ArgsAssignment_4_1_1_1");
 					put(grammarAccess.getDefineAttributeAccess().getValueAssignment_5_1(), "rule__DefineAttribute__ValueAssignment_5_1");
 					put(grammarAccess.getUndefAttributeAccess().getTagAssignment_1(), "rule__UndefAttribute__TagAssignment_1");
-					put(grammarAccess.getUndefAttributeAccess().getNameAssignment_3(), "rule__UndefAttribute__NameAssignment_3");
+					put(grammarAccess.getUndefAttributeAccess().getRefAssignment_3(), "rule__UndefAttribute__RefAssignment_3");
 					put(grammarAccess.getIfdefAttributeAccess().getTagAssignment_1(), "rule__IfdefAttribute__TagAssignment_1");
 					put(grammarAccess.getIfdefAttributeAccess().getRefAssignment_3(), "rule__IfdefAttribute__RefAssignment_3");
 					put(grammarAccess.getEndifAttributeAccess().getTagAssignment_1(), "rule__EndifAttribute__TagAssignment_1");
@@ -421,7 +421,7 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExpr800Access().getFunctionAssignment_1_2(), "rule__Expr800__FunctionAssignment_1_2");
 					put(grammarAccess.getExprMaxAccess().getBodyAssignment_2_2(), "rule__ExprMax__BodyAssignment_2_2");
 					put(grammarAccess.getExprMaxAccess().getBodyAssignment_2_3_1(), "rule__ExprMax__BodyAssignment_2_3_1");
-					put(grammarAccess.getMacroCallAccess().getNameAssignment_0(), "rule__MacroCall__NameAssignment_0");
+					put(grammarAccess.getMacroCallAccess().getMacroNameAssignment_0(), "rule__MacroCall__MacroNameAssignment_0");
 					put(grammarAccess.getMacroCallAccess().getArgsAssignment_2_0(), "rule__MacroCall__ArgsAssignment_2_0");
 					put(grammarAccess.getMacroCallAccess().getArgsAssignment_2_1_1(), "rule__MacroCall__ArgsAssignment_2_1_1");
 					put(grammarAccess.getRecordExprAccess().getRecAssignment_0(), "rule__RecordExpr__RecAssignment_0");

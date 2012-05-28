@@ -46,7 +46,7 @@ AbstractDefineAttribute:
 
 DefineAttribute:
     '-' => tag='define' 		    
-		'(' name=AtomOrVar 
+		'(' macroName=AtomOrVar // can't have feature 'name' because multiple defines with the same macro can exist 
 		    ('(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' )? 
 	    	(',' value=Guard?)? 
 		')'
@@ -54,7 +54,7 @@ DefineAttribute:
 ;
 
 UndefAttribute:
-	'-' => tag='undef' '(' name=[DefineAttribute|AtomOrVar] ')' FULL_STOP
+	'-' => tag='undef' '(' ref=[DefineAttribute|AtomOrVar] ')' FULL_STOP
 ;
 
 IfdefAttribute:
@@ -75,12 +75,10 @@ AbstractIncludeAttribute:
 ;
 	
 IncludeAttribute:
-//	'-' => tag=('include') '(' value=[Module|STRING] ')' FULL_STOP
 	'-' => tag=('include') '(' value=STRING ')' FULL_STOP
 ;
 
 IncludeLibAttribute:
-//	'-' => tag=('include_lib') '(' value=[Module|STRING] ')' FULL_STOP
 	'-' => tag=('include_lib') '(' value=STRING ')' FULL_STOP
 ;
 
@@ -244,7 +242,7 @@ TermExpression returns Expression:
 ;
 
 MacroCall:
-	  name=[DefineAttribute|Macro] '(' (args+=Expression (',' args+=Expression)*)? ')'  
+	  macroName=[DefineAttribute|Macro] '(' (args+=Expression (',' args+=Expression)*)? ')'  
 ;
 
 RecordExpr:

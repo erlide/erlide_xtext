@@ -16,7 +16,6 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.erlide.common.util.IterableExtensions2;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.CompileAttribute;
@@ -221,8 +220,8 @@ public class ModelExtensions {
           return Boolean.valueOf(_hasAtom);
         }
       };
-    boolean _hasAny = IterableExtensions2.<Expression>hasAny(_compileOptions, _function);
-    return _hasAny;
+    boolean _exists = IterableExtensions.<Expression>exists(_compileOptions, _function);
+    return _exists;
   }
   
   public static Collection<Atom> getParseTransforms(final Module module) {
@@ -460,8 +459,8 @@ public class ModelExtensions {
           return Boolean.valueOf(_hasAtom);
         }
       };
-    boolean _hasAny = IterableExtensions2.<Expression>hasAny(_elements, _function);
-    return _hasAny;
+    boolean _exists = IterableExtensions.<Expression>exists(_elements, _function);
+    return _exists;
   }
   
   private static boolean _hasAtom(final Expression expr, final String s) {
@@ -469,40 +468,36 @@ public class ModelExtensions {
   }
   
   private static boolean parseTransformTuple(final ErlTuple expr) {
-    boolean _xblockexpression = false;
-    {
-      boolean _or = false;
-      EList<Expression> _elements = expr.getElements();
-      int _size = _elements.size();
-      boolean _notEquals = (_size != 2);
-      if (_notEquals) {
-        _or = true;
-      } else {
-        EList<Expression> _elements_1 = expr.getElements();
-        Expression _head = IterableExtensions.<Expression>head(_elements_1);
-        boolean _not = (!(_head instanceof Atom));
-        _or = (_notEquals || _not);
-      }
-      if (_or) {
-        return false;
-      }
-      EList<Expression> _elements_2 = expr.getElements();
-      Expression _head_1 = IterableExtensions.<Expression>head(_elements_2);
-      final Atom hd = ((Atom) _head_1);
-      boolean _and = false;
-      String _sourceText = ModelExtensions.getSourceText(hd);
-      boolean _equals = Objects.equal(_sourceText, "parse_transform");
-      if (!_equals) {
-        _and = false;
-      } else {
-        EList<Expression> _elements_3 = expr.getElements();
-        Iterable<Expression> _tail = IterableExtensions.<Expression>tail(_elements_3);
-        Expression _head_2 = IterableExtensions.<Expression>head(_tail);
-        _and = (_equals && (_head_2 instanceof Atom));
-      }
-      _xblockexpression = (_and);
+    boolean _or = false;
+    EList<Expression> _elements = expr.getElements();
+    int _size = _elements.size();
+    boolean _notEquals = (_size != 2);
+    if (_notEquals) {
+      _or = true;
+    } else {
+      EList<Expression> _elements_1 = expr.getElements();
+      Expression _head = IterableExtensions.<Expression>head(_elements_1);
+      boolean _not = (!(_head instanceof Atom));
+      _or = (_notEquals || _not);
     }
-    return _xblockexpression;
+    if (_or) {
+      return false;
+    }
+    EList<Expression> _elements_2 = expr.getElements();
+    Expression _head_1 = IterableExtensions.<Expression>head(_elements_2);
+    final Atom hd = ((Atom) _head_1);
+    boolean _and = false;
+    String _sourceText = ModelExtensions.getSourceText(hd);
+    boolean _equals = Objects.equal(_sourceText, "parse_transform");
+    if (!_equals) {
+      _and = false;
+    } else {
+      EList<Expression> _elements_3 = expr.getElements();
+      Iterable<Expression> _tail = IterableExtensions.<Expression>tail(_elements_3);
+      Expression _head_2 = IterableExtensions.<Expression>head(_tail);
+      _and = (_equals && (_head_2 instanceof Atom));
+    }
+    return _and;
   }
   
   public static Module getModule(final EObject element) {
