@@ -4718,9 +4718,9 @@ rule__Form__Group_3__1__Impl
     }
 :
 (
-{ before(grammarAccess.getFormAccess().getNameAssignment_3_1()); }
-(rule__Form__NameAssignment_3_1)
-{ after(grammarAccess.getFormAccess().getNameAssignment_3_1()); }
+{ before(grammarAccess.getFormAccess().getCallAssignment_3_1()); }
+(rule__Form__CallAssignment_3_1)
+{ after(grammarAccess.getFormAccess().getCallAssignment_3_1()); }
 )
 
 ;
@@ -25369,14 +25369,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Form__NameAssignment_3_1
+rule__Form__CallAssignment_3_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFormAccess().getNameMacroParserRuleCall_3_1_0()); }
-	ruleMacro{ after(grammarAccess.getFormAccess().getNameMacroParserRuleCall_3_1_0()); }
+{ before(grammarAccess.getFormAccess().getCallMacroCallParserRuleCall_3_1_0()); }
+	ruleMacroCall{ after(grammarAccess.getFormAccess().getCallMacroCallParserRuleCall_3_1_0()); }
 )
 
 ;
@@ -26330,8 +26330,8 @@ rule__Function__NameAssignment_0
     }
 :
 (
-{ before(grammarAccess.getFunctionAccess().getNameNameParserRuleCall_0_0()); }
-	ruleName{ after(grammarAccess.getFunctionAccess().getNameNameParserRuleCall_0_0()); }
+{ before(grammarAccess.getFunctionAccess().getNameAtomOrKwParserRuleCall_0_0()); }
+	ruleAtomOrKw{ after(grammarAccess.getFunctionAccess().getNameAtomOrKwParserRuleCall_0_0()); }
 )
 
 ;
@@ -26375,8 +26375,8 @@ rule__FunctionClause__RefAssignment_0
     }
 :
 (
-{ before(grammarAccess.getFunctionClauseAccess().getRefNameParserRuleCall_0_0()); }
-	ruleName{ after(grammarAccess.getFunctionClauseAccess().getRefNameParserRuleCall_0_0()); }
+{ before(grammarAccess.getFunctionClauseAccess().getRefAtomOrKwParserRuleCall_0_0()); }
+	ruleAtomOrKw{ after(grammarAccess.getFunctionClauseAccess().getRefAtomOrKwParserRuleCall_0_0()); }
 )
 
 ;

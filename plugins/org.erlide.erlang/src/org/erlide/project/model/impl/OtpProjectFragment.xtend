@@ -21,7 +21,7 @@ public class OtpProjectFragment extends ProjectFragment {
         privPath = new Path("priv")
     }
     
-    protected new(IErlangProject project,
+    new(IErlangProject project,
             String name) {
         super(project, name)
         // TODO Auto-generated constructor stub

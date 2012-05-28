@@ -264,7 +264,7 @@
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//FunType100"/>
     <genClasses ecoreClass="Erlang.ecore#//MacroForm">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//MacroForm/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//MacroForm/call"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//CatchExpr"/>
     <genClasses ecoreClass="Erlang.ecore#//MatchExpr">

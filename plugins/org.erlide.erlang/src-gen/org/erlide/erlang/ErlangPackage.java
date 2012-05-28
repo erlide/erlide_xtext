@@ -2926,13 +2926,13 @@ public interface ErlangPackage extends EPackage
   int MACRO_FORM = 69;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Call</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MACRO_FORM__NAME = FORM_FEATURE_COUNT + 0;
+  int MACRO_FORM__CALL = FORM_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Macro Form</em>' class.
@@ -6197,15 +6197,15 @@ public interface ErlangPackage extends EPackage
   EClass getMacroForm();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.MacroForm#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.MacroForm#getCall <em>Call</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.erlide.erlang.MacroForm#getName()
+   * @return the meta object for the containment reference '<em>Call</em>'.
+   * @see org.erlide.erlang.MacroForm#getCall()
    * @see #getMacroForm()
    * @generated
    */
-  EAttribute getMacroForm_Name();
+  EReference getMacroForm_Call();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.CatchExpr <em>Catch Expr</em>}'.
@@ -8606,12 +8606,12 @@ public interface ErlangPackage extends EPackage
     EClass MACRO_FORM = eINSTANCE.getMacroForm();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Call</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MACRO_FORM__NAME = eINSTANCE.getMacroForm_Name();
+    EReference MACRO_FORM__CALL = eINSTANCE.getMacroForm_Call();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.CatchExprImpl <em>Catch Expr</em>}' class.

@@ -34,7 +34,7 @@ public class OtpProjectFragment extends ProjectFragment {
     this.privPath = _path_3;
   }
   
-  protected OtpProjectFragment(final IErlangProject project, final String name) {
+  public OtpProjectFragment(final IErlangProject project, final String name) {
     super(project, name);
   }
   

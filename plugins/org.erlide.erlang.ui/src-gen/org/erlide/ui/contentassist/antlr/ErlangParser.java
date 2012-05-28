@@ -322,7 +322,7 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunType100Access().getGroup_2_1(), "rule__FunType100__Group_2_1__0");
 					put(grammarAccess.getFunType100Access().getGroup_2_1_1(), "rule__FunType100__Group_2_1_1__0");
 					put(grammarAccess.getModuleAccess().getFormsAssignment(), "rule__Module__FormsAssignment");
-					put(grammarAccess.getFormAccess().getNameAssignment_3_1(), "rule__Form__NameAssignment_3_1");
+					put(grammarAccess.getFormAccess().getCallAssignment_3_1(), "rule__Form__CallAssignment_3_1");
 					put(grammarAccess.getConditionalFormBlockAccess().getConditionAssignment_0(), "rule__ConditionalFormBlock__ConditionAssignment_0");
 					put(grammarAccess.getConditionalFormBlockAccess().getIfFormsAssignment_1(), "rule__ConditionalFormBlock__IfFormsAssignment_1");
 					put(grammarAccess.getConditionalFormBlockAccess().getHasElseAssignment_2_0(), "rule__ConditionalFormBlock__HasElseAssignment_2_0");

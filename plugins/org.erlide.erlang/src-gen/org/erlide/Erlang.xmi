@@ -28,8 +28,8 @@
             <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//MacroForm"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="//@rules.81"/>
+        <elements xsi:type="xtext:Assignment" feature="call" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.41"/>
         </elements>
         <elements xsi:type="xtext:RuleCall" rule="//@rules.91"/>
       </elements>
@@ -535,7 +535,7 @@
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.77"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.82"/>
       </elements>
       <elements xsi:type="xtext:Assignment" feature="clauses" operator="+=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.23"/>
@@ -555,7 +555,7 @@
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Assignment" cardinality="?" feature="ref" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.77"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.82"/>
       </elements>
       <elements xsi:type="xtext:Keyword" value="("/>
       <elements xsi:type="xtext:Group" cardinality="?">

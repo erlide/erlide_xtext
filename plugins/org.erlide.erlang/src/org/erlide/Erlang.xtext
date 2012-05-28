@@ -11,7 +11,7 @@ Form:
 	  Attribute 
 	| Function
 	| ConditionalFormBlock
-	| {MacroForm} name=Macro /*TODO: macro args*/ FULL_STOP 
+	| {MacroForm} call=MacroCall FULL_STOP 
 ;
 
 ConditionalFormBlock:
@@ -139,12 +139,12 @@ CustomAttribute:
 // Functions
 
 Function:
-	name=Name clauses+=FunctionClause ( ';' clauses+=FunctionClause )* FULL_STOP
+	name=AtomOrKw clauses+=FunctionClause ( ';' clauses+=FunctionClause )* FULL_STOP
 ;
 
 // validate that all names for a function are identical
 FunctionClause:
-	  ref=Name? '(' (params+=Expression (',' params+=Expression)*)? ')' 
+	  ref=AtomOrKw? '(' (params+=Expression (',' params+=Expression)*)? ')' 
 	  ('when'? guard=Guard)? // no 'when' if guard is a macro
 	  '->' body+=LExpression (',' body+=LExpression)*
 ;

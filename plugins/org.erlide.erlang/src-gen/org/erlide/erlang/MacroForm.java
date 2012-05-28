@@ -11,7 +11,7 @@ package org.erlide.erlang;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.MacroForm#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.MacroForm#getCall <em>Call</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,29 +22,29 @@ package org.erlide.erlang;
 public interface MacroForm extends Form
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Call</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Call</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.erlide.erlang.ErlangPackage#getMacroForm_Name()
-   * @model
+   * @return the value of the '<em>Call</em>' containment reference.
+   * @see #setCall(MacroCall)
+   * @see org.erlide.erlang.ErlangPackage#getMacroForm_Call()
+   * @model containment="true"
    * @generated
    */
-  String getName();
+  MacroCall getCall();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.MacroForm#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.MacroForm#getCall <em>Call</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Call</em>' containment reference.
+   * @see #getCall()
    * @generated
    */
-  void setName(String value);
+  void setCall(MacroCall value);
 
 } // MacroForm

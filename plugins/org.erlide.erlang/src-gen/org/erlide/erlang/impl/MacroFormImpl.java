@@ -3,12 +3,15 @@
 package org.erlide.erlang.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.MacroCall;
 import org.erlide.erlang.MacroForm;
 
 /**
@@ -18,7 +21,7 @@ import org.erlide.erlang.MacroForm;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.MacroFormImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.MacroFormImpl#getCall <em>Call</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,24 +30,14 @@ import org.erlide.erlang.MacroForm;
 public class MacroFormImpl extends FormImpl implements MacroForm
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getCall() <em>Call</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getCall()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected MacroCall call;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,9 +65,9 @@ public class MacroFormImpl extends FormImpl implements MacroForm
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public MacroCall getCall()
   {
-    return name;
+    return call;
   }
 
   /**
@@ -82,12 +75,53 @@ public class MacroFormImpl extends FormImpl implements MacroForm
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public NotificationChain basicSetCall(MacroCall newCall, NotificationChain msgs)
   {
-    String oldName = name;
-    name = newName;
+    MacroCall oldCall = call;
+    call = newCall;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO_FORM__NAME, oldName, name));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO_FORM__CALL, oldCall, newCall);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCall(MacroCall newCall)
+  {
+    if (newCall != call)
+    {
+      NotificationChain msgs = null;
+      if (call != null)
+        msgs = ((InternalEObject)call).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.MACRO_FORM__CALL, null, msgs);
+      if (newCall != null)
+        msgs = ((InternalEObject)newCall).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.MACRO_FORM__CALL, null, msgs);
+      msgs = basicSetCall(newCall, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO_FORM__CALL, newCall, newCall));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ErlangPackage.MACRO_FORM__CALL:
+        return basicSetCall(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -100,8 +134,8 @@ public class MacroFormImpl extends FormImpl implements MacroForm
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_FORM__NAME:
-        return getName();
+      case ErlangPackage.MACRO_FORM__CALL:
+        return getCall();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -116,8 +150,8 @@ public class MacroFormImpl extends FormImpl implements MacroForm
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_FORM__NAME:
-        setName((String)newValue);
+      case ErlangPackage.MACRO_FORM__CALL:
+        setCall((MacroCall)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -133,8 +167,8 @@ public class MacroFormImpl extends FormImpl implements MacroForm
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_FORM__NAME:
-        setName(NAME_EDEFAULT);
+      case ErlangPackage.MACRO_FORM__CALL:
+        setCall((MacroCall)null);
         return;
     }
     super.eUnset(featureID);
@@ -150,27 +184,10 @@ public class MacroFormImpl extends FormImpl implements MacroForm
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_FORM__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ErlangPackage.MACRO_FORM__CALL:
+        return call != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //MacroFormImpl

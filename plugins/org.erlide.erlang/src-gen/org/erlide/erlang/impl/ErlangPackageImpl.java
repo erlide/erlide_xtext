@@ -2834,9 +2834,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMacroForm_Name()
+  public EReference getMacroForm_Call()
   {
-    return (EAttribute)macroFormEClass.getEStructuralFeatures().get(0);
+    return (EReference)macroFormEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3729,7 +3729,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     funType100EClass = createEClass(FUN_TYPE100);
 
     macroFormEClass = createEClass(MACRO_FORM);
-    createEAttribute(macroFormEClass, MACRO_FORM__NAME);
+    createEReference(macroFormEClass, MACRO_FORM__CALL);
 
     catchExprEClass = createEClass(CATCH_EXPR);
 
@@ -4185,7 +4185,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEClass(funType100EClass, FunType100.class, "FunType100", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(macroFormEClass, MacroForm.class, "MacroForm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMacroForm_Name(), ecorePackage.getEString(), "name", null, 0, 1, MacroForm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMacroForm_Call(), this.getMacroCall(), null, "call", null, 0, 1, MacroForm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(catchExprEClass, CatchExpr.class, "CatchExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

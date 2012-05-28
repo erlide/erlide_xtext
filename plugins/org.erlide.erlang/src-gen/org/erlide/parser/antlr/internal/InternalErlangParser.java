@@ -331,7 +331,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleForm"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:115:1: ruleForm returns [EObject current=null] : (this_Attribute_0= ruleAttribute | this_Function_1= ruleFunction | this_ConditionalFormBlock_2= ruleConditionalFormBlock | ( () ( (lv_name_4_0= ruleMacro ) ) this_FULL_STOP_5= RULE_FULL_STOP ) ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:115:1: ruleForm returns [EObject current=null] : (this_Attribute_0= ruleAttribute | this_Function_1= ruleFunction | this_ConditionalFormBlock_2= ruleConditionalFormBlock | ( () ( (lv_call_4_0= ruleMacroCall ) ) this_FULL_STOP_5= RULE_FULL_STOP ) ) ;
     public final EObject ruleForm() throws RecognitionException {
         EObject current = null;
 
@@ -342,18 +342,75 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
         EObject this_ConditionalFormBlock_2 = null;
 
-        AntlrDatatypeRuleToken lv_name_4_0 = null;
+        EObject lv_call_4_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:118:28: ( (this_Attribute_0= ruleAttribute | this_Function_1= ruleFunction | this_ConditionalFormBlock_2= ruleConditionalFormBlock | ( () ( (lv_name_4_0= ruleMacro ) ) this_FULL_STOP_5= RULE_FULL_STOP ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:119:1: (this_Attribute_0= ruleAttribute | this_Function_1= ruleFunction | this_ConditionalFormBlock_2= ruleConditionalFormBlock | ( () ( (lv_name_4_0= ruleMacro ) ) this_FULL_STOP_5= RULE_FULL_STOP ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:118:28: ( (this_Attribute_0= ruleAttribute | this_Function_1= ruleFunction | this_ConditionalFormBlock_2= ruleConditionalFormBlock | ( () ( (lv_call_4_0= ruleMacroCall ) ) this_FULL_STOP_5= RULE_FULL_STOP ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:119:1: (this_Attribute_0= ruleAttribute | this_Function_1= ruleFunction | this_ConditionalFormBlock_2= ruleConditionalFormBlock | ( () ( (lv_call_4_0= ruleMacroCall ) ) this_FULL_STOP_5= RULE_FULL_STOP ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:119:1: (this_Attribute_0= ruleAttribute | this_Function_1= ruleFunction | this_ConditionalFormBlock_2= ruleConditionalFormBlock | ( () ( (lv_name_4_0= ruleMacro ) ) this_FULL_STOP_5= RULE_FULL_STOP ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:119:1: (this_Attribute_0= ruleAttribute | this_Function_1= ruleFunction | this_ConditionalFormBlock_2= ruleConditionalFormBlock | ( () ( (lv_call_4_0= ruleMacroCall ) ) this_FULL_STOP_5= RULE_FULL_STOP ) )
             int alt2=4;
-            alt2 = dfa2.predict(input);
+            switch ( input.LA(1) ) {
+            case 18:
+                {
+                int LA2_1 = input.LA(2);
+
+                if ( (LA2_1==RULE_ATOM||LA2_1==19||LA2_1==23||(LA2_1>=28 && LA2_1<=32)||LA2_1==35||(LA2_1>=38 && LA2_1<=41)||(LA2_1>=43 && LA2_1<=44)) ) {
+                    alt2=1;
+                }
+                else if ( ((LA2_1>=24 && LA2_1<=25)) ) {
+                    alt2=3;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return current;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 2, 1, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case RULE_ATOM:
+            case 19:
+            case 23:
+            case 24:
+            case 25:
+            case 26:
+            case 27:
+            case 28:
+            case 29:
+            case 30:
+            case 31:
+            case 32:
+            case 35:
+            case 38:
+            case 39:
+            case 40:
+            case 41:
+            case 43:
+            case 44:
+            case 49:
+                {
+                alt2=2;
+                }
+                break;
+            case 48:
+            case 101:
+                {
+                alt2=4;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 2, 0, input);
+
+                throw nvae;
+            }
+
             switch (alt2) {
                 case 1 :
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:120:5: this_Attribute_0= ruleAttribute
@@ -422,10 +479,10 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:149:6: ( () ( (lv_name_4_0= ruleMacro ) ) this_FULL_STOP_5= RULE_FULL_STOP )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:149:6: ( () ( (lv_call_4_0= ruleMacroCall ) ) this_FULL_STOP_5= RULE_FULL_STOP )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:149:6: ( () ( (lv_name_4_0= ruleMacro ) ) this_FULL_STOP_5= RULE_FULL_STOP )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:149:7: () ( (lv_name_4_0= ruleMacro ) ) this_FULL_STOP_5= RULE_FULL_STOP
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:149:6: ( () ( (lv_call_4_0= ruleMacroCall ) ) this_FULL_STOP_5= RULE_FULL_STOP )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:149:7: () ( (lv_call_4_0= ruleMacroCall ) ) this_FULL_STOP_5= RULE_FULL_STOP
                     {
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:149:7: ()
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:150:5: 
@@ -440,19 +497,19 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:155:2: ( (lv_name_4_0= ruleMacro ) )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:156:1: (lv_name_4_0= ruleMacro )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:155:2: ( (lv_call_4_0= ruleMacroCall ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:156:1: (lv_call_4_0= ruleMacroCall )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:156:1: (lv_name_4_0= ruleMacro )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:157:3: lv_name_4_0= ruleMacro
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:156:1: (lv_call_4_0= ruleMacroCall )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:157:3: lv_call_4_0= ruleMacroCall
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getFormAccess().getNameMacroParserRuleCall_3_1_0()); 
+                      	        newCompositeNode(grammarAccess.getFormAccess().getCallMacroCallParserRuleCall_3_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleMacro_in_ruleForm313);
-                    lv_name_4_0=ruleMacro();
+                    pushFollow(FOLLOW_ruleMacroCall_in_ruleForm313);
+                    lv_call_4_0=ruleMacroCall();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -463,9 +520,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       	        }
                              		set(
                              			current, 
-                             			"name",
-                              		lv_name_4_0, 
-                              		"Macro");
+                             			"call",
+                              		lv_call_4_0, 
+                              		"MacroCall");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -5532,7 +5589,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunction"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2163:1: ruleFunction returns [EObject current=null] : ( ( (lv_name_0_0= ruleName ) ) ( (lv_clauses_1_0= ruleFunctionClause ) ) (otherlv_2= ';' ( (lv_clauses_3_0= ruleFunctionClause ) ) )* this_FULL_STOP_4= RULE_FULL_STOP ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2163:1: ruleFunction returns [EObject current=null] : ( ( (lv_name_0_0= ruleAtomOrKw ) ) ( (lv_clauses_1_0= ruleFunctionClause ) ) (otherlv_2= ';' ( (lv_clauses_3_0= ruleFunctionClause ) ) )* this_FULL_STOP_4= RULE_FULL_STOP ) ;
     public final EObject ruleFunction() throws RecognitionException {
         EObject current = null;
 
@@ -5548,25 +5605,25 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2166:28: ( ( ( (lv_name_0_0= ruleName ) ) ( (lv_clauses_1_0= ruleFunctionClause ) ) (otherlv_2= ';' ( (lv_clauses_3_0= ruleFunctionClause ) ) )* this_FULL_STOP_4= RULE_FULL_STOP ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2167:1: ( ( (lv_name_0_0= ruleName ) ) ( (lv_clauses_1_0= ruleFunctionClause ) ) (otherlv_2= ';' ( (lv_clauses_3_0= ruleFunctionClause ) ) )* this_FULL_STOP_4= RULE_FULL_STOP )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2166:28: ( ( ( (lv_name_0_0= ruleAtomOrKw ) ) ( (lv_clauses_1_0= ruleFunctionClause ) ) (otherlv_2= ';' ( (lv_clauses_3_0= ruleFunctionClause ) ) )* this_FULL_STOP_4= RULE_FULL_STOP ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2167:1: ( ( (lv_name_0_0= ruleAtomOrKw ) ) ( (lv_clauses_1_0= ruleFunctionClause ) ) (otherlv_2= ';' ( (lv_clauses_3_0= ruleFunctionClause ) ) )* this_FULL_STOP_4= RULE_FULL_STOP )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2167:1: ( ( (lv_name_0_0= ruleName ) ) ( (lv_clauses_1_0= ruleFunctionClause ) ) (otherlv_2= ';' ( (lv_clauses_3_0= ruleFunctionClause ) ) )* this_FULL_STOP_4= RULE_FULL_STOP )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2167:2: ( (lv_name_0_0= ruleName ) ) ( (lv_clauses_1_0= ruleFunctionClause ) ) (otherlv_2= ';' ( (lv_clauses_3_0= ruleFunctionClause ) ) )* this_FULL_STOP_4= RULE_FULL_STOP
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2167:1: ( ( (lv_name_0_0= ruleAtomOrKw ) ) ( (lv_clauses_1_0= ruleFunctionClause ) ) (otherlv_2= ';' ( (lv_clauses_3_0= ruleFunctionClause ) ) )* this_FULL_STOP_4= RULE_FULL_STOP )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2167:2: ( (lv_name_0_0= ruleAtomOrKw ) ) ( (lv_clauses_1_0= ruleFunctionClause ) ) (otherlv_2= ';' ( (lv_clauses_3_0= ruleFunctionClause ) ) )* this_FULL_STOP_4= RULE_FULL_STOP
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2167:2: ( (lv_name_0_0= ruleName ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2168:1: (lv_name_0_0= ruleName )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2167:2: ( (lv_name_0_0= ruleAtomOrKw ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2168:1: (lv_name_0_0= ruleAtomOrKw )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2168:1: (lv_name_0_0= ruleName )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2169:3: lv_name_0_0= ruleName
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2168:1: (lv_name_0_0= ruleAtomOrKw )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2169:3: lv_name_0_0= ruleAtomOrKw
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getFunctionAccess().getNameNameParserRuleCall_0_0()); 
+              	        newCompositeNode(grammarAccess.getFunctionAccess().getNameAtomOrKwParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleName_in_ruleFunction4852);
-            lv_name_0_0=ruleName();
+            pushFollow(FOLLOW_ruleAtomOrKw_in_ruleFunction4852);
+            lv_name_0_0=ruleAtomOrKw();
 
             state._fsp--;
             if (state.failed) return current;
@@ -5579,7 +5636,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"name",
                       		lv_name_0_0, 
-                      		"Name");
+                      		"AtomOrKw");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -5758,7 +5815,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunctionClause"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2246:1: ruleFunctionClause returns [EObject current=null] : ( ( (lv_ref_0_0= ruleName ) )? otherlv_1= '(' ( ( (lv_params_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleExpression ) ) )* )? otherlv_5= ')' ( (otherlv_6= 'when' )? ( (lv_guard_7_0= ruleGuard ) ) )? otherlv_8= '->' ( (lv_body_9_0= ruleLExpression ) ) (otherlv_10= ',' ( (lv_body_11_0= ruleLExpression ) ) )* ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2246:1: ruleFunctionClause returns [EObject current=null] : ( ( (lv_ref_0_0= ruleAtomOrKw ) )? otherlv_1= '(' ( ( (lv_params_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleExpression ) ) )* )? otherlv_5= ')' ( (otherlv_6= 'when' )? ( (lv_guard_7_0= ruleGuard ) ) )? otherlv_8= '->' ( (lv_body_9_0= ruleLExpression ) ) (otherlv_10= ',' ( (lv_body_11_0= ruleLExpression ) ) )* ) ;
     public final EObject ruleFunctionClause() throws RecognitionException {
         EObject current = null;
 
@@ -5784,33 +5841,33 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2249:28: ( ( ( (lv_ref_0_0= ruleName ) )? otherlv_1= '(' ( ( (lv_params_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleExpression ) ) )* )? otherlv_5= ')' ( (otherlv_6= 'when' )? ( (lv_guard_7_0= ruleGuard ) ) )? otherlv_8= '->' ( (lv_body_9_0= ruleLExpression ) ) (otherlv_10= ',' ( (lv_body_11_0= ruleLExpression ) ) )* ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2250:1: ( ( (lv_ref_0_0= ruleName ) )? otherlv_1= '(' ( ( (lv_params_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleExpression ) ) )* )? otherlv_5= ')' ( (otherlv_6= 'when' )? ( (lv_guard_7_0= ruleGuard ) ) )? otherlv_8= '->' ( (lv_body_9_0= ruleLExpression ) ) (otherlv_10= ',' ( (lv_body_11_0= ruleLExpression ) ) )* )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2249:28: ( ( ( (lv_ref_0_0= ruleAtomOrKw ) )? otherlv_1= '(' ( ( (lv_params_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleExpression ) ) )* )? otherlv_5= ')' ( (otherlv_6= 'when' )? ( (lv_guard_7_0= ruleGuard ) ) )? otherlv_8= '->' ( (lv_body_9_0= ruleLExpression ) ) (otherlv_10= ',' ( (lv_body_11_0= ruleLExpression ) ) )* ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2250:1: ( ( (lv_ref_0_0= ruleAtomOrKw ) )? otherlv_1= '(' ( ( (lv_params_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleExpression ) ) )* )? otherlv_5= ')' ( (otherlv_6= 'when' )? ( (lv_guard_7_0= ruleGuard ) ) )? otherlv_8= '->' ( (lv_body_9_0= ruleLExpression ) ) (otherlv_10= ',' ( (lv_body_11_0= ruleLExpression ) ) )* )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2250:1: ( ( (lv_ref_0_0= ruleName ) )? otherlv_1= '(' ( ( (lv_params_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleExpression ) ) )* )? otherlv_5= ')' ( (otherlv_6= 'when' )? ( (lv_guard_7_0= ruleGuard ) ) )? otherlv_8= '->' ( (lv_body_9_0= ruleLExpression ) ) (otherlv_10= ',' ( (lv_body_11_0= ruleLExpression ) ) )* )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2250:2: ( (lv_ref_0_0= ruleName ) )? otherlv_1= '(' ( ( (lv_params_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleExpression ) ) )* )? otherlv_5= ')' ( (otherlv_6= 'when' )? ( (lv_guard_7_0= ruleGuard ) ) )? otherlv_8= '->' ( (lv_body_9_0= ruleLExpression ) ) (otherlv_10= ',' ( (lv_body_11_0= ruleLExpression ) ) )*
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2250:1: ( ( (lv_ref_0_0= ruleAtomOrKw ) )? otherlv_1= '(' ( ( (lv_params_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleExpression ) ) )* )? otherlv_5= ')' ( (otherlv_6= 'when' )? ( (lv_guard_7_0= ruleGuard ) ) )? otherlv_8= '->' ( (lv_body_9_0= ruleLExpression ) ) (otherlv_10= ',' ( (lv_body_11_0= ruleLExpression ) ) )* )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2250:2: ( (lv_ref_0_0= ruleAtomOrKw ) )? otherlv_1= '(' ( ( (lv_params_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_params_4_0= ruleExpression ) ) )* )? otherlv_5= ')' ( (otherlv_6= 'when' )? ( (lv_guard_7_0= ruleGuard ) ) )? otherlv_8= '->' ( (lv_body_9_0= ruleLExpression ) ) (otherlv_10= ',' ( (lv_body_11_0= ruleLExpression ) ) )*
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2250:2: ( (lv_ref_0_0= ruleName ) )?
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2250:2: ( (lv_ref_0_0= ruleAtomOrKw ) )?
             int alt35=2;
             int LA35_0 = input.LA(1);
 
-            if ( (LA35_0==RULE_ATOM||LA35_0==19||(LA35_0>=23 && LA35_0<=32)||LA35_0==35||(LA35_0>=38 && LA35_0<=41)||(LA35_0>=43 && LA35_0<=44)||(LA35_0>=48 && LA35_0<=49)||LA35_0==101) ) {
+            if ( (LA35_0==RULE_ATOM||LA35_0==19||(LA35_0>=23 && LA35_0<=32)||LA35_0==35||(LA35_0>=38 && LA35_0<=41)||(LA35_0>=43 && LA35_0<=44)||LA35_0==49) ) {
                 alt35=1;
             }
             switch (alt35) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2251:1: (lv_ref_0_0= ruleName )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2251:1: (lv_ref_0_0= ruleAtomOrKw )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2251:1: (lv_ref_0_0= ruleName )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2252:3: lv_ref_0_0= ruleName
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2251:1: (lv_ref_0_0= ruleAtomOrKw )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:2252:3: lv_ref_0_0= ruleAtomOrKw
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getFunctionClauseAccess().getRefNameParserRuleCall_0_0()); 
+                      	        newCompositeNode(grammarAccess.getFunctionClauseAccess().getRefAtomOrKwParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleName_in_ruleFunctionClause5011);
-                    lv_ref_0_0=ruleName();
+                    pushFollow(FOLLOW_ruleAtomOrKw_in_ruleFunctionClause5011);
+                    lv_ref_0_0=ruleAtomOrKw();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -5823,7 +5880,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"ref",
                               		lv_ref_0_0, 
-                              		"Name");
+                              		"AtomOrKw");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -26113,7 +26170,6 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     }
 
 
-    protected DFA2 dfa2 = new DFA2(this);
     protected DFA6 dfa6 = new DFA6(this);
     protected DFA59 dfa59 = new DFA59(this);
     protected DFA60 dfa60 = new DFA60(this);
@@ -26123,108 +26179,6 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     protected DFA133 dfa133 = new DFA133(this);
     protected DFA144 dfa144 = new DFA144(this);
     protected DFA147 dfa147 = new DFA147(this);
-    static final String DFA2_eotS =
-        "\34\uffff";
-    static final String DFA2_eofS =
-        "\34\uffff";
-    static final String DFA2_minS =
-        "\2\6\1\uffff\2\6\2\uffff\24\4\1\uffff";
-    static final String DFA2_maxS =
-        "\1\145\1\54\1\uffff\2\54\2\uffff\24\145\1\uffff";
-    static final String DFA2_acceptS =
-        "\2\uffff\1\2\2\uffff\1\1\1\3\24\uffff\1\4";
-    static final String DFA2_specialS =
-        "\34\uffff}>";
-    static final String[] DFA2_transitionS = {
-            "\1\2\13\uffff\1\1\1\2\3\uffff\12\2\2\uffff\1\2\2\uffff\4\2"+
-            "\1\uffff\2\2\3\uffff\1\3\1\2\63\uffff\1\4",
-            "\1\5\14\uffff\1\5\3\uffff\1\5\2\6\2\uffff\5\5\2\uffff\1\5"+
-            "\2\uffff\4\5\1\uffff\2\5",
-            "",
-            "\1\7\1\32\13\uffff\1\23\3\uffff\1\17\1\12\1\13\1\11\1\26\1"+
-            "\21\1\22\1\24\1\20\1\16\2\uffff\1\27\2\uffff\1\30\1\31\1\10"+
-            "\1\25\1\uffff\1\14\1\15",
-            "\1\7\1\32\13\uffff\1\23\3\uffff\1\17\1\12\1\13\1\11\1\26\1"+
-            "\21\1\22\1\24\1\20\1\16\2\uffff\1\27\2\uffff\1\30\1\31\1\10"+
-            "\1\25\1\uffff\1\14\1\15",
-            "",
-            "",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            "\1\33\1\uffff\1\2\14\uffff\2\2\2\uffff\12\2\2\uffff\1\2\2"+
-            "\uffff\4\2\1\uffff\2\2\3\uffff\2\2\63\uffff\1\2",
-            ""
-    };
-
-    static final short[] DFA2_eot = DFA.unpackEncodedString(DFA2_eotS);
-    static final short[] DFA2_eof = DFA.unpackEncodedString(DFA2_eofS);
-    static final char[] DFA2_min = DFA.unpackEncodedStringToUnsignedChars(DFA2_minS);
-    static final char[] DFA2_max = DFA.unpackEncodedStringToUnsignedChars(DFA2_maxS);
-    static final short[] DFA2_accept = DFA.unpackEncodedString(DFA2_acceptS);
-    static final short[] DFA2_special = DFA.unpackEncodedString(DFA2_specialS);
-    static final short[][] DFA2_transition;
-
-    static {
-        int numStates = DFA2_transitionS.length;
-        DFA2_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA2_transition[i] = DFA.unpackEncodedString(DFA2_transitionS[i]);
-        }
-    }
-
-    class DFA2 extends DFA {
-
-        public DFA2(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 2;
-            this.eot = DFA2_eot;
-            this.eof = DFA2_eof;
-            this.min = DFA2_min;
-            this.max = DFA2_max;
-            this.accept = DFA2_accept;
-            this.special = DFA2_special;
-            this.transition = DFA2_transition;
-        }
-        public String getDescription() {
-            return "119:1: (this_Attribute_0= ruleAttribute | this_Function_1= ruleFunction | this_ConditionalFormBlock_2= ruleConditionalFormBlock | ( () ( (lv_name_4_0= ruleMacro ) ) this_FULL_STOP_5= RULE_FULL_STOP ) )";
-        }
-    }
     static final String DFA6_eotS =
         "\15\uffff";
     static final String DFA6_eofS =
@@ -26234,13 +26188,13 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA6_maxS =
         "\1\22\1\54\13\uffff";
     static final String DFA6_acceptS =
-        "\2\uffff\1\13\1\1\1\10\1\4\1\6\1\7\1\2\1\12\1\5\1\3\1\11";
+        "\2\uffff\1\7\1\10\1\1\1\13\1\4\1\6\1\2\1\12\1\5\1\11\1\3";
     static final String DFA6_specialS =
         "\15\uffff}>";
     static final String[] DFA6_transitionS = {
             "\1\1",
-            "\1\2\14\uffff\1\10\3\uffff\1\13\4\uffff\2\5\1\12\1\3\1\6\2"+
-            "\uffff\1\4\2\uffff\1\14\1\11\2\7\1\uffff\2\7",
+            "\1\5\14\uffff\1\10\3\uffff\1\14\4\uffff\2\6\1\12\1\4\1\7\2"+
+            "\uffff\1\3\2\uffff\1\13\1\11\2\2\1\uffff\2\2",
             "",
             "",
             "",
@@ -26300,8 +26254,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA59_specialS =
         "\14\uffff}>";
     static final String[] DFA59_transitionS = {
-            "\6\1\10\uffff\1\1\1\2\2\uffff\13\1\1\uffff\2\1\1\uffff\4\1"+
-            "\1\uffff\2\1\3\uffff\2\1\5\uffff\1\1\1\uffff\1\3\1\uffff\1\12"+
+            "\6\1\10\uffff\1\1\1\2\2\uffff\13\1\1\uffff\2\1\1\uffff\4\1\1"+
+            "\uffff\2\1\3\uffff\2\1\5\uffff\1\1\1\uffff\1\3\1\uffff\1\12"+
             "\1\11\1\13\1\4\1\5\1\uffff\1\6\1\uffff\1\7\1\uffff\1\10\2\uffff"+
             "\1\1\34\uffff\1\1",
             "",
@@ -26363,9 +26317,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA60_specialS =
         "\2\uffff\1\0\1\1\1\2\1\3\37\uffff}>";
     static final String[] DFA60_transitionS = {
-            "\6\7\10\uffff\1\7\3\uffff\12\7\1\1\1\uffff\1\7\1\4\1\uffff"+
-            "\4\7\1\uffff\2\7\3\uffff\1\2\1\7\5\uffff\1\6\20\uffff\1\5\34"+
-            "\uffff\1\3",
+            "\6\7\10\uffff\1\7\3\uffff\12\7\1\1\1\uffff\1\7\1\4\1\uffff\4"+
+            "\7\1\uffff\2\7\3\uffff\1\2\1\7\5\uffff\1\6\20\uffff\1\5\34\uffff"+
+            "\1\3",
             "",
             "\1\uffff",
             "\1\uffff",
@@ -26509,69 +26463,43 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
         }
     }
     static final String DFA87_eotS =
-        "\55\uffff";
+        "\27\uffff";
     static final String DFA87_eofS =
-        "\55\uffff";
+        "\27\uffff";
     static final String DFA87_minS =
-        "\1\6\24\24\1\uffff\2\6\1\uffff\24\24";
+        "\1\6\24\24\2\uffff";
     static final String DFA87_maxS =
-        "\1\145\24\104\1\uffff\2\54\1\uffff\24\104";
+        "\1\145\24\104\2\uffff";
     static final String DFA87_acceptS =
-        "\25\uffff\1\1\2\uffff\1\2\24\uffff";
+        "\25\uffff\1\1\1\2";
     static final String DFA87_specialS =
-        "\55\uffff}>";
+        "\27\uffff}>";
     static final String[] DFA87_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\1\30\2\uffff\1\11\1\4\1\5\1\3\1\20"+
-            "\1\13\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2"+
-            "\1\17\1\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
+            "\1\1\1\25\13\uffff\1\15\1\26\2\uffff\1\11\1\4\1\5\1\3\1\20\1"+
+            "\13\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1"+
+            "\17\1\uffff\1\6\1\7\3\uffff\1\25\1\24\63\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
+            "\1\26\43\uffff\1\25\13\uffff\1\25",
             "",
-            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\33\1\50"+
-            "\1\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
-            "\1\47\1\uffff\1\36\1\37",
-            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\33\1\50"+
-            "\1\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
-            "\1\47\1\uffff\1\36\1\37",
-            "",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25",
-            "\1\30\43\uffff\1\25\13\uffff\1\25"
+            ""
     };
 
     static final short[] DFA87_eot = DFA.unpackEncodedString(DFA87_eotS);
@@ -26620,9 +26548,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA88_specialS =
         "\56\uffff}>";
     static final String[] DFA88_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13"+
-            "\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17"+
-            "\1\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
+            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13\1"+
+            "\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1"+
+            "\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
             "\1\31\13\uffff\1\30",
             "\1\31\13\uffff\1\30",
             "\1\31\13\uffff\1\30",
@@ -26644,11 +26572,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\31\13\uffff\1\30",
             "\1\31\13\uffff\1\30",
             "\1\31\13\uffff\1\30",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -26718,13 +26646,13 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA98_acceptS =
         "\30\uffff\1\2\1\1\24\uffff";
     static final String DFA98_specialS =
-        "\1\uffff\1\26\1\22\1\7\1\50\1\36\1\12\1\2\1\41\1\27\1\14\1\3\1"+
-        "\43\1\32\1\5\1\20\1\34\1\44\1\10\1\23\1\24\1\16\4\uffff\1\33\1\6"+
-        "\1\15\1\47\1\0\1\35\1\42\1\13\1\37\1\1\1\17\1\40\1\45\1\11\1\4\1"+
-        "\31\1\21\1\46\1\25\1\30}>";
+        "\1\uffff\1\30\1\21\1\5\1\46\1\32\1\15\1\2\1\42\1\31\1\11\1\0\1\41"+
+        "\1\27\1\10\1\23\1\35\1\47\1\6\1\22\1\24\1\12\4\uffff\1\33\1\34\1"+
+        "\20\1\26\1\7\1\14\1\50\1\4\1\25\1\45\1\16\1\37\1\43\1\36\1\1\1\44"+
+        "\1\13\1\3\1\40\1\17}>";
     static final String[] DFA98_transitionS = {
-            "\1\30\1\1\1\25\3\30\10\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3"+
-            "\1\20\1\13\1\14\1\16\1\12\1\10\1\30\1\uffff\1\21\1\30\1\uffff"+
+            "\1\30\1\1\1\25\3\30\10\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1"+
+            "\20\1\13\1\14\1\16\1\12\1\10\1\30\1\uffff\1\21\1\30\1\uffff"+
             "\1\22\1\23\1\2\1\17\1\uffff\1\6\1\7\3\uffff\1\26\1\24\5\uffff"+
             "\1\30\20\uffff\1\30\34\uffff\1\27",
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
@@ -26748,11 +26676,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -26815,66 +26743,21 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA98_30 = input.LA(1);
-
-                         
-                        int index98_30 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_30==20||(LA98_30>=46 && LA98_30<=47)||LA98_30==51) ) {s = 24;}
-
-                        else if ( (LA98_30==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_30);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA98_35 = input.LA(1);
-
-                         
-                        int index98_35 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_35==20||(LA98_35>=46 && LA98_35<=47)||LA98_35==51) ) {s = 24;}
-
-                        else if ( (LA98_35==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_35);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA98_7 = input.LA(1);
-
-                         
-                        int index98_7 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_7==20||(LA98_7>=46 && LA98_7<=47)||LA98_7==51) ) {s = 24;}
-
-                        else if ( (LA98_7==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_7);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
                         int LA98_11 = input.LA(1);
 
                          
                         int index98_11 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA98_11==20||(LA98_11>=46 && LA98_11<=47)||LA98_11==51) ) {s = 24;}
+                        if ( (LA98_11==56) && (synpred22_InternalErlang())) {s = 25;}
 
-                        else if ( (LA98_11==56) && (synpred22_InternalErlang())) {s = 25;}
+                        else if ( (LA98_11==20||(LA98_11>=46 && LA98_11<=47)||LA98_11==51) ) {s = 24;}
 
                          
                         input.seek(index98_11);
                         if ( s>=0 ) return s;
                         break;
-                    case 4 : 
+                    case 1 : 
                         int LA98_40 = input.LA(1);
 
                          
@@ -26889,97 +26772,37 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         input.seek(index98_40);
                         if ( s>=0 ) return s;
                         break;
-                    case 5 : 
-                        int LA98_14 = input.LA(1);
+                    case 2 : 
+                        int LA98_7 = input.LA(1);
 
                          
-                        int index98_14 = input.index();
+                        int index98_7 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA98_14==56) && (synpred22_InternalErlang())) {s = 25;}
+                        if ( (LA98_7==56) && (synpred22_InternalErlang())) {s = 25;}
 
-                        else if ( (LA98_14==20||(LA98_14>=46 && LA98_14<=47)||LA98_14==51) ) {s = 24;}
+                        else if ( (LA98_7==20||(LA98_7>=46 && LA98_7<=47)||LA98_7==51) ) {s = 24;}
 
                          
-                        input.seek(index98_14);
+                        input.seek(index98_7);
                         if ( s>=0 ) return s;
                         break;
-                    case 6 : 
-                        int LA98_27 = input.LA(1);
+                    case 3 : 
+                        int LA98_43 = input.LA(1);
 
                          
-                        int index98_27 = input.index();
+                        int index98_43 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA98_27==20||(LA98_27>=46 && LA98_27<=47)||LA98_27==51) ) {s = 24;}
+                        if ( (LA98_43==20||(LA98_43>=46 && LA98_43<=47)||LA98_43==51) ) {s = 24;}
 
-                        else if ( (LA98_27==56) && (synpred22_InternalErlang())) {s = 25;}
+                        else if ( (LA98_43==56) && (synpred22_InternalErlang())) {s = 25;}
 
                          
-                        input.seek(index98_27);
+                        input.seek(index98_43);
                         if ( s>=0 ) return s;
                         break;
-                    case 7 : 
-                        int LA98_3 = input.LA(1);
-
-                         
-                        int index98_3 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_3==20||(LA98_3>=46 && LA98_3<=47)||LA98_3==51) ) {s = 24;}
-
-                        else if ( (LA98_3==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_3);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 8 : 
-                        int LA98_18 = input.LA(1);
-
-                         
-                        int index98_18 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_18==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                        else if ( (LA98_18==20||(LA98_18>=46 && LA98_18<=47)||LA98_18==51) ) {s = 24;}
-
-                         
-                        input.seek(index98_18);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 9 : 
-                        int LA98_39 = input.LA(1);
-
-                         
-                        int index98_39 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_39==20||(LA98_39>=46 && LA98_39<=47)||LA98_39==51) ) {s = 24;}
-
-                        else if ( (LA98_39==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_39);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 10 : 
-                        int LA98_6 = input.LA(1);
-
-                         
-                        int index98_6 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_6==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                        else if ( (LA98_6==20||(LA98_6>=46 && LA98_6<=47)||LA98_6==51) ) {s = 24;}
-
-                         
-                        input.seek(index98_6);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 11 : 
+                    case 4 : 
                         int LA98_33 = input.LA(1);
 
                          
@@ -26994,7 +26817,67 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         input.seek(index98_33);
                         if ( s>=0 ) return s;
                         break;
-                    case 12 : 
+                    case 5 : 
+                        int LA98_3 = input.LA(1);
+
+                         
+                        int index98_3 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_3==20||(LA98_3>=46 && LA98_3<=47)||LA98_3==51) ) {s = 24;}
+
+                        else if ( (LA98_3==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                         
+                        input.seek(index98_3);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA98_18 = input.LA(1);
+
+                         
+                        int index98_18 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_18==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                        else if ( (LA98_18==20||(LA98_18>=46 && LA98_18<=47)||LA98_18==51) ) {s = 24;}
+
+                         
+                        input.seek(index98_18);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA98_30 = input.LA(1);
+
+                         
+                        int index98_30 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_30==20||(LA98_30>=46 && LA98_30<=47)||LA98_30==51) ) {s = 24;}
+
+                        else if ( (LA98_30==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                         
+                        input.seek(index98_30);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 8 : 
+                        int LA98_14 = input.LA(1);
+
+                         
+                        int index98_14 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_14==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                        else if ( (LA98_14==20||(LA98_14>=46 && LA98_14<=47)||LA98_14==51) ) {s = 24;}
+
+                         
+                        input.seek(index98_14);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 9 : 
                         int LA98_10 = input.LA(1);
 
                          
@@ -27009,22 +26892,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         input.seek(index98_10);
                         if ( s>=0 ) return s;
                         break;
-                    case 13 : 
-                        int LA98_28 = input.LA(1);
-
-                         
-                        int index98_28 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_28==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                        else if ( (LA98_28==20||(LA98_28>=46 && LA98_28<=47)||LA98_28==51) ) {s = 24;}
-
-                         
-                        input.seek(index98_28);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 14 : 
+                    case 10 : 
                         int LA98_21 = input.LA(1);
 
                          
@@ -27039,37 +26907,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         input.seek(index98_21);
                         if ( s>=0 ) return s;
                         break;
-                    case 15 : 
-                        int LA98_36 = input.LA(1);
-
-                         
-                        int index98_36 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_36==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                        else if ( (LA98_36==20||(LA98_36>=46 && LA98_36<=47)||LA98_36==51) ) {s = 24;}
-
-                         
-                        input.seek(index98_36);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 16 : 
-                        int LA98_15 = input.LA(1);
-
-                         
-                        int index98_15 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_15==20||(LA98_15>=46 && LA98_15<=47)||LA98_15==51) ) {s = 24;}
-
-                        else if ( (LA98_15==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_15);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 17 : 
+                    case 11 : 
                         int LA98_42 = input.LA(1);
 
                          
@@ -27084,7 +26922,82 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         input.seek(index98_42);
                         if ( s>=0 ) return s;
                         break;
-                    case 18 : 
+                    case 12 : 
+                        int LA98_31 = input.LA(1);
+
+                         
+                        int index98_31 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_31==20||(LA98_31>=46 && LA98_31<=47)||LA98_31==51) ) {s = 24;}
+
+                        else if ( (LA98_31==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                         
+                        input.seek(index98_31);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 13 : 
+                        int LA98_6 = input.LA(1);
+
+                         
+                        int index98_6 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_6==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                        else if ( (LA98_6==20||(LA98_6>=46 && LA98_6<=47)||LA98_6==51) ) {s = 24;}
+
+                         
+                        input.seek(index98_6);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 14 : 
+                        int LA98_36 = input.LA(1);
+
+                         
+                        int index98_36 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_36==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                        else if ( (LA98_36==20||(LA98_36>=46 && LA98_36<=47)||LA98_36==51) ) {s = 24;}
+
+                         
+                        input.seek(index98_36);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 15 : 
+                        int LA98_45 = input.LA(1);
+
+                         
+                        int index98_45 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_45==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                        else if ( (LA98_45==20||(LA98_45>=46 && LA98_45<=47)||LA98_45==51) ) {s = 24;}
+
+                         
+                        input.seek(index98_45);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 16 : 
+                        int LA98_28 = input.LA(1);
+
+                         
+                        int index98_28 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_28==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                        else if ( (LA98_28==20||(LA98_28>=46 && LA98_28<=47)||LA98_28==51) ) {s = 24;}
+
+                         
+                        input.seek(index98_28);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 17 : 
                         int LA98_2 = input.LA(1);
 
                          
@@ -27099,19 +27012,34 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         input.seek(index98_2);
                         if ( s>=0 ) return s;
                         break;
-                    case 19 : 
+                    case 18 : 
                         int LA98_19 = input.LA(1);
 
                          
                         int index98_19 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA98_19==20||(LA98_19>=46 && LA98_19<=47)||LA98_19==51) ) {s = 24;}
+                        if ( (LA98_19==56) && (synpred22_InternalErlang())) {s = 25;}
 
-                        else if ( (LA98_19==56) && (synpred22_InternalErlang())) {s = 25;}
+                        else if ( (LA98_19==20||(LA98_19>=46 && LA98_19<=47)||LA98_19==51) ) {s = 24;}
 
                          
                         input.seek(index98_19);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 19 : 
+                        int LA98_15 = input.LA(1);
+
+                         
+                        int index98_15 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_15==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                        else if ( (LA98_15==20||(LA98_15>=46 && LA98_15<=47)||LA98_15==51) ) {s = 24;}
+
+                         
+                        input.seek(index98_15);
                         if ( s>=0 ) return s;
                         break;
                     case 20 : 
@@ -27130,21 +27058,51 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         if ( s>=0 ) return s;
                         break;
                     case 21 : 
-                        int LA98_44 = input.LA(1);
+                        int LA98_34 = input.LA(1);
 
                          
-                        int index98_44 = input.index();
+                        int index98_34 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA98_44==20||(LA98_44>=46 && LA98_44<=47)||LA98_44==51) ) {s = 24;}
+                        if ( (LA98_34==20||(LA98_34>=46 && LA98_34<=47)||LA98_34==51) ) {s = 24;}
 
-                        else if ( (LA98_44==56) && (synpred22_InternalErlang())) {s = 25;}
+                        else if ( (LA98_34==56) && (synpred22_InternalErlang())) {s = 25;}
 
                          
-                        input.seek(index98_44);
+                        input.seek(index98_34);
                         if ( s>=0 ) return s;
                         break;
                     case 22 : 
+                        int LA98_29 = input.LA(1);
+
+                         
+                        int index98_29 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_29==20||(LA98_29>=46 && LA98_29<=47)||LA98_29==51) ) {s = 24;}
+
+                        else if ( (LA98_29==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                         
+                        input.seek(index98_29);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 23 : 
+                        int LA98_13 = input.LA(1);
+
+                         
+                        int index98_13 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_13==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                        else if ( (LA98_13==20||(LA98_13>=46 && LA98_13<=47)||LA98_13==51) ) {s = 24;}
+
+                         
+                        input.seek(index98_13);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 24 : 
                         int LA98_1 = input.LA(1);
 
                          
@@ -27159,7 +27117,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         input.seek(index98_1);
                         if ( s>=0 ) return s;
                         break;
-                    case 23 : 
+                    case 25 : 
                         int LA98_9 = input.LA(1);
 
                          
@@ -27174,49 +27132,19 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         input.seek(index98_9);
                         if ( s>=0 ) return s;
                         break;
-                    case 24 : 
-                        int LA98_45 = input.LA(1);
-
-                         
-                        int index98_45 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_45==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                        else if ( (LA98_45==20||(LA98_45>=46 && LA98_45<=47)||LA98_45==51) ) {s = 24;}
-
-                         
-                        input.seek(index98_45);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 25 : 
-                        int LA98_41 = input.LA(1);
-
-                         
-                        int index98_41 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_41==20||(LA98_41>=46 && LA98_41<=47)||LA98_41==51) ) {s = 24;}
-
-                        else if ( (LA98_41==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_41);
-                        if ( s>=0 ) return s;
-                        break;
                     case 26 : 
-                        int LA98_13 = input.LA(1);
+                        int LA98_5 = input.LA(1);
 
                          
-                        int index98_13 = input.index();
+                        int index98_5 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA98_13==56) && (synpred22_InternalErlang())) {s = 25;}
+                        if ( (LA98_5==20||(LA98_5>=46 && LA98_5<=47)||LA98_5==51) ) {s = 24;}
 
-                        else if ( (LA98_13==20||(LA98_13>=46 && LA98_13<=47)||LA98_13==51) ) {s = 24;}
+                        else if ( (LA98_5==56) && (synpred22_InternalErlang())) {s = 25;}
 
                          
-                        input.seek(index98_13);
+                        input.seek(index98_5);
                         if ( s>=0 ) return s;
                         break;
                     case 27 : 
@@ -27235,6 +27163,21 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         if ( s>=0 ) return s;
                         break;
                     case 28 : 
+                        int LA98_27 = input.LA(1);
+
+                         
+                        int index98_27 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_27==20||(LA98_27>=46 && LA98_27<=47)||LA98_27==51) ) {s = 24;}
+
+                        else if ( (LA98_27==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                         
+                        input.seek(index98_27);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 29 : 
                         int LA98_16 = input.LA(1);
 
                          
@@ -27249,97 +27192,52 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         input.seek(index98_16);
                         if ( s>=0 ) return s;
                         break;
-                    case 29 : 
-                        int LA98_31 = input.LA(1);
-
-                         
-                        int index98_31 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_31==20||(LA98_31>=46 && LA98_31<=47)||LA98_31==51) ) {s = 24;}
-
-                        else if ( (LA98_31==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_31);
-                        if ( s>=0 ) return s;
-                        break;
                     case 30 : 
-                        int LA98_5 = input.LA(1);
+                        int LA98_39 = input.LA(1);
 
                          
-                        int index98_5 = input.index();
+                        int index98_39 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA98_5==56) && (synpred22_InternalErlang())) {s = 25;}
+                        if ( (LA98_39==20||(LA98_39>=46 && LA98_39<=47)||LA98_39==51) ) {s = 24;}
 
-                        else if ( (LA98_5==20||(LA98_5>=46 && LA98_5<=47)||LA98_5==51) ) {s = 24;}
+                        else if ( (LA98_39==56) && (synpred22_InternalErlang())) {s = 25;}
 
                          
-                        input.seek(index98_5);
+                        input.seek(index98_39);
                         if ( s>=0 ) return s;
                         break;
                     case 31 : 
-                        int LA98_34 = input.LA(1);
-
-                         
-                        int index98_34 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_34==20||(LA98_34>=46 && LA98_34<=47)||LA98_34==51) ) {s = 24;}
-
-                        else if ( (LA98_34==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_34);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 32 : 
                         int LA98_37 = input.LA(1);
 
                          
                         int index98_37 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA98_37==20||(LA98_37>=46 && LA98_37<=47)||LA98_37==51) ) {s = 24;}
+                        if ( (LA98_37==56) && (synpred22_InternalErlang())) {s = 25;}
 
-                        else if ( (LA98_37==56) && (synpred22_InternalErlang())) {s = 25;}
+                        else if ( (LA98_37==20||(LA98_37>=46 && LA98_37<=47)||LA98_37==51) ) {s = 24;}
 
                          
                         input.seek(index98_37);
                         if ( s>=0 ) return s;
                         break;
+                    case 32 : 
+                        int LA98_44 = input.LA(1);
+
+                         
+                        int index98_44 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_44==20||(LA98_44>=46 && LA98_44<=47)||LA98_44==51) ) {s = 24;}
+
+                        else if ( (LA98_44==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                         
+                        input.seek(index98_44);
+                        if ( s>=0 ) return s;
+                        break;
                     case 33 : 
-                        int LA98_8 = input.LA(1);
-
-                         
-                        int index98_8 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_8==20||(LA98_8>=46 && LA98_8<=47)||LA98_8==51) ) {s = 24;}
-
-                        else if ( (LA98_8==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_8);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 34 : 
-                        int LA98_32 = input.LA(1);
-
-                         
-                        int index98_32 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_32==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                        else if ( (LA98_32==20||(LA98_32>=46 && LA98_32<=47)||LA98_32==51) ) {s = 24;}
-
-                         
-                        input.seek(index98_32);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 35 : 
                         int LA98_12 = input.LA(1);
 
                          
@@ -27354,22 +27252,22 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         input.seek(index98_12);
                         if ( s>=0 ) return s;
                         break;
-                    case 36 : 
-                        int LA98_17 = input.LA(1);
+                    case 34 : 
+                        int LA98_8 = input.LA(1);
 
                          
-                        int index98_17 = input.index();
+                        int index98_8 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (LA98_17==56) && (synpred22_InternalErlang())) {s = 25;}
+                        if ( (LA98_8==20||(LA98_8>=46 && LA98_8<=47)||LA98_8==51) ) {s = 24;}
 
-                        else if ( (LA98_17==20||(LA98_17>=46 && LA98_17<=47)||LA98_17==51) ) {s = 24;}
+                        else if ( (LA98_8==56) && (synpred22_InternalErlang())) {s = 25;}
 
                          
-                        input.seek(index98_17);
+                        input.seek(index98_8);
                         if ( s>=0 ) return s;
                         break;
-                    case 37 : 
+                    case 35 : 
                         int LA98_38 = input.LA(1);
 
                          
@@ -27384,37 +27282,37 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         input.seek(index98_38);
                         if ( s>=0 ) return s;
                         break;
+                    case 36 : 
+                        int LA98_41 = input.LA(1);
+
+                         
+                        int index98_41 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_41==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                        else if ( (LA98_41==20||(LA98_41>=46 && LA98_41<=47)||LA98_41==51) ) {s = 24;}
+
+                         
+                        input.seek(index98_41);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 37 : 
+                        int LA98_35 = input.LA(1);
+
+                         
+                        int index98_35 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_35==20||(LA98_35>=46 && LA98_35<=47)||LA98_35==51) ) {s = 24;}
+
+                        else if ( (LA98_35==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                         
+                        input.seek(index98_35);
+                        if ( s>=0 ) return s;
+                        break;
                     case 38 : 
-                        int LA98_43 = input.LA(1);
-
-                         
-                        int index98_43 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_43==20||(LA98_43>=46 && LA98_43<=47)||LA98_43==51) ) {s = 24;}
-
-                        else if ( (LA98_43==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_43);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 39 : 
-                        int LA98_29 = input.LA(1);
-
-                         
-                        int index98_29 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (LA98_29==20||(LA98_29>=46 && LA98_29<=47)||LA98_29==51) ) {s = 24;}
-
-                        else if ( (LA98_29==56) && (synpred22_InternalErlang())) {s = 25;}
-
-                         
-                        input.seek(index98_29);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 40 : 
                         int LA98_4 = input.LA(1);
 
                          
@@ -27427,6 +27325,36 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                          
                         input.seek(index98_4);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 39 : 
+                        int LA98_17 = input.LA(1);
+
+                         
+                        int index98_17 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_17==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                        else if ( (LA98_17==20||(LA98_17>=46 && LA98_17<=47)||LA98_17==51) ) {s = 24;}
+
+                         
+                        input.seek(index98_17);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 40 : 
+                        int LA98_32 = input.LA(1);
+
+                         
+                        int index98_32 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (LA98_32==56) && (synpred22_InternalErlang())) {s = 25;}
+
+                        else if ( (LA98_32==20||(LA98_32>=46 && LA98_32<=47)||LA98_32==51) ) {s = 24;}
+
+                         
+                        input.seek(index98_32);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -27450,9 +27378,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA133_specialS =
         "\56\uffff}>";
     static final String[] DFA133_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13"+
-            "\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17"+
-            "\1\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
+            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13\1"+
+            "\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1"+
+            "\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
             "\1\31\43\uffff\1\30\13\uffff\1\31",
             "\1\31\43\uffff\1\30\13\uffff\1\31",
             "\1\31\43\uffff\1\30\13\uffff\1\31",
@@ -27474,11 +27402,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\31\43\uffff\1\30\13\uffff\1\31",
             "\1\31\43\uffff\1\30\13\uffff\1\31",
             "\1\31\43\uffff\1\30\13\uffff\1\31",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\34\1\51\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -27650,8 +27578,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA147_specialS =
         "\55\uffff}>";
     static final String[] DFA147_transitionS = {
-            "\1\1\14\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13\1\14"+
-            "\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1\uffff"+
+            "\1\1\14\uffff\1\15\3\uffff\1\11\1\4\1\5\1\3\1\20\1\13\1\14\1"+
+            "\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1\uffff"+
             "\1\6\1\7\3\uffff\1\25\1\24\63\uffff\1\26",
             "\1\27\15\uffff\1\27\1\uffff\3\27\13\uffff\1\27\2\uffff\1\27"+
             "\4\uffff\1\27\3\uffff\1\27\11\uffff\1\30\13\uffff\1\27\1\uffff"+
@@ -27713,11 +27641,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\27\15\uffff\1\27\1\uffff\3\27\13\uffff\1\27\2\uffff\1\27"+
             "\4\uffff\1\27\3\uffff\1\27\11\uffff\1\30\13\uffff\1\27\1\uffff"+
             "\1\27\2\uffff\1\27\2\uffff\14\27\16\uffff\1\27",
-            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\33\1\50"+
-            "\1\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
+            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\33\1\50\1"+
+            "\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
             "\1\47\1\uffff\1\36\1\37",
-            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\33\1\50"+
-            "\1\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
+            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\33\1\50\1"+
+            "\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
             "\1\47\1\uffff\1\36\1\37",
             "",
             "",
@@ -27826,7 +27754,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleAttribute_in_ruleForm223 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunction_in_ruleForm250 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleConditionalFormBlock_in_ruleForm277 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMacro_in_ruleForm313 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleMacroCall_in_ruleForm313 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_FULL_STOP_in_ruleForm324 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleConditionalFormBlock_in_entryRuleConditionalFormBlock360 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleConditionalFormBlock370 = new BitSet(new long[]{0x0000000000000002L});
@@ -27854,9 +27782,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_19_in_ruleDefineAttribute997 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_20_in_ruleDefineAttribute1022 = new BitSet(new long[]{0x00021BC9FF8800C0L});
     public static final BitSet FOLLOW_ruleAtomOrVar_in_ruleDefineAttribute1043 = new BitSet(new long[]{0x0000000000700000L});
-    public static final BitSet FOLLOW_20_in_ruleDefineAttribute1056 = new BitSet(new long[]{0x00831BDBFFC807E0L,0x0000002000000100L});
+    public static final BitSet FOLLOW_20_in_ruleDefineAttribute1056 = new BitSet(new long[]{0x00831BDBFFCC07E0L,0x0000002000000100L});
     public static final BitSet FOLLOW_rulePatternExpression_in_ruleDefineAttribute1078 = new BitSet(new long[]{0x0000000000600000L});
-    public static final BitSet FOLLOW_21_in_ruleDefineAttribute1091 = new BitSet(new long[]{0x00831BDBFF8807E0L,0x0000002000000100L});
+    public static final BitSet FOLLOW_21_in_ruleDefineAttribute1091 = new BitSet(new long[]{0x00831BDBFF8C07E0L,0x0000002000000100L});
     public static final BitSet FOLLOW_rulePatternExpression_in_ruleDefineAttribute1112 = new BitSet(new long[]{0x0000000000600000L});
     public static final BitSet FOLLOW_22_in_ruleDefineAttribute1128 = new BitSet(new long[]{0x0000000000600000L});
     public static final BitSet FOLLOW_21_in_ruleDefineAttribute1143 = new BitSet(new long[]{0xFA871BDBFFDC07E0L,0x000000200300112AL});
@@ -27913,7 +27841,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleModuleAttribute2392 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_18_in_ruleModuleAttribute2429 = new BitSet(new long[]{0x0000000080000000L});
     public static final BitSet FOLLOW_31_in_ruleModuleAttribute2462 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_ruleModuleAttribute2487 = new BitSet(new long[]{0x00031BC9FF880040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_20_in_ruleModuleAttribute2487 = new BitSet(new long[]{0x00031BC9FF8C0040L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleName_in_ruleModuleAttribute2508 = new BitSet(new long[]{0x0000000000400000L});
     public static final BitSet FOLLOW_22_in_ruleModuleAttribute2520 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_FULL_STOP_in_ruleModuleAttribute2531 = new BitSet(new long[]{0x0000000000000002L});
@@ -27921,12 +27849,12 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleRecordAttribute2576 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_18_in_ruleRecordAttribute2613 = new BitSet(new long[]{0x0000000100000000L});
     public static final BitSet FOLLOW_32_in_ruleRecordAttribute2646 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_ruleRecordAttribute2671 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_20_in_ruleRecordAttribute2671 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleNameVar_in_ruleRecordAttribute2692 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_21_in_ruleRecordAttribute2704 = new BitSet(new long[]{0x00031BCBFF880040L,0x0000002000000000L});
-    public static final BitSet FOLLOW_33_in_ruleRecordAttribute2718 = new BitSet(new long[]{0x00031BCDFF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_21_in_ruleRecordAttribute2704 = new BitSet(new long[]{0x00031BCBFFCC0040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_33_in_ruleRecordAttribute2718 = new BitSet(new long[]{0x00031BCDFF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleRecordFieldDef_in_ruleRecordAttribute2740 = new BitSet(new long[]{0x0000000400200000L});
-    public static final BitSet FOLLOW_21_in_ruleRecordAttribute2753 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_21_in_ruleRecordAttribute2753 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleRecordFieldDef_in_ruleRecordAttribute2774 = new BitSet(new long[]{0x0000000400200000L});
     public static final BitSet FOLLOW_34_in_ruleRecordAttribute2790 = new BitSet(new long[]{0x0000000000400000L});
     public static final BitSet FOLLOW_ruleMacro_in_ruleRecordAttribute2820 = new BitSet(new long[]{0x0000000000400000L});
@@ -27937,9 +27865,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_18_in_ruleExportAttribute2926 = new BitSet(new long[]{0x0000000800000000L});
     public static final BitSet FOLLOW_35_in_ruleExportAttribute2959 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_20_in_ruleExportAttribute2984 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_ruleExportAttribute2996 = new BitSet(new long[]{0x00031BE9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_36_in_ruleExportAttribute2996 = new BitSet(new long[]{0x00031BE9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleFunRef_in_ruleExportAttribute3018 = new BitSet(new long[]{0x0000002000200000L});
-    public static final BitSet FOLLOW_21_in_ruleExportAttribute3031 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_21_in_ruleExportAttribute3031 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleFunRef_in_ruleExportAttribute3052 = new BitSet(new long[]{0x0000002000200000L});
     public static final BitSet FOLLOW_37_in_ruleExportAttribute3068 = new BitSet(new long[]{0x0000000000400000L});
     public static final BitSet FOLLOW_22_in_ruleExportAttribute3080 = new BitSet(new long[]{0x0000000000000010L});
@@ -27948,12 +27876,12 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleImportAttribute3136 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_18_in_ruleImportAttribute3173 = new BitSet(new long[]{0x0000004000000000L});
     public static final BitSet FOLLOW_38_in_ruleImportAttribute3206 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_ruleImportAttribute3231 = new BitSet(new long[]{0x00031BC9FF880040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_20_in_ruleImportAttribute3231 = new BitSet(new long[]{0x00031BC9FF8C0040L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleName_in_ruleImportAttribute3252 = new BitSet(new long[]{0x0000000000200000L});
     public static final BitSet FOLLOW_21_in_ruleImportAttribute3264 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_ruleImportAttribute3276 = new BitSet(new long[]{0x00031BE9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_36_in_ruleImportAttribute3276 = new BitSet(new long[]{0x00031BE9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleFunRef_in_ruleImportAttribute3298 = new BitSet(new long[]{0x0000002000200000L});
-    public static final BitSet FOLLOW_21_in_ruleImportAttribute3311 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_21_in_ruleImportAttribute3311 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleFunRef_in_ruleImportAttribute3332 = new BitSet(new long[]{0x0000002000200000L});
     public static final BitSet FOLLOW_37_in_ruleImportAttribute3348 = new BitSet(new long[]{0x0000000000400000L});
     public static final BitSet FOLLOW_22_in_ruleImportAttribute3360 = new BitSet(new long[]{0x0000000000000010L});
@@ -27973,13 +27901,13 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleSpecAttribute_in_entryRuleSpecAttribute3709 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSpecAttribute3719 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_18_in_ruleSpecAttribute3756 = new BitSet(new long[]{0x0000030000000000L});
-    public static final BitSet FOLLOW_40_in_ruleSpecAttribute3810 = new BitSet(new long[]{0x00031BC9FF9800C0L,0x0000002000000000L});
-    public static final BitSet FOLLOW_41_in_ruleSpecAttribute3839 = new BitSet(new long[]{0x00031BC9FF9800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_40_in_ruleSpecAttribute3810 = new BitSet(new long[]{0x00031BC9FF9C00C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_41_in_ruleSpecAttribute3839 = new BitSet(new long[]{0x00031BC9FF9C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleSpecFun_in_ruleSpecAttribute3878 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_ruleTypeSig_in_ruleSpecAttribute3899 = new BitSet(new long[]{0x0000040000000010L});
     public static final BitSet FOLLOW_42_in_ruleSpecAttribute3912 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_ruleTypeSig_in_ruleSpecAttribute3933 = new BitSet(new long[]{0x0000040000000010L});
-    public static final BitSet FOLLOW_20_in_ruleSpecAttribute3955 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_20_in_ruleSpecAttribute3955 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleSpecFun_in_ruleSpecAttribute3976 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_ruleTypeSig_in_ruleSpecAttribute3997 = new BitSet(new long[]{0x0000040000400000L});
     public static final BitSet FOLLOW_42_in_ruleSpecAttribute4010 = new BitSet(new long[]{0x0000000000100000L});
@@ -27989,21 +27917,21 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleTypeAttribute_in_entryRuleTypeAttribute4093 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleTypeAttribute4103 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_18_in_ruleTypeAttribute4140 = new BitSet(new long[]{0x0000180000000000L});
-    public static final BitSet FOLLOW_43_in_ruleTypeAttribute4194 = new BitSet(new long[]{0x00031BC9FF9800C0L,0x0000002000000000L});
-    public static final BitSet FOLLOW_44_in_ruleTypeAttribute4223 = new BitSet(new long[]{0x00031BC9FF9800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_43_in_ruleTypeAttribute4194 = new BitSet(new long[]{0x00031BC9FF9C00C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_44_in_ruleTypeAttribute4223 = new BitSet(new long[]{0x00031BC9FF9C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleNameVar_in_ruleTypeAttribute4262 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_ruleTypeAttribute4274 = new BitSet(new long[]{0x00831BDBFFC807E0L,0x0000002000000100L});
+    public static final BitSet FOLLOW_20_in_ruleTypeAttribute4274 = new BitSet(new long[]{0x00831BDBFFCC07E0L,0x0000002000000100L});
     public static final BitSet FOLLOW_rulePatternExpression_in_ruleTypeAttribute4296 = new BitSet(new long[]{0x0000000000600000L});
-    public static final BitSet FOLLOW_21_in_ruleTypeAttribute4309 = new BitSet(new long[]{0x00831BDBFF8807E0L,0x0000002000000100L});
+    public static final BitSet FOLLOW_21_in_ruleTypeAttribute4309 = new BitSet(new long[]{0x00831BDBFF8C07E0L,0x0000002000000100L});
     public static final BitSet FOLLOW_rulePatternExpression_in_ruleTypeAttribute4330 = new BitSet(new long[]{0x0000000000600000L});
     public static final BitSet FOLLOW_22_in_ruleTypeAttribute4346 = new BitSet(new long[]{0x0000200000000000L});
     public static final BitSet FOLLOW_45_in_ruleTypeAttribute4358 = new BitSet(new long[]{0x00831BDBFF9C06C0L,0x0000002003001108L});
     public static final BitSet FOLLOW_ruleTopType_in_ruleTypeAttribute4379 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_20_in_ruleTypeAttribute4399 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_20_in_ruleTypeAttribute4399 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleNameVar_in_ruleTypeAttribute4420 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_ruleTypeAttribute4432 = new BitSet(new long[]{0x00831BDBFFC807E0L,0x0000002000000100L});
+    public static final BitSet FOLLOW_20_in_ruleTypeAttribute4432 = new BitSet(new long[]{0x00831BDBFFCC07E0L,0x0000002000000100L});
     public static final BitSet FOLLOW_rulePatternExpression_in_ruleTypeAttribute4454 = new BitSet(new long[]{0x0000000000600000L});
-    public static final BitSet FOLLOW_21_in_ruleTypeAttribute4467 = new BitSet(new long[]{0x00831BDBFF8807E0L,0x0000002000000100L});
+    public static final BitSet FOLLOW_21_in_ruleTypeAttribute4467 = new BitSet(new long[]{0x00831BDBFF8C07E0L,0x0000002000000100L});
     public static final BitSet FOLLOW_rulePatternExpression_in_ruleTypeAttribute4488 = new BitSet(new long[]{0x0000000000600000L});
     public static final BitSet FOLLOW_22_in_ruleTypeAttribute4504 = new BitSet(new long[]{0x0000200000000000L});
     public static final BitSet FOLLOW_45_in_ruleTypeAttribute4516 = new BitSet(new long[]{0x00831BDBFF9C06C0L,0x0000002003001108L});
@@ -28022,14 +27950,14 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_RULE_FULL_STOP_in_ruleCustomAttribute4761 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunction_in_entryRuleFunction4796 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFunction4806 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleName_in_ruleFunction4852 = new BitSet(new long[]{0x00031BC9FF980040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_ruleAtomOrKw_in_ruleFunction4852 = new BitSet(new long[]{0x00021BC9FF980040L});
     public static final BitSet FOLLOW_ruleFunctionClause_in_ruleFunction4873 = new BitSet(new long[]{0x0000040000000010L});
-    public static final BitSet FOLLOW_42_in_ruleFunction4886 = new BitSet(new long[]{0x00031BC9FF980040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_42_in_ruleFunction4886 = new BitSet(new long[]{0x00021BC9FF980040L});
     public static final BitSet FOLLOW_ruleFunctionClause_in_ruleFunction4907 = new BitSet(new long[]{0x0000040000000010L});
     public static final BitSet FOLLOW_RULE_FULL_STOP_in_ruleFunction4920 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunctionClause_in_entryRuleFunctionClause4955 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFunctionClause4965 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleName_in_ruleFunctionClause5011 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_ruleAtomOrKw_in_ruleFunctionClause5011 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_20_in_ruleFunctionClause5024 = new BitSet(new long[]{0xFA871BDBFFDC07E0L,0x000000200300112AL});
     public static final BitSet FOLLOW_ruleExpression_in_ruleFunctionClause5046 = new BitSet(new long[]{0x0000000000600000L});
     public static final BitSet FOLLOW_21_in_ruleFunctionClause5059 = new BitSet(new long[]{0xFA871BDBFF9C07E0L,0x000000200300112AL});
@@ -28115,7 +28043,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_21_in_ruleExpr7007281 = new BitSet(new long[]{0xFA871BDBFF9C07E0L,0x000000200300112AL});
     public static final BitSet FOLLOW_ruleExpression_in_ruleExpr7007302 = new BitSet(new long[]{0x0000000000600000L});
     public static final BitSet FOLLOW_22_in_ruleExpr7007318 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_55_in_ruleExpr7007338 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_55_in_ruleExpr7007338 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleRecordExpr_in_ruleExpr7007368 = new BitSet(new long[]{0x0080000000000002L});
     public static final BitSet FOLLOW_ruleExpr800_in_entryRuleExpr8007408 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleExpr8007418 = new BitSet(new long[]{0x0000000000000002L});
@@ -28149,7 +28077,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleList_in_ruleTermExpression8156 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBinaryComprehension_in_ruleTermExpression8189 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBinary_in_ruleTermExpression8217 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_55_in_ruleTermExpression8235 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_55_in_ruleTermExpression8235 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleRecordExpr_in_ruleTermExpression8257 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleLiteralExpression_in_ruleTermExpression8285 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleMacroCall_in_entryRuleMacroCall8320 = new BitSet(new long[]{0x0000000000000000L});
@@ -28176,9 +28104,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_61_in_ruleLetExpr8884 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRecordTuple_in_entryRuleRecordTuple8920 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleRecordTuple8930 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_ruleRecordTuple8976 = new BitSet(new long[]{0x00031BCDFF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_33_in_ruleRecordTuple8976 = new BitSet(new long[]{0x00031BCDFF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleRecordField_in_ruleRecordTuple8998 = new BitSet(new long[]{0x0000000400200000L});
-    public static final BitSet FOLLOW_21_in_ruleRecordTuple9011 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_21_in_ruleRecordTuple9011 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleRecordField_in_ruleRecordTuple9032 = new BitSet(new long[]{0x0000000400200000L});
     public static final BitSet FOLLOW_34_in_ruleRecordTuple9048 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRecordFieldDef_in_entryRuleRecordFieldDef9084 = new BitSet(new long[]{0x0000000000000000L});
@@ -28210,7 +28138,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_rulePatternExpression_in_entryRulePatternExpression9843 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRulePatternExpression9853 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleTermExpression_in_rulePatternExpression9900 = new BitSet(new long[]{0x0008000000100002L});
-    public static final BitSet FOLLOW_51_in_rulePatternExpression9928 = new BitSet(new long[]{0x00831BDBFF8807E0L,0x0000002000000100L});
+    public static final BitSet FOLLOW_51_in_rulePatternExpression9928 = new BitSet(new long[]{0x00831BDBFF8C07E0L,0x0000002000000100L});
     public static final BitSet FOLLOW_ruleTermExpression_in_rulePatternExpression9962 = new BitSet(new long[]{0x0008000000000002L});
     public static final BitSet FOLLOW_20_in_rulePatternExpression9992 = new BitSet(new long[]{0xFA871BDBFFDC07E0L,0x000000200300112AL});
     public static final BitSet FOLLOW_ruleExpression_in_rulePatternExpression10014 = new BitSet(new long[]{0x0000000000600000L});
@@ -28219,9 +28147,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_22_in_rulePatternExpression10064 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleErlString_in_entryRuleErlString10104 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleErlString10115 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleErlString10155 = new BitSet(new long[]{0x00031BC9FF880062L,0x0000002000000000L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleErlString10176 = new BitSet(new long[]{0x00031BC9FF880062L,0x0000002000000000L});
-    public static final BitSet FOLLOW_ruleMacro_in_ruleErlString10209 = new BitSet(new long[]{0x00031BC9FF880062L,0x0000002000000000L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleErlString10155 = new BitSet(new long[]{0x00031BC9FF8C0060L,0x0000002000000000L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleErlString10176 = new BitSet(new long[]{0x00031BC9FF8C0062L,0x0000002000000000L});
+    public static final BitSet FOLLOW_ruleMacro_in_ruleErlString10209 = new BitSet(new long[]{0x00031BC9FF8C0062L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleIfExpr_in_entryRuleIfExpr10256 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleIfExpr10266 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_62_in_ruleIfExpr10303 = new BitSet(new long[]{0xFA871BDBFF9C07E0L,0x000000200300112AL});
@@ -28275,20 +28203,20 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_58_in_ruleReceiveExpr11286 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunExpr_in_entryRuleFunExpr11322 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFunExpr11332 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_67_in_ruleFunExpr11369 = new BitSet(new long[]{0x00031BC9FF9800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_67_in_ruleFunExpr11369 = new BitSet(new long[]{0x00031BC9FF9C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleFunRef_in_ruleFunExpr11392 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleInlineFun_in_ruleFunExpr11419 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunRef_in_entryRuleFunRef11455 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFunRef11465 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleNameVar_in_ruleFunRef11512 = new BitSet(new long[]{0x0100000000000000L});
-    public static final BitSet FOLLOW_56_in_ruleFunRef11524 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_56_in_ruleFunRef11524 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleNameVar_in_ruleFunRef11547 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
-    public static final BitSet FOLLOW_68_in_ruleFunRef11559 = new BitSet(new long[]{0x00031BC9FF8802C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_68_in_ruleFunRef11559 = new BitSet(new long[]{0x00031BC9FF8C02C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleIntMacro_in_ruleFunRef11580 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleInlineFun_in_entryRuleInlineFun11616 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleInlineFun11626 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunctionClause_in_ruleInlineFun11672 = new BitSet(new long[]{0x0400040000000000L});
-    public static final BitSet FOLLOW_42_in_ruleInlineFun11685 = new BitSet(new long[]{0x00031BC9FF980040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_42_in_ruleInlineFun11685 = new BitSet(new long[]{0x00021BC9FF980040L});
     public static final BitSet FOLLOW_ruleFunctionClause_in_ruleInlineFun11706 = new BitSet(new long[]{0x0400040000000000L});
     public static final BitSet FOLLOW_58_in_ruleInlineFun11720 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleTryExpr_in_entryRuleTryExpr11756 = new BitSet(new long[]{0x0000000000000000L});
@@ -28301,9 +28229,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleCrClause_in_ruleTryExpr11894 = new BitSet(new long[]{0x0004040000000000L,0x0000000000000004L});
     public static final BitSet FOLLOW_42_in_ruleTryExpr11907 = new BitSet(new long[]{0xFA871BDBFF9C07E0L,0x000000200300112AL});
     public static final BitSet FOLLOW_ruleCrClause_in_ruleTryExpr11928 = new BitSet(new long[]{0x0004040000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_50_in_ruleTryExpr11946 = new BitSet(new long[]{0x00831BDBFF8807E0L,0x0000002000000100L});
+    public static final BitSet FOLLOW_50_in_ruleTryExpr11946 = new BitSet(new long[]{0x00831BDBFF8C07E0L,0x0000002000000100L});
     public static final BitSet FOLLOW_ruleTryClause_in_ruleTryExpr11985 = new BitSet(new long[]{0x0400040000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_42_in_ruleTryExpr11998 = new BitSet(new long[]{0x00831BDBFF8807E0L,0x0000002000000100L});
+    public static final BitSet FOLLOW_42_in_ruleTryExpr11998 = new BitSet(new long[]{0x00831BDBFF8C07E0L,0x0000002000000100L});
     public static final BitSet FOLLOW_ruleTryClause_in_ruleTryExpr12037 = new BitSet(new long[]{0x0400040000000000L,0x0000000000000004L});
     public static final BitSet FOLLOW_66_in_ruleTryExpr12052 = new BitSet(new long[]{0xFA871BDBFF9C07E0L,0x000000200300112AL});
     public static final BitSet FOLLOW_ruleLExpression_in_ruleTryExpr12073 = new BitSet(new long[]{0x0400000000200000L});
@@ -28317,7 +28245,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleTryClause_in_entryRuleTryClause12238 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleTryClause12248 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleNameVar_in_ruleTryClause12314 = new BitSet(new long[]{0x0100000000000000L});
-    public static final BitSet FOLLOW_56_in_ruleTryClause12326 = new BitSet(new long[]{0x00831BDBFF8807E0L,0x0000002000000100L});
+    public static final BitSet FOLLOW_56_in_ruleTryClause12326 = new BitSet(new long[]{0x00831BDBFF8C07E0L,0x0000002000000100L});
     public static final BitSet FOLLOW_rulePatternExpression_in_ruleTryClause12350 = new BitSet(new long[]{0x0000C00000000000L});
     public static final BitSet FOLLOW_46_in_ruleTryClause12363 = new BitSet(new long[]{0xFA871BDBFF9C07E0L,0x000000200300112AL});
     public static final BitSet FOLLOW_ruleGuard_in_ruleTryClause12384 = new BitSet(new long[]{0x0000800000000000L});
@@ -28352,7 +28280,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_34_in_ruleTuple13018 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBinaryComprehension_in_entryRuleBinaryComprehension13054 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleBinaryComprehension13064 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_72_in_ruleBinaryComprehension13101 = new BitSet(new long[]{0x00831BDBFF8807E0L,0x0000002000000100L});
+    public static final BitSet FOLLOW_72_in_ruleBinaryComprehension13101 = new BitSet(new long[]{0x00831BDBFF8C07E0L,0x0000002000000100L});
     public static final BitSet FOLLOW_ruleTermExpression_in_ruleBinaryComprehension13122 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
     public static final BitSet FOLLOW_71_in_ruleBinaryComprehension13134 = new BitSet(new long[]{0xFA871BDBFF9C07E0L,0x000000200300112AL});
     public static final BitSet FOLLOW_ruleLCExpr_in_ruleBinaryComprehension13155 = new BitSet(new long[]{0x0000000000200000L,0x0000000000000200L});
@@ -28371,9 +28299,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleUnaryExprMax_in_ruleBinaryItem13466 = new BitSet(new long[]{0x0100000000000002L,0x0000000000000010L});
     public static final BitSet FOLLOW_56_in_ruleBinaryItem13487 = new BitSet(new long[]{0xFA871BDBFF9C07E0L,0x000000200300112AL});
     public static final BitSet FOLLOW_ruleExprMax_in_ruleBinaryItem13509 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
-    public static final BitSet FOLLOW_68_in_ruleBinaryItem13532 = new BitSet(new long[]{0x00031BC9FF880040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_68_in_ruleBinaryItem13532 = new BitSet(new long[]{0x00031BC9FF8C0040L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleBitType_in_ruleBinaryItem13554 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_18_in_ruleBinaryItem13567 = new BitSet(new long[]{0x00031BC9FF880040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_18_in_ruleBinaryItem13567 = new BitSet(new long[]{0x00031BC9FF8C0040L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleBitType_in_ruleBinaryItem13588 = new BitSet(new long[]{0x0000000000040002L});
     public static final BitSet FOLLOW_ruleBitType_in_entryRuleBitType13628 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleBitType13638 = new BitSet(new long[]{0x0000000000000002L});
@@ -28435,7 +28363,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleMacro_in_ruleName15068 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQName_in_entryRuleQName15120 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleQName15131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_100_in_ruleQName15173 = new BitSet(new long[]{0x00031BC9FF880040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_100_in_ruleQName15173 = new BitSet(new long[]{0x00031BC9FF8C0040L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleName_in_ruleQName15195 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleNameVar_in_entryRuleNameVar15245 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleNameVar15256 = new BitSet(new long[]{0x0000000000000002L});
@@ -28498,15 +28426,15 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleSpecFun_in_entryRuleSpecFun16822 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSpecFun16832 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleNameVar_in_ruleSpecFun16879 = new BitSet(new long[]{0x0100000000000000L});
-    public static final BitSet FOLLOW_56_in_ruleSpecFun16891 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_56_in_ruleSpecFun16891 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleNameVar_in_ruleSpecFun16914 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
-    public static final BitSet FOLLOW_68_in_ruleSpecFun16927 = new BitSet(new long[]{0x00031BC9FF8802C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_68_in_ruleSpecFun16927 = new BitSet(new long[]{0x00031BC9FF8C02C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleIntMacro_in_ruleSpecFun16948 = new BitSet(new long[]{0x0000200000000000L});
     public static final BitSet FOLLOW_45_in_ruleSpecFun16960 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleTypeSig_in_entryRuleTypeSig16998 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleTypeSig17008 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunType_in_ruleTypeSig17054 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_46_in_ruleTypeSig17067 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_46_in_ruleTypeSig17067 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleTypeGuards_in_ruleTypeSig17088 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunType_in_entryRuleFunType17126 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFunType17136 = new BitSet(new long[]{0x0000000000000002L});
@@ -28520,7 +28448,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleTypeGuards_in_entryRuleTypeGuards17314 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleTypeGuards17324 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleTypeGuard_in_ruleTypeGuards17370 = new BitSet(new long[]{0x0000000000200002L});
-    public static final BitSet FOLLOW_21_in_ruleTypeGuards17383 = new BitSet(new long[]{0x00031BC9FF8800C0L,0x0000002000000000L});
+    public static final BitSet FOLLOW_21_in_ruleTypeGuards17383 = new BitSet(new long[]{0x00031BC9FF8C00C0L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleTypeGuard_in_ruleTypeGuards17404 = new BitSet(new long[]{0x0000000000200002L});
     public static final BitSet FOLLOW_ruleTypeGuard_in_entryRuleTypeGuard17442 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleTypeGuard17452 = new BitSet(new long[]{0x0000000000000002L});
@@ -28569,7 +28497,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleTopType_in_ruleType18728 = new BitSet(new long[]{0x0000000000400000L});
     public static final BitSet FOLLOW_22_in_ruleType18739 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleName_in_ruleType18780 = new BitSet(new long[]{0x0100000000000000L});
-    public static final BitSet FOLLOW_56_in_ruleType18792 = new BitSet(new long[]{0x00031BC9FF880040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_56_in_ruleType18792 = new BitSet(new long[]{0x00031BC9FF8C0040L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleName_in_ruleType18815 = new BitSet(new long[]{0x0000000000100002L});
     public static final BitSet FOLLOW_20_in_ruleType18828 = new BitSet(new long[]{0x00831BDBFFDC06C0L,0x0000002003001108L});
     public static final BitSet FOLLOW_ruleTopType_in_ruleType18850 = new BitSet(new long[]{0x0000000000600000L});
@@ -28588,11 +28516,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_21_in_ruleType19113 = new BitSet(new long[]{0x00831BDBFF9C06C0L,0x0000002003001108L});
     public static final BitSet FOLLOW_ruleTopType_in_ruleType19134 = new BitSet(new long[]{0x0000000400200000L});
     public static final BitSet FOLLOW_34_in_ruleType19150 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_55_in_ruleType19170 = new BitSet(new long[]{0x00031BC9FF880040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_55_in_ruleType19170 = new BitSet(new long[]{0x00031BC9FF8C0040L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleName_in_ruleType19200 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_33_in_ruleType19212 = new BitSet(new long[]{0x00031BCDFF880040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_33_in_ruleType19212 = new BitSet(new long[]{0x00031BCDFF8C0040L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleFieldType_in_ruleType19234 = new BitSet(new long[]{0x0000000400200000L});
-    public static final BitSet FOLLOW_21_in_ruleType19247 = new BitSet(new long[]{0x00031BC9FF880040L,0x0000002000000000L});
+    public static final BitSet FOLLOW_21_in_ruleType19247 = new BitSet(new long[]{0x00031BC9FF8C0040L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleFieldType_in_ruleType19268 = new BitSet(new long[]{0x0000000400200000L});
     public static final BitSet FOLLOW_34_in_ruleType19284 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBinaryType_in_ruleType19313 = new BitSet(new long[]{0x0000000000000002L});

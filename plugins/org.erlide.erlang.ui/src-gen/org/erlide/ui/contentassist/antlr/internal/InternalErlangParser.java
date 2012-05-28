@@ -8962,7 +8962,64 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         try {
             // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2971:1: ( ( ruleAttribute ) | ( ruleFunction ) | ( ruleConditionalFormBlock ) | ( ( rule__Form__Group_3__0 ) ) )
             int alt2=4;
-            alt2 = dfa2.predict(input);
+            switch ( input.LA(1) ) {
+            case 29:
+                {
+                int LA2_1 = input.LA(2);
+
+                if ( (LA2_1==RULE_ATOM||(LA2_1>=20 && LA2_1<=25)||(LA2_1>=58 && LA2_1<=62)||(LA2_1>=64 && LA2_1<=66)) ) {
+                    alt2=1;
+                }
+                else if ( ((LA2_1>=18 && LA2_1<=19)) ) {
+                    alt2=3;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return ;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 2, 1, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case RULE_ATOM:
+            case 18:
+            case 19:
+            case 20:
+            case 21:
+            case 22:
+            case 23:
+            case 24:
+            case 25:
+            case 56:
+            case 57:
+            case 58:
+            case 59:
+            case 60:
+            case 61:
+            case 62:
+            case 63:
+            case 64:
+            case 65:
+            case 66:
+                {
+                alt2=2;
+                }
+                break;
+            case 54:
+            case 55:
+                {
+                alt2=4;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return ;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 2, 0, input);
+
+                throw nvae;
+            }
+
             switch (alt2) {
                 case 1 :
                     // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2972:1: ( ruleAttribute )
@@ -15823,26 +15880,26 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Form__Group_3__1__Impl"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4715:1: rule__Form__Group_3__1__Impl : ( ( rule__Form__NameAssignment_3_1 ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4715:1: rule__Form__Group_3__1__Impl : ( ( rule__Form__CallAssignment_3_1 ) ) ;
     public final void rule__Form__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4719:1: ( ( ( rule__Form__NameAssignment_3_1 ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4720:1: ( ( rule__Form__NameAssignment_3_1 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4719:1: ( ( ( rule__Form__CallAssignment_3_1 ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4720:1: ( ( rule__Form__CallAssignment_3_1 ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4720:1: ( ( rule__Form__NameAssignment_3_1 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4721:1: ( rule__Form__NameAssignment_3_1 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4720:1: ( ( rule__Form__CallAssignment_3_1 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4721:1: ( rule__Form__CallAssignment_3_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormAccess().getNameAssignment_3_1()); 
+               before(grammarAccess.getFormAccess().getCallAssignment_3_1()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4722:1: ( rule__Form__NameAssignment_3_1 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4722:2: rule__Form__NameAssignment_3_1
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4722:1: ( rule__Form__CallAssignment_3_1 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4722:2: rule__Form__CallAssignment_3_1
             {
-            pushFollow(FOLLOW_rule__Form__NameAssignment_3_1_in_rule__Form__Group_3__1__Impl10389);
-            rule__Form__NameAssignment_3_1();
+            pushFollow(FOLLOW_rule__Form__CallAssignment_3_1_in_rule__Form__Group_3__1__Impl10389);
+            rule__Form__CallAssignment_3_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15850,7 +15907,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormAccess().getNameAssignment_3_1()); 
+               after(grammarAccess.getFormAccess().getCallAssignment_3_1()); 
             }
 
             }
@@ -30078,7 +30135,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             int alt78=2;
             int LA78_0 = input.LA(1);
 
-            if ( (LA78_0==RULE_ATOM||(LA78_0>=18 && LA78_0<=25)||(LA78_0>=54 && LA78_0<=66)) ) {
+            if ( (LA78_0==RULE_ATOM||(LA78_0>=18 && LA78_0<=25)||(LA78_0>=56 && LA78_0<=66)) ) {
                 alt78=1;
             }
             switch (alt78) {
@@ -71972,29 +72029,29 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Module__FormsAssignment"
 
 
-    // $ANTLR start "rule__Form__NameAssignment_3_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25372:1: rule__Form__NameAssignment_3_1 : ( ruleMacro ) ;
-    public final void rule__Form__NameAssignment_3_1() throws RecognitionException {
+    // $ANTLR start "rule__Form__CallAssignment_3_1"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25372:1: rule__Form__CallAssignment_3_1 : ( ruleMacroCall ) ;
+    public final void rule__Form__CallAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25376:1: ( ( ruleMacro ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25377:1: ( ruleMacro )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25376:1: ( ( ruleMacroCall ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25377:1: ( ruleMacroCall )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25377:1: ( ruleMacro )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25378:1: ruleMacro
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25377:1: ( ruleMacroCall )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25378:1: ruleMacroCall
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormAccess().getNameMacroParserRuleCall_3_1_0()); 
+               before(grammarAccess.getFormAccess().getCallMacroCallParserRuleCall_3_1_0()); 
             }
-            pushFollow(FOLLOW_ruleMacro_in_rule__Form__NameAssignment_3_150998);
-            ruleMacro();
+            pushFollow(FOLLOW_ruleMacroCall_in_rule__Form__CallAssignment_3_150998);
+            ruleMacroCall();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormAccess().getNameMacroParserRuleCall_3_1_0()); 
+               after(grammarAccess.getFormAccess().getCallMacroCallParserRuleCall_3_1_0()); 
             }
 
             }
@@ -72014,7 +72071,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Form__NameAssignment_3_1"
+    // $ANTLR end "rule__Form__CallAssignment_3_1"
 
 
     // $ANTLR start "rule__ConditionalFormBlock__ConditionAssignment_0"
@@ -74678,28 +74735,28 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Function__NameAssignment_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26327:1: rule__Function__NameAssignment_0 : ( ruleName ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26327:1: rule__Function__NameAssignment_0 : ( ruleAtomOrKw ) ;
     public final void rule__Function__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26331:1: ( ( ruleName ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26332:1: ( ruleName )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26331:1: ( ( ruleAtomOrKw ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26332:1: ( ruleAtomOrKw )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26332:1: ( ruleName )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26333:1: ruleName
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26332:1: ( ruleAtomOrKw )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26333:1: ruleAtomOrKw
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFunctionAccess().getNameNameParserRuleCall_0_0()); 
+               before(grammarAccess.getFunctionAccess().getNameAtomOrKwParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleName_in_rule__Function__NameAssignment_052935);
-            ruleName();
+            pushFollow(FOLLOW_ruleAtomOrKw_in_rule__Function__NameAssignment_052935);
+            ruleAtomOrKw();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFunctionAccess().getNameNameParserRuleCall_0_0()); 
+               after(grammarAccess.getFunctionAccess().getNameAtomOrKwParserRuleCall_0_0()); 
             }
 
             }
@@ -74813,28 +74870,28 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionClause__RefAssignment_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26372:1: rule__FunctionClause__RefAssignment_0 : ( ruleName ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26372:1: rule__FunctionClause__RefAssignment_0 : ( ruleAtomOrKw ) ;
     public final void rule__FunctionClause__RefAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26376:1: ( ( ruleName ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26377:1: ( ruleName )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26376:1: ( ( ruleAtomOrKw ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26377:1: ( ruleAtomOrKw )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26377:1: ( ruleName )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26378:1: ruleName
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26377:1: ( ruleAtomOrKw )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26378:1: ruleAtomOrKw
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFunctionClauseAccess().getRefNameParserRuleCall_0_0()); 
+               before(grammarAccess.getFunctionClauseAccess().getRefAtomOrKwParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleName_in_rule__FunctionClause__RefAssignment_053028);
-            ruleName();
+            pushFollow(FOLLOW_ruleAtomOrKw_in_rule__FunctionClause__RefAssignment_053028);
+            ruleAtomOrKw();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFunctionClauseAccess().getRefNameParserRuleCall_0_0()); 
+               after(grammarAccess.getFunctionClauseAccess().getRefAtomOrKwParserRuleCall_0_0()); 
             }
 
             }
@@ -83188,7 +83245,6 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     }
 
 
-    protected DFA2 dfa2 = new DFA2(this);
     protected DFA3 dfa3 = new DFA3(this);
     protected DFA19 dfa19 = new DFA19(this);
     protected DFA27 dfa27 = new DFA27(this);
@@ -83196,84 +83252,6 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     protected DFA128 dfa128 = new DFA128(this);
     protected DFA142 dfa142 = new DFA142(this);
     protected DFA154 dfa154 = new DFA154(this);
-    static final String DFA2_eotS =
-        "\34\uffff";
-    static final String DFA2_eofS =
-        "\34\uffff";
-    static final String DFA2_minS =
-        "\2\6\1\uffff\2\5\2\uffff\24\6\1\uffff";
-    static final String DFA2_maxS =
-        "\2\102\1\uffff\2\102\2\uffff\24\104\1\uffff";
-    static final String DFA2_acceptS =
-        "\2\uffff\1\2\2\uffff\1\1\1\3\24\uffff\1\4";
-    static final String DFA2_specialS =
-        "\34\uffff}>";
-    static final String[] DFA2_transitionS = {
-            "\1\2\13\uffff\10\2\3\uffff\1\1\30\uffff\1\3\1\4\13\2",
-            "\1\5\13\uffff\2\6\6\5\40\uffff\5\5\1\uffff\3\5",
-            "",
-            "\1\32\1\7\13\uffff\1\12\1\13\1\21\1\22\1\10\1\25\1\14\1\15"+
-            "\37\uffff\1\11\1\16\1\17\1\20\1\23\1\24\1\26\1\27\1\30\1\31",
-            "\1\32\1\7\13\uffff\1\12\1\13\1\21\1\22\1\10\1\25\1\14\1\15"+
-            "\37\uffff\1\11\1\16\1\17\1\20\1\23\1\24\1\26\1\27\1\30\1\31",
-            "",
-            "",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            "\1\2\3\uffff\1\33\7\uffff\10\2\34\uffff\15\2\1\uffff\1\2",
-            ""
-    };
-
-    static final short[] DFA2_eot = DFA.unpackEncodedString(DFA2_eotS);
-    static final short[] DFA2_eof = DFA.unpackEncodedString(DFA2_eofS);
-    static final char[] DFA2_min = DFA.unpackEncodedStringToUnsignedChars(DFA2_minS);
-    static final char[] DFA2_max = DFA.unpackEncodedStringToUnsignedChars(DFA2_maxS);
-    static final short[] DFA2_accept = DFA.unpackEncodedString(DFA2_acceptS);
-    static final short[] DFA2_special = DFA.unpackEncodedString(DFA2_specialS);
-    static final short[][] DFA2_transition;
-
-    static {
-        int numStates = DFA2_transitionS.length;
-        DFA2_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA2_transition[i] = DFA.unpackEncodedString(DFA2_transitionS[i]);
-        }
-    }
-
-    class DFA2 extends DFA {
-
-        public DFA2(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 2;
-            this.eot = DFA2_eot;
-            this.eof = DFA2_eof;
-            this.min = DFA2_min;
-            this.max = DFA2_max;
-            this.accept = DFA2_accept;
-            this.special = DFA2_special;
-            this.transition = DFA2_transition;
-        }
-        public String getDescription() {
-            return "2967:1: rule__Form__Alternatives : ( ( ruleAttribute ) | ( ruleFunction ) | ( ruleConditionalFormBlock ) | ( ( rule__Form__Group_3__0 ) ) );";
-        }
-    }
     static final String DFA3_eotS =
         "\15\uffff";
     static final String DFA3_eofS =
@@ -83494,67 +83472,43 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
     }
     static final String DFA27_eotS =
-        "\55\uffff";
+        "\27\uffff";
     static final String DFA27_eofS =
-        "\55\uffff";
+        "\27\uffff";
     static final String DFA27_minS =
-        "\1\5\24\45\1\uffff\2\5\1\uffff\24\45";
+        "\1\5\24\45\2\uffff";
     static final String DFA27_maxS =
-        "\1\104\24\121\1\uffff\2\102\1\uffff\24\121";
+        "\1\104\24\121\2\uffff";
     static final String DFA27_acceptS =
-        "\25\uffff\1\1\2\uffff\1\2\24\uffff";
+        "\25\uffff\1\1\1\2";
     static final String DFA27_specialS =
-        "\55\uffff}>";
+        "\27\uffff}>";
     static final String[] DFA27_transitionS = {
             "\1\25\1\1\13\uffff\1\4\1\5\1\13\1\14\1\2\1\17\1\6\1\7\34\uffff"+
-            "\1\26\1\27\1\24\1\3\1\10\1\11\1\12\1\15\1\16\1\20\1\21\1\22"+
-            "\1\23\1\uffff\1\30",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
+            "\2\25\1\24\1\3\1\10\1\11\1\12\1\15\1\16\1\20\1\21\1\22\1\23"+
+            "\1\uffff\1\26",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
+            "\1\25\36\uffff\1\26\14\uffff\1\25",
             "",
-            "\1\54\1\31\13\uffff\1\34\1\35\1\43\1\44\1\32\1\47\1\36\1\37"+
-            "\37\uffff\1\33\1\40\1\41\1\42\1\45\1\46\1\50\1\51\1\52\1\53",
-            "\1\54\1\31\13\uffff\1\34\1\35\1\43\1\44\1\32\1\47\1\36\1\37"+
-            "\37\uffff\1\33\1\40\1\41\1\42\1\45\1\46\1\50\1\51\1\52\1\53",
-            "",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25",
-            "\1\25\36\uffff\1\30\14\uffff\1\25"
+            ""
     };
 
     static final short[] DFA27_eot = DFA.unpackEncodedString(DFA27_eotS);
@@ -83701,9 +83655,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     static final String DFA128_specialS =
         "\56\uffff}>";
     static final String[] DFA128_transitionS = {
-            "\1\30\1\25\1\1\2\30\2\uffff\1\30\6\uffff\1\4\1\5\1\13\1\14"+
-            "\1\2\1\17\1\6\1\7\34\uffff\1\26\1\27\1\24\1\3\1\10\1\11\1\12"+
-            "\1\15\1\16\1\20\1\21\1\22\1\23\4\uffff\1\30\1\uffff\1\30\6\uffff"+
+            "\1\30\1\25\1\1\2\30\2\uffff\1\30\6\uffff\1\4\1\5\1\13\1\14\1"+
+            "\2\1\17\1\6\1\7\34\uffff\1\26\1\27\1\24\1\3\1\10\1\11\1\12\1"+
+            "\15\1\16\1\20\1\21\1\22\1\23\4\uffff\1\30\1\uffff\1\30\6\uffff"+
             "\1\30\20\uffff\1\30",
             "\1\30\10\uffff\2\30\2\uffff\1\31\5\uffff\1\30",
             "\1\30\10\uffff\2\30\2\uffff\1\31\5\uffff\1\30",
@@ -83901,65 +83855,65 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             "\1\1\13\uffff\1\4\1\5\1\13\1\14\1\2\1\17\1\6\1\7\34\uffff\1"+
             "\25\1\26\1\24\1\3\1\10\1\11\1\12\1\15\1\16\1\20\1\21\1\22\1"+
             "\23",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
             "\1\54\1\31\13\uffff\1\34\1\35\1\43\1\44\1\32\1\47\1\36\1\37"+
             "\37\uffff\1\33\1\40\1\41\1\42\1\45\1\46\1\50\1\51\1\52\1\53",
@@ -83967,65 +83921,65 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             "\37\uffff\1\33\1\40\1\41\1\42\1\45\1\46\1\50\1\51\1\52\1\53",
             "",
             "",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30",
-            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2"+
-            "\30\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
+            "\1\30\21\uffff\16\30\32\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
+            "\2\uffff\1\30\2\uffff\1\27\15\uffff\1\30\2\uffff\1\30\4\uffff"+
             "\1\30"
     };
 
@@ -84551,7 +84505,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__Form__Group_3__1_in_rule__Form__Group_3__010301 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Form__Group_3__1__Impl_in_rule__Form__Group_3__110359 = new BitSet(new long[]{0x0000000000000400L});
     public static final BitSet FOLLOW_rule__Form__Group_3__2_in_rule__Form__Group_3__110362 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Form__NameAssignment_3_1_in_rule__Form__Group_3__1__Impl10389 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Form__CallAssignment_3_1_in_rule__Form__Group_3__1__Impl10389 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Form__Group_3__2__Impl_in_rule__Form__Group_3__210419 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_FULL_STOP_in_rule__Form__Group_3__2__Impl10446 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ConditionalFormBlock__Group__0__Impl_in_rule__ConditionalFormBlock__Group__010481 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
@@ -84593,10 +84547,10 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_69_in_rule__DefineAttribute__Group__6__Impl11247 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DefineAttribute__Group__7__Impl_in_rule__DefineAttribute__Group__711278 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_FULL_STOP_in_rule__DefineAttribute__Group__7__Impl11305 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DefineAttribute__Group_4__0__Impl_in_rule__DefineAttribute__Group_4__011350 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x00000002000102A7L});
+    public static final BitSet FOLLOW_rule__DefineAttribute__Group_4__0__Impl_in_rule__DefineAttribute__Group_4__011350 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x00000002000102A7L});
     public static final BitSet FOLLOW_rule__DefineAttribute__Group_4__1_in_rule__DefineAttribute__Group_4__011353 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__DefineAttribute__Group_4__0__Impl11381 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DefineAttribute__Group_4__1__Impl_in_rule__DefineAttribute__Group_4__111412 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x00000002000102A7L});
+    public static final BitSet FOLLOW_rule__DefineAttribute__Group_4__1__Impl_in_rule__DefineAttribute__Group_4__111412 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x00000002000102A7L});
     public static final BitSet FOLLOW_rule__DefineAttribute__Group_4__2_in_rule__DefineAttribute__Group_4__111415 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DefineAttribute__Group_4_1__0_in_rule__DefineAttribute__Group_4__1__Impl11442 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DefineAttribute__Group_4__2__Impl_in_rule__DefineAttribute__Group_4__211473 = new BitSet(new long[]{0x0000000000000002L});
@@ -84606,7 +84560,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__DefineAttribute__ArgsAssignment_4_1_0_in_rule__DefineAttribute__Group_4_1__0__Impl11568 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DefineAttribute__Group_4_1__1__Impl_in_rule__DefineAttribute__Group_4_1__111598 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DefineAttribute__Group_4_1_1__0_in_rule__DefineAttribute__Group_4_1__1__Impl11625 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__DefineAttribute__Group_4_1_1__0__Impl_in_rule__DefineAttribute__Group_4_1_1__011660 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x0000000200010287L});
+    public static final BitSet FOLLOW_rule__DefineAttribute__Group_4_1_1__0__Impl_in_rule__DefineAttribute__Group_4_1_1__011660 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x0000000200010287L});
     public static final BitSet FOLLOW_rule__DefineAttribute__Group_4_1_1__1_in_rule__DefineAttribute__Group_4_1_1__011663 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__DefineAttribute__Group_4_1_1__0__Impl11691 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DefineAttribute__Group_4_1_1__1__Impl_in_rule__DefineAttribute__Group_4_1_1__111722 = new BitSet(new long[]{0x0000000000000002L});
@@ -84712,7 +84666,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__ModuleAttribute__Group__1__Impl_in_rule__ModuleAttribute__Group__113959 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__ModuleAttribute__Group__2_in_rule__ModuleAttribute__Group__113962 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ModuleAttribute__TagAssignment_1_in_rule__ModuleAttribute__Group__1__Impl13989 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ModuleAttribute__Group__2__Impl_in_rule__ModuleAttribute__Group__214019 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__ModuleAttribute__Group__2__Impl_in_rule__ModuleAttribute__Group__214019 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__ModuleAttribute__Group__3_in_rule__ModuleAttribute__Group__214022 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__ModuleAttribute__Group__2__Impl14050 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ModuleAttribute__Group__3__Impl_in_rule__ModuleAttribute__Group__314081 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
@@ -84729,13 +84683,13 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__RecordAttribute__Group__1__Impl_in_rule__RecordAttribute__Group__114333 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group__2_in_rule__RecordAttribute__Group__114336 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordAttribute__TagAssignment_1_in_rule__RecordAttribute__Group__1__Impl14363 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordAttribute__Group__2__Impl_in_rule__RecordAttribute__Group__214393 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__RecordAttribute__Group__2__Impl_in_rule__RecordAttribute__Group__214393 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group__3_in_rule__RecordAttribute__Group__214396 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__RecordAttribute__Group__2__Impl14424 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group__3__Impl_in_rule__RecordAttribute__Group__314455 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group__4_in_rule__RecordAttribute__Group__314458 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordAttribute__NameAssignment_3_in_rule__RecordAttribute__Group__3__Impl14485 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordAttribute__Group__4__Impl_in_rule__RecordAttribute__Group__414515 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000087L});
+    public static final BitSet FOLLOW_rule__RecordAttribute__Group__4__Impl_in_rule__RecordAttribute__Group__414515 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000087L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group__5_in_rule__RecordAttribute__Group__414518 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__RecordAttribute__Group__4__Impl14546 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group__5__Impl_in_rule__RecordAttribute__Group__514577 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
@@ -84746,10 +84700,10 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_69_in_rule__RecordAttribute__Group__6__Impl14668 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group__7__Impl_in_rule__RecordAttribute__Group__714699 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_FULL_STOP_in_rule__RecordAttribute__Group__7__Impl14726 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0__0__Impl_in_rule__RecordAttribute__Group_5_0__014771 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000107L});
+    public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0__0__Impl_in_rule__RecordAttribute__Group_5_0__014771 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000107L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0__1_in_rule__RecordAttribute__Group_5_0__014774 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_71_in_rule__RecordAttribute__Group_5_0__0__Impl14802 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0__1__Impl_in_rule__RecordAttribute__Group_5_0__114833 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000107L});
+    public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0__1__Impl_in_rule__RecordAttribute__Group_5_0__114833 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000107L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0__2_in_rule__RecordAttribute__Group_5_0__114836 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0_1__0_in_rule__RecordAttribute__Group_5_0__1__Impl14863 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0__2__Impl_in_rule__RecordAttribute__Group_5_0__214894 = new BitSet(new long[]{0x0000000000000002L});
@@ -84759,7 +84713,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__RecordAttribute__FieldsAssignment_5_0_1_0_in_rule__RecordAttribute__Group_5_0_1__0__Impl14989 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0_1__1__Impl_in_rule__RecordAttribute__Group_5_0_1__115019 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0_1_1__0_in_rule__RecordAttribute__Group_5_0_1__1__Impl15046 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0_1_1__0__Impl_in_rule__RecordAttribute__Group_5_0_1_1__015081 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0_1_1__0__Impl_in_rule__RecordAttribute__Group_5_0_1_1__015081 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0_1_1__1_in_rule__RecordAttribute__Group_5_0_1_1__015084 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__RecordAttribute__Group_5_0_1_1__0__Impl15112 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordAttribute__Group_5_0_1_1__1__Impl_in_rule__RecordAttribute__Group_5_0_1_1__115143 = new BitSet(new long[]{0x0000000000000002L});
@@ -84773,10 +84727,10 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__ExportAttribute__Group__2__Impl_in_rule__ExportAttribute__Group__215326 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
     public static final BitSet FOLLOW_rule__ExportAttribute__Group__3_in_rule__ExportAttribute__Group__215329 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__ExportAttribute__Group__2__Impl15357 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExportAttribute__Group__3__Impl_in_rule__ExportAttribute__Group__315388 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000407L});
+    public static final BitSet FOLLOW_rule__ExportAttribute__Group__3__Impl_in_rule__ExportAttribute__Group__315388 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000407L});
     public static final BitSet FOLLOW_rule__ExportAttribute__Group__4_in_rule__ExportAttribute__Group__315391 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_73_in_rule__ExportAttribute__Group__3__Impl15419 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ExportAttribute__Group__4__Impl_in_rule__ExportAttribute__Group__415450 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000407L});
+    public static final BitSet FOLLOW_rule__ExportAttribute__Group__4__Impl_in_rule__ExportAttribute__Group__415450 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000407L});
     public static final BitSet FOLLOW_rule__ExportAttribute__Group__5_in_rule__ExportAttribute__Group__415453 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExportAttribute__Group_4__0_in_rule__ExportAttribute__Group__4__Impl15480 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExportAttribute__Group__5__Impl_in_rule__ExportAttribute__Group__515511 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
@@ -84792,7 +84746,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__ExportAttribute__FunsAssignment_4_0_in_rule__ExportAttribute__Group_4__0__Impl15737 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExportAttribute__Group_4__1__Impl_in_rule__ExportAttribute__Group_4__115767 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExportAttribute__Group_4_1__0_in_rule__ExportAttribute__Group_4__1__Impl15794 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__ExportAttribute__Group_4_1__0__Impl_in_rule__ExportAttribute__Group_4_1__015829 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__ExportAttribute__Group_4_1__0__Impl_in_rule__ExportAttribute__Group_4_1__015829 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__ExportAttribute__Group_4_1__1_in_rule__ExportAttribute__Group_4_1__015832 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__ExportAttribute__Group_4_1__0__Impl15860 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExportAttribute__Group_4_1__1__Impl_in_rule__ExportAttribute__Group_4_1__115891 = new BitSet(new long[]{0x0000000000000002L});
@@ -84803,7 +84757,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__ImportAttribute__Group__1__Impl_in_rule__ImportAttribute__Group__116014 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group__2_in_rule__ImportAttribute__Group__116017 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ImportAttribute__TagAssignment_1_in_rule__ImportAttribute__Group__1__Impl16044 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ImportAttribute__Group__2__Impl_in_rule__ImportAttribute__Group__216074 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__ImportAttribute__Group__2__Impl_in_rule__ImportAttribute__Group__216074 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group__3_in_rule__ImportAttribute__Group__216077 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__ImportAttribute__Group__2__Impl16105 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group__3__Impl_in_rule__ImportAttribute__Group__316136 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
@@ -84812,10 +84766,10 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__ImportAttribute__Group__4__Impl_in_rule__ImportAttribute__Group__416196 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group__5_in_rule__ImportAttribute__Group__416199 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__ImportAttribute__Group__4__Impl16227 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ImportAttribute__Group__5__Impl_in_rule__ImportAttribute__Group__516258 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000407L});
+    public static final BitSet FOLLOW_rule__ImportAttribute__Group__5__Impl_in_rule__ImportAttribute__Group__516258 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000407L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group__6_in_rule__ImportAttribute__Group__516261 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_73_in_rule__ImportAttribute__Group__5__Impl16289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ImportAttribute__Group__6__Impl_in_rule__ImportAttribute__Group__616320 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000407L});
+    public static final BitSet FOLLOW_rule__ImportAttribute__Group__6__Impl_in_rule__ImportAttribute__Group__616320 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000407L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group__7_in_rule__ImportAttribute__Group__616323 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group_6__0_in_rule__ImportAttribute__Group__6__Impl16350 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group__7__Impl_in_rule__ImportAttribute__Group__716381 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
@@ -84831,7 +84785,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__ImportAttribute__FunsAssignment_6_0_in_rule__ImportAttribute__Group_6__0__Impl16611 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group_6__1__Impl_in_rule__ImportAttribute__Group_6__116641 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group_6_1__0_in_rule__ImportAttribute__Group_6__1__Impl16668 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__ImportAttribute__Group_6_1__0__Impl_in_rule__ImportAttribute__Group_6_1__016703 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__ImportAttribute__Group_6_1__0__Impl_in_rule__ImportAttribute__Group_6_1__016703 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group_6_1__1_in_rule__ImportAttribute__Group_6_1__016706 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__ImportAttribute__Group_6_1__0__Impl16734 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ImportAttribute__Group_6_1__1__Impl_in_rule__ImportAttribute__Group_6_1__116765 = new BitSet(new long[]{0x0000000000000002L});
@@ -84856,7 +84810,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__SpecAttribute__Group__0__Impl_in_rule__SpecAttribute__Group__017200 = new BitSet(new long[]{0x0000000000C00000L});
     public static final BitSet FOLLOW_rule__SpecAttribute__Group__1_in_rule__SpecAttribute__Group__017203 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_29_in_rule__SpecAttribute__Group__0__Impl17231 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SpecAttribute__Group__1__Impl_in_rule__SpecAttribute__Group__117262 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000017L});
+    public static final BitSet FOLLOW_rule__SpecAttribute__Group__1__Impl_in_rule__SpecAttribute__Group__117262 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000017L});
     public static final BitSet FOLLOW_rule__SpecAttribute__Group__2_in_rule__SpecAttribute__Group__117265 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecAttribute__TagAssignment_1_in_rule__SpecAttribute__Group__1__Impl17292 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecAttribute__Group__2__Impl_in_rule__SpecAttribute__Group__217322 = new BitSet(new long[]{0x0000000000000400L});
@@ -84877,7 +84831,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_75_in_rule__SpecAttribute__Group_2_0_2__0__Impl17661 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecAttribute__Group_2_0_2__1__Impl_in_rule__SpecAttribute__Group_2_0_2__117692 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecAttribute__SignaturesAssignment_2_0_2_1_in_rule__SpecAttribute__Group_2_0_2__1__Impl17719 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SpecAttribute__Group_2_1__0__Impl_in_rule__SpecAttribute__Group_2_1__017753 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__SpecAttribute__Group_2_1__0__Impl_in_rule__SpecAttribute__Group_2_1__017753 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__SpecAttribute__Group_2_1__1_in_rule__SpecAttribute__Group_2_1__017756 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__SpecAttribute__Group_2_1__0__Impl17784 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecAttribute__Group_2_1__1__Impl_in_rule__SpecAttribute__Group_2_1__117815 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
@@ -84899,7 +84853,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__TypeAttribute__Group__0__Impl_in_rule__TypeAttribute__Group__018188 = new BitSet(new long[]{0x0000000003000000L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group__1_in_rule__TypeAttribute__Group__018191 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_29_in_rule__TypeAttribute__Group__0__Impl18219 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypeAttribute__Group__1__Impl_in_rule__TypeAttribute__Group__118250 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000017L});
+    public static final BitSet FOLLOW_rule__TypeAttribute__Group__1__Impl_in_rule__TypeAttribute__Group__118250 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000017L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group__2_in_rule__TypeAttribute__Group__118253 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__TagAssignment_1_in_rule__TypeAttribute__Group__1__Impl18280 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group__2__Impl_in_rule__TypeAttribute__Group__218310 = new BitSet(new long[]{0x0000000000000400L});
@@ -84910,10 +84864,10 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0__0__Impl_in_rule__TypeAttribute__Group_2_0__018434 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0__1_in_rule__TypeAttribute__Group_2_0__018437 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__NameAssignment_2_0_0_in_rule__TypeAttribute__Group_2_0__0__Impl18464 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0__1__Impl_in_rule__TypeAttribute__Group_2_0__118494 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x00000002000102A7L});
+    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0__1__Impl_in_rule__TypeAttribute__Group_2_0__118494 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x00000002000102A7L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0__2_in_rule__TypeAttribute__Group_2_0__118497 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__TypeAttribute__Group_2_0__1__Impl18525 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0__2__Impl_in_rule__TypeAttribute__Group_2_0__218556 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x00000002000102A7L});
+    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0__2__Impl_in_rule__TypeAttribute__Group_2_0__218556 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x00000002000102A7L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0__3_in_rule__TypeAttribute__Group_2_0__218559 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0_2__0_in_rule__TypeAttribute__Group_2_0__2__Impl18586 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0__3__Impl_in_rule__TypeAttribute__Group_2_0__318617 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
@@ -84929,21 +84883,21 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__TypeAttribute__ArgsAssignment_2_0_2_0_in_rule__TypeAttribute__Group_2_0_2__0__Impl18840 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0_2__1__Impl_in_rule__TypeAttribute__Group_2_0_2__118870 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0_2_1__0_in_rule__TypeAttribute__Group_2_0_2__1__Impl18897 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0_2_1__0__Impl_in_rule__TypeAttribute__Group_2_0_2_1__018932 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x0000000200010287L});
+    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0_2_1__0__Impl_in_rule__TypeAttribute__Group_2_0_2_1__018932 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x0000000200010287L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0_2_1__1_in_rule__TypeAttribute__Group_2_0_2_1__018935 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__TypeAttribute__Group_2_0_2_1__0__Impl18963 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_0_2_1__1__Impl_in_rule__TypeAttribute__Group_2_0_2_1__118994 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__ArgsAssignment_2_0_2_1_1_in_rule__TypeAttribute__Group_2_0_2_1__1__Impl19021 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__0__Impl_in_rule__TypeAttribute__Group_2_1__019055 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__0__Impl_in_rule__TypeAttribute__Group_2_1__019055 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__1_in_rule__TypeAttribute__Group_2_1__019058 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__TypeAttribute__Group_2_1__0__Impl19086 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__1__Impl_in_rule__TypeAttribute__Group_2_1__119117 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__2_in_rule__TypeAttribute__Group_2_1__119120 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__NameAssignment_2_1_1_in_rule__TypeAttribute__Group_2_1__1__Impl19147 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__2__Impl_in_rule__TypeAttribute__Group_2_1__219177 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x00000002000102A7L});
+    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__2__Impl_in_rule__TypeAttribute__Group_2_1__219177 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x00000002000102A7L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__3_in_rule__TypeAttribute__Group_2_1__219180 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__TypeAttribute__Group_2_1__2__Impl19208 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__3__Impl_in_rule__TypeAttribute__Group_2_1__319239 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x00000002000102A7L});
+    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__3__Impl_in_rule__TypeAttribute__Group_2_1__319239 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x00000002000102A7L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__4_in_rule__TypeAttribute__Group_2_1__319242 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1_3__0_in_rule__TypeAttribute__Group_2_1__3__Impl19269 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1__4__Impl_in_rule__TypeAttribute__Group_2_1__419300 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
@@ -84962,7 +84916,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__TypeAttribute__ArgsAssignment_2_1_3_0_in_rule__TypeAttribute__Group_2_1_3__0__Impl19589 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1_3__1__Impl_in_rule__TypeAttribute__Group_2_1_3__119619 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1_3_1__0_in_rule__TypeAttribute__Group_2_1_3__1__Impl19646 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1_3_1__0__Impl_in_rule__TypeAttribute__Group_2_1_3_1__019681 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x0000000200010287L});
+    public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1_3_1__0__Impl_in_rule__TypeAttribute__Group_2_1_3_1__019681 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x0000000200010287L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1_3_1__1_in_rule__TypeAttribute__Group_2_1_3_1__019684 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__TypeAttribute__Group_2_1_3_1__0__Impl19712 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeAttribute__Group_2_1_3_1__1__Impl_in_rule__TypeAttribute__Group_2_1_3_1__119743 = new BitSet(new long[]{0x0000000000000002L});
@@ -84994,7 +84948,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_70_in_rule__CustomAttribute__Group_3_1__0__Impl20332 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__CustomAttribute__Group_3_1__1__Impl_in_rule__CustomAttribute__Group_3_1__120363 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__CustomAttribute__ValueAssignment_3_1_1_in_rule__CustomAttribute__Group_3_1__1__Impl20390 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Function__Group__0__Impl_in_rule__Function__Group__020424 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000017L});
+    public static final BitSet FOLLOW_rule__Function__Group__0__Impl_in_rule__Function__Group__020424 = new BitSet(new long[]{0xFF00000003FC0040L,0x0000000000000017L});
     public static final BitSet FOLLOW_rule__Function__Group__1_in_rule__Function__Group__020427 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Function__NameAssignment_0_in_rule__Function__Group__0__Impl20454 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Function__Group__1__Impl_in_rule__Function__Group__120484 = new BitSet(new long[]{0x0000000000000400L,0x0000000000000800L});
@@ -85005,12 +84959,12 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__Function__Group_2__0_in_rule__Function__Group__2__Impl20574 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000800L});
     public static final BitSet FOLLOW_rule__Function__Group__3__Impl_in_rule__Function__Group__320605 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_FULL_STOP_in_rule__Function__Group__3__Impl20632 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Function__Group_2__0__Impl_in_rule__Function__Group_2__020669 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000017L});
+    public static final BitSet FOLLOW_rule__Function__Group_2__0__Impl_in_rule__Function__Group_2__020669 = new BitSet(new long[]{0xFF00000003FC0040L,0x0000000000000017L});
     public static final BitSet FOLLOW_rule__Function__Group_2__1_in_rule__Function__Group_2__020672 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_75_in_rule__Function__Group_2__0__Impl20700 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Function__Group_2__1__Impl_in_rule__Function__Group_2__120731 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Function__ClausesAssignment_2_1_in_rule__Function__Group_2__1__Impl20758 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionClause__Group__0__Impl_in_rule__FunctionClause__Group__020792 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000017L});
+    public static final BitSet FOLLOW_rule__FunctionClause__Group__0__Impl_in_rule__FunctionClause__Group__020792 = new BitSet(new long[]{0xFF00000003FC0040L,0x0000000000000017L});
     public static final BitSet FOLLOW_rule__FunctionClause__Group__1_in_rule__FunctionClause__Group__020795 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunctionClause__RefAssignment_0_in_rule__FunctionClause__Group__0__Impl20822 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunctionClause__Group__1__Impl_in_rule__FunctionClause__Group__120853 = new BitSet(new long[]{0xFFC00C0033FC09F0L,0x000000026B7582B7L});
@@ -85213,10 +85167,10 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_70_in_rule__Expr700__Group_1_0_2_1__0__Impl25739 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Expr700__Group_1_0_2_1__1__Impl_in_rule__Expr700__Group_1_0_2_1__125770 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Expr700__ArgsAssignment_1_0_2_1_1_in_rule__Expr700__Group_1_0_2_1__1__Impl25797 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Expr700__Group_1_1__0__Impl_in_rule__Expr700__Group_1_1__025831 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__Expr700__Group_1_1__0__Impl_in_rule__Expr700__Group_1_1__025831 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__Expr700__Group_1_1__1_in_rule__Expr700__Group_1_1__025834 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_80_in_rule__Expr700__Group_1_1__0__Impl25862 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Expr700__Group_1_1__1__Impl_in_rule__Expr700__Group_1_1__125893 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__Expr700__Group_1_1__1__Impl_in_rule__Expr700__Group_1_1__125893 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__Expr700__Group_1_1__2_in_rule__Expr700__Group_1_1__125896 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Expr700__Group_1_1__2__Impl_in_rule__Expr700__Group_1_1__225954 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Expr700__RecordAssignment_1_1_2_in_rule__Expr700__Group_1_1__2__Impl25981 = new BitSet(new long[]{0x0000000000000002L});
@@ -85258,7 +85212,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_70_in_rule__ExprMax__Group_2_3__0__Impl26854 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprMax__Group_2_3__1__Impl_in_rule__ExprMax__Group_2_3__126885 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ExprMax__BodyAssignment_2_3_1_in_rule__ExprMax__Group_2_3__1__Impl26912 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TermExpression__Group_6__0__Impl_in_rule__TermExpression__Group_6__026946 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__TermExpression__Group_6__0__Impl_in_rule__TermExpression__Group_6__026946 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__TermExpression__Group_6__1_in_rule__TermExpression__Group_6__026949 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_80_in_rule__TermExpression__Group_6__0__Impl26977 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TermExpression__Group_6__1__Impl_in_rule__TermExpression__Group_6__127008 = new BitSet(new long[]{0x0000000000000002L});
@@ -85303,10 +85257,10 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_86_in_rule__LetExpr__Group__1__Impl28021 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordTuple__Group__0__Impl_in_rule__RecordTuple__Group__028056 = new BitSet(new long[]{0x0000000000000000L,0x0000000800000080L});
     public static final BitSet FOLLOW_rule__RecordTuple__Group__1_in_rule__RecordTuple__Group__028059 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordTuple__Group__1__Impl_in_rule__RecordTuple__Group__128117 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000107L});
+    public static final BitSet FOLLOW_rule__RecordTuple__Group__1__Impl_in_rule__RecordTuple__Group__128117 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000107L});
     public static final BitSet FOLLOW_rule__RecordTuple__Group__2_in_rule__RecordTuple__Group__128120 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_71_in_rule__RecordTuple__Group__1__Impl28148 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordTuple__Group__2__Impl_in_rule__RecordTuple__Group__228179 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000107L});
+    public static final BitSet FOLLOW_rule__RecordTuple__Group__2__Impl_in_rule__RecordTuple__Group__228179 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000107L});
     public static final BitSet FOLLOW_rule__RecordTuple__Group__3_in_rule__RecordTuple__Group__228182 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordTuple__Group_2__0_in_rule__RecordTuple__Group__2__Impl28209 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordTuple__Group__3__Impl_in_rule__RecordTuple__Group__328240 = new BitSet(new long[]{0x0000000000000002L});
@@ -85316,7 +85270,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__RecordTuple__FieldsAssignment_2_0_in_rule__RecordTuple__Group_2__0__Impl28337 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordTuple__Group_2__1__Impl_in_rule__RecordTuple__Group_2__128367 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordTuple__Group_2_1__0_in_rule__RecordTuple__Group_2__1__Impl28394 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__RecordTuple__Group_2_1__0__Impl_in_rule__RecordTuple__Group_2_1__028429 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__RecordTuple__Group_2_1__0__Impl_in_rule__RecordTuple__Group_2_1__028429 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__RecordTuple__Group_2_1__1_in_rule__RecordTuple__Group_2_1__028432 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__RecordTuple__Group_2_1__0__Impl28460 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordTuple__Group_2_1__1__Impl_in_rule__RecordTuple__Group_2_1__128491 = new BitSet(new long[]{0x0000000000000002L});
@@ -85369,11 +85323,11 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__Group_2__1_in_rule__LiteralExpressionNoNumber__Group_2__029661 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__Group_2__1__Impl_in_rule__LiteralExpressionNoNumber__Group_2__129719 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__ValueAssignment_2_1_in_rule__LiteralExpressionNoNumber__Group_2__1__Impl29746 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__Group_3__0__Impl_in_rule__LiteralExpressionNoNumber__Group_3__029780 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__Group_3__0__Impl_in_rule__LiteralExpressionNoNumber__Group_3__029780 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__Group_3__1_in_rule__LiteralExpressionNoNumber__Group_3__029783 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__Group_3__1__Impl_in_rule__LiteralExpressionNoNumber__Group_3__129841 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__ValueAssignment_3_1_in_rule__LiteralExpressionNoNumber__Group_3__1__Impl29868 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__Group_4__0__Impl_in_rule__LiteralExpressionNoNumber__Group_4__029902 = new BitSet(new long[]{0xFFC0000003FC0870L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__Group_4__0__Impl_in_rule__LiteralExpressionNoNumber__Group_4__029902 = new BitSet(new long[]{0xFFC0000023FC0870L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__Group_4__1_in_rule__LiteralExpressionNoNumber__Group_4__029905 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__Group_4__1__Impl_in_rule__LiteralExpressionNoNumber__Group_4__129963 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LiteralExpressionNoNumber__ValueAssignment_4_1_in_rule__LiteralExpressionNoNumber__Group_4__1__Impl29990 = new BitSet(new long[]{0x0000000000000002L});
@@ -85381,7 +85335,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__LiteralExpression__Group_1__1_in_rule__LiteralExpression__Group_1__030027 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LiteralExpression__Group_1__1__Impl_in_rule__LiteralExpression__Group_1__130085 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LiteralExpression__ValueAssignment_1_1_in_rule__LiteralExpression__Group_1__1__Impl30112 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LiteralExpression__Group_2__0__Impl_in_rule__LiteralExpression__Group_2__030146 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x0000000200010287L});
+    public static final BitSet FOLLOW_rule__LiteralExpression__Group_2__0__Impl_in_rule__LiteralExpression__Group_2__030146 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x0000000200010287L});
     public static final BitSet FOLLOW_rule__LiteralExpression__Group_2__1_in_rule__LiteralExpression__Group_2__030149 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LiteralExpression__Group_2__1__Impl_in_rule__LiteralExpression__Group_2__130207 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LiteralExpression__ValueAssignment_2_1_in_rule__LiteralExpression__Group_2__1__Impl30234 = new BitSet(new long[]{0x0000000000000002L});
@@ -85392,7 +85346,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__PatternExpression__Alternatives_1_in_rule__PatternExpression__Group__1__Impl30354 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PatternExpression__Group_1_0__0__Impl_in_rule__PatternExpression__Group_1_0__030389 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
     public static final BitSet FOLLOW_rule__PatternExpression__Group_1_0__1_in_rule__PatternExpression__Group_1_0__030392 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PatternExpression__Group_1_0__1__Impl_in_rule__PatternExpression__Group_1_0__130450 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x0000000200010287L});
+    public static final BitSet FOLLOW_rule__PatternExpression__Group_1_0__1__Impl_in_rule__PatternExpression__Group_1_0__130450 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x0000000200010287L});
     public static final BitSet FOLLOW_rule__PatternExpression__Group_1_0__2_in_rule__PatternExpression__Group_1_0__130453 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PatternExpression__OpAssignment_1_0_1_in_rule__PatternExpression__Group_1_0__1__Impl30480 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PatternExpression__Group_1_0__2__Impl_in_rule__PatternExpression__Group_1_0__230510 = new BitSet(new long[]{0x0000000000000002L});
@@ -85417,11 +85371,11 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_70_in_rule__PatternExpression__Group_1_1_2_1__0__Impl30977 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PatternExpression__Group_1_1_2_1__1__Impl_in_rule__PatternExpression__Group_1_1_2_1__131008 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PatternExpression__ArgsAssignment_1_1_2_1_1_in_rule__PatternExpression__Group_1_1_2_1__1__Impl31035 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ErlString__Group__0__Impl_in_rule__ErlString__Group__031069 = new BitSet(new long[]{0xFFC0000003FC0050L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__ErlString__Group__0__Impl_in_rule__ErlString__Group__031069 = new BitSet(new long[]{0xFFC0000023FC0050L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__ErlString__Group__1_in_rule__ErlString__Group__031072 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__ErlString__Group__0__Impl31099 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ErlString__Group__1__Impl_in_rule__ErlString__Group__131128 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ErlString__Alternatives_1_in_rule__ErlString__Group__1__Impl31155 = new BitSet(new long[]{0xFFC0000003FC0052L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__ErlString__Alternatives_1_in_rule__ErlString__Group__1__Impl31155 = new BitSet(new long[]{0xFFC0000023FC0052L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__IfExpr__Group__0__Impl_in_rule__IfExpr__Group__031190 = new BitSet(new long[]{0xFFC00C0033FC09F0L,0x000000026B758297L});
     public static final BitSet FOLLOW_rule__IfExpr__Group__1_in_rule__IfExpr__Group__031193 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_88_in_rule__IfExpr__Group__0__Impl31221 = new BitSet(new long[]{0x0000000000000002L});
@@ -85559,18 +85513,18 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_70_in_rule__ReceiveExpr__Group_1_1_4__0__Impl34263 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ReceiveExpr__Group_1_1_4__1__Impl_in_rule__ReceiveExpr__Group_1_1_4__134294 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ReceiveExpr__After_bodyAssignment_1_1_4_1_in_rule__ReceiveExpr__Group_1_1_4__1__Impl34321 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunExpr__Group__0__Impl_in_rule__FunExpr__Group__034355 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000017L});
+    public static final BitSet FOLLOW_rule__FunExpr__Group__0__Impl_in_rule__FunExpr__Group__034355 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000017L});
     public static final BitSet FOLLOW_rule__FunExpr__Group__1_in_rule__FunExpr__Group__034358 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_93_in_rule__FunExpr__Group__0__Impl34386 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunExpr__Group__1__Impl_in_rule__FunExpr__Group__134417 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunExpr__Alternatives_1_in_rule__FunExpr__Group__1__Impl34444 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunRef__Group__0__Impl_in_rule__FunRef__Group__034478 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__FunRef__Group__0__Impl_in_rule__FunRef__Group__034478 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__FunRef__Group__1_in_rule__FunRef__Group__034481 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunRef__Group_0__0_in_rule__FunRef__Group__0__Impl34508 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunRef__Group__1__Impl_in_rule__FunRef__Group__134539 = new BitSet(new long[]{0x0000002000000000L});
     public static final BitSet FOLLOW_rule__FunRef__Group__2_in_rule__FunRef__Group__134542 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunRef__FunctionAssignment_1_in_rule__FunRef__Group__1__Impl34569 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunRef__Group__2__Impl_in_rule__FunRef__Group__234599 = new BitSet(new long[]{0xFFC0000003FC00E0L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__FunRef__Group__2__Impl_in_rule__FunRef__Group__234599 = new BitSet(new long[]{0xFFC0000023FC00E0L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__FunRef__Group__3_in_rule__FunRef__Group__234602 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_37_in_rule__FunRef__Group__2__Impl34630 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunRef__Group__3__Impl_in_rule__FunRef__Group__334661 = new BitSet(new long[]{0x0000000000000002L});
@@ -85588,7 +85542,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__InlineFun__Group_1__0_in_rule__InlineFun__Group__1__Impl34939 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000800L});
     public static final BitSet FOLLOW_rule__InlineFun__Group__2__Impl_in_rule__InlineFun__Group__234970 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_83_in_rule__InlineFun__Group__2__Impl34998 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__InlineFun__Group_1__0__Impl_in_rule__InlineFun__Group_1__035035 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000017L});
+    public static final BitSet FOLLOW_rule__InlineFun__Group_1__0__Impl_in_rule__InlineFun__Group_1__035035 = new BitSet(new long[]{0xFF00000003FC0040L,0x0000000000000017L});
     public static final BitSet FOLLOW_rule__InlineFun__Group_1__1_in_rule__InlineFun__Group_1__035038 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_75_in_rule__InlineFun__Group_1__0__Impl35066 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__InlineFun__Group_1__1__Impl_in_rule__InlineFun__Group_1__135097 = new BitSet(new long[]{0x0000000000000002L});
@@ -85628,7 +85582,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_75_in_rule__TryExpr__Group_3_2__0__Impl35873 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TryExpr__Group_3_2__1__Impl_in_rule__TryExpr__Group_3_2__135904 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TryExpr__Of_clausesAssignment_3_2_1_in_rule__TryExpr__Group_3_2__1__Impl35931 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TryExpr__Group_4_0__0__Impl_in_rule__TryExpr__Group_4_0__035965 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x0000000200010287L});
+    public static final BitSet FOLLOW_rule__TryExpr__Group_4_0__0__Impl_in_rule__TryExpr__Group_4_0__035965 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x0000000200010287L});
     public static final BitSet FOLLOW_rule__TryExpr__Group_4_0__1_in_rule__TryExpr__Group_4_0__035968 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_79_in_rule__TryExpr__Group_4_0__0__Impl35996 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TryExpr__Group_4_0__1__Impl_in_rule__TryExpr__Group_4_0__136027 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000800L});
@@ -85639,7 +85593,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__TryExpr__Group_4_0_2__0_in_rule__TryExpr__Group_4_0__2__Impl36117 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000800L});
     public static final BitSet FOLLOW_rule__TryExpr__Group_4_0__3__Impl_in_rule__TryExpr__Group_4_0__336148 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TryExpr__Group_4_0_3__0_in_rule__TryExpr__Group_4_0__3__Impl36175 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TryExpr__Group_4_0_2__0__Impl_in_rule__TryExpr__Group_4_0_2__036214 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x0000000200010287L});
+    public static final BitSet FOLLOW_rule__TryExpr__Group_4_0_2__0__Impl_in_rule__TryExpr__Group_4_0_2__036214 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x0000000200010287L});
     public static final BitSet FOLLOW_rule__TryExpr__Group_4_0_2__1_in_rule__TryExpr__Group_4_0_2__036217 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_75_in_rule__TryExpr__Group_4_0_2__0__Impl36245 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TryExpr__Group_4_0_2__1__Impl_in_rule__TryExpr__Group_4_0_2__136276 = new BitSet(new long[]{0x0000000000000002L});
@@ -85670,7 +85624,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_70_in_rule__TryExpr__Group_4_1_2__0__Impl36863 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TryExpr__Group_4_1_2__1__Impl_in_rule__TryExpr__Group_4_1_2__136894 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TryExpr__After_bodyAssignment_4_1_2_1_in_rule__TryExpr__Group_4_1_2__1__Impl36921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TryClause__Group__0__Impl_in_rule__TryClause__Group__036955 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x0000000200010287L});
+    public static final BitSet FOLLOW_rule__TryClause__Group__0__Impl_in_rule__TryClause__Group__036955 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x0000000200010287L});
     public static final BitSet FOLLOW_rule__TryClause__Group__1_in_rule__TryClause__Group__036958 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TryClause__Group_0__0_in_rule__TryClause__Group__0__Impl36985 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TryClause__Group__1__Impl_in_rule__TryClause__Group__137016 = new BitSet(new long[]{0x0000000000000000L,0x0000000000006000L});
@@ -85770,7 +85724,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_70_in_rule__Tuple__Group_1_1_1__0__Impl39214 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Tuple__Group_1_1_1__1__Impl_in_rule__Tuple__Group_1_1_1__139245 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Tuple__ElementsAssignment_1_1_1_1_in_rule__Tuple__Group_1_1_1__1__Impl39272 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BinaryComprehension__Group__0__Impl_in_rule__BinaryComprehension__Group__039306 = new BitSet(new long[]{0xFFC0000003FC09F0L,0x0000000200010287L});
+    public static final BitSet FOLLOW_rule__BinaryComprehension__Group__0__Impl_in_rule__BinaryComprehension__Group__039306 = new BitSet(new long[]{0xFFC0000023FC09F0L,0x0000000200010287L});
     public static final BitSet FOLLOW_rule__BinaryComprehension__Group__1_in_rule__BinaryComprehension__Group__039309 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_97_in_rule__BinaryComprehension__Group__0__Impl39337 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryComprehension__Group__1__Impl_in_rule__BinaryComprehension__Group__139368 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
@@ -85823,7 +85777,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_81_in_rule__BinaryItem__Group_1__0__Impl40454 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_1__1__Impl_in_rule__BinaryItem__Group_1__140486 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__SizeAssignment_1_1_in_rule__BinaryItem__Group_1__1__Impl40513 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BinaryItem__Group_2__0__Impl_in_rule__BinaryItem__Group_2__040547 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__BinaryItem__Group_2__0__Impl_in_rule__BinaryItem__Group_2__040547 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2__1_in_rule__BinaryItem__Group_2__040550 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_37_in_rule__BinaryItem__Group_2__0__Impl40579 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2__1__Impl_in_rule__BinaryItem__Group_2__140611 = new BitSet(new long[]{0x0000000020000000L});
@@ -85831,7 +85785,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__BinaryItem__TypesAssignment_2_1_in_rule__BinaryItem__Group_2__1__Impl40641 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2__2__Impl_in_rule__BinaryItem__Group_2__240671 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2_2__0_in_rule__BinaryItem__Group_2__2__Impl40698 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_rule__BinaryItem__Group_2_2__0__Impl_in_rule__BinaryItem__Group_2_2__040735 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__BinaryItem__Group_2_2__0__Impl_in_rule__BinaryItem__Group_2_2__040735 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2_2__1_in_rule__BinaryItem__Group_2_2__040738 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_29_in_rule__BinaryItem__Group_2_2__0__Impl40766 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2_2__1__Impl_in_rule__BinaryItem__Group_2_2__140797 = new BitSet(new long[]{0x0000000000000002L});
@@ -85863,7 +85817,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__LCExpr__OpAssignment_1_0_in_rule__LCExpr__Group_1__0__Impl41439 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LCExpr__Group_1__1__Impl_in_rule__LCExpr__Group_1__141469 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LCExpr__O2Assignment_1_1_in_rule__LCExpr__Group_1__1__Impl41496 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QName__Group__0__Impl_in_rule__QName__Group__041530 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__QName__Group__0__Impl_in_rule__QName__Group__041530 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__QName__Group__1_in_rule__QName__Group__041533 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_99_in_rule__QName__Group__0__Impl41561 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__QName__Group__1__Impl_in_rule__QName__Group__141592 = new BitSet(new long[]{0x0000000000000002L});
@@ -85881,7 +85835,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_99_in_rule__FLOAT__Group__1__Impl41863 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FLOAT__Group__2__Impl_in_rule__FLOAT__Group__241894 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FLOAT__Alternatives_2_in_rule__FLOAT__Group__2__Impl41921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SpecFun__Group__0__Impl_in_rule__SpecFun__Group__041957 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__SpecFun__Group__0__Impl_in_rule__SpecFun__Group__041957 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__SpecFun__Group__1_in_rule__SpecFun__Group__041960 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_0__0_in_rule__SpecFun__Group__0__Impl41987 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group__1__Impl_in_rule__SpecFun__Group__142018 = new BitSet(new long[]{0x0000002000000000L});
@@ -85894,7 +85848,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__SpecFun__ModuleAssignment_0_0_in_rule__SpecFun__Group_0__0__Impl42172 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_0__1__Impl_in_rule__SpecFun__Group_0__142202 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_81_in_rule__SpecFun__Group_0__1__Impl42230 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SpecFun__Group_2__0__Impl_in_rule__SpecFun__Group_2__042265 = new BitSet(new long[]{0xFFC0000003FC00E0L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__SpecFun__Group_2__0__Impl_in_rule__SpecFun__Group_2__042265 = new BitSet(new long[]{0xFFC0000023FC00E0L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_2__1_in_rule__SpecFun__Group_2__042268 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_37_in_rule__SpecFun__Group_2__0__Impl42296 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_2__1__Impl_in_rule__SpecFun__Group_2__142327 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
@@ -85907,7 +85861,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__TypeSig__DeclAssignment_0_in_rule__TypeSig__Group__0__Impl42482 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeSig__Group__1__Impl_in_rule__TypeSig__Group__142512 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeSig__Group_1__0_in_rule__TypeSig__Group__1__Impl42539 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TypeSig__Group_1__0__Impl_in_rule__TypeSig__Group_1__042574 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__TypeSig__Group_1__0__Impl_in_rule__TypeSig__Group_1__042574 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__TypeSig__Group_1__1_in_rule__TypeSig__Group_1__042577 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_78_in_rule__TypeSig__Group_1__0__Impl42605 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeSig__Group_1__1__Impl_in_rule__TypeSig__Group_1__142636 = new BitSet(new long[]{0x0000000000000002L});
@@ -85941,7 +85895,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__TypeGuards__ItemsAssignment_0_in_rule__TypeGuards__Group__0__Impl43286 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeGuards__Group__1__Impl_in_rule__TypeGuards__Group__143316 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeGuards__Group_1__0_in_rule__TypeGuards__Group__1__Impl43343 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__TypeGuards__Group_1__0__Impl_in_rule__TypeGuards__Group_1__043378 = new BitSet(new long[]{0xFFC0000003FC0060L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__TypeGuards__Group_1__0__Impl_in_rule__TypeGuards__Group_1__043378 = new BitSet(new long[]{0xFFC0000023FC0060L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__TypeGuards__Group_1__1_in_rule__TypeGuards__Group_1__043381 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__TypeGuards__Group_1__0__Impl43409 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeGuards__Group_1__1__Impl_in_rule__TypeGuards__Group_1__143440 = new BitSet(new long[]{0x0000000000000002L});
@@ -86062,9 +86016,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleTopType_in_rule__Type__Group_0__1__Impl46334 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__Group_0__2__Impl_in_rule__Type__Group_0__246363 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_69_in_rule__Type__Group_0__2__Impl46391 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Type__Group_1__0__Impl_in_rule__Type__Group_1__046428 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__Type__Group_1__0__Impl_in_rule__Type__Group_1__046428 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__Type__Group_1__1_in_rule__Type__Group_1__046431 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Type__Group_1__1__Impl_in_rule__Type__Group_1__146489 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__Type__Group_1__1__Impl_in_rule__Type__Group_1__146489 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__Type__Group_1__2_in_rule__Type__Group_1__146492 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__Group_1_1__0_in_rule__Type__Group_1__1__Impl46519 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__Group_1__2__Impl_in_rule__Type__Group_1__246550 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
@@ -86135,18 +86089,18 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_70_in_rule__Type__Group_5_2_1__0__Impl48134 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__Group_5_2_1__1__Impl_in_rule__Type__Group_5_2_1__148165 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__TypesAssignment_5_2_1_1_in_rule__Type__Group_5_2_1__1__Impl48192 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Type__Group_6__0__Impl_in_rule__Type__Group_6__048226 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__Type__Group_6__0__Impl_in_rule__Type__Group_6__048226 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__Type__Group_6__1_in_rule__Type__Group_6__048229 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_80_in_rule__Type__Group_6__0__Impl48257 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Type__Group_6__1__Impl_in_rule__Type__Group_6__148288 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__Type__Group_6__1__Impl_in_rule__Type__Group_6__148288 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__Type__Group_6__2_in_rule__Type__Group_6__148291 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__Group_6__2__Impl_in_rule__Type__Group_6__248349 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
     public static final BitSet FOLLOW_rule__Type__Group_6__3_in_rule__Type__Group_6__248352 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__RecAssignment_6_2_in_rule__Type__Group_6__2__Impl48379 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Type__Group_6__3__Impl_in_rule__Type__Group_6__348409 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000107L});
+    public static final BitSet FOLLOW_rule__Type__Group_6__3__Impl_in_rule__Type__Group_6__348409 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000107L});
     public static final BitSet FOLLOW_rule__Type__Group_6__4_in_rule__Type__Group_6__348412 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_71_in_rule__Type__Group_6__3__Impl48440 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Type__Group_6__4__Impl_in_rule__Type__Group_6__448471 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000107L});
+    public static final BitSet FOLLOW_rule__Type__Group_6__4__Impl_in_rule__Type__Group_6__448471 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000107L});
     public static final BitSet FOLLOW_rule__Type__Group_6__5_in_rule__Type__Group_6__448474 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__Group_6_4__0_in_rule__Type__Group_6__4__Impl48501 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__Group_6__5__Impl_in_rule__Type__Group_6__548532 = new BitSet(new long[]{0x0000000000000002L});
@@ -86156,7 +86110,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__Type__FieldsAssignment_6_4_0_in_rule__Type__Group_6_4__0__Impl48633 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__Group_6_4__1__Impl_in_rule__Type__Group_6_4__148663 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__Group_6_4_1__0_in_rule__Type__Group_6_4__1__Impl48690 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__Type__Group_6_4_1__0__Impl_in_rule__Type__Group_6_4_1__048725 = new BitSet(new long[]{0xFFC0000003FC0040L,0x0000000000000007L});
+    public static final BitSet FOLLOW_rule__Type__Group_6_4_1__0__Impl_in_rule__Type__Group_6_4_1__048725 = new BitSet(new long[]{0xFFC0000023FC0040L,0x0000000000000007L});
     public static final BitSet FOLLOW_rule__Type__Group_6_4_1__1_in_rule__Type__Group_6_4_1__048728 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_70_in_rule__Type__Group_6_4_1__0__Impl48756 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__Group_6_4_1__1__Impl_in_rule__Type__Group_6_4_1__148787 = new BitSet(new long[]{0x0000000000000002L});
@@ -86251,7 +86205,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__FunType100__Group_2_1_1__1__Impl_in_rule__FunType100__Group_2_1_1__150901 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunType100__ItemsAssignment_2_1_1_1_in_rule__FunType100__Group_2_1_1__1__Impl50928 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleForm_in_rule__Module__FormsAssignment50967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMacro_in_rule__Form__NameAssignment_3_150998 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMacroCall_in_rule__Form__CallAssignment_3_150998 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleIfdefAttribute_in_rule__ConditionalFormBlock__ConditionAssignment_051029 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleForm_in_rule__ConditionalFormBlock__IfFormsAssignment_151060 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleElseAttribute_in_rule__ConditionalFormBlock__HasElseAssignment_2_051091 = new BitSet(new long[]{0x0000000000000002L});
@@ -86308,10 +86262,10 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_RULE_ATOM_in_rule__CustomAttribute__TagAssignment_152842 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpression_in_rule__CustomAttribute__ValueAssignment_3_052873 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpression_in_rule__CustomAttribute__ValueAssignment_3_1_152904 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleName_in_rule__Function__NameAssignment_052935 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomOrKw_in_rule__Function__NameAssignment_052935 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunctionClause_in_rule__Function__ClausesAssignment_152966 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunctionClause_in_rule__Function__ClausesAssignment_2_152997 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleName_in_rule__FunctionClause__RefAssignment_053028 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomOrKw_in_rule__FunctionClause__RefAssignment_053028 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpression_in_rule__FunctionClause__ParamsAssignment_2_053059 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpression_in_rule__FunctionClause__ParamsAssignment_2_1_153090 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleGuard_in_rule__FunctionClause__GuardAssignment_4_153121 = new BitSet(new long[]{0x0000000000000002L});

@@ -1941,16 +1941,16 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     name=Macro
+	 *     call=MacroCall
 	 */
 	protected void sequence_Form(EObject context, MacroForm semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.MACRO_FORM__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.MACRO_FORM__NAME));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.MACRO_FORM__CALL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.MACRO_FORM__CALL));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFormAccess().getNameMacroParserRuleCall_3_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getFormAccess().getCallMacroCallParserRuleCall_3_1_0(), semanticObject.getCall());
 		feeder.finish();
 	}
 	
@@ -1984,7 +1984,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (ref=Name? (params+=Expression params+=Expression*)? guard=Guard? body+=LExpression body+=LExpression*)
+	 *     (ref=AtomOrKw? (params+=Expression params+=Expression*)? guard=Guard? body+=LExpression body+=LExpression*)
 	 */
 	protected void sequence_FunctionClause(EObject context, FunctionClause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1993,7 +1993,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (name=Name clauses+=FunctionClause clauses+=FunctionClause*)
+	 *     (name=AtomOrKw clauses+=FunctionClause clauses+=FunctionClause*)
 	 */
 	protected void sequence_Function(EObject context, Function semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
