@@ -1029,36 +1029,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				}
 				else break;
 			case ErlangPackage.MACRO_CALL:
-				if(context == grammarAccess.getExpr100Rule() ||
-				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
-				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
-				   context == grammarAccess.getExpr150Rule() ||
-				   context == grammarAccess.getExpr150Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr160Rule() ||
-				   context == grammarAccess.getExpr160Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr200Rule() ||
-				   context == grammarAccess.getExpr200Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr300Rule() ||
-				   context == grammarAccess.getExpr300Access().getBinOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr400Rule() ||
-				   context == grammarAccess.getExpr400Access().getAddOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr500Rule() ||
-				   context == grammarAccess.getExpr500Access().getMultOpOpLeftAction_1_0() ||
-				   context == grammarAccess.getExpr700Rule() ||
-				   context == grammarAccess.getExpr700Access().getFunCallTargetAction_1_0_1() ||
-				   context == grammarAccess.getExpr700Access().getRecordExprRefAction_1_1_1() ||
-				   context == grammarAccess.getExpr800Rule() ||
-				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
-				   context == grammarAccess.getExprMaxRule() ||
-				   context == grammarAccess.getExpressionRule() ||
-				   context == grammarAccess.getLExpressionRule() ||
-				   context == grammarAccess.getMacroCallRule() ||
-				   context == grammarAccess.getPatternExpressionRule() ||
-				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
-				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
-				   context == grammarAccess.getTermExpressionRule() ||
-				   context == grammarAccess.getUnaryExprRule() ||
-				   context == grammarAccess.getUnaryExprMaxRule()) {
+				if(context == grammarAccess.getMacroCallRule()) {
 					sequence_MacroCall(context, (MacroCall) semanticObject); 
 					return; 
 				}
@@ -1832,7 +1803,11 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     ((target=Expr700_FunCall_1_0_1 (args+=Expression args+=Expression*)?) | target=Expr700_FunCall_1_0_1)
+	 *     (
+	 *         (target=Expr700_FunCall_1_0_1 (args+=Expression args+=Expression*)? (args2+=Expression args2+=Expression*)?) | 
+	 *         (target=Expr700_FunCall_1_0_1 (args2+=Expression args2+=Expression*)?) | 
+	 *         target=Expr700_FunCall_1_0_1
+	 *     )
 	 */
 	protected void sequence_Expr700(EObject context, FunCall semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1841,7 +1816,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     ((ref=Expr700_RecordExpr_1_1_1 record=RecordExpr) | (rec=[RecordAttribute|NameVar] (field=[RecordFieldDef|QName] | tuple=RecordTuple)))
+	 *     ((ref=Expr700_RecordExpr_1_1_1 record=RecordExpr) | (rec=[RecordAttribute|NameVar] (field=[RecordFieldDef|Name] | tuple=RecordTuple)))
 	 */
 	protected void sequence_Expr700(EObject context, RecordExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1868,7 +1843,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     ((rec=[RecordAttribute|NameVar] (field=[RecordFieldDef|QName] | tuple=RecordTuple)) | (ref=Expr700_RecordExpr_1_1_1 record=RecordExpr))
+	 *     ((rec=[RecordAttribute|NameVar] (field=[RecordFieldDef|Name] | tuple=RecordTuple)) | (ref=Expr700_RecordExpr_1_1_1 record=RecordExpr))
 	 */
 	protected void sequence_ExprMax(EObject context, RecordExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2319,7 +2294,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (rec=[RecordAttribute|NameVar] (field=[RecordFieldDef|QName] | tuple=RecordTuple))
+	 *     (rec=[RecordAttribute|NameVar] (field=[RecordFieldDef|Name] | tuple=RecordTuple))
 	 */
 	protected void sequence_RecordExpr(EObject context, RecordExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -1121,31 +1121,13 @@ public interface ErlangPackage extends EPackage
   int MACRO_CALL = 28;
 
   /**
-   * The feature id for the '<em><b>Line</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MACRO_CALL__LINE = EXPRESSION__LINE;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MACRO_CALL__EXPR = EXPRESSION__EXPR;
-
-  /**
    * The feature id for the '<em><b>Macro Name</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MACRO_CALL__MACRO_NAME = EXPRESSION_FEATURE_COUNT + 0;
+  int MACRO_CALL__MACRO_NAME = 0;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -1154,7 +1136,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MACRO_CALL__ARGS = EXPRESSION_FEATURE_COUNT + 1;
+  int MACRO_CALL__ARGS = 1;
 
   /**
    * The number of structural features of the '<em>Macro Call</em>' class.
@@ -1163,7 +1145,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MACRO_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+  int MACRO_CALL_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.RecordExprImpl <em>Record Expr</em>}' class.
@@ -3402,13 +3384,22 @@ public interface ErlangPackage extends EPackage
   int FUN_CALL__ARGS = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Args2</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUN_CALL__ARGS2 = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>Fun Call</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+  int FUN_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.RemoteTargetImpl <em>Remote Target</em>}' class.
@@ -6530,6 +6521,17 @@ public interface ErlangPackage extends EPackage
   EReference getFunCall_Args();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.FunCall#getArgs2 <em>Args2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Args2</em>'.
+   * @see org.erlide.erlang.FunCall#getArgs2()
+   * @see #getFunCall()
+   * @generated
+   */
+  EReference getFunCall_Args2();
+
+  /**
    * Returns the meta object for class '{@link org.erlide.erlang.RemoteTarget <em>Remote Target</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -8893,6 +8895,14 @@ public interface ErlangPackage extends EPackage
      * @generated
      */
     EReference FUN_CALL__ARGS = eINSTANCE.getFunCall_Args();
+
+    /**
+     * The meta object literal for the '<em><b>Args2</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUN_CALL__ARGS2 = eINSTANCE.getFunCall_Args2();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.RemoteTargetImpl <em>Remote Target</em>}' class.

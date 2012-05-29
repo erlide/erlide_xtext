@@ -296,6 +296,7 @@
     <genClasses ecoreClass="Erlang.ecore#//FunCall">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunCall/target"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunCall/args"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunCall/args2"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//RemoteTarget">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RemoteTarget/module"/>

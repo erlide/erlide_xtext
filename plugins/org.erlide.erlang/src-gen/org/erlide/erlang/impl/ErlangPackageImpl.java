@@ -3102,6 +3102,16 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getFunCall_Args2()
+  {
+    return (EReference)funCallEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getRemoteTarget()
   {
     return remoteTargetEClass;
@@ -3781,6 +3791,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     funCallEClass = createEClass(FUN_CALL);
     createEReference(funCallEClass, FUN_CALL__TARGET);
     createEReference(funCallEClass, FUN_CALL__ARGS);
+    createEReference(funCallEClass, FUN_CALL__ARGS2);
 
     remoteTargetEClass = createEClass(REMOTE_TARGET);
     createEReference(remoteTargetEClass, REMOTE_TARGET__MODULE);
@@ -3882,7 +3893,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     typeAttributeEClass.getESuperTypes().add(this.getAbstractTypeAttribute());
     customAttributeEClass.getESuperTypes().add(this.getAttribute());
     functionEClass.getESuperTypes().add(this.getForm());
-    macroCallEClass.getESuperTypes().add(this.getExpression());
     recordExprEClass.getESuperTypes().add(this.getExpression());
     queryExprEClass.getESuperTypes().add(this.getExpression());
     condExprEClass.getESuperTypes().add(this.getExpression());
@@ -4239,6 +4249,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEClass(funCallEClass, FunCall.class, "FunCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFunCall_Target(), this.getExpression(), null, "target", null, 0, 1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunCall_Args(), this.getExpression(), null, "args", null, 0, -1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunCall_Args2(), this.getExpression(), null, "args2", null, 0, -1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(remoteTargetEClass, RemoteTarget.class, "RemoteTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getRemoteTarget_Module(), this.getExpression(), null, "module", null, 0, 1, RemoteTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.erlide.erlang.FunCall#getTarget <em>Target</em>}</li>
  *   <li>{@link org.erlide.erlang.FunCall#getArgs <em>Args</em>}</li>
+ *   <li>{@link org.erlide.erlang.FunCall#getArgs2 <em>Args2</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,5 +65,21 @@ public interface FunCall extends Expression
    * @generated
    */
   EList<Expression> getArgs();
+
+  /**
+   * Returns the value of the '<em><b>Args2</b></em>' containment reference list.
+   * The list contents are of type {@link org.erlide.erlang.Expression}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Args2</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Args2</em>' containment reference list.
+   * @see org.erlide.erlang.ErlangPackage#getFunCall_Args2()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Expression> getArgs2();
 
 } // FunCall

@@ -207,7 +207,8 @@ UnaryExpr returns Expression:
 
 Expr700 returns Expression:
 	Expr800 (	 
-		  '(' {FunCall.target=current} (args+=Expression (',' args+=Expression)*)? ')'
+		  '(' {FunCall.target=current} (args+=Expression (',' args+=Expression)*)? ')' 
+		  ('(' (args2+=Expression (',' args2+=Expression)*)? ')')?
 		| ('#' {RecordExpr.ref=current} record=RecordExpr )+ 
 	)? 
 ;
@@ -232,7 +233,6 @@ ExprMax returns Expression:
 
 TermExpression returns Expression:	  
 	  Tuple
-	| => MacroCall
 	| => ListComprehension 
 	| List 
 	| => BinaryComprehension 
@@ -242,11 +242,11 @@ TermExpression returns Expression:
 ;
 
 MacroCall:
-	  macroName=[DefineAttribute|Macro] '(' (args+=Expression (',' args+=Expression)*)? ')'  
+	  macroName=[DefineAttribute|Macro] ('(' (args+=Expression (',' args+=Expression)*)? ')')?  
 ;
 
 RecordExpr:
-	rec=[RecordAttribute|NameVar] (field=[RecordFieldDef|QName] | tuple=RecordTuple)
+	rec=[RecordAttribute|NameVar] (('.' field=[RecordFieldDef|Name]) | tuple=RecordTuple)
 ;
 
 // NYI

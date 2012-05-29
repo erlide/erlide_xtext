@@ -127,7 +127,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MacroCall" eSuperTypes="#//Expression">
+  <eClassifiers xsi:type="ecore:EClass" name="MacroCall">
     <eStructuralFeatures xsi:type="ecore:EReference" name="macroName" eType="#//DefineAttribute"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expression"
         containment="true"/>
@@ -379,6 +379,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expression"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args2" upperBound="-1"
+        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RemoteTarget" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="module" eType="#//Expression"

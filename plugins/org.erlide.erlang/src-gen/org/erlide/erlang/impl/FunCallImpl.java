@@ -30,6 +30,7 @@ import org.erlide.erlang.FunCall;
  * <ul>
  *   <li>{@link org.erlide.erlang.impl.FunCallImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.FunCallImpl#getArgs <em>Args</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.FunCallImpl#getArgs2 <em>Args2</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,6 +57,16 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
    * @ordered
    */
   protected EList<Expression> args;
+
+  /**
+   * The cached value of the '{@link #getArgs2() <em>Args2</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getArgs2()
+   * @generated
+   * @ordered
+   */
+  protected EList<Expression> args2;
 
   /**
    * <!-- begin-user-doc -->
@@ -145,6 +156,20 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Expression> getArgs2()
+  {
+    if (args2 == null)
+    {
+      args2 = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.FUN_CALL__ARGS2);
+    }
+    return args2;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -154,6 +179,8 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
         return basicSetTarget(null, msgs);
       case ErlangPackage.FUN_CALL__ARGS:
         return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
+      case ErlangPackage.FUN_CALL__ARGS2:
+        return ((InternalEList<?>)getArgs2()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -172,6 +199,8 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
         return getTarget();
       case ErlangPackage.FUN_CALL__ARGS:
         return getArgs();
+      case ErlangPackage.FUN_CALL__ARGS2:
+        return getArgs2();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -194,6 +223,10 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
         getArgs().clear();
         getArgs().addAll((Collection<? extends Expression>)newValue);
         return;
+      case ErlangPackage.FUN_CALL__ARGS2:
+        getArgs2().clear();
+        getArgs2().addAll((Collection<? extends Expression>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -214,6 +247,9 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
       case ErlangPackage.FUN_CALL__ARGS:
         getArgs().clear();
         return;
+      case ErlangPackage.FUN_CALL__ARGS2:
+        getArgs2().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -232,6 +268,8 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
         return target != null;
       case ErlangPackage.FUN_CALL__ARGS:
         return args != null && !args.isEmpty();
+      case ErlangPackage.FUN_CALL__ARGS2:
+        return args2 != null && !args2.isEmpty();
     }
     return super.eIsSet(featureID);
   }

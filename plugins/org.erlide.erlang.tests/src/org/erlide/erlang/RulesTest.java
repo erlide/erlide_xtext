@@ -13,7 +13,7 @@ public class RulesTest extends XtextTest {
 
 	@Test
 	public void keywords() {
-		testParserRule("spec", "AtomOrKw");
+		testParserRule("spec", "AtomKw");
 		testParserRule("type", "Expression");
 		testParserRule("opaque", "Expression");
 		testParserRule("record", "Expression");
@@ -92,12 +92,15 @@ public class RulesTest extends XtextTest {
 		testParserRule("ZZ:aa()", "Expr700");
 		testParserRule("aa:AA()", "Expr700");
 		testParserRule("(A#aa.f)()", "Expr700");
+		testParserRule("?X()", "Expr700");
+		testParserRule("?X(x)(y)", "Expr700");
 	}
 
 	@Test
 	public void exprs() {
-		testParserRule("{a}", "Expression");
-		testParserRule("{?a}", "Expression");
+		testParserRule("{a}", "Tuple");
+		testParserRule("{?a}", "Tuple");
+		testParserRule("?X()", "MacroCall");
 	}
 
 	@Test
@@ -133,6 +136,7 @@ public class RulesTest extends XtextTest {
 		testParserRule("<<2:8,4,6>>", "Binary");
 		testParserRule("<<2,4/integer,6>>", "Binary");
 		testParserRule("<<2,4:X/integer-signed-unit:4,6>>", "Binary");
+		testParserRule("<<2,4:X/integer-unit:4-signed,6>>", "Binary");
 
 	}
 
@@ -142,5 +146,13 @@ public class RulesTest extends XtextTest {
 		testParserRule("try x catch throw:X -> ok end", "TryExpr");
 		testParserRule("try x catch _:X -> ok end", "TryExpr");
 		testParserRule("try x catch _:#r{} -> ok end", "TryExpr");
+	}
+
+	@Test
+	public void receiveExpr() {
+		testParserRule("receive after 100 -> ok end", "ReceiveExpr");
+		testParserRule("receive Msg -> ok end", "ReceiveExpr");
+		testParserRule("receive msg -> ok; _ -> ok end", "ReceiveExpr");
+		testParserRule("receive Msg -> ok after Z -> ok end", "ReceiveExpr");
 	}
 }

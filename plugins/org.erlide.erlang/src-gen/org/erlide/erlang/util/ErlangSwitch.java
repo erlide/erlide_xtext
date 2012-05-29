@@ -311,7 +311,6 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         MacroCall macroCall = (MacroCall)theEObject;
         T result = caseMacroCall(macroCall);
-        if (result == null) result = caseExpression(macroCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

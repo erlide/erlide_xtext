@@ -4,6 +4,8 @@ package org.erlide.erlang;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Macro Call</b></em>'.
@@ -21,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface MacroCall extends Expression
+public interface MacroCall extends EObject
 {
   /**
    * Returns the value of the '<em><b>Macro Name</b></em>' reference.
