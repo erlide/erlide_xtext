@@ -46,7 +46,7 @@ AbstractDefineAttribute:
 
 DefineAttribute:
     '-' => tag='define' 		    
-		'(' macroName=AtomOrVar // can't have feature 'name' because multiple defines with the same macro can exist 
+		'(' macroName=AtomVar // can't have feature 'name' because multiple defines with the same macro can exist 
 		    ('(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' )? 
 	    	(',' value=Guard?)? 
 		')'
@@ -54,11 +54,11 @@ DefineAttribute:
 ;
 
 UndefAttribute:
-	'-' => tag='undef' '(' ref=[DefineAttribute|AtomOrVar] ')' FULL_STOP
+	'-' => tag='undef' '(' ref=[DefineAttribute|AtomVar] ')' FULL_STOP
 ;
 
 IfdefAttribute:
-	'-' => tag=('ifdef'|'ifndef') '(' ref=[DefineAttribute|AtomOrVar] ')' FULL_STOP
+	'-' => tag=('ifdef'|'ifndef') '(' ref=[DefineAttribute|AtomVar] ')' FULL_STOP
 ;
 
 EndifAttribute:
@@ -144,12 +144,12 @@ CustomAttribute:
 // Functions
 
 Function:
-	name=AtomOrKw clauses+=FunctionClause ( ';' clauses+=FunctionClause )* FULL_STOP
+	name=AtomKw clauses+=FunctionClause ( ';' clauses+=FunctionClause )* FULL_STOP
 ;
 
 // validate that all names for a function are identical
 FunctionClause:
-	  ref=AtomOrKw? '(' (params+=Expression (',' params+=Expression)*)? ')' 
+	  ref=AtomKw? '(' (params+=Expression (',' params+=Expression)*)? ')' 
 	  ('when'? guard=Guard)? // no 'when' if guard is a macro
 	  '->' body+=LExpression (',' body+=LExpression)*
 ;
@@ -276,7 +276,7 @@ RecordField:
 ;
 
 LiteralExpressionNoNumber returns Expression:
-	  {Atom} value=[Form|AtomOrKw]
+	  {Atom} value=[Form|AtomKw]
 	| {Variable} value=VARIABLE 
 	| {ErlChar} value=CHAR 
 	| {MacroExpr} value=[DefineAttribute|Macro] 
@@ -330,6 +330,7 @@ FunExpr:
 ;
 
 FunRef:
+	//(module=[Module|NameVar] ':')? function=[Function|NameVar] '/' arity=IntMacro
 	(module=NameVar ':')? function=NameVar '/' arity=IntMacro
 ;
 
@@ -419,7 +420,7 @@ CompOp:
 // Literals
 
 Name:
-	AtomOrKw | Macro 
+	AtomKw | Macro 
 ;
 
 QName hidden():
@@ -427,18 +428,18 @@ QName hidden():
 ;
 
 NameVar:
-	AtomOrVar | Macro 
+	AtomVar | Macro 
 ;
 
-AtomOrVar:
-    AtomOrKw | VARIABLE
+AtomVar:
+    AtomKw | VARIABLE
 ;
 
 Macro:
     ('?'|'??') (ATOM | KW1 | VARIABLE)
 ;
 
-AtomOrKw: 
+AtomKw: 
 	ATOM | KW
 ;
 

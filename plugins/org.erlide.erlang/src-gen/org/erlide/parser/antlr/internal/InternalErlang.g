@@ -474,9 +474,9 @@ ruleDefineAttribute returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getDefineAttributeAccess().getMacroNameAtomOrVarParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getDefineAttributeAccess().getMacroNameAtomVarParserRuleCall_3_0()); 
 	    }
-		lv_macroName_3_0=ruleAtomOrVar		{
+		lv_macroName_3_0=ruleAtomVar		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getDefineAttributeRule());
 	        }
@@ -484,7 +484,7 @@ ruleDefineAttribute returns [EObject current=null]
        			$current, 
        			"macroName",
         		lv_macroName_3_0, 
-        		"AtomOrVar");
+        		"AtomVar");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -627,7 +627,7 @@ ruleUndefAttribute returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeCrossReference_3_0()); 
 	    }
-		ruleAtomOrVar		{ 
+		ruleAtomVar		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -721,7 +721,7 @@ ruleIfdefAttribute returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getIfdefAttributeAccess().getRefDefineAttributeCrossReference_3_0()); 
 	    }
-		ruleAtomOrVar		{ 
+		ruleAtomVar		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2265,9 +2265,9 @@ ruleFunction returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionAccess().getNameAtomOrKwParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getFunctionAccess().getNameAtomKwParserRuleCall_0_0()); 
 	    }
-		lv_name_0_0=ruleAtomOrKw		{
+		lv_name_0_0=ruleAtomKw		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunctionRule());
 	        }
@@ -2275,7 +2275,7 @@ ruleFunction returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_0_0, 
-        		"AtomOrKw");
+        		"AtomKw");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2348,9 +2348,9 @@ ruleFunctionClause returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionClauseAccess().getRefAtomOrKwParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getFunctionClauseAccess().getRefAtomKwParserRuleCall_0_0()); 
 	    }
-		lv_ref_0_0=ruleAtomOrKw		{
+		lv_ref_0_0=ruleAtomKw		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunctionClauseRule());
 	        }
@@ -2358,7 +2358,7 @@ ruleFunctionClause returns [EObject current=null]
        			$current, 
        			"ref",
         		lv_ref_0_0, 
-        		"AtomOrKw");
+        		"AtomKw");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -4350,7 +4350,7 @@ ruleLiteralExpressionNoNumber returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getLiteralExpressionNoNumberAccess().getValueFormCrossReference_0_1_0()); 
 	    }
-		ruleAtomOrKw		{ 
+		ruleAtomKw		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -6912,10 +6912,10 @@ ruleName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
     @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getNameAccess().getAtomOrKwParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getNameAccess().getAtomKwParserRuleCall_0()); 
     }
-    this_AtomOrKw_0=ruleAtomOrKw    {
-		$current.merge(this_AtomOrKw_0);
+    this_AtomKw_0=ruleAtomKw    {
+		$current.merge(this_AtomKw_0);
     }
 
     { 
@@ -7004,10 +7004,10 @@ ruleNameVar returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
     @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getNameVarAccess().getAtomOrVarParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getNameVarAccess().getAtomVarParserRuleCall_0()); 
     }
-    this_AtomOrVar_0=ruleAtomOrVar    {
-		$current.merge(this_AtomOrVar_0);
+    this_AtomVar_0=ruleAtomVar    {
+		$current.merge(this_AtomVar_0);
     }
 
     { 
@@ -7032,26 +7032,26 @@ ruleNameVar returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 
 
 
-// Entry rule entryRuleAtomOrVar
-entryRuleAtomOrVar returns [String current=null] 
+// Entry rule entryRuleAtomVar
+entryRuleAtomVar returns [String current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getAtomOrVarRule()); } 
-	 iv_ruleAtomOrVar=ruleAtomOrVar 
-	 { $current=$iv_ruleAtomOrVar.current.getText(); }  
+	{ newCompositeNode(grammarAccess.getAtomVarRule()); } 
+	 iv_ruleAtomVar=ruleAtomVar 
+	 { $current=$iv_ruleAtomVar.current.getText(); }  
 	 EOF 
 ;
 
-// Rule AtomOrVar
-ruleAtomOrVar returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+// Rule AtomVar
+ruleAtomVar returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getAtomOrVarAccess().getAtomOrKwParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getAtomVarAccess().getAtomKwParserRuleCall_0()); 
     }
-    this_AtomOrKw_0=ruleAtomOrKw    {
-		$current.merge(this_AtomOrKw_0);
+    this_AtomKw_0=ruleAtomKw    {
+		$current.merge(this_AtomKw_0);
     }
 
     { 
@@ -7063,7 +7063,7 @@ ruleAtomOrVar returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken
     }
 
     { 
-    newLeafNode(this_VARIABLE_1, grammarAccess.getAtomOrVarAccess().getVARIABLETerminalRuleCall_1()); 
+    newLeafNode(this_VARIABLE_1, grammarAccess.getAtomVarAccess().getVARIABLETerminalRuleCall_1()); 
     }
 )
     ;
@@ -7133,17 +7133,17 @@ ruleMacro returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 
 
 
-// Entry rule entryRuleAtomOrKw
-entryRuleAtomOrKw returns [String current=null] 
+// Entry rule entryRuleAtomKw
+entryRuleAtomKw returns [String current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getAtomOrKwRule()); } 
-	 iv_ruleAtomOrKw=ruleAtomOrKw 
-	 { $current=$iv_ruleAtomOrKw.current.getText(); }  
+	{ newCompositeNode(grammarAccess.getAtomKwRule()); } 
+	 iv_ruleAtomKw=ruleAtomKw 
+	 { $current=$iv_ruleAtomKw.current.getText(); }  
 	 EOF 
 ;
 
-// Rule AtomOrKw
-ruleAtomOrKw returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+// Rule AtomKw
+ruleAtomKw returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
@@ -7152,12 +7152,12 @@ ruleAtomOrKw returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
     }
 
     { 
-    newLeafNode(this_ATOM_0, grammarAccess.getAtomOrKwAccess().getATOMTerminalRuleCall_0()); 
+    newLeafNode(this_ATOM_0, grammarAccess.getAtomKwAccess().getATOMTerminalRuleCall_0()); 
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAtomOrKwAccess().getKWParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getAtomKwAccess().getKWParserRuleCall_1()); 
     }
     this_KW_1=ruleKW    {
 		$current.merge(this_KW_1);

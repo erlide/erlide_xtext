@@ -6990,25 +6990,25 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleNameVar"
 
 
-    // $ANTLR start "entryRuleAtomOrVar"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2311:1: entryRuleAtomOrVar : ruleAtomOrVar EOF ;
-    public final void entryRuleAtomOrVar() throws RecognitionException {
+    // $ANTLR start "entryRuleAtomVar"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2311:1: entryRuleAtomVar : ruleAtomVar EOF ;
+    public final void entryRuleAtomVar() throws RecognitionException {
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2312:1: ( ruleAtomOrVar EOF )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2313:1: ruleAtomOrVar EOF
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2312:1: ( ruleAtomVar EOF )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2313:1: ruleAtomVar EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAtomOrVarRule()); 
+               before(grammarAccess.getAtomVarRule()); 
             }
-            pushFollow(FOLLOW_ruleAtomOrVar_in_entryRuleAtomOrVar4879);
-            ruleAtomOrVar();
+            pushFollow(FOLLOW_ruleAtomVar_in_entryRuleAtomVar4879);
+            ruleAtomVar();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAtomOrVarRule()); 
+               after(grammarAccess.getAtomVarRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAtomOrVar4886); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAtomVar4886); if (state.failed) return ;
 
             }
 
@@ -7021,30 +7021,30 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleAtomOrVar"
+    // $ANTLR end "entryRuleAtomVar"
 
 
-    // $ANTLR start "ruleAtomOrVar"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2320:1: ruleAtomOrVar : ( ( rule__AtomOrVar__Alternatives ) ) ;
-    public final void ruleAtomOrVar() throws RecognitionException {
+    // $ANTLR start "ruleAtomVar"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2320:1: ruleAtomVar : ( ( rule__AtomVar__Alternatives ) ) ;
+    public final void ruleAtomVar() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2324:2: ( ( ( rule__AtomOrVar__Alternatives ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2325:1: ( ( rule__AtomOrVar__Alternatives ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2324:2: ( ( ( rule__AtomVar__Alternatives ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2325:1: ( ( rule__AtomVar__Alternatives ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2325:1: ( ( rule__AtomOrVar__Alternatives ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2326:1: ( rule__AtomOrVar__Alternatives )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2325:1: ( ( rule__AtomVar__Alternatives ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2326:1: ( rule__AtomVar__Alternatives )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAtomOrVarAccess().getAlternatives()); 
+               before(grammarAccess.getAtomVarAccess().getAlternatives()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2327:1: ( rule__AtomOrVar__Alternatives )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2327:2: rule__AtomOrVar__Alternatives
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2327:1: ( rule__AtomVar__Alternatives )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2327:2: rule__AtomVar__Alternatives
             {
-            pushFollow(FOLLOW_rule__AtomOrVar__Alternatives_in_ruleAtomOrVar4912);
-            rule__AtomOrVar__Alternatives();
+            pushFollow(FOLLOW_rule__AtomVar__Alternatives_in_ruleAtomVar4912);
+            rule__AtomVar__Alternatives();
 
             state._fsp--;
             if (state.failed) return ;
@@ -7052,7 +7052,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAtomOrVarAccess().getAlternatives()); 
+               after(grammarAccess.getAtomVarAccess().getAlternatives()); 
             }
 
             }
@@ -7072,7 +7072,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleAtomOrVar"
+    // $ANTLR end "ruleAtomVar"
 
 
     // $ANTLR start "entryRuleMacro"
@@ -7160,25 +7160,25 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleMacro"
 
 
-    // $ANTLR start "entryRuleAtomOrKw"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2367:1: entryRuleAtomOrKw : ruleAtomOrKw EOF ;
-    public final void entryRuleAtomOrKw() throws RecognitionException {
+    // $ANTLR start "entryRuleAtomKw"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2367:1: entryRuleAtomKw : ruleAtomKw EOF ;
+    public final void entryRuleAtomKw() throws RecognitionException {
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2368:1: ( ruleAtomOrKw EOF )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2369:1: ruleAtomOrKw EOF
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2368:1: ( ruleAtomKw EOF )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2369:1: ruleAtomKw EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAtomOrKwRule()); 
+               before(grammarAccess.getAtomKwRule()); 
             }
-            pushFollow(FOLLOW_ruleAtomOrKw_in_entryRuleAtomOrKw4999);
-            ruleAtomOrKw();
+            pushFollow(FOLLOW_ruleAtomKw_in_entryRuleAtomKw4999);
+            ruleAtomKw();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAtomOrKwRule()); 
+               after(grammarAccess.getAtomKwRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAtomOrKw5006); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAtomKw5006); if (state.failed) return ;
 
             }
 
@@ -7191,30 +7191,30 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleAtomOrKw"
+    // $ANTLR end "entryRuleAtomKw"
 
 
-    // $ANTLR start "ruleAtomOrKw"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2376:1: ruleAtomOrKw : ( ( rule__AtomOrKw__Alternatives ) ) ;
-    public final void ruleAtomOrKw() throws RecognitionException {
+    // $ANTLR start "ruleAtomKw"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2376:1: ruleAtomKw : ( ( rule__AtomKw__Alternatives ) ) ;
+    public final void ruleAtomKw() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2380:2: ( ( ( rule__AtomOrKw__Alternatives ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2381:1: ( ( rule__AtomOrKw__Alternatives ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2380:2: ( ( ( rule__AtomKw__Alternatives ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2381:1: ( ( rule__AtomKw__Alternatives ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2381:1: ( ( rule__AtomOrKw__Alternatives ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2382:1: ( rule__AtomOrKw__Alternatives )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2381:1: ( ( rule__AtomKw__Alternatives ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2382:1: ( rule__AtomKw__Alternatives )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAtomOrKwAccess().getAlternatives()); 
+               before(grammarAccess.getAtomKwAccess().getAlternatives()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2383:1: ( rule__AtomOrKw__Alternatives )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2383:2: rule__AtomOrKw__Alternatives
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2383:1: ( rule__AtomKw__Alternatives )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:2383:2: rule__AtomKw__Alternatives
             {
-            pushFollow(FOLLOW_rule__AtomOrKw__Alternatives_in_ruleAtomOrKw5032);
-            rule__AtomOrKw__Alternatives();
+            pushFollow(FOLLOW_rule__AtomKw__Alternatives_in_ruleAtomKw5032);
+            rule__AtomKw__Alternatives();
 
             state._fsp--;
             if (state.failed) return ;
@@ -7222,7 +7222,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAtomOrKwAccess().getAlternatives()); 
+               after(grammarAccess.getAtomKwAccess().getAlternatives()); 
             }
 
             }
@@ -7242,7 +7242,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleAtomOrKw"
+    // $ANTLR end "ruleAtomKw"
 
 
     // $ANTLR start "entryRuleKW"
@@ -13796,13 +13796,13 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Name__Alternatives"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4172:1: rule__Name__Alternatives : ( ( ruleAtomOrKw ) | ( ruleMacro ) );
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4172:1: rule__Name__Alternatives : ( ( ruleAtomKw ) | ( ruleMacro ) );
     public final void rule__Name__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4176:1: ( ( ruleAtomOrKw ) | ( ruleMacro ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4176:1: ( ( ruleAtomKw ) | ( ruleMacro ) )
             int alt39=2;
             int LA39_0 = input.LA(1);
 
@@ -13821,21 +13821,21 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
             switch (alt39) {
                 case 1 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4177:1: ( ruleAtomOrKw )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4177:1: ( ruleAtomKw )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4177:1: ( ruleAtomOrKw )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4178:1: ruleAtomOrKw
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4177:1: ( ruleAtomKw )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4178:1: ruleAtomKw
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getNameAccess().getAtomOrKwParserRuleCall_0()); 
+                       before(grammarAccess.getNameAccess().getAtomKwParserRuleCall_0()); 
                     }
-                    pushFollow(FOLLOW_ruleAtomOrKw_in_rule__Name__Alternatives9121);
-                    ruleAtomOrKw();
+                    pushFollow(FOLLOW_ruleAtomKw_in_rule__Name__Alternatives9121);
+                    ruleAtomKw();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getNameAccess().getAtomOrKwParserRuleCall_0()); 
+                       after(grammarAccess.getNameAccess().getAtomKwParserRuleCall_0()); 
                     }
 
                     }
@@ -13884,13 +13884,13 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NameVar__Alternatives"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4194:1: rule__NameVar__Alternatives : ( ( ruleAtomOrVar ) | ( ruleMacro ) );
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4194:1: rule__NameVar__Alternatives : ( ( ruleAtomVar ) | ( ruleMacro ) );
     public final void rule__NameVar__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4198:1: ( ( ruleAtomOrVar ) | ( ruleMacro ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4198:1: ( ( ruleAtomVar ) | ( ruleMacro ) )
             int alt40=2;
             int LA40_0 = input.LA(1);
 
@@ -13909,21 +13909,21 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
             switch (alt40) {
                 case 1 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4199:1: ( ruleAtomOrVar )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4199:1: ( ruleAtomVar )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4199:1: ( ruleAtomOrVar )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4200:1: ruleAtomOrVar
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4199:1: ( ruleAtomVar )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4200:1: ruleAtomVar
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getNameVarAccess().getAtomOrVarParserRuleCall_0()); 
+                       before(grammarAccess.getNameVarAccess().getAtomVarParserRuleCall_0()); 
                     }
-                    pushFollow(FOLLOW_ruleAtomOrVar_in_rule__NameVar__Alternatives9170);
-                    ruleAtomOrVar();
+                    pushFollow(FOLLOW_ruleAtomVar_in_rule__NameVar__Alternatives9170);
+                    ruleAtomVar();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getNameVarAccess().getAtomOrVarParserRuleCall_0()); 
+                       after(grammarAccess.getNameVarAccess().getAtomVarParserRuleCall_0()); 
                     }
 
                     }
@@ -13971,14 +13971,14 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__NameVar__Alternatives"
 
 
-    // $ANTLR start "rule__AtomOrVar__Alternatives"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4216:1: rule__AtomOrVar__Alternatives : ( ( ruleAtomOrKw ) | ( RULE_VARIABLE ) );
-    public final void rule__AtomOrVar__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__AtomVar__Alternatives"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4216:1: rule__AtomVar__Alternatives : ( ( ruleAtomKw ) | ( RULE_VARIABLE ) );
+    public final void rule__AtomVar__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4220:1: ( ( ruleAtomOrKw ) | ( RULE_VARIABLE ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4220:1: ( ( ruleAtomKw ) | ( RULE_VARIABLE ) )
             int alt41=2;
             int LA41_0 = input.LA(1);
 
@@ -13997,21 +13997,21 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
             switch (alt41) {
                 case 1 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4221:1: ( ruleAtomOrKw )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4221:1: ( ruleAtomKw )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4221:1: ( ruleAtomOrKw )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4222:1: ruleAtomOrKw
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4221:1: ( ruleAtomKw )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4222:1: ruleAtomKw
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getAtomOrVarAccess().getAtomOrKwParserRuleCall_0()); 
+                       before(grammarAccess.getAtomVarAccess().getAtomKwParserRuleCall_0()); 
                     }
-                    pushFollow(FOLLOW_ruleAtomOrKw_in_rule__AtomOrVar__Alternatives9219);
-                    ruleAtomOrKw();
+                    pushFollow(FOLLOW_ruleAtomKw_in_rule__AtomVar__Alternatives9219);
+                    ruleAtomKw();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getAtomOrVarAccess().getAtomOrKwParserRuleCall_0()); 
+                       after(grammarAccess.getAtomVarAccess().getAtomKwParserRuleCall_0()); 
                     }
 
                     }
@@ -14026,11 +14026,11 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4228:1: RULE_VARIABLE
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getAtomOrVarAccess().getVARIABLETerminalRuleCall_1()); 
+                       before(grammarAccess.getAtomVarAccess().getVARIABLETerminalRuleCall_1()); 
                     }
-                    match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_rule__AtomOrVar__Alternatives9236); if (state.failed) return ;
+                    match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_rule__AtomVar__Alternatives9236); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getAtomOrVarAccess().getVARIABLETerminalRuleCall_1()); 
+                       after(grammarAccess.getAtomVarAccess().getVARIABLETerminalRuleCall_1()); 
                     }
 
                     }
@@ -14052,7 +14052,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AtomOrVar__Alternatives"
+    // $ANTLR end "rule__AtomVar__Alternatives"
 
 
     // $ANTLR start "rule__Macro__Alternatives_0"
@@ -14264,9 +14264,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Macro__Alternatives_1"
 
 
-    // $ANTLR start "rule__AtomOrKw__Alternatives"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4292:1: rule__AtomOrKw__Alternatives : ( ( RULE_ATOM ) | ( ruleKW ) );
-    public final void rule__AtomOrKw__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__AtomKw__Alternatives"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4292:1: rule__AtomKw__Alternatives : ( ( RULE_ATOM ) | ( ruleKW ) );
+    public final void rule__AtomKw__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -14296,11 +14296,11 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4298:1: RULE_ATOM
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getAtomOrKwAccess().getATOMTerminalRuleCall_0()); 
+                       before(grammarAccess.getAtomKwAccess().getATOMTerminalRuleCall_0()); 
                     }
-                    match(input,RULE_ATOM,FOLLOW_RULE_ATOM_in_rule__AtomOrKw__Alternatives9389); if (state.failed) return ;
+                    match(input,RULE_ATOM,FOLLOW_RULE_ATOM_in_rule__AtomKw__Alternatives9389); if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getAtomOrKwAccess().getATOMTerminalRuleCall_0()); 
+                       after(grammarAccess.getAtomKwAccess().getATOMTerminalRuleCall_0()); 
                     }
 
                     }
@@ -14315,15 +14315,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:4304:1: ruleKW
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getAtomOrKwAccess().getKWParserRuleCall_1()); 
+                       before(grammarAccess.getAtomKwAccess().getKWParserRuleCall_1()); 
                     }
-                    pushFollow(FOLLOW_ruleKW_in_rule__AtomOrKw__Alternatives9406);
+                    pushFollow(FOLLOW_ruleKW_in_rule__AtomKw__Alternatives9406);
                     ruleKW();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getAtomOrKwAccess().getKWParserRuleCall_1()); 
+                       after(grammarAccess.getAtomKwAccess().getKWParserRuleCall_1()); 
                     }
 
                     }
@@ -14345,7 +14345,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AtomOrKw__Alternatives"
+    // $ANTLR end "rule__AtomKw__Alternatives"
 
 
     // $ANTLR start "rule__KW__Alternatives"
@@ -73031,28 +73031,28 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DefineAttribute__MacroNameAssignment_3"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25725:1: rule__DefineAttribute__MacroNameAssignment_3 : ( ruleAtomOrVar ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25725:1: rule__DefineAttribute__MacroNameAssignment_3 : ( ruleAtomVar ) ;
     public final void rule__DefineAttribute__MacroNameAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25729:1: ( ( ruleAtomOrVar ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25730:1: ( ruleAtomOrVar )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25729:1: ( ( ruleAtomVar ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25730:1: ( ruleAtomVar )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25730:1: ( ruleAtomOrVar )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25731:1: ruleAtomOrVar
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25730:1: ( ruleAtomVar )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25731:1: ruleAtomVar
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDefineAttributeAccess().getMacroNameAtomOrVarParserRuleCall_3_0()); 
+               before(grammarAccess.getDefineAttributeAccess().getMacroNameAtomVarParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomOrVar_in_rule__DefineAttribute__MacroNameAssignment_351713);
-            ruleAtomOrVar();
+            pushFollow(FOLLOW_ruleAtomVar_in_rule__DefineAttribute__MacroNameAssignment_351713);
+            ruleAtomVar();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDefineAttributeAccess().getMacroNameAtomOrVarParserRuleCall_3_0()); 
+               after(grammarAccess.getDefineAttributeAccess().getMacroNameAtomVarParserRuleCall_3_0()); 
             }
 
             }
@@ -73264,34 +73264,34 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UndefAttribute__RefAssignment_3"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25808:1: rule__UndefAttribute__RefAssignment_3 : ( ( ruleAtomOrVar ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25808:1: rule__UndefAttribute__RefAssignment_3 : ( ( ruleAtomVar ) ) ;
     public final void rule__UndefAttribute__RefAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25812:1: ( ( ( ruleAtomOrVar ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25813:1: ( ( ruleAtomOrVar ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25812:1: ( ( ( ruleAtomVar ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25813:1: ( ( ruleAtomVar ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25813:1: ( ( ruleAtomOrVar ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25814:1: ( ruleAtomOrVar )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25813:1: ( ( ruleAtomVar ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25814:1: ( ruleAtomVar )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeCrossReference_3_0()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25815:1: ( ruleAtomOrVar )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25816:1: ruleAtomOrVar
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25815:1: ( ruleAtomVar )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25816:1: ruleAtomVar
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeAtomOrVarParserRuleCall_3_0_1()); 
+               before(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeAtomVarParserRuleCall_3_0_1()); 
             }
-            pushFollow(FOLLOW_ruleAtomOrVar_in_rule__UndefAttribute__RefAssignment_351885);
-            ruleAtomOrVar();
+            pushFollow(FOLLOW_ruleAtomVar_in_rule__UndefAttribute__RefAssignment_351885);
+            ruleAtomVar();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeAtomOrVarParserRuleCall_3_0_1()); 
+               after(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeAtomVarParserRuleCall_3_0_1()); 
             }
 
             }
@@ -73372,34 +73372,34 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IfdefAttribute__RefAssignment_3"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25843:1: rule__IfdefAttribute__RefAssignment_3 : ( ( ruleAtomOrVar ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25843:1: rule__IfdefAttribute__RefAssignment_3 : ( ( ruleAtomVar ) ) ;
     public final void rule__IfdefAttribute__RefAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25847:1: ( ( ( ruleAtomOrVar ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25848:1: ( ( ruleAtomOrVar ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25847:1: ( ( ( ruleAtomVar ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25848:1: ( ( ruleAtomVar ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25848:1: ( ( ruleAtomOrVar ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25849:1: ( ruleAtomOrVar )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25848:1: ( ( ruleAtomVar ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25849:1: ( ruleAtomVar )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getIfdefAttributeAccess().getRefDefineAttributeCrossReference_3_0()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25850:1: ( ruleAtomOrVar )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25851:1: ruleAtomOrVar
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25850:1: ( ruleAtomVar )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:25851:1: ruleAtomVar
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getIfdefAttributeAccess().getRefDefineAttributeAtomOrVarParserRuleCall_3_0_1()); 
+               before(grammarAccess.getIfdefAttributeAccess().getRefDefineAttributeAtomVarParserRuleCall_3_0_1()); 
             }
-            pushFollow(FOLLOW_ruleAtomOrVar_in_rule__IfdefAttribute__RefAssignment_351957);
-            ruleAtomOrVar();
+            pushFollow(FOLLOW_ruleAtomVar_in_rule__IfdefAttribute__RefAssignment_351957);
+            ruleAtomVar();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getIfdefAttributeAccess().getRefDefineAttributeAtomOrVarParserRuleCall_3_0_1()); 
+               after(grammarAccess.getIfdefAttributeAccess().getRefDefineAttributeAtomVarParserRuleCall_3_0_1()); 
             }
 
             }
@@ -75497,28 +75497,28 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Function__NameAssignment_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26608:1: rule__Function__NameAssignment_0 : ( ruleAtomOrKw ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26608:1: rule__Function__NameAssignment_0 : ( ruleAtomKw ) ;
     public final void rule__Function__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26612:1: ( ( ruleAtomOrKw ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26613:1: ( ruleAtomOrKw )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26612:1: ( ( ruleAtomKw ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26613:1: ( ruleAtomKw )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26613:1: ( ruleAtomOrKw )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26614:1: ruleAtomOrKw
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26613:1: ( ruleAtomKw )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26614:1: ruleAtomKw
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFunctionAccess().getNameAtomOrKwParserRuleCall_0_0()); 
+               before(grammarAccess.getFunctionAccess().getNameAtomKwParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomOrKw_in_rule__Function__NameAssignment_053498);
-            ruleAtomOrKw();
+            pushFollow(FOLLOW_ruleAtomKw_in_rule__Function__NameAssignment_053498);
+            ruleAtomKw();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFunctionAccess().getNameAtomOrKwParserRuleCall_0_0()); 
+               after(grammarAccess.getFunctionAccess().getNameAtomKwParserRuleCall_0_0()); 
             }
 
             }
@@ -75632,28 +75632,28 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionClause__RefAssignment_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26653:1: rule__FunctionClause__RefAssignment_0 : ( ruleAtomOrKw ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26653:1: rule__FunctionClause__RefAssignment_0 : ( ruleAtomKw ) ;
     public final void rule__FunctionClause__RefAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26657:1: ( ( ruleAtomOrKw ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26658:1: ( ruleAtomOrKw )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26657:1: ( ( ruleAtomKw ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26658:1: ( ruleAtomKw )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26658:1: ( ruleAtomOrKw )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26659:1: ruleAtomOrKw
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26658:1: ( ruleAtomKw )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26659:1: ruleAtomKw
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFunctionClauseAccess().getRefAtomOrKwParserRuleCall_0_0()); 
+               before(grammarAccess.getFunctionClauseAccess().getRefAtomKwParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomOrKw_in_rule__FunctionClause__RefAssignment_053591);
-            ruleAtomOrKw();
+            pushFollow(FOLLOW_ruleAtomKw_in_rule__FunctionClause__RefAssignment_053591);
+            ruleAtomKw();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFunctionClauseAccess().getRefAtomOrKwParserRuleCall_0_0()); 
+               after(grammarAccess.getFunctionClauseAccess().getRefAtomKwParserRuleCall_0_0()); 
             }
 
             }
@@ -78007,34 +78007,34 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LiteralExpressionNoNumber__ValueAssignment_0_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27466:1: rule__LiteralExpressionNoNumber__ValueAssignment_0_1 : ( ( ruleAtomOrKw ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27466:1: rule__LiteralExpressionNoNumber__ValueAssignment_0_1 : ( ( ruleAtomKw ) ) ;
     public final void rule__LiteralExpressionNoNumber__ValueAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27470:1: ( ( ( ruleAtomOrKw ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27471:1: ( ( ruleAtomOrKw ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27470:1: ( ( ( ruleAtomKw ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27471:1: ( ( ruleAtomKw ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27471:1: ( ( ruleAtomOrKw ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27472:1: ( ruleAtomOrKw )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27471:1: ( ( ruleAtomKw ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27472:1: ( ruleAtomKw )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLiteralExpressionNoNumberAccess().getValueFormCrossReference_0_1_0()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27473:1: ( ruleAtomOrKw )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27474:1: ruleAtomOrKw
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27473:1: ( ruleAtomKw )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27474:1: ruleAtomKw
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getLiteralExpressionNoNumberAccess().getValueFormAtomOrKwParserRuleCall_0_1_0_1()); 
+               before(grammarAccess.getLiteralExpressionNoNumberAccess().getValueFormAtomKwParserRuleCall_0_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleAtomOrKw_in_rule__LiteralExpressionNoNumber__ValueAssignment_0_155260);
-            ruleAtomOrKw();
+            pushFollow(FOLLOW_ruleAtomKw_in_rule__LiteralExpressionNoNumber__ValueAssignment_0_155260);
+            ruleAtomKw();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getLiteralExpressionNoNumberAccess().getValueFormAtomOrKwParserRuleCall_0_1_0_1()); 
+               after(grammarAccess.getLiteralExpressionNoNumberAccess().getValueFormAtomKwParserRuleCall_0_1_0_1()); 
             }
 
             }
@@ -84089,8 +84089,8 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     static final String DFA19_specialS =
         "\2\uffff\1\0\1\1\1\2\1\3\37\uffff}>";
     static final String[] DFA19_transitionS = {
-            "\5\7\2\uffff\1\7\6\uffff\6\7\34\uffff\1\2\1\3\15\7\4\uffff"+
-            "\1\1\1\uffff\1\4\6\uffff\1\6\20\uffff\1\5",
+            "\5\7\2\uffff\1\7\6\uffff\6\7\34\uffff\1\2\1\3\15\7\4\uffff\1"+
+            "\1\1\uffff\1\4\6\uffff\1\6\20\uffff\1\5",
             "",
             "\1\uffff",
             "\1\uffff",
@@ -84617,65 +84617,65 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             "\1\1\13\uffff\1\4\1\5\1\2\1\17\1\6\1\7\34\uffff\1\25\1\26\1"+
             "\24\1\3\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\20\1\21\1\22\1"+
             "\23",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
             "\1\54\1\31\13\uffff\1\34\1\35\1\32\1\47\1\36\1\37\37\uffff"+
             "\1\33\1\40\1\41\1\42\1\43\1\44\1\45\1\46\1\50\1\51\1\52\1\53",
@@ -84683,65 +84683,65 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             "\1\33\1\40\1\41\1\42\1\43\1\44\1\45\1\46\1\50\1\51\1\52\1\53",
             "",
             "",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27",
-            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2"+
-            "\27\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
+            "\1\27\17\uffff\16\27\34\uffff\3\27\1\uffff\1\27\1\uffff\2\27"+
+            "\2\uffff\1\27\2\uffff\1\30\15\uffff\1\27\2\uffff\1\27\4\uffff"+
             "\1\27"
     };
 
@@ -85020,15 +85020,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleNameVar_in_entryRuleNameVar4819 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleNameVar4826 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__NameVar__Alternatives_in_ruleNameVar4852 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomOrVar_in_entryRuleAtomOrVar4879 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAtomOrVar4886 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AtomOrVar__Alternatives_in_ruleAtomOrVar4912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVar_in_entryRuleAtomVar4879 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAtomVar4886 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AtomVar__Alternatives_in_ruleAtomVar4912 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleMacro_in_entryRuleMacro4939 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleMacro4946 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Macro__Group__0_in_ruleMacro4972 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomOrKw_in_entryRuleAtomOrKw4999 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAtomOrKw5006 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AtomOrKw__Alternatives_in_ruleAtomOrKw5032 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomKw_in_entryRuleAtomKw4999 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAtomKw5006 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AtomKw__Alternatives_in_ruleAtomKw5032 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleKW_in_entryRuleKW5059 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleKW5066 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__KW__Alternatives_in_ruleKW5092 = new BitSet(new long[]{0x0000000000000002L});
@@ -85212,19 +85212,19 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_49_in_rule__CompOp__Alternatives9047 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_50_in_rule__CompOp__Alternatives9067 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_51_in_rule__CompOp__Alternatives9087 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomOrKw_in_rule__Name__Alternatives9121 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomKw_in_rule__Name__Alternatives9121 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleMacro_in_rule__Name__Alternatives9138 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomOrVar_in_rule__NameVar__Alternatives9170 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVar_in_rule__NameVar__Alternatives9170 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleMacro_in_rule__NameVar__Alternatives9187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomOrKw_in_rule__AtomOrVar__Alternatives9219 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_VARIABLE_in_rule__AtomOrVar__Alternatives9236 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomKw_in_rule__AtomVar__Alternatives9219 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_VARIABLE_in_rule__AtomVar__Alternatives9236 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_52_in_rule__Macro__Alternatives_09269 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_53_in_rule__Macro__Alternatives_09289 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ATOM_in_rule__Macro__Alternatives_19323 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleKW1_in_rule__Macro__Alternatives_19340 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_VARIABLE_in_rule__Macro__Alternatives_19357 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ATOM_in_rule__AtomOrKw__Alternatives9389 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleKW_in_rule__AtomOrKw__Alternatives9406 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ATOM_in_rule__AtomKw__Alternatives9389 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleKW_in_rule__AtomKw__Alternatives9406 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleKW1_in_rule__KW__Alternatives9438 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_54_in_rule__KW__Alternatives9456 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_20_in_rule__KW1__Alternatives9491 = new BitSet(new long[]{0x0000000000000002L});
@@ -86997,14 +86997,14 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleForm_in_rule__ConditionalFormBlock__ElseFormsAssignment_2_151607 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleEndifAttribute_in_rule__ConditionalFormBlock__EndAssignment_351638 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_61_in_rule__DefineAttribute__TagAssignment_151674 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomOrVar_in_rule__DefineAttribute__MacroNameAssignment_351713 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVar_in_rule__DefineAttribute__MacroNameAssignment_351713 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulePatternExpression_in_rule__DefineAttribute__ArgsAssignment_4_1_051744 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rulePatternExpression_in_rule__DefineAttribute__ArgsAssignment_4_1_1_151775 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleGuard_in_rule__DefineAttribute__ValueAssignment_5_151806 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_57_in_rule__UndefAttribute__TagAssignment_151842 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomOrVar_in_rule__UndefAttribute__RefAssignment_351885 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVar_in_rule__UndefAttribute__RefAssignment_351885 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__IfdefAttribute__TagAlternatives_1_0_in_rule__IfdefAttribute__TagAssignment_151920 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomOrVar_in_rule__IfdefAttribute__RefAssignment_351957 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVar_in_rule__IfdefAttribute__RefAssignment_351957 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_55_in_rule__EndifAttribute__TagAssignment_151997 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_63_in_rule__ElseAttribute__TagAssignment_152041 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_59_in_rule__IncludeAttribute__TagAssignment_152085 = new BitSet(new long[]{0x0000000000000002L});
@@ -87049,10 +87049,10 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_RULE_ATOM_in_rule__CustomAttribute__TagAssignment_153405 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpression_in_rule__CustomAttribute__ValueAssignment_3_053436 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpression_in_rule__CustomAttribute__ValueAssignment_3_1_153467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomOrKw_in_rule__Function__NameAssignment_053498 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomKw_in_rule__Function__NameAssignment_053498 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunctionClause_in_rule__Function__ClausesAssignment_153529 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunctionClause_in_rule__Function__ClausesAssignment_2_153560 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomOrKw_in_rule__FunctionClause__RefAssignment_053591 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomKw_in_rule__FunctionClause__RefAssignment_053591 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpression_in_rule__FunctionClause__ParamsAssignment_2_053622 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpression_in_rule__FunctionClause__ParamsAssignment_2_1_153653 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleGuard_in_rule__FunctionClause__GuardAssignment_4_153684 = new BitSet(new long[]{0x0000000000000002L});
@@ -87103,7 +87103,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleNameVar_in_rule__RecordField__RefAssignment_055159 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpression_in_rule__RecordField__ValueAssignment_1_155194 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleTopType_in_rule__RecordField__TypeAssignment_2_155225 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomOrKw_in_rule__LiteralExpressionNoNumber__ValueAssignment_0_155260 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomKw_in_rule__LiteralExpressionNoNumber__ValueAssignment_0_155260 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_VARIABLE_in_rule__LiteralExpressionNoNumber__ValueAssignment_1_155295 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_CHAR_in_rule__LiteralExpressionNoNumber__ValueAssignment_2_155326 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleMacro_in_rule__LiteralExpressionNoNumber__ValueAssignment_3_155361 = new BitSet(new long[]{0x0000000000000002L});

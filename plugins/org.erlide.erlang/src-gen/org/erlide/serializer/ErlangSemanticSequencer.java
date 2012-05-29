@@ -1740,7 +1740,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (tag='define' macroName=AtomOrVar (args+=PatternExpression args+=PatternExpression*)? value=Guard?)
+	 *     (tag='define' macroName=AtomVar (args+=PatternExpression args+=PatternExpression*)? value=Guard?)
 	 */
 	protected void sequence_DefineAttribute(EObject context, DefineAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1979,7 +1979,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (ref=AtomOrKw? (params+=Expression params+=Expression*)? guard=Guard? body+=LExpression body+=LExpression*)
+	 *     (ref=AtomKw? (params+=Expression params+=Expression*)? guard=Guard? body+=LExpression body+=LExpression*)
 	 */
 	protected void sequence_FunctionClause(EObject context, FunctionClause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1988,7 +1988,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (name=AtomOrKw clauses+=FunctionClause clauses+=FunctionClause*)
+	 *     (name=AtomKw clauses+=FunctionClause clauses+=FunctionClause*)
 	 */
 	protected void sequence_Function(EObject context, Function semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2024,7 +2024,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     ((tag='ifdef' | tag='ifndef') ref=[DefineAttribute|AtomOrVar])
+	 *     ((tag='ifdef' | tag='ifndef') ref=[DefineAttribute|AtomVar])
 	 */
 	protected void sequence_IfdefAttribute(EObject context, IfdefAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2180,7 +2180,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     value=[Form|AtomOrKw]
+	 *     value=[Form|AtomKw]
 	 */
 	protected void sequence_LiteralExpressionNoNumber(EObject context, Atom semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2556,7 +2556,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (tag='undef' ref=[DefineAttribute|AtomOrVar])
+	 *     (tag='undef' ref=[DefineAttribute|AtomVar])
 	 */
 	protected void sequence_UndefAttribute(EObject context, UndefAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -2568,7 +2568,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getUndefAttributeAccess().getTagUndefKeyword_1_0(), semanticObject.getTag());
-		feeder.accept(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeAtomOrVarParserRuleCall_3_0_1(), semanticObject.getRef());
+		feeder.accept(grammarAccess.getUndefAttributeAccess().getRefDefineAttributeAtomVarParserRuleCall_3_0_1(), semanticObject.getRef());
 		feeder.finish();
 	}
 }

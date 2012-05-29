@@ -1890,7 +1890,7 @@
       <elements xsi:type="xtext:RuleCall" rule="//@rules.82"/>
     </alternatives>
   </rules>
-  <rules xsi:type="xtext:ParserRule" name="AtomOrVar">
+  <rules xsi:type="xtext:ParserRule" name="AtomVar">
     <type metamodel="//@metamodelDeclarations.0">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
@@ -1915,7 +1915,7 @@
       </elements>
     </alternatives>
   </rules>
-  <rules xsi:type="xtext:ParserRule" name="AtomOrKw">
+  <rules xsi:type="xtext:ParserRule" name="AtomKw">
     <type metamodel="//@metamodelDeclarations.0">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
