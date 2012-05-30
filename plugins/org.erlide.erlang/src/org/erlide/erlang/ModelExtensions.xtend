@@ -48,12 +48,20 @@ class ModelExtensions {
 	}
 	
 	def static Collection<String> getIncludes(Module module) {
-		module.getAttributes(typeof(IncludeAttribute)).map[value].toList
+		module.getAttributes(typeof(IncludeAttribute)).map[importURI].toList
 	}
 	
 	def static Collection<String> getIncludeLibs(Module module) {
-		module.getAttributes(typeof(IncludeLibAttribute)).map[value].toList
+		module.getAttributes(typeof(IncludeLibAttribute)).map[importURI].toList
 	}
+	
+//	def static Collection<Module> getIncludes(Module module) {
+//		module.getAttributes(typeof(IncludeAttribute)).map[value].toList
+//	}
+//	
+//	def static Collection<Module> getIncludeLibs(Module module) {
+//		module.getAttributes(typeof(IncludeLibAttribute)).map[value].toList
+//	}
 	
     def static boolean exportsFunction(Module module, Function function) {
         module.exportedFunctions.contains(function)
@@ -140,7 +148,7 @@ class ModelExtensions {
  
  	def static int getSpecArity(SpecAttribute spec) {
  		if (spec.ref.arity!=null) {
- 			Integer::parseInt(spec.ref.arity)
+ 			0 //spec.ref.arity
 		} else {
 	 		spec.signatures.head.decl.args.size
  		}

@@ -75,11 +75,11 @@ AbstractIncludeAttribute:
 ;
 	
 IncludeAttribute:
-	'-' => tag=('include') '(' value=STRING ')' FULL_STOP
+	'-' => tag=('include') '(' importURI=STRING ')' FULL_STOP
 ;
 
 IncludeLibAttribute:
-	'-' => tag=('include_lib') '(' value=STRING ')' FULL_STOP
+	'-' => tag=('include_lib') '(' importURI=STRING ')' FULL_STOP
 ;
 
 FileAttribute:

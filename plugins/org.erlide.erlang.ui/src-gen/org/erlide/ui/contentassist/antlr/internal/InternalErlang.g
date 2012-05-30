@@ -6171,9 +6171,9 @@ rule__IncludeAttribute__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getIncludeAttributeAccess().getValueAssignment_3()); }
-(rule__IncludeAttribute__ValueAssignment_3)
-{ after(grammarAccess.getIncludeAttributeAccess().getValueAssignment_3()); }
+{ before(grammarAccess.getIncludeAttributeAccess().getImportURIAssignment_3()); }
+(rule__IncludeAttribute__ImportURIAssignment_3)
+{ after(grammarAccess.getIncludeAttributeAccess().getImportURIAssignment_3()); }
 )
 
 ;
@@ -6362,9 +6362,9 @@ rule__IncludeLibAttribute__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getIncludeLibAttributeAccess().getValueAssignment_3()); }
-(rule__IncludeLibAttribute__ValueAssignment_3)
-{ after(grammarAccess.getIncludeLibAttributeAccess().getValueAssignment_3()); }
+{ before(grammarAccess.getIncludeLibAttributeAccess().getImportURIAssignment_3()); }
+(rule__IncludeLibAttribute__ImportURIAssignment_3)
+{ after(grammarAccess.getIncludeLibAttributeAccess().getImportURIAssignment_3()); }
 )
 
 ;
@@ -26170,14 +26170,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__IncludeAttribute__ValueAssignment_3
+rule__IncludeAttribute__ImportURIAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getIncludeAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); }
-	RULE_STRING{ after(grammarAccess.getIncludeAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); }
+{ before(grammarAccess.getIncludeAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); }
+	RULE_STRING{ after(grammarAccess.getIncludeAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); }
 )
 
 ;
@@ -26208,14 +26208,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__IncludeLibAttribute__ValueAssignment_3
+rule__IncludeLibAttribute__ImportURIAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getIncludeLibAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); }
-	RULE_STRING{ after(grammarAccess.getIncludeLibAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); }
+{ before(grammarAccess.getIncludeLibAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); }
+	RULE_STRING{ after(grammarAccess.getIncludeLibAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); }
 )
 
 ;

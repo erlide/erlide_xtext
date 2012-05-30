@@ -2447,25 +2447,25 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIncludeAttribute"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:894:1: ruleIncludeAttribute returns [EObject current=null] : (otherlv_0= '-' ( ( ( 'include' ) )=> (lv_tag_1_0= 'include' ) ) otherlv_2= '(' ( (lv_value_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:894:1: ruleIncludeAttribute returns [EObject current=null] : (otherlv_0= '-' ( ( ( 'include' ) )=> (lv_tag_1_0= 'include' ) ) otherlv_2= '(' ( (lv_importURI_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP ) ;
     public final EObject ruleIncludeAttribute() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_tag_1_0=null;
         Token otherlv_2=null;
-        Token lv_value_3_0=null;
+        Token lv_importURI_3_0=null;
         Token otherlv_4=null;
         Token this_FULL_STOP_5=null;
 
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:897:28: ( (otherlv_0= '-' ( ( ( 'include' ) )=> (lv_tag_1_0= 'include' ) ) otherlv_2= '(' ( (lv_value_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:898:1: (otherlv_0= '-' ( ( ( 'include' ) )=> (lv_tag_1_0= 'include' ) ) otherlv_2= '(' ( (lv_value_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:897:28: ( (otherlv_0= '-' ( ( ( 'include' ) )=> (lv_tag_1_0= 'include' ) ) otherlv_2= '(' ( (lv_importURI_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:898:1: (otherlv_0= '-' ( ( ( 'include' ) )=> (lv_tag_1_0= 'include' ) ) otherlv_2= '(' ( (lv_importURI_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:898:1: (otherlv_0= '-' ( ( ( 'include' ) )=> (lv_tag_1_0= 'include' ) ) otherlv_2= '(' ( (lv_value_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:898:3: otherlv_0= '-' ( ( ( 'include' ) )=> (lv_tag_1_0= 'include' ) ) otherlv_2= '(' ( (lv_value_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:898:1: (otherlv_0= '-' ( ( ( 'include' ) )=> (lv_tag_1_0= 'include' ) ) otherlv_2= '(' ( (lv_importURI_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:898:3: otherlv_0= '-' ( ( ( 'include' ) )=> (lv_tag_1_0= 'include' ) ) otherlv_2= '(' ( (lv_importURI_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP
             {
             otherlv_0=(Token)match(input,18,FOLLOW_18_in_ruleIncludeAttribute2092); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -2505,16 +2505,16 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                   	newLeafNode(otherlv_2, grammarAccess.getIncludeAttributeAccess().getLeftParenthesisKeyword_2());
                   
             }
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:927:1: ( (lv_value_3_0= RULE_STRING ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:928:1: (lv_value_3_0= RULE_STRING )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:927:1: ( (lv_importURI_3_0= RULE_STRING ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:928:1: (lv_importURI_3_0= RULE_STRING )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:928:1: (lv_value_3_0= RULE_STRING )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:929:3: lv_value_3_0= RULE_STRING
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:928:1: (lv_importURI_3_0= RULE_STRING )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:929:3: lv_importURI_3_0= RULE_STRING
             {
-            lv_value_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleIncludeAttribute2167); if (state.failed) return current;
+            lv_importURI_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleIncludeAttribute2167); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_value_3_0, grammarAccess.getIncludeAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); 
+              			newLeafNode(lv_importURI_3_0, grammarAccess.getIncludeAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); 
               		
             }
             if ( state.backtracking==0 ) {
@@ -2524,8 +2524,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
               	        }
                      		setWithLastConsumed(
                      			current, 
-                     			"value",
-                      		lv_value_3_0, 
+                     			"importURI",
+                      		lv_importURI_3_0, 
                       		"STRING");
               	    
             }
@@ -2610,25 +2610,25 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIncludeLibAttribute"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:970:1: ruleIncludeLibAttribute returns [EObject current=null] : (otherlv_0= '-' ( ( ( 'include_lib' ) )=> (lv_tag_1_0= 'include_lib' ) ) otherlv_2= '(' ( (lv_value_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:970:1: ruleIncludeLibAttribute returns [EObject current=null] : (otherlv_0= '-' ( ( ( 'include_lib' ) )=> (lv_tag_1_0= 'include_lib' ) ) otherlv_2= '(' ( (lv_importURI_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP ) ;
     public final EObject ruleIncludeLibAttribute() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_tag_1_0=null;
         Token otherlv_2=null;
-        Token lv_value_3_0=null;
+        Token lv_importURI_3_0=null;
         Token otherlv_4=null;
         Token this_FULL_STOP_5=null;
 
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:973:28: ( (otherlv_0= '-' ( ( ( 'include_lib' ) )=> (lv_tag_1_0= 'include_lib' ) ) otherlv_2= '(' ( (lv_value_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:974:1: (otherlv_0= '-' ( ( ( 'include_lib' ) )=> (lv_tag_1_0= 'include_lib' ) ) otherlv_2= '(' ( (lv_value_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:973:28: ( (otherlv_0= '-' ( ( ( 'include_lib' ) )=> (lv_tag_1_0= 'include_lib' ) ) otherlv_2= '(' ( (lv_importURI_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:974:1: (otherlv_0= '-' ( ( ( 'include_lib' ) )=> (lv_tag_1_0= 'include_lib' ) ) otherlv_2= '(' ( (lv_importURI_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:974:1: (otherlv_0= '-' ( ( ( 'include_lib' ) )=> (lv_tag_1_0= 'include_lib' ) ) otherlv_2= '(' ( (lv_value_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:974:3: otherlv_0= '-' ( ( ( 'include_lib' ) )=> (lv_tag_1_0= 'include_lib' ) ) otherlv_2= '(' ( (lv_value_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:974:1: (otherlv_0= '-' ( ( ( 'include_lib' ) )=> (lv_tag_1_0= 'include_lib' ) ) otherlv_2= '(' ( (lv_importURI_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:974:3: otherlv_0= '-' ( ( ( 'include_lib' ) )=> (lv_tag_1_0= 'include_lib' ) ) otherlv_2= '(' ( (lv_importURI_3_0= RULE_STRING ) ) otherlv_4= ')' this_FULL_STOP_5= RULE_FULL_STOP
             {
             otherlv_0=(Token)match(input,18,FOLLOW_18_in_ruleIncludeLibAttribute2277); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -2668,16 +2668,16 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                   	newLeafNode(otherlv_2, grammarAccess.getIncludeLibAttributeAccess().getLeftParenthesisKeyword_2());
                   
             }
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:1003:1: ( (lv_value_3_0= RULE_STRING ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:1004:1: (lv_value_3_0= RULE_STRING )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:1003:1: ( (lv_importURI_3_0= RULE_STRING ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:1004:1: (lv_importURI_3_0= RULE_STRING )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:1004:1: (lv_value_3_0= RULE_STRING )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:1005:3: lv_value_3_0= RULE_STRING
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:1004:1: (lv_importURI_3_0= RULE_STRING )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:1005:3: lv_importURI_3_0= RULE_STRING
             {
-            lv_value_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleIncludeLibAttribute2352); if (state.failed) return current;
+            lv_importURI_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleIncludeLibAttribute2352); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_value_3_0, grammarAccess.getIncludeLibAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); 
+              			newLeafNode(lv_importURI_3_0, grammarAccess.getIncludeLibAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); 
               		
             }
             if ( state.backtracking==0 ) {
@@ -2687,8 +2687,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
               	        }
                      		setWithLastConsumed(
                      			current, 
-                     			"value",
-                      		lv_value_3_0, 
+                     			"importURI",
+                      		lv_importURI_3_0, 
                       		"STRING");
               	    
             }

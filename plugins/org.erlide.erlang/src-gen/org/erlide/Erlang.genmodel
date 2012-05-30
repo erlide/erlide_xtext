@@ -42,7 +42,7 @@
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//AbstractIncludeAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//AbstractIncludeAttribute/tag"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//AbstractIncludeAttribute/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//AbstractIncludeAttribute/importURI"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//IncludeAttribute"/>
     <genClasses ecoreClass="Erlang.ecore#//IncludeLibAttribute"/>

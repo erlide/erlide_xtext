@@ -2017,38 +2017,38 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (tag='include' value=STRING)
+	 *     (tag='include' importURI=STRING)
 	 */
 	protected void sequence_IncludeAttribute(EObject context, IncludeAttribute semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__TAG) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__TAG));
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__VALUE));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getIncludeAttributeAccess().getTagIncludeKeyword_1_0(), semanticObject.getTag());
-		feeder.accept(grammarAccess.getIncludeAttributeAccess().getValueSTRINGTerminalRuleCall_3_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getIncludeAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0(), semanticObject.getImportURI());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (tag='include_lib' value=STRING)
+	 *     (tag='include_lib' importURI=STRING)
 	 */
 	protected void sequence_IncludeLibAttribute(EObject context, IncludeLibAttribute semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__TAG) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__TAG));
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__VALUE));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getIncludeLibAttributeAccess().getTagInclude_libKeyword_1_0(), semanticObject.getTag());
-		feeder.accept(grammarAccess.getIncludeLibAttributeAccess().getValueSTRINGTerminalRuleCall_3_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getIncludeLibAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0(), semanticObject.getImportURI());
 		feeder.finish();
 	}
 	

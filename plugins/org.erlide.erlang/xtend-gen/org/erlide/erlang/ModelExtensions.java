@@ -105,8 +105,8 @@ public class ModelExtensions {
     Collection<IncludeAttribute> _attributes = ModelExtensions.<IncludeAttribute>getAttributes(module, IncludeAttribute.class);
     final Function1<IncludeAttribute,String> _function = new Function1<IncludeAttribute,String>() {
         public String apply(final IncludeAttribute it) {
-          String _value = it.getValue();
-          return _value;
+          String _importURI = it.getImportURI();
+          return _importURI;
         }
       };
     Iterable<String> _map = IterableExtensions.<IncludeAttribute, String>map(_attributes, _function);
@@ -118,8 +118,8 @@ public class ModelExtensions {
     Collection<IncludeLibAttribute> _attributes = ModelExtensions.<IncludeLibAttribute>getAttributes(module, IncludeLibAttribute.class);
     final Function1<IncludeLibAttribute,String> _function = new Function1<IncludeLibAttribute,String>() {
         public String apply(final IncludeLibAttribute it) {
-          String _value = it.getValue();
-          return _value;
+          String _importURI = it.getImportURI();
+          return _importURI;
         }
       };
     Iterable<String> _map = IterableExtensions.<IncludeLibAttribute, String>map(_attributes, _function);
@@ -362,10 +362,7 @@ public class ModelExtensions {
     String _arity = _ref.getArity();
     boolean _notEquals = (!Objects.equal(_arity, null));
     if (_notEquals) {
-      SpecFun _ref_1 = spec.getRef();
-      String _arity_1 = _ref_1.getArity();
-      int _parseInt = Integer.parseInt(_arity_1);
-      _xifexpression = _parseInt;
+      _xifexpression = 0;
     } else {
       EList<TypeSig> _signatures = spec.getSignatures();
       TypeSig _head = IterableExtensions.<TypeSig>head(_signatures);

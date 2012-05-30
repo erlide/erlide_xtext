@@ -504,16 +504,16 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTagAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final Keyword cTagIncludeKeyword_1_0 = (Keyword)cTagAssignment_1.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cValueSTRINGTerminalRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
+		private final Assignment cImportURIAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cImportURISTRINGTerminalRuleCall_3_0 = (RuleCall)cImportURIAssignment_3.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final RuleCall cFULL_STOPTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
 		//IncludeAttribute:
-		//	"-" => tag="include" "(" value=STRING ")" FULL_STOP;
+		//	"-" => tag="include" "(" importURI=STRING ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
-		//"-" => tag="include" "(" value=STRING ")" FULL_STOP
+		//"-" => tag="include" "(" importURI=STRING ")" FULL_STOP
 		public Group getGroup() { return cGroup; }
 
 		//"-"
@@ -528,11 +528,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 
-		//value=STRING
-		public Assignment getValueAssignment_3() { return cValueAssignment_3; }
+		//importURI=STRING
+		public Assignment getImportURIAssignment_3() { return cImportURIAssignment_3; }
 
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_3_0() { return cValueSTRINGTerminalRuleCall_3_0; }
+		public RuleCall getImportURISTRINGTerminalRuleCall_3_0() { return cImportURISTRINGTerminalRuleCall_3_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
@@ -548,16 +548,16 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTagAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final Keyword cTagInclude_libKeyword_1_0 = (Keyword)cTagAssignment_1.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cValueSTRINGTerminalRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
+		private final Assignment cImportURIAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cImportURISTRINGTerminalRuleCall_3_0 = (RuleCall)cImportURIAssignment_3.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final RuleCall cFULL_STOPTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
 		//IncludeLibAttribute:
-		//	"-" => tag="include_lib" "(" value=STRING ")" FULL_STOP;
+		//	"-" => tag="include_lib" "(" importURI=STRING ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
-		//"-" => tag="include_lib" "(" value=STRING ")" FULL_STOP
+		//"-" => tag="include_lib" "(" importURI=STRING ")" FULL_STOP
 		public Group getGroup() { return cGroup; }
 
 		//"-"
@@ -572,11 +572,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 
-		//value=STRING
-		public Assignment getValueAssignment_3() { return cValueAssignment_3; }
+		//importURI=STRING
+		public Assignment getImportURIAssignment_3() { return cImportURIAssignment_3; }
 
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_3_0() { return cValueSTRINGTerminalRuleCall_3_0; }
+		public RuleCall getImportURISTRINGTerminalRuleCall_3_0() { return cImportURISTRINGTerminalRuleCall_3_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
@@ -6167,7 +6167,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IncludeAttribute:
-	//	"-" => tag="include" "(" value=STRING ")" FULL_STOP;
+	//	"-" => tag="include" "(" importURI=STRING ")" FULL_STOP;
 	public IncludeAttributeElements getIncludeAttributeAccess() {
 		return (pIncludeAttribute != null) ? pIncludeAttribute : (pIncludeAttribute = new IncludeAttributeElements());
 	}
@@ -6177,7 +6177,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IncludeLibAttribute:
-	//	"-" => tag="include_lib" "(" value=STRING ")" FULL_STOP;
+	//	"-" => tag="include_lib" "(" importURI=STRING ")" FULL_STOP;
 	public IncludeLibAttributeElements getIncludeLibAttributeAccess() {
 		return (pIncludeLibAttribute != null) ? pIncludeLibAttribute : (pIncludeLibAttribute = new IncludeLibAttributeElements());
 	}

@@ -926,9 +926,9 @@ ruleIncludeAttribute returns [EObject current=null]
     }
 (
 (
-		lv_value_3_0=RULE_STRING
+		lv_importURI_3_0=RULE_STRING
 		{
-			newLeafNode(lv_value_3_0, grammarAccess.getIncludeAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); 
+			newLeafNode(lv_importURI_3_0, grammarAccess.getIncludeAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -936,8 +936,8 @@ ruleIncludeAttribute returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"value",
-        		lv_value_3_0, 
+       			"importURI",
+        		lv_importURI_3_0, 
         		"STRING");
 	    }
 
@@ -1002,9 +1002,9 @@ ruleIncludeLibAttribute returns [EObject current=null]
     }
 (
 (
-		lv_value_3_0=RULE_STRING
+		lv_importURI_3_0=RULE_STRING
 		{
-			newLeafNode(lv_value_3_0, grammarAccess.getIncludeLibAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); 
+			newLeafNode(lv_importURI_3_0, grammarAccess.getIncludeLibAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -1012,8 +1012,8 @@ ruleIncludeLibAttribute returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"value",
-        		lv_value_3_0, 
+       			"importURI",
+        		lv_importURI_3_0, 
         		"STRING");
 	    }
 

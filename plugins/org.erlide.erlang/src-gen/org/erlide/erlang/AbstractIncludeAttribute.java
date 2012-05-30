@@ -12,7 +12,7 @@ package org.erlide.erlang;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.erlide.erlang.AbstractIncludeAttribute#getTag <em>Tag</em>}</li>
- *   <li>{@link org.erlide.erlang.AbstractIncludeAttribute#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.AbstractIncludeAttribute#getImportURI <em>Import URI</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,29 +49,29 @@ public interface AbstractIncludeAttribute extends Attribute
   void setTag(String value);
 
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Import URI</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value</em>' attribute isn't clear,
+   * If the meaning of the '<em>Import URI</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see org.erlide.erlang.ErlangPackage#getAbstractIncludeAttribute_Value()
+   * @return the value of the '<em>Import URI</em>' attribute.
+   * @see #setImportURI(String)
+   * @see org.erlide.erlang.ErlangPackage#getAbstractIncludeAttribute_ImportURI()
    * @model
    * @generated
    */
-  String getValue();
+  String getImportURI();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.AbstractIncludeAttribute#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.AbstractIncludeAttribute#getImportURI <em>Import URI</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
+   * @param value the new value of the '<em>Import URI</em>' attribute.
+   * @see #getImportURI()
    * @generated
    */
-  void setValue(String value);
+  void setImportURI(String value);
 
 } // AbstractIncludeAttribute

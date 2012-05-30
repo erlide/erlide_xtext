@@ -43,7 +43,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractIncludeAttribute" eSuperTypes="#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IncludeAttribute" eSuperTypes="#//AbstractIncludeAttribute"/>
   <eClassifiers xsi:type="ecore:EClass" name="IncludeLibAttribute" eSuperTypes="#//AbstractIncludeAttribute"/>

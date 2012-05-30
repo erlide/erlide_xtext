@@ -410,13 +410,13 @@ public interface ErlangPackage extends EPackage
   int ABSTRACT_INCLUDE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Import URI</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ABSTRACT_INCLUDE_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 1;
+  int ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Abstract Include Attribute</em>' class.
@@ -447,13 +447,13 @@ public interface ErlangPackage extends EPackage
   int INCLUDE_ATTRIBUTE__TAG = ABSTRACT_INCLUDE_ATTRIBUTE__TAG;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Import URI</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INCLUDE_ATTRIBUTE__VALUE = ABSTRACT_INCLUDE_ATTRIBUTE__VALUE;
+  int INCLUDE_ATTRIBUTE__IMPORT_URI = ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI;
 
   /**
    * The number of structural features of the '<em>Include Attribute</em>' class.
@@ -484,13 +484,13 @@ public interface ErlangPackage extends EPackage
   int INCLUDE_LIB_ATTRIBUTE__TAG = ABSTRACT_INCLUDE_ATTRIBUTE__TAG;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Import URI</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INCLUDE_LIB_ATTRIBUTE__VALUE = ABSTRACT_INCLUDE_ATTRIBUTE__VALUE;
+  int INCLUDE_LIB_ATTRIBUTE__IMPORT_URI = ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI;
 
   /**
    * The number of structural features of the '<em>Include Lib Attribute</em>' class.
@@ -4399,15 +4399,15 @@ public interface ErlangPackage extends EPackage
   EAttribute getAbstractIncludeAttribute_Tag();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.AbstractIncludeAttribute#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.erlide.erlang.AbstractIncludeAttribute#getImportURI <em>Import URI</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.erlide.erlang.AbstractIncludeAttribute#getValue()
+   * @return the meta object for the attribute '<em>Import URI</em>'.
+   * @see org.erlide.erlang.AbstractIncludeAttribute#getImportURI()
    * @see #getAbstractIncludeAttribute()
    * @generated
    */
-  EAttribute getAbstractIncludeAttribute_Value();
+  EAttribute getAbstractIncludeAttribute_ImportURI();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.IncludeAttribute <em>Include Attribute</em>}'.
@@ -7171,12 +7171,12 @@ public interface ErlangPackage extends EPackage
     EAttribute ABSTRACT_INCLUDE_ATTRIBUTE__TAG = eINSTANCE.getAbstractIncludeAttribute_Tag();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Import URI</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ABSTRACT_INCLUDE_ATTRIBUTE__VALUE = eINSTANCE.getAbstractIncludeAttribute_Value();
+    EAttribute ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI = eINSTANCE.getAbstractIncludeAttribute_ImportURI();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.IncludeAttributeImpl <em>Include Attribute</em>}' class.

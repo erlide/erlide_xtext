@@ -1112,7 +1112,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAbstractIncludeAttribute_Value()
+  public EAttribute getAbstractIncludeAttribute_ImportURI()
   {
     return (EAttribute)abstractIncludeAttributeEClass.getEStructuralFeatures().get(1);
   }
@@ -3525,7 +3525,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     abstractIncludeAttributeEClass = createEClass(ABSTRACT_INCLUDE_ATTRIBUTE);
     createEAttribute(abstractIncludeAttributeEClass, ABSTRACT_INCLUDE_ATTRIBUTE__TAG);
-    createEAttribute(abstractIncludeAttributeEClass, ABSTRACT_INCLUDE_ATTRIBUTE__VALUE);
+    createEAttribute(abstractIncludeAttributeEClass, ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI);
 
     includeAttributeEClass = createEClass(INCLUDE_ATTRIBUTE);
 
@@ -3983,7 +3983,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     initEClass(abstractIncludeAttributeEClass, AbstractIncludeAttribute.class, "AbstractIncludeAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAbstractIncludeAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, AbstractIncludeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAbstractIncludeAttribute_Value(), ecorePackage.getEString(), "value", null, 0, 1, AbstractIncludeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAbstractIncludeAttribute_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, AbstractIncludeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(includeAttributeEClass, IncludeAttribute.class, "IncludeAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

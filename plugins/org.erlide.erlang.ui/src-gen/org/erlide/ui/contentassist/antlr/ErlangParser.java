@@ -345,9 +345,9 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEndifAttributeAccess().getTagAssignment_1(), "rule__EndifAttribute__TagAssignment_1");
 					put(grammarAccess.getElseAttributeAccess().getTagAssignment_1(), "rule__ElseAttribute__TagAssignment_1");
 					put(grammarAccess.getIncludeAttributeAccess().getTagAssignment_1(), "rule__IncludeAttribute__TagAssignment_1");
-					put(grammarAccess.getIncludeAttributeAccess().getValueAssignment_3(), "rule__IncludeAttribute__ValueAssignment_3");
+					put(grammarAccess.getIncludeAttributeAccess().getImportURIAssignment_3(), "rule__IncludeAttribute__ImportURIAssignment_3");
 					put(grammarAccess.getIncludeLibAttributeAccess().getTagAssignment_1(), "rule__IncludeLibAttribute__TagAssignment_1");
-					put(grammarAccess.getIncludeLibAttributeAccess().getValueAssignment_3(), "rule__IncludeLibAttribute__ValueAssignment_3");
+					put(grammarAccess.getIncludeLibAttributeAccess().getImportURIAssignment_3(), "rule__IncludeLibAttribute__ImportURIAssignment_3");
 					put(grammarAccess.getFileAttributeAccess().getTagAssignment_1(), "rule__FileAttribute__TagAssignment_1");
 					put(grammarAccess.getFileAttributeAccess().getFileAssignment_3(), "rule__FileAttribute__FileAssignment_3");
 					put(grammarAccess.getFileAttributeAccess().getLineAssignment_5(), "rule__FileAttribute__LineAssignment_5");

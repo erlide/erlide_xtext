@@ -19882,26 +19882,26 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IncludeAttribute__Group__3__Impl"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6168:1: rule__IncludeAttribute__Group__3__Impl : ( ( rule__IncludeAttribute__ValueAssignment_3 ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6168:1: rule__IncludeAttribute__Group__3__Impl : ( ( rule__IncludeAttribute__ImportURIAssignment_3 ) ) ;
     public final void rule__IncludeAttribute__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6172:1: ( ( ( rule__IncludeAttribute__ValueAssignment_3 ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6173:1: ( ( rule__IncludeAttribute__ValueAssignment_3 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6172:1: ( ( ( rule__IncludeAttribute__ImportURIAssignment_3 ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6173:1: ( ( rule__IncludeAttribute__ImportURIAssignment_3 ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6173:1: ( ( rule__IncludeAttribute__ValueAssignment_3 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6174:1: ( rule__IncludeAttribute__ValueAssignment_3 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6173:1: ( ( rule__IncludeAttribute__ImportURIAssignment_3 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6174:1: ( rule__IncludeAttribute__ImportURIAssignment_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getIncludeAttributeAccess().getValueAssignment_3()); 
+               before(grammarAccess.getIncludeAttributeAccess().getImportURIAssignment_3()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6175:1: ( rule__IncludeAttribute__ValueAssignment_3 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6175:2: rule__IncludeAttribute__ValueAssignment_3
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6175:1: ( rule__IncludeAttribute__ImportURIAssignment_3 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6175:2: rule__IncludeAttribute__ImportURIAssignment_3
             {
-            pushFollow(FOLLOW_rule__IncludeAttribute__ValueAssignment_3_in_rule__IncludeAttribute__Group__3__Impl13262);
-            rule__IncludeAttribute__ValueAssignment_3();
+            pushFollow(FOLLOW_rule__IncludeAttribute__ImportURIAssignment_3_in_rule__IncludeAttribute__Group__3__Impl13262);
+            rule__IncludeAttribute__ImportURIAssignment_3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -19909,7 +19909,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getIncludeAttributeAccess().getValueAssignment_3()); 
+               after(grammarAccess.getIncludeAttributeAccess().getImportURIAssignment_3()); 
             }
 
             }
@@ -20371,26 +20371,26 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IncludeLibAttribute__Group__3__Impl"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6359:1: rule__IncludeLibAttribute__Group__3__Impl : ( ( rule__IncludeLibAttribute__ValueAssignment_3 ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6359:1: rule__IncludeLibAttribute__Group__3__Impl : ( ( rule__IncludeLibAttribute__ImportURIAssignment_3 ) ) ;
     public final void rule__IncludeLibAttribute__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6363:1: ( ( ( rule__IncludeLibAttribute__ValueAssignment_3 ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6364:1: ( ( rule__IncludeLibAttribute__ValueAssignment_3 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6363:1: ( ( ( rule__IncludeLibAttribute__ImportURIAssignment_3 ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6364:1: ( ( rule__IncludeLibAttribute__ImportURIAssignment_3 ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6364:1: ( ( rule__IncludeLibAttribute__ValueAssignment_3 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6365:1: ( rule__IncludeLibAttribute__ValueAssignment_3 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6364:1: ( ( rule__IncludeLibAttribute__ImportURIAssignment_3 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6365:1: ( rule__IncludeLibAttribute__ImportURIAssignment_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getIncludeLibAttributeAccess().getValueAssignment_3()); 
+               before(grammarAccess.getIncludeLibAttributeAccess().getImportURIAssignment_3()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6366:1: ( rule__IncludeLibAttribute__ValueAssignment_3 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6366:2: rule__IncludeLibAttribute__ValueAssignment_3
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6366:1: ( rule__IncludeLibAttribute__ImportURIAssignment_3 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:6366:2: rule__IncludeLibAttribute__ImportURIAssignment_3
             {
-            pushFollow(FOLLOW_rule__IncludeLibAttribute__ValueAssignment_3_in_rule__IncludeLibAttribute__Group__3__Impl13636);
-            rule__IncludeLibAttribute__ValueAssignment_3();
+            pushFollow(FOLLOW_rule__IncludeLibAttribute__ImportURIAssignment_3_in_rule__IncludeLibAttribute__Group__3__Impl13636);
+            rule__IncludeLibAttribute__ImportURIAssignment_3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -20398,7 +20398,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getIncludeLibAttributeAccess().getValueAssignment_3()); 
+               after(grammarAccess.getIncludeLibAttributeAccess().getImportURIAssignment_3()); 
             }
 
             }
@@ -74273,9 +74273,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__IncludeAttribute__TagAssignment_1"
 
 
-    // $ANTLR start "rule__IncludeAttribute__ValueAssignment_3"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26173:1: rule__IncludeAttribute__ValueAssignment_3 : ( RULE_STRING ) ;
-    public final void rule__IncludeAttribute__ValueAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__IncludeAttribute__ImportURIAssignment_3"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26173:1: rule__IncludeAttribute__ImportURIAssignment_3 : ( RULE_STRING ) ;
+    public final void rule__IncludeAttribute__ImportURIAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -74287,11 +74287,11 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26179:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getIncludeAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); 
+               before(grammarAccess.getIncludeAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__IncludeAttribute__ValueAssignment_352596); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__IncludeAttribute__ImportURIAssignment_352596); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getIncludeAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); 
+               after(grammarAccess.getIncludeAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); 
             }
 
             }
@@ -74311,7 +74311,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__IncludeAttribute__ValueAssignment_3"
+    // $ANTLR end "rule__IncludeAttribute__ImportURIAssignment_3"
 
 
     // $ANTLR start "rule__IncludeLibAttribute__TagAssignment_1"
@@ -74367,9 +74367,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__IncludeLibAttribute__TagAssignment_1"
 
 
-    // $ANTLR start "rule__IncludeLibAttribute__ValueAssignment_3"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26211:1: rule__IncludeLibAttribute__ValueAssignment_3 : ( RULE_STRING ) ;
-    public final void rule__IncludeLibAttribute__ValueAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__IncludeLibAttribute__ImportURIAssignment_3"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26211:1: rule__IncludeLibAttribute__ImportURIAssignment_3 : ( RULE_STRING ) ;
+    public final void rule__IncludeLibAttribute__ImportURIAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -74381,11 +74381,11 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26217:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getIncludeLibAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); 
+               before(grammarAccess.getIncludeLibAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__IncludeLibAttribute__ValueAssignment_352671); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__IncludeLibAttribute__ImportURIAssignment_352671); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getIncludeLibAttributeAccess().getValueSTRINGTerminalRuleCall_3_0()); 
+               after(grammarAccess.getIncludeLibAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0()); 
             }
 
             }
@@ -74405,7 +74405,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__IncludeLibAttribute__ValueAssignment_3"
+    // $ANTLR end "rule__IncludeLibAttribute__ImportURIAssignment_3"
 
 
     // $ANTLR start "rule__FileAttribute__TagAssignment_1"
@@ -86096,7 +86096,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_68_in_rule__IncludeAttribute__Group__2__Impl13201 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__IncludeAttribute__Group__3__Impl_in_rule__IncludeAttribute__Group__313232 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
     public static final BitSet FOLLOW_rule__IncludeAttribute__Group__4_in_rule__IncludeAttribute__Group__313235 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IncludeAttribute__ValueAssignment_3_in_rule__IncludeAttribute__Group__3__Impl13262 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IncludeAttribute__ImportURIAssignment_3_in_rule__IncludeAttribute__Group__3__Impl13262 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__IncludeAttribute__Group__4__Impl_in_rule__IncludeAttribute__Group__413292 = new BitSet(new long[]{0x0000000000000400L});
     public static final BitSet FOLLOW_rule__IncludeAttribute__Group__5_in_rule__IncludeAttribute__Group__413295 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_69_in_rule__IncludeAttribute__Group__4__Impl13323 = new BitSet(new long[]{0x0000000000000002L});
@@ -86113,7 +86113,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_68_in_rule__IncludeLibAttribute__Group__2__Impl13575 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__IncludeLibAttribute__Group__3__Impl_in_rule__IncludeLibAttribute__Group__313606 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
     public static final BitSet FOLLOW_rule__IncludeLibAttribute__Group__4_in_rule__IncludeLibAttribute__Group__313609 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IncludeLibAttribute__ValueAssignment_3_in_rule__IncludeLibAttribute__Group__3__Impl13636 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IncludeLibAttribute__ImportURIAssignment_3_in_rule__IncludeLibAttribute__Group__3__Impl13636 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__IncludeLibAttribute__Group__4__Impl_in_rule__IncludeLibAttribute__Group__413666 = new BitSet(new long[]{0x0000000000000400L});
     public static final BitSet FOLLOW_rule__IncludeLibAttribute__Group__5_in_rule__IncludeLibAttribute__Group__413669 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_69_in_rule__IncludeLibAttribute__Group__4__Impl13697 = new BitSet(new long[]{0x0000000000000002L});
@@ -87728,9 +87728,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_55_in_rule__EndifAttribute__TagAssignment_152469 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_63_in_rule__ElseAttribute__TagAssignment_152513 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_59_in_rule__IncludeAttribute__TagAssignment_152557 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__IncludeAttribute__ValueAssignment_352596 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__IncludeAttribute__ImportURIAssignment_352596 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_60_in_rule__IncludeLibAttribute__TagAssignment_152632 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__IncludeLibAttribute__ValueAssignment_352671 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__IncludeLibAttribute__ImportURIAssignment_352671 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_62_in_rule__FileAttribute__TagAssignment_152707 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__FileAttribute__FileAssignment_352746 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleINTEGER_in_rule__FileAttribute__LineAssignment_552777 = new BitSet(new long[]{0x0000000000000002L});
