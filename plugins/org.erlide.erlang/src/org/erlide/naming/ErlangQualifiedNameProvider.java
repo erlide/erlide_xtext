@@ -1,4 +1,4 @@
-package org.erlide.scoping;
+package org.erlide.naming;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -11,6 +11,7 @@ import org.erlide.erlang.Expression;
 import org.erlide.erlang.Form;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.FunctionClause;
+import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.ModuleAttribute;
 import org.erlide.erlang.RecordAttribute;
@@ -31,12 +32,7 @@ public class ErlangQualifiedNameProvider extends
 
 			@Override
 			public String caseModule(final Module object) {
-				final Form attribute = object.getForms().get(0);
-				if (attribute instanceof ModuleAttribute) {
-					final String key = ((ModuleAttribute) attribute).getName();
-					return key;
-				}
-				return null;
+				return ModelExtensions.getName(object);
 			}
 
 			@Override
@@ -81,6 +77,8 @@ public class ErlangQualifiedNameProvider extends
 				sb.append(":");
 				sb.append("#");
 				sb.append(object.getName());
+				sb.append("_");
+				sb.append(getIndexInParent(object));
 				return sb.toString();
 			}
 
@@ -99,6 +97,11 @@ public class ErlangQualifiedNameProvider extends
 					object = object.eContainer();
 				}
 				return object;
+			}
+
+			private int getIndexInParent(EObject object) {
+				EObject parent = object.eContainer();
+				return parent.eContents().indexOf(object);
 			}
 
 		}.doSwitch(obj);

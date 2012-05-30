@@ -1,4 +1,4 @@
-package org.erlide.scoping;
+package org.erlide.naming;
 
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;

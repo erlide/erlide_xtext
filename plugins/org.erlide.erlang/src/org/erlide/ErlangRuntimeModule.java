@@ -8,10 +8,10 @@ import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.erlide.common.CommonModule;
 import org.erlide.conversion.ErlangValueConverterService;
+import org.erlide.naming.ErlangQualifiedNameConverter;
+import org.erlide.naming.ErlangQualifiedNameProvider;
 import org.erlide.project.ErlideProjectModule;
 import org.erlide.scoping.ErlangLinkingService;
-import org.erlide.scoping.ErlangQualifiedNameConverter;
-import org.erlide.scoping.ErlangQualifiedNameProvider;
 
 import com.google.inject.Binder;
 
