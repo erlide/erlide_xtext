@@ -1,19 +1,14 @@
 package org.erlide.naming;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.erlide.erlang.ConditionalFormBlock;
 import org.erlide.erlang.DefineAttribute;
-import org.erlide.erlang.Expression;
-import org.erlide.erlang.Form;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.FunctionClause;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
-import org.erlide.erlang.ModuleAttribute;
 import org.erlide.erlang.RecordAttribute;
 import org.erlide.erlang.RecordFieldDef;
 import org.erlide.erlang.util.ErlangSwitch;
@@ -32,13 +27,11 @@ public class ErlangQualifiedNameProvider extends
 
 			@Override
 			public String caseModule(final Module object) {
-				return ModelExtensions.getName(object);
-			}
-
-			@Override
-			public String caseConditionalFormBlock(
-					final ConditionalFormBlock object) {
-				return doSwitch(object.eContainer());
+				String mod = ModelExtensions.getName(object);
+				if (mod == null) {
+					return object.eResource().getURI().lastSegment();
+				}
+				return mod;
 			}
 
 			@Override
@@ -48,23 +41,24 @@ public class ErlangQualifiedNameProvider extends
 				sb.append(":");
 				sb.append(object.getName());
 				sb.append("/");
+				sb.append(ModelExtensions.getArity(object));
+				return sb.toString();
+			}
 
-				final EList<FunctionClause> clauses = object.getClauses();
-				if (clauses == null || clauses.isEmpty()) {
-					sb.append("?");
-				} else {
-					final EList<Expression> params = clauses.get(0).getParams();
-					final int arity = params == null ? 0 : params.size();
-					sb.append(arity);
-				}
+			@Override
+			public String caseFunctionClause(final FunctionClause object) {
+				final StringBuilder sb = new StringBuilder();
+				sb.append(doSwitch(object.eContainer()));
+				sb.append(":");
+				sb.append(getIndexInParent(object));
 				return sb.toString();
 			}
 
 			@Override
 			public String caseDefineAttribute(final DefineAttribute object) {
 				final StringBuilder sb = new StringBuilder();
-				// sb.append(doSwitch(object.eContainer()));
-				// sb.append(":");
+				sb.append(doSwitch(object.eContainer()));
+				sb.append(":");
 				sb.append("?");
 				sb.append(object.getMacroName());
 				return sb.toString();
@@ -87,17 +81,27 @@ public class ErlangQualifiedNameProvider extends
 				final StringBuilder sb = new StringBuilder();
 				sb.append(doSwitch(object.eContainer()));
 				sb.append(":");
-				// FIXME
 				sb.append(object.getName());
 				return sb.toString();
 			}
 
-			private EObject getModule(EObject object) {
-				while (!(object instanceof Module)) {
-					object = object.eContainer();
+			@Override
+			public String caseFunExpr(org.erlide.erlang.FunExpr object) {
+				final StringBuilder sb = new StringBuilder();
+				sb.append(doSwitch(object.eContainer()));
+				sb.append(":");
+				sb.append("fun_");
+				sb.append(getIndexInParent(object));
+				return sb.toString();
+			};
+
+			@Override
+			public String defaultCase(EObject object) {
+				if (object == null) {
+					return null;
 				}
-				return object;
-			}
+				return doSwitch(object.eContainer());
+			};
 
 			private int getIndexInParent(EObject object) {
 				EObject parent = object.eContainer();
@@ -112,10 +116,6 @@ public class ErlangQualifiedNameProvider extends
 		} else {
 			result = qualifiedNameConverter.toQualifiedName(name);
 		}
-		if (result != null) {
-			// System.out.println(">> " + obj + " = " + result);
-		}
 		return result;
 	}
-
 }
