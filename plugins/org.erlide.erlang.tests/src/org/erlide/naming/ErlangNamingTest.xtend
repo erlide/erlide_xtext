@@ -4,17 +4,16 @@ import com.google.inject.Inject
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.erlide.ErlangInjectorProvider
+import org.erlide.erlang.ConditionalFormBlock
 import org.erlide.erlang.Module
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
-import org.eclipse.xtext.naming.IQualifiedNameConverter
-import org.erlide.erlang.IfdefAttribute
-import org.erlide.erlang.ConditionalFormBlock
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))

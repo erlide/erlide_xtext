@@ -4,6 +4,7 @@
 package org.erlide;
 
 import org.eclipse.xtext.conversion.IValueConverterService;
+import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.erlide.common.CommonModule;
@@ -11,6 +12,7 @@ import org.erlide.conversion.ErlangValueConverterService;
 import org.erlide.naming.ErlangQualifiedNameConverter;
 import org.erlide.naming.ErlangQualifiedNameProvider;
 import org.erlide.project.ErlideProjectModule;
+import org.erlide.scoping.ErlangLinkingDiagnosticMessageProvider;
 import org.erlide.scoping.ErlangLinkingService;
 
 import com.google.inject.Binder;
@@ -41,6 +43,11 @@ public class ErlangRuntimeModule extends org.erlide.AbstractErlangRuntimeModule 
     public Class<? extends ILinkingService> bindILinkingService() {
         return ErlangLinkingService.class;
     }
+    
+    public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
+        return ErlangLinkingDiagnosticMessageProvider.class;
+    }
+    
 
     public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
         return ErlangQualifiedNameConverter.class;

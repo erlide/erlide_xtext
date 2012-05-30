@@ -20,7 +20,7 @@ class FunctionExtensionsTest {
 	ParseHelper<Module> parser
 	
     @Test
-    def void isExported() {
+    def void isExported() { 
         val module = parser.parse('''
             -module(x).
             -export([ff/0]).
