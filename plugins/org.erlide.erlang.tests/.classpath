@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="xtend-gen"/>
-	<classpathentry excluding="org/erlide/erlang/parserdb/|org/erlide/erlang/FilesTest.java" kind="src" path="src"/>
+	<classpathentry excluding="org/erlide/erlang/parserdb/" kind="src" path="src"/>
 	<classpathentry kind="src" path="src-gen"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
