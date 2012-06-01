@@ -7,6 +7,11 @@ Module:
 	forms+=Form* 
 ;  
 
+AbstractElement:
+	  Module
+	| Function
+;
+
 Form:
 	  Attribute 
 	| Function
@@ -24,6 +29,12 @@ ConditionalFormBlock:
 ;
 
 // Attributes
+
+ConditionalAttribute:
+	  IfdefAttribute
+	| ElseAttribute
+	| EndifAttribute
+;
 
 Attribute:
 	  ModuleAttribute
@@ -61,12 +72,12 @@ IfdefAttribute:
 	'-' => tag=('ifdef'|'ifndef') '(' ref=[DefineAttribute|AtomVar] ')' FULL_STOP
 ;
 
-EndifAttribute:
-	'-' => tag='endif'	FULL_STOP
-;
-
 ElseAttribute:
 	'-' => tag='else' FULL_STOP
+;
+
+EndifAttribute:
+	'-' => tag='endif'	FULL_STOP
 ;
 
 AbstractIncludeAttribute:
@@ -87,7 +98,7 @@ FileAttribute:
 ;
 
 ModuleAttribute:
-	'-' => tag='module' '(' name=Name ')' FULL_STOP
+	'-' => tag='module' '(' moduleName=Name ')' FULL_STOP
 ;
 
 RecordAttribute:
@@ -276,7 +287,7 @@ RecordField:
 ;
 
 LiteralExpressionNoNumber returns Expression:
-	  {Atom} value=[Form|AtomKw]
+	  {Atom} value=[AbstractElement|AtomKw]
 	| {Variable} value=VARIABLE 
 	| {ErlChar} value=CHAR 
 	| {MacroExpr} value=[DefineAttribute|Macro] 

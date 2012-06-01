@@ -12,7 +12,7 @@ package org.erlide.erlang;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.erlide.erlang.ModuleAttribute#getTag <em>Tag</em>}</li>
- *   <li>{@link org.erlide.erlang.ModuleAttribute#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.ModuleAttribute#getModuleName <em>Module Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,29 +49,29 @@ public interface ModuleAttribute extends Attribute
   void setTag(String value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Module Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Module Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.erlide.erlang.ErlangPackage#getModuleAttribute_Name()
+   * @return the value of the '<em>Module Name</em>' attribute.
+   * @see #setModuleName(String)
+   * @see org.erlide.erlang.ErlangPackage#getModuleAttribute_ModuleName()
    * @model
    * @generated
    */
-  String getName();
+  String getModuleName();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.ModuleAttribute#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.ModuleAttribute#getModuleName <em>Module Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Module Name</em>' attribute.
+   * @see #getModuleName()
    * @generated
    */
-  void setName(String value);
+  void setModuleName(String value);
 
 } // ModuleAttribute

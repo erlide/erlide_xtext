@@ -32,6 +32,15 @@ public interface ErlangFactory extends EFactory
   Module createModule();
 
   /**
+   * Returns a new object of class '<em>Abstract Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Abstract Element</em>'.
+   * @generated
+   */
+  AbstractElement createAbstractElement();
+
+  /**
    * Returns a new object of class '<em>Form</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -48,6 +57,15 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   ConditionalFormBlock createConditionalFormBlock();
+
+  /**
+   * Returns a new object of class '<em>Conditional Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Conditional Attribute</em>'.
+   * @generated
+   */
+  ConditionalAttribute createConditionalAttribute();
 
   /**
    * Returns a new object of class '<em>Attribute</em>'.
@@ -95,15 +113,6 @@ public interface ErlangFactory extends EFactory
   IfdefAttribute createIfdefAttribute();
 
   /**
-   * Returns a new object of class '<em>Endif Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Endif Attribute</em>'.
-   * @generated
-   */
-  EndifAttribute createEndifAttribute();
-
-  /**
    * Returns a new object of class '<em>Else Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -111,6 +120,15 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   ElseAttribute createElseAttribute();
+
+  /**
+   * Returns a new object of class '<em>Endif Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Endif Attribute</em>'.
+   * @generated
+   */
+  EndifAttribute createEndifAttribute();
 
   /**
    * Returns a new object of class '<em>Abstract Include Attribute</em>'.

@@ -5,45 +5,54 @@ package org.erlide.erlang.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.erlide.erlang.DefineAttribute;
+import org.erlide.erlang.ConditionalAttribute;
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.IfdefAttribute;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ifdef Attribute</b></em>'.
+ * An implementation of the model object '<em><b>Conditional Attribute</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.IfdefAttributeImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ConditionalAttributeImpl#getTag <em>Tag</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class IfdefAttributeImpl extends ConditionalAttributeImpl implements IfdefAttribute
+public class ConditionalAttributeImpl extends MinimalEObjectImpl.Container implements ConditionalAttribute
 {
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef()
+   * @see #getTag()
    * @generated
    * @ordered
    */
-  protected DefineAttribute ref;
+  protected static final String TAG_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTag()
+   * @generated
+   * @ordered
+   */
+  protected String tag = TAG_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected IfdefAttributeImpl()
+  protected ConditionalAttributeImpl()
   {
     super();
   }
@@ -56,7 +65,7 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.IFDEF_ATTRIBUTE;
+    return ErlangPackage.Literals.CONDITIONAL_ATTRIBUTE;
   }
 
   /**
@@ -64,19 +73,9 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
    * <!-- end-user-doc -->
    * @generated
    */
-  public DefineAttribute getRef()
+  public String getTag()
   {
-    if (ref != null && ref.eIsProxy())
-    {
-      InternalEObject oldRef = (InternalEObject)ref;
-      ref = (DefineAttribute)eResolveProxy(oldRef);
-      if (ref != oldRef)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.IFDEF_ATTRIBUTE__REF, oldRef, ref));
-      }
-    }
-    return ref;
+    return tag;
   }
 
   /**
@@ -84,22 +83,12 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
    * <!-- end-user-doc -->
    * @generated
    */
-  public DefineAttribute basicGetRef()
+  public void setTag(String newTag)
   {
-    return ref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setRef(DefineAttribute newRef)
-  {
-    DefineAttribute oldRef = ref;
-    ref = newRef;
+    String oldTag = tag;
+    tag = newTag;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.IFDEF_ATTRIBUTE__REF, oldRef, ref));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.CONDITIONAL_ATTRIBUTE__TAG, oldTag, tag));
   }
 
   /**
@@ -112,9 +101,8 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
   {
     switch (featureID)
     {
-      case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        if (resolve) return getRef();
-        return basicGetRef();
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE__TAG:
+        return getTag();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -129,8 +117,8 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
   {
     switch (featureID)
     {
-      case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        setRef((DefineAttribute)newValue);
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE__TAG:
+        setTag((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -146,8 +134,8 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
   {
     switch (featureID)
     {
-      case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        setRef((DefineAttribute)null);
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE__TAG:
+        setTag(TAG_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -163,10 +151,27 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
   {
     switch (featureID)
     {
-      case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        return ref != null;
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE__TAG:
+        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
     }
     return super.eIsSet(featureID);
   }
 
-} //IfdefAttributeImpl
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (tag: ");
+    result.append(tag);
+    result.append(')');
+    return result.toString();
+  }
+
+} //ConditionalAttributeImpl

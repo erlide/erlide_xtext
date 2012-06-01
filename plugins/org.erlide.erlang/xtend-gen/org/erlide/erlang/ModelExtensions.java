@@ -2,6 +2,7 @@ package org.erlide.erlang;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
@@ -16,9 +17,12 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.CompileAttribute;
+import org.erlide.erlang.ConditionalAttribute;
+import org.erlide.erlang.ConditionalFormBlock;
 import org.erlide.erlang.CustomAttribute;
 import org.erlide.erlang.ErlList;
 import org.erlide.erlang.ErlTuple;
@@ -48,8 +52,9 @@ public class ModelExtensions {
       final Form attr = IterableExtensions.<Form>head(_forms);
       String _xifexpression = null;
       if ((attr instanceof ModuleAttribute)) {
-        String _name = ((ModuleAttribute) attr).getName();
-        _xifexpression = _name;
+        String _moduleName = ((ModuleAttribute) attr).getModuleName();
+        String _replaceAll = _moduleName.replaceAll("\\.", "_");
+        _xifexpression = _replaceAll;
       } else {
         _xifexpression = null;
       }
@@ -174,9 +179,41 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
+  public static Collection<EObject> getAllContents(final EObject module) {
+    List<EObject> _xblockexpression = null;
+    {
+      final EList<EObject> result = module.eContents();
+      final Function1<EObject,Collection<EObject>> _function = new Function1<EObject,Collection<EObject>>() {
+          public Collection<EObject> apply(final EObject it) {
+            Collection<EObject> _xifexpression = null;
+            if ((it instanceof ConditionalFormBlock)) {
+              Collection<EObject> _allContents = ModelExtensions.getAllContents(it);
+              _xifexpression = _allContents;
+            } else {
+              ArrayList<EObject> _xifexpression_1 = null;
+              if ((it instanceof ConditionalAttribute)) {
+                ArrayList<EObject> _newArrayList = CollectionLiterals.<EObject>newArrayList();
+                _xifexpression_1 = _newArrayList;
+              } else {
+                ArrayList<EObject> _newArrayList_1 = CollectionLiterals.<EObject>newArrayList(it);
+                _xifexpression_1 = _newArrayList_1;
+              }
+              _xifexpression = _xifexpression_1;
+            }
+            return _xifexpression;
+          }
+        };
+      List<Collection<EObject>> _map = ListExtensions.<EObject, Collection<EObject>>map(result, _function);
+      Iterable<EObject> _flatten = Iterables.<EObject>concat(_map);
+      List<EObject> _list = IterableExtensions.<EObject>toList(_flatten);
+      _xblockexpression = (_list);
+    }
+    return _xblockexpression;
+  }
+  
   public static Function getFunction(final Module module, final String fname, final int farity) {
-    EList<EObject> _eContents = module.eContents();
-    Iterable<Function> _filter = Iterables.<Function>filter(_eContents, Function.class);
+    Collection<EObject> _allContents = ModelExtensions.getAllContents(module);
+    Iterable<Function> _filter = Iterables.<Function>filter(_allContents, Function.class);
     final Function1<Function,Boolean> _function = new Function1<Function,Boolean>() {
         public Boolean apply(final Function it) {
           boolean _and = false;

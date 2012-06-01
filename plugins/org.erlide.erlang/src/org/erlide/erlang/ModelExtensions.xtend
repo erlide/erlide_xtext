@@ -7,6 +7,8 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 
 import static extension org.erlide.erlang.ModelExtensions.*
+import org.erlide.erlang.ConditionalFormBlock
+import org.erlide.erlang.ConditionalAttribute
 
 class ModelExtensions {
     
@@ -15,7 +17,7 @@ class ModelExtensions {
     def static String getName(Module module) {
         val attr = module.forms.head
         if(attr instanceof ModuleAttribute) { 
-            (attr as ModuleAttribute).name
+            (attr as ModuleAttribute).moduleName.replaceAll("\\.", "_")
         } else {
             null
         }     
@@ -81,8 +83,21 @@ class ModelExtensions {
 		Iterables::concat(exportAttributes.map[funs]).toList
 	}
 	
+	def static Collection<EObject> getAllContents(EObject module) {
+		val result = module.eContents
+		result.map[
+			if(it instanceof ConditionalFormBlock) {
+				it.getAllContents 
+			} else if(it instanceof ConditionalAttribute) {
+				newArrayList()
+			} else {
+				newArrayList(it)
+			}
+		].flatten.toList
+	} 
+	
 	def static Function getFunction(Module module, String fname, int farity) {
-		module.eContents.filter(typeof(Function)).findFirst[
+		module.allContents.filter(typeof(Function)).findFirst[
 			it.name==fname && it.arity==farity
 		]
 	}

@@ -65,15 +65,17 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
     switch (eClass.getClassifierID())
     {
       case ErlangPackage.MODULE: return createModule();
+      case ErlangPackage.ABSTRACT_ELEMENT: return createAbstractElement();
       case ErlangPackage.FORM: return createForm();
       case ErlangPackage.CONDITIONAL_FORM_BLOCK: return createConditionalFormBlock();
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE: return createConditionalAttribute();
       case ErlangPackage.ATTRIBUTE: return createAttribute();
       case ErlangPackage.ABSTRACT_DEFINE_ATTRIBUTE: return createAbstractDefineAttribute();
       case ErlangPackage.DEFINE_ATTRIBUTE: return createDefineAttribute();
       case ErlangPackage.UNDEF_ATTRIBUTE: return createUndefAttribute();
       case ErlangPackage.IFDEF_ATTRIBUTE: return createIfdefAttribute();
-      case ErlangPackage.ENDIF_ATTRIBUTE: return createEndifAttribute();
       case ErlangPackage.ELSE_ATTRIBUTE: return createElseAttribute();
+      case ErlangPackage.ENDIF_ATTRIBUTE: return createEndifAttribute();
       case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE: return createAbstractIncludeAttribute();
       case ErlangPackage.INCLUDE_ATTRIBUTE: return createIncludeAttribute();
       case ErlangPackage.INCLUDE_LIB_ATTRIBUTE: return createIncludeLibAttribute();
@@ -178,6 +180,17 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public AbstractElement createAbstractElement()
+  {
+    AbstractElementImpl abstractElement = new AbstractElementImpl();
+    return abstractElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Form createForm()
   {
     FormImpl form = new FormImpl();
@@ -193,6 +206,17 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     ConditionalFormBlockImpl conditionalFormBlock = new ConditionalFormBlockImpl();
     return conditionalFormBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConditionalAttribute createConditionalAttribute()
+  {
+    ConditionalAttributeImpl conditionalAttribute = new ConditionalAttributeImpl();
+    return conditionalAttribute;
   }
 
   /**
@@ -255,10 +279,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public EndifAttribute createEndifAttribute()
+  public ElseAttribute createElseAttribute()
   {
-    EndifAttributeImpl endifAttribute = new EndifAttributeImpl();
-    return endifAttribute;
+    ElseAttributeImpl elseAttribute = new ElseAttributeImpl();
+    return elseAttribute;
   }
 
   /**
@@ -266,10 +290,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ElseAttribute createElseAttribute()
+  public EndifAttribute createEndifAttribute()
   {
-    ElseAttributeImpl elseAttribute = new ElseAttributeImpl();
-    return elseAttribute;
+    EndifAttributeImpl endifAttribute = new EndifAttributeImpl();
+    return endifAttribute;
   }
 
   /**

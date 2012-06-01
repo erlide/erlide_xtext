@@ -19,7 +19,7 @@ import org.erlide.erlang.ModuleAttribute;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.erlide.erlang.impl.ModuleAttributeImpl#getTag <em>Tag</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.ModuleAttributeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ModuleAttributeImpl#getModuleName <em>Module Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,24 +48,24 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
   protected String tag = TAG_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getModuleName() <em>Module Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getModuleName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String MODULE_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getModuleName() <em>Module Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getModuleName()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String moduleName = MODULE_NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,9 +116,9 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public String getModuleName()
   {
-    return name;
+    return moduleName;
   }
 
   /**
@@ -126,12 +126,12 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setModuleName(String newModuleName)
   {
-    String oldName = name;
-    name = newName;
+    String oldModuleName = moduleName;
+    moduleName = newModuleName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MODULE_ATTRIBUTE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MODULE_ATTRIBUTE__MODULE_NAME, oldModuleName, moduleName));
   }
 
   /**
@@ -146,8 +146,8 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
     {
       case ErlangPackage.MODULE_ATTRIBUTE__TAG:
         return getTag();
-      case ErlangPackage.MODULE_ATTRIBUTE__NAME:
-        return getName();
+      case ErlangPackage.MODULE_ATTRIBUTE__MODULE_NAME:
+        return getModuleName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -165,8 +165,8 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
       case ErlangPackage.MODULE_ATTRIBUTE__TAG:
         setTag((String)newValue);
         return;
-      case ErlangPackage.MODULE_ATTRIBUTE__NAME:
-        setName((String)newValue);
+      case ErlangPackage.MODULE_ATTRIBUTE__MODULE_NAME:
+        setModuleName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -185,8 +185,8 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
       case ErlangPackage.MODULE_ATTRIBUTE__TAG:
         setTag(TAG_EDEFAULT);
         return;
-      case ErlangPackage.MODULE_ATTRIBUTE__NAME:
-        setName(NAME_EDEFAULT);
+      case ErlangPackage.MODULE_ATTRIBUTE__MODULE_NAME:
+        setModuleName(MODULE_NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -204,8 +204,8 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
     {
       case ErlangPackage.MODULE_ATTRIBUTE__TAG:
         return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
-      case ErlangPackage.MODULE_ATTRIBUTE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ErlangPackage.MODULE_ATTRIBUTE__MODULE_NAME:
+        return MODULE_NAME_EDEFAULT == null ? moduleName != null : !MODULE_NAME_EDEFAULT.equals(moduleName);
     }
     return super.eIsSet(featureID);
   }
@@ -223,8 +223,8 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (tag: ");
     result.append(tag);
-    result.append(", name: ");
-    result.append(name);
+    result.append(", moduleName: ");
+    result.append(moduleName);
     result.append(')');
     return result.toString();
   }

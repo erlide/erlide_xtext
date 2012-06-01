@@ -10,6 +10,7 @@
     <genClasses ecoreClass="Erlang.ecore#//Module">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Module/forms"/>
     </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//AbstractElement"/>
     <genClasses ecoreClass="Erlang.ecore#//Form"/>
     <genClasses ecoreClass="Erlang.ecore#//ConditionalFormBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ConditionalFormBlock/condition"/>
@@ -17,6 +18,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ConditionalFormBlock/hasElse"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ConditionalFormBlock/elseForms"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ConditionalFormBlock/end"/>
+    </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//ConditionalAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ConditionalAttribute/tag"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//Attribute"/>
     <genClasses ecoreClass="Erlang.ecore#//AbstractDefineAttribute"/>
@@ -31,15 +35,10 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//UndefAttribute/ref"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//IfdefAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//IfdefAttribute/tag"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//IfdefAttribute/ref"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//EndifAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//EndifAttribute/tag"/>
-    </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//ElseAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ElseAttribute/tag"/>
-    </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//ElseAttribute"/>
+    <genClasses ecoreClass="Erlang.ecore#//EndifAttribute"/>
     <genClasses ecoreClass="Erlang.ecore#//AbstractIncludeAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//AbstractIncludeAttribute/tag"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//AbstractIncludeAttribute/importURI"/>
@@ -53,7 +52,7 @@
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ModuleAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ModuleAttribute/tag"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ModuleAttribute/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ModuleAttribute/moduleName"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//RecordAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//RecordAttribute/tag"/>

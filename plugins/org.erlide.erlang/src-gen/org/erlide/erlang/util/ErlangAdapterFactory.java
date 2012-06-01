@@ -80,6 +80,11 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createModuleAdapter();
       }
       @Override
+      public Adapter caseAbstractElement(AbstractElement object)
+      {
+        return createAbstractElementAdapter();
+      }
+      @Override
       public Adapter caseForm(Form object)
       {
         return createFormAdapter();
@@ -88,6 +93,11 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseConditionalFormBlock(ConditionalFormBlock object)
       {
         return createConditionalFormBlockAdapter();
+      }
+      @Override
+      public Adapter caseConditionalAttribute(ConditionalAttribute object)
+      {
+        return createConditionalAttributeAdapter();
       }
       @Override
       public Adapter caseAttribute(Attribute object)
@@ -115,14 +125,14 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createIfdefAttributeAdapter();
       }
       @Override
-      public Adapter caseEndifAttribute(EndifAttribute object)
-      {
-        return createEndifAttributeAdapter();
-      }
-      @Override
       public Adapter caseElseAttribute(ElseAttribute object)
       {
         return createElseAttributeAdapter();
+      }
+      @Override
+      public Adapter caseEndifAttribute(EndifAttribute object)
+      {
+        return createEndifAttributeAdapter();
       }
       @Override
       public Adapter caseAbstractIncludeAttribute(AbstractIncludeAttribute object)
@@ -577,6 +587,21 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.AbstractElement <em>Abstract Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.AbstractElement
+   * @generated
+   */
+  public Adapter createAbstractElementAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.erlide.erlang.Form <em>Form</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -602,6 +627,21 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConditionalFormBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ConditionalAttribute <em>Conditional Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.ConditionalAttribute
+   * @generated
+   */
+  public Adapter createConditionalAttributeAdapter()
   {
     return null;
   }
@@ -682,21 +722,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.EndifAttribute <em>Endif Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.EndifAttribute
-   * @generated
-   */
-  public Adapter createEndifAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.erlide.erlang.ElseAttribute <em>Else Attribute</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -707,6 +732,21 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createElseAttributeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.EndifAttribute <em>Endif Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.EndifAttribute
+   * @generated
+   */
+  public Adapter createEndifAttributeAdapter()
   {
     return null;
   }

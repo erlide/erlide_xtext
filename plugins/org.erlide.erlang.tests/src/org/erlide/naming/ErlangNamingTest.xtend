@@ -51,7 +51,7 @@ class ErlangNamingTest {
         ''')
         val name = namer.getFullyQualifiedName(module)
         // the name is generated for this embedded resource
-        assertThat(nameCvtr.toString(name), is("__synthetic0.erl,hrl")) 
+        assertThat(nameCvtr.toString(name), is("__synthetic0_erl")) 
 	}
 
 	@Test

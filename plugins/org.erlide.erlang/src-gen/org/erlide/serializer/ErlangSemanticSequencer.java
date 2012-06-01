@@ -438,13 +438,15 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				}
 				else break;
 			case ErlangPackage.ELSE_ATTRIBUTE:
-				if(context == grammarAccess.getElseAttributeRule()) {
+				if(context == grammarAccess.getConditionalAttributeRule() ||
+				   context == grammarAccess.getElseAttributeRule()) {
 					sequence_ElseAttribute(context, (ElseAttribute) semanticObject); 
 					return; 
 				}
 				else break;
 			case ErlangPackage.ENDIF_ATTRIBUTE:
-				if(context == grammarAccess.getEndifAttributeRule()) {
+				if(context == grammarAccess.getConditionalAttributeRule() ||
+				   context == grammarAccess.getEndifAttributeRule()) {
 					sequence_EndifAttribute(context, (EndifAttribute) semanticObject); 
 					return; 
 				}
@@ -854,7 +856,8 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				}
 				else break;
 			case ErlangPackage.FUNCTION:
-				if(context == grammarAccess.getFormRule() ||
+				if(context == grammarAccess.getAbstractElementRule() ||
+				   context == grammarAccess.getFormRule() ||
 				   context == grammarAccess.getFunctionRule()) {
 					sequence_Function(context, (Function) semanticObject); 
 					return; 
@@ -910,7 +913,8 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				}
 				else break;
 			case ErlangPackage.IFDEF_ATTRIBUTE:
-				if(context == grammarAccess.getIfdefAttributeRule()) {
+				if(context == grammarAccess.getConditionalAttributeRule() ||
+				   context == grammarAccess.getIfdefAttributeRule()) {
 					sequence_IfdefAttribute(context, (IfdefAttribute) semanticObject); 
 					return; 
 				}
@@ -1112,7 +1116,8 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				}
 				else break;
 			case ErlangPackage.MODULE:
-				if(context == grammarAccess.getModuleRule()) {
+				if(context == grammarAccess.getAbstractElementRule() ||
+				   context == grammarAccess.getModuleRule()) {
 					sequence_Module(context, (Module) semanticObject); 
 					return; 
 				}
@@ -1724,8 +1729,8 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 */
 	protected void sequence_ElseAttribute(EObject context, ElseAttribute semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ELSE_ATTRIBUTE__TAG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ELSE_ATTRIBUTE__TAG));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.CONDITIONAL_ATTRIBUTE__TAG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.CONDITIONAL_ATTRIBUTE__TAG));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -1740,8 +1745,8 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 */
 	protected void sequence_EndifAttribute(EObject context, EndifAttribute semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ENDIF_ATTRIBUTE__TAG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ENDIF_ATTRIBUTE__TAG));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.CONDITIONAL_ATTRIBUTE__TAG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.CONDITIONAL_ATTRIBUTE__TAG));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -2155,7 +2160,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     value=[Form|AtomKw]
+	 *     value=[AbstractElement|AtomKw]
 	 */
 	protected void sequence_LiteralExpressionNoNumber(EObject context, Atom semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2227,19 +2232,19 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (tag='module' name=Name)
+	 *     (tag='module' moduleName=Name)
 	 */
 	protected void sequence_ModuleAttribute(EObject context, ModuleAttribute semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.MODULE_ATTRIBUTE__TAG) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.MODULE_ATTRIBUTE__TAG));
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.MODULE_ATTRIBUTE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.MODULE_ATTRIBUTE__NAME));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.MODULE_ATTRIBUTE__MODULE_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.MODULE_ATTRIBUTE__MODULE_NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getModuleAttributeAccess().getTagModuleKeyword_1_0(), semanticObject.getTag());
-		feeder.accept(grammarAccess.getModuleAttributeAccess().getNameNameParserRuleCall_3_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getModuleAttributeAccess().getModuleNameNameParserRuleCall_3_0(), semanticObject.getModuleName());
 		feeder.finish();
 	}
 	

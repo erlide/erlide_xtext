@@ -7,9 +7,16 @@ public class ErlangLinkingDiagnosticMessageProvider extends
 		LinkingDiagnosticMessageProvider {
 
 	@Override
-	public DiagnosticMessage getUnresolvedProxyMessage(final ILinkingDiagnosticContext context) {
+	public DiagnosticMessage getUnresolvedProxyMessage(
+			final ILinkingDiagnosticContext context) {
 		DiagnosticMessage org = super.getUnresolvedProxyMessage(context);
-		if(context.getLinkText().equals("ok")) return null;
+		// TODO if this isn't really a link, return null
+		if (context.getLinkText().equals("ok")) {
+			return null;
+		}
+		// TODO if an AbstractElement isn't found, include precise type in
+		// message
+
 		return org;
 	}
 

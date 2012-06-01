@@ -8,6 +8,7 @@ import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
+import org.erlide.erlang.ModuleAttribute;
 import org.erlide.erlang.RecordAttribute;
 
 import com.google.inject.Inject;
@@ -23,9 +24,14 @@ public class ErlangQualifiedNameProvider extends
 		if (name == null) {
 			// TODO this isn't very unique! we should use the physical path, or
 			// something
-			name = module.eResource().getURI().lastSegment();
+			name = module.eResource().getURI().lastSegment()
+					.replaceAll("\\.", "_");
 		}
 		return QualifiedName.create(name);
+	}
+
+	QualifiedName qualifiedName(final ModuleAttribute module) {
+		return null;
 	}
 
 	QualifiedName qualifiedName(final DefineAttribute macro) {

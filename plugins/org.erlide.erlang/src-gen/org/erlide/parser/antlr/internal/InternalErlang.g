@@ -102,6 +102,8 @@ ruleModule returns [EObject current=null]
 
 
 
+
+
 // Entry rule entryRuleForm
 entryRuleForm returns [EObject current=null] 
 	:
@@ -291,6 +293,8 @@ ruleElseAttribute
 )
 ))
 ;
+
+
 
 
 
@@ -741,56 +745,6 @@ this_FULL_STOP_5=RULE_FULL_STOP
 
 
 
-// Entry rule entryRuleEndifAttribute
-entryRuleEndifAttribute returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getEndifAttributeRule()); }
-	 iv_ruleEndifAttribute=ruleEndifAttribute 
-	 { $current=$iv_ruleEndifAttribute.current; } 
-	 EOF 
-;
-
-// Rule EndifAttribute
-ruleEndifAttribute returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='-' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getEndifAttributeAccess().getHyphenMinusKeyword_0());
-    }
-((
-(
-	'endif' 
- 
-
-)
-)=>
-(
-		lv_tag_1_0=	'endif' 
-    {
-        newLeafNode(lv_tag_1_0, grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_1_0());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getEndifAttributeRule());
-	        }
-       		setWithLastConsumed($current, "tag", lv_tag_1_0, "endif");
-	    }
-
-)
-)this_FULL_STOP_2=RULE_FULL_STOP
-    { 
-    newLeafNode(this_FULL_STOP_2, grammarAccess.getEndifAttributeAccess().getFULL_STOPTerminalRuleCall_2()); 
-    }
-)
-;
-
-
-
-
-
 // Entry rule entryRuleElseAttribute
 entryRuleElseAttribute returns [EObject current=null] 
 	:
@@ -833,6 +787,56 @@ ruleElseAttribute returns [EObject current=null]
 )this_FULL_STOP_2=RULE_FULL_STOP
     { 
     newLeafNode(this_FULL_STOP_2, grammarAccess.getElseAttributeAccess().getFULL_STOPTerminalRuleCall_2()); 
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleEndifAttribute
+entryRuleEndifAttribute returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getEndifAttributeRule()); }
+	 iv_ruleEndifAttribute=ruleEndifAttribute 
+	 { $current=$iv_ruleEndifAttribute.current; } 
+	 EOF 
+;
+
+// Rule EndifAttribute
+ruleEndifAttribute returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='-' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getEndifAttributeAccess().getHyphenMinusKeyword_0());
+    }
+((
+(
+	'endif' 
+ 
+
+)
+)=>
+(
+		lv_tag_1_0=	'endif' 
+    {
+        newLeafNode(lv_tag_1_0, grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_1_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getEndifAttributeRule());
+	        }
+       		setWithLastConsumed($current, "tag", lv_tag_1_0, "endif");
+	    }
+
+)
+)this_FULL_STOP_2=RULE_FULL_STOP
+    { 
+    newLeafNode(this_FULL_STOP_2, grammarAccess.getEndifAttributeAccess().getFULL_STOPTerminalRuleCall_2()); 
     }
 )
 ;
@@ -1177,16 +1181,16 @@ ruleModuleAttribute returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModuleAttributeAccess().getNameNameParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getModuleAttributeAccess().getModuleNameNameParserRuleCall_3_0()); 
 	    }
-		lv_name_3_0=ruleName		{
+		lv_moduleName_3_0=ruleName		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModuleAttributeRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_3_0, 
+       			"moduleName",
+        		lv_moduleName_3_0, 
         		"Name");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -4390,7 +4394,7 @@ ruleLiteralExpressionNoNumber returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getLiteralExpressionNoNumberAccess().getValueFormCrossReference_0_1_0()); 
+	        newCompositeNode(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAbstractElementCrossReference_0_1_0()); 
 	    }
 		ruleAtomKw		{ 
 	        afterParserOrEnumRuleCall();

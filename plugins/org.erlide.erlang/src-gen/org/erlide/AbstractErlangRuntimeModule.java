@@ -31,7 +31,7 @@ public abstract class AbstractErlangRuntimeModule extends DefaultRuntimeModule {
 	
 	public void configureFileExtensions(Binder binder) {
 		if (properties == null || properties.getProperty(Constants.FILE_EXTENSIONS) == null)
-			binder.bind(String.class).annotatedWith(Names.named(Constants.FILE_EXTENSIONS)).toInstance("erl,hrl");
+			binder.bind(String.class).annotatedWith(Names.named(Constants.FILE_EXTENSIONS)).toInstance("erl");
 	}
 	
 	// contributed by org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment

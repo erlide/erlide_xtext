@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="erlang" nsURI="http://www.erlide.org/Erlang" nsPrefix="erlang">
-  <eClassifiers xsi:type="ecore:EClass" name="Module">
+  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//AbstractElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="forms" upperBound="-1"
         eType="#//Form" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Form"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalFormBlock" eSuperTypes="#//Form">
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//IfdefAttribute"
@@ -16,6 +17,9 @@
         eType="#//Form" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//EndifAttribute"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//Form"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractDefineAttribute"/>
@@ -31,16 +35,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//DefineAttribute"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IfdefAttribute">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IfdefAttribute" eSuperTypes="#//ConditionalAttribute">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//DefineAttribute"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EndifAttribute">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ElseAttribute">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ElseAttribute" eSuperTypes="#//ConditionalAttribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EndifAttribute" eSuperTypes="#//ConditionalAttribute"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractIncludeAttribute" eSuperTypes="#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -54,7 +53,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModuleAttribute" eSuperTypes="#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="moduleName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RecordAttribute" eSuperTypes="#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -100,7 +99,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//Form">
+  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//AbstractElement #//Form">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="clauses" upperBound="-1"
         eType="#//FunctionClause" containment="true"/>
@@ -393,7 +392,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Atom" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Form"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//AbstractElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

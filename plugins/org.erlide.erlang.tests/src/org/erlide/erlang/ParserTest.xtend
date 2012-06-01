@@ -24,7 +24,7 @@ class ParserTest {
 		''')
 		val entity = model.forms.head as ModuleAttribute
 		assertEquals(entity.tag, "module")
-		val mod = entity.name 
+		val mod = entity.moduleName 
 		assertEquals(mod, "x") 
 	}
 

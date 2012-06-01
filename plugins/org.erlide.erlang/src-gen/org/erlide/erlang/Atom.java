@@ -30,12 +30,12 @@ public interface Atom extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' reference.
-   * @see #setValue(Form)
+   * @see #setValue(AbstractElement)
    * @see org.erlide.erlang.ErlangPackage#getAtom_Value()
    * @model
    * @generated
    */
-  Form getValue();
+  AbstractElement getValue();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.Atom#getValue <em>Value</em>}' reference.
@@ -45,6 +45,6 @@ public interface Atom extends Expression
    * @see #getValue()
    * @generated
    */
-  void setValue(Form value);
+  void setValue(AbstractElement value);
 
 } // Atom

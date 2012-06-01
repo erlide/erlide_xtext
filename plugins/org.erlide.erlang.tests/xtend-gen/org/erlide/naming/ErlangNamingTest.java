@@ -75,7 +75,7 @@ public class ErlangNamingTest {
       final Module module = this.parser.parse(_builder);
       final QualifiedName name = this.namer.getFullyQualifiedName(module);
       String _string = this.nameCvtr.toString(name);
-      Matcher<? super String> _is = Matchers.<String>is("__synthetic0.erl,hrl");
+      Matcher<? super String> _is = Matchers.<String>is("__synthetic0_erl");
       MatcherAssert.<String>assertThat(_string, _is);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);

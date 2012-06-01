@@ -76,6 +76,14 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         Module module = (Module)theEObject;
         T result = caseModule(module);
+        if (result == null) result = caseAbstractElement(module);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ErlangPackage.ABSTRACT_ELEMENT:
+      {
+        AbstractElement abstractElement = (AbstractElement)theEObject;
+        T result = caseAbstractElement(abstractElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -91,6 +99,13 @@ public class ErlangSwitch<T> extends Switch<T>
         ConditionalFormBlock conditionalFormBlock = (ConditionalFormBlock)theEObject;
         T result = caseConditionalFormBlock(conditionalFormBlock);
         if (result == null) result = caseForm(conditionalFormBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE:
+      {
+        ConditionalAttribute conditionalAttribute = (ConditionalAttribute)theEObject;
+        T result = caseConditionalAttribute(conditionalAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -133,13 +148,7 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         IfdefAttribute ifdefAttribute = (IfdefAttribute)theEObject;
         T result = caseIfdefAttribute(ifdefAttribute);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.ENDIF_ATTRIBUTE:
-      {
-        EndifAttribute endifAttribute = (EndifAttribute)theEObject;
-        T result = caseEndifAttribute(endifAttribute);
+        if (result == null) result = caseConditionalAttribute(ifdefAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -147,6 +156,15 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         ElseAttribute elseAttribute = (ElseAttribute)theEObject;
         T result = caseElseAttribute(elseAttribute);
+        if (result == null) result = caseConditionalAttribute(elseAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ErlangPackage.ENDIF_ATTRIBUTE:
+      {
+        EndifAttribute endifAttribute = (EndifAttribute)theEObject;
+        T result = caseEndifAttribute(endifAttribute);
+        if (result == null) result = caseConditionalAttribute(endifAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -275,6 +293,7 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         Function function = (Function)theEObject;
         T result = caseFunction(function);
+        if (result == null) result = caseAbstractElement(function);
         if (result == null) result = caseForm(function);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -879,6 +898,22 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAbstractElement(AbstractElement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Form</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -906,6 +941,22 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseConditionalFormBlock(ConditionalFormBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Conditional Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Conditional Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConditionalAttribute(ConditionalAttribute object)
   {
     return null;
   }
@@ -991,22 +1042,6 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Endif Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Endif Attribute</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseEndifAttribute(EndifAttribute object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Else Attribute</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1018,6 +1053,22 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseElseAttribute(ElseAttribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Endif Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Endif Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEndifAttribute(EndifAttribute object)
   {
     return null;
   }

@@ -25,42 +25,42 @@ import com.google.inject.Inject;
  */
 public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
 
-    @Inject
-    public ErlangLabelProvider(final AdapterFactoryLabelProvider delegate) {
-        super(delegate);
-    }
+	@Inject
+	public ErlangLabelProvider(final AdapterFactoryLabelProvider delegate) {
+		super(delegate);
+	}
 
-    public String text(final Module ele) {
-        final Form first = ele.getForms().get(0);
-        final String name = first instanceof ModuleAttribute ? ((ModuleAttribute) first)
-                .getName() : first.toString() + "?";
-        return "module " + name;
-    }
+	public String text(final Module ele) {
+		final Form first = ele.getForms().get(0);
+		final String name = first instanceof ModuleAttribute ? ((ModuleAttribute) first)
+				.getModuleName() : first.toString() + "?";
+		return "module " + name;
+	}
 
-    // public String text(final Attribute ele) {
-    // final String tag = ele.getTag();
-    // return "-" + tag + " -- " + ele.getVal();
-    // }
+	// public String text(final Attribute ele) {
+	// final String tag = ele.getTag();
+	// return "-" + tag + " -- " + ele.getVal();
+	// }
 
-    public String text(final Function ele) {
-        if (ele.getClauses() == null || ele.getClauses().size() == 0) {
-            return "???";
-        }
-        final EList<Expression> params = ele.getClauses().get(0).getParams();
-        return ele.getName() + "/" + (params == null ? "0" : params.size());
-    }
+	public String text(final Function ele) {
+		if (ele.getClauses() == null || ele.getClauses().size() == 0) {
+			return "???";
+		}
+		final EList<Expression> params = ele.getClauses().get(0).getParams();
+		return ele.getName() + "/" + (params == null ? "0" : params.size());
+	}
 
-    public String text(final FunctionClause ele) {
-        return "(" + ele.getParams() + ")";
-    }
+	public String text(final FunctionClause ele) {
+		return "(" + ele.getParams() + ")";
+	}
 
-    public String text(final EObject ele) {
-        return ele.getClass().getSimpleName() + " "
-                + ele.eCrossReferences().size();
-    }
+	public String text(final EObject ele) {
+		return ele.getClass().getSimpleName() + " "
+				+ ele.eCrossReferences().size();
+	}
 
-    public String image(final Attribute ele) {
-        return "MyModel.gif";
-    }
+	public String image(final Attribute ele) {
+		return "MyModel.gif";
+	}
 
 }

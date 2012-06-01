@@ -46,7 +46,7 @@ public class ParserTest {
       final ModuleAttribute entity = ((ModuleAttribute) _head);
       String _tag = entity.getTag();
       Assert.assertEquals(_tag, "module");
-      final String mod = entity.getName();
+      final String mod = entity.getModuleName();
       Assert.assertEquals(mod, "x");
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);

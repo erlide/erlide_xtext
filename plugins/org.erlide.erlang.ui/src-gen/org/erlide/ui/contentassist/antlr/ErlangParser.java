@@ -37,7 +37,9 @@ public class ErlangParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getAbstractElementAccess().getAlternatives(), "rule__AbstractElement__Alternatives");
 					put(grammarAccess.getFormAccess().getAlternatives(), "rule__Form__Alternatives");
+					put(grammarAccess.getConditionalAttributeAccess().getAlternatives(), "rule__ConditionalAttribute__Alternatives");
 					put(grammarAccess.getAttributeAccess().getAlternatives(), "rule__Attribute__Alternatives");
 					put(grammarAccess.getAbstractDefineAttributeAccess().getAlternatives(), "rule__AbstractDefineAttribute__Alternatives");
 					put(grammarAccess.getIfdefAttributeAccess().getTagAlternatives_1_0(), "rule__IfdefAttribute__TagAlternatives_1_0");
@@ -100,8 +102,8 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDefineAttributeAccess().getGroup_5(), "rule__DefineAttribute__Group_5__0");
 					put(grammarAccess.getUndefAttributeAccess().getGroup(), "rule__UndefAttribute__Group__0");
 					put(grammarAccess.getIfdefAttributeAccess().getGroup(), "rule__IfdefAttribute__Group__0");
-					put(grammarAccess.getEndifAttributeAccess().getGroup(), "rule__EndifAttribute__Group__0");
 					put(grammarAccess.getElseAttributeAccess().getGroup(), "rule__ElseAttribute__Group__0");
+					put(grammarAccess.getEndifAttributeAccess().getGroup(), "rule__EndifAttribute__Group__0");
 					put(grammarAccess.getIncludeAttributeAccess().getGroup(), "rule__IncludeAttribute__Group__0");
 					put(grammarAccess.getIncludeLibAttributeAccess().getGroup(), "rule__IncludeLibAttribute__Group__0");
 					put(grammarAccess.getFileAttributeAccess().getGroup(), "rule__FileAttribute__Group__0");
@@ -342,8 +344,8 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUndefAttributeAccess().getRefAssignment_3(), "rule__UndefAttribute__RefAssignment_3");
 					put(grammarAccess.getIfdefAttributeAccess().getTagAssignment_1(), "rule__IfdefAttribute__TagAssignment_1");
 					put(grammarAccess.getIfdefAttributeAccess().getRefAssignment_3(), "rule__IfdefAttribute__RefAssignment_3");
-					put(grammarAccess.getEndifAttributeAccess().getTagAssignment_1(), "rule__EndifAttribute__TagAssignment_1");
 					put(grammarAccess.getElseAttributeAccess().getTagAssignment_1(), "rule__ElseAttribute__TagAssignment_1");
+					put(grammarAccess.getEndifAttributeAccess().getTagAssignment_1(), "rule__EndifAttribute__TagAssignment_1");
 					put(grammarAccess.getIncludeAttributeAccess().getTagAssignment_1(), "rule__IncludeAttribute__TagAssignment_1");
 					put(grammarAccess.getIncludeAttributeAccess().getImportURIAssignment_3(), "rule__IncludeAttribute__ImportURIAssignment_3");
 					put(grammarAccess.getIncludeLibAttributeAccess().getTagAssignment_1(), "rule__IncludeLibAttribute__TagAssignment_1");
@@ -352,7 +354,7 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFileAttributeAccess().getFileAssignment_3(), "rule__FileAttribute__FileAssignment_3");
 					put(grammarAccess.getFileAttributeAccess().getLineAssignment_5(), "rule__FileAttribute__LineAssignment_5");
 					put(grammarAccess.getModuleAttributeAccess().getTagAssignment_1(), "rule__ModuleAttribute__TagAssignment_1");
-					put(grammarAccess.getModuleAttributeAccess().getNameAssignment_3(), "rule__ModuleAttribute__NameAssignment_3");
+					put(grammarAccess.getModuleAttributeAccess().getModuleNameAssignment_3(), "rule__ModuleAttribute__ModuleNameAssignment_3");
 					put(grammarAccess.getRecordAttributeAccess().getTagAssignment_1(), "rule__RecordAttribute__TagAssignment_1");
 					put(grammarAccess.getRecordAttributeAccess().getNameAssignment_3(), "rule__RecordAttribute__NameAssignment_3");
 					put(grammarAccess.getRecordAttributeAccess().getFieldsAssignment_5_0_1_0(), "rule__RecordAttribute__FieldsAssignment_5_0_1_0");
