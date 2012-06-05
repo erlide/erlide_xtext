@@ -40,6 +40,9 @@ public class ErlangScopingTest {
   @Inject
   private IQualifiedNameConverter cvtr;
   
+  @Inject
+  private ModelExtensions _modelExtensions;
+  
   public IResourceDescription getDescription(final Module module) {
     IResourceDescription _xblockexpression = null;
     {
@@ -99,7 +102,7 @@ public class ErlangScopingTest {
       _builder.append("-endif.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<EObject> eFuns = ModelExtensions.getAllContents(module);
+      final Collection<EObject> eFuns = this._modelExtensions.getAllContents(module);
       int _size = eFuns.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(4));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);

@@ -10,7 +10,6 @@ import org.junit.runner.RunWith
 
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
-import static extension org.erlide.erlang.ModelExtensions.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
@@ -18,6 +17,8 @@ class FunctionExtensionsTest {
 	
 	@Inject
 	ParseHelper<Module> parser
+    @Inject
+    extension ModelExtensions 
 	
     @Test
     def void isExported() { 

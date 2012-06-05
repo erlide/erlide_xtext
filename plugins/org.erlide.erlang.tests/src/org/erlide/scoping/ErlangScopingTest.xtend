@@ -14,7 +14,7 @@ import org.junit.runner.RunWith
 
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
-import static extension org.erlide.erlang.ModelExtensions.*
+import org.erlide.erlang.ModelExtensions
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
@@ -26,6 +26,9 @@ class ErlangScopingTest {
     ResourceDescriptionsProvider indexProvider
     @Inject
     IQualifiedNameConverter cvtr;
+    @Inject
+    extension ModelExtensions 
+	
 
 	def getDescription(Module module) {
 		val res = module.eResource

@@ -22,6 +22,8 @@ public class ErlangLinkingService extends DefaultLinkingService {
 
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
+	@Inject
+	private ModelExtensions modelExtensions;
 
 	@Override
 	public String getCrossRefNodeAsString(final INode node)
@@ -52,7 +54,7 @@ public class ErlangLinkingService extends DefaultLinkingService {
 			} else if (atom.eContainer() instanceof FunCall) {
 				final FunCall fc = (FunCall) atom.eContainer();
 				final int arity = fc.getArgs().size();
-				result = ModelExtensions.getName(getModule(atom)) + ":"
+				result = modelExtensions.getName(getModule(atom)) + ":"
 						+ NodeModelUtils.getTokenText(node) + "/" + arity;
 			}
 		} else if (element instanceof FunRef) {
@@ -68,14 +70,14 @@ public class ErlangLinkingService extends DefaultLinkingService {
 		} else if (element instanceof RecordExpr) {
 			final RecordExpr rec = (RecordExpr) element;
 			final Module m = getModule(rec);
-			result = ModelExtensions.getName(m) + ":#" + node.getText();
+			result = modelExtensions.getName(m) + ":#" + node.getText();
 			System.out.println("RRR " + node.getText());
 			System.out.println(element.eContainer());
 
 		} else if (element instanceof RecordField) {
 			final RecordField frec = (RecordField) element;
 			final Module m = getModule(frec);
-			result = ModelExtensions.getName(m) + ":" + node.getText();
+			result = modelExtensions.getName(m) + ":" + node.getText();
 			System.out.println("ZZZ " + node.getText());
 			System.out.println(element.eContainer());
 		}

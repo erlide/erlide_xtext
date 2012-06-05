@@ -8,7 +8,6 @@ import org.erlide.ErlangInjectorProvider
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static extension org.erlide.erlang.ModelExtensions.*
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
 
@@ -18,6 +17,8 @@ class ElementExtensionsTest {
 	
 	@Inject
 	ParseHelper<Module> parser
+    @Inject
+    extension ModelExtensions 
 	
     @Test
     def void getModule() {

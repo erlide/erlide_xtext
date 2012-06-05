@@ -45,7 +45,7 @@ import org.erlide.erlang.TypeSig;
 
 @SuppressWarnings("all")
 public class ModelExtensions {
-  public static String getName(final Module module) {
+  public String getName(final Module module) {
     String _xblockexpression = null;
     {
       EList<Form> _forms = module.getForms();
@@ -63,20 +63,20 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  public static boolean isHeader(final Module module) {
-    String _name = ModelExtensions.getName(module);
+  public boolean isHeader(final Module module) {
+    String _name = this.getName(module);
     boolean _equals = Objects.equal(_name, null);
     return _equals;
   }
   
-  public static Collection<Attribute> getAttributes(final Module module) {
+  public Collection<Attribute> getAttributes(final Module module) {
     EList<EObject> _eContents = module.eContents();
     Iterable<Attribute> _filter = Iterables.<Attribute>filter(_eContents, Attribute.class);
     List<Attribute> _list = IterableExtensions.<Attribute>toList(_filter);
     return _list;
   }
   
-  public static Collection<CustomAttribute> getCustomAttributesWithTag(final Module module, final String mytag) {
+  public Collection<CustomAttribute> getCustomAttributesWithTag(final Module module, final String mytag) {
     EList<EObject> _eContents = module.eContents();
     Iterable<CustomAttribute> _filter = Iterables.<CustomAttribute>filter(_eContents, CustomAttribute.class);
     final Function1<CustomAttribute,Boolean> _function = new Function1<CustomAttribute,Boolean>() {
@@ -91,22 +91,22 @@ public class ModelExtensions {
     return _list;
   }
   
-  public static Collection<ExportAttribute> getExportAttributes(final Module module) {
+  public Collection<ExportAttribute> getExportAttributes(final Module module) {
     Collection<ExportAttribute> _attributes = ModelExtensions.<ExportAttribute>getAttributes(module, ExportAttribute.class);
     return _attributes;
   }
   
-  public static Collection<ImportAttribute> getImportAttributes(final Module module) {
+  public Collection<ImportAttribute> getImportAttributes(final Module module) {
     Collection<ImportAttribute> _attributes = ModelExtensions.<ImportAttribute>getAttributes(module, ImportAttribute.class);
     return _attributes;
   }
   
-  public static Collection<SpecAttribute> getSpecs(final Module module) {
+  public Collection<SpecAttribute> getSpecs(final Module module) {
     Collection<SpecAttribute> _attributes = ModelExtensions.<SpecAttribute>getAttributes(module, SpecAttribute.class);
     return _attributes;
   }
   
-  public static Collection<String> getIncludes(final Module module) {
+  public Collection<String> getIncludes(final Module module) {
     Collection<IncludeAttribute> _attributes = ModelExtensions.<IncludeAttribute>getAttributes(module, IncludeAttribute.class);
     final Function1<IncludeAttribute,String> _function = new Function1<IncludeAttribute,String>() {
         public String apply(final IncludeAttribute it) {
@@ -119,7 +119,7 @@ public class ModelExtensions {
     return _list;
   }
   
-  public static Collection<String> getIncludeLibs(final Module module) {
+  public Collection<String> getIncludeLibs(final Module module) {
     Collection<IncludeLibAttribute> _attributes = ModelExtensions.<IncludeLibAttribute>getAttributes(module, IncludeLibAttribute.class);
     final Function1<IncludeLibAttribute,String> _function = new Function1<IncludeLibAttribute,String>() {
         public String apply(final IncludeLibAttribute it) {
@@ -132,25 +132,25 @@ public class ModelExtensions {
     return _list;
   }
   
-  public static boolean exportsFunction(final Module module, final Function function) {
-    Collection<Function> _exportedFunctions = ModelExtensions.getExportedFunctions(module);
+  public boolean exportsFunction(final Module module, final Function function) {
+    Collection<Function> _exportedFunctions = this.getExportedFunctions(module);
     boolean _contains = _exportedFunctions.contains(function);
     return _contains;
   }
   
-  public static boolean exports(final Module module, final FunRef function) {
-    Collection<Function> _exportedFunctions = ModelExtensions.getExportedFunctions(module);
+  public boolean exports(final Module module, final FunRef function) {
+    Collection<Function> _exportedFunctions = this.getExportedFunctions(module);
     boolean _contains = _exportedFunctions.contains(function);
     return _contains;
   }
   
-  public static Collection<Function> getExportedFunctions(final Module module) {
+  public Collection<Function> getExportedFunctions(final Module module) {
     List<Function> _xblockexpression = null;
     {
-      final Collection<FunRef> exportedRefs = ModelExtensions.getExportedFunRefs(module);
+      final Collection<FunRef> exportedRefs = this.getExportedFunRefs(module);
       final Function1<FunRef,Function> _function = new Function1<FunRef,Function>() {
           public Function apply(final FunRef it) {
-            Function _function = ModelExtensions.getFunction(module, it);
+            Function _function = ModelExtensions.this.getFunction(module, it);
             return _function;
           }
         };
@@ -161,10 +161,10 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  public static Collection<FunRef> getExportedFunRefs(final Module module) {
+  public Collection<FunRef> getExportedFunRefs(final Module module) {
     List<FunRef> _xblockexpression = null;
     {
-      final Collection<ExportAttribute> exportAttributes = ModelExtensions.getExportAttributes(module);
+      final Collection<ExportAttribute> exportAttributes = this.getExportAttributes(module);
       final Function1<ExportAttribute,EList<FunRef>> _function = new Function1<ExportAttribute,EList<FunRef>>() {
           public EList<FunRef> apply(final ExportAttribute it) {
             EList<FunRef> _funs = it.getFuns();
@@ -179,7 +179,7 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  public static Collection<EObject> getAllContents(final EObject module) {
+  public Collection<EObject> getAllContents(final EObject module) {
     List<EObject> _xblockexpression = null;
     {
       final EList<EObject> result = module.eContents();
@@ -187,7 +187,7 @@ public class ModelExtensions {
           public Collection<EObject> apply(final EObject it) {
             Collection<EObject> _xifexpression = null;
             if ((it instanceof ConditionalFormBlock)) {
-              Collection<EObject> _allContents = ModelExtensions.getAllContents(it);
+              Collection<EObject> _allContents = ModelExtensions.this.getAllContents(it);
               _xifexpression = _allContents;
             } else {
               ArrayList<EObject> _xifexpression_1 = null;
@@ -211,8 +211,8 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  public static Function getFunction(final Module module, final String fname, final int farity) {
-    Collection<EObject> _allContents = ModelExtensions.getAllContents(module);
+  public Function getFunction(final Module module, final String fname, final int farity) {
+    Collection<EObject> _allContents = this.getAllContents(module);
     Iterable<Function> _filter = Iterables.<Function>filter(_allContents, Function.class);
     final Function1<Function,Boolean> _function = new Function1<Function,Boolean>() {
         public Boolean apply(final Function it) {
@@ -222,7 +222,7 @@ public class ModelExtensions {
           if (!_equals) {
             _and = false;
           } else {
-            int _arity = ModelExtensions.getArity(it);
+            int _arity = ModelExtensions.this.getArity(it);
             boolean _equals_1 = (_arity == farity);
             _and = (_equals && _equals_1);
           }
@@ -233,27 +233,27 @@ public class ModelExtensions {
     return _findFirst;
   }
   
-  public static Function getFunction(final Module module, final FunRef ref) {
+  public Function getFunction(final Module module, final FunRef ref) {
     String _function = ref.getFunction();
     String _arity = ref.getArity();
     int _parseInt = Integer.parseInt(_arity);
-    Function _function_1 = ModelExtensions.getFunction(module, _function, _parseInt);
+    Function _function_1 = this.getFunction(module, _function, _parseInt);
     return _function_1;
   }
   
-  public static Function getFunction(final Module module, final SpecFun ref) {
+  public Function getFunction(final Module module, final SpecFun ref) {
     String _function = ref.getFunction();
     String _arity = ref.getArity();
     int _parseInt = Integer.parseInt(_arity);
-    Function _function_1 = ModelExtensions.getFunction(module, _function, _parseInt);
+    Function _function_1 = this.getFunction(module, _function, _parseInt);
     return _function_1;
   }
   
-  public static boolean exportsAll(final Module module) {
-    Collection<Expression> _compileOptions = ModelExtensions.getCompileOptions(module);
+  public boolean exportsAll(final Module module) {
+    Collection<Expression> _compileOptions = this.getCompileOptions(module);
     final Function1<Expression,Boolean> _function = new Function1<Expression,Boolean>() {
         public Boolean apply(final Expression it) {
-          boolean _hasAtom = ModelExtensions.hasAtom(it, "export_all");
+          boolean _hasAtom = ModelExtensions.this.hasAtom(it, "export_all");
           return Boolean.valueOf(_hasAtom);
         }
       };
@@ -261,14 +261,14 @@ public class ModelExtensions {
     return _exists;
   }
   
-  public static Collection<Atom> getParseTransforms(final Module module) {
+  public Collection<Atom> getParseTransforms(final Module module) {
     List<Atom> _xblockexpression = null;
     {
-      final Collection<Expression> options = ModelExtensions.getCompileOptions(module);
+      final Collection<Expression> options = this.getCompileOptions(module);
       final Iterable<ErlTuple> tuples = Iterables.<ErlTuple>filter(options, ErlTuple.class);
       final Function1<ErlTuple,Boolean> _function = new Function1<ErlTuple,Boolean>() {
           public Boolean apply(final ErlTuple it) {
-            boolean _parseTransformTuple = ModelExtensions.parseTransformTuple(it);
+            boolean _parseTransformTuple = ModelExtensions.this.parseTransformTuple(it);
             return Boolean.valueOf(_parseTransformTuple);
           }
         };
@@ -288,10 +288,10 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  public static SpecAttribute getSpec(final Module module, final String fname, final int farity) {
+  public SpecAttribute getSpec(final Module module, final String fname, final int farity) {
     SpecAttribute _xblockexpression = null;
     {
-      final Collection<SpecAttribute> specs = ModelExtensions.getSpecs(module);
+      final Collection<SpecAttribute> specs = this.getSpecs(module);
       final Function1<SpecAttribute,Boolean> _function = new Function1<SpecAttribute,Boolean>() {
           public Boolean apply(final SpecAttribute it) {
             boolean _and = false;
@@ -301,7 +301,7 @@ public class ModelExtensions {
             if (!_equals) {
               _and = false;
             } else {
-              int _specArity = ModelExtensions.getSpecArity(it);
+              int _specArity = ModelExtensions.this.getSpecArity(it);
               boolean _equals_1 = (_specArity == farity);
               _and = (_equals && _equals_1);
             }
@@ -314,7 +314,7 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  public static int getArity(final Function fun) {
+  public int getArity(final Function fun) {
     EList<FunctionClause> _clauses = fun.getClauses();
     FunctionClause _head = IterableExtensions.<FunctionClause>head(_clauses);
     EList<Expression> _params = _head.getParams();
@@ -322,17 +322,17 @@ public class ModelExtensions {
     return _size;
   }
   
-  public static boolean isExported(final Function function) {
-    Module _module = ModelExtensions.getModule(function);
-    boolean _exportsFunction = ModelExtensions.exportsFunction(_module, function);
+  public boolean isExported(final Function function) {
+    Module _module = this.getModule(function);
+    boolean _exportsFunction = this.exportsFunction(_module, function);
     return _exportsFunction;
   }
   
-  public static SpecAttribute getSpec(final Function function) {
+  public SpecAttribute getSpec(final Function function) {
     SpecAttribute _xblockexpression = null;
     {
-      final Module module = ModelExtensions.getModule(function);
-      final Collection<SpecAttribute> specs = ModelExtensions.getSpecs(module);
+      final Module module = this.getModule(function);
+      final Collection<SpecAttribute> specs = this.getSpecs(module);
       final Function1<SpecAttribute,Boolean> _function = new Function1<SpecAttribute,Boolean>() {
           public Boolean apply(final SpecAttribute it) {
             boolean _and = false;
@@ -343,8 +343,8 @@ public class ModelExtensions {
             if (!_equals) {
               _and = false;
             } else {
-              int _specArity = ModelExtensions.getSpecArity(it);
-              int _arity = ModelExtensions.getArity(function);
+              int _specArity = ModelExtensions.this.getSpecArity(it);
+              int _arity = ModelExtensions.this.getArity(function);
               boolean _equals_1 = (_specArity == _arity);
               _and = (_equals && _equals_1);
             }
@@ -357,17 +357,17 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  protected static Module _getModule(final Module element) {
+  protected Module _getModule(final Module element) {
     return element;
   }
   
-  protected static Module _getModule(final EObject element) {
+  protected Module _getModule(final EObject element) {
     EObject _eContainer = element.eContainer();
-    Module _module = ModelExtensions.getModule(_eContainer);
+    Module _module = this.getModule(_eContainer);
     return _module;
   }
   
-  public static String getSourceText(final EObject obj) {
+  public String getSourceText(final EObject obj) {
     String _xblockexpression = null;
     {
       ICompositeNode _node = NodeModelUtils.getNode(obj);
@@ -393,7 +393,7 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  public static int getSpecArity(final SpecAttribute spec) {
+  public int getSpecArity(final SpecAttribute spec) {
     int _xifexpression = (int) 0;
     SpecFun _ref = spec.getRef();
     String _arity = _ref.getArity();
@@ -411,14 +411,14 @@ public class ModelExtensions {
     return _xifexpression;
   }
   
-  private static <T extends Object> Collection<T> getAttributes(final Module module, final Class<T> type) {
+  public static <T extends Object> Collection<T> getAttributes(final Module module, final Class<T> type) {
     EList<EObject> _eContents = module.eContents();
     Iterable<T> _filter = Iterables.<T>filter(_eContents, type);
     List<T> _list = IterableExtensions.<T>toList(_filter);
     return _list;
   }
   
-  private static Collection<Expression> getRawCompileOptions(final Module module) {
+  public static Collection<Expression> getRawCompileOptions(final Module module) {
     Collection<CompileAttribute> _attributes = ModelExtensions.<CompileAttribute>getAttributes(module, CompileAttribute.class);
     final Function1<CompileAttribute,Expression> _function = new Function1<CompileAttribute,Expression>() {
         public Expression apply(final CompileAttribute it) {
@@ -431,7 +431,7 @@ public class ModelExtensions {
     return _list;
   }
   
-  private static Set<Expression> _merge(final Set<Expression> acc, final ErlList x) {
+  private Set<Expression> _merge(final Set<Expression> acc, final ErlList x) {
     Set<Expression> _xblockexpression = null;
     {
       EList<Expression> _elements = x.getElements();
@@ -441,7 +441,7 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  private static Set<Expression> _merge(final Set<Expression> acc, final Expression x) {
+  private Set<Expression> _merge(final Set<Expression> acc, final Expression x) {
     Set<Expression> _xblockexpression = null;
     {
       acc.add(x);
@@ -450,13 +450,13 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  public static Collection<Expression> getCompileOptions(final Module module) {
+  public Collection<Expression> getCompileOptions(final Module module) {
     Set<Expression> _xblockexpression = null;
     {
       final Function2<Expression,Expression,Integer> _function = new Function2<Expression,Expression,Integer>() {
           public Integer apply(final Expression a, final Expression b) {
-            String _sourceText = ModelExtensions.getSourceText(a);
-            String _sourceText_1 = ModelExtensions.getSourceText(b);
+            String _sourceText = ModelExtensions.this.getSourceText(a);
+            String _sourceText_1 = ModelExtensions.this.getSourceText(b);
             int _compareTo = _sourceText.compareTo(_sourceText_1);
             return _compareTo;
           }
@@ -469,7 +469,7 @@ public class ModelExtensions {
       Collection<Expression> _rawCompileOptions = ModelExtensions.getRawCompileOptions(module);
       final Function2<Set<Expression>,Expression,Set<Expression>> _function_1 = new Function2<Set<Expression>,Expression,Set<Expression>>() {
           public Set<Expression> apply(final Set<Expression> acc, final Expression item) {
-            Set<Expression> _merge = ModelExtensions.merge(acc, item);
+            Set<Expression> _merge = ModelExtensions.this.merge(acc, item);
             return _merge;
           }
         };
@@ -479,17 +479,17 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  private static boolean _hasAtom(final Atom atom, final String s) {
-    String _sourceText = ModelExtensions.getSourceText(atom);
+  private boolean _hasAtom(final Atom atom, final String s) {
+    String _sourceText = this.getSourceText(atom);
     boolean _equals = Objects.equal(_sourceText, s);
     return _equals;
   }
   
-  private static boolean _hasAtom(final ErlList list, final String s) {
+  private boolean _hasAtom(final ErlList list, final String s) {
     EList<Expression> _elements = list.getElements();
     final Function1<Expression,Boolean> _function = new Function1<Expression,Boolean>() {
         public Boolean apply(final Expression it) {
-          boolean _hasAtom = ModelExtensions.hasAtom(it, s);
+          boolean _hasAtom = ModelExtensions.this.hasAtom(it, s);
           return Boolean.valueOf(_hasAtom);
         }
       };
@@ -497,11 +497,11 @@ public class ModelExtensions {
     return _exists;
   }
   
-  private static boolean _hasAtom(final Expression expr, final String s) {
+  private boolean _hasAtom(final Expression expr, final String s) {
     return false;
   }
   
-  private static boolean parseTransformTuple(final ErlTuple expr) {
+  private boolean parseTransformTuple(final ErlTuple expr) {
     boolean _or = false;
     EList<Expression> _elements = expr.getElements();
     int _size = _elements.size();
@@ -521,7 +521,7 @@ public class ModelExtensions {
     Expression _head_1 = IterableExtensions.<Expression>head(_elements_2);
     final Atom hd = ((Atom) _head_1);
     boolean _and = false;
-    String _sourceText = ModelExtensions.getSourceText(hd);
+    String _sourceText = this.getSourceText(hd);
     boolean _equals = Objects.equal(_sourceText, "parse_transform");
     if (!_equals) {
       _and = false;
@@ -534,7 +534,7 @@ public class ModelExtensions {
     return _and;
   }
   
-  public static Module getModule(final EObject element) {
+  public Module getModule(final EObject element) {
     if (element instanceof Module) {
       return _getModule((Module)element);
     } else if (element != null) {
@@ -545,7 +545,7 @@ public class ModelExtensions {
     }
   }
   
-  private static Set<Expression> merge(final Set<Expression> acc, final Expression x) {
+  private Set<Expression> merge(final Set<Expression> acc, final Expression x) {
     if (x instanceof ErlList) {
       return _merge(acc, (ErlList)x);
     } else if (x != null) {
@@ -556,7 +556,7 @@ public class ModelExtensions {
     }
   }
   
-  private static boolean hasAtom(final Expression atom, final String s) {
+  private boolean hasAtom(final Expression atom, final String s) {
     if (atom instanceof Atom) {
       return _hasAtom((Atom)atom, s);
     } else if (atom instanceof ErlList) {

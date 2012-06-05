@@ -9,8 +9,13 @@ import org.eclipse.xtext.util.IAcceptor;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.ModelExtensions;
 
+import com.google.inject.Inject;
+
 public class ErlangResourceDescriptionStrategy extends
 		DefaultResourceDescriptionStrategy {
+
+	@Inject
+	private ModelExtensions modelExtensions;
 
 	@Override
 	public boolean createEObjectDescriptions(final EObject eObject,
@@ -24,7 +29,7 @@ public class ErlangResourceDescriptionStrategy extends
 					.getFullyQualifiedName(eObject);
 			if (eObject instanceof Function) {
 				final Function f = (Function) eObject;
-				if (!ModelExtensions.isExported(f)) {
+				if (!modelExtensions.isExported(f)) {
 					qualifiedName = null;
 				}
 			}

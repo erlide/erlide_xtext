@@ -12,14 +12,14 @@ import static org.erlide.erlang.IsFunRefMatcher.*
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
 
-import static extension org.erlide.erlang.ModelExtensions.*
-
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
 class ModuleExtensionsTest {
 	
     @Inject
     ParseHelper<Module> parser
+    @Inject
+    extension ModelExtensions 
 	
     @Test
     def void moduleName() {

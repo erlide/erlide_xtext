@@ -18,9 +18,11 @@ public class ErlangQualifiedNameProvider extends
 
 	@Inject
 	private IQualifiedNameConverter converter;
+	@Inject
+	private ModelExtensions modelExtensions;
 
 	QualifiedName qualifiedName(final Module module) {
-		String name = ModelExtensions.getName(module);
+		String name = modelExtensions.getName(module);
 		if (name == null) {
 			// TODO this isn't very unique! we should use the physical path, or
 			// something
@@ -48,7 +50,7 @@ public class ErlangQualifiedNameProvider extends
 		return splice(
 				getParentsFullyQualifiedName(function),
 				converter.toQualifiedName(function.getName() + "/"
-						+ ModelExtensions.getArity(function)));
+						+ modelExtensions.getArity(function)));
 	}
 
 	public static QualifiedName splice(final QualifiedName a,

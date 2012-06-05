@@ -27,6 +27,9 @@ public class ElementExtensionsTest {
   @Inject
   private ParseHelper<Module> parser;
   
+  @Inject
+  private ModelExtensions _modelExtensions;
+  
   @Test
   public void getModule() {
     try {
@@ -40,15 +43,15 @@ public class ElementExtensionsTest {
       _builder.append("gg() -> ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Function ff = ModelExtensions.getFunction(module, "ff", 0);
-      Module _module = ModelExtensions.getModule(ff);
+      final Function ff = this._modelExtensions.getFunction(module, "ff", 0);
+      Module _module = this._modelExtensions.getModule(ff);
       Matcher<? super Module> _is = Matchers.<Module>is(module);
       MatcherAssert.<Module>assertThat(_module, _is);
       EList<FunctionClause> _clauses = ff.getClauses();
       FunctionClause _head = IterableExtensions.<FunctionClause>head(_clauses);
       EList<Expression> _body = _head.getBody();
       final Expression fexpr = IterableExtensions.<Expression>head(_body);
-      Module _module_1 = ModelExtensions.getModule(fexpr);
+      Module _module_1 = this._modelExtensions.getModule(fexpr);
       Matcher<? super Module> _is_1 = Matchers.<Module>is(module);
       MatcherAssert.<Module>assertThat(_module_1, _is_1);
     } catch (Exception _e) {
