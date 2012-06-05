@@ -298,8 +298,6 @@ ruleElseAttribute
 
 
 
-
-
 // Entry rule entryRuleAttribute
 entryRuleAttribute returns [EObject current=null] 
 	:
@@ -425,6 +423,8 @@ ruleAttribute returns [EObject current=null]
     }
 )
 ;
+
+
 
 
 

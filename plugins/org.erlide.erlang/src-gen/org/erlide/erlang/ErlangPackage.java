@@ -187,6 +187,25 @@ public interface ErlangPackage extends EPackage
   int CONDITIONAL_FORM_BLOCK_FEATURE_COUNT = FORM_FEATURE_COUNT + 5;
 
   /**
+   * The meta object id for the '{@link org.erlide.erlang.impl.AttributeImpl <em>Attribute</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.erlide.erlang.impl.AttributeImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getAttribute()
+   * @generated
+   */
+  int ATTRIBUTE = 4;
+
+  /**
+   * The number of structural features of the '<em>Attribute</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE_FEATURE_COUNT = FORM_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ConditionalAttributeImpl <em>Conditional Attribute</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -194,7 +213,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getConditionalAttribute()
    * @generated
    */
-  int CONDITIONAL_ATTRIBUTE = 4;
+  int CONDITIONAL_ATTRIBUTE = 5;
 
   /**
    * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -213,25 +232,6 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int CONDITIONAL_ATTRIBUTE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.AttributeImpl <em>Attribute</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.AttributeImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getAttribute()
-   * @generated
-   */
-  int ATTRIBUTE = 5;
-
-  /**
-   * The number of structural features of the '<em>Attribute</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATTRIBUTE_FEATURE_COUNT = FORM_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.AbstractDefineAttributeImpl <em>Abstract Define Attribute</em>}' class.
@@ -4255,6 +4255,16 @@ public interface ErlangPackage extends EPackage
   EReference getConditionalFormBlock_End();
 
   /**
+   * Returns the meta object for class '{@link org.erlide.erlang.Attribute <em>Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Attribute</em>'.
+   * @see org.erlide.erlang.Attribute
+   * @generated
+   */
+  EClass getAttribute();
+
+  /**
    * Returns the meta object for class '{@link org.erlide.erlang.ConditionalAttribute <em>Conditional Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4274,16 +4284,6 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EAttribute getConditionalAttribute_Tag();
-
-  /**
-   * Returns the meta object for class '{@link org.erlide.erlang.Attribute <em>Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Attribute</em>'.
-   * @see org.erlide.erlang.Attribute
-   * @generated
-   */
-  EClass getAttribute();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.AbstractDefineAttribute <em>Abstract Define Attribute</em>}'.
@@ -7058,6 +7058,16 @@ public interface ErlangPackage extends EPackage
     EReference CONDITIONAL_FORM_BLOCK__END = eINSTANCE.getConditionalFormBlock_End();
 
     /**
+     * The meta object literal for the '{@link org.erlide.erlang.impl.AttributeImpl <em>Attribute</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.erlide.erlang.impl.AttributeImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getAttribute()
+     * @generated
+     */
+    EClass ATTRIBUTE = eINSTANCE.getAttribute();
+
+    /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.ConditionalAttributeImpl <em>Conditional Attribute</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7074,16 +7084,6 @@ public interface ErlangPackage extends EPackage
      * @generated
      */
     EAttribute CONDITIONAL_ATTRIBUTE__TAG = eINSTANCE.getConditionalAttribute_Tag();
-
-    /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.AttributeImpl <em>Attribute</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.AttributeImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getAttribute()
-     * @generated
-     */
-    EClass ATTRIBUTE = eINSTANCE.getAttribute();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.AbstractDefineAttributeImpl <em>Abstract Define Attribute</em>}' class.

@@ -19,10 +19,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ConditionalFormBlock/elseForms"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ConditionalFormBlock/end"/>
     </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//Attribute"/>
     <genClasses ecoreClass="Erlang.ecore#//ConditionalAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ConditionalAttribute/tag"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//Attribute"/>
     <genClasses ecoreClass="Erlang.ecore#//AbstractDefineAttribute"/>
     <genClasses ecoreClass="Erlang.ecore#//DefineAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//DefineAttribute/tag"/>

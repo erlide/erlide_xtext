@@ -131,7 +131,7 @@ class ModelExtensions {
     // Function
     
     def int getArity(Function fun) {
-    	fun.clauses.head.params.size
+    	fun.clauses.head?.params?.size
     }
     
     def boolean isExported(Function function) {
@@ -157,11 +157,14 @@ class ModelExtensions {
     }
  
     def String getSourceText(EObject obj) {
-        val nodes = NodeModelUtils::getNode(obj).leafNodes
-        nodes.filter[!isHidden].map[text].join
-   }
+    	val node = NodeModelUtils::getNode(obj)
+    	if(node==null){
+    		return null
+    	}
+        node.leafNodes.filter[!isHidden].map[text].join(" ")
+    }
  
- 	def int getSpecArity(SpecAttribute spec) {
+  	def int getSpecArity(SpecAttribute spec) {
  		if (spec.ref.arity!=null) {
  			0 //spec.ref.arity
 		} else {

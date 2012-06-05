@@ -148,14 +148,14 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass conditionalAttributeEClass = null;
+  private EClass attributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass attributeEClass = null;
+  private EClass conditionalAttributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -948,6 +948,16 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getAttribute()
+  {
+    return attributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getConditionalAttribute()
   {
     return conditionalAttributeEClass;
@@ -961,16 +971,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
   public EAttribute getConditionalAttribute_Tag()
   {
     return (EAttribute)conditionalAttributeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getAttribute()
-  {
-    return attributeEClass;
   }
 
   /**
@@ -3517,10 +3517,10 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(conditionalFormBlockEClass, CONDITIONAL_FORM_BLOCK__ELSE_FORMS);
     createEReference(conditionalFormBlockEClass, CONDITIONAL_FORM_BLOCK__END);
 
+    attributeEClass = createEClass(ATTRIBUTE);
+
     conditionalAttributeEClass = createEClass(CONDITIONAL_ATTRIBUTE);
     createEAttribute(conditionalAttributeEClass, CONDITIONAL_ATTRIBUTE__TAG);
-
-    attributeEClass = createEClass(ATTRIBUTE);
 
     abstractDefineAttributeEClass = createEClass(ABSTRACT_DEFINE_ATTRIBUTE);
 
@@ -3982,10 +3982,10 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getConditionalFormBlock_ElseForms(), this.getForm(), null, "elseForms", null, 0, -1, ConditionalFormBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConditionalFormBlock_End(), this.getEndifAttribute(), null, "end", null, 0, 1, ConditionalFormBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(conditionalAttributeEClass, ConditionalAttribute.class, "ConditionalAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getConditionalAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, ConditionalAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(abstractDefineAttributeEClass, AbstractDefineAttribute.class, "AbstractDefineAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

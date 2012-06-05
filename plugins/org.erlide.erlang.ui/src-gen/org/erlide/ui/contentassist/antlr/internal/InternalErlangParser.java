@@ -438,16 +438,16 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "entryRuleAttribute"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:149:1: entryRuleAttribute : ruleAttribute EOF ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:147:1: entryRuleAttribute : ruleAttribute EOF ;
     public final void entryRuleAttribute() throws RecognitionException {
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:150:1: ( ruleAttribute EOF )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:151:1: ruleAttribute EOF
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:148:1: ( ruleAttribute EOF )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:149:1: ruleAttribute EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleAttribute_in_entryRuleAttribute252);
+            pushFollow(FOLLOW_ruleAttribute_in_entryRuleAttribute250);
             ruleAttribute();
 
             state._fsp--;
@@ -455,7 +455,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAttributeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAttribute259); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAttribute257); if (state.failed) return ;
 
             }
 
@@ -472,25 +472,25 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleAttribute"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:158:1: ruleAttribute : ( ( rule__Attribute__Alternatives ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:156:1: ruleAttribute : ( ( rule__Attribute__Alternatives ) ) ;
     public final void ruleAttribute() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:162:2: ( ( ( rule__Attribute__Alternatives ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:163:1: ( ( rule__Attribute__Alternatives ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:160:2: ( ( ( rule__Attribute__Alternatives ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:161:1: ( ( rule__Attribute__Alternatives ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:163:1: ( ( rule__Attribute__Alternatives ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:164:1: ( rule__Attribute__Alternatives )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:161:1: ( ( rule__Attribute__Alternatives ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:162:1: ( rule__Attribute__Alternatives )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAttributeAccess().getAlternatives()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:165:1: ( rule__Attribute__Alternatives )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:165:2: rule__Attribute__Alternatives
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:163:1: ( rule__Attribute__Alternatives )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:163:2: rule__Attribute__Alternatives
             {
-            pushFollow(FOLLOW_rule__Attribute__Alternatives_in_ruleAttribute285);
+            pushFollow(FOLLOW_rule__Attribute__Alternatives_in_ruleAttribute283);
             rule__Attribute__Alternatives();
 
             state._fsp--;
@@ -9214,26 +9214,26 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Attribute__Alternatives"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3027:1: rule__Attribute__Alternatives : ( ( ruleModuleAttribute ) | ( ruleDefineAttribute ) | ( ruleUndefAttribute ) | ( ruleAbstractIncludeAttribute ) | ( ruleFileAttribute ) | ( ruleRecordAttribute ) | ( ruleAbstractTypeAttribute ) | ( ruleExportAttribute ) | ( ruleImportAttribute ) | ( ruleCompileAttribute ) | ( ruleCustomAttribute ) );
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3026:1: rule__Attribute__Alternatives : ( ( ruleModuleAttribute ) | ( ruleDefineAttribute ) | ( ruleUndefAttribute ) | ( ruleAbstractIncludeAttribute ) | ( ruleFileAttribute ) | ( ruleRecordAttribute ) | ( ruleAbstractTypeAttribute ) | ( ruleExportAttribute ) | ( ruleImportAttribute ) | ( ruleCompileAttribute ) | ( ruleCustomAttribute ) );
     public final void rule__Attribute__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3031:1: ( ( ruleModuleAttribute ) | ( ruleDefineAttribute ) | ( ruleUndefAttribute ) | ( ruleAbstractIncludeAttribute ) | ( ruleFileAttribute ) | ( ruleRecordAttribute ) | ( ruleAbstractTypeAttribute ) | ( ruleExportAttribute ) | ( ruleImportAttribute ) | ( ruleCompileAttribute ) | ( ruleCustomAttribute ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3030:1: ( ( ruleModuleAttribute ) | ( ruleDefineAttribute ) | ( ruleUndefAttribute ) | ( ruleAbstractIncludeAttribute ) | ( ruleFileAttribute ) | ( ruleRecordAttribute ) | ( ruleAbstractTypeAttribute ) | ( ruleExportAttribute ) | ( ruleImportAttribute ) | ( ruleCompileAttribute ) | ( ruleCustomAttribute ) )
             int alt3=11;
             alt3 = dfa3.predict(input);
             switch (alt3) {
                 case 1 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3032:1: ( ruleModuleAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3031:1: ( ruleModuleAttribute )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3032:1: ( ruleModuleAttribute )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3033:1: ruleModuleAttribute
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3031:1: ( ruleModuleAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3032:1: ruleModuleAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getModuleAttributeParserRuleCall_0()); 
                     }
-                    pushFollow(FOLLOW_ruleModuleAttribute_in_rule__Attribute__Alternatives6422);
+                    pushFollow(FOLLOW_ruleModuleAttribute_in_rule__Attribute__Alternatives6421);
                     ruleModuleAttribute();
 
                     state._fsp--;
@@ -9248,15 +9248,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3038:6: ( ruleDefineAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3037:6: ( ruleDefineAttribute )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3038:6: ( ruleDefineAttribute )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3039:1: ruleDefineAttribute
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3037:6: ( ruleDefineAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3038:1: ruleDefineAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getDefineAttributeParserRuleCall_1()); 
                     }
-                    pushFollow(FOLLOW_ruleDefineAttribute_in_rule__Attribute__Alternatives6439);
+                    pushFollow(FOLLOW_ruleDefineAttribute_in_rule__Attribute__Alternatives6438);
                     ruleDefineAttribute();
 
                     state._fsp--;
@@ -9271,15 +9271,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3044:6: ( ruleUndefAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3043:6: ( ruleUndefAttribute )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3044:6: ( ruleUndefAttribute )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3045:1: ruleUndefAttribute
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3043:6: ( ruleUndefAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3044:1: ruleUndefAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getUndefAttributeParserRuleCall_2()); 
                     }
-                    pushFollow(FOLLOW_ruleUndefAttribute_in_rule__Attribute__Alternatives6456);
+                    pushFollow(FOLLOW_ruleUndefAttribute_in_rule__Attribute__Alternatives6455);
                     ruleUndefAttribute();
 
                     state._fsp--;
@@ -9294,15 +9294,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3050:6: ( ruleAbstractIncludeAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3049:6: ( ruleAbstractIncludeAttribute )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3050:6: ( ruleAbstractIncludeAttribute )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3051:1: ruleAbstractIncludeAttribute
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3049:6: ( ruleAbstractIncludeAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3050:1: ruleAbstractIncludeAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getAbstractIncludeAttributeParserRuleCall_3()); 
                     }
-                    pushFollow(FOLLOW_ruleAbstractIncludeAttribute_in_rule__Attribute__Alternatives6473);
+                    pushFollow(FOLLOW_ruleAbstractIncludeAttribute_in_rule__Attribute__Alternatives6472);
                     ruleAbstractIncludeAttribute();
 
                     state._fsp--;
@@ -9317,15 +9317,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 5 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3056:6: ( ruleFileAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3055:6: ( ruleFileAttribute )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3056:6: ( ruleFileAttribute )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3057:1: ruleFileAttribute
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3055:6: ( ruleFileAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3056:1: ruleFileAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getFileAttributeParserRuleCall_4()); 
                     }
-                    pushFollow(FOLLOW_ruleFileAttribute_in_rule__Attribute__Alternatives6490);
+                    pushFollow(FOLLOW_ruleFileAttribute_in_rule__Attribute__Alternatives6489);
                     ruleFileAttribute();
 
                     state._fsp--;
@@ -9340,15 +9340,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 6 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3062:6: ( ruleRecordAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3061:6: ( ruleRecordAttribute )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3062:6: ( ruleRecordAttribute )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3063:1: ruleRecordAttribute
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3061:6: ( ruleRecordAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3062:1: ruleRecordAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getRecordAttributeParserRuleCall_5()); 
                     }
-                    pushFollow(FOLLOW_ruleRecordAttribute_in_rule__Attribute__Alternatives6507);
+                    pushFollow(FOLLOW_ruleRecordAttribute_in_rule__Attribute__Alternatives6506);
                     ruleRecordAttribute();
 
                     state._fsp--;
@@ -9363,15 +9363,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 7 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3068:6: ( ruleAbstractTypeAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3067:6: ( ruleAbstractTypeAttribute )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3068:6: ( ruleAbstractTypeAttribute )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3069:1: ruleAbstractTypeAttribute
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3067:6: ( ruleAbstractTypeAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3068:1: ruleAbstractTypeAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getAbstractTypeAttributeParserRuleCall_6()); 
                     }
-                    pushFollow(FOLLOW_ruleAbstractTypeAttribute_in_rule__Attribute__Alternatives6524);
+                    pushFollow(FOLLOW_ruleAbstractTypeAttribute_in_rule__Attribute__Alternatives6523);
                     ruleAbstractTypeAttribute();
 
                     state._fsp--;
@@ -9386,15 +9386,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 8 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3074:6: ( ruleExportAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3073:6: ( ruleExportAttribute )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3074:6: ( ruleExportAttribute )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3075:1: ruleExportAttribute
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3073:6: ( ruleExportAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3074:1: ruleExportAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getExportAttributeParserRuleCall_7()); 
                     }
-                    pushFollow(FOLLOW_ruleExportAttribute_in_rule__Attribute__Alternatives6541);
+                    pushFollow(FOLLOW_ruleExportAttribute_in_rule__Attribute__Alternatives6540);
                     ruleExportAttribute();
 
                     state._fsp--;
@@ -9409,15 +9409,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 9 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3080:6: ( ruleImportAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3079:6: ( ruleImportAttribute )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3080:6: ( ruleImportAttribute )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3081:1: ruleImportAttribute
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3079:6: ( ruleImportAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3080:1: ruleImportAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getImportAttributeParserRuleCall_8()); 
                     }
-                    pushFollow(FOLLOW_ruleImportAttribute_in_rule__Attribute__Alternatives6558);
+                    pushFollow(FOLLOW_ruleImportAttribute_in_rule__Attribute__Alternatives6557);
                     ruleImportAttribute();
 
                     state._fsp--;
@@ -9432,15 +9432,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 10 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3086:6: ( ruleCompileAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3085:6: ( ruleCompileAttribute )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3086:6: ( ruleCompileAttribute )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3087:1: ruleCompileAttribute
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3085:6: ( ruleCompileAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3086:1: ruleCompileAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getCompileAttributeParserRuleCall_9()); 
                     }
-                    pushFollow(FOLLOW_ruleCompileAttribute_in_rule__Attribute__Alternatives6575);
+                    pushFollow(FOLLOW_ruleCompileAttribute_in_rule__Attribute__Alternatives6574);
                     ruleCompileAttribute();
 
                     state._fsp--;
@@ -9455,15 +9455,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 11 :
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3092:6: ( ruleCustomAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3091:6: ( ruleCustomAttribute )
                     {
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3092:6: ( ruleCustomAttribute )
-                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3093:1: ruleCustomAttribute
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3091:6: ( ruleCustomAttribute )
+                    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:3092:1: ruleCustomAttribute
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getAttributeAccess().getCustomAttributeParserRuleCall_10()); 
                     }
-                    pushFollow(FOLLOW_ruleCustomAttribute_in_rule__Attribute__Alternatives6592);
+                    pushFollow(FOLLOW_ruleCustomAttribute_in_rule__Attribute__Alternatives6591);
                     ruleCustomAttribute();
 
                     state._fsp--;
@@ -84805,7 +84805,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             this.transition = DFA3_transition;
         }
         public String getDescription() {
-            return "3027:1: rule__Attribute__Alternatives : ( ( ruleModuleAttribute ) | ( ruleDefineAttribute ) | ( ruleUndefAttribute ) | ( ruleAbstractIncludeAttribute ) | ( ruleFileAttribute ) | ( ruleRecordAttribute ) | ( ruleAbstractTypeAttribute ) | ( ruleExportAttribute ) | ( ruleImportAttribute ) | ( ruleCompileAttribute ) | ( ruleCustomAttribute ) );";
+            return "3026:1: rule__Attribute__Alternatives : ( ( ruleModuleAttribute ) | ( ruleDefineAttribute ) | ( ruleUndefAttribute ) | ( ruleAbstractIncludeAttribute ) | ( ruleFileAttribute ) | ( ruleRecordAttribute ) | ( ruleAbstractTypeAttribute ) | ( ruleExportAttribute ) | ( ruleImportAttribute ) | ( ruleCompileAttribute ) | ( ruleCustomAttribute ) );";
         }
     }
     static final String DFA19_eotS =
@@ -85318,65 +85318,65 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             "\1\1\13\uffff\1\4\1\5\1\2\1\17\1\6\1\7\34\uffff\1\25\1\26\1"+
             "\24\1\3\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\20\1\21\1\22\1"+
             "\23",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
             "\1\54\1\31\13\uffff\1\34\1\35\1\32\1\47\1\36\1\37\37\uffff"+
             "\1\33\1\40\1\41\1\42\1\43\1\44\1\45\1\46\1\50\1\51\1\52\1\53",
@@ -85384,65 +85384,65 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             "\1\33\1\40\1\41\1\42\1\43\1\44\1\45\1\46\1\50\1\51\1\52\1\53",
             "",
             "",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30",
-            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2\30"+
-            "\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
+            "\1\30\17\uffff\16\30\34\uffff\3\30\1\uffff\1\30\1\uffff\2"+
+            "\30\2\uffff\1\30\2\uffff\1\27\16\uffff\1\30\2\uffff\1\30\3\uffff"+
             "\1\30"
     };
 
@@ -85490,9 +85490,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleConditionalFormBlock_in_entryRuleConditionalFormBlock190 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleConditionalFormBlock197 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ConditionalFormBlock__Group__0_in_ruleConditionalFormBlock223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute252 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAttribute259 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__Alternatives_in_ruleAttribute285 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute250 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAttribute257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__Alternatives_in_ruleAttribute283 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleDefineAttribute_in_entryRuleDefineAttribute314 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleDefineAttribute321 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__DefineAttribute__Group__0_in_ruleDefineAttribute347 = new BitSet(new long[]{0x0000000000000002L});
@@ -85797,17 +85797,17 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleFunction_in_rule__Form__Alternatives6354 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleConditionalFormBlock_in_rule__Form__Alternatives6371 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Form__Group_3__0_in_rule__Form__Alternatives6388 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleModuleAttribute_in_rule__Attribute__Alternatives6422 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDefineAttribute_in_rule__Attribute__Alternatives6439 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUndefAttribute_in_rule__Attribute__Alternatives6456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAbstractIncludeAttribute_in_rule__Attribute__Alternatives6473 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFileAttribute_in_rule__Attribute__Alternatives6490 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRecordAttribute_in_rule__Attribute__Alternatives6507 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAbstractTypeAttribute_in_rule__Attribute__Alternatives6524 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExportAttribute_in_rule__Attribute__Alternatives6541 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImportAttribute_in_rule__Attribute__Alternatives6558 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCompileAttribute_in_rule__Attribute__Alternatives6575 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCustomAttribute_in_rule__Attribute__Alternatives6592 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModuleAttribute_in_rule__Attribute__Alternatives6421 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDefineAttribute_in_rule__Attribute__Alternatives6438 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUndefAttribute_in_rule__Attribute__Alternatives6455 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAbstractIncludeAttribute_in_rule__Attribute__Alternatives6472 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFileAttribute_in_rule__Attribute__Alternatives6489 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRecordAttribute_in_rule__Attribute__Alternatives6506 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAbstractTypeAttribute_in_rule__Attribute__Alternatives6523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExportAttribute_in_rule__Attribute__Alternatives6540 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImportAttribute_in_rule__Attribute__Alternatives6557 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCompileAttribute_in_rule__Attribute__Alternatives6574 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCustomAttribute_in_rule__Attribute__Alternatives6591 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_18_in_rule__IfdefAttribute__TagAlternatives_1_06626 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_19_in_rule__IfdefAttribute__TagAlternatives_1_06646 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleIncludeAttribute_in_rule__AbstractIncludeAttribute__Alternatives6680 = new BitSet(new long[]{0x0000000000000002L});

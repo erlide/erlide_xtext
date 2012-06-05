@@ -68,8 +68,8 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.ABSTRACT_ELEMENT: return createAbstractElement();
       case ErlangPackage.FORM: return createForm();
       case ErlangPackage.CONDITIONAL_FORM_BLOCK: return createConditionalFormBlock();
-      case ErlangPackage.CONDITIONAL_ATTRIBUTE: return createConditionalAttribute();
       case ErlangPackage.ATTRIBUTE: return createAttribute();
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE: return createConditionalAttribute();
       case ErlangPackage.ABSTRACT_DEFINE_ATTRIBUTE: return createAbstractDefineAttribute();
       case ErlangPackage.DEFINE_ATTRIBUTE: return createDefineAttribute();
       case ErlangPackage.UNDEF_ATTRIBUTE: return createUndefAttribute();
@@ -213,10 +213,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ConditionalAttribute createConditionalAttribute()
+  public Attribute createAttribute()
   {
-    ConditionalAttributeImpl conditionalAttribute = new ConditionalAttributeImpl();
-    return conditionalAttribute;
+    AttributeImpl attribute = new AttributeImpl();
+    return attribute;
   }
 
   /**
@@ -224,10 +224,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Attribute createAttribute()
+  public ConditionalAttribute createConditionalAttribute()
   {
-    AttributeImpl attribute = new AttributeImpl();
-    return attribute;
+    ConditionalAttributeImpl conditionalAttribute = new ConditionalAttributeImpl();
+    return conditionalAttribute;
   }
 
   /**

@@ -95,14 +95,14 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createConditionalFormBlockAdapter();
       }
       @Override
-      public Adapter caseConditionalAttribute(ConditionalAttribute object)
-      {
-        return createConditionalAttributeAdapter();
-      }
-      @Override
       public Adapter caseAttribute(Attribute object)
       {
         return createAttributeAdapter();
+      }
+      @Override
+      public Adapter caseConditionalAttribute(ConditionalAttribute object)
+      {
+        return createConditionalAttributeAdapter();
       }
       @Override
       public Adapter caseAbstractDefineAttribute(AbstractDefineAttribute object)
@@ -632,21 +632,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ConditionalAttribute <em>Conditional Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.ConditionalAttribute
-   * @generated
-   */
-  public Adapter createConditionalAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.erlide.erlang.Attribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -657,6 +642,21 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAttributeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ConditionalAttribute <em>Conditional Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.ConditionalAttribute
+   * @generated
+   */
+  public Adapter createConditionalAttributeAdapter()
   {
     return null;
   }

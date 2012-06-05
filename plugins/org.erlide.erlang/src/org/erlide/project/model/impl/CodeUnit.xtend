@@ -1,13 +1,13 @@
 package org.erlide.project.model.impl
 
+import java.util.List
+import org.eclipse.core.resources.IFile
+import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.IPath
+import org.erlide.common.util.ErlLogger
 import org.erlide.project.model.ICodeFolder
 import org.erlide.project.model.ICodeUnit
 import org.erlide.project.model.IErlangModelElement
-import org.eclipse.core.resources.IFile
-import org.eclipse.core.resources.ResourcesPlugin
-import org.erlide.common.util.ErlLogger
-import java.util.List
 
 public class CodeUnit extends ErlangModelElement implements ICodeUnit {
 

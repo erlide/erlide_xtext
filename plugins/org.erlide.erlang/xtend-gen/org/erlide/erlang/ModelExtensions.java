@@ -317,8 +317,8 @@ public class ModelExtensions {
   public int getArity(final Function fun) {
     EList<FunctionClause> _clauses = fun.getClauses();
     FunctionClause _head = IterableExtensions.<FunctionClause>head(_clauses);
-    EList<Expression> _params = _head.getParams();
-    int _size = _params.size();
+    EList<Expression> _params = _head==null?(EList<Expression>)null:_head.getParams();
+    int _size = _params==null?0:_params.size();
     return _size;
   }
   
@@ -370,8 +370,12 @@ public class ModelExtensions {
   public String getSourceText(final EObject obj) {
     String _xblockexpression = null;
     {
-      ICompositeNode _node = NodeModelUtils.getNode(obj);
-      final Iterable<ILeafNode> nodes = _node.getLeafNodes();
+      final ICompositeNode node = NodeModelUtils.getNode(obj);
+      boolean _equals = Objects.equal(node, null);
+      if (_equals) {
+        return null;
+      }
+      Iterable<ILeafNode> _leafNodes = node.getLeafNodes();
       final Function1<ILeafNode,Boolean> _function = new Function1<ILeafNode,Boolean>() {
           public Boolean apply(final ILeafNode it) {
             boolean _isHidden = it.isHidden();
@@ -379,7 +383,7 @@ public class ModelExtensions {
             return Boolean.valueOf(_not);
           }
         };
-      Iterable<ILeafNode> _filter = IterableExtensions.<ILeafNode>filter(nodes, _function);
+      Iterable<ILeafNode> _filter = IterableExtensions.<ILeafNode>filter(_leafNodes, _function);
       final Function1<ILeafNode,String> _function_1 = new Function1<ILeafNode,String>() {
           public String apply(final ILeafNode it) {
             String _text = it.getText();
@@ -387,7 +391,7 @@ public class ModelExtensions {
           }
         };
       Iterable<String> _map = IterableExtensions.<ILeafNode, String>map(_filter, _function_1);
-      String _join = IterableExtensions.join(_map);
+      String _join = IterableExtensions.join(_map, " ");
       _xblockexpression = (_join);
     }
     return _xblockexpression;

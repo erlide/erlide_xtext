@@ -904,7 +904,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAttribute"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:304:1: entryRuleAttribute returns [EObject current=null] : iv_ruleAttribute= ruleAttribute EOF ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:302:1: entryRuleAttribute returns [EObject current=null] : iv_ruleAttribute= ruleAttribute EOF ;
     public final EObject entryRuleAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -912,13 +912,13 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:305:2: (iv_ruleAttribute= ruleAttribute EOF )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:306:2: iv_ruleAttribute= ruleAttribute EOF
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:303:2: (iv_ruleAttribute= ruleAttribute EOF )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:304:2: iv_ruleAttribute= ruleAttribute EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleAttribute_in_entryRuleAttribute555);
+            pushFollow(FOLLOW_ruleAttribute_in_entryRuleAttribute553);
             iv_ruleAttribute=ruleAttribute();
 
             state._fsp--;
@@ -926,7 +926,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAttribute; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAttribute565); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAttribute563); if (state.failed) return current;
 
             }
 
@@ -944,7 +944,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAttribute"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:313:1: ruleAttribute returns [EObject current=null] : (this_ModuleAttribute_0= ruleModuleAttribute | this_DefineAttribute_1= ruleDefineAttribute | this_UndefAttribute_2= ruleUndefAttribute | this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute | this_FileAttribute_4= ruleFileAttribute | this_RecordAttribute_5= ruleRecordAttribute | this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute | this_ExportAttribute_7= ruleExportAttribute | this_ImportAttribute_8= ruleImportAttribute | this_CompileAttribute_9= ruleCompileAttribute | this_CustomAttribute_10= ruleCustomAttribute ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:311:1: ruleAttribute returns [EObject current=null] : (this_ModuleAttribute_0= ruleModuleAttribute | this_DefineAttribute_1= ruleDefineAttribute | this_UndefAttribute_2= ruleUndefAttribute | this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute | this_FileAttribute_4= ruleFileAttribute | this_RecordAttribute_5= ruleRecordAttribute | this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute | this_ExportAttribute_7= ruleExportAttribute | this_ImportAttribute_8= ruleImportAttribute | this_CompileAttribute_9= ruleCompileAttribute | this_CustomAttribute_10= ruleCustomAttribute ) ;
     public final EObject ruleAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -974,22 +974,22 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:316:28: ( (this_ModuleAttribute_0= ruleModuleAttribute | this_DefineAttribute_1= ruleDefineAttribute | this_UndefAttribute_2= ruleUndefAttribute | this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute | this_FileAttribute_4= ruleFileAttribute | this_RecordAttribute_5= ruleRecordAttribute | this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute | this_ExportAttribute_7= ruleExportAttribute | this_ImportAttribute_8= ruleImportAttribute | this_CompileAttribute_9= ruleCompileAttribute | this_CustomAttribute_10= ruleCustomAttribute ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:317:1: (this_ModuleAttribute_0= ruleModuleAttribute | this_DefineAttribute_1= ruleDefineAttribute | this_UndefAttribute_2= ruleUndefAttribute | this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute | this_FileAttribute_4= ruleFileAttribute | this_RecordAttribute_5= ruleRecordAttribute | this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute | this_ExportAttribute_7= ruleExportAttribute | this_ImportAttribute_8= ruleImportAttribute | this_CompileAttribute_9= ruleCompileAttribute | this_CustomAttribute_10= ruleCustomAttribute )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:314:28: ( (this_ModuleAttribute_0= ruleModuleAttribute | this_DefineAttribute_1= ruleDefineAttribute | this_UndefAttribute_2= ruleUndefAttribute | this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute | this_FileAttribute_4= ruleFileAttribute | this_RecordAttribute_5= ruleRecordAttribute | this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute | this_ExportAttribute_7= ruleExportAttribute | this_ImportAttribute_8= ruleImportAttribute | this_CompileAttribute_9= ruleCompileAttribute | this_CustomAttribute_10= ruleCustomAttribute ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:315:1: (this_ModuleAttribute_0= ruleModuleAttribute | this_DefineAttribute_1= ruleDefineAttribute | this_UndefAttribute_2= ruleUndefAttribute | this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute | this_FileAttribute_4= ruleFileAttribute | this_RecordAttribute_5= ruleRecordAttribute | this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute | this_ExportAttribute_7= ruleExportAttribute | this_ImportAttribute_8= ruleImportAttribute | this_CompileAttribute_9= ruleCompileAttribute | this_CustomAttribute_10= ruleCustomAttribute )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:317:1: (this_ModuleAttribute_0= ruleModuleAttribute | this_DefineAttribute_1= ruleDefineAttribute | this_UndefAttribute_2= ruleUndefAttribute | this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute | this_FileAttribute_4= ruleFileAttribute | this_RecordAttribute_5= ruleRecordAttribute | this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute | this_ExportAttribute_7= ruleExportAttribute | this_ImportAttribute_8= ruleImportAttribute | this_CompileAttribute_9= ruleCompileAttribute | this_CustomAttribute_10= ruleCustomAttribute )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:315:1: (this_ModuleAttribute_0= ruleModuleAttribute | this_DefineAttribute_1= ruleDefineAttribute | this_UndefAttribute_2= ruleUndefAttribute | this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute | this_FileAttribute_4= ruleFileAttribute | this_RecordAttribute_5= ruleRecordAttribute | this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute | this_ExportAttribute_7= ruleExportAttribute | this_ImportAttribute_8= ruleImportAttribute | this_CompileAttribute_9= ruleCompileAttribute | this_CustomAttribute_10= ruleCustomAttribute )
             int alt6=11;
             alt6 = dfa6.predict(input);
             switch (alt6) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:318:5: this_ModuleAttribute_0= ruleModuleAttribute
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:316:5: this_ModuleAttribute_0= ruleModuleAttribute
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getAttributeAccess().getModuleAttributeParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleModuleAttribute_in_ruleAttribute612);
+                    pushFollow(FOLLOW_ruleModuleAttribute_in_ruleAttribute610);
                     this_ModuleAttribute_0=ruleModuleAttribute();
 
                     state._fsp--;
@@ -1004,14 +1004,14 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:328:5: this_DefineAttribute_1= ruleDefineAttribute
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:326:5: this_DefineAttribute_1= ruleDefineAttribute
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getAttributeAccess().getDefineAttributeParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleDefineAttribute_in_ruleAttribute639);
+                    pushFollow(FOLLOW_ruleDefineAttribute_in_ruleAttribute637);
                     this_DefineAttribute_1=ruleDefineAttribute();
 
                     state._fsp--;
@@ -1026,14 +1026,14 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:338:5: this_UndefAttribute_2= ruleUndefAttribute
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:336:5: this_UndefAttribute_2= ruleUndefAttribute
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getAttributeAccess().getUndefAttributeParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleUndefAttribute_in_ruleAttribute666);
+                    pushFollow(FOLLOW_ruleUndefAttribute_in_ruleAttribute664);
                     this_UndefAttribute_2=ruleUndefAttribute();
 
                     state._fsp--;
@@ -1048,14 +1048,14 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:348:5: this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:346:5: this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getAttributeAccess().getAbstractIncludeAttributeParserRuleCall_3()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleAbstractIncludeAttribute_in_ruleAttribute693);
+                    pushFollow(FOLLOW_ruleAbstractIncludeAttribute_in_ruleAttribute691);
                     this_AbstractIncludeAttribute_3=ruleAbstractIncludeAttribute();
 
                     state._fsp--;
@@ -1070,14 +1070,14 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:358:5: this_FileAttribute_4= ruleFileAttribute
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:356:5: this_FileAttribute_4= ruleFileAttribute
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getAttributeAccess().getFileAttributeParserRuleCall_4()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleFileAttribute_in_ruleAttribute720);
+                    pushFollow(FOLLOW_ruleFileAttribute_in_ruleAttribute718);
                     this_FileAttribute_4=ruleFileAttribute();
 
                     state._fsp--;
@@ -1092,14 +1092,14 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:368:5: this_RecordAttribute_5= ruleRecordAttribute
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:366:5: this_RecordAttribute_5= ruleRecordAttribute
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getAttributeAccess().getRecordAttributeParserRuleCall_5()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleRecordAttribute_in_ruleAttribute747);
+                    pushFollow(FOLLOW_ruleRecordAttribute_in_ruleAttribute745);
                     this_RecordAttribute_5=ruleRecordAttribute();
 
                     state._fsp--;
@@ -1114,14 +1114,14 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:378:5: this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:376:5: this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getAttributeAccess().getAbstractTypeAttributeParserRuleCall_6()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleAbstractTypeAttribute_in_ruleAttribute774);
+                    pushFollow(FOLLOW_ruleAbstractTypeAttribute_in_ruleAttribute772);
                     this_AbstractTypeAttribute_6=ruleAbstractTypeAttribute();
 
                     state._fsp--;
@@ -1136,14 +1136,14 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:388:5: this_ExportAttribute_7= ruleExportAttribute
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:386:5: this_ExportAttribute_7= ruleExportAttribute
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getAttributeAccess().getExportAttributeParserRuleCall_7()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleExportAttribute_in_ruleAttribute801);
+                    pushFollow(FOLLOW_ruleExportAttribute_in_ruleAttribute799);
                     this_ExportAttribute_7=ruleExportAttribute();
 
                     state._fsp--;
@@ -1158,14 +1158,14 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:398:5: this_ImportAttribute_8= ruleImportAttribute
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:396:5: this_ImportAttribute_8= ruleImportAttribute
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getAttributeAccess().getImportAttributeParserRuleCall_8()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleImportAttribute_in_ruleAttribute828);
+                    pushFollow(FOLLOW_ruleImportAttribute_in_ruleAttribute826);
                     this_ImportAttribute_8=ruleImportAttribute();
 
                     state._fsp--;
@@ -1180,14 +1180,14 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:408:5: this_CompileAttribute_9= ruleCompileAttribute
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:406:5: this_CompileAttribute_9= ruleCompileAttribute
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getAttributeAccess().getCompileAttributeParserRuleCall_9()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleCompileAttribute_in_ruleAttribute855);
+                    pushFollow(FOLLOW_ruleCompileAttribute_in_ruleAttribute853);
                     this_CompileAttribute_9=ruleCompileAttribute();
 
                     state._fsp--;
@@ -1202,14 +1202,14 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:418:5: this_CustomAttribute_10= ruleCustomAttribute
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:416:5: this_CustomAttribute_10= ruleCustomAttribute
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getAttributeAccess().getCustomAttributeParserRuleCall_10()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleCustomAttribute_in_ruleAttribute882);
+                    pushFollow(FOLLOW_ruleCustomAttribute_in_ruleAttribute880);
                     this_CustomAttribute_10=ruleCustomAttribute();
 
                     state._fsp--;
@@ -26516,7 +26516,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             this.transition = DFA6_transition;
         }
         public String getDescription() {
-            return "317:1: (this_ModuleAttribute_0= ruleModuleAttribute | this_DefineAttribute_1= ruleDefineAttribute | this_UndefAttribute_2= ruleUndefAttribute | this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute | this_FileAttribute_4= ruleFileAttribute | this_RecordAttribute_5= ruleRecordAttribute | this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute | this_ExportAttribute_7= ruleExportAttribute | this_ImportAttribute_8= ruleImportAttribute | this_CompileAttribute_9= ruleCompileAttribute | this_CustomAttribute_10= ruleCustomAttribute )";
+            return "315:1: (this_ModuleAttribute_0= ruleModuleAttribute | this_DefineAttribute_1= ruleDefineAttribute | this_UndefAttribute_2= ruleUndefAttribute | this_AbstractIncludeAttribute_3= ruleAbstractIncludeAttribute | this_FileAttribute_4= ruleFileAttribute | this_RecordAttribute_5= ruleRecordAttribute | this_AbstractTypeAttribute_6= ruleAbstractTypeAttribute | this_ExportAttribute_7= ruleExportAttribute | this_ImportAttribute_8= ruleImportAttribute | this_CompileAttribute_9= ruleCompileAttribute | this_CustomAttribute_10= ruleCustomAttribute )";
         }
     }
     static final String DFA62_eotS =
@@ -26532,8 +26532,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA62_specialS =
         "\14\uffff}>";
     static final String[] DFA62_transitionS = {
-            "\6\1\10\uffff\1\1\1\2\2\uffff\13\1\1\uffff\2\1\1\uffff\4\1\1"+
-            "\uffff\2\1\3\uffff\2\1\5\uffff\1\1\1\uffff\1\3\2\uffff\1\12"+
+            "\6\1\10\uffff\1\1\1\2\2\uffff\13\1\1\uffff\2\1\1\uffff\4\1"+
+            "\1\uffff\2\1\3\uffff\2\1\5\uffff\1\1\1\uffff\1\3\2\uffff\1\12"+
             "\1\11\1\13\1\4\1\5\1\uffff\1\6\1\uffff\1\7\1\uffff\1\10\2\uffff"+
             "\1\1\33\uffff\1\1",
             "",
@@ -26595,8 +26595,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA63_specialS =
         "\2\uffff\1\0\1\1\40\uffff}>";
     static final String[] DFA63_transitionS = {
-            "\6\5\10\uffff\1\5\3\uffff\12\5\1\1\1\uffff\1\5\1\2\1\uffff\4"+
-            "\5\1\uffff\2\5\3\uffff\2\5\5\uffff\1\4\21\uffff\1\3\33\uffff"+
+            "\6\5\10\uffff\1\5\3\uffff\12\5\1\1\1\uffff\1\5\1\2\1\uffff"+
+            "\4\5\1\uffff\2\5\3\uffff\2\5\5\uffff\1\4\21\uffff\1\3\33\uffff"+
             "\1\5",
             "",
             "\1\uffff",
@@ -26722,9 +26722,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA91_specialS =
         "\27\uffff}>";
     static final String[] DFA91_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\1\26\2\uffff\1\11\1\4\1\5\1\20\1\3\1"+
-            "\13\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1"+
-            "\17\1\uffff\1\6\1\7\3\uffff\1\25\1\24\63\uffff\1\25",
+            "\1\1\1\25\13\uffff\1\15\1\26\2\uffff\1\11\1\4\1\5\1\20\1\3"+
+            "\1\13\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2"+
+            "\1\17\1\uffff\1\6\1\7\3\uffff\1\25\1\24\63\uffff\1\25",
             "\1\26\43\uffff\1\25\14\uffff\1\25",
             "\1\26\43\uffff\1\25\14\uffff\1\25",
             "\1\26\43\uffff\1\25\14\uffff\1\25",
@@ -26795,9 +26795,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA92_specialS =
         "\56\uffff}>";
     static final String[] DFA92_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13\1"+
-            "\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1"+
-            "\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
+            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13"+
+            "\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17"+
+            "\1\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
             "\1\31\14\uffff\1\30",
             "\1\31\14\uffff\1\30",
             "\1\31\14\uffff\1\30",
@@ -26819,11 +26819,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\31\14\uffff\1\30",
             "\1\31\14\uffff\1\30",
             "\1\31\14\uffff\1\30",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -26923,11 +26923,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -27625,9 +27625,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA137_specialS =
         "\56\uffff}>";
     static final String[] DFA137_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13\1"+
-            "\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1"+
-            "\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
+            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13"+
+            "\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17"+
+            "\1\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
             "\1\31\43\uffff\1\30\14\uffff\1\31",
             "\1\31\43\uffff\1\30\14\uffff\1\31",
             "\1\31\43\uffff\1\30\14\uffff\1\31",
@@ -27649,11 +27649,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\31\43\uffff\1\30\14\uffff\1\31",
             "\1\31\43\uffff\1\30\14\uffff\1\31",
             "\1\31\43\uffff\1\30\14\uffff\1\31",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
-            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
+            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -27825,8 +27825,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA151_specialS =
         "\55\uffff}>";
     static final String[] DFA151_transitionS = {
-            "\1\1\14\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13\1\14\1"+
-            "\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1\uffff"+
+            "\1\1\14\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13\1\14"+
+            "\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1\uffff"+
             "\1\6\1\7\3\uffff\1\25\1\24\63\uffff\1\26",
             "\1\30\15\uffff\1\30\1\uffff\3\30\13\uffff\1\30\2\uffff\1\30"+
             "\4\uffff\1\30\3\uffff\1\30\11\uffff\1\27\14\uffff\1\30\1\uffff"+
@@ -27888,11 +27888,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\30\15\uffff\1\30\1\uffff\3\30\13\uffff\1\30\2\uffff\1\30"+
             "\4\uffff\1\30\3\uffff\1\30\11\uffff\1\27\14\uffff\1\30\1\uffff"+
             "\1\30\2\uffff\1\30\2\uffff\14\30\15\uffff\1\30",
-            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\50\1\33\1"+
-            "\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
+            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\50\1\33"+
+            "\1\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
             "\1\47\1\uffff\1\36\1\37",
-            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\50\1\33\1"+
-            "\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
+            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\50\1\33"+
+            "\1\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
             "\1\47\1\uffff\1\36\1\37",
             "",
             "",
@@ -28010,19 +28010,19 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleElseAttribute_in_ruleConditionalFormBlock472 = new BitSet(new long[]{0x00031BC9FF8C0040L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleForm_in_ruleConditionalFormBlock493 = new BitSet(new long[]{0x00031BC9FF8C0040L,0x0000002000000000L});
     public static final BitSet FOLLOW_ruleEndifAttribute_in_ruleConditionalFormBlock517 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute555 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAttribute565 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleModuleAttribute_in_ruleAttribute612 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDefineAttribute_in_ruleAttribute639 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUndefAttribute_in_ruleAttribute666 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAbstractIncludeAttribute_in_ruleAttribute693 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFileAttribute_in_ruleAttribute720 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRecordAttribute_in_ruleAttribute747 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAbstractTypeAttribute_in_ruleAttribute774 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExportAttribute_in_ruleAttribute801 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImportAttribute_in_ruleAttribute828 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCompileAttribute_in_ruleAttribute855 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCustomAttribute_in_ruleAttribute882 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute553 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAttribute563 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModuleAttribute_in_ruleAttribute610 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDefineAttribute_in_ruleAttribute637 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUndefAttribute_in_ruleAttribute664 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAbstractIncludeAttribute_in_ruleAttribute691 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFileAttribute_in_ruleAttribute718 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRecordAttribute_in_ruleAttribute745 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAbstractTypeAttribute_in_ruleAttribute772 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExportAttribute_in_ruleAttribute799 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImportAttribute_in_ruleAttribute826 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCompileAttribute_in_ruleAttribute853 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCustomAttribute_in_ruleAttribute880 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleDefineAttribute_in_entryRuleDefineAttribute919 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleDefineAttribute929 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_18_in_ruleDefineAttribute966 = new BitSet(new long[]{0x0000000000080000L});

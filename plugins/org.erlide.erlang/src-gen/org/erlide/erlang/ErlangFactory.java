@@ -59,15 +59,6 @@ public interface ErlangFactory extends EFactory
   ConditionalFormBlock createConditionalFormBlock();
 
   /**
-   * Returns a new object of class '<em>Conditional Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Conditional Attribute</em>'.
-   * @generated
-   */
-  ConditionalAttribute createConditionalAttribute();
-
-  /**
    * Returns a new object of class '<em>Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -75,6 +66,15 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   Attribute createAttribute();
+
+  /**
+   * Returns a new object of class '<em>Conditional Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Conditional Attribute</em>'.
+   * @generated
+   */
+  ConditionalAttribute createConditionalAttribute();
 
   /**
    * Returns a new object of class '<em>Abstract Define Attribute</em>'.

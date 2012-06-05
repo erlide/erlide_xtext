@@ -18,10 +18,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//EndifAttribute"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//Form"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalAttribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//Form"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractDefineAttribute"/>
   <eClassifiers xsi:type="ecore:EClass" name="DefineAttribute" eSuperTypes="#//Attribute #//AbstractDefineAttribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

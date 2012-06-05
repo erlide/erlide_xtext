@@ -30,12 +30,6 @@ ConditionalFormBlock:
 
 // Attributes
 
-ConditionalAttribute:
-	  IfdefAttribute
-	| ElseAttribute
-	| EndifAttribute
-;
-
 Attribute:
 	  ModuleAttribute
 	| DefineAttribute
@@ -48,6 +42,12 @@ Attribute:
 	| ImportAttribute
 	| CompileAttribute
 	| CustomAttribute
+;
+
+ConditionalAttribute:
+	  IfdefAttribute
+	| ElseAttribute
+	| EndifAttribute
 ;
 
 AbstractDefineAttribute:

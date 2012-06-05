@@ -143,8 +143,6 @@ finally {
 
 
 
-
-
 // Entry rule entryRuleAttribute
 entryRuleAttribute 
 :
@@ -170,6 +168,8 @@ ruleAttribute
 finally {
 	restoreStackSize(stackSize);
 }
+
+
 
 
 
@@ -3023,7 +3023,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-
 rule__Attribute__Alternatives
     @init {
 		int stackSize = keepStackSize();
@@ -3099,6 +3098,7 @@ rule__Attribute__Alternatives
 finally {
 	restoreStackSize(stackSize);
 }
+
 
 
 rule__IfdefAttribute__TagAlternatives_1_0
