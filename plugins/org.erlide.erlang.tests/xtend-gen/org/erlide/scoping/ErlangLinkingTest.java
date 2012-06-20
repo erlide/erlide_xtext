@@ -17,7 +17,6 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.erlide.ErlangInjectorProvider;
-import org.erlide.erlang.AbstractErlangTests;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
@@ -30,7 +29,7 @@ import org.junit.runner.RunWith;
 @RunWith(value = XtextRunner.class)
 @InjectWith(value = ErlangInjectorProvider.class)
 @SuppressWarnings("all")
-public class ErlangLinkingTest extends AbstractErlangTests {
+public class ErlangLinkingTest {
   @Inject
   private ParseHelper<Module> parser;
   

@@ -6,6 +6,7 @@ import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.erlide.ErlangInjectorProvider
+import org.erlide.erlang.Function
 import org.erlide.erlang.ModelExtensions
 import org.erlide.erlang.Module
 import org.junit.Test
@@ -13,12 +14,10 @@ import org.junit.runner.RunWith
 
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
-import org.erlide.erlang.Function
-import org.erlide.erlang.AbstractErlangTests
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
-class ErlangLinkingTest extends AbstractErlangTests {
+class ErlangLinkingTest {
 
     @Inject
     ParseHelper<Module> parser

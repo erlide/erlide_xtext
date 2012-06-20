@@ -5,11 +5,11 @@ import org.eclipse.xtext.xbase.lib.Pair
 import java.util.List
 import com.google.inject.Inject
 
-class AbstractErlangTests {
+class ErlangTestExtensions {
 	@Inject
 	ModelExtensions modelHelper
 	
-	def EObject getObjectAtOffset(Pair<Module, List<Integer>> src, int index) {
+	def EObject getObjectAtMarker(Pair<Module, List<Integer>> src, int index) {
 		modelHelper.getObjectAtOffset(src.key, src.value.get(index))
 	}
 	

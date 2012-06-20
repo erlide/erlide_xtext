@@ -149,14 +149,7 @@ public class ModelExtensions {
     List<Function> _xblockexpression = null;
     {
       final Collection<FunRef> exportedRefs = this.getExportedFunRefs(module);
-      final Function1<FunRef,ReferenceableElement> _function = new Function1<FunRef,ReferenceableElement>() {
-          public ReferenceableElement apply(final FunRef it) {
-            ReferenceableElement _function = it.getFunction();
-            return _function;
-          }
-        };
-      Iterable<ReferenceableElement> _map = IterableExtensions.<FunRef, ReferenceableElement>map(exportedRefs, _function);
-      Iterable<Function> _filter = Iterables.<Function>filter(_map, Function.class);
+      Iterable<Function> _filter = Iterables.<Function>filter(exportedRefs, Function.class);
       List<Function> _list = IterableExtensions.<Function>toList(_filter);
       _xblockexpression = (_list);
     }
@@ -349,20 +342,9 @@ public class ModelExtensions {
       final Collection<SpecAttribute> specs = this.getSpecs(module);
       final Function1<SpecAttribute,Boolean> _function = new Function1<SpecAttribute,Boolean>() {
           public Boolean apply(final SpecAttribute it) {
-            boolean _and = false;
             SpecFun _ref = it.getRef();
-            ReferenceableElement _function = _ref.getFunction();
-            String _name = function.getName();
-            boolean _equals = Objects.equal(_function, _name);
-            if (!_equals) {
-              _and = false;
-            } else {
-              int _specArity = ModelExtensions.this.getSpecArity(it);
-              int _arity = ModelExtensions.this.getArity(function);
-              boolean _equals_1 = (_specArity == _arity);
-              _and = (_equals && _equals_1);
-            }
-            return Boolean.valueOf(_and);
+            boolean _equals = Objects.equal(_ref, function);
+            return Boolean.valueOf(_equals);
           }
         };
       SpecAttribute _findFirst = IterableExtensions.<SpecAttribute>findFirst(specs, _function);

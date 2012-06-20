@@ -8,11 +8,11 @@ import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
 
 @SuppressWarnings("all")
-public class AbstractErlangTests {
+public class ErlangTestExtensions {
   @Inject
   private ModelExtensions modelHelper;
   
-  public EObject getObjectAtOffset(final Pair<Module,List<Integer>> src, final int index) {
+  public EObject getObjectAtMarker(final Pair<Module,List<Integer>> src, final int index) {
     Module _key = src.getKey();
     List<Integer> _value = src.getValue();
     Integer _get = _value.get(index);

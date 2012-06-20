@@ -6,17 +6,17 @@ import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.erlide.ErlangInjectorProvider
-import org.erlide.erlang.AbstractErlangTests
 import org.erlide.erlang.util.ErlangTestingHelper
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.erlide.erlang.ErlangTestExtensions
 
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
-class ErlangNamingTest extends AbstractErlangTests {
+class ErlangNamingTest {
 
     @Inject
     ErlangTestingHelper parser
@@ -24,6 +24,8 @@ class ErlangNamingTest extends AbstractErlangTests {
 	IQualifiedNameProvider namer
 	@Inject
 	IQualifiedNameConverter nameCvtr
+	@Inject
+	extension ErlangTestExtensions 
 
 	@Test
 	def void moduleName() {
@@ -57,10 +59,10 @@ class ErlangNamingTest extends AbstractErlangTests {
 	def void typeName() {
         val module = parser.parse('''
             -module(x).
-            -type(y::integer()).
+            §-type(y::integer()).
         ''')
-        val name = namer.getFullyQualifiedName(module.key.forms.tail.head)
-        assertThat(nameCvtr.toString(name), is("x:y")) 
+        val name = namer.getFullyQualifiedName(module.getObjectAtMarker(0))
+        assertThat(nameCvtr.toString(name), is("x:y"))
 	}
 
 	@Test
@@ -73,10 +75,9 @@ class ErlangNamingTest extends AbstractErlangTests {
             §-record(y, {}).
             -endif.
         ''')
-        assertThat(module.value.size, is(2))
-        val name1 = namer.getFullyQualifiedName(module.getObjectAtOffset(0))
+        val name1 = namer.getFullyQualifiedName(module.getObjectAtMarker(0))
         assertThat(nameCvtr.toString(name1), is("x:y")) 
-        val name2 = namer.getFullyQualifiedName(module.getObjectAtOffset(1))
+        val name2 = namer.getFullyQualifiedName(module.getObjectAtMarker(1))
         assertThat(nameCvtr.toString(name2), is("x:y")) 
 	}
 	
@@ -84,9 +85,9 @@ class ErlangNamingTest extends AbstractErlangTests {
 	def void functionName() {
         val module = parser.parse('''
             -module(x).
-            f() -> ok.
+            §f() -> ok.
         ''')
-        val name = namer.getFullyQualifiedName(module.key.forms.tail.head)
+        val name = namer.getFullyQualifiedName(module.getObjectAtMarker(0))
         assertThat(nameCvtr.toString(name), is("x:f/0")) 
 	}
 
@@ -94,12 +95,12 @@ class ErlangNamingTest extends AbstractErlangTests {
 	def void functionName_1() {
         val module = parser.parse('''
             -module(x).
-            f(X) -> ok.
-            f() -> ok.
+            §f(X) -> ok.
+            §f() -> ok.
         ''')
-        val name1 = namer.getFullyQualifiedName(module.key.forms.tail.head)
+        val name1 = namer.getFullyQualifiedName(module.getObjectAtMarker(0))
         assertThat(nameCvtr.toString(name1), is("x:f/1")) 
-        val name2 = namer.getFullyQualifiedName(module.key.forms.tail.tail.head)
+        val name2 = namer.getFullyQualifiedName(module.getObjectAtMarker(1))
         assertThat(nameCvtr.toString(name2), is("x:f/0")) 
 	}
 
@@ -107,10 +108,9 @@ class ErlangNamingTest extends AbstractErlangTests {
 	def void macroName() {
         val module = parser.parse('''
             -module(x).
-            -define(X, x).
+            §-define(X, x).
         ''')
-        val obj = module.key.forms.tail.head
-        val name1 = namer.getFullyQualifiedName(obj)
+        val name1 = namer.getFullyQualifiedName(module.getObjectAtMarker(0))
         assertThat(nameCvtr.toString(name1), is("x:X")) 
 	}
 
@@ -118,9 +118,9 @@ class ErlangNamingTest extends AbstractErlangTests {
 	def void recordName() {
         val module = parser.parse('''
             -module(x).
-            -record(y, {}).
+            §-record(y, {}).
         ''')
-        val name = namer.getFullyQualifiedName(module.key.forms.tail.head)
+        val name = namer.getFullyQualifiedName(module.getObjectAtMarker(0))
         assertThat(nameCvtr.toString(name), is("x:y")) 
 	}
 

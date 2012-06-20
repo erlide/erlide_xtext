@@ -73,7 +73,7 @@ class ModelExtensions {
 
 	def Collection<Function> getExportedFunctions(Module module) {
 		val exportedRefs = getExportedFunRefs(module)
-		exportedRefs.map[function].filter(typeof(Function)).toList
+		exportedRefs.filter(typeof(Function)).toList
 	}
 	
 	def Collection<FunRef> getExportedFunRefs(Module module) {
@@ -141,9 +141,7 @@ class ModelExtensions {
  	def SpecAttribute getSpec(Function function) {
 		val module = function.module
 		val specs = module.specs
-		specs.findFirst[
-			ref.function==function.name && it.specArity==function.arity
-		]		
+		specs.findFirst[ref==function]		
 	}
 
     // Other

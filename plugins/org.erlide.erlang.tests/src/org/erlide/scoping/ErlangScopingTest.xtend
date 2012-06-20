@@ -8,18 +8,17 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.erlide.ErlangInjectorProvider
 import org.erlide.erlang.ErlangPackage$Literals
+import org.erlide.erlang.ModelExtensions
 import org.erlide.erlang.Module
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
-import org.erlide.erlang.ModelExtensions
-import org.erlide.erlang.AbstractErlangTests
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
-class ErlangScopingTest extends AbstractErlangTests {
+class ErlangScopingTest {
 
     @Inject
     ParseHelper<Module> parser
