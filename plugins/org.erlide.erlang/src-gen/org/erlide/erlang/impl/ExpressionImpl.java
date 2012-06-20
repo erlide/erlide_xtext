@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
@@ -28,7 +27,7 @@ import org.erlide.erlang.Expression;
  *
  * @generated
  */
-public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expression
+public class ExpressionImpl extends ReferenceableElementImpl implements Expression
 {
   /**
    * The default value of the '{@link #isLine() <em>Line</em>}' attribute.

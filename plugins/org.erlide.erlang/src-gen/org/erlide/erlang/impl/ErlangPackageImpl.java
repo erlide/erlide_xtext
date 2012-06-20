@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.erlide.erlang.AbstractDefineAttribute;
-import org.erlide.erlang.AbstractElement;
 import org.erlide.erlang.AbstractIncludeAttribute;
 import org.erlide.erlang.AbstractTypeAttribute;
 import org.erlide.erlang.AddOp;
@@ -84,6 +83,7 @@ import org.erlide.erlang.RecordField;
 import org.erlide.erlang.RecordFieldDef;
 import org.erlide.erlang.RecordTuple;
 import org.erlide.erlang.RecordType;
+import org.erlide.erlang.ReferenceableElement;
 import org.erlide.erlang.RemoteTarget;
 import org.erlide.erlang.RemoteType;
 import org.erlide.erlang.SpecAttribute;
@@ -127,7 +127,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass abstractElementEClass = null;
+  private EClass referenceableElementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -868,9 +868,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAbstractElement()
+  public EClass getReferenceableElement()
   {
-    return abstractElementEClass;
+    return referenceableElementEClass;
   }
 
   /**
@@ -3506,7 +3506,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     moduleEClass = createEClass(MODULE);
     createEReference(moduleEClass, MODULE__FORMS);
 
-    abstractElementEClass = createEClass(ABSTRACT_ELEMENT);
+    referenceableElementEClass = createEClass(REFERENCEABLE_ELEMENT);
 
     formEClass = createEClass(FORM);
 
@@ -3891,9 +3891,10 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    moduleEClass.getESuperTypes().add(this.getAbstractElement());
+    moduleEClass.getESuperTypes().add(this.getReferenceableElement());
     conditionalFormBlockEClass.getESuperTypes().add(this.getForm());
     attributeEClass.getESuperTypes().add(this.getForm());
+    defineAttributeEClass.getESuperTypes().add(this.getReferenceableElement());
     defineAttributeEClass.getESuperTypes().add(this.getAttribute());
     defineAttributeEClass.getESuperTypes().add(this.getAbstractDefineAttribute());
     undefAttributeEClass.getESuperTypes().add(this.getAttribute());
@@ -3906,20 +3907,24 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     includeLibAttributeEClass.getESuperTypes().add(this.getAbstractIncludeAttribute());
     fileAttributeEClass.getESuperTypes().add(this.getAttribute());
     moduleAttributeEClass.getESuperTypes().add(this.getAttribute());
+    recordAttributeEClass.getESuperTypes().add(this.getReferenceableElement());
     recordAttributeEClass.getESuperTypes().add(this.getAttribute());
     exportAttributeEClass.getESuperTypes().add(this.getAttribute());
     importAttributeEClass.getESuperTypes().add(this.getAttribute());
     compileAttributeEClass.getESuperTypes().add(this.getAttribute());
     abstractTypeAttributeEClass.getESuperTypes().add(this.getAttribute());
     specAttributeEClass.getESuperTypes().add(this.getAbstractTypeAttribute());
+    typeAttributeEClass.getESuperTypes().add(this.getReferenceableElement());
     typeAttributeEClass.getESuperTypes().add(this.getAbstractTypeAttribute());
     customAttributeEClass.getESuperTypes().add(this.getAttribute());
-    functionEClass.getESuperTypes().add(this.getAbstractElement());
+    functionEClass.getESuperTypes().add(this.getReferenceableElement());
     functionEClass.getESuperTypes().add(this.getForm());
+    expressionEClass.getESuperTypes().add(this.getReferenceableElement());
     recordExprEClass.getESuperTypes().add(this.getExpression());
     queryExprEClass.getESuperTypes().add(this.getExpression());
     condExprEClass.getESuperTypes().add(this.getExpression());
     letExprEClass.getESuperTypes().add(this.getExpression());
+    recordFieldDefEClass.getESuperTypes().add(this.getReferenceableElement());
     ifExprEClass.getESuperTypes().add(this.getExpression());
     caseExprEClass.getESuperTypes().add(this.getExpression());
     receiveExprEClass.getESuperTypes().add(this.getExpression());
@@ -3971,7 +3976,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEClass(moduleEClass, Module.class, "Module", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getModule_Forms(), this.getForm(), null, "forms", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(abstractElementEClass, AbstractElement.class, "AbstractElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(referenceableElementEClass, ReferenceableElement.class, "ReferenceableElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(formEClass, Form.class, "Form", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -4284,7 +4289,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getBlockExpr_Body(), this.getExpression(), null, "body", null, 0, -1, BlockExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(atomEClass, Atom.class, "Atom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAtom_Value(), this.getAbstractElement(), null, "value", null, 0, 1, Atom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAtom_Value(), this.getReferenceableElement(), null, "value", null, 0, 1, Atom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariable_Value(), ecorePackage.getEString(), "value", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

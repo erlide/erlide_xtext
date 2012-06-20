@@ -4394,7 +4394,7 @@ ruleLiteralExpressionNoNumber returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAbstractElementCrossReference_0_1_0()); 
+	        newCompositeNode(grammarAccess.getLiteralExpressionNoNumberAccess().getValueReferenceableElementCrossReference_0_1_0()); 
 	    }
 		ruleAtomKw		{ 
 	        afterParserOrEnumRuleCall();

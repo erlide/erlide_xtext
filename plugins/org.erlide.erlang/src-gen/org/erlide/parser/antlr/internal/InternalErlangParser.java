@@ -12127,7 +12127,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAbstractElementCrossReference_0_1_0()); 
+                      	        newCompositeNode(grammarAccess.getLiteralExpressionNoNumberAccess().getValueReferenceableElementCrossReference_0_1_0()); 
                       	    
                     }
                     pushFollow(FOLLOW_ruleAtomKw_in_ruleLiteralExpressionNoNumber9807);
@@ -26532,8 +26532,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA62_specialS =
         "\14\uffff}>";
     static final String[] DFA62_transitionS = {
-            "\6\1\10\uffff\1\1\1\2\2\uffff\13\1\1\uffff\2\1\1\uffff\4\1"+
-            "\1\uffff\2\1\3\uffff\2\1\5\uffff\1\1\1\uffff\1\3\2\uffff\1\12"+
+            "\6\1\10\uffff\1\1\1\2\2\uffff\13\1\1\uffff\2\1\1\uffff\4\1\1"+
+            "\uffff\2\1\3\uffff\2\1\5\uffff\1\1\1\uffff\1\3\2\uffff\1\12"+
             "\1\11\1\13\1\4\1\5\1\uffff\1\6\1\uffff\1\7\1\uffff\1\10\2\uffff"+
             "\1\1\33\uffff\1\1",
             "",
@@ -26595,8 +26595,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA63_specialS =
         "\2\uffff\1\0\1\1\40\uffff}>";
     static final String[] DFA63_transitionS = {
-            "\6\5\10\uffff\1\5\3\uffff\12\5\1\1\1\uffff\1\5\1\2\1\uffff"+
-            "\4\5\1\uffff\2\5\3\uffff\2\5\5\uffff\1\4\21\uffff\1\3\33\uffff"+
+            "\6\5\10\uffff\1\5\3\uffff\12\5\1\1\1\uffff\1\5\1\2\1\uffff\4"+
+            "\5\1\uffff\2\5\3\uffff\2\5\5\uffff\1\4\21\uffff\1\3\33\uffff"+
             "\1\5",
             "",
             "\1\uffff",
@@ -26722,9 +26722,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA91_specialS =
         "\27\uffff}>";
     static final String[] DFA91_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\1\26\2\uffff\1\11\1\4\1\5\1\20\1\3"+
-            "\1\13\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2"+
-            "\1\17\1\uffff\1\6\1\7\3\uffff\1\25\1\24\63\uffff\1\25",
+            "\1\1\1\25\13\uffff\1\15\1\26\2\uffff\1\11\1\4\1\5\1\20\1\3\1"+
+            "\13\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1"+
+            "\17\1\uffff\1\6\1\7\3\uffff\1\25\1\24\63\uffff\1\25",
             "\1\26\43\uffff\1\25\14\uffff\1\25",
             "\1\26\43\uffff\1\25\14\uffff\1\25",
             "\1\26\43\uffff\1\25\14\uffff\1\25",
@@ -26795,9 +26795,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA92_specialS =
         "\56\uffff}>";
     static final String[] DFA92_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13"+
-            "\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17"+
-            "\1\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
+            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13\1"+
+            "\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1"+
+            "\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
             "\1\31\14\uffff\1\30",
             "\1\31\14\uffff\1\30",
             "\1\31\14\uffff\1\30",
@@ -26819,11 +26819,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\31\14\uffff\1\30",
             "\1\31\14\uffff\1\30",
             "\1\31\14\uffff\1\30",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -26923,11 +26923,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
             "\1\30\31\uffff\2\30\3\uffff\1\30\4\uffff\1\31",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -27625,9 +27625,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA137_specialS =
         "\56\uffff}>";
     static final String[] DFA137_transitionS = {
-            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13"+
-            "\1\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17"+
-            "\1\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
+            "\1\1\1\25\13\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13\1"+
+            "\14\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1"+
+            "\uffff\1\6\1\7\3\uffff\1\26\1\24\63\uffff\1\27",
             "\1\31\43\uffff\1\30\14\uffff\1\31",
             "\1\31\43\uffff\1\30\14\uffff\1\31",
             "\1\31\43\uffff\1\30\14\uffff\1\31",
@@ -27649,11 +27649,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\31\43\uffff\1\30\14\uffff\1\31",
             "\1\31\43\uffff\1\30\14\uffff\1\31",
             "\1\31\43\uffff\1\30\14\uffff\1\31",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34"+
-            "\1\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
+            "\1\32\1\55\13\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51\1\34\1"+
+            "\44\1\45\1\47\1\43\1\41\2\uffff\1\52\2\uffff\1\53\1\54\1\33"+
             "\1\50\1\uffff\1\37\1\40",
             "",
             "",
@@ -27825,8 +27825,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA151_specialS =
         "\55\uffff}>";
     static final String[] DFA151_transitionS = {
-            "\1\1\14\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13\1\14"+
-            "\1\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1\uffff"+
+            "\1\1\14\uffff\1\15\3\uffff\1\11\1\4\1\5\1\20\1\3\1\13\1\14\1"+
+            "\16\1\12\1\10\2\uffff\1\21\2\uffff\1\22\1\23\1\2\1\17\1\uffff"+
             "\1\6\1\7\3\uffff\1\25\1\24\63\uffff\1\26",
             "\1\30\15\uffff\1\30\1\uffff\3\30\13\uffff\1\30\2\uffff\1\30"+
             "\4\uffff\1\30\3\uffff\1\30\11\uffff\1\27\14\uffff\1\30\1\uffff"+
@@ -27888,11 +27888,11 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\30\15\uffff\1\30\1\uffff\3\30\13\uffff\1\30\2\uffff\1\30"+
             "\4\uffff\1\30\3\uffff\1\30\11\uffff\1\27\14\uffff\1\30\1\uffff"+
             "\1\30\2\uffff\1\30\2\uffff\14\30\15\uffff\1\30",
-            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\50\1\33"+
-            "\1\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
+            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\50\1\33\1"+
+            "\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
             "\1\47\1\uffff\1\36\1\37",
-            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\50\1\33"+
-            "\1\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
+            "\1\31\1\54\13\uffff\1\45\3\uffff\1\41\1\34\1\35\1\50\1\33\1"+
+            "\43\1\44\1\46\1\42\1\40\2\uffff\1\51\2\uffff\1\52\1\53\1\32"+
             "\1\47\1\uffff\1\36\1\37",
             "",
             "",

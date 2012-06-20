@@ -2,7 +2,6 @@
  */
 package org.erlide.erlang;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Expression extends EObject
+public interface Expression extends ReferenceableElement
 {
   /**
    * Returns the value of the '<em><b>Line</b></em>' attribute.

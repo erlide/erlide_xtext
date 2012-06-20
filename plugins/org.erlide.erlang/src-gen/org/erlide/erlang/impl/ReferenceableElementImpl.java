@@ -6,26 +6,26 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.erlide.erlang.AbstractElement;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.ReferenceableElement;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Abstract Element</b></em>'.
+ * An implementation of the model object '<em><b>Referenceable Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class AbstractElementImpl extends MinimalEObjectImpl.Container implements AbstractElement
+public class ReferenceableElementImpl extends MinimalEObjectImpl.Container implements ReferenceableElement
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AbstractElementImpl()
+  protected ReferenceableElementImpl()
   {
     super();
   }
@@ -38,7 +38,7 @@ public class AbstractElementImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.ABSTRACT_ELEMENT;
+    return ErlangPackage.Literals.REFERENCEABLE_ELEMENT;
   }
 
-} //AbstractElementImpl
+} //ReferenceableElementImpl

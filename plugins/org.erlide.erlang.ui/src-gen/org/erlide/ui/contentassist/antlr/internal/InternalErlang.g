@@ -27747,12 +27747,12 @@ rule__LiteralExpressionNoNumber__ValueAssignment_0_1
     }
 :
 (
-{ before(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAbstractElementCrossReference_0_1_0()); }
+{ before(grammarAccess.getLiteralExpressionNoNumberAccess().getValueReferenceableElementCrossReference_0_1_0()); }
 (
-{ before(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAbstractElementAtomKwParserRuleCall_0_1_0_1()); }
-	ruleAtomKw{ after(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAbstractElementAtomKwParserRuleCall_0_1_0_1()); }
+{ before(grammarAccess.getLiteralExpressionNoNumberAccess().getValueReferenceableElementAtomKwParserRuleCall_0_1_0_1()); }
+	ruleAtomKw{ after(grammarAccess.getLiteralExpressionNoNumberAccess().getValueReferenceableElementAtomKwParserRuleCall_0_1_0_1()); }
 )
-{ after(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAbstractElementCrossReference_0_1_0()); }
+{ after(grammarAccess.getLiteralExpressionNoNumberAccess().getValueReferenceableElementCrossReference_0_1_0()); }
 )
 
 ;

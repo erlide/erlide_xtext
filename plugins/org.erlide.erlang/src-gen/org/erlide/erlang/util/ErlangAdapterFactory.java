@@ -80,9 +80,9 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createModuleAdapter();
       }
       @Override
-      public Adapter caseAbstractElement(AbstractElement object)
+      public Adapter caseReferenceableElement(ReferenceableElement object)
       {
-        return createAbstractElementAdapter();
+        return createReferenceableElementAdapter();
       }
       @Override
       public Adapter caseForm(Form object)
@@ -587,16 +587,16 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.AbstractElement <em>Abstract Element</em>}'.
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ReferenceableElement <em>Referenceable Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.erlide.erlang.AbstractElement
+   * @see org.erlide.erlang.ReferenceableElement
    * @generated
    */
-  public Adapter createAbstractElementAdapter()
+  public Adapter createReferenceableElementAdapter()
   {
     return null;
   }

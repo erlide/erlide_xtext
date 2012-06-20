@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Function extends AbstractElement, Form
+public interface Function extends ReferenceableElement, Form
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

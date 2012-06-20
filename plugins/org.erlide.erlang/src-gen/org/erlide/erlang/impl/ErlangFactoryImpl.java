@@ -65,7 +65,7 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
     switch (eClass.getClassifierID())
     {
       case ErlangPackage.MODULE: return createModule();
-      case ErlangPackage.ABSTRACT_ELEMENT: return createAbstractElement();
+      case ErlangPackage.REFERENCEABLE_ELEMENT: return createReferenceableElement();
       case ErlangPackage.FORM: return createForm();
       case ErlangPackage.CONDITIONAL_FORM_BLOCK: return createConditionalFormBlock();
       case ErlangPackage.ATTRIBUTE: return createAttribute();
@@ -180,10 +180,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public AbstractElement createAbstractElement()
+  public ReferenceableElement createReferenceableElement()
   {
-    AbstractElementImpl abstractElement = new AbstractElementImpl();
-    return abstractElement;
+    ReferenceableElementImpl referenceableElement = new ReferenceableElementImpl();
+    return referenceableElement;
   }
 
   /**

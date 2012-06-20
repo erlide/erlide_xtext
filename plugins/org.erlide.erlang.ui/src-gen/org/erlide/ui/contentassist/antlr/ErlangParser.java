@@ -37,7 +37,7 @@ public class ErlangParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getAbstractElementAccess().getAlternatives(), "rule__AbstractElement__Alternatives");
+					put(grammarAccess.getReferenceableElementAccess().getAlternatives(), "rule__ReferenceableElement__Alternatives");
 					put(grammarAccess.getFormAccess().getAlternatives(), "rule__Form__Alternatives");
 					put(grammarAccess.getAttributeAccess().getAlternatives(), "rule__Attribute__Alternatives");
 					put(grammarAccess.getConditionalAttributeAccess().getAlternatives(), "rule__ConditionalAttribute__Alternatives");

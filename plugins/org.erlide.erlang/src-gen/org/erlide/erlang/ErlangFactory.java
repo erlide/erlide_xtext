@@ -32,13 +32,13 @@ public interface ErlangFactory extends EFactory
   Module createModule();
 
   /**
-   * Returns a new object of class '<em>Abstract Element</em>'.
+   * Returns a new object of class '<em>Referenceable Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Abstract Element</em>'.
+   * @return a new object of class '<em>Referenceable Element</em>'.
    * @generated
    */
-  AbstractElement createAbstractElement();
+  ReferenceableElement createReferenceableElement();
 
   /**
    * Returns a new object of class '<em>Form</em>'.

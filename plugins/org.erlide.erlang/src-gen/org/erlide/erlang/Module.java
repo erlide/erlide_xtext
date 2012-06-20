@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Module extends AbstractElement
+public interface Module extends ReferenceableElement
 {
   /**
    * Returns the value of the '<em><b>Forms</b></em>' containment reference list.

@@ -7,9 +7,14 @@ Module:
 	forms+=Form* 
 ;  
 
-AbstractElement:
+ReferenceableElement:
 	  Module
 	| Function
+	| DefineAttribute
+	| RecordAttribute
+	| RecordFieldDef
+	| Expression // for variables
+	| TypeAttribute
 ;
 
 Form:
@@ -287,7 +292,7 @@ RecordField:
 ;
 
 LiteralExpressionNoNumber returns Expression:
-	  {Atom} value=[AbstractElement|AtomKw]
+	  {Atom} value=[ReferenceableElement|AtomKw]
 	| {Variable} value=VARIABLE 
 	| {ErlChar} value=CHAR 
 	| {MacroExpr} value=[DefineAttribute|Macro] 

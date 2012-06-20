@@ -7,7 +7,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -19,6 +18,7 @@ import org.erlide.erlang.FunctionClause;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.ModuleAttribute;
+import org.erlide.ui.labeling.ErlangLabelProvider;
 
 /**
  * Provides labels for a EObjects.
@@ -27,12 +27,12 @@ import org.erlide.erlang.ModuleAttribute;
  * http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
 @SuppressWarnings("all")
-public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
+public class DefaultErlangLabelProvider extends ErlangLabelProvider {
   @Inject
   private ModelExtensions _modelExtensions;
   
   @Inject
-  public ErlangLabelProvider(final AdapterFactoryLabelProvider delegate) {
+  public DefaultErlangLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
   
@@ -110,7 +110,7 @@ public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
   public String getListText(final EList<Expression> list) {
     final Function1<Expression,String> _function = new Function1<Expression,String>() {
         public String apply(final Expression it) {
-          String _sourceText = ErlangLabelProvider.this._modelExtensions.getSourceText(it);
+          String _sourceText = DefaultErlangLabelProvider.this._modelExtensions.getSourceText(it);
           return _sourceText;
         }
       };

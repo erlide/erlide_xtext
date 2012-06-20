@@ -31,7 +31,7 @@ import org.erlide.erlang.Module;
  *
  * @generated
  */
-public class ModuleImpl extends AbstractElementImpl implements Module
+public class ModuleImpl extends ReferenceableElementImpl implements Module
 {
   /**
    * The cached value of the '{@link #getForms() <em>Forms</em>}' containment reference list.

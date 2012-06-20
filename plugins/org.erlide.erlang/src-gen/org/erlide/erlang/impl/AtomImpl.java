@@ -9,9 +9,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.erlide.erlang.AbstractElement;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.ReferenceableElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +36,7 @@ public class AtomImpl extends ExpressionImpl implements Atom
    * @generated
    * @ordered
    */
-  protected AbstractElement value;
+  protected ReferenceableElement value;
 
   /**
    * <!-- begin-user-doc -->
@@ -64,12 +64,12 @@ public class AtomImpl extends ExpressionImpl implements Atom
    * <!-- end-user-doc -->
    * @generated
    */
-  public AbstractElement getValue()
+  public ReferenceableElement getValue()
   {
     if (value != null && value.eIsProxy())
     {
       InternalEObject oldValue = (InternalEObject)value;
-      value = (AbstractElement)eResolveProxy(oldValue);
+      value = (ReferenceableElement)eResolveProxy(oldValue);
       if (value != oldValue)
       {
         if (eNotificationRequired())
@@ -84,7 +84,7 @@ public class AtomImpl extends ExpressionImpl implements Atom
    * <!-- end-user-doc -->
    * @generated
    */
-  public AbstractElement basicGetValue()
+  public ReferenceableElement basicGetValue()
   {
     return value;
   }
@@ -94,9 +94,9 @@ public class AtomImpl extends ExpressionImpl implements Atom
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(AbstractElement newValue)
+  public void setValue(ReferenceableElement newValue)
   {
-    AbstractElement oldValue = value;
+    ReferenceableElement oldValue = value;
     value = newValue;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ATOM__VALUE, oldValue, value));
@@ -130,7 +130,7 @@ public class AtomImpl extends ExpressionImpl implements Atom
     switch (featureID)
     {
       case ErlangPackage.ATOM__VALUE:
-        setValue((AbstractElement)newValue);
+        setValue((ReferenceableElement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -147,7 +147,7 @@ public class AtomImpl extends ExpressionImpl implements Atom
     switch (featureID)
     {
       case ErlangPackage.ATOM__VALUE:
-        setValue((AbstractElement)null);
+        setValue((ReferenceableElement)null);
         return;
     }
     super.eUnset(featureID);

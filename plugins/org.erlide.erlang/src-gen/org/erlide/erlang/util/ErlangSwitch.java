@@ -76,14 +76,14 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         Module module = (Module)theEObject;
         T result = caseModule(module);
-        if (result == null) result = caseAbstractElement(module);
+        if (result == null) result = caseReferenceableElement(module);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.ABSTRACT_ELEMENT:
+      case ErlangPackage.REFERENCEABLE_ELEMENT:
       {
-        AbstractElement abstractElement = (AbstractElement)theEObject;
-        T result = caseAbstractElement(abstractElement);
+        ReferenceableElement referenceableElement = (ReferenceableElement)theEObject;
+        T result = caseReferenceableElement(referenceableElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -128,6 +128,7 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         DefineAttribute defineAttribute = (DefineAttribute)theEObject;
         T result = caseDefineAttribute(defineAttribute);
+        if (result == null) result = caseReferenceableElement(defineAttribute);
         if (result == null) result = caseAttribute(defineAttribute);
         if (result == null) result = caseAbstractDefineAttribute(defineAttribute);
         if (result == null) result = caseForm(defineAttribute);
@@ -219,6 +220,7 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         RecordAttribute recordAttribute = (RecordAttribute)theEObject;
         T result = caseRecordAttribute(recordAttribute);
+        if (result == null) result = caseReferenceableElement(recordAttribute);
         if (result == null) result = caseAttribute(recordAttribute);
         if (result == null) result = caseForm(recordAttribute);
         if (result == null) result = defaultCase(theEObject);
@@ -274,6 +276,7 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         TypeAttribute typeAttribute = (TypeAttribute)theEObject;
         T result = caseTypeAttribute(typeAttribute);
+        if (result == null) result = caseReferenceableElement(typeAttribute);
         if (result == null) result = caseAbstractTypeAttribute(typeAttribute);
         if (result == null) result = caseAttribute(typeAttribute);
         if (result == null) result = caseForm(typeAttribute);
@@ -293,7 +296,7 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         Function function = (Function)theEObject;
         T result = caseFunction(function);
-        if (result == null) result = caseAbstractElement(function);
+        if (result == null) result = caseReferenceableElement(function);
         if (result == null) result = caseForm(function);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -323,6 +326,7 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
+        if (result == null) result = caseReferenceableElement(expression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -338,6 +342,7 @@ public class ErlangSwitch<T> extends Switch<T>
         RecordExpr recordExpr = (RecordExpr)theEObject;
         T result = caseRecordExpr(recordExpr);
         if (result == null) result = caseExpression(recordExpr);
+        if (result == null) result = caseReferenceableElement(recordExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -346,6 +351,7 @@ public class ErlangSwitch<T> extends Switch<T>
         QueryExpr queryExpr = (QueryExpr)theEObject;
         T result = caseQueryExpr(queryExpr);
         if (result == null) result = caseExpression(queryExpr);
+        if (result == null) result = caseReferenceableElement(queryExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -354,6 +360,7 @@ public class ErlangSwitch<T> extends Switch<T>
         CondExpr condExpr = (CondExpr)theEObject;
         T result = caseCondExpr(condExpr);
         if (result == null) result = caseExpression(condExpr);
+        if (result == null) result = caseReferenceableElement(condExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -362,6 +369,7 @@ public class ErlangSwitch<T> extends Switch<T>
         LetExpr letExpr = (LetExpr)theEObject;
         T result = caseLetExpr(letExpr);
         if (result == null) result = caseExpression(letExpr);
+        if (result == null) result = caseReferenceableElement(letExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -376,6 +384,7 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         RecordFieldDef recordFieldDef = (RecordFieldDef)theEObject;
         T result = caseRecordFieldDef(recordFieldDef);
+        if (result == null) result = caseReferenceableElement(recordFieldDef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -391,6 +400,7 @@ public class ErlangSwitch<T> extends Switch<T>
         IfExpr ifExpr = (IfExpr)theEObject;
         T result = caseIfExpr(ifExpr);
         if (result == null) result = caseExpression(ifExpr);
+        if (result == null) result = caseReferenceableElement(ifExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -406,6 +416,7 @@ public class ErlangSwitch<T> extends Switch<T>
         CaseExpr caseExpr = (CaseExpr)theEObject;
         T result = caseCaseExpr(caseExpr);
         if (result == null) result = caseExpression(caseExpr);
+        if (result == null) result = caseReferenceableElement(caseExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -421,6 +432,7 @@ public class ErlangSwitch<T> extends Switch<T>
         ReceiveExpr receiveExpr = (ReceiveExpr)theEObject;
         T result = caseReceiveExpr(receiveExpr);
         if (result == null) result = caseExpression(receiveExpr);
+        if (result == null) result = caseReferenceableElement(receiveExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -429,6 +441,7 @@ public class ErlangSwitch<T> extends Switch<T>
         FunExpr funExpr = (FunExpr)theEObject;
         T result = caseFunExpr(funExpr);
         if (result == null) result = caseExpression(funExpr);
+        if (result == null) result = caseReferenceableElement(funExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -438,6 +451,7 @@ public class ErlangSwitch<T> extends Switch<T>
         T result = caseFunRef(funRef);
         if (result == null) result = caseFunExpr(funRef);
         if (result == null) result = caseExpression(funRef);
+        if (result == null) result = caseReferenceableElement(funRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -446,6 +460,7 @@ public class ErlangSwitch<T> extends Switch<T>
         TryExpr tryExpr = (TryExpr)theEObject;
         T result = caseTryExpr(tryExpr);
         if (result == null) result = caseExpression(tryExpr);
+        if (result == null) result = caseReferenceableElement(tryExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -461,6 +476,7 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlList erlList = (ErlList)theEObject;
         T result = caseErlList(erlList);
         if (result == null) result = caseExpression(erlList);
+        if (result == null) result = caseReferenceableElement(erlList);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -469,6 +485,7 @@ public class ErlangSwitch<T> extends Switch<T>
         ListComprehension listComprehension = (ListComprehension)theEObject;
         T result = caseListComprehension(listComprehension);
         if (result == null) result = caseExpression(listComprehension);
+        if (result == null) result = caseReferenceableElement(listComprehension);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -477,6 +494,7 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlTuple erlTuple = (ErlTuple)theEObject;
         T result = caseErlTuple(erlTuple);
         if (result == null) result = caseExpression(erlTuple);
+        if (result == null) result = caseReferenceableElement(erlTuple);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -485,6 +503,7 @@ public class ErlangSwitch<T> extends Switch<T>
         BinaryComprehension binaryComprehension = (BinaryComprehension)theEObject;
         T result = caseBinaryComprehension(binaryComprehension);
         if (result == null) result = caseExpression(binaryComprehension);
+        if (result == null) result = caseReferenceableElement(binaryComprehension);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -493,6 +512,7 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlBinary erlBinary = (ErlBinary)theEObject;
         T result = caseErlBinary(erlBinary);
         if (result == null) result = caseExpression(erlBinary);
+        if (result == null) result = caseReferenceableElement(erlBinary);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -682,6 +702,7 @@ public class ErlangSwitch<T> extends Switch<T>
         CatchExpr catchExpr = (CatchExpr)theEObject;
         T result = caseCatchExpr(catchExpr);
         if (result == null) result = caseExpression(catchExpr);
+        if (result == null) result = caseReferenceableElement(catchExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -690,6 +711,7 @@ public class ErlangSwitch<T> extends Switch<T>
         MatchExpr matchExpr = (MatchExpr)theEObject;
         T result = caseMatchExpr(matchExpr);
         if (result == null) result = caseExpression(matchExpr);
+        if (result == null) result = caseReferenceableElement(matchExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -698,6 +720,7 @@ public class ErlangSwitch<T> extends Switch<T>
         BinOp binOp = (BinOp)theEObject;
         T result = caseBinOp(binOp);
         if (result == null) result = caseExpression(binOp);
+        if (result == null) result = caseReferenceableElement(binOp);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -706,6 +729,7 @@ public class ErlangSwitch<T> extends Switch<T>
         AddOp addOp = (AddOp)theEObject;
         T result = caseAddOp(addOp);
         if (result == null) result = caseExpression(addOp);
+        if (result == null) result = caseReferenceableElement(addOp);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -714,6 +738,7 @@ public class ErlangSwitch<T> extends Switch<T>
         MultOp multOp = (MultOp)theEObject;
         T result = caseMultOp(multOp);
         if (result == null) result = caseExpression(multOp);
+        if (result == null) result = caseReferenceableElement(multOp);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -722,6 +747,7 @@ public class ErlangSwitch<T> extends Switch<T>
         UnaryExpr unaryExpr = (UnaryExpr)theEObject;
         T result = caseUnaryExpr(unaryExpr);
         if (result == null) result = caseExpression(unaryExpr);
+        if (result == null) result = caseReferenceableElement(unaryExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -730,6 +756,7 @@ public class ErlangSwitch<T> extends Switch<T>
         FunCall funCall = (FunCall)theEObject;
         T result = caseFunCall(funCall);
         if (result == null) result = caseExpression(funCall);
+        if (result == null) result = caseReferenceableElement(funCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -738,6 +765,7 @@ public class ErlangSwitch<T> extends Switch<T>
         RemoteTarget remoteTarget = (RemoteTarget)theEObject;
         T result = caseRemoteTarget(remoteTarget);
         if (result == null) result = caseExpression(remoteTarget);
+        if (result == null) result = caseReferenceableElement(remoteTarget);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -746,6 +774,7 @@ public class ErlangSwitch<T> extends Switch<T>
         BlockExpr blockExpr = (BlockExpr)theEObject;
         T result = caseBlockExpr(blockExpr);
         if (result == null) result = caseExpression(blockExpr);
+        if (result == null) result = caseReferenceableElement(blockExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -754,6 +783,7 @@ public class ErlangSwitch<T> extends Switch<T>
         Atom atom = (Atom)theEObject;
         T result = caseAtom(atom);
         if (result == null) result = caseExpression(atom);
+        if (result == null) result = caseReferenceableElement(atom);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -762,6 +792,7 @@ public class ErlangSwitch<T> extends Switch<T>
         Variable variable = (Variable)theEObject;
         T result = caseVariable(variable);
         if (result == null) result = caseExpression(variable);
+        if (result == null) result = caseReferenceableElement(variable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -770,6 +801,7 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlChar erlChar = (ErlChar)theEObject;
         T result = caseErlChar(erlChar);
         if (result == null) result = caseExpression(erlChar);
+        if (result == null) result = caseReferenceableElement(erlChar);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -778,6 +810,7 @@ public class ErlangSwitch<T> extends Switch<T>
         MacroExpr macroExpr = (MacroExpr)theEObject;
         T result = caseMacroExpr(macroExpr);
         if (result == null) result = caseExpression(macroExpr);
+        if (result == null) result = caseReferenceableElement(macroExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -786,6 +819,7 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlString erlString = (ErlString)theEObject;
         T result = caseErlString(erlString);
         if (result == null) result = caseExpression(erlString);
+        if (result == null) result = caseReferenceableElement(erlString);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -794,6 +828,7 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlInteger erlInteger = (ErlInteger)theEObject;
         T result = caseErlInteger(erlInteger);
         if (result == null) result = caseExpression(erlInteger);
+        if (result == null) result = caseReferenceableElement(erlInteger);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -802,6 +837,7 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlFloat erlFloat = (ErlFloat)theEObject;
         T result = caseErlFloat(erlFloat);
         if (result == null) result = caseExpression(erlFloat);
+        if (result == null) result = caseReferenceableElement(erlFloat);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -898,17 +934,17 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Referenceable Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Referenceable Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAbstractElement(AbstractElement object)
+  public T caseReferenceableElement(ReferenceableElement object)
   {
     return null;
   }

@@ -5,7 +5,6 @@ import org.eclipse.core.runtime.Path
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
-import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 import org.erlide.erlang.Attribute
 import org.erlide.erlang.Expression
 import org.erlide.erlang.Form
@@ -21,7 +20,7 @@ import org.erlide.erlang.ModuleAttribute
  * see
  * http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
-public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
+public class DefaultErlangLabelProvider extends ErlangLabelProvider {
 
 	@Inject
 	extension ModelExtensions

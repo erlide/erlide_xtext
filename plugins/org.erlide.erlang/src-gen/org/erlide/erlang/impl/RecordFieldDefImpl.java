@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
@@ -31,7 +30,7 @@ import org.erlide.erlang.TopType;
  *
  * @generated
  */
-public class RecordFieldDefImpl extends MinimalEObjectImpl.Container implements RecordFieldDef
+public class RecordFieldDefImpl extends ReferenceableElementImpl implements RecordFieldDef
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.

@@ -57,23 +57,23 @@ public interface ErlangPackage extends EPackage
   ErlangPackage eINSTANCE = org.erlide.erlang.impl.ErlangPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
+   * The meta object id for the '{@link org.erlide.erlang.impl.ReferenceableElementImpl <em>Referenceable Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.AbstractElementImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getAbstractElement()
+   * @see org.erlide.erlang.impl.ReferenceableElementImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getReferenceableElement()
    * @generated
    */
-  int ABSTRACT_ELEMENT = 1;
+  int REFERENCEABLE_ELEMENT = 1;
 
   /**
-   * The number of structural features of the '<em>Abstract Element</em>' class.
+   * The number of structural features of the '<em>Referenceable Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ABSTRACT_ELEMENT_FEATURE_COUNT = 0;
+  int REFERENCEABLE_ELEMENT_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ModuleImpl <em>Module</em>}' class.
@@ -92,7 +92,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE__FORMS = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int MODULE__FORMS = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Module</em>' class.
@@ -101,7 +101,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+  int MODULE_FEATURE_COUNT = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.FormImpl <em>Form</em>}' class.
@@ -269,7 +269,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int DEFINE_ATTRIBUTE__TAG = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Macro Name</b></em>' attribute.
@@ -278,7 +278,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__MACRO_NAME = ATTRIBUTE_FEATURE_COUNT + 1;
+  int DEFINE_ATTRIBUTE__MACRO_NAME = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -287,7 +287,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__ARGS = ATTRIBUTE_FEATURE_COUNT + 2;
+  int DEFINE_ATTRIBUTE__ARGS = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -296,7 +296,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 3;
+  int DEFINE_ATTRIBUTE__VALUE = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Define Attribute</em>' class.
@@ -305,7 +305,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 4;
+  int DEFINE_ATTRIBUTE_FEATURE_COUNT = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.UndefAttributeImpl <em>Undef Attribute</em>}' class.
@@ -648,7 +648,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int RECORD_ATTRIBUTE__TAG = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -657,7 +657,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_ATTRIBUTE__NAME = ATTRIBUTE_FEATURE_COUNT + 1;
+  int RECORD_ATTRIBUTE__NAME = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -666,7 +666,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_ATTRIBUTE__FIELDS = ATTRIBUTE_FEATURE_COUNT + 2;
+  int RECORD_ATTRIBUTE__FIELDS = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Record Macro</b></em>' reference.
@@ -675,7 +675,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_ATTRIBUTE__RECORD_MACRO = ATTRIBUTE_FEATURE_COUNT + 3;
+  int RECORD_ATTRIBUTE__RECORD_MACRO = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Record Attribute</em>' class.
@@ -684,7 +684,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 4;
+  int RECORD_ATTRIBUTE_FEATURE_COUNT = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ExportAttributeImpl <em>Export Attribute</em>}' class.
@@ -897,7 +897,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_ATTRIBUTE__TAG = ABSTRACT_TYPE_ATTRIBUTE__TAG;
+  int TYPE_ATTRIBUTE__TAG = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -906,7 +906,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_ATTRIBUTE__NAME = ABSTRACT_TYPE_ATTRIBUTE_FEATURE_COUNT + 0;
+  int TYPE_ATTRIBUTE__NAME = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -915,7 +915,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_ATTRIBUTE__ARGS = ABSTRACT_TYPE_ATTRIBUTE_FEATURE_COUNT + 1;
+  int TYPE_ATTRIBUTE__ARGS = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -924,7 +924,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_ATTRIBUTE__TYPE = ABSTRACT_TYPE_ATTRIBUTE_FEATURE_COUNT + 2;
+  int TYPE_ATTRIBUTE__TYPE = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Type Attribute</em>' class.
@@ -933,7 +933,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_ATTRIBUTE_FEATURE_COUNT = ABSTRACT_TYPE_ATTRIBUTE_FEATURE_COUNT + 3;
+  int TYPE_ATTRIBUTE_FEATURE_COUNT = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.CustomAttributeImpl <em>Custom Attribute</em>}' class.
@@ -989,7 +989,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION__NAME = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int FUNCTION__NAME = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Clauses</b></em>' containment reference list.
@@ -998,7 +998,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION__CLAUSES = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+  int FUNCTION__CLAUSES = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Function</em>' class.
@@ -1007,7 +1007,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
+  int FUNCTION_FEATURE_COUNT = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.FunctionClauseImpl <em>Function Clause</em>}' class.
@@ -1137,7 +1137,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__LINE = 0;
+  int EXPRESSION__LINE = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -1146,7 +1146,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__EXPR = 1;
+  int EXPRESSION__EXPR = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -1155,7 +1155,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = 2;
+  int EXPRESSION_FEATURE_COUNT = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.MacroCallImpl <em>Macro Call</em>}' class.
@@ -1432,7 +1432,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_FIELD_DEF__NAME = 0;
+  int RECORD_FIELD_DEF__NAME = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -1441,7 +1441,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_FIELD_DEF__VALUE = 1;
+  int RECORD_FIELD_DEF__VALUE = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -1450,7 +1450,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_FIELD_DEF__TYPE = 2;
+  int RECORD_FIELD_DEF__TYPE = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Record Field Def</em>' class.
@@ -1459,7 +1459,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_FIELD_DEF_FEATURE_COUNT = 3;
+  int RECORD_FIELD_DEF_FEATURE_COUNT = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.RecordFieldImpl <em>Record Field</em>}' class.
@@ -4170,14 +4170,14 @@ public interface ErlangPackage extends EPackage
   EReference getModule_Forms();
 
   /**
-   * Returns the meta object for class '{@link org.erlide.erlang.AbstractElement <em>Abstract Element</em>}'.
+   * Returns the meta object for class '{@link org.erlide.erlang.ReferenceableElement <em>Referenceable Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Abstract Element</em>'.
-   * @see org.erlide.erlang.AbstractElement
+   * @return the meta object for class '<em>Referenceable Element</em>'.
+   * @see org.erlide.erlang.ReferenceableElement
    * @generated
    */
-  EClass getAbstractElement();
+  EClass getReferenceableElement();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.Form <em>Form</em>}'.
@@ -6988,14 +6988,14 @@ public interface ErlangPackage extends EPackage
     EReference MODULE__FORMS = eINSTANCE.getModule_Forms();
 
     /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
+     * The meta object literal for the '{@link org.erlide.erlang.impl.ReferenceableElementImpl <em>Referenceable Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.AbstractElementImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getAbstractElement()
+     * @see org.erlide.erlang.impl.ReferenceableElementImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getReferenceableElement()
      * @generated
      */
-    EClass ABSTRACT_ELEMENT = eINSTANCE.getAbstractElement();
+    EClass REFERENCEABLE_ELEMENT = eINSTANCE.getReferenceableElement();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.FormImpl <em>Form</em>}' class.

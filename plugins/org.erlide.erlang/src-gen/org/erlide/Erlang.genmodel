@@ -10,7 +10,7 @@
     <genClasses ecoreClass="Erlang.ecore#//Module">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Module/forms"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//AbstractElement"/>
+    <genClasses ecoreClass="Erlang.ecore#//ReferenceableElement"/>
     <genClasses ecoreClass="Erlang.ecore#//Form"/>
     <genClasses ecoreClass="Erlang.ecore#//ConditionalFormBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ConditionalFormBlock/condition"/>
