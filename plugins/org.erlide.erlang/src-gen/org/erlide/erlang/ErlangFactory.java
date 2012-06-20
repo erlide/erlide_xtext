@@ -365,6 +365,24 @@ public interface ErlangFactory extends EFactory
   RecordField createRecordField();
 
   /**
+   * Returns a new object of class '<em>Erl String</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Erl String</em>'.
+   * @generated
+   */
+  ErlString createErlString();
+
+  /**
+   * Returns a new object of class '<em>Erl String Part</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Erl String Part</em>'.
+   * @generated
+   */
+  ErlStringPart createErlStringPart();
+
+  /**
    * Returns a new object of class '<em>If Expr</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -795,15 +813,6 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   MacroExpr createMacroExpr();
-
-  /**
-   * Returns a new object of class '<em>Erl String</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Erl String</em>'.
-   * @generated
-   */
-  ErlString createErlString();
 
   /**
    * Returns a new object of class '<em>Erl Integer</em>'.

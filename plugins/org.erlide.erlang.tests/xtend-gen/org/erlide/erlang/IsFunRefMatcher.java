@@ -6,6 +6,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.erlide.erlang.FunRef;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.ModelExtensions;
+import org.erlide.erlang.ReferenceableElement;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Factory;
@@ -63,12 +64,12 @@ public class IsFunRefMatcher extends BaseMatcher {
   
   protected boolean _matches(final FunRef item) {
     boolean _and = false;
-    String _function = item.getFunction();
+    ReferenceableElement _function = item.getFunction();
     boolean _equals = Objects.equal(_function, this.name);
     if (!_equals) {
       _and = false;
     } else {
-      String _arity = item.getArity();
+      ReferenceableElement _arity = item.getArity();
       String _string = Integer.toString(this.arity);
       boolean _equals_1 = Objects.equal(_arity, _string);
       _and = (_equals && _equals_1);

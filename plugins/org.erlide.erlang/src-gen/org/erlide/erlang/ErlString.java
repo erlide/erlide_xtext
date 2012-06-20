@@ -2,6 +2,7 @@
  */
 package org.erlide.erlang;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,7 +12,8 @@ package org.erlide.erlang;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.ErlString#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.ErlString#getString <em>String</em>}</li>
+ *   <li>{@link org.erlide.erlang.ErlString#getMore <em>More</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,29 +24,45 @@ package org.erlide.erlang;
 public interface ErlString extends Expression
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>String</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value</em>' attribute isn't clear,
+   * If the meaning of the '<em>String</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see org.erlide.erlang.ErlangPackage#getErlString_Value()
+   * @return the value of the '<em>String</em>' attribute.
+   * @see #setString(String)
+   * @see org.erlide.erlang.ErlangPackage#getErlString_String()
    * @model
    * @generated
    */
-  String getValue();
+  String getString();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.ErlString#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.ErlString#getString <em>String</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
+   * @param value the new value of the '<em>String</em>' attribute.
+   * @see #getString()
    * @generated
    */
-  void setValue(String value);
+  void setString(String value);
+
+  /**
+   * Returns the value of the '<em><b>More</b></em>' containment reference list.
+   * The list contents are of type {@link org.erlide.erlang.ErlStringPart}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>More</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>More</em>' containment reference list.
+   * @see org.erlide.erlang.ErlangPackage#getErlString_More()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ErlStringPart> getMore();
 
 } // ErlString

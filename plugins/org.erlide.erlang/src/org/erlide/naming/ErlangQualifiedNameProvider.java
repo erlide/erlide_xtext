@@ -5,11 +5,13 @@ import org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.erlide.erlang.DefineAttribute;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
-import org.erlide.erlang.ModuleAttribute;
 import org.erlide.erlang.RecordAttribute;
+import org.erlide.erlang.RecordFieldDef;
+import org.erlide.erlang.TypeAttribute;
 
 import com.google.inject.Inject;
 
@@ -32,10 +34,6 @@ public class ErlangQualifiedNameProvider extends
 		return QualifiedName.create(name);
 	}
 
-	QualifiedName qualifiedName(final ModuleAttribute module) {
-		return null;
-	}
-
 	QualifiedName qualifiedName(final DefineAttribute macro) {
 		return splice(getParentsFullyQualifiedName(macro),
 				converter.toQualifiedName(macro.getMacroName()));
@@ -46,11 +44,26 @@ public class ErlangQualifiedNameProvider extends
 				converter.toQualifiedName(record.getName()));
 	}
 
+	QualifiedName qualifiedName(final RecordFieldDef field) {
+		return splice(getParentsFullyQualifiedName(field),
+				converter.toQualifiedName(field.getName()));
+	}
+
 	QualifiedName qualifiedName(final Function function) {
 		return splice(
 				getParentsFullyQualifiedName(function),
 				converter.toQualifiedName(function.getName() + "/"
 						+ modelExtensions.getArity(function)));
+	}
+
+	QualifiedName qualifiedName(final Expression expression) {
+		// TODO
+		return null;
+	}
+
+	QualifiedName qualifiedName(final TypeAttribute type) {
+		return splice(getParentsFullyQualifiedName(type),
+				converter.toQualifiedName(type.getName()));
 	}
 
 	public static QualifiedName splice(final QualifiedName a,

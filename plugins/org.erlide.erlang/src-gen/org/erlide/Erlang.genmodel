@@ -136,6 +136,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordField/value"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordField/type"/>
     </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//ErlString">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ErlString/string"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ErlString/more"/>
+    </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//ErlStringPart">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ErlStringPart/string"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//ErlStringPart/macro"/>
+    </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//IfExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//IfExpr/clauses"/>
     </genClasses>
@@ -160,9 +168,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunExpr/clauses"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//FunRef">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FunRef/module"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FunRef/function"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FunRef/arity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/module"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/function"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/arity"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//TryExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TryExpr/body"/>
@@ -209,9 +217,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//LCExpr/o2"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//SpecFun">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//SpecFun/module"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//SpecFun/function"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//SpecFun/arity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/module"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/function"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/arity"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//TypeSig">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TypeSig/decl"/>
@@ -315,9 +323,6 @@
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//MacroExpr">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//MacroExpr/value"/>
-    </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//ErlString">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ErlString/value"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ErlInteger">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ErlInteger/value"/>

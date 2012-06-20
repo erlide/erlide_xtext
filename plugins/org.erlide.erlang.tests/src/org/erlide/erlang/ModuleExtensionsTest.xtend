@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
-class ModuleExtensionsTest {
+class ModuleExtensionsTest extends AbstractErlangTests {
 	
     @Inject
     ParseHelper<Module> parser

@@ -2,40 +2,33 @@
  */
 package org.erlide.erlang.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.erlide.erlang.ErlString;
+import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ErlStringPart;
 import org.erlide.erlang.ErlangPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Erl String</b></em>'.
+ * An implementation of the model object '<em><b>Erl String Part</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.ErlStringImpl#getString <em>String</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.ErlStringImpl#getMore <em>More</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ErlStringPartImpl#getString <em>String</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ErlStringPartImpl#getMacro <em>Macro</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ErlStringImpl extends ExpressionImpl implements ErlString
+public class ErlStringPartImpl extends MinimalEObjectImpl.Container implements ErlStringPart
 {
   /**
    * The default value of the '{@link #getString() <em>String</em>}' attribute.
@@ -58,21 +51,21 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
   protected String string = STRING_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getMore() <em>More</em>}' containment reference list.
+   * The cached value of the '{@link #getMacro() <em>Macro</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMore()
+   * @see #getMacro()
    * @generated
    * @ordered
    */
-  protected EList<ErlStringPart> more;
+  protected DefineAttribute macro;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ErlStringImpl()
+  protected ErlStringPartImpl()
   {
     super();
   }
@@ -85,7 +78,7 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.ERL_STRING;
+    return ErlangPackage.Literals.ERL_STRING_PART;
   }
 
   /**
@@ -108,7 +101,7 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
     String oldString = string;
     string = newString;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ERL_STRING__STRING, oldString, string));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ERL_STRING_PART__STRING, oldString, string));
   }
 
   /**
@@ -116,13 +109,19 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ErlStringPart> getMore()
+  public DefineAttribute getMacro()
   {
-    if (more == null)
+    if (macro != null && macro.eIsProxy())
     {
-      more = new EObjectContainmentEList<ErlStringPart>(ErlStringPart.class, this, ErlangPackage.ERL_STRING__MORE);
+      InternalEObject oldMacro = (InternalEObject)macro;
+      macro = (DefineAttribute)eResolveProxy(oldMacro);
+      if (macro != oldMacro)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.ERL_STRING_PART__MACRO, oldMacro, macro));
+      }
     }
-    return more;
+    return macro;
   }
 
   /**
@@ -130,15 +129,22 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public DefineAttribute basicGetMacro()
   {
-    switch (featureID)
-    {
-      case ErlangPackage.ERL_STRING__MORE:
-        return ((InternalEList<?>)getMore()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    return macro;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMacro(DefineAttribute newMacro)
+  {
+    DefineAttribute oldMacro = macro;
+    macro = newMacro;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ERL_STRING_PART__MACRO, oldMacro, macro));
   }
 
   /**
@@ -151,10 +157,11 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
   {
     switch (featureID)
     {
-      case ErlangPackage.ERL_STRING__STRING:
+      case ErlangPackage.ERL_STRING_PART__STRING:
         return getString();
-      case ErlangPackage.ERL_STRING__MORE:
-        return getMore();
+      case ErlangPackage.ERL_STRING_PART__MACRO:
+        if (resolve) return getMacro();
+        return basicGetMacro();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -164,18 +171,16 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case ErlangPackage.ERL_STRING__STRING:
+      case ErlangPackage.ERL_STRING_PART__STRING:
         setString((String)newValue);
         return;
-      case ErlangPackage.ERL_STRING__MORE:
-        getMore().clear();
-        getMore().addAll((Collection<? extends ErlStringPart>)newValue);
+      case ErlangPackage.ERL_STRING_PART__MACRO:
+        setMacro((DefineAttribute)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -191,11 +196,11 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
   {
     switch (featureID)
     {
-      case ErlangPackage.ERL_STRING__STRING:
+      case ErlangPackage.ERL_STRING_PART__STRING:
         setString(STRING_EDEFAULT);
         return;
-      case ErlangPackage.ERL_STRING__MORE:
-        getMore().clear();
+      case ErlangPackage.ERL_STRING_PART__MACRO:
+        setMacro((DefineAttribute)null);
         return;
     }
     super.eUnset(featureID);
@@ -211,10 +216,10 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
   {
     switch (featureID)
     {
-      case ErlangPackage.ERL_STRING__STRING:
+      case ErlangPackage.ERL_STRING_PART__STRING:
         return STRING_EDEFAULT == null ? string != null : !STRING_EDEFAULT.equals(string);
-      case ErlangPackage.ERL_STRING__MORE:
-        return more != null && !more.isEmpty();
+      case ErlangPackage.ERL_STRING_PART__MACRO:
+        return macro != null;
     }
     return super.eIsSet(featureID);
   }
@@ -236,4 +241,4 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
     return result.toString();
   }
 
-} //ErlStringImpl
+} //ErlStringPartImpl

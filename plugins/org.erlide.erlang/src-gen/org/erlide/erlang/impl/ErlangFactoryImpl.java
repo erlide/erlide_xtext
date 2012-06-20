@@ -102,6 +102,8 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.RECORD_TUPLE: return createRecordTuple();
       case ErlangPackage.RECORD_FIELD_DEF: return createRecordFieldDef();
       case ErlangPackage.RECORD_FIELD: return createRecordField();
+      case ErlangPackage.ERL_STRING: return createErlString();
+      case ErlangPackage.ERL_STRING_PART: return createErlStringPart();
       case ErlangPackage.IF_EXPR: return createIfExpr();
       case ErlangPackage.IF_CLAUSE: return createIfClause();
       case ErlangPackage.CASE_EXPR: return createCaseExpr();
@@ -150,7 +152,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.VARIABLE: return createVariable();
       case ErlangPackage.ERL_CHAR: return createErlChar();
       case ErlangPackage.MACRO_EXPR: return createMacroExpr();
-      case ErlangPackage.ERL_STRING: return createErlString();
       case ErlangPackage.ERL_INTEGER: return createErlInteger();
       case ErlangPackage.ERL_FLOAT: return createErlFloat();
       case ErlangPackage.UNARY_TYPE: return createUnaryType();
@@ -580,6 +581,28 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     RecordFieldImpl recordField = new RecordFieldImpl();
     return recordField;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ErlString createErlString()
+  {
+    ErlStringImpl erlString = new ErlStringImpl();
+    return erlString;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ErlStringPart createErlStringPart()
+  {
+    ErlStringPartImpl erlStringPart = new ErlStringPartImpl();
+    return erlStringPart;
   }
 
   /**
@@ -1108,17 +1131,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     MacroExprImpl macroExpr = new MacroExprImpl();
     return macroExpr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ErlString createErlString()
-  {
-    ErlStringImpl erlString = new ErlStringImpl();
-    return erlString;
   }
 
   /**

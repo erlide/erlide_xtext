@@ -33,12 +33,12 @@ public interface RecordField extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(RecordFieldDef)
+   * @see #setRef(ReferenceableElement)
    * @see org.erlide.erlang.ErlangPackage#getRecordField_Ref()
    * @model
    * @generated
    */
-  RecordFieldDef getRef();
+  ReferenceableElement getRef();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.RecordField#getRef <em>Ref</em>}' reference.
@@ -48,7 +48,7 @@ public interface RecordField extends EObject
    * @see #getRef()
    * @generated
    */
-  void setRef(RecordFieldDef value);
+  void setRef(ReferenceableElement value);
 
   /**
    * Returns the value of the '<em><b>Value</b></em>' containment reference.

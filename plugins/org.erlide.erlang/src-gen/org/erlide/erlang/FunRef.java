@@ -24,81 +24,81 @@ package org.erlide.erlang;
 public interface FunRef extends FunExpr
 {
   /**
-   * Returns the value of the '<em><b>Module</b></em>' attribute.
+   * Returns the value of the '<em><b>Module</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Module</em>' attribute isn't clear,
+   * If the meaning of the '<em>Module</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Module</em>' attribute.
-   * @see #setModule(String)
+   * @return the value of the '<em>Module</em>' reference.
+   * @see #setModule(ReferenceableElement)
    * @see org.erlide.erlang.ErlangPackage#getFunRef_Module()
    * @model
    * @generated
    */
-  String getModule();
+  ReferenceableElement getModule();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Module</em>' attribute.
+   * @param value the new value of the '<em>Module</em>' reference.
    * @see #getModule()
    * @generated
    */
-  void setModule(String value);
+  void setModule(ReferenceableElement value);
 
   /**
-   * Returns the value of the '<em><b>Function</b></em>' attribute.
+   * Returns the value of the '<em><b>Function</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Function</em>' attribute isn't clear,
+   * If the meaning of the '<em>Function</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Function</em>' attribute.
-   * @see #setFunction(String)
+   * @return the value of the '<em>Function</em>' reference.
+   * @see #setFunction(ReferenceableElement)
    * @see org.erlide.erlang.ErlangPackage#getFunRef_Function()
    * @model
    * @generated
    */
-  String getFunction();
+  ReferenceableElement getFunction();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Function</em>' attribute.
+   * @param value the new value of the '<em>Function</em>' reference.
    * @see #getFunction()
    * @generated
    */
-  void setFunction(String value);
+  void setFunction(ReferenceableElement value);
 
   /**
-   * Returns the value of the '<em><b>Arity</b></em>' attribute.
+   * Returns the value of the '<em><b>Arity</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Arity</em>' attribute isn't clear,
+   * If the meaning of the '<em>Arity</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Arity</em>' attribute.
-   * @see #setArity(String)
+   * @return the value of the '<em>Arity</em>' reference.
+   * @see #setArity(ReferenceableElement)
    * @see org.erlide.erlang.ErlangPackage#getFunRef_Arity()
    * @model
    * @generated
    */
-  String getArity();
+  ReferenceableElement getArity();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Arity</em>' attribute.
+   * @param value the new value of the '<em>Arity</em>' reference.
    * @see #getArity()
    * @generated
    */
-  void setArity(String value);
+  void setArity(ReferenceableElement value);
 
 } // FunRef

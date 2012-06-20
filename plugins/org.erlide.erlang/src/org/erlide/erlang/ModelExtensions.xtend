@@ -7,8 +7,6 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 
 import static extension org.erlide.erlang.ModelExtensions.*
-import org.erlide.erlang.ConditionalFormBlock
-import org.erlide.erlang.ConditionalAttribute
 
 class ModelExtensions {
     
@@ -75,7 +73,7 @@ class ModelExtensions {
 
 	def Collection<Function> getExportedFunctions(Module module) {
 		val exportedRefs = getExportedFunRefs(module)
-		exportedRefs.map[module.getFunction(it)].toList
+		exportedRefs.map[function].filter(typeof(Function)).toList
 	}
 	
 	def Collection<FunRef> getExportedFunRefs(Module module) {
@@ -103,12 +101,14 @@ class ModelExtensions {
 	}
 	
  	def Function getFunction(Module module, FunRef ref) {
- 		//ref.function
- 		module.getFunction(ref.function, Integer::parseInt(ref.arity))
+ 		val function = ref.function
+ 		switch function {
+ 			Function: function
+ 		}
  	}
     
  	def Function getFunction(Module module, SpecFun ref) {
- 		module.getFunction(ref.function, Integer::parseInt(ref.arity))
+ 		module.getFunction(ref.function.sourceText, Integer::parseInt(ref.arity.sourceText))
  	}
  	
     def boolean exportsAll(Module module) {
@@ -212,6 +212,11 @@ class ModelExtensions {
 		return hd.sourceText=="parse_transform" && expr.elements.tail.head instanceof Atom
 	}
 	
+	def EObject getObjectAtOffset(EObject src, int offset){
+		val elem = NodeModelUtils::findLeafNodeAtOffset(NodeModelUtils::getNode(src), offset)
+       	NodeModelUtils::findActualSemanticObjectFor(elem)
+	}
+
 }
 
 

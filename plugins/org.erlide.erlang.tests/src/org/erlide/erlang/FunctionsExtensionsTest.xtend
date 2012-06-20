@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
-class FunctionExtensionsTest {
+class FunctionExtensionsTest extends AbstractErlangTests {
 	
 	@Inject
 	ParseHelper<Module> parser

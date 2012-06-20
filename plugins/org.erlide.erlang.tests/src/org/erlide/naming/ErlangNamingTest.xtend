@@ -3,12 +3,11 @@ package org.erlide.naming
 import com.google.inject.Inject
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.erlide.ErlangInjectorProvider
-import org.erlide.erlang.ConditionalFormBlock
-import org.erlide.erlang.Module
+import org.erlide.erlang.AbstractErlangTests
+import org.erlide.erlang.util.ErlangTestingHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -17,10 +16,10 @@ import static org.hamcrest.Matchers.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
-class ErlangNamingTest {
+class ErlangNamingTest extends AbstractErlangTests {
 
     @Inject
-    ParseHelper<Module> parser
+    ErlangTestingHelper parser
 	@Inject
 	IQualifiedNameProvider namer
 	@Inject
@@ -31,7 +30,7 @@ class ErlangNamingTest {
         val module = parser.parse('''
             -module(x).
         ''')
-        val name = namer.getFullyQualifiedName(module)
+        val name = namer.getFullyQualifiedName(module.key)
         assertThat(nameCvtr.toString(name), is("x")) 
 	}
 
@@ -40,7 +39,7 @@ class ErlangNamingTest {
         val module = parser.parse('''
             -module('X').
         ''')
-        val name = namer.getFullyQualifiedName(module)
+        val name = namer.getFullyQualifiedName(module.key)
         assertThat(nameCvtr.toString(name), is("'X'")) 
 	}
 
@@ -49,18 +48,18 @@ class ErlangNamingTest {
         val module = parser.parse('''
             -define(X, x).
         ''')
-        val name = namer.getFullyQualifiedName(module)
+        val name = namer.getFullyQualifiedName(module.key)
         // the name is generated for this embedded resource
         assertThat(nameCvtr.toString(name), is("__synthetic0_erl")) 
 	}
 
 	@Test
-	def void recordName() {
+	def void typeName() {
         val module = parser.parse('''
             -module(x).
-            -record(y, {}).
+            -type(y::integer()).
         ''')
-        val name = namer.getFullyQualifiedName(module.forms.tail.head)
+        val name = namer.getFullyQualifiedName(module.key.forms.tail.head)
         assertThat(nameCvtr.toString(name), is("x:y")) 
 	}
 
@@ -69,15 +68,15 @@ class ErlangNamingTest {
         val module = parser.parse('''
             -module(x).
             -ifdef(M).
-            -record(y, {}).
+            §-record(y, {}).
             -else.
-            -record(y, {}).
+            §-record(y, {}).
             -endif.
         ''')
-        val dfn = module.forms.get(1) as ConditionalFormBlock
-        val name1 = namer.getFullyQualifiedName(dfn.ifForms.head)
+        assertThat(module.value.size, is(2))
+        val name1 = namer.getFullyQualifiedName(module.getObjectAtOffset(0))
         assertThat(nameCvtr.toString(name1), is("x:y")) 
-        val name2 = namer.getFullyQualifiedName(dfn.elseForms.head)
+        val name2 = namer.getFullyQualifiedName(module.getObjectAtOffset(1))
         assertThat(nameCvtr.toString(name2), is("x:y")) 
 	}
 	
@@ -87,7 +86,7 @@ class ErlangNamingTest {
             -module(x).
             f() -> ok.
         ''')
-        val name = namer.getFullyQualifiedName(module.forms.tail.head)
+        val name = namer.getFullyQualifiedName(module.key.forms.tail.head)
         assertThat(nameCvtr.toString(name), is("x:f/0")) 
 	}
 
@@ -98,9 +97,9 @@ class ErlangNamingTest {
             f(X) -> ok.
             f() -> ok.
         ''')
-        val name1 = namer.getFullyQualifiedName(module.forms.tail.head)
+        val name1 = namer.getFullyQualifiedName(module.key.forms.tail.head)
         assertThat(nameCvtr.toString(name1), is("x:f/1")) 
-        val name2 = namer.getFullyQualifiedName(module.forms.tail.tail.head)
+        val name2 = namer.getFullyQualifiedName(module.key.forms.tail.tail.head)
         assertThat(nameCvtr.toString(name2), is("x:f/0")) 
 	}
 
@@ -110,9 +109,20 @@ class ErlangNamingTest {
             -module(x).
             -define(X, x).
         ''')
-        val obj = module.forms.tail.head
+        val obj = module.key.forms.tail.head
         val name1 = namer.getFullyQualifiedName(obj)
         assertThat(nameCvtr.toString(name1), is("x:X")) 
 	}
+
+	@Test
+	def void recordName() {
+        val module = parser.parse('''
+            -module(x).
+            -record(y, {}).
+        ''')
+        val name = namer.getFullyQualifiedName(module.key.forms.tail.head)
+        assertThat(nameCvtr.toString(name), is("x:y")) 
+	}
+
 
 }

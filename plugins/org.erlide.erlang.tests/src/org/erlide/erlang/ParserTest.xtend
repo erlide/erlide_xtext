@@ -12,7 +12,7 @@ import static org.junit.Assert.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
-class ParserTest {
+class ParserTest extends AbstractErlangTests {
 	
 	@Inject
 	ParseHelper<Module> parser

@@ -14,10 +14,11 @@ import org.junit.runner.RunWith
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
 import org.erlide.erlang.Function
+import org.erlide.erlang.AbstractErlangTests
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
-class ErlangLinkingTest {
+class ErlangLinkingTest extends AbstractErlangTests {
 
     @Inject
     ParseHelper<Module> parser

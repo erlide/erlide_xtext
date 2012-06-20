@@ -262,7 +262,7 @@ MacroCall:
 ;
 
 RecordExpr:
-	rec=[RecordAttribute|NameVar] (('.' field=[RecordFieldDef|Name]) | tuple=RecordTuple)
+	rec=[ReferenceableElement|NameVar] (('.' field=[ReferenceableElement|Name]) | tuple=RecordTuple)
 ;
 
 // NYI
@@ -288,7 +288,7 @@ RecordFieldDef:
 ;
 
 RecordField:
-	ref=[RecordFieldDef|NameVar] ('=' value=Expression)? ('::' type=TopType)?
+	ref=[ReferenceableElement|NameVar] ('=' value=Expression)? ('::' type=TopType)?
 ;
 
 LiteralExpressionNoNumber returns Expression:
@@ -296,7 +296,16 @@ LiteralExpressionNoNumber returns Expression:
 	| {Variable} value=VARIABLE 
 	| {ErlChar} value=CHAR 
 	| {MacroExpr} value=[DefineAttribute|Macro] 
-	| {ErlString} value=ErlString
+	| ErlString  
+;
+
+ErlString:
+	string=STRING more+=ErlStringPart*
+;
+
+ErlStringPart:
+	  string=STRING 
+	| macro=[DefineAttribute|Macro] 
 ;
 
 LiteralExpression returns Expression:
@@ -310,10 +319,6 @@ PatternExpression returns Expression:
 		({MatchExpr.opLeft=current} op='=' opRight=TermExpression)+
 	  | ({FunCall.target=current} '(' (args+=Expression (',' args+=Expression)*)? ')') 
 	)?
-;
-
-ErlString returns ecore::EString:
-	STRING (STRING | Macro)* 
 ;
 
 IfExpr:
@@ -346,8 +351,7 @@ FunExpr:
 ;
 
 FunRef:
-	//(module=[Module|NameVar] ':')? function=[Function|NameVar] '/' arity=IntMacro
-	(module=NameVar ':')? function=NameVar '/' arity=IntMacro
+	(module=[ReferenceableElement|NameVar] ':')? function=[ReferenceableElement|NameVar] '/' arity=[ReferenceableElement|IntMacro]
 ;
 
 InlineFun returns FunExpr:
@@ -550,7 +554,7 @@ terminal fragment HEX_DIGIT:
 // Type language
 
 SpecFun:
-	(module=NameVar ':')? function=NameVar ('/' arity=IntMacro '::')?;
+	(module=[ReferenceableElement|NameVar] ':')? function=[ReferenceableElement|NameVar] ('/' arity=[ReferenceableElement|IntMacro] '::')?;
 
 TypeSig:
 	decl=FunType ('when' guards=TypeGuards)?;
@@ -562,7 +566,9 @@ TypeGuards:
 	items+=TypeGuard (',' items+=TypeGuard)*;
 
 TypeGuard:
-	name=Name '(' types+=TopType (',' types+=TopType)* ')' | name=VARIABLE '::' type=TopType;
+	  name=Name '(' types+=TopType (',' types+=TopType)* ')' 
+	| name=VARIABLE '::' type=TopType
+;
 
 TopType:
 	(var=VARIABLE '::')? type=Type100;

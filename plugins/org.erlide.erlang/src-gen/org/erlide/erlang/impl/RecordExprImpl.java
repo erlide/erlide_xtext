@@ -12,10 +12,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
-import org.erlide.erlang.RecordAttribute;
 import org.erlide.erlang.RecordExpr;
-import org.erlide.erlang.RecordFieldDef;
 import org.erlide.erlang.RecordTuple;
+import org.erlide.erlang.ReferenceableElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,7 +63,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * @generated
    * @ordered
    */
-  protected RecordAttribute rec;
+  protected ReferenceableElement rec;
 
   /**
    * The cached value of the '{@link #getField() <em>Field</em>}' reference.
@@ -74,7 +73,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * @generated
    * @ordered
    */
-  protected RecordFieldDef field;
+  protected ReferenceableElement field;
 
   /**
    * The cached value of the '{@link #getTuple() <em>Tuple</em>}' containment reference.
@@ -208,12 +207,12 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordAttribute getRec()
+  public ReferenceableElement getRec()
   {
     if (rec != null && rec.eIsProxy())
     {
       InternalEObject oldRec = (InternalEObject)rec;
-      rec = (RecordAttribute)eResolveProxy(oldRec);
+      rec = (ReferenceableElement)eResolveProxy(oldRec);
       if (rec != oldRec)
       {
         if (eNotificationRequired())
@@ -228,7 +227,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordAttribute basicGetRec()
+  public ReferenceableElement basicGetRec()
   {
     return rec;
   }
@@ -238,9 +237,9 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRec(RecordAttribute newRec)
+  public void setRec(ReferenceableElement newRec)
   {
-    RecordAttribute oldRec = rec;
+    ReferenceableElement oldRec = rec;
     rec = newRec;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_EXPR__REC, oldRec, rec));
@@ -251,12 +250,12 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordFieldDef getField()
+  public ReferenceableElement getField()
   {
     if (field != null && field.eIsProxy())
     {
       InternalEObject oldField = (InternalEObject)field;
-      field = (RecordFieldDef)eResolveProxy(oldField);
+      field = (ReferenceableElement)eResolveProxy(oldField);
       if (field != oldField)
       {
         if (eNotificationRequired())
@@ -271,7 +270,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordFieldDef basicGetField()
+  public ReferenceableElement basicGetField()
   {
     return field;
   }
@@ -281,9 +280,9 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setField(RecordFieldDef newField)
+  public void setField(ReferenceableElement newField)
   {
-    RecordFieldDef oldField = field;
+    ReferenceableElement oldField = field;
     field = newField;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_EXPR__FIELD, oldField, field));
@@ -400,10 +399,10 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
         setRecord((RecordExpr)newValue);
         return;
       case ErlangPackage.RECORD_EXPR__REC:
-        setRec((RecordAttribute)newValue);
+        setRec((ReferenceableElement)newValue);
         return;
       case ErlangPackage.RECORD_EXPR__FIELD:
-        setField((RecordFieldDef)newValue);
+        setField((ReferenceableElement)newValue);
         return;
       case ErlangPackage.RECORD_EXPR__TUPLE:
         setTuple((RecordTuple)newValue);
@@ -429,10 +428,10 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
         setRecord((RecordExpr)null);
         return;
       case ErlangPackage.RECORD_EXPR__REC:
-        setRec((RecordAttribute)null);
+        setRec((ReferenceableElement)null);
         return;
       case ErlangPackage.RECORD_EXPR__FIELD:
-        setField((RecordFieldDef)null);
+        setField((ReferenceableElement)null);
         return;
       case ErlangPackage.RECORD_EXPR__TUPLE:
         setTuple((RecordTuple)null);

@@ -265,6 +265,16 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createRecordFieldAdapter();
       }
       @Override
+      public Adapter caseErlString(ErlString object)
+      {
+        return createErlStringAdapter();
+      }
+      @Override
+      public Adapter caseErlStringPart(ErlStringPart object)
+      {
+        return createErlStringPartAdapter();
+      }
+      @Override
       public Adapter caseIfExpr(IfExpr object)
       {
         return createIfExprAdapter();
@@ -503,11 +513,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseMacroExpr(MacroExpr object)
       {
         return createMacroExprAdapter();
-      }
-      @Override
-      public Adapter caseErlString(ErlString object)
-      {
-        return createErlStringAdapter();
       }
       @Override
       public Adapter caseErlInteger(ErlInteger object)
@@ -1137,6 +1142,36 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createRecordFieldAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ErlString <em>Erl String</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.ErlString
+   * @generated
+   */
+  public Adapter createErlStringAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ErlStringPart <em>Erl String Part</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.ErlStringPart
+   * @generated
+   */
+  public Adapter createErlStringPartAdapter()
   {
     return null;
   }
@@ -1857,21 +1892,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMacroExprAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ErlString <em>Erl String</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.ErlString
-   * @generated
-   */
-  public Adapter createErlStringAdapter()
   {
     return null;
   }

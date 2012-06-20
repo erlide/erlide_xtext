@@ -86,12 +86,12 @@ public interface RecordExpr extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Rec</em>' reference.
-   * @see #setRec(RecordAttribute)
+   * @see #setRec(ReferenceableElement)
    * @see org.erlide.erlang.ErlangPackage#getRecordExpr_Rec()
    * @model
    * @generated
    */
-  RecordAttribute getRec();
+  ReferenceableElement getRec();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.RecordExpr#getRec <em>Rec</em>}' reference.
@@ -101,7 +101,7 @@ public interface RecordExpr extends Expression
    * @see #getRec()
    * @generated
    */
-  void setRec(RecordAttribute value);
+  void setRec(ReferenceableElement value);
 
   /**
    * Returns the value of the '<em><b>Field</b></em>' reference.
@@ -112,12 +112,12 @@ public interface RecordExpr extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Field</em>' reference.
-   * @see #setField(RecordFieldDef)
+   * @see #setField(ReferenceableElement)
    * @see org.erlide.erlang.ErlangPackage#getRecordExpr_Field()
    * @model
    * @generated
    */
-  RecordFieldDef getField();
+  ReferenceableElement getField();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.RecordExpr#getField <em>Field</em>}' reference.
@@ -127,7 +127,7 @@ public interface RecordExpr extends Expression
    * @see #getField()
    * @generated
    */
-  void setField(RecordFieldDef value);
+  void setField(ReferenceableElement value);
 
   /**
    * Returns the value of the '<em><b>Tuple</b></em>' containment reference.

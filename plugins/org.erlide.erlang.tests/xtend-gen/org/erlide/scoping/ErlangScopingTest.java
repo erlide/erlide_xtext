@@ -18,6 +18,7 @@ import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.ErlangInjectorProvider;
+import org.erlide.erlang.AbstractErlangTests;
 import org.erlide.erlang.ErlangPackage.Literals;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
@@ -30,7 +31,7 @@ import org.junit.runner.RunWith;
 @RunWith(value = XtextRunner.class)
 @InjectWith(value = ErlangInjectorProvider.class)
 @SuppressWarnings("all")
-public class ErlangScopingTest {
+public class ErlangScopingTest extends AbstractErlangTests {
   @Inject
   private ParseHelper<Module> parser;
   

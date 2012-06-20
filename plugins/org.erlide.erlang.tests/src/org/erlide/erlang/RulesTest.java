@@ -62,6 +62,7 @@ public class RulesTest extends XtextTest {
 
 	@Test
 	public void strings() {
+		testParserRule("\"hej\"", "ErlString");
 		testParserRule("\"hej\"\n \"hej\"", "ErlString");
 		testParserRule("\"hej\"\"hej\"", "ErlString");
 		testParserRule("\"hej\" \"hej\"", "ErlString");

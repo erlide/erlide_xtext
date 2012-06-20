@@ -395,6 +395,22 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ErlangPackage.ERL_STRING:
+      {
+        ErlString erlString = (ErlString)theEObject;
+        T result = caseErlString(erlString);
+        if (result == null) result = caseExpression(erlString);
+        if (result == null) result = caseReferenceableElement(erlString);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ErlangPackage.ERL_STRING_PART:
+      {
+        ErlStringPart erlStringPart = (ErlStringPart)theEObject;
+        T result = caseErlStringPart(erlStringPart);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ErlangPackage.IF_EXPR:
       {
         IfExpr ifExpr = (IfExpr)theEObject;
@@ -811,15 +827,6 @@ public class ErlangSwitch<T> extends Switch<T>
         T result = caseMacroExpr(macroExpr);
         if (result == null) result = caseExpression(macroExpr);
         if (result == null) result = caseReferenceableElement(macroExpr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.ERL_STRING:
-      {
-        ErlString erlString = (ErlString)theEObject;
-        T result = caseErlString(erlString);
-        if (result == null) result = caseExpression(erlString);
-        if (result == null) result = caseReferenceableElement(erlString);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1521,6 +1528,38 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseRecordField(RecordField object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Erl String</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Erl String</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseErlString(ErlString object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Erl String Part</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Erl String Part</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseErlStringPart(ErlStringPart object)
   {
     return null;
   }
@@ -2289,22 +2328,6 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMacroExpr(MacroExpr object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Erl String</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Erl String</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseErlString(ErlString object)
   {
     return null;
   }

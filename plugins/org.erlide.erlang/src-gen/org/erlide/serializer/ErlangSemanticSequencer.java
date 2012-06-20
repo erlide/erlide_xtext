@@ -39,6 +39,7 @@ import org.erlide.erlang.ErlFloat;
 import org.erlide.erlang.ErlInteger;
 import org.erlide.erlang.ErlList;
 import org.erlide.erlang.ErlString;
+import org.erlide.erlang.ErlStringPart;
 import org.erlide.erlang.ErlTuple;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.ExportAttribute;
@@ -642,7 +643,8 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				}
 				else break;
 			case ErlangPackage.ERL_STRING:
-				if(context == grammarAccess.getExpr100Rule() ||
+				if(context == grammarAccess.getErlStringRule() ||
+				   context == grammarAccess.getExpr100Rule() ||
 				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
 				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
 				   context == grammarAccess.getExpr150Rule() ||
@@ -674,7 +676,13 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				   context == grammarAccess.getTermExpressionRule() ||
 				   context == grammarAccess.getUnaryExprRule() ||
 				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_LiteralExpressionNoNumber(context, (ErlString) semanticObject); 
+					sequence_ErlString(context, (ErlString) semanticObject); 
+					return; 
+				}
+				else break;
+			case ErlangPackage.ERL_STRING_PART:
+				if(context == grammarAccess.getErlStringPartRule()) {
+					sequence_ErlStringPart(context, (ErlStringPart) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1810,6 +1818,24 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
+	 *     (string=STRING | macro=[DefineAttribute|Macro])
+	 */
+	protected void sequence_ErlStringPart(EObject context, ErlStringPart semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (string=STRING more+=ErlStringPart*)
+	 */
+	protected void sequence_ErlString(EObject context, ErlString semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (tag='export' (funs+=FunRef funs+=FunRef*)?)
 	 */
 	protected void sequence_ExportAttribute(EObject context, ExportAttribute semanticObject) {
@@ -1861,7 +1887,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     ((rec=[RecordAttribute|NameVar] (field=[RecordFieldDef|Name] | tuple=RecordTuple)) | (ref=Expr700_RecordExpr_1_1_1 record=RecordExpr))
+	 *     ((rec=[ReferenceableElement|NameVar] (field=[ReferenceableElement|Name] | tuple=RecordTuple)) | (ref=Expr700_RecordExpr_1_1_1 record=RecordExpr))
 	 */
 	protected void sequence_Expr700_ExprMax_RecordExpr(EObject context, RecordExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1883,7 +1909,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     ((ref=Expr700_RecordExpr_1_1_1 record=RecordExpr) | (rec=[RecordAttribute|NameVar] (field=[RecordFieldDef|Name] | tuple=RecordTuple)))
+	 *     ((ref=Expr700_RecordExpr_1_1_1 record=RecordExpr) | (rec=[ReferenceableElement|NameVar] (field=[ReferenceableElement|Name] | tuple=RecordTuple)))
 	 */
 	protected void sequence_Expr700_RecordExpr(EObject context, RecordExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1985,7 +2011,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (module=NameVar? function=NameVar arity=IntMacro)
+	 *     (module=[ReferenceableElement|NameVar]? function=[ReferenceableElement|NameVar] arity=[ReferenceableElement|IntMacro])
 	 */
 	protected void sequence_FunRef(EObject context, FunRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2195,15 +2221,6 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     value=ErlString
-	 */
-	protected void sequence_LiteralExpressionNoNumber(EObject context, ErlString semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     value=[DefineAttribute|Macro]
 	 */
 	protected void sequence_LiteralExpressionNoNumber(EObject context, MacroExpr semanticObject) {
@@ -2325,7 +2342,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (rec=[RecordAttribute|NameVar] (field=[RecordFieldDef|Name] | tuple=RecordTuple))
+	 *     (rec=[ReferenceableElement|NameVar] (field=[ReferenceableElement|Name] | tuple=RecordTuple))
 	 */
 	protected void sequence_RecordExpr(EObject context, RecordExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2343,7 +2360,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (ref=[RecordFieldDef|NameVar] value=Expression? type=TopType?)
+	 *     (ref=[ReferenceableElement|NameVar] value=Expression? type=TopType?)
 	 */
 	protected void sequence_RecordField(EObject context, RecordField semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2373,7 +2390,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (module=NameVar? function=NameVar arity=IntMacro?)
+	 *     (module=[ReferenceableElement|NameVar]? function=[ReferenceableElement|NameVar] arity=[ReferenceableElement|IntMacro]?)
 	 */
 	protected void sequence_SpecFun(EObject context, SpecFun semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

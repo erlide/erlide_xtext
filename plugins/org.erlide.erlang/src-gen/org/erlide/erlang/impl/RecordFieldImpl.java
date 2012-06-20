@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.RecordField;
-import org.erlide.erlang.RecordFieldDef;
+import org.erlide.erlang.ReferenceableElement;
 import org.erlide.erlang.TopType;
 
 /**
@@ -42,7 +42,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
    * @generated
    * @ordered
    */
-  protected RecordFieldDef ref;
+  protected ReferenceableElement ref;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
@@ -90,12 +90,12 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordFieldDef getRef()
+  public ReferenceableElement getRef()
   {
     if (ref != null && ref.eIsProxy())
     {
       InternalEObject oldRef = (InternalEObject)ref;
-      ref = (RecordFieldDef)eResolveProxy(oldRef);
+      ref = (ReferenceableElement)eResolveProxy(oldRef);
       if (ref != oldRef)
       {
         if (eNotificationRequired())
@@ -110,7 +110,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordFieldDef basicGetRef()
+  public ReferenceableElement basicGetRef()
   {
     return ref;
   }
@@ -120,9 +120,9 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(RecordFieldDef newRef)
+  public void setRef(ReferenceableElement newRef)
   {
-    RecordFieldDef oldRef = ref;
+    ReferenceableElement oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD__REF, oldRef, ref));
@@ -274,7 +274,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
     switch (featureID)
     {
       case ErlangPackage.RECORD_FIELD__REF:
-        setRef((RecordFieldDef)newValue);
+        setRef((ReferenceableElement)newValue);
         return;
       case ErlangPackage.RECORD_FIELD__VALUE:
         setValue((Expression)newValue);
@@ -297,7 +297,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
     switch (featureID)
     {
       case ErlangPackage.RECORD_FIELD__REF:
-        setRef((RecordFieldDef)null);
+        setRef((ReferenceableElement)null);
         return;
       case ErlangPackage.RECORD_FIELD__VALUE:
         setValue((Expression)null);

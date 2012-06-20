@@ -1,0 +1,43 @@
+package org.erlide.erlang.util
+
+import com.google.common.collect.Lists
+import com.google.inject.Inject
+import java.util.List
+import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.xbase.lib.Pair
+import org.erlide.erlang.Module
+
+class ErlangTestingHelper {
+    @Inject
+    ParseHelper<Module> parser
+
+	val MARKER = "§"
+
+	def parse(String string) {
+		val res = extractMarkers(string)
+		return parser.parse(res.key) -> res.value 
+	}
+	
+	def Pair<String, List<Integer>> extractMarkers(String string) {
+		val parts = string.split(MARKER)
+		var List<Integer> list = newArrayList()
+		if(parts.size==1){
+			if(string.contains(MARKER)){
+				list.add(parts.get(0).length)
+				return parts.get(0) -> list
+			} else{
+				return string -> list
+			}
+		}
+		list = Lists::newArrayList(parts.map[length])
+		list.remove(parts.size-1)
+		val List<Integer> result = newArrayList()
+		list.fold(0)[crt, old|
+			val anew = crt+old
+			result.add(anew)
+			anew
+		]
+		return parts.join -> result
+	}
+	
+}

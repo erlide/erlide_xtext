@@ -59,9 +59,9 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTermExpressionAccess().getAlternatives(), "rule__TermExpression__Alternatives");
 					put(grammarAccess.getRecordExprAccess().getAlternatives_1(), "rule__RecordExpr__Alternatives_1");
 					put(grammarAccess.getLiteralExpressionNoNumberAccess().getAlternatives(), "rule__LiteralExpressionNoNumber__Alternatives");
+					put(grammarAccess.getErlStringPartAccess().getAlternatives(), "rule__ErlStringPart__Alternatives");
 					put(grammarAccess.getLiteralExpressionAccess().getAlternatives(), "rule__LiteralExpression__Alternatives");
 					put(grammarAccess.getPatternExpressionAccess().getAlternatives_1(), "rule__PatternExpression__Alternatives_1");
-					put(grammarAccess.getErlStringAccess().getAlternatives_1(), "rule__ErlString__Alternatives_1");
 					put(grammarAccess.getReceiveExprAccess().getAlternatives_1(), "rule__ReceiveExpr__Alternatives_1");
 					put(grammarAccess.getFunExprAccess().getAlternatives_1(), "rule__FunExpr__Alternatives_1");
 					put(grammarAccess.getTryExprAccess().getAlternatives_4(), "rule__TryExpr__Alternatives_4");
@@ -200,7 +200,7 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLiteralExpressionNoNumberAccess().getGroup_1(), "rule__LiteralExpressionNoNumber__Group_1__0");
 					put(grammarAccess.getLiteralExpressionNoNumberAccess().getGroup_2(), "rule__LiteralExpressionNoNumber__Group_2__0");
 					put(grammarAccess.getLiteralExpressionNoNumberAccess().getGroup_3(), "rule__LiteralExpressionNoNumber__Group_3__0");
-					put(grammarAccess.getLiteralExpressionNoNumberAccess().getGroup_4(), "rule__LiteralExpressionNoNumber__Group_4__0");
+					put(grammarAccess.getErlStringAccess().getGroup(), "rule__ErlString__Group__0");
 					put(grammarAccess.getLiteralExpressionAccess().getGroup_1(), "rule__LiteralExpression__Group_1__0");
 					put(grammarAccess.getLiteralExpressionAccess().getGroup_2(), "rule__LiteralExpression__Group_2__0");
 					put(grammarAccess.getPatternExpressionAccess().getGroup(), "rule__PatternExpression__Group__0");
@@ -208,7 +208,6 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPatternExpressionAccess().getGroup_1_1(), "rule__PatternExpression__Group_1_1__0");
 					put(grammarAccess.getPatternExpressionAccess().getGroup_1_1_2(), "rule__PatternExpression__Group_1_1_2__0");
 					put(grammarAccess.getPatternExpressionAccess().getGroup_1_1_2_1(), "rule__PatternExpression__Group_1_1_2_1__0");
-					put(grammarAccess.getErlStringAccess().getGroup(), "rule__ErlString__Group__0");
 					put(grammarAccess.getIfExprAccess().getGroup(), "rule__IfExpr__Group__0");
 					put(grammarAccess.getIfExprAccess().getGroup_2(), "rule__IfExpr__Group_2__0");
 					put(grammarAccess.getIfClauseAccess().getGroup(), "rule__IfClause__Group__0");
@@ -448,7 +447,10 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAssignment_1_1(), "rule__LiteralExpressionNoNumber__ValueAssignment_1_1");
 					put(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAssignment_2_1(), "rule__LiteralExpressionNoNumber__ValueAssignment_2_1");
 					put(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAssignment_3_1(), "rule__LiteralExpressionNoNumber__ValueAssignment_3_1");
-					put(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAssignment_4_1(), "rule__LiteralExpressionNoNumber__ValueAssignment_4_1");
+					put(grammarAccess.getErlStringAccess().getStringAssignment_0(), "rule__ErlString__StringAssignment_0");
+					put(grammarAccess.getErlStringAccess().getMoreAssignment_1(), "rule__ErlString__MoreAssignment_1");
+					put(grammarAccess.getErlStringPartAccess().getStringAssignment_0(), "rule__ErlStringPart__StringAssignment_0");
+					put(grammarAccess.getErlStringPartAccess().getMacroAssignment_1(), "rule__ErlStringPart__MacroAssignment_1");
 					put(grammarAccess.getLiteralExpressionAccess().getValueAssignment_1_1(), "rule__LiteralExpression__ValueAssignment_1_1");
 					put(grammarAccess.getLiteralExpressionAccess().getValueAssignment_2_1(), "rule__LiteralExpression__ValueAssignment_2_1");
 					put(grammarAccess.getPatternExpressionAccess().getOpAssignment_1_0_1(), "rule__PatternExpression__OpAssignment_1_0_1");

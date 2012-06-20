@@ -38,6 +38,7 @@ import org.erlide.erlang.IncludeAttribute;
 import org.erlide.erlang.IncludeLibAttribute;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.ModuleAttribute;
+import org.erlide.erlang.ReferenceableElement;
 import org.erlide.erlang.SpecAttribute;
 import org.erlide.erlang.SpecFun;
 import org.erlide.erlang.TopType;
@@ -148,14 +149,15 @@ public class ModelExtensions {
     List<Function> _xblockexpression = null;
     {
       final Collection<FunRef> exportedRefs = this.getExportedFunRefs(module);
-      final Function1<FunRef,Function> _function = new Function1<FunRef,Function>() {
-          public Function apply(final FunRef it) {
-            Function _function = ModelExtensions.this.getFunction(module, it);
+      final Function1<FunRef,ReferenceableElement> _function = new Function1<FunRef,ReferenceableElement>() {
+          public ReferenceableElement apply(final FunRef it) {
+            ReferenceableElement _function = it.getFunction();
             return _function;
           }
         };
-      Iterable<Function> _map = IterableExtensions.<FunRef, Function>map(exportedRefs, _function);
-      List<Function> _list = IterableExtensions.<Function>toList(_map);
+      Iterable<ReferenceableElement> _map = IterableExtensions.<FunRef, ReferenceableElement>map(exportedRefs, _function);
+      Iterable<Function> _filter = Iterables.<Function>filter(_map, Function.class);
+      List<Function> _list = IterableExtensions.<Function>toList(_filter);
       _xblockexpression = (_list);
     }
     return _xblockexpression;
@@ -234,18 +236,30 @@ public class ModelExtensions {
   }
   
   public Function getFunction(final Module module, final FunRef ref) {
-    String _function = ref.getFunction();
-    String _arity = ref.getArity();
-    int _parseInt = Integer.parseInt(_arity);
-    Function _function_1 = this.getFunction(module, _function, _parseInt);
-    return _function_1;
+    Function _xblockexpression = null;
+    {
+      final ReferenceableElement function = ref.getFunction();
+      Function _switchResult = null;
+      boolean _matched = false;
+      if (!_matched) {
+        if (function instanceof Function) {
+          final Function _function = (Function)function;
+          _matched=true;
+          _switchResult = _function;
+        }
+      }
+      _xblockexpression = (_switchResult);
+    }
+    return _xblockexpression;
   }
   
   public Function getFunction(final Module module, final SpecFun ref) {
-    String _function = ref.getFunction();
-    String _arity = ref.getArity();
-    int _parseInt = Integer.parseInt(_arity);
-    Function _function_1 = this.getFunction(module, _function, _parseInt);
+    ReferenceableElement _function = ref.getFunction();
+    String _sourceText = this.getSourceText(_function);
+    ReferenceableElement _arity = ref.getArity();
+    String _sourceText_1 = this.getSourceText(_arity);
+    int _parseInt = Integer.parseInt(_sourceText_1);
+    Function _function_1 = this.getFunction(module, _sourceText, _parseInt);
     return _function_1;
   }
   
@@ -296,7 +310,7 @@ public class ModelExtensions {
           public Boolean apply(final SpecAttribute it) {
             boolean _and = false;
             SpecFun _ref = it.getRef();
-            String _function = _ref.getFunction();
+            ReferenceableElement _function = _ref.getFunction();
             boolean _equals = Objects.equal(_function, fname);
             if (!_equals) {
               _and = false;
@@ -337,7 +351,7 @@ public class ModelExtensions {
           public Boolean apply(final SpecAttribute it) {
             boolean _and = false;
             SpecFun _ref = it.getRef();
-            String _function = _ref.getFunction();
+            ReferenceableElement _function = _ref.getFunction();
             String _name = function.getName();
             boolean _equals = Objects.equal(_function, _name);
             if (!_equals) {
@@ -400,7 +414,7 @@ public class ModelExtensions {
   public int getSpecArity(final SpecAttribute spec) {
     int _xifexpression = (int) 0;
     SpecFun _ref = spec.getRef();
-    String _arity = _ref.getArity();
+    ReferenceableElement _arity = _ref.getArity();
     boolean _notEquals = (!Objects.equal(_arity, null));
     if (_notEquals) {
       _xifexpression = 0;
@@ -536,6 +550,17 @@ public class ModelExtensions {
       _and = (_equals && (_head_2 instanceof Atom));
     }
     return _and;
+  }
+  
+  public EObject getObjectAtOffset(final EObject src, final int offset) {
+    EObject _xblockexpression = null;
+    {
+      ICompositeNode _node = NodeModelUtils.getNode(src);
+      final ILeafNode elem = NodeModelUtils.findLeafNodeAtOffset(_node, offset);
+      EObject _findActualSemanticObjectFor = NodeModelUtils.findActualSemanticObjectFor(elem);
+      _xblockexpression = (_findActualSemanticObjectFor);
+    }
+    return _xblockexpression;
   }
   
   public Module getModule(final EObject element) {
