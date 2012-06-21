@@ -4,11 +4,16 @@ import com.google.common.collect.Iterables
 import java.util.Collection
 import java.util.Set
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 import static extension org.erlide.erlang.ModelExtensions.*
+import com.google.inject.Inject
+import org.eclipse.xtext.naming.IQualifiedNameProvider
 
 class ModelExtensions {
+    
+	@Inject
+	IQualifiedNameProvider namer
     
     // Module
     
@@ -64,32 +69,29 @@ class ModelExtensions {
 //	}
 	
     def boolean exportsFunction(Module module, Function function) {
-        module.exportedFunctions.contains(function)
+        module.declaredExportNames.contains(namer.getFullyQualifiedName(function))
     } 
 
-    def boolean exports(Module module, FunRef function) {
-        module.exportedFunctions.contains(function)
-    } 
-
-	def Collection<Function> getExportedFunctions(Module module) {
-		val exportedRefs = getExportedFunRefs(module)
-		exportedRefs.filter(typeof(Function)).toList
+	def Collection<Function> getDeclaredExports(Module module) {
+		val exported = getExportAttributes(module)
+		val refs = Iterables::concat(exported.map[funs])
+		println("¤¤ "+refs.map[it.function])
+		refs.map[it.function].filter(typeof(Function)).toList
 	}
 	
-	def Collection<FunRef> getExportedFunRefs(Module module) {
-		val exportAttributes = getExportAttributes(module)
-		Iterables::concat(exportAttributes.map[funs]).toList
+	def Collection<String> getDeclaredExportNames(Module module) {
+		val exported = getExportAttributes(module)
+		val refs = Iterables::concat(exported.map[funs])
+		refs.map[getTokenText(findActualNodeFor(it))].toList
 	}
 	
-	def Collection<EObject> getAllContents(EObject module) {
-		val result = module.eContents
+	def Collection<EObject> getAllContents(EObject element) {
+		val result = element.eContents
 		result.map[
-			if(it instanceof ConditionalFormBlock) {
-				it.getAllContents 
-			} else if(it instanceof ConditionalAttribute) {
-				newArrayList()
-			} else {
-				newArrayList(it)
+			switch it {
+				ConditionalFormBlock: it.getAllContents 
+				ConditionalAttribute: newArrayList()
+				default: newArrayList(it)
 			}
 		].flatten.toList
 	} 
@@ -100,17 +102,6 @@ class ModelExtensions {
 		]
 	}
 	
- 	def Function getFunction(Module module, FunRef ref) {
- 		val function = ref.function
- 		switch function {
- 			Function: function
- 		}
- 	}
-    
- 	def Function getFunction(Module module, SpecFun ref) {
- 		module.getFunction(ref.function.sourceText, Integer::parseInt(ref.arity.sourceText))
- 	}
- 	
     def boolean exportsAll(Module module) {
     	module.compileOptions.exists[it.hasAtom("export_all")]
     }
@@ -155,7 +146,7 @@ class ModelExtensions {
     }
  
     def String getSourceText(EObject obj) {
-    	val node = NodeModelUtils::getNode(obj)
+    	val node = getNode(obj)
     	if(node==null){
     		return null
     	}
@@ -211,8 +202,8 @@ class ModelExtensions {
 	}
 	
 	def EObject getObjectAtOffset(EObject src, int offset){
-		val elem = NodeModelUtils::findLeafNodeAtOffset(NodeModelUtils::getNode(src), offset)
-       	NodeModelUtils::findActualSemanticObjectFor(elem)
+		val elem = findLeafNodeAtOffset(getNode(src), offset)
+       	findActualSemanticObjectFor(elem)
 	}
 
 }

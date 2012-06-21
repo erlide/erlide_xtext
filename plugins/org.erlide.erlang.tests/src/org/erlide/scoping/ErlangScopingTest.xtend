@@ -15,6 +15,8 @@ import org.junit.runner.RunWith
 
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
+import org.eclipse.xtext.resource.IResourceServiceProvider
+import org.eclipse.emf.ecore.resource.Resource
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
@@ -23,36 +25,12 @@ class ErlangScopingTest {
     @Inject
     ParseHelper<Module> parser
     @Inject
-    ResourceDescriptionsProvider indexProvider
+    IResourceServiceProvider$Registry resourceProviderRegistry
     @Inject
     IQualifiedNameConverter cvtr;
     @Inject
     extension ModelExtensions 
 	
-
-	def getDescription(Module module) {
-		val res = module.eResource
- 		val descriptionIndex = indexProvider.getResourceDescriptions(res)
-		val result = descriptionIndex.getResourceDescription(res.getURI())
-		result
-	}
-
-	def getExportedDescriptions(Module module) {
-        module.description.exportedObjects
-	}
-
-	def getExportedFunctions(Module module) {
-        module.description.getExportedObjectsByType(ErlangPackage$Literals::FUNCTION)
-	}
-
-	def getExportedMacros(Module module) {
-        module.description.getExportedObjectsByType(ErlangPackage$Literals::DEFINE_ATTRIBUTE)
-	}
-
-	def getExportedRecords(Module module) {
-        module.description.getExportedObjectsByType(ErlangPackage$Literals::RECORD_ATTRIBUTE)
-	}
-
 	@Test
 	def void allContents() {
 		val module = parser.parse('''
@@ -89,6 +67,8 @@ class ErlangScopingTest {
             g(X) -> X.
             f() -> ok.
         ''')
+        val eobjs = module.exportedDescriptions
+        println(eobjs)
         val eFuns = module.exportedFunctions
         assertThat(eFuns.size, is(1))
         assertThat(cvtr.toString(eFuns.head.qualifiedName), is("x:f/0"))
@@ -152,5 +132,30 @@ class ErlangScopingTest {
         assertThat(eFuns.size, is(1))
         assertThat(cvtr.toString(eFuns.head.qualifiedName), is("__synthetic0_erl:rec"))
     }
+ 
+ 	def getIndexProvider(Resource res) {
+ 		resourceProviderRegistry.getResourceServiceProvider(res.URI).resourceDescriptionManager
+ 	}
     
+	def getDescription(Module module) {
+		val res = module.eResource
+ 		getIndexProvider(res).getResourceDescription(res)
+	}
+
+	def getExportedDescriptions(Module module) {
+        module.description.exportedObjects
+	}
+
+	def getExportedFunctions(Module module) {
+        module.description.getExportedObjectsByType(ErlangPackage$Literals::FUNCTION)
+	}
+
+	def getExportedMacros(Module module) {
+        module.description.getExportedObjectsByType(ErlangPackage$Literals::DEFINE_ATTRIBUTE)
+	}
+
+	def getExportedRecords(Module module) {
+        module.description.getExportedObjectsByType(ErlangPackage$Literals::RECORD_ATTRIBUTE)
+	}
+
 }

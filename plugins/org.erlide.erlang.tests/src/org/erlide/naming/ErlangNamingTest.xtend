@@ -82,9 +82,10 @@ class ErlangNamingTest {
 	}
 	
 	@Test
-	def void functionName() {
+	def void exportedFunctionName() {
         val module = parser.parse('''
             -module(x).
+            -export([f/0]).
             §f() -> ok.
         ''')
         val name = namer.getFullyQualifiedName(module.getObjectAtMarker(0))
@@ -92,9 +93,20 @@ class ErlangNamingTest {
 	}
 
 	@Test
-	def void functionName_1() {
+	def void localFunctionName() {
         val module = parser.parse('''
             -module(x).
+            §local() -> ok.
+        ''')
+        val name = namer.getFullyQualifiedName(module.getObjectAtMarker(0))
+        assertThat(nameCvtr.toString(name), is("x:local/0")) 
+	}
+
+	@Test
+	def void exportedFunctionName_1() {
+        val module = parser.parse('''
+            -module(x).
+            -export([f/0, f/1]).
             §f(X) -> ok.
             §f() -> ok.
         ''')

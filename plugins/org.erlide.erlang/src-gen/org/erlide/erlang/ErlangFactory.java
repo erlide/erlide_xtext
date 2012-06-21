@@ -41,6 +41,15 @@ public interface ErlangFactory extends EFactory
   ReferenceableElement createReferenceableElement();
 
   /**
+   * Returns a new object of class '<em>Atom Ref Target</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Atom Ref Target</em>'.
+   * @generated
+   */
+  AtomRefTarget createAtomRefTarget();
+
+  /**
    * Returns a new object of class '<em>Form</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

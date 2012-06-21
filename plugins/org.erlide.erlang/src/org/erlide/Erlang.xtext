@@ -7,7 +7,7 @@ Module:
 	forms+=Form* 
 ;  
 
-ReferenceableElement:
+ReferenceableElement: // this must be declared before Form!
 	  Module
 	| Function
 	| DefineAttribute
@@ -15,6 +15,11 @@ ReferenceableElement:
 	| RecordFieldDef
 	| Expression // for variables
 	| TypeAttribute
+;
+
+AtomRefTarget:
+	  Module
+	| Function
 ;
 
 Form:

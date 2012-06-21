@@ -50,6 +50,8 @@ public class ErlangQualifiedNameProvider extends
 	}
 
 	QualifiedName qualifiedName(final Function function) {
+		// even private functions get a FQN, we filter them out in the global
+		// scope manager
 		return splice(
 				getParentsFullyQualifiedName(function),
 				converter.toQualifiedName(function.getName() + "/"

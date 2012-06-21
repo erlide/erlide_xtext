@@ -85,6 +85,11 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createReferenceableElementAdapter();
       }
       @Override
+      public Adapter caseAtomRefTarget(AtomRefTarget object)
+      {
+        return createAtomRefTargetAdapter();
+      }
+      @Override
       public Adapter caseForm(Form object)
       {
         return createFormAdapter();
@@ -602,6 +607,21 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createReferenceableElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.AtomRefTarget <em>Atom Ref Target</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.AtomRefTarget
+   * @generated
+   */
+  public Adapter createAtomRefTargetAdapter()
   {
     return null;
   }

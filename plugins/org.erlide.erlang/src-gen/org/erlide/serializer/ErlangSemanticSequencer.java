@@ -883,7 +883,8 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				}
 				else break;
 			case ErlangPackage.FUNCTION:
-				if(context == grammarAccess.getFormRule() ||
+				if(context == grammarAccess.getAtomRefTargetRule() ||
+				   context == grammarAccess.getFormRule() ||
 				   context == grammarAccess.getFunctionRule() ||
 				   context == grammarAccess.getReferenceableElementRule()) {
 					sequence_Function(context, (Function) semanticObject); 
@@ -1148,7 +1149,8 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				}
 				else break;
 			case ErlangPackage.MODULE:
-				if(context == grammarAccess.getModuleRule() ||
+				if(context == grammarAccess.getAtomRefTargetRule() ||
+				   context == grammarAccess.getModuleRule() ||
 				   context == grammarAccess.getReferenceableElementRule()) {
 					sequence_Module(context, (Module) semanticObject); 
 					return; 

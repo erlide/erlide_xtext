@@ -77,6 +77,7 @@ public class ErlangSwitch<T> extends Switch<T>
         Module module = (Module)theEObject;
         T result = caseModule(module);
         if (result == null) result = caseReferenceableElement(module);
+        if (result == null) result = caseAtomRefTarget(module);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -84,6 +85,13 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         ReferenceableElement referenceableElement = (ReferenceableElement)theEObject;
         T result = caseReferenceableElement(referenceableElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ErlangPackage.ATOM_REF_TARGET:
+      {
+        AtomRefTarget atomRefTarget = (AtomRefTarget)theEObject;
+        T result = caseAtomRefTarget(atomRefTarget);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -297,6 +305,7 @@ public class ErlangSwitch<T> extends Switch<T>
         Function function = (Function)theEObject;
         T result = caseFunction(function);
         if (result == null) result = caseReferenceableElement(function);
+        if (result == null) result = caseAtomRefTarget(function);
         if (result == null) result = caseForm(function);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -952,6 +961,22 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseReferenceableElement(ReferenceableElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Atom Ref Target</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Atom Ref Target</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAtomRefTarget(AtomRefTarget object)
   {
     return null;
   }

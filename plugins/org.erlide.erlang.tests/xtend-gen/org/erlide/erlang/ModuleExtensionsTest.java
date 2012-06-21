@@ -14,7 +14,6 @@ import org.erlide.erlang.Atom;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.CustomAttribute;
 import org.erlide.erlang.Expression;
-import org.erlide.erlang.FunRef;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.IsFunRefMatcher;
 import org.erlide.erlang.ModelExtensions;
@@ -169,7 +168,7 @@ public class ModuleExtensionsTest {
   }
   
   @Test
-  public void getExportFunctions() {
+  public void getExportedFunctions() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("-module(x).");
@@ -185,7 +184,7 @@ public class ModuleExtensionsTest {
       _builder.append("foo()->ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<Function> attrs = this._modelExtensions.getExportedFunctions(module);
+      final Collection<Function> attrs = this._modelExtensions.getDeclaredExports(module);
       int _size = attrs.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(3));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -201,38 +200,6 @@ public class ModuleExtensionsTest {
       Function _head_2 = IterableExtensions.<Function>head(_tail_2);
       Matcher<Function> _isFunction_2 = IsFunRefMatcher.isFunction("foo", 0);
       MatcherAssert.<Function>assertThat(_head_2, _isFunction_2);
-    } catch (Exception _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
-  @Test
-  public void getExportFunRefs() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("-module(x).");
-      _builder.newLine();
-      _builder.append("-export([bar/0, baz/1]).");
-      _builder.newLine();
-      _builder.append("-export([foo/0]).");
-      _builder.newLine();
-      final Module module = this.parser.parse(_builder);
-      final Collection<FunRef> attrs = this._modelExtensions.getExportedFunRefs(module);
-      int _size = attrs.size();
-      Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(3));
-      MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
-      FunRef _head = IterableExtensions.<FunRef>head(attrs);
-      Matcher<FunRef> _isFunRef = IsFunRefMatcher.isFunRef("bar", 0);
-      MatcherAssert.<FunRef>assertThat(_head, _isFunRef);
-      Iterable<FunRef> _tail = IterableExtensions.<FunRef>tail(attrs);
-      FunRef _head_1 = IterableExtensions.<FunRef>head(_tail);
-      Matcher<FunRef> _isFunRef_1 = IsFunRefMatcher.isFunRef("baz", 1);
-      MatcherAssert.<FunRef>assertThat(_head_1, _isFunRef_1);
-      Iterable<FunRef> _tail_1 = IterableExtensions.<FunRef>tail(attrs);
-      Iterable<FunRef> _tail_2 = IterableExtensions.<FunRef>tail(_tail_1);
-      FunRef _head_2 = IterableExtensions.<FunRef>head(_tail_2);
-      Matcher<FunRef> _isFunRef_2 = IsFunRefMatcher.isFunRef("foo", 0);
-      MatcherAssert.<FunRef>assertThat(_head_2, _isFunRef_2);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }

@@ -14,6 +14,7 @@ import org.erlide.erlang.AbstractIncludeAttribute;
 import org.erlide.erlang.AbstractTypeAttribute;
 import org.erlide.erlang.AddOp;
 import org.erlide.erlang.Atom;
+import org.erlide.erlang.AtomRefTarget;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.BinBaseType;
 import org.erlide.erlang.BinOp;
@@ -129,6 +130,13 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * @generated
    */
   private EClass referenceableElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass atomRefTargetEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -879,6 +887,16 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
   public EClass getReferenceableElement()
   {
     return referenceableElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAtomRefTarget()
+  {
+    return atomRefTargetEClass;
   }
 
   /**
@@ -3556,6 +3574,8 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     referenceableElementEClass = createEClass(REFERENCEABLE_ELEMENT);
 
+    atomRefTargetEClass = createEClass(ATOM_REF_TARGET);
+
     formEClass = createEClass(FORM);
 
     conditionalFormBlockEClass = createEClass(CONDITIONAL_FORM_BLOCK);
@@ -3945,6 +3965,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     // Add supertypes to classes
     moduleEClass.getESuperTypes().add(this.getReferenceableElement());
+    moduleEClass.getESuperTypes().add(this.getAtomRefTarget());
     conditionalFormBlockEClass.getESuperTypes().add(this.getForm());
     attributeEClass.getESuperTypes().add(this.getForm());
     defineAttributeEClass.getESuperTypes().add(this.getReferenceableElement());
@@ -3971,6 +3992,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     typeAttributeEClass.getESuperTypes().add(this.getAbstractTypeAttribute());
     customAttributeEClass.getESuperTypes().add(this.getAttribute());
     functionEClass.getESuperTypes().add(this.getReferenceableElement());
+    functionEClass.getESuperTypes().add(this.getAtomRefTarget());
     functionEClass.getESuperTypes().add(this.getForm());
     expressionEClass.getESuperTypes().add(this.getReferenceableElement());
     recordExprEClass.getESuperTypes().add(this.getExpression());
@@ -4030,6 +4052,8 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getModule_Forms(), this.getForm(), null, "forms", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(referenceableElementEClass, ReferenceableElement.class, "ReferenceableElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(atomRefTargetEClass, AtomRefTarget.class, "AtomRefTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(formEClass, Form.class, "Form", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -66,6 +66,7 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
     {
       case ErlangPackage.MODULE: return createModule();
       case ErlangPackage.REFERENCEABLE_ELEMENT: return createReferenceableElement();
+      case ErlangPackage.ATOM_REF_TARGET: return createAtomRefTarget();
       case ErlangPackage.FORM: return createForm();
       case ErlangPackage.CONDITIONAL_FORM_BLOCK: return createConditionalFormBlock();
       case ErlangPackage.ATTRIBUTE: return createAttribute();
@@ -185,6 +186,17 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     ReferenceableElementImpl referenceableElement = new ReferenceableElementImpl();
     return referenceableElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AtomRefTarget createAtomRefTarget()
+  {
+    AtomRefTargetImpl atomRefTarget = new AtomRefTargetImpl();
+    return atomRefTarget;
   }
 
   /**

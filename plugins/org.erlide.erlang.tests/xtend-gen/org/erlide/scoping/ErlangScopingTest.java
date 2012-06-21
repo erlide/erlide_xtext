@@ -13,9 +13,11 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
-import org.eclipse.xtext.resource.IResourceDescriptions;
-import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
+import org.eclipse.xtext.resource.IResourceDescription.Manager;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
+import org.eclipse.xtext.resource.IResourceServiceProvider.Registry;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.ErlangInjectorProvider;
 import org.erlide.erlang.ErlangPackage.Literals;
@@ -35,49 +37,13 @@ public class ErlangScopingTest {
   private ParseHelper<Module> parser;
   
   @Inject
-  private ResourceDescriptionsProvider indexProvider;
+  private Registry resourceProviderRegistry;
   
   @Inject
   private IQualifiedNameConverter cvtr;
   
   @Inject
   private ModelExtensions _modelExtensions;
-  
-  public IResourceDescription getDescription(final Module module) {
-    IResourceDescription _xblockexpression = null;
-    {
-      final Resource res = module.eResource();
-      final IResourceDescriptions descriptionIndex = this.indexProvider.getResourceDescriptions(res);
-      URI _uRI = res.getURI();
-      final IResourceDescription result = descriptionIndex.getResourceDescription(_uRI);
-      _xblockexpression = (result);
-    }
-    return _xblockexpression;
-  }
-  
-  public Iterable<IEObjectDescription> getExportedDescriptions(final Module module) {
-    IResourceDescription _description = this.getDescription(module);
-    Iterable<IEObjectDescription> _exportedObjects = _description.getExportedObjects();
-    return _exportedObjects;
-  }
-  
-  public Iterable<IEObjectDescription> getExportedFunctions(final Module module) {
-    IResourceDescription _description = this.getDescription(module);
-    Iterable<IEObjectDescription> _exportedObjectsByType = _description.getExportedObjectsByType(Literals.FUNCTION);
-    return _exportedObjectsByType;
-  }
-  
-  public Iterable<IEObjectDescription> getExportedMacros(final Module module) {
-    IResourceDescription _description = this.getDescription(module);
-    Iterable<IEObjectDescription> _exportedObjectsByType = _description.getExportedObjectsByType(Literals.DEFINE_ATTRIBUTE);
-    return _exportedObjectsByType;
-  }
-  
-  public Iterable<IEObjectDescription> getExportedRecords(final Module module) {
-    IResourceDescription _description = this.getDescription(module);
-    Iterable<IEObjectDescription> _exportedObjectsByType = _description.getExportedObjectsByType(Literals.RECORD_ATTRIBUTE);
-    return _exportedObjectsByType;
-  }
   
   @Test
   public void allContents() {
@@ -144,6 +110,8 @@ public class ErlangScopingTest {
       _builder.append("f() -> ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
+      final Iterable<IEObjectDescription> eobjs = this.getExportedDescriptions(module);
+      InputOutput.<Iterable<IEObjectDescription>>println(eobjs);
       final Iterable<IEObjectDescription> eFuns = this.getExportedFunctions(module);
       int _size = IterableExtensions.size(eFuns);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(1));
@@ -283,5 +251,47 @@ public class ErlangScopingTest {
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  public Manager getIndexProvider(final Resource res) {
+    URI _uRI = res.getURI();
+    IResourceServiceProvider _resourceServiceProvider = this.resourceProviderRegistry.getResourceServiceProvider(_uRI);
+    Manager _resourceDescriptionManager = _resourceServiceProvider.getResourceDescriptionManager();
+    return _resourceDescriptionManager;
+  }
+  
+  public IResourceDescription getDescription(final Module module) {
+    IResourceDescription _xblockexpression = null;
+    {
+      final Resource res = module.eResource();
+      Manager _indexProvider = this.getIndexProvider(res);
+      IResourceDescription _resourceDescription = _indexProvider.getResourceDescription(res);
+      _xblockexpression = (_resourceDescription);
+    }
+    return _xblockexpression;
+  }
+  
+  public Iterable<IEObjectDescription> getExportedDescriptions(final Module module) {
+    IResourceDescription _description = this.getDescription(module);
+    Iterable<IEObjectDescription> _exportedObjects = _description.getExportedObjects();
+    return _exportedObjects;
+  }
+  
+  public Iterable<IEObjectDescription> getExportedFunctions(final Module module) {
+    IResourceDescription _description = this.getDescription(module);
+    Iterable<IEObjectDescription> _exportedObjectsByType = _description.getExportedObjectsByType(Literals.FUNCTION);
+    return _exportedObjectsByType;
+  }
+  
+  public Iterable<IEObjectDescription> getExportedMacros(final Module module) {
+    IResourceDescription _description = this.getDescription(module);
+    Iterable<IEObjectDescription> _exportedObjectsByType = _description.getExportedObjectsByType(Literals.DEFINE_ATTRIBUTE);
+    return _exportedObjectsByType;
+  }
+  
+  public Iterable<IEObjectDescription> getExportedRecords(final Module module) {
+    IResourceDescription _description = this.getDescription(module);
+    Iterable<IEObjectDescription> _exportedObjectsByType = _description.getExportedObjectsByType(Literals.RECORD_ATTRIBUTE);
+    return _exportedObjectsByType;
   }
 }

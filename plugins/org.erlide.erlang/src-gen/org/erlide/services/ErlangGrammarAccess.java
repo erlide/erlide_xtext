@@ -45,6 +45,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExpressionParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		private final RuleCall cTypeAttributeParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
+		//// this must be declared before Form!
 		//ReferenceableElement:
 		//	Module | Function | DefineAttribute | RecordAttribute | RecordFieldDef | // for variables
 		//	Expression | TypeAttribute;
@@ -75,6 +76,26 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//TypeAttribute
 		public RuleCall getTypeAttributeParserRuleCall_6() { return cTypeAttributeParserRuleCall_6; }
+	}
+
+	public class AtomRefTargetElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AtomRefTarget");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cModuleParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cFunctionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//AtomRefTarget:
+		//	Module | Function;
+		public ParserRule getRule() { return rule; }
+
+		//Module | Function
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//Module
+		public RuleCall getModuleParserRuleCall_0() { return cModuleParserRuleCall_0; }
+
+		//Function
+		public RuleCall getFunctionParserRuleCall_1() { return cFunctionParserRuleCall_1; }
 	}
 
 	public class FormElements extends AbstractParserRuleElementFinder {
@@ -6016,6 +6037,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private ModuleElements pModule;
 	private ReferenceableElementElements pReferenceableElement;
+	private AtomRefTargetElements pAtomRefTarget;
 	private FormElements pForm;
 	private ConditionalFormBlockElements pConditionalFormBlock;
 	private AttributeElements pAttribute;
@@ -6179,6 +6201,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		return getModuleAccess().getRule();
 	}
 
+	//// this must be declared before Form!
 	//ReferenceableElement:
 	//	Module | Function | DefineAttribute | RecordAttribute | RecordFieldDef | // for variables
 	//	Expression | TypeAttribute;
@@ -6188,6 +6211,16 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getReferenceableElementRule() {
 		return getReferenceableElementAccess().getRule();
+	}
+
+	//AtomRefTarget:
+	//	Module | Function;
+	public AtomRefTargetElements getAtomRefTargetAccess() {
+		return (pAtomRefTarget != null) ? pAtomRefTarget : (pAtomRefTarget = new AtomRefTargetElements());
+	}
+	
+	public ParserRule getAtomRefTargetRule() {
+		return getAtomRefTargetAccess().getRule();
 	}
 
 	//Form:

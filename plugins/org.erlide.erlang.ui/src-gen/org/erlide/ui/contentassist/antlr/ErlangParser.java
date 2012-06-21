@@ -38,6 +38,7 @@ public class ErlangParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getReferenceableElementAccess().getAlternatives(), "rule__ReferenceableElement__Alternatives");
+					put(grammarAccess.getAtomRefTargetAccess().getAlternatives(), "rule__AtomRefTarget__Alternatives");
 					put(grammarAccess.getFormAccess().getAlternatives(), "rule__Form__Alternatives");
 					put(grammarAccess.getAttributeAccess().getAlternatives(), "rule__Attribute__Alternatives");
 					put(grammarAccess.getConditionalAttributeAccess().getAlternatives(), "rule__ConditionalAttribute__Alternatives");

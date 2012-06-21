@@ -119,9 +119,11 @@ public class ErlangNamingTest {
   }
   
   @Test
-  public void functionName() {
+  public void exportedFunctionName() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("-module(x).");
+    _builder.newLine();
+    _builder.append("-export([f/0]).");
     _builder.newLine();
     _builder.append("\u00A7f() -> ok.");
     _builder.newLine();
@@ -134,9 +136,26 @@ public class ErlangNamingTest {
   }
   
   @Test
-  public void functionName_1() {
+  public void localFunctionName() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("-module(x).");
+    _builder.newLine();
+    _builder.append("\u00A7local() -> ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 0);
+    final QualifiedName name = this.namer.getFullyQualifiedName(_objectAtMarker);
+    String _string = this.nameCvtr.toString(name);
+    Matcher<? super String> _is = Matchers.<String>is("x:local/0");
+    MatcherAssert.<String>assertThat(_string, _is);
+  }
+  
+  @Test
+  public void exportedFunctionName_1() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(x).");
+    _builder.newLine();
+    _builder.append("-export([f/0, f/1]).");
     _builder.newLine();
     _builder.append("\u00A7f(X) -> ok.");
     _builder.newLine();
