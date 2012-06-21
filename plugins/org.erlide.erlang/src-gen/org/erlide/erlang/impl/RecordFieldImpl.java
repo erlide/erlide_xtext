@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.erlide.erlang.AtomMacro;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.RecordField;
-import org.erlide.erlang.ReferenceableElement;
 import org.erlide.erlang.TopType;
 
 /**
@@ -35,14 +35,14 @@ import org.erlide.erlang.TopType;
 public class RecordFieldImpl extends MinimalEObjectImpl.Container implements RecordField
 {
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRef()
    * @generated
    * @ordered
    */
-  protected ReferenceableElement ref;
+  protected AtomMacro ref;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
@@ -90,27 +90,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
    * <!-- end-user-doc -->
    * @generated
    */
-  public ReferenceableElement getRef()
-  {
-    if (ref != null && ref.eIsProxy())
-    {
-      InternalEObject oldRef = (InternalEObject)ref;
-      ref = (ReferenceableElement)eResolveProxy(oldRef);
-      if (ref != oldRef)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.RECORD_FIELD__REF, oldRef, ref));
-      }
-    }
-    return ref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ReferenceableElement basicGetRef()
+  public AtomMacro getRef()
   {
     return ref;
   }
@@ -120,12 +100,37 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(ReferenceableElement newRef)
+  public NotificationChain basicSetRef(AtomMacro newRef, NotificationChain msgs)
   {
-    ReferenceableElement oldRef = ref;
+    AtomMacro oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD__REF, oldRef, ref));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD__REF, oldRef, newRef);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRef(AtomMacro newRef)
+  {
+    if (newRef != ref)
+    {
+      NotificationChain msgs = null;
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD__REF, newRef, newRef));
   }
 
   /**
@@ -234,6 +239,8 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
   {
     switch (featureID)
     {
+      case ErlangPackage.RECORD_FIELD__REF:
+        return basicSetRef(null, msgs);
       case ErlangPackage.RECORD_FIELD__VALUE:
         return basicSetValue(null, msgs);
       case ErlangPackage.RECORD_FIELD__TYPE:
@@ -253,8 +260,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
     switch (featureID)
     {
       case ErlangPackage.RECORD_FIELD__REF:
-        if (resolve) return getRef();
-        return basicGetRef();
+        return getRef();
       case ErlangPackage.RECORD_FIELD__VALUE:
         return getValue();
       case ErlangPackage.RECORD_FIELD__TYPE:
@@ -274,7 +280,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
     switch (featureID)
     {
       case ErlangPackage.RECORD_FIELD__REF:
-        setRef((ReferenceableElement)newValue);
+        setRef((AtomMacro)newValue);
         return;
       case ErlangPackage.RECORD_FIELD__VALUE:
         setValue((Expression)newValue);
@@ -297,7 +303,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
     switch (featureID)
     {
       case ErlangPackage.RECORD_FIELD__REF:
-        setRef((ReferenceableElement)null);
+        setRef((AtomMacro)null);
         return;
       case ErlangPackage.RECORD_FIELD__VALUE:
         setValue((Expression)null);

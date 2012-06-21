@@ -67,7 +67,7 @@ AbstractDefineAttribute:
 
 DefineAttribute:
     '-' => tag='define' 		    
-		'(' macroName=AtomVar // can't have feature 'name' because multiple defines with the same macro can exist 
+		'(' macroName=NAMEVAR // can't have feature 'name' because multiple defines with the same macro can exist 
 		    ('(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' )? 
 	    	(',' value=Guard?)? 
 		')'
@@ -75,11 +75,11 @@ DefineAttribute:
 ;
 
 UndefAttribute:
-	'-' => tag='undef' '(' ref=[DefineAttribute|AtomVar] ')' FULL_STOP
+	'-' => tag='undef' '(' ref=AtomVar ')' FULL_STOP
 ;
 
 IfdefAttribute:
-	'-' => tag=('ifdef'|'ifndef') '(' ref=[DefineAttribute|AtomVar] ')' FULL_STOP
+	'-' => tag=('ifdef'|'ifndef') '(' ref=AtomVar ')' FULL_STOP
 ;
 
 ElseAttribute:
@@ -108,12 +108,12 @@ FileAttribute:
 ;
 
 ModuleAttribute:
-	'-' => tag='module' '(' moduleName=Name ')' FULL_STOP
+	'-' => tag='module' '(' moduleName=NAME ')' FULL_STOP
 ;
 
 RecordAttribute:
-	'-' => tag='record' '(' name=NameVar ',' 
-		('{' (fields+=RecordFieldDef (',' fields+=RecordFieldDef)*)? '}' | recordMacro=[DefineAttribute|Macro]) 
+	'-' => tag='record' '(' name=NAMEVAR ',' 
+		('{' (fields+=RecordFieldDef (',' fields+=RecordFieldDef)*)? '}' | recordMacro=MacroCall) 
 	')' 
 	FULL_STOP  
 ;
@@ -126,7 +126,7 @@ ExportAttribute:
 
 ImportAttribute:
 	'-' => tag='import' 
-		'(' module=Name ',' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
+		'(' module=AtomMacro ',' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
 	FULL_STOP
 ;
 
@@ -152,8 +152,8 @@ SpecAttribute:
 TypeAttribute:
 	'-' => tag=('type'|'opaque') 
 	(
-  	    	name=NameVar '(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' '::' type=TopType 
-  	  | '(' name=NameVar '(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' '::' type=TopType ')'
+  	    	name=NAMEVAR '(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' '::' type=TopType 
+  	  | '(' name=NAMEVAR '(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' '::' type=TopType ')'
 	)
 	FULL_STOP
 ;
@@ -165,12 +165,12 @@ CustomAttribute:
 // Functions
 
 Function:
-	name=AtomKw clauses+=FunctionClause ( ';' clauses+=FunctionClause )* FULL_STOP
+	name=NAME clauses+=FunctionClause ( ';' clauses+=FunctionClause )* FULL_STOP
 ;
 
 // validate that all names for a function are identical
 FunctionClause:
-	  ref=AtomKw? '(' (params+=Expression (',' params+=Expression)*)? ')' 
+	  ref=NAME? '(' (params+=Expression (',' params+=Expression)*)? ')' 
 	  ('when'? guard=Guard)? // no 'when' if guard is a macro
 	  '->' body+=LExpression (',' body+=LExpression)*
 ;
@@ -200,7 +200,7 @@ Expression returns Expression:
 Expr100 returns Expression: // right-associative
 	Expr150 
 	(   {MatchExpr.opLeft=current} op='=' opRight=Expr100
-	  | {BinOp.opLeft=current} op='!' opRight=Expr100
+	  | {BinOp.opLeft=current} op=SENDOP opRight=Expr100
 	)?;
 
 Expr150 returns Expression:
@@ -210,19 +210,19 @@ Expr160 returns Expression:
 	Expr200 ({BinOp.opLeft=current} op='andalso' opRight2=Expr200)*;
 
 Expr200 returns Expression: // non-associative
-	Expr300 ({BinOp.opLeft=current} op=CompOp opRight=Expr300)?;
+	Expr300 ({BinOp.opLeft=current} op=COMPOP opRight=Expr300)?;
 
 Expr300 returns Expression: 
-	Expr400 ({BinOp.opLeft=current} op=ListOp opRight=Expr400)*;
+	Expr400 ({BinOp.opLeft=current} op=LISTOP opRight=Expr400)*;
 
 Expr400 returns Expression:
-	Expr500 ({AddOp.opLeft=current} op=AddOp opRight=Expr500)*;
+	Expr500 ({AddOp.opLeft=current} op=ADDOP opRight=Expr500)*;
 
 Expr500 returns Expression:
-	UnaryExpr ({MultOp.opLeft=current} op=MultOp opRight=UnaryExpr)*;
+	UnaryExpr ({MultOp.opLeft=current} op=MULTOP opRight=UnaryExpr)*;
 
 UnaryExpr returns Expression:
-	  {UnaryExpr} op=PrefixOp operand=Expr700
+	  {UnaryExpr} op=PREFIXOP operand=Expr700
 	| Expr700
 ;
 
@@ -263,11 +263,11 @@ TermExpression returns Expression:
 ;
 
 MacroCall:
-	  macroName=[DefineAttribute|Macro] ('(' (args+=Expression (',' args+=Expression)*)? ')')?  
+	  macroName=MacroLiteral (=> '(' (args+=Expression (',' args+=Expression)*)? ')')?  
 ;
 
 RecordExpr:
-	rec=[ReferenceableElement|NameVar] (('.' field=[ReferenceableElement|Name]) | tuple=RecordTuple)
+	rec=AtomVarMacro (('.' field=AtomMacro) | tuple=RecordTuple)
 ;
 
 // NYI
@@ -289,34 +289,50 @@ RecordTuple:
 	{RecordTuple} '{' (fields+=RecordField (',' fields+=RecordField)*)? '}';
 
 RecordFieldDef:
-	name=NameVar ('=' value=Expression)? ('::' type=TopType)?
+	name=NAMEVAR ('=' value=Expression)? ('::' type=TopType)?
 ;
 
 RecordField:
-	ref=[ReferenceableElement|NameVar] ('=' value=Expression)? ('::' type=TopType)?
+	ref=AtomMacro ('=' value=Expression)? ('::' type=TopType)?
 ;
 
 LiteralExpressionNoNumber returns Expression:
-	  {Atom} value=[ReferenceableElement|AtomKw]
-	| {Variable} value=VARIABLE 
+	  AtomLiteral
+	| VariableLiteral 
 	| {ErlChar} value=CHAR 
-	| {MacroExpr} value=[DefineAttribute|Macro] 
-	| ErlString  
+	| MacroLiteral 
+	| StringLiteral  
 ;
 
-ErlString:
-	string=STRING more+=ErlStringPart*
+AtomLiteral returns Expression: 
+	{Atom} value=[ReferenceableElement|NAME]
 ;
 
-ErlStringPart:
+MacroLiteral returns Expression:
+	{Macro} value=[DefineAttribute|MACRO]
+;
+
+VariableLiteral returns Expression:
+	{Variable} value=[Expression|VARIABLE]
+;
+
+StringLiteral returns Expression:
+	string=STRING more+=StringLiteralPart*
+;
+
+StringLiteralPart:
 	  string=STRING 
-	| macro=[DefineAttribute|Macro] 
+	| macro=MacroCall 
 ;
 
 LiteralExpression returns Expression:
 	  LiteralExpressionNoNumber
-	| {ErlInteger} value=INTEGER 
+	| IntegerLiteral 
 	| {ErlFloat} value=FLOAT
+;
+
+IntegerLiteral returns Expression:
+	{ErlInteger} value=INTEGER
 ;
 
 PatternExpression returns Expression:
@@ -356,7 +372,7 @@ FunExpr:
 ;
 
 FunRef:
-	(module=[ReferenceableElement|NameVar] ':')? function=[ReferenceableElement|NameVar] '/' arity=[ReferenceableElement|IntMacro]
+	(module=AtomVarMacro ':')? function=AtomVarMacro '/' arity=IntVarMacro
 ;
 
 InlineFun returns FunExpr:
@@ -373,7 +389,7 @@ TryExpr:
 ;
 
 TryClause:
-	(=> (hdr=NameVar ':')?) cond=PatternExpression 	
+	(=> (hdr=NAMEVAR ':')?) cond=PatternExpression 	
 	('when' guard=Guard)? '->' body+=LExpression (',' body+=LExpression)*
 ;
 
@@ -413,11 +429,11 @@ BinaryItem:
 ;
 
 BitType:
-	name=Name (':' size=INT)?
+	name=NAME (':' size=INT)?
 ;
 
 UnaryExprMax returns Expression:
-	  {UnaryExpr} op=PrefixOp operand=ExprMax
+	  {UnaryExpr} op=PREFIXOP operand=ExprMax
 	| ExprMax
 ;
 
@@ -427,45 +443,55 @@ LCExpr:
 
 // Operators
 
-AddOp:
+ADDOP:
 	'+' | '-' | 'bor' | 'bxor' | 'bsl' | 'bsr' | 'or' | 'xor';
 
-MultOp:
+MULTOP:
 	'*' | '/' | 'div' | 'rem' | 'band' | 'and';
 
-PrefixOp:
+PREFIXOP:
 	'+' | '-' | 'bnot' | 'not';
 
-ListOp:
+LISTOP:
 	'++' | '--';
 
-CompOp:
+COMPOP:
 	'==' | '/=' | '=<' | '<' | '>=' | '>' | '=:=' | '=/=';
+	
+SENDOP:
+	'!';
 
-// Literals
+// Literal combinations
 
-Name:
-	AtomKw | Macro 
-;
-
-QName hidden():
-	'.' Name 
-;
-
-NameVar:
-	AtomVar | Macro 
+AtomVarMacro:
+	AtomLiteral	| VariableLiteral | MacroLiteral
 ;
 
 AtomVar:
-    AtomKw | VARIABLE
+	AtomLiteral	| VariableLiteral
 ;
 
-Macro:
-    ('?'|'??') (ATOM | KW1 | VARIABLE)
+AtomMacro:
+	AtomLiteral	| MacroLiteral
 ;
 
-AtomKw: 
+IntVarMacro: 
+	IntegerLiteral | VariableLiteral | MacroLiteral 
+;
+
+
+// Literals
+
+NAME:
 	ATOM | KW
+;
+
+NAMEVAR:
+    ATOM | KW | VARIABLE
+;
+
+MACRO:
+    ('?'|'??') (ATOM | KW1 | VARIABLE)
 ;
 
 KW:
@@ -473,7 +499,7 @@ KW:
 ;
 
 KW1:
-	'spec' | 'endif' | 'ifdef' | 'ifndef' | 'type' | 'opaque' | 'record' 
+	  'spec' | 'endif' | 'ifdef' | 'ifndef' | 'type' | 'opaque' | 'record' 
 	| 'undef' | 'module' | 'include' | 'include_lib' | 'define'  
 	| 'file' | 'callback' | 'else' | 'export' | 'import' | 'compile'
 ;
@@ -504,10 +530,6 @@ terminal WS:
 
 terminal FULL_STOP:
 	'.' (WS | SL_COMMENT | EOF)
-;
-
-IntMacro:
-	INT | Macro | VARIABLE
 ;
 
 INTEGER:
@@ -559,7 +581,7 @@ terminal fragment HEX_DIGIT:
 // Type language
 
 SpecFun:
-	(module=[ReferenceableElement|NameVar] ':')? function=[ReferenceableElement|NameVar] ('/' arity=[ReferenceableElement|IntMacro] '::')?;
+	(module=AtomVarMacro ':')? function=AtomVarMacro ('/' arity=IntVarMacro '::')?;
 
 TypeSig:
 	decl=FunType ('when' guards=TypeGuards)?;
@@ -571,7 +593,7 @@ TypeGuards:
 	items+=TypeGuard (',' items+=TypeGuard)*;
 
 TypeGuard:
-	  name=Name '(' types+=TopType (',' types+=TopType)* ')' 
+	  name=NAME '(' types+=TopType (',' types+=TopType)* ')' 
 	| name=VARIABLE '::' type=TopType
 ;
 
@@ -585,30 +607,30 @@ Type200:
 	Type300 (=> ({TopType.leftOperand=current} op='..') rightOperand=Type300)*;
 
 Type300:
-	Type400 (=> ({TopType.leftOperand=current} op=AddOp) rightOperand=Type400)*;
+	Type400 (=> ({TopType.leftOperand=current} op=ADDOP) rightOperand=Type400)*;
 
 Type400:
-	Type500 (=> ({TopType.leftOperand=current} op=MultOp) rightOperand=Type500)*;
+	Type500 (=> ({TopType.leftOperand=current} op=MULTOP) rightOperand=Type500)*;
 
 Type500:
-	  {UnaryType} op=PrefixOp operand=Type
+	  {UnaryType} op=PREFIXOP operand=Type
 	| Type
 ;
 
 Type:
 	'(' TopType ')' 
-	| {RemoteType} (m=[Module|Name] ':')? name=Name ('(' (args+=TopType (',' args+=TopType)*)? ')')? 
+	| {RemoteType} (m=AtomVarMacro ':')? name=NAME ('(' (args+=TopType (',' args+=TopType)*)? ')')? 
 	| name=VARIABLE 
 	| value=INTEGER 
 	| '[' {ListType} (type=TopType	(',' '...')?)? ']' 
 	| '{' {TupleType} (types+=TopType (',' types+=TopType)*)? '}' 
-	| '#' {RecordType} rec=Name '{' (fields+=FieldType (',' fields+=FieldType)*)? '}' 
+	| '#' {RecordType} rec=NAME '{' (fields+=FieldType (',' fields+=FieldType)*)? '}' 
 	| BinaryType
 	| 'fun' {FunType} '(' type=FunType100? ')' 
 ;
 
 FieldType:
-	name=Name '::' type=TopType;
+	name=NAME '::' type=TopType;
 
 BinaryType:
 	'<<' {BinaryType}

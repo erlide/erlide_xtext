@@ -22,29 +22,29 @@ package org.erlide.erlang;
 public interface IfdefAttribute extends ConditionalAttribute
 {
   /**
-   * Returns the value of the '<em><b>Ref</b></em>' reference.
+   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Ref</em>' reference isn't clear,
+   * If the meaning of the '<em>Ref</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(DefineAttribute)
+   * @return the value of the '<em>Ref</em>' containment reference.
+   * @see #setRef(AtomVar)
    * @see org.erlide.erlang.ErlangPackage#getIfdefAttribute_Ref()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  DefineAttribute getRef();
+  AtomVar getRef();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.IfdefAttribute#getRef <em>Ref</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.IfdefAttribute#getRef <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref</em>' reference.
+   * @param value the new value of the '<em>Ref</em>' containment reference.
    * @see #getRef()
    * @generated
    */
-  void setRef(DefineAttribute value);
+  void setRef(AtomVar value);
 
 } // IfdefAttribute

@@ -346,7 +346,7 @@ public interface ErlangPackage extends EPackage
   int UNDEF_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Ref</b></em>' reference.
+   * The feature id for the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -383,7 +383,7 @@ public interface ErlangPackage extends EPackage
   int IFDEF_ATTRIBUTE__TAG = CONDITIONAL_ATTRIBUTE__TAG;
 
   /**
-   * The feature id for the '<em><b>Ref</b></em>' reference.
+   * The feature id for the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -688,7 +688,7 @@ public interface ErlangPackage extends EPackage
   int RECORD_ATTRIBUTE__FIELDS = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Record Macro</b></em>' reference.
+   * The feature id for the '<em><b>Record Macro</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -762,7 +762,7 @@ public interface ErlangPackage extends EPackage
   int IMPORT_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Module</b></em>' attribute.
+   * The feature id for the '<em><b>Module</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1168,13 +1168,31 @@ public interface ErlangPackage extends EPackage
   int EXPRESSION__EXPR = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__STRING = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__MORE = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
    * The number of structural features of the '<em>Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 2;
+  int EXPRESSION_FEATURE_COUNT = REFERENCEABLE_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.MacroCallImpl <em>Macro Call</em>}' class.
@@ -1187,7 +1205,7 @@ public interface ErlangPackage extends EPackage
   int MACRO_CALL = 31;
 
   /**
-   * The feature id for the '<em><b>Macro Name</b></em>' reference.
+   * The feature id for the '<em><b>Macro Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1242,6 +1260,24 @@ public interface ErlangPackage extends EPackage
   int RECORD_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECORD_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECORD_EXPR__MORE = EXPRESSION__MORE;
+
+  /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1260,7 +1296,7 @@ public interface ErlangPackage extends EPackage
   int RECORD_EXPR__RECORD = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Rec</b></em>' reference.
+   * The feature id for the '<em><b>Rec</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1269,7 +1305,7 @@ public interface ErlangPackage extends EPackage
   int RECORD_EXPR__REC = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Field</b></em>' reference.
+   * The feature id for the '<em><b>Field</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1324,6 +1360,24 @@ public interface ErlangPackage extends EPackage
   int QUERY_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_EXPR__MORE = EXPRESSION__MORE;
+
+  /**
    * The number of structural features of the '<em>Query Expr</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1361,6 +1415,24 @@ public interface ErlangPackage extends EPackage
   int COND_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COND_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COND_EXPR__MORE = EXPRESSION__MORE;
+
+  /**
    * The number of structural features of the '<em>Cond Expr</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1396,6 +1468,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int LET_EXPR__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LET_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LET_EXPR__MORE = EXPRESSION__MORE;
 
   /**
    * The number of structural features of the '<em>Let Expr</em>' class.
@@ -1491,7 +1581,7 @@ public interface ErlangPackage extends EPackage
   int RECORD_FIELD = 38;
 
   /**
-   * The feature id for the '<em><b>Ref</b></em>' reference.
+   * The feature id for the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1527,32 +1617,14 @@ public interface ErlangPackage extends EPackage
   int RECORD_FIELD_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.ErlStringImpl <em>Erl String</em>}' class.
+   * The meta object id for the '{@link org.erlide.erlang.impl.StringLiteralPartImpl <em>String Literal Part</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.ErlStringImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlString()
+   * @see org.erlide.erlang.impl.StringLiteralPartImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getStringLiteralPart()
    * @generated
    */
-  int ERL_STRING = 39;
-
-  /**
-   * The feature id for the '<em><b>Line</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERL_STRING__LINE = EXPRESSION__LINE;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERL_STRING__EXPR = EXPRESSION__EXPR;
+  int STRING_LITERAL_PART = 39;
 
   /**
    * The feature id for the '<em><b>String</b></em>' attribute.
@@ -1561,62 +1633,25 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ERL_STRING__STRING = EXPRESSION_FEATURE_COUNT + 0;
+  int STRING_LITERAL_PART__STRING = 0;
 
   /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * The feature id for the '<em><b>Macro</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ERL_STRING__MORE = EXPRESSION_FEATURE_COUNT + 1;
+  int STRING_LITERAL_PART__MACRO = 1;
 
   /**
-   * The number of structural features of the '<em>Erl String</em>' class.
+   * The number of structural features of the '<em>String Literal Part</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ERL_STRING_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.ErlStringPartImpl <em>Erl String Part</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.ErlStringPartImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlStringPart()
-   * @generated
-   */
-  int ERL_STRING_PART = 40;
-
-  /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERL_STRING_PART__STRING = 0;
-
-  /**
-   * The feature id for the '<em><b>Macro</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERL_STRING_PART__MACRO = 1;
-
-  /**
-   * The number of structural features of the '<em>Erl String Part</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERL_STRING_PART_FEATURE_COUNT = 2;
+  int STRING_LITERAL_PART_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.IfExprImpl <em>If Expr</em>}' class.
@@ -1626,7 +1661,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getIfExpr()
    * @generated
    */
-  int IF_EXPR = 41;
+  int IF_EXPR = 40;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1645,6 +1680,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int IF_EXPR__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_EXPR__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Clauses</b></em>' containment reference list.
@@ -1672,7 +1725,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getIfClause()
    * @generated
    */
-  int IF_CLAUSE = 42;
+  int IF_CLAUSE = 41;
 
   /**
    * The feature id for the '<em><b>Guard</b></em>' containment reference.
@@ -1709,7 +1762,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getCaseExpr()
    * @generated
    */
-  int CASE_EXPR = 43;
+  int CASE_EXPR = 42;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1728,6 +1781,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int CASE_EXPR__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CASE_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CASE_EXPR__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Clauses</b></em>' containment reference list.
@@ -1755,7 +1826,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getCrClause()
    * @generated
    */
-  int CR_CLAUSE = 44;
+  int CR_CLAUSE = 43;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -1801,7 +1872,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getReceiveExpr()
    * @generated
    */
-  int RECEIVE_EXPR = 45;
+  int RECEIVE_EXPR = 44;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1820,6 +1891,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int RECEIVE_EXPR__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECEIVE_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECEIVE_EXPR__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Clauses</b></em>' containment reference list.
@@ -1865,7 +1954,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunExpr()
    * @generated
    */
-  int FUN_EXPR = 46;
+  int FUN_EXPR = 45;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1884,6 +1973,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int FUN_EXPR__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUN_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUN_EXPR__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Clauses</b></em>' containment reference list.
@@ -1911,7 +2018,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunRef()
    * @generated
    */
-  int FUN_REF = 47;
+  int FUN_REF = 46;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -1932,6 +2039,24 @@ public interface ErlangPackage extends EPackage
   int FUN_REF__EXPR = FUN_EXPR__EXPR;
 
   /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUN_REF__STRING = FUN_EXPR__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUN_REF__MORE = FUN_EXPR__MORE;
+
+  /**
    * The feature id for the '<em><b>Clauses</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1941,7 +2066,7 @@ public interface ErlangPackage extends EPackage
   int FUN_REF__CLAUSES = FUN_EXPR__CLAUSES;
 
   /**
-   * The feature id for the '<em><b>Module</b></em>' reference.
+   * The feature id for the '<em><b>Module</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1950,7 +2075,7 @@ public interface ErlangPackage extends EPackage
   int FUN_REF__MODULE = FUN_EXPR_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
+   * The feature id for the '<em><b>Function</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1959,7 +2084,7 @@ public interface ErlangPackage extends EPackage
   int FUN_REF__FUNCTION = FUN_EXPR_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Arity</b></em>' reference.
+   * The feature id for the '<em><b>Arity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1984,7 +2109,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTryExpr()
    * @generated
    */
-  int TRY_EXPR = 48;
+  int TRY_EXPR = 47;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2003,6 +2128,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int TRY_EXPR__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRY_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRY_EXPR__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference list.
@@ -2057,7 +2200,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTryClause()
    * @generated
    */
-  int TRY_CLAUSE = 49;
+  int TRY_CLAUSE = 48;
 
   /**
    * The feature id for the '<em><b>Hdr</b></em>' attribute.
@@ -2112,7 +2255,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlList()
    * @generated
    */
-  int ERL_LIST = 50;
+  int ERL_LIST = 49;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2131,6 +2274,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int ERL_LIST__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_LIST__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_LIST__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2167,7 +2328,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getListComprehension()
    * @generated
    */
-  int LIST_COMPREHENSION = 51;
+  int LIST_COMPREHENSION = 50;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2186,6 +2347,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int LIST_COMPREHENSION__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_COMPREHENSION__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_COMPREHENSION__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -2222,7 +2401,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlTuple()
    * @generated
    */
-  int ERL_TUPLE = 52;
+  int ERL_TUPLE = 51;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2241,6 +2420,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int ERL_TUPLE__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_TUPLE__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_TUPLE__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2268,7 +2465,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryComprehension()
    * @generated
    */
-  int BINARY_COMPREHENSION = 53;
+  int BINARY_COMPREHENSION = 52;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2287,6 +2484,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int BINARY_COMPREHENSION__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_COMPREHENSION__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_COMPREHENSION__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Generators</b></em>' containment reference list.
@@ -2314,7 +2529,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlBinary()
    * @generated
    */
-  int ERL_BINARY = 54;
+  int ERL_BINARY = 53;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2333,6 +2548,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int ERL_BINARY__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_BINARY__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_BINARY__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2360,7 +2593,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryItem()
    * @generated
    */
-  int BINARY_ITEM = 55;
+  int BINARY_ITEM = 54;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -2415,7 +2648,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBitType()
    * @generated
    */
-  int BIT_TYPE = 56;
+  int BIT_TYPE = 55;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2452,7 +2685,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getLCExpr()
    * @generated
    */
-  int LC_EXPR = 57;
+  int LC_EXPR = 56;
 
   /**
    * The feature id for the '<em><b>O1</b></em>' containment reference.
@@ -2491,6 +2724,82 @@ public interface ErlangPackage extends EPackage
   int LC_EXPR_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link org.erlide.erlang.impl.AtomVarMacroImpl <em>Atom Var Macro</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.erlide.erlang.impl.AtomVarMacroImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtomVarMacro()
+   * @generated
+   */
+  int ATOM_VAR_MACRO = 57;
+
+  /**
+   * The number of structural features of the '<em>Atom Var Macro</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATOM_VAR_MACRO_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.erlide.erlang.impl.AtomVarImpl <em>Atom Var</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.erlide.erlang.impl.AtomVarImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtomVar()
+   * @generated
+   */
+  int ATOM_VAR = 58;
+
+  /**
+   * The number of structural features of the '<em>Atom Var</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATOM_VAR_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.erlide.erlang.impl.AtomMacroImpl <em>Atom Macro</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.erlide.erlang.impl.AtomMacroImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtomMacro()
+   * @generated
+   */
+  int ATOM_MACRO = 59;
+
+  /**
+   * The number of structural features of the '<em>Atom Macro</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATOM_MACRO_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.erlide.erlang.impl.IntVarMacroImpl <em>Int Var Macro</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.erlide.erlang.impl.IntVarMacroImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getIntVarMacro()
+   * @generated
+   */
+  int INT_VAR_MACRO = 60;
+
+  /**
+   * The number of structural features of the '<em>Int Var Macro</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_VAR_MACRO_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link org.erlide.erlang.impl.SpecFunImpl <em>Spec Fun</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2498,10 +2807,10 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getSpecFun()
    * @generated
    */
-  int SPEC_FUN = 58;
+  int SPEC_FUN = 61;
 
   /**
-   * The feature id for the '<em><b>Module</b></em>' reference.
+   * The feature id for the '<em><b>Module</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2510,7 +2819,7 @@ public interface ErlangPackage extends EPackage
   int SPEC_FUN__MODULE = 0;
 
   /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
+   * The feature id for the '<em><b>Function</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2519,7 +2828,7 @@ public interface ErlangPackage extends EPackage
   int SPEC_FUN__FUNCTION = 1;
 
   /**
-   * The feature id for the '<em><b>Arity</b></em>' reference.
+   * The feature id for the '<em><b>Arity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2544,7 +2853,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTypeSig()
    * @generated
    */
-  int TYPE_SIG = 59;
+  int TYPE_SIG = 62;
 
   /**
    * The feature id for the '<em><b>Decl</b></em>' containment reference.
@@ -2581,7 +2890,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType100()
    * @generated
    */
-  int TYPE100 = 64;
+  int TYPE100 = 67;
 
   /**
    * The number of structural features of the '<em>Type100</em>' class.
@@ -2600,7 +2909,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType200()
    * @generated
    */
-  int TYPE200 = 65;
+  int TYPE200 = 68;
 
   /**
    * The number of structural features of the '<em>Type200</em>' class.
@@ -2619,7 +2928,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType300()
    * @generated
    */
-  int TYPE300 = 66;
+  int TYPE300 = 69;
 
   /**
    * The number of structural features of the '<em>Type300</em>' class.
@@ -2638,7 +2947,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType400()
    * @generated
    */
-  int TYPE400 = 67;
+  int TYPE400 = 70;
 
   /**
    * The number of structural features of the '<em>Type400</em>' class.
@@ -2657,7 +2966,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType500()
    * @generated
    */
-  int TYPE500 = 68;
+  int TYPE500 = 71;
 
   /**
    * The number of structural features of the '<em>Type500</em>' class.
@@ -2676,7 +2985,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType()
    * @generated
    */
-  int TYPE = 69;
+  int TYPE = 72;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2713,7 +3022,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunType()
    * @generated
    */
-  int FUN_TYPE = 60;
+  int FUN_TYPE = 63;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2777,7 +3086,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTypeGuards()
    * @generated
    */
-  int TYPE_GUARDS = 61;
+  int TYPE_GUARDS = 64;
 
   /**
    * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -2805,7 +3114,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTypeGuard()
    * @generated
    */
-  int TYPE_GUARD = 62;
+  int TYPE_GUARD = 65;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2851,7 +3160,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTopType()
    * @generated
    */
-  int TOP_TYPE = 63;
+  int TOP_TYPE = 66;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2933,7 +3242,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFieldType()
    * @generated
    */
-  int FIELD_TYPE = 70;
+  int FIELD_TYPE = 73;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2970,7 +3279,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryType()
    * @generated
    */
-  int BINARY_TYPE = 71;
+  int BINARY_TYPE = 74;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3016,7 +3325,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinBaseType()
    * @generated
    */
-  int BIN_BASE_TYPE = 72;
+  int BIN_BASE_TYPE = 75;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3053,7 +3362,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinUnitType()
    * @generated
    */
-  int BIN_UNIT_TYPE = 73;
+  int BIN_UNIT_TYPE = 76;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3099,7 +3408,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunType100()
    * @generated
    */
-  int FUN_TYPE100 = 74;
+  int FUN_TYPE100 = 77;
 
   /**
    * The number of structural features of the '<em>Fun Type100</em>' class.
@@ -3118,7 +3427,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMacroForm()
    * @generated
    */
-  int MACRO_FORM = 75;
+  int MACRO_FORM = 78;
 
   /**
    * The feature id for the '<em><b>Call</b></em>' containment reference.
@@ -3146,7 +3455,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getCatchExpr()
    * @generated
    */
-  int CATCH_EXPR = 76;
+  int CATCH_EXPR = 79;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3167,6 +3476,24 @@ public interface ErlangPackage extends EPackage
   int CATCH_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CATCH_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CATCH_EXPR__MORE = EXPRESSION__MORE;
+
+  /**
    * The number of structural features of the '<em>Catch Expr</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3183,7 +3510,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMatchExpr()
    * @generated
    */
-  int MATCH_EXPR = 77;
+  int MATCH_EXPR = 80;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3202,6 +3529,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int MATCH_EXPR__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MATCH_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MATCH_EXPR__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Op Left</b></em>' containment reference.
@@ -3247,7 +3592,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinOp()
    * @generated
    */
-  int BIN_OP = 78;
+  int BIN_OP = 81;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3266,6 +3611,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int BIN_OP__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIN_OP__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BIN_OP__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Op Left</b></em>' containment reference.
@@ -3320,7 +3683,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getAddOp()
    * @generated
    */
-  int ADD_OP = 79;
+  int ADD_OP = 82;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3339,6 +3702,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int ADD_OP__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_OP__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_OP__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Op Left</b></em>' containment reference.
@@ -3384,7 +3765,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMultOp()
    * @generated
    */
-  int MULT_OP = 80;
+  int MULT_OP = 83;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3403,6 +3784,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int MULT_OP__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULT_OP__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULT_OP__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Op Left</b></em>' containment reference.
@@ -3448,7 +3847,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getUnaryExpr()
    * @generated
    */
-  int UNARY_EXPR = 81;
+  int UNARY_EXPR = 84;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3467,6 +3866,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int UNARY_EXPR__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_EXPR__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -3503,7 +3920,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunCall()
    * @generated
    */
-  int FUN_CALL = 82;
+  int FUN_CALL = 85;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3522,6 +3939,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int FUN_CALL__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUN_CALL__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUN_CALL__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -3567,7 +4002,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRemoteTarget()
    * @generated
    */
-  int REMOTE_TARGET = 83;
+  int REMOTE_TARGET = 86;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3586,6 +4021,24 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int REMOTE_TARGET__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REMOTE_TARGET__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REMOTE_TARGET__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Module</b></em>' containment reference.
@@ -3622,7 +4075,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBlockExpr()
    * @generated
    */
-  int BLOCK_EXPR = 84;
+  int BLOCK_EXPR = 87;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3643,6 +4096,24 @@ public interface ErlangPackage extends EPackage
   int BLOCK_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BLOCK_EXPR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BLOCK_EXPR__MORE = EXPRESSION__MORE;
+
+  /**
    * The feature id for the '<em><b>Body</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3661,98 +4132,6 @@ public interface ErlangPackage extends EPackage
   int BLOCK_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.AtomImpl <em>Atom</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.AtomImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtom()
-   * @generated
-   */
-  int ATOM = 85;
-
-  /**
-   * The feature id for the '<em><b>Line</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOM__LINE = EXPRESSION__LINE;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOM__EXPR = EXPRESSION__EXPR;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOM__VALUE = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Atom</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOM_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.VariableImpl <em>Variable</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.VariableImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getVariable()
-   * @generated
-   */
-  int VARIABLE = 86;
-
-  /**
-   * The feature id for the '<em><b>Line</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE__LINE = EXPRESSION__LINE;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE__EXPR = EXPRESSION__EXPR;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE__VALUE = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Variable</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ErlCharImpl <em>Erl Char</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3760,7 +4139,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlChar()
    * @generated
    */
-  int ERL_CHAR = 87;
+  int ERL_CHAR = 88;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3781,6 +4160,24 @@ public interface ErlangPackage extends EPackage
   int ERL_CHAR__EXPR = EXPRESSION__EXPR;
 
   /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_CHAR__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_CHAR__MORE = EXPRESSION__MORE;
+
+  /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3799,14 +4196,14 @@ public interface ErlangPackage extends EPackage
   int ERL_CHAR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.MacroExprImpl <em>Macro Expr</em>}' class.
+   * The meta object id for the '{@link org.erlide.erlang.impl.AtomImpl <em>Atom</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.MacroExprImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getMacroExpr()
+   * @see org.erlide.erlang.impl.AtomImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtom()
    * @generated
    */
-  int MACRO_EXPR = 88;
+  int ATOM = 89;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3815,7 +4212,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MACRO_EXPR__LINE = EXPRESSION__LINE;
+  int ATOM__LINE = EXPRESSION__LINE;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3824,7 +4221,25 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MACRO_EXPR__EXPR = EXPRESSION__EXPR;
+  int ATOM__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATOM__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATOM__MORE = EXPRESSION__MORE;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -3833,26 +4248,26 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MACRO_EXPR__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+  int ATOM__VALUE = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Macro Expr</em>' class.
+   * The number of structural features of the '<em>Atom</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MACRO_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+  int ATOM_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.ErlIntegerImpl <em>Erl Integer</em>}' class.
+   * The meta object id for the '{@link org.erlide.erlang.impl.MacroImpl <em>Macro</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.ErlIntegerImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlInteger()
+   * @see org.erlide.erlang.impl.MacroImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getMacro()
    * @generated
    */
-  int ERL_INTEGER = 89;
+  int MACRO = 90;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3861,7 +4276,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ERL_INTEGER__LINE = EXPRESSION__LINE;
+  int MACRO__LINE = EXPRESSION__LINE;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -3870,25 +4285,107 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ERL_INTEGER__EXPR = EXPRESSION__EXPR;
+  int MACRO__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>String</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ERL_INTEGER__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+  int MACRO__STRING = EXPRESSION__STRING;
 
   /**
-   * The number of structural features of the '<em>Erl Integer</em>' class.
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ERL_INTEGER_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+  int MACRO__MORE = EXPRESSION__MORE;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MACRO__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Macro</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MACRO_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.erlide.erlang.impl.VariableImpl <em>Variable</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.erlide.erlang.impl.VariableImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getVariable()
+   * @generated
+   */
+  int VARIABLE = 91;
+
+  /**
+   * The feature id for the '<em><b>Line</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__LINE = EXPRESSION__LINE;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__MORE = EXPRESSION__MORE;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Variable</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ErlFloatImpl <em>Erl Float</em>}' class.
@@ -3898,7 +4395,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlFloat()
    * @generated
    */
-  int ERL_FLOAT = 90;
+  int ERL_FLOAT = 92;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3919,6 +4416,24 @@ public interface ErlangPackage extends EPackage
   int ERL_FLOAT__EXPR = EXPRESSION__EXPR;
 
   /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_FLOAT__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_FLOAT__MORE = EXPRESSION__MORE;
+
+  /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3937,6 +4452,70 @@ public interface ErlangPackage extends EPackage
   int ERL_FLOAT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.erlide.erlang.impl.ErlIntegerImpl <em>Erl Integer</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.erlide.erlang.impl.ErlIntegerImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlInteger()
+   * @generated
+   */
+  int ERL_INTEGER = 93;
+
+  /**
+   * The feature id for the '<em><b>Line</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_INTEGER__LINE = EXPRESSION__LINE;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_INTEGER__EXPR = EXPRESSION__EXPR;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_INTEGER__STRING = EXPRESSION__STRING;
+
+  /**
+   * The feature id for the '<em><b>More</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_INTEGER__MORE = EXPRESSION__MORE;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_INTEGER__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Erl Integer</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ERL_INTEGER_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link org.erlide.erlang.impl.UnaryTypeImpl <em>Unary Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3944,7 +4523,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getUnaryType()
    * @generated
    */
-  int UNARY_TYPE = 91;
+  int UNARY_TYPE = 94;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -3981,7 +4560,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRemoteType()
    * @generated
    */
-  int REMOTE_TYPE = 92;
+  int REMOTE_TYPE = 95;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4002,7 +4581,7 @@ public interface ErlangPackage extends EPackage
   int REMOTE_TYPE__VALUE = TYPE__VALUE;
 
   /**
-   * The feature id for the '<em><b>M</b></em>' reference.
+   * The feature id for the '<em><b>M</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -4036,7 +4615,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getListType()
    * @generated
    */
-  int LIST_TYPE = 93;
+  int LIST_TYPE = 96;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4082,7 +4661,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTupleType()
    * @generated
    */
-  int TUPLE_TYPE = 94;
+  int TUPLE_TYPE = 97;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4128,7 +4707,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRecordType()
    * @generated
    */
-  int RECORD_TYPE = 95;
+  int RECORD_TYPE = 98;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4183,7 +4762,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunTypeList()
    * @generated
    */
-  int FUN_TYPE_LIST = 96;
+  int FUN_TYPE_LIST = 99;
 
   /**
    * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -4446,10 +5025,10 @@ public interface ErlangPackage extends EPackage
   EAttribute getUndefAttribute_Tag();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.UndefAttribute#getRef <em>Ref</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.UndefAttribute#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Ref</em>'.
+   * @return the meta object for the containment reference '<em>Ref</em>'.
    * @see org.erlide.erlang.UndefAttribute#getRef()
    * @see #getUndefAttribute()
    * @generated
@@ -4467,10 +5046,10 @@ public interface ErlangPackage extends EPackage
   EClass getIfdefAttribute();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.IfdefAttribute#getRef <em>Ref</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.IfdefAttribute#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Ref</em>'.
+   * @return the meta object for the containment reference '<em>Ref</em>'.
    * @see org.erlide.erlang.IfdefAttribute#getRef()
    * @see #getIfdefAttribute()
    * @generated
@@ -4668,10 +5247,10 @@ public interface ErlangPackage extends EPackage
   EReference getRecordAttribute_Fields();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.RecordAttribute#getRecordMacro <em>Record Macro</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.RecordAttribute#getRecordMacro <em>Record Macro</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Record Macro</em>'.
+   * @return the meta object for the containment reference '<em>Record Macro</em>'.
    * @see org.erlide.erlang.RecordAttribute#getRecordMacro()
    * @see #getRecordAttribute()
    * @generated
@@ -4732,15 +5311,15 @@ public interface ErlangPackage extends EPackage
   EAttribute getImportAttribute_Tag();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.ImportAttribute#getModule <em>Module</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.ImportAttribute#getModule <em>Module</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Module</em>'.
+   * @return the meta object for the containment reference '<em>Module</em>'.
    * @see org.erlide.erlang.ImportAttribute#getModule()
    * @see #getImportAttribute()
    * @generated
    */
-  EAttribute getImportAttribute_Module();
+  EReference getImportAttribute_Module();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.erlide.erlang.ImportAttribute#getFuns <em>Funs</em>}'.
@@ -5074,6 +5653,28 @@ public interface ErlangPackage extends EPackage
   EReference getExpression_Expr();
 
   /**
+   * Returns the meta object for the attribute '{@link org.erlide.erlang.Expression#getString <em>String</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>String</em>'.
+   * @see org.erlide.erlang.Expression#getString()
+   * @see #getExpression()
+   * @generated
+   */
+  EAttribute getExpression_String();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.Expression#getMore <em>More</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>More</em>'.
+   * @see org.erlide.erlang.Expression#getMore()
+   * @see #getExpression()
+   * @generated
+   */
+  EReference getExpression_More();
+
+  /**
    * Returns the meta object for class '{@link org.erlide.erlang.MacroCall <em>Macro Call</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5084,10 +5685,10 @@ public interface ErlangPackage extends EPackage
   EClass getMacroCall();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.MacroCall#getMacroName <em>Macro Name</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.MacroCall#getMacroName <em>Macro Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Macro Name</em>'.
+   * @return the meta object for the containment reference '<em>Macro Name</em>'.
    * @see org.erlide.erlang.MacroCall#getMacroName()
    * @see #getMacroCall()
    * @generated
@@ -5138,10 +5739,10 @@ public interface ErlangPackage extends EPackage
   EReference getRecordExpr_Record();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.RecordExpr#getRec <em>Rec</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.RecordExpr#getRec <em>Rec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Rec</em>'.
+   * @return the meta object for the containment reference '<em>Rec</em>'.
    * @see org.erlide.erlang.RecordExpr#getRec()
    * @see #getRecordExpr()
    * @generated
@@ -5149,10 +5750,10 @@ public interface ErlangPackage extends EPackage
   EReference getRecordExpr_Rec();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.RecordExpr#getField <em>Field</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.RecordExpr#getField <em>Field</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Field</em>'.
+   * @return the meta object for the containment reference '<em>Field</em>'.
    * @see org.erlide.erlang.RecordExpr#getField()
    * @see #getRecordExpr()
    * @generated
@@ -5275,10 +5876,10 @@ public interface ErlangPackage extends EPackage
   EClass getRecordField();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.RecordField#getRef <em>Ref</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.RecordField#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Ref</em>'.
+   * @return the meta object for the containment reference '<em>Ref</em>'.
    * @see org.erlide.erlang.RecordField#getRef()
    * @see #getRecordField()
    * @generated
@@ -5308,68 +5909,36 @@ public interface ErlangPackage extends EPackage
   EReference getRecordField_Type();
 
   /**
-   * Returns the meta object for class '{@link org.erlide.erlang.ErlString <em>Erl String</em>}'.
+   * Returns the meta object for class '{@link org.erlide.erlang.StringLiteralPart <em>String Literal Part</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Erl String</em>'.
-   * @see org.erlide.erlang.ErlString
+   * @return the meta object for class '<em>String Literal Part</em>'.
+   * @see org.erlide.erlang.StringLiteralPart
    * @generated
    */
-  EClass getErlString();
+  EClass getStringLiteralPart();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.ErlString#getString <em>String</em>}'.
+   * Returns the meta object for the attribute '{@link org.erlide.erlang.StringLiteralPart#getString <em>String</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>String</em>'.
-   * @see org.erlide.erlang.ErlString#getString()
-   * @see #getErlString()
+   * @see org.erlide.erlang.StringLiteralPart#getString()
+   * @see #getStringLiteralPart()
    * @generated
    */
-  EAttribute getErlString_String();
+  EAttribute getStringLiteralPart_String();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.ErlString#getMore <em>More</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.StringLiteralPart#getMacro <em>Macro</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>More</em>'.
-   * @see org.erlide.erlang.ErlString#getMore()
-   * @see #getErlString()
+   * @return the meta object for the containment reference '<em>Macro</em>'.
+   * @see org.erlide.erlang.StringLiteralPart#getMacro()
+   * @see #getStringLiteralPart()
    * @generated
    */
-  EReference getErlString_More();
-
-  /**
-   * Returns the meta object for class '{@link org.erlide.erlang.ErlStringPart <em>Erl String Part</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Erl String Part</em>'.
-   * @see org.erlide.erlang.ErlStringPart
-   * @generated
-   */
-  EClass getErlStringPart();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.ErlStringPart#getString <em>String</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>String</em>'.
-   * @see org.erlide.erlang.ErlStringPart#getString()
-   * @see #getErlStringPart()
-   * @generated
-   */
-  EAttribute getErlStringPart_String();
-
-  /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.ErlStringPart#getMacro <em>Macro</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Macro</em>'.
-   * @see org.erlide.erlang.ErlStringPart#getMacro()
-   * @see #getErlStringPart()
-   * @generated
-   */
-  EReference getErlStringPart_Macro();
+  EReference getStringLiteralPart_Macro();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.IfExpr <em>If Expr</em>}'.
@@ -5563,10 +6132,10 @@ public interface ErlangPackage extends EPackage
   EClass getFunRef();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Module</em>'.
+   * @return the meta object for the containment reference '<em>Module</em>'.
    * @see org.erlide.erlang.FunRef#getModule()
    * @see #getFunRef()
    * @generated
@@ -5574,10 +6143,10 @@ public interface ErlangPackage extends EPackage
   EReference getFunRef_Module();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Function</em>'.
+   * @return the meta object for the containment reference '<em>Function</em>'.
    * @see org.erlide.erlang.FunRef#getFunction()
    * @see #getFunRef()
    * @generated
@@ -5585,10 +6154,10 @@ public interface ErlangPackage extends EPackage
   EReference getFunRef_Function();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Arity</em>'.
+   * @return the meta object for the containment reference '<em>Arity</em>'.
    * @see org.erlide.erlang.FunRef#getArity()
    * @see #getFunRef()
    * @generated
@@ -5960,6 +6529,46 @@ public interface ErlangPackage extends EPackage
   EReference getLCExpr_O2();
 
   /**
+   * Returns the meta object for class '{@link org.erlide.erlang.AtomVarMacro <em>Atom Var Macro</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Atom Var Macro</em>'.
+   * @see org.erlide.erlang.AtomVarMacro
+   * @generated
+   */
+  EClass getAtomVarMacro();
+
+  /**
+   * Returns the meta object for class '{@link org.erlide.erlang.AtomVar <em>Atom Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Atom Var</em>'.
+   * @see org.erlide.erlang.AtomVar
+   * @generated
+   */
+  EClass getAtomVar();
+
+  /**
+   * Returns the meta object for class '{@link org.erlide.erlang.AtomMacro <em>Atom Macro</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Atom Macro</em>'.
+   * @see org.erlide.erlang.AtomMacro
+   * @generated
+   */
+  EClass getAtomMacro();
+
+  /**
+   * Returns the meta object for class '{@link org.erlide.erlang.IntVarMacro <em>Int Var Macro</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Int Var Macro</em>'.
+   * @see org.erlide.erlang.IntVarMacro
+   * @generated
+   */
+  EClass getIntVarMacro();
+
+  /**
    * Returns the meta object for class '{@link org.erlide.erlang.SpecFun <em>Spec Fun</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5970,10 +6579,10 @@ public interface ErlangPackage extends EPackage
   EClass getSpecFun();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.SpecFun#getModule <em>Module</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.SpecFun#getModule <em>Module</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Module</em>'.
+   * @return the meta object for the containment reference '<em>Module</em>'.
    * @see org.erlide.erlang.SpecFun#getModule()
    * @see #getSpecFun()
    * @generated
@@ -5981,10 +6590,10 @@ public interface ErlangPackage extends EPackage
   EReference getSpecFun_Module();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.SpecFun#getFunction <em>Function</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.SpecFun#getFunction <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Function</em>'.
+   * @return the meta object for the containment reference '<em>Function</em>'.
    * @see org.erlide.erlang.SpecFun#getFunction()
    * @see #getSpecFun()
    * @generated
@@ -5992,10 +6601,10 @@ public interface ErlangPackage extends EPackage
   EReference getSpecFun_Function();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.SpecFun#getArity <em>Arity</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.SpecFun#getArity <em>Arity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Arity</em>'.
+   * @return the meta object for the containment reference '<em>Arity</em>'.
    * @see org.erlide.erlang.SpecFun#getArity()
    * @see #getSpecFun()
    * @generated
@@ -6769,48 +7378,6 @@ public interface ErlangPackage extends EPackage
   EReference getBlockExpr_Body();
 
   /**
-   * Returns the meta object for class '{@link org.erlide.erlang.Atom <em>Atom</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Atom</em>'.
-   * @see org.erlide.erlang.Atom
-   * @generated
-   */
-  EClass getAtom();
-
-  /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.Atom#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Value</em>'.
-   * @see org.erlide.erlang.Atom#getValue()
-   * @see #getAtom()
-   * @generated
-   */
-  EReference getAtom_Value();
-
-  /**
-   * Returns the meta object for class '{@link org.erlide.erlang.Variable <em>Variable</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Variable</em>'.
-   * @see org.erlide.erlang.Variable
-   * @generated
-   */
-  EClass getVariable();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.Variable#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.erlide.erlang.Variable#getValue()
-   * @see #getVariable()
-   * @generated
-   */
-  EAttribute getVariable_Value();
-
-  /**
    * Returns the meta object for class '{@link org.erlide.erlang.ErlChar <em>Erl Char</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6832,46 +7399,67 @@ public interface ErlangPackage extends EPackage
   EAttribute getErlChar_Value();
 
   /**
-   * Returns the meta object for class '{@link org.erlide.erlang.MacroExpr <em>Macro Expr</em>}'.
+   * Returns the meta object for class '{@link org.erlide.erlang.Atom <em>Atom</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Macro Expr</em>'.
-   * @see org.erlide.erlang.MacroExpr
+   * @return the meta object for class '<em>Atom</em>'.
+   * @see org.erlide.erlang.Atom
    * @generated
    */
-  EClass getMacroExpr();
+  EClass getAtom();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.MacroExpr#getValue <em>Value</em>}'.
+   * Returns the meta object for the reference '{@link org.erlide.erlang.Atom#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Value</em>'.
-   * @see org.erlide.erlang.MacroExpr#getValue()
-   * @see #getMacroExpr()
+   * @see org.erlide.erlang.Atom#getValue()
+   * @see #getAtom()
    * @generated
    */
-  EReference getMacroExpr_Value();
+  EReference getAtom_Value();
 
   /**
-   * Returns the meta object for class '{@link org.erlide.erlang.ErlInteger <em>Erl Integer</em>}'.
+   * Returns the meta object for class '{@link org.erlide.erlang.Macro <em>Macro</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Erl Integer</em>'.
-   * @see org.erlide.erlang.ErlInteger
+   * @return the meta object for class '<em>Macro</em>'.
+   * @see org.erlide.erlang.Macro
    * @generated
    */
-  EClass getErlInteger();
+  EClass getMacro();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.ErlInteger#getValue <em>Value</em>}'.
+   * Returns the meta object for the reference '{@link org.erlide.erlang.Macro#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.erlide.erlang.ErlInteger#getValue()
-   * @see #getErlInteger()
+   * @return the meta object for the reference '<em>Value</em>'.
+   * @see org.erlide.erlang.Macro#getValue()
+   * @see #getMacro()
    * @generated
    */
-  EAttribute getErlInteger_Value();
+  EReference getMacro_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.erlide.erlang.Variable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Variable</em>'.
+   * @see org.erlide.erlang.Variable
+   * @generated
+   */
+  EClass getVariable();
+
+  /**
+   * Returns the meta object for the reference '{@link org.erlide.erlang.Variable#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Value</em>'.
+   * @see org.erlide.erlang.Variable#getValue()
+   * @see #getVariable()
+   * @generated
+   */
+  EReference getVariable_Value();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.ErlFloat <em>Erl Float</em>}'.
@@ -6893,6 +7481,27 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EAttribute getErlFloat_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.erlide.erlang.ErlInteger <em>Erl Integer</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Erl Integer</em>'.
+   * @see org.erlide.erlang.ErlInteger
+   * @generated
+   */
+  EClass getErlInteger();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.erlide.erlang.ErlInteger#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.erlide.erlang.ErlInteger#getValue()
+   * @see #getErlInteger()
+   * @generated
+   */
+  EAttribute getErlInteger_Value();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.UnaryType <em>Unary Type</em>}'.
@@ -6937,10 +7546,10 @@ public interface ErlangPackage extends EPackage
   EClass getRemoteType();
 
   /**
-   * Returns the meta object for the reference '{@link org.erlide.erlang.RemoteType#getM <em>M</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.RemoteType#getM <em>M</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>M</em>'.
+   * @return the meta object for the containment reference '<em>M</em>'.
    * @see org.erlide.erlang.RemoteType#getM()
    * @see #getRemoteType()
    * @generated
@@ -7284,7 +7893,7 @@ public interface ErlangPackage extends EPackage
     EAttribute UNDEF_ATTRIBUTE__TAG = eINSTANCE.getUndefAttribute_Tag();
 
     /**
-     * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7302,7 +7911,7 @@ public interface ErlangPackage extends EPackage
     EClass IFDEF_ATTRIBUTE = eINSTANCE.getIfdefAttribute();
 
     /**
-     * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7470,7 +8079,7 @@ public interface ErlangPackage extends EPackage
     EReference RECORD_ATTRIBUTE__FIELDS = eINSTANCE.getRecordAttribute_Fields();
 
     /**
-     * The meta object literal for the '<em><b>Record Macro</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Record Macro</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7522,12 +8131,12 @@ public interface ErlangPackage extends EPackage
     EAttribute IMPORT_ATTRIBUTE__TAG = eINSTANCE.getImportAttribute_Tag();
 
     /**
-     * The meta object literal for the '<em><b>Module</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Module</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute IMPORT_ATTRIBUTE__MODULE = eINSTANCE.getImportAttribute_Module();
+    EReference IMPORT_ATTRIBUTE__MODULE = eINSTANCE.getImportAttribute_Module();
 
     /**
      * The meta object literal for the '<em><b>Funs</b></em>' containment reference list feature.
@@ -7798,6 +8407,22 @@ public interface ErlangPackage extends EPackage
     EReference EXPRESSION__EXPR = eINSTANCE.getExpression_Expr();
 
     /**
+     * The meta object literal for the '<em><b>String</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPRESSION__STRING = eINSTANCE.getExpression_String();
+
+    /**
+     * The meta object literal for the '<em><b>More</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESSION__MORE = eINSTANCE.getExpression_More();
+
+    /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.MacroCallImpl <em>Macro Call</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7808,7 +8433,7 @@ public interface ErlangPackage extends EPackage
     EClass MACRO_CALL = eINSTANCE.getMacroCall();
 
     /**
-     * The meta object literal for the '<em><b>Macro Name</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Macro Name</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7850,7 +8475,7 @@ public interface ErlangPackage extends EPackage
     EReference RECORD_EXPR__RECORD = eINSTANCE.getRecordExpr_Record();
 
     /**
-     * The meta object literal for the '<em><b>Rec</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Rec</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7858,7 +8483,7 @@ public interface ErlangPackage extends EPackage
     EReference RECORD_EXPR__REC = eINSTANCE.getRecordExpr_Rec();
 
     /**
-     * The meta object literal for the '<em><b>Field</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Field</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7966,7 +8591,7 @@ public interface ErlangPackage extends EPackage
     EClass RECORD_FIELD = eINSTANCE.getRecordField();
 
     /**
-     * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -7990,14 +8615,14 @@ public interface ErlangPackage extends EPackage
     EReference RECORD_FIELD__TYPE = eINSTANCE.getRecordField_Type();
 
     /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.ErlStringImpl <em>Erl String</em>}' class.
+     * The meta object literal for the '{@link org.erlide.erlang.impl.StringLiteralPartImpl <em>String Literal Part</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.ErlStringImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlString()
+     * @see org.erlide.erlang.impl.StringLiteralPartImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getStringLiteralPart()
      * @generated
      */
-    EClass ERL_STRING = eINSTANCE.getErlString();
+    EClass STRING_LITERAL_PART = eINSTANCE.getStringLiteralPart();
 
     /**
      * The meta object literal for the '<em><b>String</b></em>' attribute feature.
@@ -8005,41 +8630,15 @@ public interface ErlangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ERL_STRING__STRING = eINSTANCE.getErlString_String();
+    EAttribute STRING_LITERAL_PART__STRING = eINSTANCE.getStringLiteralPart_String();
 
     /**
-     * The meta object literal for the '<em><b>More</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Macro</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ERL_STRING__MORE = eINSTANCE.getErlString_More();
-
-    /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.ErlStringPartImpl <em>Erl String Part</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.ErlStringPartImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlStringPart()
-     * @generated
-     */
-    EClass ERL_STRING_PART = eINSTANCE.getErlStringPart();
-
-    /**
-     * The meta object literal for the '<em><b>String</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ERL_STRING_PART__STRING = eINSTANCE.getErlStringPart_String();
-
-    /**
-     * The meta object literal for the '<em><b>Macro</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ERL_STRING_PART__MACRO = eINSTANCE.getErlStringPart_Macro();
+    EReference STRING_LITERAL_PART__MACRO = eINSTANCE.getStringLiteralPart_Macro();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.IfExprImpl <em>If Expr</em>}' class.
@@ -8200,7 +8799,7 @@ public interface ErlangPackage extends EPackage
     EClass FUN_REF = eINSTANCE.getFunRef();
 
     /**
-     * The meta object literal for the '<em><b>Module</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Module</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8208,7 +8807,7 @@ public interface ErlangPackage extends EPackage
     EReference FUN_REF__MODULE = eINSTANCE.getFunRef_Module();
 
     /**
-     * The meta object literal for the '<em><b>Function</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Function</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8216,7 +8815,7 @@ public interface ErlangPackage extends EPackage
     EReference FUN_REF__FUNCTION = eINSTANCE.getFunRef_Function();
 
     /**
-     * The meta object literal for the '<em><b>Arity</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Arity</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8516,6 +9115,46 @@ public interface ErlangPackage extends EPackage
     EReference LC_EXPR__O2 = eINSTANCE.getLCExpr_O2();
 
     /**
+     * The meta object literal for the '{@link org.erlide.erlang.impl.AtomVarMacroImpl <em>Atom Var Macro</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.erlide.erlang.impl.AtomVarMacroImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtomVarMacro()
+     * @generated
+     */
+    EClass ATOM_VAR_MACRO = eINSTANCE.getAtomVarMacro();
+
+    /**
+     * The meta object literal for the '{@link org.erlide.erlang.impl.AtomVarImpl <em>Atom Var</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.erlide.erlang.impl.AtomVarImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtomVar()
+     * @generated
+     */
+    EClass ATOM_VAR = eINSTANCE.getAtomVar();
+
+    /**
+     * The meta object literal for the '{@link org.erlide.erlang.impl.AtomMacroImpl <em>Atom Macro</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.erlide.erlang.impl.AtomMacroImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtomMacro()
+     * @generated
+     */
+    EClass ATOM_MACRO = eINSTANCE.getAtomMacro();
+
+    /**
+     * The meta object literal for the '{@link org.erlide.erlang.impl.IntVarMacroImpl <em>Int Var Macro</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.erlide.erlang.impl.IntVarMacroImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getIntVarMacro()
+     * @generated
+     */
+    EClass INT_VAR_MACRO = eINSTANCE.getIntVarMacro();
+
+    /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.SpecFunImpl <em>Spec Fun</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8526,7 +9165,7 @@ public interface ErlangPackage extends EPackage
     EClass SPEC_FUN = eINSTANCE.getSpecFun();
 
     /**
-     * The meta object literal for the '<em><b>Module</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Module</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8534,7 +9173,7 @@ public interface ErlangPackage extends EPackage
     EReference SPEC_FUN__MODULE = eINSTANCE.getSpecFun_Module();
 
     /**
-     * The meta object literal for the '<em><b>Function</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Function</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8542,7 +9181,7 @@ public interface ErlangPackage extends EPackage
     EReference SPEC_FUN__FUNCTION = eINSTANCE.getSpecFun_Function();
 
     /**
-     * The meta object literal for the '<em><b>Arity</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Arity</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -9178,42 +9817,6 @@ public interface ErlangPackage extends EPackage
     EReference BLOCK_EXPR__BODY = eINSTANCE.getBlockExpr_Body();
 
     /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.AtomImpl <em>Atom</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.AtomImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtom()
-     * @generated
-     */
-    EClass ATOM = eINSTANCE.getAtom();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ATOM__VALUE = eINSTANCE.getAtom_Value();
-
-    /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.VariableImpl <em>Variable</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.VariableImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getVariable()
-     * @generated
-     */
-    EClass VARIABLE = eINSTANCE.getVariable();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VARIABLE__VALUE = eINSTANCE.getVariable_Value();
-
-    /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.ErlCharImpl <em>Erl Char</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -9232,14 +9835,14 @@ public interface ErlangPackage extends EPackage
     EAttribute ERL_CHAR__VALUE = eINSTANCE.getErlChar_Value();
 
     /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.MacroExprImpl <em>Macro Expr</em>}' class.
+     * The meta object literal for the '{@link org.erlide.erlang.impl.AtomImpl <em>Atom</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.MacroExprImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getMacroExpr()
+     * @see org.erlide.erlang.impl.AtomImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtom()
      * @generated
      */
-    EClass MACRO_EXPR = eINSTANCE.getMacroExpr();
+    EClass ATOM = eINSTANCE.getAtom();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' reference feature.
@@ -9247,25 +9850,43 @@ public interface ErlangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MACRO_EXPR__VALUE = eINSTANCE.getMacroExpr_Value();
+    EReference ATOM__VALUE = eINSTANCE.getAtom_Value();
 
     /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.ErlIntegerImpl <em>Erl Integer</em>}' class.
+     * The meta object literal for the '{@link org.erlide.erlang.impl.MacroImpl <em>Macro</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.ErlIntegerImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlInteger()
+     * @see org.erlide.erlang.impl.MacroImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getMacro()
      * @generated
      */
-    EClass ERL_INTEGER = eINSTANCE.getErlInteger();
+    EClass MACRO = eINSTANCE.getMacro();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ERL_INTEGER__VALUE = eINSTANCE.getErlInteger_Value();
+    EReference MACRO__VALUE = eINSTANCE.getMacro_Value();
+
+    /**
+     * The meta object literal for the '{@link org.erlide.erlang.impl.VariableImpl <em>Variable</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.erlide.erlang.impl.VariableImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getVariable()
+     * @generated
+     */
+    EClass VARIABLE = eINSTANCE.getVariable();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARIABLE__VALUE = eINSTANCE.getVariable_Value();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.ErlFloatImpl <em>Erl Float</em>}' class.
@@ -9284,6 +9905,24 @@ public interface ErlangPackage extends EPackage
      * @generated
      */
     EAttribute ERL_FLOAT__VALUE = eINSTANCE.getErlFloat_Value();
+
+    /**
+     * The meta object literal for the '{@link org.erlide.erlang.impl.ErlIntegerImpl <em>Erl Integer</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.erlide.erlang.impl.ErlIntegerImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlInteger()
+     * @generated
+     */
+    EClass ERL_INTEGER = eINSTANCE.getErlInteger();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ERL_INTEGER__VALUE = eINSTANCE.getErlInteger_Value();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.UnaryTypeImpl <em>Unary Type</em>}' class.
@@ -9322,7 +9961,7 @@ public interface ErlangPackage extends EPackage
     EClass REMOTE_TYPE = eINSTANCE.getRemoteType();
 
     /**
-     * The meta object literal for the '<em><b>M</b></em>' reference feature.
+     * The meta object literal for the '<em><b>M</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

@@ -374,22 +374,13 @@ public interface ErlangFactory extends EFactory
   RecordField createRecordField();
 
   /**
-   * Returns a new object of class '<em>Erl String</em>'.
+   * Returns a new object of class '<em>String Literal Part</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Erl String</em>'.
+   * @return a new object of class '<em>String Literal Part</em>'.
    * @generated
    */
-  ErlString createErlString();
-
-  /**
-   * Returns a new object of class '<em>Erl String Part</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Erl String Part</em>'.
-   * @generated
-   */
-  ErlStringPart createErlStringPart();
+  StringLiteralPart createStringLiteralPart();
 
   /**
    * Returns a new object of class '<em>If Expr</em>'.
@@ -543,6 +534,42 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   LCExpr createLCExpr();
+
+  /**
+   * Returns a new object of class '<em>Atom Var Macro</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Atom Var Macro</em>'.
+   * @generated
+   */
+  AtomVarMacro createAtomVarMacro();
+
+  /**
+   * Returns a new object of class '<em>Atom Var</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Atom Var</em>'.
+   * @generated
+   */
+  AtomVar createAtomVar();
+
+  /**
+   * Returns a new object of class '<em>Atom Macro</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Atom Macro</em>'.
+   * @generated
+   */
+  AtomMacro createAtomMacro();
+
+  /**
+   * Returns a new object of class '<em>Int Var Macro</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Int Var Macro</em>'.
+   * @generated
+   */
+  IntVarMacro createIntVarMacro();
 
   /**
    * Returns a new object of class '<em>Spec Fun</em>'.
@@ -788,6 +815,15 @@ public interface ErlangFactory extends EFactory
   BlockExpr createBlockExpr();
 
   /**
+   * Returns a new object of class '<em>Erl Char</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Erl Char</em>'.
+   * @generated
+   */
+  ErlChar createErlChar();
+
+  /**
    * Returns a new object of class '<em>Atom</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -795,6 +831,15 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   Atom createAtom();
+
+  /**
+   * Returns a new object of class '<em>Macro</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Macro</em>'.
+   * @generated
+   */
+  Macro createMacro();
 
   /**
    * Returns a new object of class '<em>Variable</em>'.
@@ -806,22 +851,13 @@ public interface ErlangFactory extends EFactory
   Variable createVariable();
 
   /**
-   * Returns a new object of class '<em>Erl Char</em>'.
+   * Returns a new object of class '<em>Erl Float</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Erl Char</em>'.
+   * @return a new object of class '<em>Erl Float</em>'.
    * @generated
    */
-  ErlChar createErlChar();
-
-  /**
-   * Returns a new object of class '<em>Macro Expr</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Macro Expr</em>'.
-   * @generated
-   */
-  MacroExpr createMacroExpr();
+  ErlFloat createErlFloat();
 
   /**
    * Returns a new object of class '<em>Erl Integer</em>'.
@@ -831,15 +867,6 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   ErlInteger createErlInteger();
-
-  /**
-   * Returns a new object of class '<em>Erl Float</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Erl Float</em>'.
-   * @generated
-   */
-  ErlFloat createErlFloat();
 
   /**
    * Returns a new object of class '<em>Unary Type</em>'.

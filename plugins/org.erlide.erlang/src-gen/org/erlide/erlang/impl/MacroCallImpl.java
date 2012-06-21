@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.MacroCall;
@@ -40,14 +39,14 @@ import org.erlide.erlang.MacroCall;
 public class MacroCallImpl extends MinimalEObjectImpl.Container implements MacroCall
 {
   /**
-   * The cached value of the '{@link #getMacroName() <em>Macro Name</em>}' reference.
+   * The cached value of the '{@link #getMacroName() <em>Macro Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getMacroName()
    * @generated
    * @ordered
    */
-  protected DefineAttribute macroName;
+  protected Expression macroName;
 
   /**
    * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
@@ -85,27 +84,7 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
    * <!-- end-user-doc -->
    * @generated
    */
-  public DefineAttribute getMacroName()
-  {
-    if (macroName != null && macroName.eIsProxy())
-    {
-      InternalEObject oldMacroName = (InternalEObject)macroName;
-      macroName = (DefineAttribute)eResolveProxy(oldMacroName);
-      if (macroName != oldMacroName)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.MACRO_CALL__MACRO_NAME, oldMacroName, macroName));
-      }
-    }
-    return macroName;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DefineAttribute basicGetMacroName()
+  public Expression getMacroName()
   {
     return macroName;
   }
@@ -115,12 +94,37 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMacroName(DefineAttribute newMacroName)
+  public NotificationChain basicSetMacroName(Expression newMacroName, NotificationChain msgs)
   {
-    DefineAttribute oldMacroName = macroName;
+    Expression oldMacroName = macroName;
     macroName = newMacroName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO_CALL__MACRO_NAME, oldMacroName, macroName));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO_CALL__MACRO_NAME, oldMacroName, newMacroName);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMacroName(Expression newMacroName)
+  {
+    if (newMacroName != macroName)
+    {
+      NotificationChain msgs = null;
+      if (macroName != null)
+        msgs = ((InternalEObject)macroName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.MACRO_CALL__MACRO_NAME, null, msgs);
+      if (newMacroName != null)
+        msgs = ((InternalEObject)newMacroName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.MACRO_CALL__MACRO_NAME, null, msgs);
+      msgs = basicSetMacroName(newMacroName, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO_CALL__MACRO_NAME, newMacroName, newMacroName));
   }
 
   /**
@@ -147,6 +151,8 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
   {
     switch (featureID)
     {
+      case ErlangPackage.MACRO_CALL__MACRO_NAME:
+        return basicSetMacroName(null, msgs);
       case ErlangPackage.MACRO_CALL__ARGS:
         return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
     }
@@ -164,8 +170,7 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
     switch (featureID)
     {
       case ErlangPackage.MACRO_CALL__MACRO_NAME:
-        if (resolve) return getMacroName();
-        return basicGetMacroName();
+        return getMacroName();
       case ErlangPackage.MACRO_CALL__ARGS:
         return getArgs();
     }
@@ -184,7 +189,7 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
     switch (featureID)
     {
       case ErlangPackage.MACRO_CALL__MACRO_NAME:
-        setMacroName((DefineAttribute)newValue);
+        setMacroName((Expression)newValue);
         return;
       case ErlangPackage.MACRO_CALL__ARGS:
         getArgs().clear();
@@ -205,7 +210,7 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
     switch (featureID)
     {
       case ErlangPackage.MACRO_CALL__MACRO_NAME:
-        setMacroName((DefineAttribute)null);
+        setMacroName((Expression)null);
         return;
       case ErlangPackage.MACRO_CALL__ARGS:
         getArgs().clear();

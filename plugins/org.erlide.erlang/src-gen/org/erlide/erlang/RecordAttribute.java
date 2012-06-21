@@ -94,29 +94,29 @@ public interface RecordAttribute extends ReferenceableElement, Attribute
   EList<RecordFieldDef> getFields();
 
   /**
-   * Returns the value of the '<em><b>Record Macro</b></em>' reference.
+   * Returns the value of the '<em><b>Record Macro</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Record Macro</em>' reference isn't clear,
+   * If the meaning of the '<em>Record Macro</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Record Macro</em>' reference.
-   * @see #setRecordMacro(DefineAttribute)
+   * @return the value of the '<em>Record Macro</em>' containment reference.
+   * @see #setRecordMacro(MacroCall)
    * @see org.erlide.erlang.ErlangPackage#getRecordAttribute_RecordMacro()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  DefineAttribute getRecordMacro();
+  MacroCall getRecordMacro();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.RecordAttribute#getRecordMacro <em>Record Macro</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.RecordAttribute#getRecordMacro <em>Record Macro</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Record Macro</em>' reference.
+   * @param value the new value of the '<em>Record Macro</em>' containment reference.
    * @see #getRecordMacro()
    * @generated
    */
-  void setRecordMacro(DefineAttribute value);
+  void setRecordMacro(MacroCall value);
 
 } // RecordAttribute

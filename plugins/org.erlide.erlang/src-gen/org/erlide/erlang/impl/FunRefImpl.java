@@ -3,15 +3,17 @@
 package org.erlide.erlang.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.erlide.erlang.AtomVarMacro;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.FunRef;
-import org.erlide.erlang.ReferenceableElement;
+import org.erlide.erlang.IntVarMacro;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,34 +33,34 @@ import org.erlide.erlang.ReferenceableElement;
 public class FunRefImpl extends FunExprImpl implements FunRef
 {
   /**
-   * The cached value of the '{@link #getModule() <em>Module</em>}' reference.
+   * The cached value of the '{@link #getModule() <em>Module</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getModule()
    * @generated
    * @ordered
    */
-  protected ReferenceableElement module;
+  protected AtomVarMacro module;
 
   /**
-   * The cached value of the '{@link #getFunction() <em>Function</em>}' reference.
+   * The cached value of the '{@link #getFunction() <em>Function</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getFunction()
    * @generated
    * @ordered
    */
-  protected ReferenceableElement function;
+  protected AtomVarMacro function;
 
   /**
-   * The cached value of the '{@link #getArity() <em>Arity</em>}' reference.
+   * The cached value of the '{@link #getArity() <em>Arity</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getArity()
    * @generated
    * @ordered
    */
-  protected ReferenceableElement arity;
+  protected IntVarMacro arity;
 
   /**
    * <!-- begin-user-doc -->
@@ -86,27 +88,7 @@ public class FunRefImpl extends FunExprImpl implements FunRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public ReferenceableElement getModule()
-  {
-    if (module != null && module.eIsProxy())
-    {
-      InternalEObject oldModule = (InternalEObject)module;
-      module = (ReferenceableElement)eResolveProxy(oldModule);
-      if (module != oldModule)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.FUN_REF__MODULE, oldModule, module));
-      }
-    }
-    return module;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ReferenceableElement basicGetModule()
+  public AtomVarMacro getModule()
   {
     return module;
   }
@@ -116,32 +98,16 @@ public class FunRefImpl extends FunExprImpl implements FunRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setModule(ReferenceableElement newModule)
+  public NotificationChain basicSetModule(AtomVarMacro newModule, NotificationChain msgs)
   {
-    ReferenceableElement oldModule = module;
+    AtomVarMacro oldModule = module;
     module = newModule;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__MODULE, oldModule, module));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ReferenceableElement getFunction()
-  {
-    if (function != null && function.eIsProxy())
     {
-      InternalEObject oldFunction = (InternalEObject)function;
-      function = (ReferenceableElement)eResolveProxy(oldFunction);
-      if (function != oldFunction)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.FUN_REF__FUNCTION, oldFunction, function));
-      }
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__MODULE, oldModule, newModule);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return function;
+    return msgs;
   }
 
   /**
@@ -149,7 +115,28 @@ public class FunRefImpl extends FunExprImpl implements FunRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public ReferenceableElement basicGetFunction()
+  public void setModule(AtomVarMacro newModule)
+  {
+    if (newModule != module)
+    {
+      NotificationChain msgs = null;
+      if (module != null)
+        msgs = ((InternalEObject)module).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUN_REF__MODULE, null, msgs);
+      if (newModule != null)
+        msgs = ((InternalEObject)newModule).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUN_REF__MODULE, null, msgs);
+      msgs = basicSetModule(newModule, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__MODULE, newModule, newModule));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AtomVarMacro getFunction()
   {
     return function;
   }
@@ -159,32 +146,16 @@ public class FunRefImpl extends FunExprImpl implements FunRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFunction(ReferenceableElement newFunction)
+  public NotificationChain basicSetFunction(AtomVarMacro newFunction, NotificationChain msgs)
   {
-    ReferenceableElement oldFunction = function;
+    AtomVarMacro oldFunction = function;
     function = newFunction;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__FUNCTION, oldFunction, function));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ReferenceableElement getArity()
-  {
-    if (arity != null && arity.eIsProxy())
     {
-      InternalEObject oldArity = (InternalEObject)arity;
-      arity = (ReferenceableElement)eResolveProxy(oldArity);
-      if (arity != oldArity)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.FUN_REF__ARITY, oldArity, arity));
-      }
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__FUNCTION, oldFunction, newFunction);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return arity;
+    return msgs;
   }
 
   /**
@@ -192,7 +163,28 @@ public class FunRefImpl extends FunExprImpl implements FunRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public ReferenceableElement basicGetArity()
+  public void setFunction(AtomVarMacro newFunction)
+  {
+    if (newFunction != function)
+    {
+      NotificationChain msgs = null;
+      if (function != null)
+        msgs = ((InternalEObject)function).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUN_REF__FUNCTION, null, msgs);
+      if (newFunction != null)
+        msgs = ((InternalEObject)newFunction).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUN_REF__FUNCTION, null, msgs);
+      msgs = basicSetFunction(newFunction, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__FUNCTION, newFunction, newFunction));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IntVarMacro getArity()
   {
     return arity;
   }
@@ -202,12 +194,57 @@ public class FunRefImpl extends FunExprImpl implements FunRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setArity(ReferenceableElement newArity)
+  public NotificationChain basicSetArity(IntVarMacro newArity, NotificationChain msgs)
   {
-    ReferenceableElement oldArity = arity;
+    IntVarMacro oldArity = arity;
     arity = newArity;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__ARITY, oldArity, arity));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__ARITY, oldArity, newArity);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setArity(IntVarMacro newArity)
+  {
+    if (newArity != arity)
+    {
+      NotificationChain msgs = null;
+      if (arity != null)
+        msgs = ((InternalEObject)arity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUN_REF__ARITY, null, msgs);
+      if (newArity != null)
+        msgs = ((InternalEObject)newArity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUN_REF__ARITY, null, msgs);
+      msgs = basicSetArity(newArity, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUN_REF__ARITY, newArity, newArity));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ErlangPackage.FUN_REF__MODULE:
+        return basicSetModule(null, msgs);
+      case ErlangPackage.FUN_REF__FUNCTION:
+        return basicSetFunction(null, msgs);
+      case ErlangPackage.FUN_REF__ARITY:
+        return basicSetArity(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -221,14 +258,11 @@ public class FunRefImpl extends FunExprImpl implements FunRef
     switch (featureID)
     {
       case ErlangPackage.FUN_REF__MODULE:
-        if (resolve) return getModule();
-        return basicGetModule();
+        return getModule();
       case ErlangPackage.FUN_REF__FUNCTION:
-        if (resolve) return getFunction();
-        return basicGetFunction();
+        return getFunction();
       case ErlangPackage.FUN_REF__ARITY:
-        if (resolve) return getArity();
-        return basicGetArity();
+        return getArity();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -244,13 +278,13 @@ public class FunRefImpl extends FunExprImpl implements FunRef
     switch (featureID)
     {
       case ErlangPackage.FUN_REF__MODULE:
-        setModule((ReferenceableElement)newValue);
+        setModule((AtomVarMacro)newValue);
         return;
       case ErlangPackage.FUN_REF__FUNCTION:
-        setFunction((ReferenceableElement)newValue);
+        setFunction((AtomVarMacro)newValue);
         return;
       case ErlangPackage.FUN_REF__ARITY:
-        setArity((ReferenceableElement)newValue);
+        setArity((IntVarMacro)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -267,13 +301,13 @@ public class FunRefImpl extends FunExprImpl implements FunRef
     switch (featureID)
     {
       case ErlangPackage.FUN_REF__MODULE:
-        setModule((ReferenceableElement)null);
+        setModule((AtomVarMacro)null);
         return;
       case ErlangPackage.FUN_REF__FUNCTION:
-        setFunction((ReferenceableElement)null);
+        setFunction((AtomVarMacro)null);
         return;
       case ErlangPackage.FUN_REF__ARITY:
-        setArity((ReferenceableElement)null);
+        setArity((IntVarMacro)null);
         return;
     }
     super.eUnset(featureID);

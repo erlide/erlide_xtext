@@ -11,22 +11,22 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.MacroExpr;
+import org.erlide.erlang.Macro;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Macro Expr</b></em>'.
+ * An implementation of the model object '<em><b>Macro</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.MacroExprImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.MacroImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class MacroExprImpl extends ExpressionImpl implements MacroExpr
+public class MacroImpl extends ExpressionImpl implements Macro
 {
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
@@ -43,7 +43,7 @@ public class MacroExprImpl extends ExpressionImpl implements MacroExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  protected MacroExprImpl()
+  protected MacroImpl()
   {
     super();
   }
@@ -56,7 +56,7 @@ public class MacroExprImpl extends ExpressionImpl implements MacroExpr
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.MACRO_EXPR;
+    return ErlangPackage.Literals.MACRO;
   }
 
   /**
@@ -73,7 +73,7 @@ public class MacroExprImpl extends ExpressionImpl implements MacroExpr
       if (value != oldValue)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.MACRO_EXPR__VALUE, oldValue, value));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.MACRO__VALUE, oldValue, value));
       }
     }
     return value;
@@ -99,7 +99,7 @@ public class MacroExprImpl extends ExpressionImpl implements MacroExpr
     DefineAttribute oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO_EXPR__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO__VALUE, oldValue, value));
   }
 
   /**
@@ -112,7 +112,7 @@ public class MacroExprImpl extends ExpressionImpl implements MacroExpr
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_EXPR__VALUE:
+      case ErlangPackage.MACRO__VALUE:
         if (resolve) return getValue();
         return basicGetValue();
     }
@@ -129,7 +129,7 @@ public class MacroExprImpl extends ExpressionImpl implements MacroExpr
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_EXPR__VALUE:
+      case ErlangPackage.MACRO__VALUE:
         setValue((DefineAttribute)newValue);
         return;
     }
@@ -146,7 +146,7 @@ public class MacroExprImpl extends ExpressionImpl implements MacroExpr
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_EXPR__VALUE:
+      case ErlangPackage.MACRO__VALUE:
         setValue((DefineAttribute)null);
         return;
     }
@@ -163,10 +163,10 @@ public class MacroExprImpl extends ExpressionImpl implements MacroExpr
   {
     switch (featureID)
     {
-      case ErlangPackage.MACRO_EXPR__VALUE:
+      case ErlangPackage.MACRO__VALUE:
         return value != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //MacroExprImpl
+} //MacroImpl

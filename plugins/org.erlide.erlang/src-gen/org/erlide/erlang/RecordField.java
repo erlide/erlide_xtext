@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface RecordField extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Ref</b></em>' reference.
+   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Ref</em>' reference isn't clear,
+   * If the meaning of the '<em>Ref</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(ReferenceableElement)
+   * @return the value of the '<em>Ref</em>' containment reference.
+   * @see #setRef(AtomMacro)
    * @see org.erlide.erlang.ErlangPackage#getRecordField_Ref()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  ReferenceableElement getRef();
+  AtomMacro getRef();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.RecordField#getRef <em>Ref</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.RecordField#getRef <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref</em>' reference.
+   * @param value the new value of the '<em>Ref</em>' containment reference.
    * @see #getRef()
    * @generated
    */
-  void setRef(ReferenceableElement value);
+  void setRef(AtomMacro value);
 
   /**
    * Returns the value of the '<em><b>Value</b></em>' containment reference.

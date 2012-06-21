@@ -3,13 +3,14 @@
 package org.erlide.erlang.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.erlide.erlang.DefineAttribute;
+import org.erlide.erlang.AtomVar;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.IfdefAttribute;
 
@@ -29,14 +30,14 @@ import org.erlide.erlang.IfdefAttribute;
 public class IfdefAttributeImpl extends ConditionalAttributeImpl implements IfdefAttribute
 {
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRef()
    * @generated
    * @ordered
    */
-  protected DefineAttribute ref;
+  protected AtomVar ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -64,27 +65,7 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
    * <!-- end-user-doc -->
    * @generated
    */
-  public DefineAttribute getRef()
-  {
-    if (ref != null && ref.eIsProxy())
-    {
-      InternalEObject oldRef = (InternalEObject)ref;
-      ref = (DefineAttribute)eResolveProxy(oldRef);
-      if (ref != oldRef)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.IFDEF_ATTRIBUTE__REF, oldRef, ref));
-      }
-    }
-    return ref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DefineAttribute basicGetRef()
+  public AtomVar getRef()
   {
     return ref;
   }
@@ -94,12 +75,53 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(DefineAttribute newRef)
+  public NotificationChain basicSetRef(AtomVar newRef, NotificationChain msgs)
   {
-    DefineAttribute oldRef = ref;
+    AtomVar oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.IFDEF_ATTRIBUTE__REF, oldRef, ref));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.IFDEF_ATTRIBUTE__REF, oldRef, newRef);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRef(AtomVar newRef)
+  {
+    if (newRef != ref)
+    {
+      NotificationChain msgs = null;
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.IFDEF_ATTRIBUTE__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.IFDEF_ATTRIBUTE__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.IFDEF_ATTRIBUTE__REF, newRef, newRef));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ErlangPackage.IFDEF_ATTRIBUTE__REF:
+        return basicSetRef(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -113,8 +135,7 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
     switch (featureID)
     {
       case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        if (resolve) return getRef();
-        return basicGetRef();
+        return getRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -130,7 +151,7 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
     switch (featureID)
     {
       case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        setRef((DefineAttribute)newValue);
+        setRef((AtomVar)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -147,7 +168,7 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
     switch (featureID)
     {
       case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        setRef((DefineAttribute)null);
+        setRef((AtomVar)null);
         return;
     }
     super.eUnset(featureID);

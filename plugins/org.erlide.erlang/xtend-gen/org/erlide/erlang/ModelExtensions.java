@@ -23,6 +23,7 @@ import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.erlide.erlang.Atom;
+import org.erlide.erlang.AtomVarMacro;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.CompileAttribute;
 import org.erlide.erlang.ConditionalAttribute;
@@ -40,9 +41,9 @@ import org.erlide.erlang.FunctionClause;
 import org.erlide.erlang.ImportAttribute;
 import org.erlide.erlang.IncludeAttribute;
 import org.erlide.erlang.IncludeLibAttribute;
+import org.erlide.erlang.IntVarMacro;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.ModuleAttribute;
-import org.erlide.erlang.ReferenceableElement;
 import org.erlide.erlang.SpecAttribute;
 import org.erlide.erlang.SpecFun;
 import org.erlide.erlang.TopType;
@@ -159,22 +160,22 @@ public class ModelExtensions {
         };
       Iterable<EList<FunRef>> _map = IterableExtensions.<ExportAttribute, EList<FunRef>>map(exported, _function);
       final Iterable<FunRef> refs = Iterables.<FunRef>concat(_map);
-      final Function1<FunRef,ReferenceableElement> _function_1 = new Function1<FunRef,ReferenceableElement>() {
-          public ReferenceableElement apply(final FunRef it) {
-            ReferenceableElement _function = it.getFunction();
+      final Function1<FunRef,AtomVarMacro> _function_1 = new Function1<FunRef,AtomVarMacro>() {
+          public AtomVarMacro apply(final FunRef it) {
+            AtomVarMacro _function = it.getFunction();
             return _function;
           }
         };
-      Iterable<ReferenceableElement> _map_1 = IterableExtensions.<FunRef, ReferenceableElement>map(refs, _function_1);
+      Iterable<AtomVarMacro> _map_1 = IterableExtensions.<FunRef, AtomVarMacro>map(refs, _function_1);
       String _plus = ("\u00A4\u00A4 " + _map_1);
       InputOutput.<String>println(_plus);
-      final Function1<FunRef,ReferenceableElement> _function_2 = new Function1<FunRef,ReferenceableElement>() {
-          public ReferenceableElement apply(final FunRef it) {
-            ReferenceableElement _function = it.getFunction();
+      final Function1<FunRef,AtomVarMacro> _function_2 = new Function1<FunRef,AtomVarMacro>() {
+          public AtomVarMacro apply(final FunRef it) {
+            AtomVarMacro _function = it.getFunction();
             return _function;
           }
         };
-      Iterable<ReferenceableElement> _map_2 = IterableExtensions.<FunRef, ReferenceableElement>map(refs, _function_2);
+      Iterable<AtomVarMacro> _map_2 = IterableExtensions.<FunRef, AtomVarMacro>map(refs, _function_2);
       Iterable<Function> _filter = Iterables.<Function>filter(_map_2, Function.class);
       List<Function> _list = IterableExtensions.<Function>toList(_filter);
       _xblockexpression = (_list);
@@ -316,7 +317,7 @@ public class ModelExtensions {
           public Boolean apply(final SpecAttribute it) {
             boolean _and = false;
             SpecFun _ref = it.getRef();
-            ReferenceableElement _function = _ref.getFunction();
+            AtomVarMacro _function = _ref.getFunction();
             boolean _equals = Objects.equal(_function, fname);
             if (!_equals) {
               _and = false;
@@ -409,7 +410,7 @@ public class ModelExtensions {
   public int getSpecArity(final SpecAttribute spec) {
     int _xifexpression = (int) 0;
     SpecFun _ref = spec.getRef();
-    ReferenceableElement _arity = _ref.getArity();
+    IntVarMacro _arity = _ref.getArity();
     boolean _notEquals = (!Objects.equal(_arity, null));
     if (_notEquals) {
       _xifexpression = 0;

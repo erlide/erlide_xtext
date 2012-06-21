@@ -270,14 +270,9 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createRecordFieldAdapter();
       }
       @Override
-      public Adapter caseErlString(ErlString object)
+      public Adapter caseStringLiteralPart(StringLiteralPart object)
       {
-        return createErlStringAdapter();
-      }
-      @Override
-      public Adapter caseErlStringPart(ErlStringPart object)
-      {
-        return createErlStringPartAdapter();
+        return createStringLiteralPartAdapter();
       }
       @Override
       public Adapter caseIfExpr(IfExpr object)
@@ -363,6 +358,26 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLCExpr(LCExpr object)
       {
         return createLCExprAdapter();
+      }
+      @Override
+      public Adapter caseAtomVarMacro(AtomVarMacro object)
+      {
+        return createAtomVarMacroAdapter();
+      }
+      @Override
+      public Adapter caseAtomVar(AtomVar object)
+      {
+        return createAtomVarAdapter();
+      }
+      @Override
+      public Adapter caseAtomMacro(AtomMacro object)
+      {
+        return createAtomMacroAdapter();
+      }
+      @Override
+      public Adapter caseIntVarMacro(IntVarMacro object)
+      {
+        return createIntVarMacroAdapter();
       }
       @Override
       public Adapter caseSpecFun(SpecFun object)
@@ -500,9 +515,19 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createBlockExprAdapter();
       }
       @Override
+      public Adapter caseErlChar(ErlChar object)
+      {
+        return createErlCharAdapter();
+      }
+      @Override
       public Adapter caseAtom(Atom object)
       {
         return createAtomAdapter();
+      }
+      @Override
+      public Adapter caseMacro(Macro object)
+      {
+        return createMacroAdapter();
       }
       @Override
       public Adapter caseVariable(Variable object)
@@ -510,24 +535,14 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createVariableAdapter();
       }
       @Override
-      public Adapter caseErlChar(ErlChar object)
+      public Adapter caseErlFloat(ErlFloat object)
       {
-        return createErlCharAdapter();
-      }
-      @Override
-      public Adapter caseMacroExpr(MacroExpr object)
-      {
-        return createMacroExprAdapter();
+        return createErlFloatAdapter();
       }
       @Override
       public Adapter caseErlInteger(ErlInteger object)
       {
         return createErlIntegerAdapter();
-      }
-      @Override
-      public Adapter caseErlFloat(ErlFloat object)
-      {
-        return createErlFloatAdapter();
       }
       @Override
       public Adapter caseUnaryType(UnaryType object)
@@ -1167,31 +1182,16 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ErlString <em>Erl String</em>}'.
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.StringLiteralPart <em>String Literal Part</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.erlide.erlang.ErlString
+   * @see org.erlide.erlang.StringLiteralPart
    * @generated
    */
-  public Adapter createErlStringAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ErlStringPart <em>Erl String Part</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.ErlStringPart
-   * @generated
-   */
-  public Adapter createErlStringPartAdapter()
+  public Adapter createStringLiteralPartAdapter()
   {
     return null;
   }
@@ -1447,6 +1447,66 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLCExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.AtomVarMacro <em>Atom Var Macro</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.AtomVarMacro
+   * @generated
+   */
+  public Adapter createAtomVarMacroAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.AtomVar <em>Atom Var</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.AtomVar
+   * @generated
+   */
+  public Adapter createAtomVarAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.AtomMacro <em>Atom Macro</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.AtomMacro
+   * @generated
+   */
+  public Adapter createAtomMacroAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.IntVarMacro <em>Int Var Macro</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.IntVarMacro
+   * @generated
+   */
+  public Adapter createIntVarMacroAdapter()
   {
     return null;
   }
@@ -1857,6 +1917,21 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ErlChar <em>Erl Char</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.ErlChar
+   * @generated
+   */
+  public Adapter createErlCharAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.erlide.erlang.Atom <em>Atom</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1867,6 +1942,21 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAtomAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.Macro <em>Macro</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.Macro
+   * @generated
+   */
+  public Adapter createMacroAdapter()
   {
     return null;
   }
@@ -1887,31 +1977,16 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ErlChar <em>Erl Char</em>}'.
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ErlFloat <em>Erl Float</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.erlide.erlang.ErlChar
+   * @see org.erlide.erlang.ErlFloat
    * @generated
    */
-  public Adapter createErlCharAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.MacroExpr <em>Macro Expr</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.MacroExpr
-   * @generated
-   */
-  public Adapter createMacroExprAdapter()
+  public Adapter createErlFloatAdapter()
   {
     return null;
   }
@@ -1927,21 +2002,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createErlIntegerAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ErlFloat <em>Erl Float</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.ErlFloat
-   * @generated
-   */
-  public Adapter createErlFloatAdapter()
   {
     return null;
   }

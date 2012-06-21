@@ -24,81 +24,81 @@ package org.erlide.erlang;
 public interface FunRef extends FunExpr
 {
   /**
-   * Returns the value of the '<em><b>Module</b></em>' reference.
+   * Returns the value of the '<em><b>Module</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Module</em>' reference isn't clear,
+   * If the meaning of the '<em>Module</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Module</em>' reference.
-   * @see #setModule(ReferenceableElement)
+   * @return the value of the '<em>Module</em>' containment reference.
+   * @see #setModule(AtomVarMacro)
    * @see org.erlide.erlang.ErlangPackage#getFunRef_Module()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  ReferenceableElement getModule();
+  AtomVarMacro getModule();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Module</em>' reference.
+   * @param value the new value of the '<em>Module</em>' containment reference.
    * @see #getModule()
    * @generated
    */
-  void setModule(ReferenceableElement value);
+  void setModule(AtomVarMacro value);
 
   /**
-   * Returns the value of the '<em><b>Function</b></em>' reference.
+   * Returns the value of the '<em><b>Function</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Function</em>' reference isn't clear,
+   * If the meaning of the '<em>Function</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Function</em>' reference.
-   * @see #setFunction(ReferenceableElement)
+   * @return the value of the '<em>Function</em>' containment reference.
+   * @see #setFunction(AtomVarMacro)
    * @see org.erlide.erlang.ErlangPackage#getFunRef_Function()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  ReferenceableElement getFunction();
+  AtomVarMacro getFunction();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Function</em>' reference.
+   * @param value the new value of the '<em>Function</em>' containment reference.
    * @see #getFunction()
    * @generated
    */
-  void setFunction(ReferenceableElement value);
+  void setFunction(AtomVarMacro value);
 
   /**
-   * Returns the value of the '<em><b>Arity</b></em>' reference.
+   * Returns the value of the '<em><b>Arity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Arity</em>' reference isn't clear,
+   * If the meaning of the '<em>Arity</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Arity</em>' reference.
-   * @see #setArity(ReferenceableElement)
+   * @return the value of the '<em>Arity</em>' containment reference.
+   * @see #setArity(IntVarMacro)
    * @see org.erlide.erlang.ErlangPackage#getFunRef_Arity()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  ReferenceableElement getArity();
+  IntVarMacro getArity();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Arity</em>' reference.
+   * @param value the new value of the '<em>Arity</em>' containment reference.
    * @see #getArity()
    * @generated
    */
-  void setArity(ReferenceableElement value);
+  void setArity(IntVarMacro value);
 
 } // FunRef
