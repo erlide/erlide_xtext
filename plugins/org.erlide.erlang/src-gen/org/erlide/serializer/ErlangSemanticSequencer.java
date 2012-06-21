@@ -81,7 +81,6 @@ import org.erlide.erlang.RecordType;
 import org.erlide.erlang.RemoteTarget;
 import org.erlide.erlang.RemoteType;
 import org.erlide.erlang.SpecAttribute;
-import org.erlide.erlang.SpecFun;
 import org.erlide.erlang.StringLiteralPart;
 import org.erlide.erlang.TopType;
 import org.erlide.erlang.TryClause;
@@ -828,6 +827,10 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 					sequence_FunRef(context, (FunRef) semanticObject); 
 					return; 
 				}
+				else if(context == grammarAccess.getSpecFunRule()) {
+					sequence_SpecFun(context, (FunRef) semanticObject); 
+					return; 
+				}
 				else break;
 			case ErlangPackage.FUN_TYPE:
 				if(context == grammarAccess.getFunTypeRule()) {
@@ -1363,12 +1366,6 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				   context == grammarAccess.getFormRule() ||
 				   context == grammarAccess.getSpecAttributeRule()) {
 					sequence_SpecAttribute(context, (SpecAttribute) semanticObject); 
-					return; 
-				}
-				else break;
-			case ErlangPackage.SPEC_FUN:
-				if(context == grammarAccess.getSpecFunRule()) {
-					sequence_SpecFun(context, (SpecFun) semanticObject); 
 					return; 
 				}
 				else break;
@@ -2329,7 +2326,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 * Constraint:
 	 *     (module_=AtomVarMacro? function_=AtomVarMacro arity_=IntVarMacro?)
 	 */
-	protected void sequence_SpecFun(EObject context, SpecFun semanticObject) {
+	protected void sequence_SpecFun(EObject context, FunRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

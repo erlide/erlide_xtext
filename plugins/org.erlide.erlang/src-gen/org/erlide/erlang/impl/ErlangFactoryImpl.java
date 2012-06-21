@@ -120,7 +120,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.BINARY_ITEM: return createBinaryItem();
       case ErlangPackage.BIT_TYPE: return createBitType();
       case ErlangPackage.LC_EXPR: return createLCExpr();
-      case ErlangPackage.SPEC_FUN: return createSpecFun();
       case ErlangPackage.TYPE_SIG: return createTypeSig();
       case ErlangPackage.FUN_TYPE: return createFunType();
       case ErlangPackage.TYPE_GUARDS: return createTypeGuards();
@@ -778,17 +777,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     LCExprImpl lcExpr = new LCExprImpl();
     return lcExpr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SpecFun createSpecFun()
-  {
-    SpecFunImpl specFun = new SpecFunImpl();
-    return specFun;
   }
 
   /**

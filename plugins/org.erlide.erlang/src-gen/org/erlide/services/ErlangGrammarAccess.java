@@ -4934,7 +4934,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonColonKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		
 		//// Type language
-		//SpecFun:
+		//SpecFun returns FunRef:
 		//	(module_=AtomVarMacro ":")? function_=AtomVarMacro ("/" arity_=IntVarMacro "::")?;
 		public ParserRule getRule() { return rule; }
 
@@ -7238,7 +7238,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//// Type language
-	//SpecFun:
+	//SpecFun returns FunRef:
 	//	(module_=AtomVarMacro ":")? function_=AtomVarMacro ("/" arity_=IntVarMacro "::")?;
 	public SpecFunElements getSpecFunAccess() {
 		return (pSpecFun != null) ? pSpecFun : (pSpecFun = new SpecFunElements());

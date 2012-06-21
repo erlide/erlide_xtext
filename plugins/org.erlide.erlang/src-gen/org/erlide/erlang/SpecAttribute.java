@@ -32,12 +32,12 @@ public interface SpecAttribute extends AbstractTypeAttribute
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' containment reference.
-   * @see #setRef(SpecFun)
+   * @see #setRef(FunRef)
    * @see org.erlide.erlang.ErlangPackage#getSpecAttribute_Ref()
    * @model containment="true"
    * @generated
    */
-  SpecFun getRef();
+  FunRef getRef();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.SpecAttribute#getRef <em>Ref</em>}' containment reference.
@@ -47,7 +47,7 @@ public interface SpecAttribute extends AbstractTypeAttribute
    * @see #getRef()
    * @generated
    */
-  void setRef(SpecFun value);
+  void setRef(FunRef value);
 
   /**
    * Returns the value of the '<em><b>Signatures</b></em>' containment reference list.

@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.FunRef;
 import org.erlide.erlang.SpecAttribute;
-import org.erlide.erlang.SpecFun;
 import org.erlide.erlang.TypeSig;
 
 /**
@@ -46,7 +46,7 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
    * @generated
    * @ordered
    */
-  protected SpecFun ref;
+  protected FunRef ref;
 
   /**
    * The cached value of the '{@link #getSignatures() <em>Signatures</em>}' containment reference list.
@@ -84,7 +84,7 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
    * <!-- end-user-doc -->
    * @generated
    */
-  public SpecFun getRef()
+  public FunRef getRef()
   {
     return ref;
   }
@@ -94,9 +94,9 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRef(SpecFun newRef, NotificationChain msgs)
+  public NotificationChain basicSetRef(FunRef newRef, NotificationChain msgs)
   {
-    SpecFun oldRef = ref;
+    FunRef oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
     {
@@ -111,7 +111,7 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(SpecFun newRef)
+  public void setRef(FunRef newRef)
   {
     if (newRef != ref)
     {
@@ -189,7 +189,7 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
     switch (featureID)
     {
       case ErlangPackage.SPEC_ATTRIBUTE__REF:
-        setRef((SpecFun)newValue);
+        setRef((FunRef)newValue);
         return;
       case ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES:
         getSignatures().clear();
@@ -210,7 +210,7 @@ public class SpecAttributeImpl extends AbstractTypeAttributeImpl implements Spec
     switch (featureID)
     {
       case ErlangPackage.SPEC_ATTRIBUTE__REF:
-        setRef((SpecFun)null);
+        setRef((FunRef)null);
         return;
       case ErlangPackage.SPEC_ATTRIBUTE__SIGNATURES:
         getSignatures().clear();

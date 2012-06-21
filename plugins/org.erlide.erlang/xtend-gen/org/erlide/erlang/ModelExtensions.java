@@ -43,7 +43,6 @@ import org.erlide.erlang.IncludeLibAttribute;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.ModuleAttribute;
 import org.erlide.erlang.SpecAttribute;
-import org.erlide.erlang.SpecFun;
 import org.erlide.erlang.TopType;
 import org.erlide.erlang.TypeSig;
 
@@ -334,7 +333,7 @@ public class ModelExtensions {
       final Function1<SpecAttribute,Boolean> _function = new Function1<SpecAttribute,Boolean>() {
           public Boolean apply(final SpecAttribute it) {
             boolean _and = false;
-            SpecFun _ref = it.getRef();
+            FunRef _ref = it.getRef();
             Expression _function_ = _ref.getFunction_();
             String _sourceText = ModelExtensions.this.getSourceText(_function_);
             boolean _equals = Objects.equal(_sourceText, fname);
@@ -376,7 +375,7 @@ public class ModelExtensions {
       final Function1<SpecAttribute,Boolean> _function = new Function1<SpecAttribute,Boolean>() {
           public Boolean apply(final SpecAttribute it) {
             boolean _and = false;
-            SpecFun _ref = it.getRef();
+            FunRef _ref = it.getRef();
             Expression _function_ = _ref.getFunction_();
             String _sourceText = ModelExtensions.this.getSourceText(_function_);
             String _name = function.getName();
@@ -396,10 +395,6 @@ public class ModelExtensions {
       _xblockexpression = (_findFirst);
     }
     return _xblockexpression;
-  }
-  
-  public boolean pointsTo(final SpecFun fun, final Function function) {
-    return true;
   }
   
   protected Module _getModule(final Module element) {
@@ -444,11 +439,11 @@ public class ModelExtensions {
   
   public int getSpecArity(final SpecAttribute spec) {
     int _xifexpression = (int) 0;
-    SpecFun _ref = spec.getRef();
+    FunRef _ref = spec.getRef();
     Expression _arity_ = _ref.getArity_();
     boolean _notEquals = (!Objects.equal(_arity_, null));
     if (_notEquals) {
-      SpecFun _ref_1 = spec.getRef();
+      FunRef _ref_1 = spec.getRef();
       Expression _arity__1 = _ref_1.getArity_();
       String _sourceText = this.getSourceText(_arity__1);
       int _parseInt = Integer.parseInt(_sourceText);

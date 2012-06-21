@@ -526,13 +526,6 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.SPEC_FUN:
-      {
-        SpecFun specFun = (SpecFun)theEObject;
-        T result = caseSpecFun(specFun);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ErlangPackage.TYPE_SIG:
       {
         TypeSig typeSig = (TypeSig)theEObject;
@@ -1774,22 +1767,6 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLCExpr(LCExpr object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Spec Fun</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Spec Fun</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSpecFun(SpecFun object)
   {
     return null;
   }

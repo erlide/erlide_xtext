@@ -355,11 +355,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createLCExprAdapter();
       }
       @Override
-      public Adapter caseSpecFun(SpecFun object)
-      {
-        return createSpecFunAdapter();
-      }
-      @Override
       public Adapter caseTypeSig(TypeSig object)
       {
         return createTypeSigAdapter();
@@ -1407,21 +1402,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLCExprAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.SpecFun <em>Spec Fun</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.SpecFun
-   * @generated
-   */
-  public Adapter createSpecFunAdapter()
   {
     return null;
   }

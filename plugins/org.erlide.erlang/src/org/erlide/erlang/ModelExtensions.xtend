@@ -1,17 +1,15 @@
 package org.erlide.erlang
 
 import com.google.common.collect.Iterables
+import com.google.inject.Inject
 import java.util.Collection
 import java.util.Set
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 import static extension org.erlide.erlang.ModelExtensions.*
-import com.google.inject.Inject
-import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.erlide.erlang.Function
-import org.erlide.erlang.SpecFun
-import org.erlide.erlang.FunRef
 
 class ModelExtensions {
     
@@ -147,10 +145,6 @@ class ModelExtensions {
 		]		
 	}
 
-	def boolean pointsTo(SpecFun fun, Function function) { 
-		true	
-	}
-	
     // Other
     
     def dispatch Module getModule(Module element) {

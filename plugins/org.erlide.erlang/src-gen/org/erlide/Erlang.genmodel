@@ -214,11 +214,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//LCExpr/op"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//LCExpr/o2"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//SpecFun">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/module_"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/function_"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/arity_"/>
-    </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//TypeSig">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TypeSig/decl"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TypeSig/guards"/>

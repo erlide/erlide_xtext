@@ -93,7 +93,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SpecAttribute" eSuperTypes="#//AbstractTypeAttribute">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//SpecFun"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//FunRef"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="signatures" upperBound="-1"
         eType="#//TypeSig" containment="true"/>
@@ -282,14 +282,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="o2" eType="#//Expression"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SpecFun">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="module_" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="function_" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="arity_" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeSig">

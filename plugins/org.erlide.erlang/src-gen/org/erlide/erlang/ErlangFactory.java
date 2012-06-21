@@ -527,15 +527,6 @@ public interface ErlangFactory extends EFactory
   LCExpr createLCExpr();
 
   /**
-   * Returns a new object of class '<em>Spec Fun</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Spec Fun</em>'.
-   * @generated
-   */
-  SpecFun createSpecFun();
-
-  /**
    * Returns a new object of class '<em>Type Sig</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -569,7 +569,7 @@ terminal fragment HEX_DIGIT:
 
 // Type language
 
-SpecFun:
+SpecFun returns FunRef:
 	(module_=AtomVarMacro ':')? function_=AtomVarMacro ('/' arity_=IntVarMacro '::')?;
 
 TypeSig:
