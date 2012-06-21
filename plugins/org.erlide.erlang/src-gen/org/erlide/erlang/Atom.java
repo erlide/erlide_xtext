@@ -30,12 +30,12 @@ public interface Atom extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' reference.
-   * @see #setValue(ReferenceableElement)
+   * @see #setValue(AtomRefTarget)
    * @see org.erlide.erlang.ErlangPackage#getAtom_Value()
    * @model
    * @generated
    */
-  ReferenceableElement getValue();
+  AtomRefTarget getValue();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.Atom#getValue <em>Value</em>}' reference.
@@ -45,6 +45,6 @@ public interface Atom extends Expression
    * @see #getValue()
    * @generated
    */
-  void setValue(ReferenceableElement value);
+  void setValue(AtomRefTarget value);
 
 } // Atom

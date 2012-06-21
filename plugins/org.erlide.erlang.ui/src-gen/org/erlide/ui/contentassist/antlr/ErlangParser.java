@@ -37,7 +37,6 @@ public class ErlangParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getReferenceableElementAccess().getAlternatives(), "rule__ReferenceableElement__Alternatives");
 					put(grammarAccess.getAtomRefTargetAccess().getAlternatives(), "rule__AtomRefTarget__Alternatives");
 					put(grammarAccess.getFormAccess().getAlternatives(), "rule__Form__Alternatives");
 					put(grammarAccess.getAttributeAccess().getAlternatives(), "rule__Attribute__Alternatives");
@@ -77,6 +76,7 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLISTOPAccess().getAlternatives(), "rule__LISTOP__Alternatives");
 					put(grammarAccess.getCOMPOPAccess().getAlternatives(), "rule__COMPOP__Alternatives");
 					put(grammarAccess.getAtomVarMacroAccess().getAlternatives(), "rule__AtomVarMacro__Alternatives");
+					put(grammarAccess.getRecordVarMacroAccess().getAlternatives(), "rule__RecordVarMacro__Alternatives");
 					put(grammarAccess.getAtomVarAccess().getAlternatives(), "rule__AtomVar__Alternatives");
 					put(grammarAccess.getAtomMacroAccess().getAlternatives(), "rule__AtomMacro__Alternatives");
 					put(grammarAccess.getIntVarMacroAccess().getAlternatives(), "rule__IntVarMacro__Alternatives");
@@ -114,6 +114,9 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRecordAttributeAccess().getGroup_5_0(), "rule__RecordAttribute__Group_5_0__0");
 					put(grammarAccess.getRecordAttributeAccess().getGroup_5_0_1(), "rule__RecordAttribute__Group_5_0_1__0");
 					put(grammarAccess.getRecordAttributeAccess().getGroup_5_0_1_1(), "rule__RecordAttribute__Group_5_0_1_1__0");
+					put(grammarAccess.getRecordFieldDefAccess().getGroup(), "rule__RecordFieldDef__Group__0");
+					put(grammarAccess.getRecordFieldDefAccess().getGroup_1(), "rule__RecordFieldDef__Group_1__0");
+					put(grammarAccess.getRecordFieldDefAccess().getGroup_2(), "rule__RecordFieldDef__Group_2__0");
 					put(grammarAccess.getExportAttributeAccess().getGroup(), "rule__ExportAttribute__Group__0");
 					put(grammarAccess.getExportAttributeAccess().getGroup_4(), "rule__ExportAttribute__Group_4__0");
 					put(grammarAccess.getExportAttributeAccess().getGroup_4_1(), "rule__ExportAttribute__Group_4_1__0");
@@ -192,14 +195,13 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRecordTupleAccess().getGroup(), "rule__RecordTuple__Group__0");
 					put(grammarAccess.getRecordTupleAccess().getGroup_2(), "rule__RecordTuple__Group_2__0");
 					put(grammarAccess.getRecordTupleAccess().getGroup_2_1(), "rule__RecordTuple__Group_2_1__0");
-					put(grammarAccess.getRecordFieldDefAccess().getGroup(), "rule__RecordFieldDef__Group__0");
-					put(grammarAccess.getRecordFieldDefAccess().getGroup_1(), "rule__RecordFieldDef__Group_1__0");
-					put(grammarAccess.getRecordFieldDefAccess().getGroup_2(), "rule__RecordFieldDef__Group_2__0");
-					put(grammarAccess.getRecordFieldAccess().getGroup(), "rule__RecordField__Group__0");
-					put(grammarAccess.getRecordFieldAccess().getGroup_1(), "rule__RecordField__Group_1__0");
-					put(grammarAccess.getRecordFieldAccess().getGroup_2(), "rule__RecordField__Group_2__0");
+					put(grammarAccess.getRecordFieldExprAccess().getGroup(), "rule__RecordFieldExpr__Group__0");
+					put(grammarAccess.getRecordFieldExprAccess().getGroup_1(), "rule__RecordFieldExpr__Group_1__0");
+					put(grammarAccess.getRecordFieldExprAccess().getGroup_2(), "rule__RecordFieldExpr__Group_2__0");
 					put(grammarAccess.getLiteralExpressionNoNumberAccess().getGroup_2(), "rule__LiteralExpressionNoNumber__Group_2__0");
-					put(grammarAccess.getAtomLiteralAccess().getGroup(), "rule__AtomLiteral__Group__0");
+					put(grammarAccess.getAtomRefLiteralAccess().getGroup(), "rule__AtomRefLiteral__Group__0");
+					put(grammarAccess.getRecordNameLiteralAccess().getGroup(), "rule__RecordNameLiteral__Group__0");
+					put(grammarAccess.getRecordFieldLiteralAccess().getGroup(), "rule__RecordFieldLiteral__Group__0");
 					put(grammarAccess.getMacroLiteralAccess().getGroup(), "rule__MacroLiteral__Group__0");
 					put(grammarAccess.getVariableLiteralAccess().getGroup(), "rule__VariableLiteral__Group__0");
 					put(grammarAccess.getStringLiteralAccess().getGroup(), "rule__StringLiteral__Group__0");
@@ -360,6 +362,9 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRecordAttributeAccess().getFieldsAssignment_5_0_1_0(), "rule__RecordAttribute__FieldsAssignment_5_0_1_0");
 					put(grammarAccess.getRecordAttributeAccess().getFieldsAssignment_5_0_1_1_1(), "rule__RecordAttribute__FieldsAssignment_5_0_1_1_1");
 					put(grammarAccess.getRecordAttributeAccess().getRecordMacroAssignment_5_1(), "rule__RecordAttribute__RecordMacroAssignment_5_1");
+					put(grammarAccess.getRecordFieldDefAccess().getNameAssignment_0(), "rule__RecordFieldDef__NameAssignment_0");
+					put(grammarAccess.getRecordFieldDefAccess().getValueAssignment_1_1(), "rule__RecordFieldDef__ValueAssignment_1_1");
+					put(grammarAccess.getRecordFieldDefAccess().getTypeAssignment_2_1(), "rule__RecordFieldDef__TypeAssignment_2_1");
 					put(grammarAccess.getExportAttributeAccess().getTagAssignment_1(), "rule__ExportAttribute__TagAssignment_1");
 					put(grammarAccess.getExportAttributeAccess().getFunsAssignment_4_0(), "rule__ExportAttribute__FunsAssignment_4_0");
 					put(grammarAccess.getExportAttributeAccess().getFunsAssignment_4_1_1(), "rule__ExportAttribute__FunsAssignment_4_1_1");
@@ -438,14 +443,13 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRecordExprAccess().getTupleAssignment_1_1(), "rule__RecordExpr__TupleAssignment_1_1");
 					put(grammarAccess.getRecordTupleAccess().getFieldsAssignment_2_0(), "rule__RecordTuple__FieldsAssignment_2_0");
 					put(grammarAccess.getRecordTupleAccess().getFieldsAssignment_2_1_1(), "rule__RecordTuple__FieldsAssignment_2_1_1");
-					put(grammarAccess.getRecordFieldDefAccess().getNameAssignment_0(), "rule__RecordFieldDef__NameAssignment_0");
-					put(grammarAccess.getRecordFieldDefAccess().getValueAssignment_1_1(), "rule__RecordFieldDef__ValueAssignment_1_1");
-					put(grammarAccess.getRecordFieldDefAccess().getTypeAssignment_2_1(), "rule__RecordFieldDef__TypeAssignment_2_1");
-					put(grammarAccess.getRecordFieldAccess().getRefAssignment_0(), "rule__RecordField__RefAssignment_0");
-					put(grammarAccess.getRecordFieldAccess().getValueAssignment_1_1(), "rule__RecordField__ValueAssignment_1_1");
-					put(grammarAccess.getRecordFieldAccess().getTypeAssignment_2_1(), "rule__RecordField__TypeAssignment_2_1");
+					put(grammarAccess.getRecordFieldExprAccess().getRefAssignment_0(), "rule__RecordFieldExpr__RefAssignment_0");
+					put(grammarAccess.getRecordFieldExprAccess().getValueAssignment_1_1(), "rule__RecordFieldExpr__ValueAssignment_1_1");
+					put(grammarAccess.getRecordFieldExprAccess().getTypeAssignment_2_1(), "rule__RecordFieldExpr__TypeAssignment_2_1");
 					put(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAssignment_2_1(), "rule__LiteralExpressionNoNumber__ValueAssignment_2_1");
-					put(grammarAccess.getAtomLiteralAccess().getValueAssignment_1(), "rule__AtomLiteral__ValueAssignment_1");
+					put(grammarAccess.getAtomRefLiteralAccess().getValueAssignment_1(), "rule__AtomRefLiteral__ValueAssignment_1");
+					put(grammarAccess.getRecordNameLiteralAccess().getValueAssignment_1(), "rule__RecordNameLiteral__ValueAssignment_1");
+					put(grammarAccess.getRecordFieldLiteralAccess().getValueAssignment_1(), "rule__RecordFieldLiteral__ValueAssignment_1");
 					put(grammarAccess.getMacroLiteralAccess().getValueAssignment_1(), "rule__MacroLiteral__ValueAssignment_1");
 					put(grammarAccess.getVariableLiteralAccess().getValueAssignment_1(), "rule__VariableLiteral__ValueAssignment_1");
 					put(grammarAccess.getStringLiteralAccess().getStringAssignment_0(), "rule__StringLiteral__StringAssignment_0");

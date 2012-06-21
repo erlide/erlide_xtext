@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="erlang" nsURI="http://www.erlide.org/Erlang" nsPrefix="erlang">
-  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//ReferenceableElement #//AtomRefTarget">
+  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//AtomRefTarget">
     <eStructuralFeatures xsi:type="ecore:EReference" name="forms" upperBound="-1"
         eType="#//Form" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReferenceableElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="AtomRefTarget"/>
   <eClassifiers xsi:type="ecore:EClass" name="Form"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalFormBlock" eSuperTypes="#//Form">
@@ -24,7 +23,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractDefineAttribute"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DefineAttribute" eSuperTypes="#//ReferenceableElement #//Attribute #//AbstractDefineAttribute">
+  <eClassifiers xsi:type="ecore:EClass" name="DefineAttribute" eSuperTypes="#//Attribute #//AbstractDefineAttribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="macroName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expression"
@@ -58,12 +57,19 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="moduleName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RecordAttribute" eSuperTypes="#//ReferenceableElement #//Attribute">
+  <eClassifiers xsi:type="ecore:EClass" name="RecordAttribute" eSuperTypes="#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
         eType="#//RecordFieldDef" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="recordMacro" eType="#//MacroCall"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecordFieldDef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//TopType"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExportAttribute" eSuperTypes="#//Attribute">
@@ -92,7 +98,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="signatures" upperBound="-1"
         eType="#//TypeSig" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TypeAttribute" eSuperTypes="#//ReferenceableElement #//AbstractTypeAttribute">
+  <eClassifiers xsi:type="ecore:EClass" name="TypeAttribute" eSuperTypes="#//AbstractTypeAttribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expression"
         containment="true"/>
@@ -104,7 +110,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//ReferenceableElement #//AtomRefTarget #//Form">
+  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//AtomRefTarget #//Form">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="clauses" upperBound="-1"
         eType="#//FunctionClause" containment="true"/>
@@ -126,7 +132,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="exprs" upperBound="-1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//ReferenceableElement #//AtomVarMacro #//AtomVar #//AtomMacro #//IntVarMacro">
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//AtomVarMacro #//RecordVarMacro #//AtomVar #//AtomMacro #//IntVarMacro">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="line" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//Expression"
         containment="true"/>
@@ -145,7 +151,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="record" eType="#//RecordExpr"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rec" eType="#//AtomVarMacro"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rec" eType="#//RecordVarMacro"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="field" eType="#//AtomMacro"
         containment="true"/>
@@ -157,16 +163,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="LetExpr" eSuperTypes="#//Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="RecordTuple">
     <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
-        eType="#//RecordField" containment="true"/>
+        eType="#//RecordFieldExpr" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RecordFieldDef" eSuperTypes="#//ReferenceableElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//TopType"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RecordField">
+  <eClassifiers xsi:type="ecore:EClass" name="RecordFieldExpr">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//AtomMacro"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Expression"
@@ -286,6 +285,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AtomVarMacro"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RecordVarMacro"/>
   <eClassifiers xsi:type="ecore:EClass" name="AtomVar"/>
   <eClassifiers xsi:type="ecore:EClass" name="AtomMacro"/>
   <eClassifiers xsi:type="ecore:EClass" name="IntVarMacro"/>
@@ -422,7 +422,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Atom" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//ReferenceableElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//AtomRefTarget"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecordName" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//RecordAttribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecordField" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//RecordFieldDef"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Macro" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//DefineAttribute"/>

@@ -10,23 +10,23 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.RecordField;
-import org.erlide.erlang.RecordFieldDef;
+import org.erlide.erlang.RecordAttribute;
+import org.erlide.erlang.RecordName;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Record Field</b></em>'.
+ * An implementation of the model object '<em><b>Record Name</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.RecordFieldImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.RecordNameImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RecordFieldImpl extends ExpressionImpl implements RecordField
+public class RecordNameImpl extends ExpressionImpl implements RecordName
 {
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
@@ -36,14 +36,14 @@ public class RecordFieldImpl extends ExpressionImpl implements RecordField
    * @generated
    * @ordered
    */
-  protected RecordFieldDef value;
+  protected RecordAttribute value;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected RecordFieldImpl()
+  protected RecordNameImpl()
   {
     super();
   }
@@ -56,7 +56,7 @@ public class RecordFieldImpl extends ExpressionImpl implements RecordField
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.RECORD_FIELD;
+    return ErlangPackage.Literals.RECORD_NAME;
   }
 
   /**
@@ -64,16 +64,16 @@ public class RecordFieldImpl extends ExpressionImpl implements RecordField
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordFieldDef getValue()
+  public RecordAttribute getValue()
   {
     if (value != null && value.eIsProxy())
     {
       InternalEObject oldValue = (InternalEObject)value;
-      value = (RecordFieldDef)eResolveProxy(oldValue);
+      value = (RecordAttribute)eResolveProxy(oldValue);
       if (value != oldValue)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.RECORD_FIELD__VALUE, oldValue, value));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.RECORD_NAME__VALUE, oldValue, value));
       }
     }
     return value;
@@ -84,7 +84,7 @@ public class RecordFieldImpl extends ExpressionImpl implements RecordField
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordFieldDef basicGetValue()
+  public RecordAttribute basicGetValue()
   {
     return value;
   }
@@ -94,12 +94,12 @@ public class RecordFieldImpl extends ExpressionImpl implements RecordField
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(RecordFieldDef newValue)
+  public void setValue(RecordAttribute newValue)
   {
-    RecordFieldDef oldValue = value;
+    RecordAttribute oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_NAME__VALUE, oldValue, value));
   }
 
   /**
@@ -112,7 +112,7 @@ public class RecordFieldImpl extends ExpressionImpl implements RecordField
   {
     switch (featureID)
     {
-      case ErlangPackage.RECORD_FIELD__VALUE:
+      case ErlangPackage.RECORD_NAME__VALUE:
         if (resolve) return getValue();
         return basicGetValue();
     }
@@ -129,8 +129,8 @@ public class RecordFieldImpl extends ExpressionImpl implements RecordField
   {
     switch (featureID)
     {
-      case ErlangPackage.RECORD_FIELD__VALUE:
-        setValue((RecordFieldDef)newValue);
+      case ErlangPackage.RECORD_NAME__VALUE:
+        setValue((RecordAttribute)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -146,8 +146,8 @@ public class RecordFieldImpl extends ExpressionImpl implements RecordField
   {
     switch (featureID)
     {
-      case ErlangPackage.RECORD_FIELD__VALUE:
-        setValue((RecordFieldDef)null);
+      case ErlangPackage.RECORD_NAME__VALUE:
+        setValue((RecordAttribute)null);
         return;
     }
     super.eUnset(featureID);
@@ -163,10 +163,10 @@ public class RecordFieldImpl extends ExpressionImpl implements RecordField
   {
     switch (featureID)
     {
-      case ErlangPackage.RECORD_FIELD__VALUE:
+      case ErlangPackage.RECORD_NAME__VALUE:
         return value != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //RecordFieldImpl
+} //RecordNameImpl

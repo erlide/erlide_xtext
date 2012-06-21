@@ -17,11 +17,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.erlide.erlang.AbstractTypeAttribute;
-import org.erlide.erlang.Attribute;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
-import org.erlide.erlang.Form;
 import org.erlide.erlang.TopType;
 import org.erlide.erlang.TypeAttribute;
 
@@ -32,7 +29,6 @@ import org.erlide.erlang.TypeAttribute;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getArgs <em>Args</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getType <em>Type</em>}</li>
@@ -41,28 +37,8 @@ import org.erlide.erlang.TypeAttribute;
  *
  * @generated
  */
-public class TypeAttributeImpl extends ReferenceableElementImpl implements TypeAttribute
+public class TypeAttributeImpl extends AbstractTypeAttributeImpl implements TypeAttribute
 {
-  /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -122,29 +98,6 @@ public class TypeAttributeImpl extends ReferenceableElementImpl implements TypeA
   protected EClass eStaticClass()
   {
     return ErlangPackage.Literals.TYPE_ATTRIBUTE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE_ATTRIBUTE__TAG, oldTag, tag));
   }
 
   /**
@@ -260,8 +213,6 @@ public class TypeAttributeImpl extends ReferenceableElementImpl implements TypeA
   {
     switch (featureID)
     {
-      case ErlangPackage.TYPE_ATTRIBUTE__TAG:
-        return getTag();
       case ErlangPackage.TYPE_ATTRIBUTE__NAME:
         return getName();
       case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
@@ -283,9 +234,6 @@ public class TypeAttributeImpl extends ReferenceableElementImpl implements TypeA
   {
     switch (featureID)
     {
-      case ErlangPackage.TYPE_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
       case ErlangPackage.TYPE_ATTRIBUTE__NAME:
         setName((String)newValue);
         return;
@@ -310,9 +258,6 @@ public class TypeAttributeImpl extends ReferenceableElementImpl implements TypeA
   {
     switch (featureID)
     {
-      case ErlangPackage.TYPE_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
       case ErlangPackage.TYPE_ATTRIBUTE__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -336,8 +281,6 @@ public class TypeAttributeImpl extends ReferenceableElementImpl implements TypeA
   {
     switch (featureID)
     {
-      case ErlangPackage.TYPE_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.TYPE_ATTRIBUTE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
@@ -354,80 +297,12 @@ public class TypeAttributeImpl extends ReferenceableElementImpl implements TypeA
    * @generated
    */
   @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Form.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == Attribute.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == AbstractTypeAttribute.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case ErlangPackage.TYPE_ATTRIBUTE__TAG: return ErlangPackage.ABSTRACT_TYPE_ATTRIBUTE__TAG;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Form.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == Attribute.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == AbstractTypeAttribute.class)
-    {
-      switch (baseFeatureID)
-      {
-        case ErlangPackage.ABSTRACT_TYPE_ATTRIBUTE__TAG: return ErlangPackage.TYPE_ATTRIBUTE__TAG;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public String toString()
   {
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(", name: ");
+    result.append(" (name: ");
     result.append(name);
     result.append(')');
     return result.toString();

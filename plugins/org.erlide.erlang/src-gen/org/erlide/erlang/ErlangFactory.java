@@ -32,15 +32,6 @@ public interface ErlangFactory extends EFactory
   Module createModule();
 
   /**
-   * Returns a new object of class '<em>Referenceable Element</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Referenceable Element</em>'.
-   * @generated
-   */
-  ReferenceableElement createReferenceableElement();
-
-  /**
    * Returns a new object of class '<em>Atom Ref Target</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -192,6 +183,15 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   RecordAttribute createRecordAttribute();
+
+  /**
+   * Returns a new object of class '<em>Record Field Def</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Record Field Def</em>'.
+   * @generated
+   */
+  RecordFieldDef createRecordFieldDef();
 
   /**
    * Returns a new object of class '<em>Export Attribute</em>'.
@@ -356,22 +356,13 @@ public interface ErlangFactory extends EFactory
   RecordTuple createRecordTuple();
 
   /**
-   * Returns a new object of class '<em>Record Field Def</em>'.
+   * Returns a new object of class '<em>Record Field Expr</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Record Field Def</em>'.
+   * @return a new object of class '<em>Record Field Expr</em>'.
    * @generated
    */
-  RecordFieldDef createRecordFieldDef();
-
-  /**
-   * Returns a new object of class '<em>Record Field</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Record Field</em>'.
-   * @generated
-   */
-  RecordField createRecordField();
+  RecordFieldExpr createRecordFieldExpr();
 
   /**
    * Returns a new object of class '<em>String Literal Part</em>'.
@@ -543,6 +534,15 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   AtomVarMacro createAtomVarMacro();
+
+  /**
+   * Returns a new object of class '<em>Record Var Macro</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Record Var Macro</em>'.
+   * @generated
+   */
+  RecordVarMacro createRecordVarMacro();
 
   /**
    * Returns a new object of class '<em>Atom Var</em>'.
@@ -831,6 +831,24 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   Atom createAtom();
+
+  /**
+   * Returns a new object of class '<em>Record Name</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Record Name</em>'.
+   * @generated
+   */
+  RecordName createRecordName();
+
+  /**
+   * Returns a new object of class '<em>Record Field</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Record Field</em>'.
+   * @generated
+   */
+  RecordField createRecordField();
 
   /**
    * Returns a new object of class '<em>Macro</em>'.

@@ -6,49 +6,49 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Record Field Def</b></em>'.
+ * A representation of the model object '<em><b>Record Field Expr</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.RecordFieldDef#getName <em>Name</em>}</li>
- *   <li>{@link org.erlide.erlang.RecordFieldDef#getValue <em>Value</em>}</li>
- *   <li>{@link org.erlide.erlang.RecordFieldDef#getType <em>Type</em>}</li>
+ *   <li>{@link org.erlide.erlang.RecordFieldExpr#getRef <em>Ref</em>}</li>
+ *   <li>{@link org.erlide.erlang.RecordFieldExpr#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.RecordFieldExpr#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.erlide.erlang.ErlangPackage#getRecordFieldDef()
+ * @see org.erlide.erlang.ErlangPackage#getRecordFieldExpr()
  * @model
  * @generated
  */
-public interface RecordFieldDef extends EObject
+public interface RecordFieldExpr extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Ref</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.erlide.erlang.ErlangPackage#getRecordFieldDef_Name()
-   * @model
+   * @return the value of the '<em>Ref</em>' containment reference.
+   * @see #setRef(AtomMacro)
+   * @see org.erlide.erlang.ErlangPackage#getRecordFieldExpr_Ref()
+   * @model containment="true"
    * @generated
    */
-  String getName();
+  AtomMacro getRef();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.RecordFieldDef#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.RecordFieldExpr#getRef <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Ref</em>' containment reference.
+   * @see #getRef()
    * @generated
    */
-  void setName(String value);
+  void setRef(AtomMacro value);
 
   /**
    * Returns the value of the '<em><b>Value</b></em>' containment reference.
@@ -60,14 +60,14 @@ public interface RecordFieldDef extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' containment reference.
    * @see #setValue(Expression)
-   * @see org.erlide.erlang.ErlangPackage#getRecordFieldDef_Value()
+   * @see org.erlide.erlang.ErlangPackage#getRecordFieldExpr_Value()
    * @model containment="true"
    * @generated
    */
   Expression getValue();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.RecordFieldDef#getValue <em>Value</em>}' containment reference.
+   * Sets the value of the '{@link org.erlide.erlang.RecordFieldExpr#getValue <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' containment reference.
@@ -86,14 +86,14 @@ public interface RecordFieldDef extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
    * @see #setType(TopType)
-   * @see org.erlide.erlang.ErlangPackage#getRecordFieldDef_Type()
+   * @see org.erlide.erlang.ErlangPackage#getRecordFieldExpr_Type()
    * @model containment="true"
    * @generated
    */
   TopType getType();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.RecordFieldDef#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link org.erlide.erlang.RecordFieldExpr#getType <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Type</em>' containment reference.
@@ -102,4 +102,4 @@ public interface RecordFieldDef extends EObject
    */
   void setType(TopType value);
 
-} // RecordFieldDef
+} // RecordFieldExpr

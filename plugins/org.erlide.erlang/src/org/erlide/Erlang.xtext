@@ -7,16 +7,6 @@ Module:
 	forms+=Form* 
 ;  
 
-ReferenceableElement: // this must be declared before Form!
-	  Module
-	| Function
-	| DefineAttribute
-	| RecordAttribute
-	| RecordFieldDef
-	| Expression // for variables
-	| TypeAttribute
-;
-
 AtomRefTarget:
 	  Module
 	| Function
@@ -113,9 +103,15 @@ ModuleAttribute:
 
 RecordAttribute:
 	'-' => tag='record' '(' name=NAMEVAR ',' 
-		('{' (fields+=RecordFieldDef (',' fields+=RecordFieldDef)*)? '}' | recordMacro=MacroCall) 
+		(     '{' (fields+=RecordFieldDef (',' fields+=RecordFieldDef)*)? '}' 
+			| recordMacro=MacroCall
+		) 
 	')' 
 	FULL_STOP  
+;
+
+RecordFieldDef:
+	name=NAMEVAR ('=' value=Expression)? ('::' type=TopType)?
 ;
 
 ExportAttribute:
@@ -263,11 +259,11 @@ TermExpression returns Expression:
 ;
 
 MacroCall:
-	  macroName=MacroLiteral (=> '(' (args+=Expression (',' args+=Expression)*)? ')')?  
+	macroName=MacroLiteral (=> '(' (args+=Expression (',' args+=Expression)*)? ')')?  
 ;
 
 RecordExpr:
-	rec=AtomVarMacro (('.' field=AtomMacro) | tuple=RecordTuple)
+	rec=RecordVarMacro (('.' field=AtomMacro) | tuple=RecordTuple)
 ;
 
 // NYI
@@ -286,26 +282,30 @@ LetExpr:
 ;
 
 RecordTuple:
-	{RecordTuple} '{' (fields+=RecordField (',' fields+=RecordField)*)? '}';
+	{RecordTuple} '{' (fields+=RecordFieldExpr (',' fields+=RecordFieldExpr)*)? '}';
 
-RecordFieldDef:
-	name=NAMEVAR ('=' value=Expression)? ('::' type=TopType)?
-;
-
-RecordField:
+RecordFieldExpr:
 	ref=AtomMacro ('=' value=Expression)? ('::' type=TopType)?
 ;
 
 LiteralExpressionNoNumber returns Expression:
-	  AtomLiteral
+	  AtomRefLiteral
 	| VariableLiteral 
 	| {ErlChar} value=CHAR 
 	| MacroLiteral 
 	| StringLiteral  
 ;
 
-AtomLiteral returns Expression: 
-	{Atom} value=[ReferenceableElement|NAME]
+AtomRefLiteral returns Expression: 
+	{Atom} value=[AtomRefTarget|NAME]
+;
+
+RecordNameLiteral returns Expression: 
+	{RecordName} value=[RecordAttribute|NAME]
+;
+
+RecordFieldLiteral returns Expression: 
+	{RecordField} value=[RecordFieldDef|NAME]
 ;
 
 MacroLiteral returns Expression:
@@ -464,15 +464,19 @@ SENDOP:
 // Literal combinations
 
 AtomVarMacro:
-	AtomLiteral	| VariableLiteral | MacroLiteral
+	AtomRefLiteral	| VariableLiteral | MacroLiteral
+;
+
+RecordVarMacro:
+	RecordNameLiteral | VariableLiteral | MacroLiteral
 ;
 
 AtomVar:
-	AtomLiteral	| VariableLiteral
+	AtomRefLiteral	| VariableLiteral
 ;
 
 AtomMacro:
-	AtomLiteral	| MacroLiteral
+	AtomRefLiteral	| MacroLiteral
 ;
 
 IntVarMacro: 

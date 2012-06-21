@@ -86,12 +86,12 @@ public interface RecordExpr extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Rec</em>' containment reference.
-   * @see #setRec(AtomVarMacro)
+   * @see #setRec(RecordVarMacro)
    * @see org.erlide.erlang.ErlangPackage#getRecordExpr_Rec()
    * @model containment="true"
    * @generated
    */
-  AtomVarMacro getRec();
+  RecordVarMacro getRec();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.RecordExpr#getRec <em>Rec</em>}' containment reference.
@@ -101,7 +101,7 @@ public interface RecordExpr extends Expression
    * @see #getRec()
    * @generated
    */
-  void setRec(AtomVarMacro value);
+  void setRec(RecordVarMacro value);
 
   /**
    * Returns the value of the '<em><b>Field</b></em>' containment reference.

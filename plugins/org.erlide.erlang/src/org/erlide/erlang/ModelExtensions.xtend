@@ -9,6 +9,8 @@ import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 import static extension org.erlide.erlang.ModelExtensions.*
 import com.google.inject.Inject
 import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.erlide.erlang.Function
+import org.erlide.erlang.SpecFun
 
 class ModelExtensions {
     
@@ -69,7 +71,7 @@ class ModelExtensions {
 //	}
 	
     def boolean exportsFunction(Module module, Function function) {
-        module.declaredExportNames.contains(namer.getFullyQualifiedName(function))
+        module.declaredExportNames.contains(namer.getFullyQualifiedName(function).lastSegment)
     } 
 
 	def Collection<Function> getDeclaredExports(Module module) {
@@ -132,9 +134,13 @@ class ModelExtensions {
  	def SpecAttribute getSpec(Function function) {
 		val module = function.module
 		val specs = module.specs
-		specs.findFirst[ref==function]		
+		specs.findFirst[ref.pointsTo(function)]		
 	}
 
+	def boolean pointsTo(SpecFun fun, Function function) { 
+		true	
+	}
+	
     // Other
     
     def dispatch Module getModule(Module element) {

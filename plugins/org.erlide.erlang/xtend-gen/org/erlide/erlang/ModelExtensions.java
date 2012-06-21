@@ -144,7 +144,8 @@ public class ModelExtensions {
   public boolean exportsFunction(final Module module, final Function function) {
     Collection<String> _declaredExportNames = this.getDeclaredExportNames(module);
     QualifiedName _fullyQualifiedName = this.namer.getFullyQualifiedName(function);
-    boolean _contains = _declaredExportNames.contains(_fullyQualifiedName);
+    String _lastSegment = _fullyQualifiedName.getLastSegment();
+    boolean _contains = _declaredExportNames.contains(_lastSegment);
     return _contains;
   }
   
@@ -357,14 +358,18 @@ public class ModelExtensions {
       final Function1<SpecAttribute,Boolean> _function = new Function1<SpecAttribute,Boolean>() {
           public Boolean apply(final SpecAttribute it) {
             SpecFun _ref = it.getRef();
-            boolean _equals = Objects.equal(_ref, function);
-            return Boolean.valueOf(_equals);
+            boolean _pointsTo = ModelExtensions.this.pointsTo(_ref, function);
+            return Boolean.valueOf(_pointsTo);
           }
         };
       SpecAttribute _findFirst = IterableExtensions.<SpecAttribute>findFirst(specs, _function);
       _xblockexpression = (_findFirst);
     }
     return _xblockexpression;
+  }
+  
+  public boolean pointsTo(final SpecFun fun, final Function function) {
+    return true;
   }
   
   protected Module _getModule(final Module element) {

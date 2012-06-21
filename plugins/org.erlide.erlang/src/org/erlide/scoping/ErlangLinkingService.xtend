@@ -10,12 +10,12 @@ import org.erlide.erlang.ErlangPackage
 import org.erlide.erlang.FunCall
 import org.erlide.erlang.ModelExtensions
 import org.erlide.erlang.RemoteTarget
-import org.erlide.erlang.ReferenceableElement
 import org.eclipse.xtext.resource.IResourceDescription
 import org.eclipse.xtext.resource.IResourceDescriptions
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.naming.QualifiedName
 import org.erlide.erlang.Atom
+import org.erlide.erlang.AtomRefTarget
 
 class ErlangLinkingService extends DefaultLinkingService {
 
@@ -43,7 +43,7 @@ class ErlangLinkingService extends DefaultLinkingService {
 		return super.getLinkedObjects(context, ref, node)		
 	}
 
-	def ReferenceableElement getAtomReference(EObject atom, INode node) {
+	def AtomRefTarget getAtomReference(EObject atom, INode node) {
 		if (atom.eContainer() instanceof RemoteTarget) {
 			val RemoteTarget parent = atom.eContainer() as RemoteTarget
 			if(parent.module instanceof Atom && parent.function instanceof Atom){

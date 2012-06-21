@@ -38,7 +38,7 @@ import org.erlide.erlang.RecordFieldDef;
  *
  * @generated
  */
-public class RecordAttributeImpl extends ReferenceableElementImpl implements RecordAttribute
+public class RecordAttributeImpl extends AttributeImpl implements RecordAttribute
 {
   /**
    * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.

@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Expression extends ReferenceableElement, AtomVarMacro, AtomVar, AtomMacro, IntVarMacro
+public interface Expression extends AtomVarMacro, RecordVarMacro, AtomVar, AtomMacro, IntVarMacro
 {
   /**
    * Returns the value of the '<em><b>Line</b></em>' attribute.

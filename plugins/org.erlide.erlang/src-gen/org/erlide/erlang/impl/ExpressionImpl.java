@@ -37,7 +37,7 @@ import org.erlide.erlang.StringLiteralPart;
  *
  * @generated
  */
-public class ExpressionImpl extends ReferenceableElementImpl implements Expression
+public class ExpressionImpl extends AtomVarMacroImpl implements Expression
 {
   /**
    * The default value of the '{@link #isLine() <em>Line</em>}' attribute.

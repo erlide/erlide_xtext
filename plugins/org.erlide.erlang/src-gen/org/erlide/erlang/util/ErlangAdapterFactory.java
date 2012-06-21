@@ -80,11 +80,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createModuleAdapter();
       }
       @Override
-      public Adapter caseReferenceableElement(ReferenceableElement object)
-      {
-        return createReferenceableElementAdapter();
-      }
-      @Override
       public Adapter caseAtomRefTarget(AtomRefTarget object)
       {
         return createAtomRefTargetAdapter();
@@ -168,6 +163,11 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseRecordAttribute(RecordAttribute object)
       {
         return createRecordAttributeAdapter();
+      }
+      @Override
+      public Adapter caseRecordFieldDef(RecordFieldDef object)
+      {
+        return createRecordFieldDefAdapter();
       }
       @Override
       public Adapter caseExportAttribute(ExportAttribute object)
@@ -260,14 +260,9 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createRecordTupleAdapter();
       }
       @Override
-      public Adapter caseRecordFieldDef(RecordFieldDef object)
+      public Adapter caseRecordFieldExpr(RecordFieldExpr object)
       {
-        return createRecordFieldDefAdapter();
-      }
-      @Override
-      public Adapter caseRecordField(RecordField object)
-      {
-        return createRecordFieldAdapter();
+        return createRecordFieldExprAdapter();
       }
       @Override
       public Adapter caseStringLiteralPart(StringLiteralPart object)
@@ -363,6 +358,11 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseAtomVarMacro(AtomVarMacro object)
       {
         return createAtomVarMacroAdapter();
+      }
+      @Override
+      public Adapter caseRecordVarMacro(RecordVarMacro object)
+      {
+        return createRecordVarMacroAdapter();
       }
       @Override
       public Adapter caseAtomVar(AtomVar object)
@@ -525,6 +525,16 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createAtomAdapter();
       }
       @Override
+      public Adapter caseRecordName(RecordName object)
+      {
+        return createRecordNameAdapter();
+      }
+      @Override
+      public Adapter caseRecordField(RecordField object)
+      {
+        return createRecordFieldAdapter();
+      }
+      @Override
       public Adapter caseMacro(Macro object)
       {
         return createMacroAdapter();
@@ -607,21 +617,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createModuleAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ReferenceableElement <em>Referenceable Element</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.ReferenceableElement
-   * @generated
-   */
-  public Adapter createReferenceableElementAdapter()
   {
     return null;
   }
@@ -877,6 +872,21 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createRecordAttributeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.RecordFieldDef <em>Record Field Def</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.RecordFieldDef
+   * @generated
+   */
+  public Adapter createRecordFieldDefAdapter()
   {
     return null;
   }
@@ -1152,31 +1162,16 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.RecordFieldDef <em>Record Field Def</em>}'.
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.RecordFieldExpr <em>Record Field Expr</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.erlide.erlang.RecordFieldDef
+   * @see org.erlide.erlang.RecordFieldExpr
    * @generated
    */
-  public Adapter createRecordFieldDefAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.RecordField <em>Record Field</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.RecordField
-   * @generated
-   */
-  public Adapter createRecordFieldAdapter()
+  public Adapter createRecordFieldExprAdapter()
   {
     return null;
   }
@@ -1462,6 +1457,21 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAtomVarMacroAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.RecordVarMacro <em>Record Var Macro</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.RecordVarMacro
+   * @generated
+   */
+  public Adapter createRecordVarMacroAdapter()
   {
     return null;
   }
@@ -1942,6 +1952,36 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAtomAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.RecordName <em>Record Name</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.RecordName
+   * @generated
+   */
+  public Adapter createRecordNameAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.RecordField <em>Record Field</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.RecordField
+   * @generated
+   */
+  public Adapter createRecordFieldAdapter()
   {
     return null;
   }

@@ -7,25 +7,25 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.ReferenceableElement;
+import org.erlide.erlang.RecordVarMacro;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Referenceable Element</b></em>'.
+ * An implementation of the model object '<em><b>Record Var Macro</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class ReferenceableElementImpl extends MinimalEObjectImpl.Container implements ReferenceableElement
+public class RecordVarMacroImpl extends MinimalEObjectImpl.Container implements RecordVarMacro
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ReferenceableElementImpl()
+  protected RecordVarMacroImpl()
   {
     super();
   }
@@ -38,7 +38,7 @@ public class ReferenceableElementImpl extends MinimalEObjectImpl.Container imple
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.REFERENCEABLE_ELEMENT;
+    return ErlangPackage.Literals.RECORD_VAR_MACRO;
   }
 
-} //ReferenceableElementImpl
+} //RecordVarMacroImpl

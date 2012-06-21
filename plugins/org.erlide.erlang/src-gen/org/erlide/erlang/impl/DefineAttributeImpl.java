@@ -38,7 +38,7 @@ import org.erlide.erlang.Guard;
  *
  * @generated
  */
-public class DefineAttributeImpl extends ReferenceableElementImpl implements DefineAttribute
+public class DefineAttributeImpl extends AttributeImpl implements DefineAttribute
 {
   /**
    * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.

@@ -26,7 +26,7 @@ public interface RecordTuple extends EObject
 {
   /**
    * Returns the value of the '<em><b>Fields</b></em>' containment reference list.
-   * The list contents are of type {@link org.erlide.erlang.RecordField}.
+   * The list contents are of type {@link org.erlide.erlang.RecordFieldExpr}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Fields</em>' containment reference list isn't clear,
@@ -38,6 +38,6 @@ public interface RecordTuple extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<RecordField> getFields();
+  EList<RecordFieldExpr> getFields();
 
 } // RecordTuple

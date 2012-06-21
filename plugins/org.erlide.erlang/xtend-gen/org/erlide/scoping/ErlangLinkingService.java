@@ -16,13 +16,13 @@ import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.erlide.erlang.Atom;
+import org.erlide.erlang.AtomRefTarget;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.ErlangPackage.Literals;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.FunCall;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
-import org.erlide.erlang.ReferenceableElement;
 import org.erlide.erlang.RemoteTarget;
 
 @SuppressWarnings("all")
@@ -51,7 +51,7 @@ public class ErlangLinkingService extends DefaultLinkingService {
       String _plus_2 = (_plus_1 + _sourceText_1);
       String _plus_3 = (_plus_2 + "\'");
       InputOutput.<String>println(_plus_3);
-      final ReferenceableElement aref = this.getAtomReference(context, node);
+      final AtomRefTarget aref = this.getAtomReference(context, node);
       String _plus_4 = ("## aref ## " + aref);
       InputOutput.<String>println(_plus_4);
       boolean _equals_1 = Objects.equal(aref, null);
@@ -65,7 +65,7 @@ public class ErlangLinkingService extends DefaultLinkingService {
     return super.getLinkedObjects(context, ref, node);
   }
   
-  public ReferenceableElement getAtomReference(final EObject atom, final INode node) {
+  public AtomRefTarget getAtomReference(final EObject atom, final INode node) {
     EObject _eContainer = atom.eContainer();
     if ((_eContainer instanceof RemoteTarget)) {
       EObject _eContainer_1 = atom.eContainer();

@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.RecordField;
+import org.erlide.erlang.RecordFieldExpr;
 import org.erlide.erlang.RecordTuple;
 
 /**
@@ -43,7 +43,7 @@ public class RecordTupleImpl extends MinimalEObjectImpl.Container implements Rec
    * @generated
    * @ordered
    */
-  protected EList<RecordField> fields;
+  protected EList<RecordFieldExpr> fields;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,11 +71,11 @@ public class RecordTupleImpl extends MinimalEObjectImpl.Container implements Rec
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<RecordField> getFields()
+  public EList<RecordFieldExpr> getFields()
   {
     if (fields == null)
     {
-      fields = new EObjectContainmentEList<RecordField>(RecordField.class, this, ErlangPackage.RECORD_TUPLE__FIELDS);
+      fields = new EObjectContainmentEList<RecordFieldExpr>(RecordFieldExpr.class, this, ErlangPackage.RECORD_TUPLE__FIELDS);
     }
     return fields;
   }
@@ -125,7 +125,7 @@ public class RecordTupleImpl extends MinimalEObjectImpl.Container implements Rec
     {
       case ErlangPackage.RECORD_TUPLE__FIELDS:
         getFields().clear();
-        getFields().addAll((Collection<? extends RecordField>)newValue);
+        getFields().addAll((Collection<? extends RecordFieldExpr>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.erlide.erlang.AtomMacro;
-import org.erlide.erlang.AtomVarMacro;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.RecordExpr;
 import org.erlide.erlang.RecordTuple;
+import org.erlide.erlang.RecordVarMacro;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,7 +64,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * @generated
    * @ordered
    */
-  protected AtomVarMacro rec;
+  protected RecordVarMacro rec;
 
   /**
    * The cached value of the '{@link #getField() <em>Field</em>}' containment reference.
@@ -208,7 +208,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public AtomVarMacro getRec()
+  public RecordVarMacro getRec()
   {
     return rec;
   }
@@ -218,9 +218,9 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRec(AtomVarMacro newRec, NotificationChain msgs)
+  public NotificationChain basicSetRec(RecordVarMacro newRec, NotificationChain msgs)
   {
-    AtomVarMacro oldRec = rec;
+    RecordVarMacro oldRec = rec;
     rec = newRec;
     if (eNotificationRequired())
     {
@@ -235,7 +235,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRec(AtomVarMacro newRec)
+  public void setRec(RecordVarMacro newRec)
   {
     if (newRec != rec)
     {
@@ -412,7 +412,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
         setRecord((RecordExpr)newValue);
         return;
       case ErlangPackage.RECORD_EXPR__REC:
-        setRec((AtomVarMacro)newValue);
+        setRec((RecordVarMacro)newValue);
         return;
       case ErlangPackage.RECORD_EXPR__FIELD:
         setField((AtomMacro)newValue);
@@ -441,7 +441,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
         setRecord((RecordExpr)null);
         return;
       case ErlangPackage.RECORD_EXPR__REC:
-        setRec((AtomVarMacro)null);
+        setRec((RecordVarMacro)null);
         return;
       case ErlangPackage.RECORD_EXPR__FIELD:
         setField((AtomMacro)null);
