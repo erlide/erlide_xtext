@@ -13,7 +13,7 @@ public class RulesTest extends XtextTest {
 
 	@Test
 	public void keywords() {
-		testParserRule("spec", "AtomKw");
+		testParserRule("spec", "NAME");
 		testParserRule("type", "Expression");
 		testParserRule("opaque", "Expression");
 		testParserRule("record", "Expression");
@@ -42,13 +42,13 @@ public class RulesTest extends XtextTest {
 
 	@Test
 	public void macros() {
-		testParserRule("?AA", "Macro");
-		testParserRule("? AA", "Macro");
+		testParserRule("?AA", "MacroLiteral");
+		testParserRule("? AA", "MacroLiteral");
 		// testParserRuleErrors("? AA", "Macro",
 		// "no viable alternative at input ' '");
-		testParserRule("?aa", "Macro");
-		testParserRule("?_A", "Macro");
-		testParserRule("??A", "Macro");
+		testParserRule("?aa", "MacroLiteral");
+		testParserRule("?_A", "MacroLiteral");
+		testParserRule("??A", "MacroLiteral");
 	}
 
 	@Test
@@ -62,11 +62,11 @@ public class RulesTest extends XtextTest {
 
 	@Test
 	public void strings() {
-		testParserRule("\"hej\"", "ErlString");
-		testParserRule("\"hej\"\n \"hej\"", "ErlString");
-		testParserRule("\"hej\"\"hej\"", "ErlString");
-		testParserRule("\"hej\" \"hej\"", "ErlString");
-		testParserRule("\"hej\" ?m \"hej\"", "ErlString");
+		testParserRule("\"hej\"", "StringLiteral");
+		testParserRule("\"hej\"\n \"hej\"", "StringLiteral");
+		testParserRule("\"hej\"\"hej\"", "StringLiteral");
+		testParserRule("\"hej\" \"hej\"", "StringLiteral");
+		testParserRule("\"hej\" ?m \"hej\"", "StringLiteral");
 	}
 
 	@Test

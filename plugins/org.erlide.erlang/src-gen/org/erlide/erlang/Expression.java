@@ -4,6 +4,8 @@ package org.erlide.erlang;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Expression</b></em>'.
@@ -23,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Expression extends AtomVarMacro, RecordVarMacro, AtomVar, AtomMacro, IntVarMacro
+public interface Expression extends EObject
 {
   /**
    * Returns the value of the '<em><b>Line</b></em>' attribute.

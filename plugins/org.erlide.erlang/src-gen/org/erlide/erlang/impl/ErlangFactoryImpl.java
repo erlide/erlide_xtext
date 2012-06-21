@@ -120,11 +120,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.BINARY_ITEM: return createBinaryItem();
       case ErlangPackage.BIT_TYPE: return createBitType();
       case ErlangPackage.LC_EXPR: return createLCExpr();
-      case ErlangPackage.ATOM_VAR_MACRO: return createAtomVarMacro();
-      case ErlangPackage.RECORD_VAR_MACRO: return createRecordVarMacro();
-      case ErlangPackage.ATOM_VAR: return createAtomVar();
-      case ErlangPackage.ATOM_MACRO: return createAtomMacro();
-      case ErlangPackage.INT_VAR_MACRO: return createIntVarMacro();
       case ErlangPackage.SPEC_FUN: return createSpecFun();
       case ErlangPackage.TYPE_SIG: return createTypeSig();
       case ErlangPackage.FUN_TYPE: return createFunType();
@@ -154,8 +149,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.BLOCK_EXPR: return createBlockExpr();
       case ErlangPackage.ERL_CHAR: return createErlChar();
       case ErlangPackage.ATOM: return createAtom();
-      case ErlangPackage.RECORD_NAME: return createRecordName();
-      case ErlangPackage.RECORD_FIELD: return createRecordField();
       case ErlangPackage.MACRO: return createMacro();
       case ErlangPackage.VARIABLE: return createVariable();
       case ErlangPackage.ERL_FLOAT: return createErlFloat();
@@ -792,61 +785,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public AtomVarMacro createAtomVarMacro()
-  {
-    AtomVarMacroImpl atomVarMacro = new AtomVarMacroImpl();
-    return atomVarMacro;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RecordVarMacro createRecordVarMacro()
-  {
-    RecordVarMacroImpl recordVarMacro = new RecordVarMacroImpl();
-    return recordVarMacro;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AtomVar createAtomVar()
-  {
-    AtomVarImpl atomVar = new AtomVarImpl();
-    return atomVar;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AtomMacro createAtomMacro()
-  {
-    AtomMacroImpl atomMacro = new AtomMacroImpl();
-    return atomMacro;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IntVarMacro createIntVarMacro()
-  {
-    IntVarMacroImpl intVarMacro = new IntVarMacroImpl();
-    return intVarMacro;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public SpecFun createSpecFun()
   {
     SpecFunImpl specFun = new SpecFunImpl();
@@ -1159,28 +1097,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     AtomImpl atom = new AtomImpl();
     return atom;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RecordName createRecordName()
-  {
-    RecordNameImpl recordName = new RecordNameImpl();
-    return recordName;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RecordField createRecordField()
-  {
-    RecordFieldImpl recordField = new RecordFieldImpl();
-    return recordField;
   }
 
   /**

@@ -23,7 +23,6 @@ import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.erlide.erlang.Atom;
-import org.erlide.erlang.AtomVarMacro;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.CompileAttribute;
 import org.erlide.erlang.ConditionalAttribute;
@@ -41,7 +40,6 @@ import org.erlide.erlang.FunctionClause;
 import org.erlide.erlang.ImportAttribute;
 import org.erlide.erlang.IncludeAttribute;
 import org.erlide.erlang.IncludeLibAttribute;
-import org.erlide.erlang.IntVarMacro;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.ModuleAttribute;
 import org.erlide.erlang.SpecAttribute;
@@ -161,25 +159,17 @@ public class ModelExtensions {
         };
       Iterable<EList<FunRef>> _map = IterableExtensions.<ExportAttribute, EList<FunRef>>map(exported, _function);
       final Iterable<FunRef> refs = Iterables.<FunRef>concat(_map);
-      final Function1<FunRef,AtomVarMacro> _function_1 = new Function1<FunRef,AtomVarMacro>() {
-          public AtomVarMacro apply(final FunRef it) {
-            AtomVarMacro _function = it.getFunction();
+      final Function1<FunRef,Function> _function_1 = new Function1<FunRef,Function>() {
+          public Function apply(final FunRef it) {
+            Function _function = ModelExtensions.this.getFunction(module, it);
             return _function;
           }
         };
-      Iterable<AtomVarMacro> _map_1 = IterableExtensions.<FunRef, AtomVarMacro>map(refs, _function_1);
-      String _plus = ("\u00A4\u00A4 " + _map_1);
+      Iterable<Function> _map_1 = IterableExtensions.<FunRef, Function>map(refs, _function_1);
+      final List<Function> xx = IterableExtensions.<Function>toList(_map_1);
+      String _plus = ("!" + xx);
       InputOutput.<String>println(_plus);
-      final Function1<FunRef,AtomVarMacro> _function_2 = new Function1<FunRef,AtomVarMacro>() {
-          public AtomVarMacro apply(final FunRef it) {
-            AtomVarMacro _function = it.getFunction();
-            return _function;
-          }
-        };
-      Iterable<AtomVarMacro> _map_2 = IterableExtensions.<FunRef, AtomVarMacro>map(refs, _function_2);
-      Iterable<Function> _filter = Iterables.<Function>filter(_map_2, Function.class);
-      List<Function> _list = IterableExtensions.<Function>toList(_filter);
-      _xblockexpression = (_list);
+      _xblockexpression = (xx);
     }
     return _xblockexpression;
   }
@@ -271,6 +261,33 @@ public class ModelExtensions {
     return _findFirst;
   }
   
+  public Function getFunction(final Module module, final FunRef ref) {
+    Collection<EObject> _allContents = this.getAllContents(module);
+    Iterable<Function> _filter = Iterables.<Function>filter(_allContents, Function.class);
+    final Function1<Function,Boolean> _function = new Function1<Function,Boolean>() {
+        public Boolean apply(final Function it) {
+          boolean _and = false;
+          String _name = it.getName();
+          Expression _function_ = ref.getFunction_();
+          String _sourceText = ModelExtensions.this.getSourceText(_function_);
+          boolean _equals = Objects.equal(_name, _sourceText);
+          if (!_equals) {
+            _and = false;
+          } else {
+            int _arity = ModelExtensions.this.getArity(it);
+            Expression _arity_ = ref.getArity_();
+            String _sourceText_1 = ModelExtensions.this.getSourceText(_arity_);
+            int _parseInt = Integer.parseInt(_sourceText_1);
+            boolean _equals_1 = (_arity == _parseInt);
+            _and = (_equals && _equals_1);
+          }
+          return Boolean.valueOf(_and);
+        }
+      };
+    Function _findFirst = IterableExtensions.<Function>findFirst(_filter, _function);
+    return _findFirst;
+  }
+  
   public boolean exportsAll(final Module module) {
     Collection<Expression> _compileOptions = this.getCompileOptions(module);
     final Function1<Expression,Boolean> _function = new Function1<Expression,Boolean>() {
@@ -318,8 +335,9 @@ public class ModelExtensions {
           public Boolean apply(final SpecAttribute it) {
             boolean _and = false;
             SpecFun _ref = it.getRef();
-            AtomVarMacro _function = _ref.getFunction();
-            boolean _equals = Objects.equal(_function, fname);
+            Expression _function_ = _ref.getFunction_();
+            String _sourceText = ModelExtensions.this.getSourceText(_function_);
+            boolean _equals = Objects.equal(_sourceText, fname);
             if (!_equals) {
               _and = false;
             } else {
@@ -357,9 +375,21 @@ public class ModelExtensions {
       final Collection<SpecAttribute> specs = this.getSpecs(module);
       final Function1<SpecAttribute,Boolean> _function = new Function1<SpecAttribute,Boolean>() {
           public Boolean apply(final SpecAttribute it) {
+            boolean _and = false;
             SpecFun _ref = it.getRef();
-            boolean _pointsTo = ModelExtensions.this.pointsTo(_ref, function);
-            return Boolean.valueOf(_pointsTo);
+            Expression _function_ = _ref.getFunction_();
+            String _sourceText = ModelExtensions.this.getSourceText(_function_);
+            String _name = function.getName();
+            boolean _equals = Objects.equal(_sourceText, _name);
+            if (!_equals) {
+              _and = false;
+            } else {
+              int _specArity = ModelExtensions.this.getSpecArity(it);
+              int _arity = ModelExtensions.this.getArity(function);
+              boolean _equals_1 = (_specArity == _arity);
+              _and = (_equals && _equals_1);
+            }
+            return Boolean.valueOf(_and);
           }
         };
       SpecAttribute _findFirst = IterableExtensions.<SpecAttribute>findFirst(specs, _function);
@@ -415,10 +445,14 @@ public class ModelExtensions {
   public int getSpecArity(final SpecAttribute spec) {
     int _xifexpression = (int) 0;
     SpecFun _ref = spec.getRef();
-    IntVarMacro _arity = _ref.getArity();
-    boolean _notEquals = (!Objects.equal(_arity, null));
+    Expression _arity_ = _ref.getArity_();
+    boolean _notEquals = (!Objects.equal(_arity_, null));
     if (_notEquals) {
-      _xifexpression = 0;
+      SpecFun _ref_1 = spec.getRef();
+      Expression _arity__1 = _ref_1.getArity_();
+      String _sourceText = this.getSourceText(_arity__1);
+      int _parseInt = Integer.parseInt(_sourceText);
+      _xifexpression = _parseInt;
     } else {
       EList<TypeSig> _signatures = spec.getSignatures();
       TypeSig _head = IterableExtensions.<TypeSig>head(_signatures);

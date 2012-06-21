@@ -11,9 +11,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.erlide.erlang.AtomVarMacro;
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.IntVarMacro;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.SpecFun;
 
 /**
@@ -23,9 +22,9 @@ import org.erlide.erlang.SpecFun;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.SpecFunImpl#getModule <em>Module</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.SpecFunImpl#getFunction <em>Function</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.SpecFunImpl#getArity <em>Arity</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.SpecFunImpl#getModule_ <em>Module </em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.SpecFunImpl#getFunction_ <em>Function </em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.SpecFunImpl#getArity_ <em>Arity </em>}</li>
  * </ul>
  * </p>
  *
@@ -34,34 +33,34 @@ import org.erlide.erlang.SpecFun;
 public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
 {
   /**
-   * The cached value of the '{@link #getModule() <em>Module</em>}' containment reference.
+   * The cached value of the '{@link #getModule_() <em>Module </em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getModule()
+   * @see #getModule_()
    * @generated
    * @ordered
    */
-  protected AtomVarMacro module;
+  protected Expression module_;
 
   /**
-   * The cached value of the '{@link #getFunction() <em>Function</em>}' containment reference.
+   * The cached value of the '{@link #getFunction_() <em>Function </em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFunction()
+   * @see #getFunction_()
    * @generated
    * @ordered
    */
-  protected AtomVarMacro function;
+  protected Expression function_;
 
   /**
-   * The cached value of the '{@link #getArity() <em>Arity</em>}' containment reference.
+   * The cached value of the '{@link #getArity_() <em>Arity </em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getArity()
+   * @see #getArity_()
    * @generated
    * @ordered
    */
-  protected IntVarMacro arity;
+  protected Expression arity_;
 
   /**
    * <!-- begin-user-doc -->
@@ -89,9 +88,9 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
    * <!-- end-user-doc -->
    * @generated
    */
-  public AtomVarMacro getModule()
+  public Expression getModule_()
   {
-    return module;
+    return module_;
   }
 
   /**
@@ -99,13 +98,13 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetModule(AtomVarMacro newModule, NotificationChain msgs)
+  public NotificationChain basicSetModule_(Expression newModule_, NotificationChain msgs)
   {
-    AtomVarMacro oldModule = module;
-    module = newModule;
+    Expression oldModule_ = module_;
+    module_ = newModule_;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__MODULE, oldModule, newModule);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__MODULE_, oldModule_, newModule_);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -116,20 +115,20 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setModule(AtomVarMacro newModule)
+  public void setModule_(Expression newModule_)
   {
-    if (newModule != module)
+    if (newModule_ != module_)
     {
       NotificationChain msgs = null;
-      if (module != null)
-        msgs = ((InternalEObject)module).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__MODULE, null, msgs);
-      if (newModule != null)
-        msgs = ((InternalEObject)newModule).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__MODULE, null, msgs);
-      msgs = basicSetModule(newModule, msgs);
+      if (module_ != null)
+        msgs = ((InternalEObject)module_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__MODULE_, null, msgs);
+      if (newModule_ != null)
+        msgs = ((InternalEObject)newModule_).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__MODULE_, null, msgs);
+      msgs = basicSetModule_(newModule_, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__MODULE, newModule, newModule));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__MODULE_, newModule_, newModule_));
   }
 
   /**
@@ -137,9 +136,9 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
    * <!-- end-user-doc -->
    * @generated
    */
-  public AtomVarMacro getFunction()
+  public Expression getFunction_()
   {
-    return function;
+    return function_;
   }
 
   /**
@@ -147,13 +146,13 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFunction(AtomVarMacro newFunction, NotificationChain msgs)
+  public NotificationChain basicSetFunction_(Expression newFunction_, NotificationChain msgs)
   {
-    AtomVarMacro oldFunction = function;
-    function = newFunction;
+    Expression oldFunction_ = function_;
+    function_ = newFunction_;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__FUNCTION, oldFunction, newFunction);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__FUNCTION_, oldFunction_, newFunction_);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -164,20 +163,20 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFunction(AtomVarMacro newFunction)
+  public void setFunction_(Expression newFunction_)
   {
-    if (newFunction != function)
+    if (newFunction_ != function_)
     {
       NotificationChain msgs = null;
-      if (function != null)
-        msgs = ((InternalEObject)function).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__FUNCTION, null, msgs);
-      if (newFunction != null)
-        msgs = ((InternalEObject)newFunction).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__FUNCTION, null, msgs);
-      msgs = basicSetFunction(newFunction, msgs);
+      if (function_ != null)
+        msgs = ((InternalEObject)function_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__FUNCTION_, null, msgs);
+      if (newFunction_ != null)
+        msgs = ((InternalEObject)newFunction_).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__FUNCTION_, null, msgs);
+      msgs = basicSetFunction_(newFunction_, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__FUNCTION, newFunction, newFunction));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__FUNCTION_, newFunction_, newFunction_));
   }
 
   /**
@@ -185,9 +184,9 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
    * <!-- end-user-doc -->
    * @generated
    */
-  public IntVarMacro getArity()
+  public Expression getArity_()
   {
-    return arity;
+    return arity_;
   }
 
   /**
@@ -195,13 +194,13 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetArity(IntVarMacro newArity, NotificationChain msgs)
+  public NotificationChain basicSetArity_(Expression newArity_, NotificationChain msgs)
   {
-    IntVarMacro oldArity = arity;
-    arity = newArity;
+    Expression oldArity_ = arity_;
+    arity_ = newArity_;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__ARITY, oldArity, newArity);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__ARITY_, oldArity_, newArity_);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -212,20 +211,20 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setArity(IntVarMacro newArity)
+  public void setArity_(Expression newArity_)
   {
-    if (newArity != arity)
+    if (newArity_ != arity_)
     {
       NotificationChain msgs = null;
-      if (arity != null)
-        msgs = ((InternalEObject)arity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__ARITY, null, msgs);
-      if (newArity != null)
-        msgs = ((InternalEObject)newArity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__ARITY, null, msgs);
-      msgs = basicSetArity(newArity, msgs);
+      if (arity_ != null)
+        msgs = ((InternalEObject)arity_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__ARITY_, null, msgs);
+      if (newArity_ != null)
+        msgs = ((InternalEObject)newArity_).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.SPEC_FUN__ARITY_, null, msgs);
+      msgs = basicSetArity_(newArity_, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__ARITY, newArity, newArity));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.SPEC_FUN__ARITY_, newArity_, newArity_));
   }
 
   /**
@@ -238,12 +237,12 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_FUN__MODULE:
-        return basicSetModule(null, msgs);
-      case ErlangPackage.SPEC_FUN__FUNCTION:
-        return basicSetFunction(null, msgs);
-      case ErlangPackage.SPEC_FUN__ARITY:
-        return basicSetArity(null, msgs);
+      case ErlangPackage.SPEC_FUN__MODULE_:
+        return basicSetModule_(null, msgs);
+      case ErlangPackage.SPEC_FUN__FUNCTION_:
+        return basicSetFunction_(null, msgs);
+      case ErlangPackage.SPEC_FUN__ARITY_:
+        return basicSetArity_(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -258,12 +257,12 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_FUN__MODULE:
-        return getModule();
-      case ErlangPackage.SPEC_FUN__FUNCTION:
-        return getFunction();
-      case ErlangPackage.SPEC_FUN__ARITY:
-        return getArity();
+      case ErlangPackage.SPEC_FUN__MODULE_:
+        return getModule_();
+      case ErlangPackage.SPEC_FUN__FUNCTION_:
+        return getFunction_();
+      case ErlangPackage.SPEC_FUN__ARITY_:
+        return getArity_();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -278,14 +277,14 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_FUN__MODULE:
-        setModule((AtomVarMacro)newValue);
+      case ErlangPackage.SPEC_FUN__MODULE_:
+        setModule_((Expression)newValue);
         return;
-      case ErlangPackage.SPEC_FUN__FUNCTION:
-        setFunction((AtomVarMacro)newValue);
+      case ErlangPackage.SPEC_FUN__FUNCTION_:
+        setFunction_((Expression)newValue);
         return;
-      case ErlangPackage.SPEC_FUN__ARITY:
-        setArity((IntVarMacro)newValue);
+      case ErlangPackage.SPEC_FUN__ARITY_:
+        setArity_((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -301,14 +300,14 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_FUN__MODULE:
-        setModule((AtomVarMacro)null);
+      case ErlangPackage.SPEC_FUN__MODULE_:
+        setModule_((Expression)null);
         return;
-      case ErlangPackage.SPEC_FUN__FUNCTION:
-        setFunction((AtomVarMacro)null);
+      case ErlangPackage.SPEC_FUN__FUNCTION_:
+        setFunction_((Expression)null);
         return;
-      case ErlangPackage.SPEC_FUN__ARITY:
-        setArity((IntVarMacro)null);
+      case ErlangPackage.SPEC_FUN__ARITY_:
+        setArity_((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -324,12 +323,12 @@ public class SpecFunImpl extends MinimalEObjectImpl.Container implements SpecFun
   {
     switch (featureID)
     {
-      case ErlangPackage.SPEC_FUN__MODULE:
-        return module != null;
-      case ErlangPackage.SPEC_FUN__FUNCTION:
-        return function != null;
-      case ErlangPackage.SPEC_FUN__ARITY:
-        return arity != null;
+      case ErlangPackage.SPEC_FUN__MODULE_:
+        return module_ != null;
+      case ErlangPackage.SPEC_FUN__FUNCTION_:
+        return function_ != null;
+      case ErlangPackage.SPEC_FUN__ARITY_:
+        return arity_ != null;
     }
     return super.eIsSet(featureID);
   }

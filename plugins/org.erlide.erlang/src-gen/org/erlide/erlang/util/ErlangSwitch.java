@@ -219,6 +219,7 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         RecordAttribute recordAttribute = (RecordAttribute)theEObject;
         T result = caseRecordAttribute(recordAttribute);
+        if (result == null) result = caseAtomRefTarget(recordAttribute);
         if (result == null) result = caseAttribute(recordAttribute);
         if (result == null) result = caseForm(recordAttribute);
         if (result == null) result = defaultCase(theEObject);
@@ -228,6 +229,7 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         RecordFieldDef recordFieldDef = (RecordFieldDef)theEObject;
         T result = caseRecordFieldDef(recordFieldDef);
+        if (result == null) result = caseAtomRefTarget(recordFieldDef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -330,11 +332,6 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
-        if (result == null) result = caseAtomVarMacro(expression);
-        if (result == null) result = caseRecordVarMacro(expression);
-        if (result == null) result = caseAtomVar(expression);
-        if (result == null) result = caseAtomMacro(expression);
-        if (result == null) result = caseIntVarMacro(expression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -350,11 +347,6 @@ public class ErlangSwitch<T> extends Switch<T>
         RecordExpr recordExpr = (RecordExpr)theEObject;
         T result = caseRecordExpr(recordExpr);
         if (result == null) result = caseExpression(recordExpr);
-        if (result == null) result = caseAtomVarMacro(recordExpr);
-        if (result == null) result = caseRecordVarMacro(recordExpr);
-        if (result == null) result = caseAtomVar(recordExpr);
-        if (result == null) result = caseAtomMacro(recordExpr);
-        if (result == null) result = caseIntVarMacro(recordExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -363,11 +355,6 @@ public class ErlangSwitch<T> extends Switch<T>
         QueryExpr queryExpr = (QueryExpr)theEObject;
         T result = caseQueryExpr(queryExpr);
         if (result == null) result = caseExpression(queryExpr);
-        if (result == null) result = caseAtomVarMacro(queryExpr);
-        if (result == null) result = caseRecordVarMacro(queryExpr);
-        if (result == null) result = caseAtomVar(queryExpr);
-        if (result == null) result = caseAtomMacro(queryExpr);
-        if (result == null) result = caseIntVarMacro(queryExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -376,11 +363,6 @@ public class ErlangSwitch<T> extends Switch<T>
         CondExpr condExpr = (CondExpr)theEObject;
         T result = caseCondExpr(condExpr);
         if (result == null) result = caseExpression(condExpr);
-        if (result == null) result = caseAtomVarMacro(condExpr);
-        if (result == null) result = caseRecordVarMacro(condExpr);
-        if (result == null) result = caseAtomVar(condExpr);
-        if (result == null) result = caseAtomMacro(condExpr);
-        if (result == null) result = caseIntVarMacro(condExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -389,11 +371,6 @@ public class ErlangSwitch<T> extends Switch<T>
         LetExpr letExpr = (LetExpr)theEObject;
         T result = caseLetExpr(letExpr);
         if (result == null) result = caseExpression(letExpr);
-        if (result == null) result = caseAtomVarMacro(letExpr);
-        if (result == null) result = caseRecordVarMacro(letExpr);
-        if (result == null) result = caseAtomVar(letExpr);
-        if (result == null) result = caseAtomMacro(letExpr);
-        if (result == null) result = caseIntVarMacro(letExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -423,11 +400,6 @@ public class ErlangSwitch<T> extends Switch<T>
         IfExpr ifExpr = (IfExpr)theEObject;
         T result = caseIfExpr(ifExpr);
         if (result == null) result = caseExpression(ifExpr);
-        if (result == null) result = caseAtomVarMacro(ifExpr);
-        if (result == null) result = caseRecordVarMacro(ifExpr);
-        if (result == null) result = caseAtomVar(ifExpr);
-        if (result == null) result = caseAtomMacro(ifExpr);
-        if (result == null) result = caseIntVarMacro(ifExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -443,11 +415,6 @@ public class ErlangSwitch<T> extends Switch<T>
         CaseExpr caseExpr = (CaseExpr)theEObject;
         T result = caseCaseExpr(caseExpr);
         if (result == null) result = caseExpression(caseExpr);
-        if (result == null) result = caseAtomVarMacro(caseExpr);
-        if (result == null) result = caseRecordVarMacro(caseExpr);
-        if (result == null) result = caseAtomVar(caseExpr);
-        if (result == null) result = caseAtomMacro(caseExpr);
-        if (result == null) result = caseIntVarMacro(caseExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -463,11 +430,6 @@ public class ErlangSwitch<T> extends Switch<T>
         ReceiveExpr receiveExpr = (ReceiveExpr)theEObject;
         T result = caseReceiveExpr(receiveExpr);
         if (result == null) result = caseExpression(receiveExpr);
-        if (result == null) result = caseAtomVarMacro(receiveExpr);
-        if (result == null) result = caseRecordVarMacro(receiveExpr);
-        if (result == null) result = caseAtomVar(receiveExpr);
-        if (result == null) result = caseAtomMacro(receiveExpr);
-        if (result == null) result = caseIntVarMacro(receiveExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -476,11 +438,6 @@ public class ErlangSwitch<T> extends Switch<T>
         FunExpr funExpr = (FunExpr)theEObject;
         T result = caseFunExpr(funExpr);
         if (result == null) result = caseExpression(funExpr);
-        if (result == null) result = caseAtomVarMacro(funExpr);
-        if (result == null) result = caseRecordVarMacro(funExpr);
-        if (result == null) result = caseAtomVar(funExpr);
-        if (result == null) result = caseAtomMacro(funExpr);
-        if (result == null) result = caseIntVarMacro(funExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -490,11 +447,6 @@ public class ErlangSwitch<T> extends Switch<T>
         T result = caseFunRef(funRef);
         if (result == null) result = caseFunExpr(funRef);
         if (result == null) result = caseExpression(funRef);
-        if (result == null) result = caseAtomVarMacro(funRef);
-        if (result == null) result = caseRecordVarMacro(funRef);
-        if (result == null) result = caseAtomVar(funRef);
-        if (result == null) result = caseAtomMacro(funRef);
-        if (result == null) result = caseIntVarMacro(funRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -503,11 +455,6 @@ public class ErlangSwitch<T> extends Switch<T>
         TryExpr tryExpr = (TryExpr)theEObject;
         T result = caseTryExpr(tryExpr);
         if (result == null) result = caseExpression(tryExpr);
-        if (result == null) result = caseAtomVarMacro(tryExpr);
-        if (result == null) result = caseRecordVarMacro(tryExpr);
-        if (result == null) result = caseAtomVar(tryExpr);
-        if (result == null) result = caseAtomMacro(tryExpr);
-        if (result == null) result = caseIntVarMacro(tryExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -523,11 +470,6 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlList erlList = (ErlList)theEObject;
         T result = caseErlList(erlList);
         if (result == null) result = caseExpression(erlList);
-        if (result == null) result = caseAtomVarMacro(erlList);
-        if (result == null) result = caseRecordVarMacro(erlList);
-        if (result == null) result = caseAtomVar(erlList);
-        if (result == null) result = caseAtomMacro(erlList);
-        if (result == null) result = caseIntVarMacro(erlList);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -536,11 +478,6 @@ public class ErlangSwitch<T> extends Switch<T>
         ListComprehension listComprehension = (ListComprehension)theEObject;
         T result = caseListComprehension(listComprehension);
         if (result == null) result = caseExpression(listComprehension);
-        if (result == null) result = caseAtomVarMacro(listComprehension);
-        if (result == null) result = caseRecordVarMacro(listComprehension);
-        if (result == null) result = caseAtomVar(listComprehension);
-        if (result == null) result = caseAtomMacro(listComprehension);
-        if (result == null) result = caseIntVarMacro(listComprehension);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -549,11 +486,6 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlTuple erlTuple = (ErlTuple)theEObject;
         T result = caseErlTuple(erlTuple);
         if (result == null) result = caseExpression(erlTuple);
-        if (result == null) result = caseAtomVarMacro(erlTuple);
-        if (result == null) result = caseRecordVarMacro(erlTuple);
-        if (result == null) result = caseAtomVar(erlTuple);
-        if (result == null) result = caseAtomMacro(erlTuple);
-        if (result == null) result = caseIntVarMacro(erlTuple);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -562,11 +494,6 @@ public class ErlangSwitch<T> extends Switch<T>
         BinaryComprehension binaryComprehension = (BinaryComprehension)theEObject;
         T result = caseBinaryComprehension(binaryComprehension);
         if (result == null) result = caseExpression(binaryComprehension);
-        if (result == null) result = caseAtomVarMacro(binaryComprehension);
-        if (result == null) result = caseRecordVarMacro(binaryComprehension);
-        if (result == null) result = caseAtomVar(binaryComprehension);
-        if (result == null) result = caseAtomMacro(binaryComprehension);
-        if (result == null) result = caseIntVarMacro(binaryComprehension);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -575,11 +502,6 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlBinary erlBinary = (ErlBinary)theEObject;
         T result = caseErlBinary(erlBinary);
         if (result == null) result = caseExpression(erlBinary);
-        if (result == null) result = caseAtomVarMacro(erlBinary);
-        if (result == null) result = caseRecordVarMacro(erlBinary);
-        if (result == null) result = caseAtomVar(erlBinary);
-        if (result == null) result = caseAtomMacro(erlBinary);
-        if (result == null) result = caseIntVarMacro(erlBinary);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -601,41 +523,6 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         LCExpr lcExpr = (LCExpr)theEObject;
         T result = caseLCExpr(lcExpr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.ATOM_VAR_MACRO:
-      {
-        AtomVarMacro atomVarMacro = (AtomVarMacro)theEObject;
-        T result = caseAtomVarMacro(atomVarMacro);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.RECORD_VAR_MACRO:
-      {
-        RecordVarMacro recordVarMacro = (RecordVarMacro)theEObject;
-        T result = caseRecordVarMacro(recordVarMacro);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.ATOM_VAR:
-      {
-        AtomVar atomVar = (AtomVar)theEObject;
-        T result = caseAtomVar(atomVar);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.ATOM_MACRO:
-      {
-        AtomMacro atomMacro = (AtomMacro)theEObject;
-        T result = caseAtomMacro(atomMacro);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.INT_VAR_MACRO:
-      {
-        IntVarMacro intVarMacro = (IntVarMacro)theEObject;
-        T result = caseIntVarMacro(intVarMacro);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -804,11 +691,6 @@ public class ErlangSwitch<T> extends Switch<T>
         CatchExpr catchExpr = (CatchExpr)theEObject;
         T result = caseCatchExpr(catchExpr);
         if (result == null) result = caseExpression(catchExpr);
-        if (result == null) result = caseAtomVarMacro(catchExpr);
-        if (result == null) result = caseRecordVarMacro(catchExpr);
-        if (result == null) result = caseAtomVar(catchExpr);
-        if (result == null) result = caseAtomMacro(catchExpr);
-        if (result == null) result = caseIntVarMacro(catchExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -817,11 +699,6 @@ public class ErlangSwitch<T> extends Switch<T>
         MatchExpr matchExpr = (MatchExpr)theEObject;
         T result = caseMatchExpr(matchExpr);
         if (result == null) result = caseExpression(matchExpr);
-        if (result == null) result = caseAtomVarMacro(matchExpr);
-        if (result == null) result = caseRecordVarMacro(matchExpr);
-        if (result == null) result = caseAtomVar(matchExpr);
-        if (result == null) result = caseAtomMacro(matchExpr);
-        if (result == null) result = caseIntVarMacro(matchExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -830,11 +707,6 @@ public class ErlangSwitch<T> extends Switch<T>
         BinOp binOp = (BinOp)theEObject;
         T result = caseBinOp(binOp);
         if (result == null) result = caseExpression(binOp);
-        if (result == null) result = caseAtomVarMacro(binOp);
-        if (result == null) result = caseRecordVarMacro(binOp);
-        if (result == null) result = caseAtomVar(binOp);
-        if (result == null) result = caseAtomMacro(binOp);
-        if (result == null) result = caseIntVarMacro(binOp);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -843,11 +715,6 @@ public class ErlangSwitch<T> extends Switch<T>
         AddOp addOp = (AddOp)theEObject;
         T result = caseAddOp(addOp);
         if (result == null) result = caseExpression(addOp);
-        if (result == null) result = caseAtomVarMacro(addOp);
-        if (result == null) result = caseRecordVarMacro(addOp);
-        if (result == null) result = caseAtomVar(addOp);
-        if (result == null) result = caseAtomMacro(addOp);
-        if (result == null) result = caseIntVarMacro(addOp);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -856,11 +723,6 @@ public class ErlangSwitch<T> extends Switch<T>
         MultOp multOp = (MultOp)theEObject;
         T result = caseMultOp(multOp);
         if (result == null) result = caseExpression(multOp);
-        if (result == null) result = caseAtomVarMacro(multOp);
-        if (result == null) result = caseRecordVarMacro(multOp);
-        if (result == null) result = caseAtomVar(multOp);
-        if (result == null) result = caseAtomMacro(multOp);
-        if (result == null) result = caseIntVarMacro(multOp);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -869,11 +731,6 @@ public class ErlangSwitch<T> extends Switch<T>
         UnaryExpr unaryExpr = (UnaryExpr)theEObject;
         T result = caseUnaryExpr(unaryExpr);
         if (result == null) result = caseExpression(unaryExpr);
-        if (result == null) result = caseAtomVarMacro(unaryExpr);
-        if (result == null) result = caseRecordVarMacro(unaryExpr);
-        if (result == null) result = caseAtomVar(unaryExpr);
-        if (result == null) result = caseAtomMacro(unaryExpr);
-        if (result == null) result = caseIntVarMacro(unaryExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -882,11 +739,6 @@ public class ErlangSwitch<T> extends Switch<T>
         FunCall funCall = (FunCall)theEObject;
         T result = caseFunCall(funCall);
         if (result == null) result = caseExpression(funCall);
-        if (result == null) result = caseAtomVarMacro(funCall);
-        if (result == null) result = caseRecordVarMacro(funCall);
-        if (result == null) result = caseAtomVar(funCall);
-        if (result == null) result = caseAtomMacro(funCall);
-        if (result == null) result = caseIntVarMacro(funCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -895,11 +747,6 @@ public class ErlangSwitch<T> extends Switch<T>
         RemoteTarget remoteTarget = (RemoteTarget)theEObject;
         T result = caseRemoteTarget(remoteTarget);
         if (result == null) result = caseExpression(remoteTarget);
-        if (result == null) result = caseAtomVarMacro(remoteTarget);
-        if (result == null) result = caseRecordVarMacro(remoteTarget);
-        if (result == null) result = caseAtomVar(remoteTarget);
-        if (result == null) result = caseAtomMacro(remoteTarget);
-        if (result == null) result = caseIntVarMacro(remoteTarget);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -908,11 +755,6 @@ public class ErlangSwitch<T> extends Switch<T>
         BlockExpr blockExpr = (BlockExpr)theEObject;
         T result = caseBlockExpr(blockExpr);
         if (result == null) result = caseExpression(blockExpr);
-        if (result == null) result = caseAtomVarMacro(blockExpr);
-        if (result == null) result = caseRecordVarMacro(blockExpr);
-        if (result == null) result = caseAtomVar(blockExpr);
-        if (result == null) result = caseAtomMacro(blockExpr);
-        if (result == null) result = caseIntVarMacro(blockExpr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -921,11 +763,6 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlChar erlChar = (ErlChar)theEObject;
         T result = caseErlChar(erlChar);
         if (result == null) result = caseExpression(erlChar);
-        if (result == null) result = caseAtomVarMacro(erlChar);
-        if (result == null) result = caseRecordVarMacro(erlChar);
-        if (result == null) result = caseAtomVar(erlChar);
-        if (result == null) result = caseAtomMacro(erlChar);
-        if (result == null) result = caseIntVarMacro(erlChar);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -934,37 +771,6 @@ public class ErlangSwitch<T> extends Switch<T>
         Atom atom = (Atom)theEObject;
         T result = caseAtom(atom);
         if (result == null) result = caseExpression(atom);
-        if (result == null) result = caseAtomVarMacro(atom);
-        if (result == null) result = caseRecordVarMacro(atom);
-        if (result == null) result = caseAtomVar(atom);
-        if (result == null) result = caseAtomMacro(atom);
-        if (result == null) result = caseIntVarMacro(atom);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.RECORD_NAME:
-      {
-        RecordName recordName = (RecordName)theEObject;
-        T result = caseRecordName(recordName);
-        if (result == null) result = caseExpression(recordName);
-        if (result == null) result = caseAtomVarMacro(recordName);
-        if (result == null) result = caseRecordVarMacro(recordName);
-        if (result == null) result = caseAtomVar(recordName);
-        if (result == null) result = caseAtomMacro(recordName);
-        if (result == null) result = caseIntVarMacro(recordName);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.RECORD_FIELD:
-      {
-        RecordField recordField = (RecordField)theEObject;
-        T result = caseRecordField(recordField);
-        if (result == null) result = caseExpression(recordField);
-        if (result == null) result = caseAtomVarMacro(recordField);
-        if (result == null) result = caseRecordVarMacro(recordField);
-        if (result == null) result = caseAtomVar(recordField);
-        if (result == null) result = caseAtomMacro(recordField);
-        if (result == null) result = caseIntVarMacro(recordField);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -973,11 +779,6 @@ public class ErlangSwitch<T> extends Switch<T>
         Macro macro = (Macro)theEObject;
         T result = caseMacro(macro);
         if (result == null) result = caseExpression(macro);
-        if (result == null) result = caseAtomVarMacro(macro);
-        if (result == null) result = caseRecordVarMacro(macro);
-        if (result == null) result = caseAtomVar(macro);
-        if (result == null) result = caseAtomMacro(macro);
-        if (result == null) result = caseIntVarMacro(macro);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -986,11 +787,6 @@ public class ErlangSwitch<T> extends Switch<T>
         Variable variable = (Variable)theEObject;
         T result = caseVariable(variable);
         if (result == null) result = caseExpression(variable);
-        if (result == null) result = caseAtomVarMacro(variable);
-        if (result == null) result = caseRecordVarMacro(variable);
-        if (result == null) result = caseAtomVar(variable);
-        if (result == null) result = caseAtomMacro(variable);
-        if (result == null) result = caseIntVarMacro(variable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -999,11 +795,6 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlFloat erlFloat = (ErlFloat)theEObject;
         T result = caseErlFloat(erlFloat);
         if (result == null) result = caseExpression(erlFloat);
-        if (result == null) result = caseAtomVarMacro(erlFloat);
-        if (result == null) result = caseRecordVarMacro(erlFloat);
-        if (result == null) result = caseAtomVar(erlFloat);
-        if (result == null) result = caseAtomMacro(erlFloat);
-        if (result == null) result = caseIntVarMacro(erlFloat);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1012,11 +803,6 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlInteger erlInteger = (ErlInteger)theEObject;
         T result = caseErlInteger(erlInteger);
         if (result == null) result = caseExpression(erlInteger);
-        if (result == null) result = caseAtomVarMacro(erlInteger);
-        if (result == null) result = caseRecordVarMacro(erlInteger);
-        if (result == null) result = caseAtomVar(erlInteger);
-        if (result == null) result = caseAtomMacro(erlInteger);
-        if (result == null) result = caseIntVarMacro(erlInteger);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1993,86 +1779,6 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Atom Var Macro</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Atom Var Macro</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAtomVarMacro(AtomVarMacro object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Record Var Macro</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Record Var Macro</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRecordVarMacro(RecordVarMacro object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Atom Var</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Atom Var</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAtomVar(AtomVar object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Atom Macro</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Atom Macro</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAtomMacro(AtomMacro object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Int Var Macro</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Int Var Macro</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIntVarMacro(IntVarMacro object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Spec Fun</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -2532,38 +2238,6 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAtom(Atom object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Record Name</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Record Name</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRecordName(RecordName object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Record Field</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Record Field</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRecordField(RecordField object)
   {
     return null;
   }

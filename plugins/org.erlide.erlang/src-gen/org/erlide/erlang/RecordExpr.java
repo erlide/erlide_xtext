@@ -86,12 +86,12 @@ public interface RecordExpr extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Rec</em>' containment reference.
-   * @see #setRec(RecordVarMacro)
+   * @see #setRec(Expression)
    * @see org.erlide.erlang.ErlangPackage#getRecordExpr_Rec()
    * @model containment="true"
    * @generated
    */
-  RecordVarMacro getRec();
+  Expression getRec();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.RecordExpr#getRec <em>Rec</em>}' containment reference.
@@ -101,7 +101,7 @@ public interface RecordExpr extends Expression
    * @see #getRec()
    * @generated
    */
-  void setRec(RecordVarMacro value);
+  void setRec(Expression value);
 
   /**
    * Returns the value of the '<em><b>Field</b></em>' containment reference.
@@ -112,12 +112,12 @@ public interface RecordExpr extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Field</em>' containment reference.
-   * @see #setField(AtomMacro)
+   * @see #setField(Expression)
    * @see org.erlide.erlang.ErlangPackage#getRecordExpr_Field()
    * @model containment="true"
    * @generated
    */
-  AtomMacro getField();
+  Expression getField();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.RecordExpr#getField <em>Field</em>}' containment reference.
@@ -127,7 +127,7 @@ public interface RecordExpr extends Expression
    * @see #getField()
    * @generated
    */
-  void setField(AtomMacro value);
+  void setField(Expression value);
 
   /**
    * Returns the value of the '<em><b>Tuple</b></em>' containment reference.

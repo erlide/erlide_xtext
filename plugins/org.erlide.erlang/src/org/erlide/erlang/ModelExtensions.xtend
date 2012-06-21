@@ -11,6 +11,7 @@ import com.google.inject.Inject
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.erlide.erlang.Function
 import org.erlide.erlang.SpecFun
+import org.erlide.erlang.FunRef
 
 class ModelExtensions {
     
@@ -77,8 +78,9 @@ class ModelExtensions {
 	def Collection<Function> getDeclaredExports(Module module) {
 		val exported = getExportAttributes(module)
 		val refs = Iterables::concat(exported.map[funs])
-		println("¤¤ "+refs.map[it.function])
-		refs.map[it.function].filter(typeof(Function)).toList
+		val xx = refs.map[module.getFunction(it)].toList
+		println("!"+xx)
+		xx
 	}
 	
 	def Collection<String> getDeclaredExportNames(Module module) {
@@ -104,6 +106,12 @@ class ModelExtensions {
 		]
 	}
 	
+	def Function getFunction(Module module, FunRef ref) {
+		module.allContents.filter(typeof(Function)).findFirst[
+			it.name==ref.function_.sourceText && it.arity==Integer::parseInt(ref.arity_.sourceText)
+		]
+	}
+	
     def boolean exportsAll(Module module) {
     	module.compileOptions.exists[it.hasAtom("export_all")]
     }
@@ -117,7 +125,7 @@ class ModelExtensions {
  	def SpecAttribute getSpec(Module module, String fname, int farity) {
 		val specs = getSpecs(module)
 		specs.findFirst[
-			ref.function==fname && it.specArity==farity
+			ref.function_.sourceText==fname && it.specArity==farity
 		]		
 	}
 	
@@ -134,7 +142,9 @@ class ModelExtensions {
  	def SpecAttribute getSpec(Function function) {
 		val module = function.module
 		val specs = module.specs
-		specs.findFirst[ref.pointsTo(function)]		
+		specs.findFirst[
+			ref.function_.sourceText==function.name && it.specArity==function.arity
+		]		
 	}
 
 	def boolean pointsTo(SpecFun fun, Function function) { 
@@ -160,8 +170,8 @@ class ModelExtensions {
     }
  
   	def int getSpecArity(SpecAttribute spec) {
- 		if (spec.ref.arity!=null) {
- 			0 //spec.ref.arity
+ 		if (spec.ref.arity_!=null) {
+ 			Integer::parseInt(spec.ref.arity_.sourceText)
 		} else {
 	 		spec.signatures.head.decl.args.size
  		}

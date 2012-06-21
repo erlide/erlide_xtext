@@ -30,12 +30,12 @@ public interface IfdefAttribute extends ConditionalAttribute
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' containment reference.
-   * @see #setRef(AtomVar)
+   * @see #setRef(Expression)
    * @see org.erlide.erlang.ErlangPackage#getIfdefAttribute_Ref()
    * @model containment="true"
    * @generated
    */
-  AtomVar getRef();
+  Expression getRef();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.IfdefAttribute#getRef <em>Ref</em>}' containment reference.
@@ -45,6 +45,6 @@ public interface IfdefAttribute extends ConditionalAttribute
    * @see #getRef()
    * @generated
    */
-  void setRef(AtomVar value);
+  void setRef(Expression value);
 
 } // IfdefAttribute

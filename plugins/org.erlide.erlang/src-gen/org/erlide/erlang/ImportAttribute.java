@@ -59,12 +59,12 @@ public interface ImportAttribute extends Attribute
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Module</em>' containment reference.
-   * @see #setModule(AtomMacro)
+   * @see #setModule(Expression)
    * @see org.erlide.erlang.ErlangPackage#getImportAttribute_Module()
    * @model containment="true"
    * @generated
    */
-  AtomMacro getModule();
+  Expression getModule();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.ImportAttribute#getModule <em>Module</em>}' containment reference.
@@ -74,7 +74,7 @@ public interface ImportAttribute extends Attribute
    * @see #getModule()
    * @generated
    */
-  void setModule(AtomMacro value);
+  void setModule(Expression value);
 
   /**
    * Returns the value of the '<em><b>Funs</b></em>' containment reference list.

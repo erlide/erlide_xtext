@@ -624,9 +624,9 @@ ruleUndefAttribute returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getUndefAttributeAccess().getRefAtomVarParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getUndefAttributeAccess().getRefMacroRefParserRuleCall_3_0()); 
 	    }
-		lv_ref_3_0=ruleAtomVar		{
+		lv_ref_3_0=ruleMacroRef		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getUndefAttributeRule());
 	        }
@@ -634,7 +634,7 @@ ruleUndefAttribute returns [EObject current=null]
        			$current, 
        			"ref",
         		lv_ref_3_0, 
-        		"AtomVar");
+        		"MacroRef");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -721,9 +721,9 @@ ruleIfdefAttribute returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getIfdefAttributeAccess().getRefAtomVarParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getIfdefAttributeAccess().getRefMacroRefParserRuleCall_3_0()); 
 	    }
-		lv_ref_3_0=ruleAtomVar		{
+		lv_ref_3_0=ruleMacroRef		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getIfdefAttributeRule());
 	        }
@@ -731,7 +731,7 @@ ruleIfdefAttribute returns [EObject current=null]
        			$current, 
        			"ref",
         		lv_ref_3_0, 
-        		"AtomVar");
+        		"MacroRef");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1599,9 +1599,9 @@ ruleImportAttribute returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getImportAttributeAccess().getModuleAtomMacroParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getImportAttributeAccess().getModuleAtomVarMacroParserRuleCall_3_0()); 
 	    }
-		lv_module_3_0=ruleAtomMacro		{
+		lv_module_3_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getImportAttributeRule());
 	        }
@@ -1609,7 +1609,7 @@ ruleImportAttribute returns [EObject current=null]
        			$current, 
        			"module",
         		lv_module_3_0, 
-        		"AtomMacro");
+        		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -4077,9 +4077,9 @@ ruleRecordExpr returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getRecordExprAccess().getRecRecordVarMacroParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getRecordExprAccess().getRecAtomVarMacroParserRuleCall_0_0()); 
 	    }
-		lv_rec_0_0=ruleRecordVarMacro		{
+		lv_rec_0_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getRecordExprRule());
 	        }
@@ -4087,7 +4087,7 @@ ruleRecordExpr returns [EObject current=null]
        			$current, 
        			"rec",
         		lv_rec_0_0, 
-        		"RecordVarMacro");
+        		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -4099,9 +4099,9 @@ ruleRecordExpr returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getRecordExprAccess().getFieldAtomMacroParserRuleCall_1_0_1_0()); 
+	        newCompositeNode(grammarAccess.getRecordExprAccess().getFieldAtomVarMacroParserRuleCall_1_0_1_0()); 
 	    }
-		lv_field_2_0=ruleAtomMacro		{
+		lv_field_2_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getRecordExprRule());
 	        }
@@ -4109,7 +4109,7 @@ ruleRecordExpr returns [EObject current=null]
        			$current, 
        			"field",
         		lv_field_2_0, 
-        		"AtomMacro");
+        		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -4325,9 +4325,9 @@ ruleRecordFieldExpr returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getRecordFieldExprAccess().getRefAtomMacroParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getRecordFieldExprAccess().getRefAtomVarMacroParserRuleCall_0_0()); 
 	    }
-		lv_ref_0_0=ruleAtomMacro		{
+		lv_ref_0_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getRecordFieldExprRule());
 	        }
@@ -4335,7 +4335,7 @@ ruleRecordFieldExpr returns [EObject current=null]
        			$current, 
        			"ref",
         		lv_ref_0_0, 
-        		"AtomMacro");
+        		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -4518,50 +4518,6 @@ ruleAtomRefLiteral returns [EObject current=null]
 
 
 
-// Entry rule entryRuleRecordNameLiteral
-entryRuleRecordNameLiteral returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getRecordNameLiteralRule()); }
-	 iv_ruleRecordNameLiteral=ruleRecordNameLiteral 
-	 { $current=$iv_ruleRecordNameLiteral.current; } 
-	 EOF 
-;
-
-// Rule RecordNameLiteral
-ruleRecordNameLiteral returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getRecordNameLiteralAccess().getRecordNameAction_0(),
-            $current);
-    }
-)(
-(
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getRecordNameLiteralRule());
-	        }
-        }
-		{ 
-	        newCompositeNode(grammarAccess.getRecordNameLiteralAccess().getValueRecordAttributeCrossReference_1_0()); 
-	    }
-		ruleNAME		{ 
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))
-;
-
-
-
-
-
-
-
 // Entry rule entryRuleMacroLiteral
 entryRuleMacroLiteral returns [EObject current=null] 
 	:
@@ -4593,6 +4549,48 @@ ruleMacroLiteral returns [EObject current=null]
 	        newCompositeNode(grammarAccess.getMacroLiteralAccess().getValueDefineAttributeCrossReference_1_0()); 
 	    }
 		ruleMACRO		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRuleMacroRef
+entryRuleMacroRef returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getMacroRefRule()); }
+	 iv_ruleMacroRef=ruleMacroRef 
+	 { $current=$iv_ruleMacroRef.current; } 
+	 EOF 
+;
+
+// Rule MacroRef
+ruleMacroRef returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMacroRefAccess().getMacroAction_0(),
+            $current);
+    }
+)(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMacroRefRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getMacroRefAccess().getValueDefineAttributeCrossReference_1_0()); 
+	    }
+		ruleNAMEVAR		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -5604,16 +5602,16 @@ ruleFunRef returns [EObject current=null]
 (((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunRefAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); 
+	        newCompositeNode(grammarAccess.getFunRefAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); 
 	    }
-		lv_module_0_0=ruleAtomVarMacro		{
+		lv_module__0_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunRefRule());
 	        }
        		set(
        			$current, 
-       			"module",
-        		lv_module_0_0, 
+       			"module_",
+        		lv_module__0_0, 
         		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -5626,16 +5624,16 @@ ruleFunRef returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunRefAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getFunRefAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); 
 	    }
-		lv_function_2_0=ruleAtomVarMacro		{
+		lv_function__2_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunRefRule());
 	        }
        		set(
        			$current, 
-       			"function",
-        		lv_function_2_0, 
+       			"function_",
+        		lv_function__2_0, 
         		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -5648,16 +5646,16 @@ ruleFunRef returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunRefAccess().getArityIntVarMacroParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getFunRefAccess().getArity_IntVarMacroParserRuleCall_3_0()); 
 	    }
-		lv_arity_4_0=ruleIntVarMacro		{
+		lv_arity__4_0=ruleIntVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunRefRule());
 	        }
        		set(
        			$current, 
-       			"arity",
-        		lv_arity_4_0, 
+       			"arity_",
+        		lv_arity__4_0, 
         		"IntVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -7256,136 +7254,6 @@ ruleAtomVarMacro returns [EObject current=null]
 
 
 
-// Entry rule entryRuleRecordVarMacro
-entryRuleRecordVarMacro returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getRecordVarMacroRule()); }
-	 iv_ruleRecordVarMacro=ruleRecordVarMacro 
-	 { $current=$iv_ruleRecordVarMacro.current; } 
-	 EOF 
-;
-
-// Rule RecordVarMacro
-ruleRecordVarMacro returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getRecordVarMacroAccess().getRecordNameLiteralParserRuleCall_0()); 
-    }
-    this_RecordNameLiteral_0=ruleRecordNameLiteral
-    { 
-        $current = $this_RecordNameLiteral_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getRecordVarMacroAccess().getVariableLiteralParserRuleCall_1()); 
-    }
-    this_VariableLiteral_1=ruleVariableLiteral
-    { 
-        $current = $this_VariableLiteral_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getRecordVarMacroAccess().getMacroLiteralParserRuleCall_2()); 
-    }
-    this_MacroLiteral_2=ruleMacroLiteral
-    { 
-        $current = $this_MacroLiteral_2.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleAtomVar
-entryRuleAtomVar returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getAtomVarRule()); }
-	 iv_ruleAtomVar=ruleAtomVar 
-	 { $current=$iv_ruleAtomVar.current; } 
-	 EOF 
-;
-
-// Rule AtomVar
-ruleAtomVar returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getAtomVarAccess().getAtomRefLiteralParserRuleCall_0()); 
-    }
-    this_AtomRefLiteral_0=ruleAtomRefLiteral
-    { 
-        $current = $this_AtomRefLiteral_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getAtomVarAccess().getVariableLiteralParserRuleCall_1()); 
-    }
-    this_VariableLiteral_1=ruleVariableLiteral
-    { 
-        $current = $this_VariableLiteral_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleAtomMacro
-entryRuleAtomMacro returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getAtomMacroRule()); }
-	 iv_ruleAtomMacro=ruleAtomMacro 
-	 { $current=$iv_ruleAtomMacro.current; } 
-	 EOF 
-;
-
-// Rule AtomMacro
-ruleAtomMacro returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getAtomMacroAccess().getAtomRefLiteralParserRuleCall_0()); 
-    }
-    this_AtomRefLiteral_0=ruleAtomRefLiteral
-    { 
-        $current = $this_AtomRefLiteral_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getAtomMacroAccess().getMacroLiteralParserRuleCall_1()); 
-    }
-    this_MacroLiteral_1=ruleMacroLiteral
-    { 
-        $current = $this_MacroLiteral_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
 // Entry rule entryRuleIntVarMacro
 entryRuleIntVarMacro returns [EObject current=null] 
 	:
@@ -7884,16 +7752,16 @@ ruleSpecFun returns [EObject current=null]
 (((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecFunAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); 
+	        newCompositeNode(grammarAccess.getSpecFunAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); 
 	    }
-		lv_module_0_0=ruleAtomVarMacro		{
+		lv_module__0_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSpecFunRule());
 	        }
        		set(
        			$current, 
-       			"module",
-        		lv_module_0_0, 
+       			"module_",
+        		lv_module__0_0, 
         		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -7906,16 +7774,16 @@ ruleSpecFun returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecFunAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getSpecFunAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); 
 	    }
-		lv_function_2_0=ruleAtomVarMacro		{
+		lv_function__2_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSpecFunRule());
 	        }
        		set(
        			$current, 
-       			"function",
-        		lv_function_2_0, 
+       			"function_",
+        		lv_function__2_0, 
         		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -7928,16 +7796,16 @@ ruleSpecFun returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecFunAccess().getArityIntVarMacroParserRuleCall_2_1_0()); 
+	        newCompositeNode(grammarAccess.getSpecFunAccess().getArity_IntVarMacroParserRuleCall_2_1_0()); 
 	    }
-		lv_arity_4_0=ruleIntVarMacro		{
+		lv_arity__4_0=ruleIntVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSpecFunRule());
 	        }
        		set(
        			$current, 
-       			"arity",
-        		lv_arity_4_0, 
+       			"arity_",
+        		lv_arity__4_0, 
         		"IntVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }

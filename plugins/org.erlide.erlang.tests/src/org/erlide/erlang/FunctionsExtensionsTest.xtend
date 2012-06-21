@@ -35,7 +35,7 @@ class FunctionExtensionsTest {
     }
 
     @Test
-    def void getSpec_old() {
+    def void getSpecWithOldFormat() {
         val module = parser.parse('''
 			-module(x).
 			-export([ff/0]).
@@ -45,7 +45,8 @@ class FunctionExtensionsTest {
         ''')
         val ff = module.getFunction("ff", 0)
         assertThat(ff.spec, is(notNullValue))
-        assertThat(ff.spec, is(module.getSpec("ff", 0)))
+        val spec = module.getSpec("ff", 0)
+        assertThat(ff.spec, is(spec))
         val gg = module.getFunction("ff", 1)
         assertThat(gg.spec, is(nullValue))
         assertThat(module.getSpec("gg", 0), is(nullValue))

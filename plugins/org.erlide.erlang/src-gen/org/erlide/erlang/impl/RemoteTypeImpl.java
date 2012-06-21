@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.erlide.erlang.AtomVarMacro;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.RemoteType;
 import org.erlide.erlang.TopType;
 
@@ -46,7 +46,7 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
    * @generated
    * @ordered
    */
-  protected AtomVarMacro m;
+  protected Expression m;
 
   /**
    * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
@@ -84,7 +84,7 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
    * <!-- end-user-doc -->
    * @generated
    */
-  public AtomVarMacro getM()
+  public Expression getM()
   {
     return m;
   }
@@ -94,9 +94,9 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetM(AtomVarMacro newM, NotificationChain msgs)
+  public NotificationChain basicSetM(Expression newM, NotificationChain msgs)
   {
-    AtomVarMacro oldM = m;
+    Expression oldM = m;
     m = newM;
     if (eNotificationRequired())
     {
@@ -111,7 +111,7 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setM(AtomVarMacro newM)
+  public void setM(Expression newM)
   {
     if (newM != m)
     {
@@ -189,7 +189,7 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
     switch (featureID)
     {
       case ErlangPackage.REMOTE_TYPE__M:
-        setM((AtomVarMacro)newValue);
+        setM((Expression)newValue);
         return;
       case ErlangPackage.REMOTE_TYPE__ARGS:
         getArgs().clear();
@@ -210,7 +210,7 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
     switch (featureID)
     {
       case ErlangPackage.REMOTE_TYPE__M:
-        setM((AtomVarMacro)null);
+        setM((Expression)null);
         return;
       case ErlangPackage.REMOTE_TYPE__ARGS:
         getArgs().clear();

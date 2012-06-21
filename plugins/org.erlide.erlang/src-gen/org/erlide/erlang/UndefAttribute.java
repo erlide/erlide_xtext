@@ -57,12 +57,12 @@ public interface UndefAttribute extends Attribute, AbstractDefineAttribute
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' containment reference.
-   * @see #setRef(AtomVar)
+   * @see #setRef(Expression)
    * @see org.erlide.erlang.ErlangPackage#getUndefAttribute_Ref()
    * @model containment="true"
    * @generated
    */
-  AtomVar getRef();
+  Expression getRef();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.UndefAttribute#getRef <em>Ref</em>}' containment reference.
@@ -72,6 +72,6 @@ public interface UndefAttribute extends Attribute, AbstractDefineAttribute
    * @see #getRef()
    * @generated
    */
-  void setRef(AtomVar value);
+  void setRef(Expression value);
 
 } // UndefAttribute

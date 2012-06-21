@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.erlide.erlang.AtomMacro;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.FunRef;
 import org.erlide.erlang.ImportAttribute;
 
@@ -67,7 +67,7 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
    * @generated
    * @ordered
    */
-  protected AtomMacro module;
+  protected Expression module;
 
   /**
    * The cached value of the '{@link #getFuns() <em>Funs</em>}' containment reference list.
@@ -128,7 +128,7 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public AtomMacro getModule()
+  public Expression getModule()
   {
     return module;
   }
@@ -138,9 +138,9 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetModule(AtomMacro newModule, NotificationChain msgs)
+  public NotificationChain basicSetModule(Expression newModule, NotificationChain msgs)
   {
-    AtomMacro oldModule = module;
+    Expression oldModule = module;
     module = newModule;
     if (eNotificationRequired())
     {
@@ -155,7 +155,7 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setModule(AtomMacro newModule)
+  public void setModule(Expression newModule)
   {
     if (newModule != module)
     {
@@ -238,7 +238,7 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
         setTag((String)newValue);
         return;
       case ErlangPackage.IMPORT_ATTRIBUTE__MODULE:
-        setModule((AtomMacro)newValue);
+        setModule((Expression)newValue);
         return;
       case ErlangPackage.IMPORT_ATTRIBUTE__FUNS:
         getFuns().clear();
@@ -262,7 +262,7 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
         setTag(TAG_EDEFAULT);
         return;
       case ErlangPackage.IMPORT_ATTRIBUTE__MODULE:
-        setModule((AtomMacro)null);
+        setModule((Expression)null);
         return;
       case ErlangPackage.IMPORT_ATTRIBUTE__FUNS:
         getFuns().clear();

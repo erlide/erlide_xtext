@@ -10,12 +10,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.erlide.erlang.AtomMacro;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.RecordExpr;
 import org.erlide.erlang.RecordTuple;
-import org.erlide.erlang.RecordVarMacro;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,7 +62,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * @generated
    * @ordered
    */
-  protected RecordVarMacro rec;
+  protected Expression rec;
 
   /**
    * The cached value of the '{@link #getField() <em>Field</em>}' containment reference.
@@ -74,7 +72,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * @generated
    * @ordered
    */
-  protected AtomMacro field;
+  protected Expression field;
 
   /**
    * The cached value of the '{@link #getTuple() <em>Tuple</em>}' containment reference.
@@ -208,7 +206,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordVarMacro getRec()
+  public Expression getRec()
   {
     return rec;
   }
@@ -218,9 +216,9 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRec(RecordVarMacro newRec, NotificationChain msgs)
+  public NotificationChain basicSetRec(Expression newRec, NotificationChain msgs)
   {
-    RecordVarMacro oldRec = rec;
+    Expression oldRec = rec;
     rec = newRec;
     if (eNotificationRequired())
     {
@@ -235,7 +233,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRec(RecordVarMacro newRec)
+  public void setRec(Expression newRec)
   {
     if (newRec != rec)
     {
@@ -256,7 +254,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public AtomMacro getField()
+  public Expression getField()
   {
     return field;
   }
@@ -266,9 +264,9 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetField(AtomMacro newField, NotificationChain msgs)
+  public NotificationChain basicSetField(Expression newField, NotificationChain msgs)
   {
-    AtomMacro oldField = field;
+    Expression oldField = field;
     field = newField;
     if (eNotificationRequired())
     {
@@ -283,7 +281,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setField(AtomMacro newField)
+  public void setField(Expression newField)
   {
     if (newField != field)
     {
@@ -412,10 +410,10 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
         setRecord((RecordExpr)newValue);
         return;
       case ErlangPackage.RECORD_EXPR__REC:
-        setRec((RecordVarMacro)newValue);
+        setRec((Expression)newValue);
         return;
       case ErlangPackage.RECORD_EXPR__FIELD:
-        setField((AtomMacro)newValue);
+        setField((Expression)newValue);
         return;
       case ErlangPackage.RECORD_EXPR__TUPLE:
         setTuple((RecordTuple)newValue);
@@ -441,10 +439,10 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
         setRecord((RecordExpr)null);
         return;
       case ErlangPackage.RECORD_EXPR__REC:
-        setRec((RecordVarMacro)null);
+        setRec((Expression)null);
         return;
       case ErlangPackage.RECORD_EXPR__FIELD:
-        setField((AtomMacro)null);
+        setField((Expression)null);
         return;
       case ErlangPackage.RECORD_EXPR__TUPLE:
         setTuple((RecordTuple)null);

@@ -10,8 +10,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.erlide.erlang.AtomVar;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.IfdefAttribute;
 
 /**
@@ -37,7 +37,7 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
    * @generated
    * @ordered
    */
-  protected AtomVar ref;
+  protected Expression ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
    * <!-- end-user-doc -->
    * @generated
    */
-  public AtomVar getRef()
+  public Expression getRef()
   {
     return ref;
   }
@@ -75,9 +75,9 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRef(AtomVar newRef, NotificationChain msgs)
+  public NotificationChain basicSetRef(Expression newRef, NotificationChain msgs)
   {
-    AtomVar oldRef = ref;
+    Expression oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
     {
@@ -92,7 +92,7 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(AtomVar newRef)
+  public void setRef(Expression newRef)
   {
     if (newRef != ref)
     {
@@ -151,7 +151,7 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
     switch (featureID)
     {
       case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        setRef((AtomVar)newValue);
+        setRef((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -168,7 +168,7 @@ public class IfdefAttributeImpl extends ConditionalAttributeImpl implements Ifde
     switch (featureID)
     {
       case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        setRef((AtomVar)null);
+        setRef((Expression)null);
         return;
     }
     super.eUnset(featureID);

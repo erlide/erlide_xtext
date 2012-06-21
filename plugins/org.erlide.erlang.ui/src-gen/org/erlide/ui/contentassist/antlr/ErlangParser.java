@@ -76,9 +76,6 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLISTOPAccess().getAlternatives(), "rule__LISTOP__Alternatives");
 					put(grammarAccess.getCOMPOPAccess().getAlternatives(), "rule__COMPOP__Alternatives");
 					put(grammarAccess.getAtomVarMacroAccess().getAlternatives(), "rule__AtomVarMacro__Alternatives");
-					put(grammarAccess.getRecordVarMacroAccess().getAlternatives(), "rule__RecordVarMacro__Alternatives");
-					put(grammarAccess.getAtomVarAccess().getAlternatives(), "rule__AtomVar__Alternatives");
-					put(grammarAccess.getAtomMacroAccess().getAlternatives(), "rule__AtomMacro__Alternatives");
 					put(grammarAccess.getIntVarMacroAccess().getAlternatives(), "rule__IntVarMacro__Alternatives");
 					put(grammarAccess.getNAMEAccess().getAlternatives(), "rule__NAME__Alternatives");
 					put(grammarAccess.getNAMEVARAccess().getAlternatives(), "rule__NAMEVAR__Alternatives");
@@ -200,9 +197,8 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRecordFieldExprAccess().getGroup_2(), "rule__RecordFieldExpr__Group_2__0");
 					put(grammarAccess.getLiteralExpressionNoNumberAccess().getGroup_2(), "rule__LiteralExpressionNoNumber__Group_2__0");
 					put(grammarAccess.getAtomRefLiteralAccess().getGroup(), "rule__AtomRefLiteral__Group__0");
-					put(grammarAccess.getRecordNameLiteralAccess().getGroup(), "rule__RecordNameLiteral__Group__0");
-					put(grammarAccess.getRecordFieldLiteralAccess().getGroup(), "rule__RecordFieldLiteral__Group__0");
 					put(grammarAccess.getMacroLiteralAccess().getGroup(), "rule__MacroLiteral__Group__0");
+					put(grammarAccess.getMacroRefAccess().getGroup(), "rule__MacroRef__Group__0");
 					put(grammarAccess.getVariableLiteralAccess().getGroup(), "rule__VariableLiteral__Group__0");
 					put(grammarAccess.getStringLiteralAccess().getGroup(), "rule__StringLiteral__Group__0");
 					put(grammarAccess.getLiteralExpressionAccess().getGroup_2(), "rule__LiteralExpression__Group_2__0");
@@ -448,9 +444,8 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRecordFieldExprAccess().getTypeAssignment_2_1(), "rule__RecordFieldExpr__TypeAssignment_2_1");
 					put(grammarAccess.getLiteralExpressionNoNumberAccess().getValueAssignment_2_1(), "rule__LiteralExpressionNoNumber__ValueAssignment_2_1");
 					put(grammarAccess.getAtomRefLiteralAccess().getValueAssignment_1(), "rule__AtomRefLiteral__ValueAssignment_1");
-					put(grammarAccess.getRecordNameLiteralAccess().getValueAssignment_1(), "rule__RecordNameLiteral__ValueAssignment_1");
-					put(grammarAccess.getRecordFieldLiteralAccess().getValueAssignment_1(), "rule__RecordFieldLiteral__ValueAssignment_1");
 					put(grammarAccess.getMacroLiteralAccess().getValueAssignment_1(), "rule__MacroLiteral__ValueAssignment_1");
+					put(grammarAccess.getMacroRefAccess().getValueAssignment_1(), "rule__MacroRef__ValueAssignment_1");
 					put(grammarAccess.getVariableLiteralAccess().getValueAssignment_1(), "rule__VariableLiteral__ValueAssignment_1");
 					put(grammarAccess.getStringLiteralAccess().getStringAssignment_0(), "rule__StringLiteral__StringAssignment_0");
 					put(grammarAccess.getStringLiteralAccess().getMoreAssignment_1(), "rule__StringLiteral__MoreAssignment_1");
@@ -482,9 +477,9 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReceiveExprAccess().getAfter_exprAssignment_1_1_1(), "rule__ReceiveExpr__After_exprAssignment_1_1_1");
 					put(grammarAccess.getReceiveExprAccess().getAfter_bodyAssignment_1_1_3(), "rule__ReceiveExpr__After_bodyAssignment_1_1_3");
 					put(grammarAccess.getReceiveExprAccess().getAfter_bodyAssignment_1_1_4_1(), "rule__ReceiveExpr__After_bodyAssignment_1_1_4_1");
-					put(grammarAccess.getFunRefAccess().getModuleAssignment_0_0(), "rule__FunRef__ModuleAssignment_0_0");
-					put(grammarAccess.getFunRefAccess().getFunctionAssignment_1(), "rule__FunRef__FunctionAssignment_1");
-					put(grammarAccess.getFunRefAccess().getArityAssignment_3(), "rule__FunRef__ArityAssignment_3");
+					put(grammarAccess.getFunRefAccess().getModule_Assignment_0_0(), "rule__FunRef__Module_Assignment_0_0");
+					put(grammarAccess.getFunRefAccess().getFunction_Assignment_1(), "rule__FunRef__Function_Assignment_1");
+					put(grammarAccess.getFunRefAccess().getArity_Assignment_3(), "rule__FunRef__Arity_Assignment_3");
 					put(grammarAccess.getInlineFunAccess().getClausesAssignment_0(), "rule__InlineFun__ClausesAssignment_0");
 					put(grammarAccess.getInlineFunAccess().getClausesAssignment_1_1(), "rule__InlineFun__ClausesAssignment_1_1");
 					put(grammarAccess.getTryExprAccess().getBodyAssignment_1(), "rule__TryExpr__BodyAssignment_1");
@@ -526,9 +521,9 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLCExprAccess().getO1Assignment_0(), "rule__LCExpr__O1Assignment_0");
 					put(grammarAccess.getLCExprAccess().getOpAssignment_1_0(), "rule__LCExpr__OpAssignment_1_0");
 					put(grammarAccess.getLCExprAccess().getO2Assignment_1_1(), "rule__LCExpr__O2Assignment_1_1");
-					put(grammarAccess.getSpecFunAccess().getModuleAssignment_0_0(), "rule__SpecFun__ModuleAssignment_0_0");
-					put(grammarAccess.getSpecFunAccess().getFunctionAssignment_1(), "rule__SpecFun__FunctionAssignment_1");
-					put(grammarAccess.getSpecFunAccess().getArityAssignment_2_1(), "rule__SpecFun__ArityAssignment_2_1");
+					put(grammarAccess.getSpecFunAccess().getModule_Assignment_0_0(), "rule__SpecFun__Module_Assignment_0_0");
+					put(grammarAccess.getSpecFunAccess().getFunction_Assignment_1(), "rule__SpecFun__Function_Assignment_1");
+					put(grammarAccess.getSpecFunAccess().getArity_Assignment_2_1(), "rule__SpecFun__Arity_Assignment_2_1");
 					put(grammarAccess.getTypeSigAccess().getDeclAssignment_0(), "rule__TypeSig__DeclAssignment_0");
 					put(grammarAccess.getTypeSigAccess().getGuardsAssignment_1_1(), "rule__TypeSig__GuardsAssignment_1_1");
 					put(grammarAccess.getFunTypeAccess().getArgsAssignment_1_0(), "rule__FunType__ArgsAssignment_1_0");

@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.erlide.erlang.AtomMacro;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.RecordFieldExpr;
@@ -42,7 +41,7 @@ public class RecordFieldExprImpl extends MinimalEObjectImpl.Container implements
    * @generated
    * @ordered
    */
-  protected AtomMacro ref;
+  protected Expression ref;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
@@ -90,7 +89,7 @@ public class RecordFieldExprImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public AtomMacro getRef()
+  public Expression getRef()
   {
     return ref;
   }
@@ -100,9 +99,9 @@ public class RecordFieldExprImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRef(AtomMacro newRef, NotificationChain msgs)
+  public NotificationChain basicSetRef(Expression newRef, NotificationChain msgs)
   {
-    AtomMacro oldRef = ref;
+    Expression oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
     {
@@ -117,7 +116,7 @@ public class RecordFieldExprImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(AtomMacro newRef)
+  public void setRef(Expression newRef)
   {
     if (newRef != ref)
     {
@@ -280,7 +279,7 @@ public class RecordFieldExprImpl extends MinimalEObjectImpl.Container implements
     switch (featureID)
     {
       case ErlangPackage.RECORD_FIELD_EXPR__REF:
-        setRef((AtomMacro)newValue);
+        setRef((Expression)newValue);
         return;
       case ErlangPackage.RECORD_FIELD_EXPR__VALUE:
         setValue((Expression)newValue);
@@ -303,7 +302,7 @@ public class RecordFieldExprImpl extends MinimalEObjectImpl.Container implements
     switch (featureID)
     {
       case ErlangPackage.RECORD_FIELD_EXPR__REF:
-        setRef((AtomMacro)null);
+        setRef((Expression)null);
         return;
       case ErlangPackage.RECORD_FIELD_EXPR__VALUE:
         setValue((Expression)null);

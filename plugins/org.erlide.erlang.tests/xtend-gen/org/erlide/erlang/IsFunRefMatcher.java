@@ -3,10 +3,9 @@ package org.erlide.erlang;
 import com.google.common.base.Objects;
 import java.util.Arrays;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.erlide.erlang.AtomVarMacro;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.FunRef;
 import org.erlide.erlang.Function;
-import org.erlide.erlang.IntVarMacro;
 import org.erlide.erlang.ModelExtensions;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
@@ -65,14 +64,14 @@ public class IsFunRefMatcher extends BaseMatcher {
   
   protected boolean _matches(final FunRef item) {
     boolean _and = false;
-    AtomVarMacro _function = item.getFunction();
-    boolean _equals = Objects.equal(_function, this.name);
+    Expression _function_ = item.getFunction_();
+    boolean _equals = Objects.equal(_function_, this.name);
     if (!_equals) {
       _and = false;
     } else {
-      IntVarMacro _arity = item.getArity();
+      Expression _arity_ = item.getArity_();
       String _string = Integer.toString(this.arity);
-      boolean _equals_1 = Objects.equal(_arity, _string);
+      boolean _equals_1 = Objects.equal(_arity_, _string);
       _and = (_equals && _equals_1);
     }
     return _and;

@@ -33,12 +33,12 @@ public interface RecordFieldExpr extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' containment reference.
-   * @see #setRef(AtomMacro)
+   * @see #setRef(Expression)
    * @see org.erlide.erlang.ErlangPackage#getRecordFieldExpr_Ref()
    * @model containment="true"
    * @generated
    */
-  AtomMacro getRef();
+  Expression getRef();
 
   /**
    * Sets the value of the '{@link org.erlide.erlang.RecordFieldExpr#getRef <em>Ref</em>}' containment reference.
@@ -48,7 +48,7 @@ public interface RecordFieldExpr extends EObject
    * @see #getRef()
    * @generated
    */
-  void setRef(AtomMacro value);
+  void setRef(Expression value);
 
   /**
    * Returns the value of the '<em><b>Value</b></em>' containment reference.

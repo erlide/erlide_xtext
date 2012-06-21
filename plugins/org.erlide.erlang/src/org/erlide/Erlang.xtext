@@ -10,6 +10,8 @@ Module:
 AtomRefTarget:
 	  Module
 	| Function
+	| RecordAttribute
+	| RecordFieldDef
 ;
 
 Form:
@@ -65,11 +67,11 @@ DefineAttribute:
 ;
 
 UndefAttribute:
-	'-' => tag='undef' '(' ref=AtomVar ')' FULL_STOP
+	'-' => tag='undef' '(' ref=MacroRef ')' FULL_STOP
 ;
 
 IfdefAttribute:
-	'-' => tag=('ifdef'|'ifndef') '(' ref=AtomVar ')' FULL_STOP
+	'-' => tag=('ifdef'|'ifndef') '(' ref=MacroRef ')' FULL_STOP
 ;
 
 ElseAttribute:
@@ -122,7 +124,7 @@ ExportAttribute:
 
 ImportAttribute:
 	'-' => tag='import' 
-		'(' module=AtomMacro ',' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
+		'(' module=AtomVarMacro ',' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
 	FULL_STOP
 ;
 
@@ -263,7 +265,7 @@ MacroCall:
 ;
 
 RecordExpr:
-	rec=RecordVarMacro (('.' field=AtomMacro) | tuple=RecordTuple)
+	rec=AtomVarMacro (('.' field=AtomVarMacro) | tuple=RecordTuple)
 ;
 
 // NYI
@@ -285,7 +287,7 @@ RecordTuple:
 	{RecordTuple} '{' (fields+=RecordFieldExpr (',' fields+=RecordFieldExpr)*)? '}';
 
 RecordFieldExpr:
-	ref=AtomMacro ('=' value=Expression)? ('::' type=TopType)?
+	ref=AtomVarMacro ('=' value=Expression)? ('::' type=TopType)?
 ;
 
 LiteralExpressionNoNumber returns Expression:
@@ -300,16 +302,12 @@ AtomRefLiteral returns Expression:
 	{Atom} value=[AtomRefTarget|NAME]
 ;
 
-RecordNameLiteral returns Expression: 
-	{RecordName} value=[RecordAttribute|NAME]
-;
-
-RecordFieldLiteral returns Expression: 
-	{RecordField} value=[RecordFieldDef|NAME]
-;
-
 MacroLiteral returns Expression:
 	{Macro} value=[DefineAttribute|MACRO]
+;
+
+MacroRef returns Expression:
+	{Macro} value=[DefineAttribute|NAMEVAR]
 ;
 
 VariableLiteral returns Expression:
@@ -372,7 +370,7 @@ FunExpr:
 ;
 
 FunRef:
-	(module=AtomVarMacro ':')? function=AtomVarMacro '/' arity=IntVarMacro
+	(module_=AtomVarMacro ':')? function_=AtomVarMacro '/' arity_=IntVarMacro
 ;
 
 InlineFun returns FunExpr:
@@ -463,26 +461,13 @@ SENDOP:
 
 // Literal combinations
 
-AtomVarMacro:
+AtomVarMacro returns Expression:
 	AtomRefLiteral	| VariableLiteral | MacroLiteral
 ;
 
-RecordVarMacro:
-	RecordNameLiteral | VariableLiteral | MacroLiteral
-;
-
-AtomVar:
-	AtomRefLiteral	| VariableLiteral
-;
-
-AtomMacro:
-	AtomRefLiteral	| MacroLiteral
-;
-
-IntVarMacro: 
+IntVarMacro returns Expression: 
 	IntegerLiteral | VariableLiteral | MacroLiteral 
 ;
-
 
 // Literals
 
@@ -585,7 +570,7 @@ terminal fragment HEX_DIGIT:
 // Type language
 
 SpecFun:
-	(module=AtomVarMacro ':')? function=AtomVarMacro ('/' arity=IntVarMacro '::')?;
+	(module_=AtomVarMacro ':')? function_=AtomVarMacro ('/' arity_=IntVarMacro '::')?;
 
 TypeSig:
 	decl=FunType ('when' guards=TypeGuards)?;

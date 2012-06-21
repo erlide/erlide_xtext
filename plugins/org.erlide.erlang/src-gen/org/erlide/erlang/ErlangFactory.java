@@ -527,51 +527,6 @@ public interface ErlangFactory extends EFactory
   LCExpr createLCExpr();
 
   /**
-   * Returns a new object of class '<em>Atom Var Macro</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Atom Var Macro</em>'.
-   * @generated
-   */
-  AtomVarMacro createAtomVarMacro();
-
-  /**
-   * Returns a new object of class '<em>Record Var Macro</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Record Var Macro</em>'.
-   * @generated
-   */
-  RecordVarMacro createRecordVarMacro();
-
-  /**
-   * Returns a new object of class '<em>Atom Var</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Atom Var</em>'.
-   * @generated
-   */
-  AtomVar createAtomVar();
-
-  /**
-   * Returns a new object of class '<em>Atom Macro</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Atom Macro</em>'.
-   * @generated
-   */
-  AtomMacro createAtomMacro();
-
-  /**
-   * Returns a new object of class '<em>Int Var Macro</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Int Var Macro</em>'.
-   * @generated
-   */
-  IntVarMacro createIntVarMacro();
-
-  /**
    * Returns a new object of class '<em>Spec Fun</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -831,24 +786,6 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   Atom createAtom();
-
-  /**
-   * Returns a new object of class '<em>Record Name</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Record Name</em>'.
-   * @generated
-   */
-  RecordName createRecordName();
-
-  /**
-   * Returns a new object of class '<em>Record Field</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Record Field</em>'.
-   * @generated
-   */
-  RecordField createRecordField();
 
   /**
    * Returns a new object of class '<em>Macro</em>'.

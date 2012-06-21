@@ -166,9 +166,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunExpr/clauses"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//FunRef">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/module"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/function"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/arity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/module_"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/function_"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/arity_"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//TryExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TryExpr/body"/>
@@ -214,15 +214,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//LCExpr/op"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//LCExpr/o2"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//AtomVarMacro"/>
-    <genClasses ecoreClass="Erlang.ecore#//RecordVarMacro"/>
-    <genClasses ecoreClass="Erlang.ecore#//AtomVar"/>
-    <genClasses ecoreClass="Erlang.ecore#//AtomMacro"/>
-    <genClasses ecoreClass="Erlang.ecore#//IntVarMacro"/>
     <genClasses ecoreClass="Erlang.ecore#//SpecFun">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/module"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/function"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/arity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/module_"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/function_"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//SpecFun/arity_"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//TypeSig">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TypeSig/decl"/>
@@ -320,12 +315,6 @@
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//Atom">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//Atom/value"/>
-    </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//RecordName">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordName/value"/>
-    </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//RecordField">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordField/value"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//Macro">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//Macro/value"/>

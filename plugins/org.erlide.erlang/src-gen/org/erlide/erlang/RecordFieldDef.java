@@ -2,7 +2,6 @@
  */
 package org.erlide.erlang;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface RecordFieldDef extends EObject
+public interface RecordFieldDef extends AtomRefTarget
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

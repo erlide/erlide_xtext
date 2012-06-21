@@ -355,31 +355,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createLCExprAdapter();
       }
       @Override
-      public Adapter caseAtomVarMacro(AtomVarMacro object)
-      {
-        return createAtomVarMacroAdapter();
-      }
-      @Override
-      public Adapter caseRecordVarMacro(RecordVarMacro object)
-      {
-        return createRecordVarMacroAdapter();
-      }
-      @Override
-      public Adapter caseAtomVar(AtomVar object)
-      {
-        return createAtomVarAdapter();
-      }
-      @Override
-      public Adapter caseAtomMacro(AtomMacro object)
-      {
-        return createAtomMacroAdapter();
-      }
-      @Override
-      public Adapter caseIntVarMacro(IntVarMacro object)
-      {
-        return createIntVarMacroAdapter();
-      }
-      @Override
       public Adapter caseSpecFun(SpecFun object)
       {
         return createSpecFunAdapter();
@@ -523,16 +498,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseAtom(Atom object)
       {
         return createAtomAdapter();
-      }
-      @Override
-      public Adapter caseRecordName(RecordName object)
-      {
-        return createRecordNameAdapter();
-      }
-      @Override
-      public Adapter caseRecordField(RecordField object)
-      {
-        return createRecordFieldAdapter();
       }
       @Override
       public Adapter caseMacro(Macro object)
@@ -1447,81 +1412,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.AtomVarMacro <em>Atom Var Macro</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.AtomVarMacro
-   * @generated
-   */
-  public Adapter createAtomVarMacroAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.RecordVarMacro <em>Record Var Macro</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.RecordVarMacro
-   * @generated
-   */
-  public Adapter createRecordVarMacroAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.AtomVar <em>Atom Var</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.AtomVar
-   * @generated
-   */
-  public Adapter createAtomVarAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.AtomMacro <em>Atom Macro</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.AtomMacro
-   * @generated
-   */
-  public Adapter createAtomMacroAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.IntVarMacro <em>Int Var Macro</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.IntVarMacro
-   * @generated
-   */
-  public Adapter createIntVarMacroAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.erlide.erlang.SpecFun <em>Spec Fun</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1952,36 +1842,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAtomAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.RecordName <em>Record Name</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.RecordName
-   * @generated
-   */
-  public Adapter createRecordNameAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.RecordField <em>Record Field</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.RecordField
-   * @generated
-   */
-  public Adapter createRecordFieldAdapter()
   {
     return null;
   }

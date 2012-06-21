@@ -10,8 +10,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.erlide.erlang.AtomVar;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.UndefAttribute;
 
 /**
@@ -58,7 +58,7 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
    * @generated
    * @ordered
    */
-  protected AtomVar ref;
+  protected Expression ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -109,7 +109,7 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public AtomVar getRef()
+  public Expression getRef()
   {
     return ref;
   }
@@ -119,9 +119,9 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRef(AtomVar newRef, NotificationChain msgs)
+  public NotificationChain basicSetRef(Expression newRef, NotificationChain msgs)
   {
-    AtomVar oldRef = ref;
+    Expression oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
     {
@@ -136,7 +136,7 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(AtomVar newRef)
+  public void setRef(Expression newRef)
   {
     if (newRef != ref)
     {
@@ -200,7 +200,7 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
         setTag((String)newValue);
         return;
       case ErlangPackage.UNDEF_ATTRIBUTE__REF:
-        setRef((AtomVar)newValue);
+        setRef((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -220,7 +220,7 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
         setTag(TAG_EDEFAULT);
         return;
       case ErlangPackage.UNDEF_ATTRIBUTE__REF:
-        setRef((AtomVar)null);
+        setRef((Expression)null);
         return;
     }
     super.eUnset(featureID);
