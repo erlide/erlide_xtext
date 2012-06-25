@@ -58,8 +58,28 @@ class ErlangLinkingTest {
         ].filter[!eIsProxy].toList
 
         assertThat(refs.size, is(2))
-        assertThat(refs.head, is(instanceOf(typeof(Function))))
-        assertThat(refs.head as Function, is(module.getFunction("g", 1)))
+        assertThat(refs.tail.head, is(instanceOf(typeof(Function))))
+        assertThat(refs.tail.head as Function, is(module.getFunction("g", 1)))
+    }
+    
+	@Test
+	def void localExportedCallRef_2arg() {
+		val module = parser.parse('''
+			-module(m).
+			-export([g/2]).
+			f() ->
+				g(3, 4),
+				ok.
+			g(X, Y) -> ok.
+        ''')
+        
+        val refs = module.eResource.allContents.filter[!eCrossReferences.empty].map[
+        	eCrossReferences.head
+        ].filter[!eIsProxy].toList
+
+        assertThat(refs.size, is(2))
+        assertThat(refs.tail.head, is(instanceOf(typeof(Function))))
+        assertThat(refs.tail.head as Function, is(module.getFunction("g", 2)))
     }
     
 	@Test
