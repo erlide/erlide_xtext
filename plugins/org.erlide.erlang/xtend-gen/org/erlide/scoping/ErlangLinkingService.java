@@ -2,6 +2,7 @@ package org.erlide.scoping;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
+import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -14,6 +15,7 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.AtomRefTarget;
@@ -21,6 +23,7 @@ import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.ErlangPackage.Literals;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.FunCall;
+import org.erlide.erlang.FunRef;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.RemoteTarget;
@@ -44,7 +47,7 @@ public class ErlangLinkingService extends DefaultLinkingService {
     boolean _equals = Objects.equal(ref, _atom_Value);
     if (_equals) {
       String _sourceText = this._modelExtensions.getSourceText(context);
-      String _plus = ("---> \'" + _sourceText);
+      String _plus = ("linkedObjects---> \'" + _sourceText);
       String _plus_1 = (_plus + "\' : \'");
       EObject _semanticElement = node.getSemanticElement();
       String _sourceText_1 = this._modelExtensions.getSourceText(_semanticElement);
@@ -65,48 +68,118 @@ public class ErlangLinkingService extends DefaultLinkingService {
     return super.getLinkedObjects(context, ref, node);
   }
   
-  public AtomRefTarget getAtomReference(final EObject atom, final INode node) {
-    EObject _eContainer = atom.eContainer();
-    if ((_eContainer instanceof RemoteTarget)) {
-      EObject _eContainer_1 = atom.eContainer();
-      final RemoteTarget parent = ((RemoteTarget) _eContainer_1);
-      boolean _and = false;
-      Expression _module = parent.getModule();
-      if (!(_module instanceof Atom)) {
-        _and = false;
-      } else {
-        Expression _function = parent.getFunction();
-        _and = ((_module instanceof Atom) && (_function instanceof Atom));
+  protected AtomRefTarget _getAtomReference(final EObject obj, final INode node) {
+    return null;
+  }
+  
+  protected AtomRefTarget _getAtomReference(final Atom atom, final INode node) {
+    AtomRefTarget _xblockexpression = null;
+    {
+      final EObject parent = atom.eContainer();
+      AtomRefTarget _atomReferenceFor = this.getAtomReferenceFor(parent, atom, node);
+      _xblockexpression = (_atomReferenceFor);
+    }
+    return _xblockexpression;
+  }
+  
+  protected AtomRefTarget _getAtomReferenceFor(final EObject parent, final Atom atom, final INode node) {
+    return null;
+  }
+  
+  protected AtomRefTarget _getAtomReferenceFor(final RemoteTarget parent, final Atom atom, final INode node) {
+    Expression _module = parent.getModule();
+    if ((_module instanceof Atom)) {
+      Expression _module_1 = parent.getModule();
+      boolean _equals = Objects.equal(atom, _module_1);
+      if (_equals) {
+        String _sourceText = this._modelExtensions.getSourceText(atom);
+        final QualifiedName qname = QualifiedName.create(_sourceText);
+        String _plus = ("M=" + qname);
+        InputOutput.<String>println(_plus);
+        String _sourceText_1 = this._modelExtensions.getSourceText(atom);
+        QualifiedName _create = QualifiedName.create(_sourceText_1);
+        final Iterable<IEObjectDescription> mods = this.index.getExportedObjects(Literals.MODULE, _create, false);
+        return null;
       }
-      if (_and) {
-        Expression _module_1 = parent.getModule();
-        String _sourceText = this._modelExtensions.getSourceText(_module_1);
+      Expression _function = parent.getFunction();
+      if ((_function instanceof Atom)) {
         Expression _function_1 = parent.getFunction();
-        String _sourceText_1 = this._modelExtensions.getSourceText(_function_1);
-        String _plus = (_sourceText_1 + "/1");
-        final QualifiedName qname = QualifiedName.create(_sourceText, _plus);
-        String _plus_1 = ("Q=" + qname);
-        InputOutput.<String>println(_plus_1);
-        final Iterable<IEObjectDescription> rfun = this.index.getExportedObjects(Literals.FUNCTION, qname, false);
-      } else {
-        String _sourceText_2 = this._modelExtensions.getSourceText(parent);
-        String _plus_2 = ("Can\'t resolve remote target " + _sourceText_2);
-        InputOutput.<String>println(_plus_2);
+        boolean _equals_1 = Objects.equal(atom, _function_1);
+        if (_equals_1) {
+          Expression _module_2 = parent.getModule();
+          String _sourceText_2 = this._modelExtensions.getSourceText(_module_2);
+          Expression _function_2 = parent.getFunction();
+          String _sourceText_3 = this._modelExtensions.getSourceText(_function_2);
+          String _plus_1 = (_sourceText_3 + "/1");
+          final QualifiedName qname_1 = QualifiedName.create(_sourceText_2, _plus_1);
+          String _plus_2 = ("F=" + qname_1);
+          InputOutput.<String>println(_plus_2);
+          final Iterable<IEObjectDescription> rfun = this.index.getExportedObjects(Literals.FUNCTION, qname_1, false);
+          return null;
+        }
       }
+      String _sourceText_4 = this._modelExtensions.getSourceText(parent);
+      String _plus_3 = (" !!!! Can\'t resolve remote target " + _sourceText_4);
+      InputOutput.<String>println(_plus_3);
       return null;
-    } else {
-      EObject _eContainer_2 = atom.eContainer();
-      if ((_eContainer_2 instanceof FunCall)) {
-        EObject _eContainer_3 = atom.eContainer();
-        final FunCall fc = ((FunCall) _eContainer_3);
-        Module _module_2 = this._modelExtensions.getModule(fc);
-        Expression _target = fc.getTarget();
-        String _sourceText_3 = this._modelExtensions.getSourceText(_target);
-        EList<Expression> _args = fc.getArgs();
-        int _size = _args.size();
-        return this._modelExtensions.getFunction(_module_2, _sourceText_3, _size);
-      }
     }
     return null;
+  }
+  
+  protected AtomRefTarget _getAtomReferenceFor(final FunCall parent, final Atom atom, final INode node) {
+    Module _module = this._modelExtensions.getModule(parent);
+    Expression _target = parent.getTarget();
+    String _sourceText = this._modelExtensions.getSourceText(_target);
+    EList<Expression> _args = parent.getArgs();
+    int _size = _args.size();
+    return this._modelExtensions.getFunction(_module, _sourceText, _size);
+  }
+  
+  protected AtomRefTarget _getAtomReferenceFor(final FunRef parent, final Atom atom, final INode node) {
+    Expression _arity_ = parent.getArity_();
+    final String arity = this._modelExtensions.getSourceText(_arity_);
+    String _sourceText = this._modelExtensions.getSourceText(parent);
+    String _plus = ("FUNREF " + _sourceText);
+    InputOutput.<String>println(_plus);
+    try {
+      Module _module = this._modelExtensions.getModule(parent);
+      Expression _function_ = parent.getFunction_();
+      String _sourceText_1 = this._modelExtensions.getSourceText(_function_);
+      int _parseInt = Integer.parseInt(arity);
+      return this._modelExtensions.getFunction(_module, _sourceText_1, _parseInt);
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+        return null;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+  }
+  
+  public AtomRefTarget getAtomReference(final EObject atom, final INode node) {
+    if (atom instanceof Atom) {
+      return _getAtomReference((Atom)atom, node);
+    } else if (atom != null) {
+      return _getAtomReference(atom, node);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(atom, node).toString());
+    }
+  }
+  
+  public AtomRefTarget getAtomReferenceFor(final EObject parent, final Atom atom, final INode node) {
+    if (parent instanceof FunRef) {
+      return _getAtomReferenceFor((FunRef)parent, atom, node);
+    } else if (parent instanceof FunCall) {
+      return _getAtomReferenceFor((FunCall)parent, atom, node);
+    } else if (parent instanceof RemoteTarget) {
+      return _getAtomReferenceFor((RemoteTarget)parent, atom, node);
+    } else if (parent != null) {
+      return _getAtomReferenceFor(parent, atom, node);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(parent, atom, node).toString());
+    }
   }
 }
