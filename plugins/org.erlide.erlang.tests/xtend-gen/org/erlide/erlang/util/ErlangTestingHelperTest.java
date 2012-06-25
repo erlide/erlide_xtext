@@ -1,4 +1,4 @@
-package org.erlide.naming;
+package org.erlide.erlang.util;
 
 import com.google.inject.Inject;
 import java.util.List;

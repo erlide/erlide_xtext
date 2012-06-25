@@ -1,4 +1,4 @@
-package org.erlide.naming
+package org.erlide.erlang.util
 
 import com.google.inject.Inject
 import org.eclipse.xtext.junit4.InjectWith
@@ -34,6 +34,7 @@ class ErlangTestingHelperTest {
     	assertThat(module.value.head, is(5))
     	  
 	}
+	
 	@Test
 	def void severalMarkers() {
         val module = parser.extractMarkers("12345§678§90")
