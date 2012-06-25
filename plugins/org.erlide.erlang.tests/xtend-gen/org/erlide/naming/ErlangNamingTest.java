@@ -155,9 +155,9 @@ public class ErlangNamingTest {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("-module(x).");
     _builder.newLine();
-    _builder.append("-export([f/0, f/1]).");
+    _builder.append("-export([f/0, \'Ff\'/1]).");
     _builder.newLine();
-    _builder.append("\u00A7f(X) -> ok.");
+    _builder.append("\u00A7\'Ff\'(X) -> ok.");
     _builder.newLine();
     _builder.append("\u00A7f() -> ok.");
     _builder.newLine();
@@ -165,7 +165,7 @@ public class ErlangNamingTest {
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 0);
     final QualifiedName name1 = this.namer.getFullyQualifiedName(_objectAtMarker);
     String _string = this.nameCvtr.toString(name1);
-    Matcher<? super String> _is = Matchers.<String>is("x:f/1");
+    Matcher<? super String> _is = Matchers.<String>is("x:\'Ff\'/1");
     MatcherAssert.<String>assertThat(_string, _is);
     EObject _objectAtMarker_1 = this._erlangTestExtensions.getObjectAtMarker(module, 1);
     final QualifiedName name2 = this.namer.getFullyQualifiedName(_objectAtMarker_1);
@@ -201,6 +201,21 @@ public class ErlangNamingTest {
     final QualifiedName name = this.namer.getFullyQualifiedName(_objectAtMarker);
     String _string = this.nameCvtr.toString(name);
     Matcher<? super String> _is = Matchers.<String>is("x:y");
+    MatcherAssert.<String>assertThat(_string, _is);
+  }
+  
+  @Test
+  public void recordName_quoted() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(x).");
+    _builder.newLine();
+    _builder.append("\u00A7-record(\'Y\', {}).");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 0);
+    final QualifiedName name = this.namer.getFullyQualifiedName(_objectAtMarker);
+    String _string = this.nameCvtr.toString(name);
+    Matcher<? super String> _is = Matchers.<String>is("x:\'Y\'");
     MatcherAssert.<String>assertThat(_string, _is);
   }
 }

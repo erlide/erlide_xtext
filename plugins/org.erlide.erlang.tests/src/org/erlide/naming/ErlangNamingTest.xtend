@@ -106,12 +106,12 @@ class ErlangNamingTest {
 	def void exportedFunctionName_1() {
         val module = parser.parse('''
             -module(x).
-            -export([f/0, f/1]).
-            §f(X) -> ok.
+            -export([f/0, 'Ff'/1]).
+            §'Ff'(X) -> ok.
             §f() -> ok.
         ''')
         val name1 = namer.getFullyQualifiedName(module.getObjectAtMarker(0))
-        assertThat(nameCvtr.toString(name1), is("x:f/1")) 
+        assertThat(nameCvtr.toString(name1), is("x:'Ff'/1")) 
         val name2 = namer.getFullyQualifiedName(module.getObjectAtMarker(1))
         assertThat(nameCvtr.toString(name2), is("x:f/0")) 
 	}
@@ -134,6 +134,16 @@ class ErlangNamingTest {
         ''')
         val name = namer.getFullyQualifiedName(module.getObjectAtMarker(0))
         assertThat(nameCvtr.toString(name), is("x:y")) 
+	}
+
+	@Test
+	def void recordName_quoted() {
+        val module = parser.parse('''
+            -module(x).
+            §-record('Y', {}).
+        ''')
+        val name = namer.getFullyQualifiedName(module.getObjectAtMarker(0))
+        assertThat(nameCvtr.toString(name), is("x:'Y'")) 
 	}
 
 

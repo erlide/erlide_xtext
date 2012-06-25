@@ -73,7 +73,7 @@ class ModuleExtensionsTest {
             foo() -> ok.
             -foo(bar).
         ''')
-        val attrs = module.attributes
+        val attrs = module.getAllItemsOfType
         assertThat(attrs.size, is(3))
     }
     

@@ -31,7 +31,7 @@ class ModelExtensions {
         module.name == null
     }
 
-    def Collection<Attribute> getAttributes(Module module) {
+    def Collection<Attribute> getAllItemsOfType(Module module) {
         module.eContents.filter(typeof(Attribute)).toList
     }
 
@@ -42,23 +42,23 @@ class ModelExtensions {
     }
 
     def Collection<ExportAttribute> getExportAttributes(Module module) {
-    	module.getAttributes(typeof(ExportAttribute))
+    	module.getAllItemsOfType(typeof(ExportAttribute))
     }
 
     def Collection<ImportAttribute> getImportAttributes(Module module) {
-    	module.getAttributes(typeof(ImportAttribute))
+    	module.getAllItemsOfType(typeof(ImportAttribute))
     }
 
 	def Collection<SpecAttribute> getSpecs(Module module) {
-		module.getAttributes(typeof(SpecAttribute))
+		module.getAllItemsOfType(typeof(SpecAttribute))
 	}
 	
 	def Collection<String> getIncludes(Module module) {
-		module.getAttributes(typeof(IncludeAttribute)).map[importURI].toList
+		module.getAllItemsOfType(typeof(IncludeAttribute)).map[importURI].toList
 	}
 	
 	def Collection<String> getIncludeLibs(Module module) {
-		module.getAttributes(typeof(IncludeLibAttribute)).map[importURI].toList
+		module.getAllItemsOfType(typeof(IncludeLibAttribute)).map[importURI].toList
 	}
 	
 //	def Collection<Module> getIncludes(Module module) {
@@ -70,7 +70,7 @@ class ModelExtensions {
 //	}
 	
     def boolean exportsFunction(Module module, Function function) {
-        module.declaredExportNames.contains(namer.getFullyQualifiedName(function).lastSegment)
+        module.declaredExportNames.contains(namer.getFullyQualifiedName(function).lastSegment) || module.exportsAll
     } 
 
 	def Collection<Function> getDeclaredExports(Module module) {
@@ -173,12 +173,19 @@ class ModelExtensions {
    
    // Utilities
    
-    def static <T> Collection<T> getAttributes(Module module, Class<T> type) {
-        module.eContents.filter(type).toList
+    def static <T> Collection<T> getItemsOfType(EObject obj, Class<T> type) {
+        obj.eContents.filter(type).toList
+    }
+
+    def static <T> Collection<T> getAllItemsOfType(EObject obj, Class<T> type) {
+        val direct = obj.getItemsOfType(type).toList
+        val ifblocks = obj.getItemsOfType(typeof(ConditionalFormBlock))
+        direct.addAll(ifblocks.map[it.getAllItemsOfType(type)].flatten.toList)
+        direct
     }
 
  	def static Collection<Expression> getRawCompileOptions(Module module) {
-		module.getAttributes(typeof(CompileAttribute)).map[options].toList
+		module.getAllItemsOfType(typeof(CompileAttribute)).map[options].toList
  	}
     
     def private dispatch Set<Expression> merge(Set<Expression> acc, ErlList x) {

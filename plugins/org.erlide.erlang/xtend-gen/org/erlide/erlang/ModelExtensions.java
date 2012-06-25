@@ -75,7 +75,7 @@ public class ModelExtensions {
     return _equals;
   }
   
-  public Collection<Attribute> getAttributes(final Module module) {
+  public Collection<Attribute> getAllItemsOfType(final Module module) {
     EList<EObject> _eContents = module.eContents();
     Iterable<Attribute> _filter = Iterables.<Attribute>filter(_eContents, Attribute.class);
     List<Attribute> _list = IterableExtensions.<Attribute>toList(_filter);
@@ -98,52 +98,59 @@ public class ModelExtensions {
   }
   
   public Collection<ExportAttribute> getExportAttributes(final Module module) {
-    Collection<ExportAttribute> _attributes = ModelExtensions.<ExportAttribute>getAttributes(module, ExportAttribute.class);
-    return _attributes;
+    Collection<ExportAttribute> _allItemsOfType = ModelExtensions.<ExportAttribute>getAllItemsOfType(module, ExportAttribute.class);
+    return _allItemsOfType;
   }
   
   public Collection<ImportAttribute> getImportAttributes(final Module module) {
-    Collection<ImportAttribute> _attributes = ModelExtensions.<ImportAttribute>getAttributes(module, ImportAttribute.class);
-    return _attributes;
+    Collection<ImportAttribute> _allItemsOfType = ModelExtensions.<ImportAttribute>getAllItemsOfType(module, ImportAttribute.class);
+    return _allItemsOfType;
   }
   
   public Collection<SpecAttribute> getSpecs(final Module module) {
-    Collection<SpecAttribute> _attributes = ModelExtensions.<SpecAttribute>getAttributes(module, SpecAttribute.class);
-    return _attributes;
+    Collection<SpecAttribute> _allItemsOfType = ModelExtensions.<SpecAttribute>getAllItemsOfType(module, SpecAttribute.class);
+    return _allItemsOfType;
   }
   
   public Collection<String> getIncludes(final Module module) {
-    Collection<IncludeAttribute> _attributes = ModelExtensions.<IncludeAttribute>getAttributes(module, IncludeAttribute.class);
+    Collection<IncludeAttribute> _allItemsOfType = ModelExtensions.<IncludeAttribute>getAllItemsOfType(module, IncludeAttribute.class);
     final Function1<IncludeAttribute,String> _function = new Function1<IncludeAttribute,String>() {
         public String apply(final IncludeAttribute it) {
           String _importURI = it.getImportURI();
           return _importURI;
         }
       };
-    Iterable<String> _map = IterableExtensions.<IncludeAttribute, String>map(_attributes, _function);
+    Iterable<String> _map = IterableExtensions.<IncludeAttribute, String>map(_allItemsOfType, _function);
     List<String> _list = IterableExtensions.<String>toList(_map);
     return _list;
   }
   
   public Collection<String> getIncludeLibs(final Module module) {
-    Collection<IncludeLibAttribute> _attributes = ModelExtensions.<IncludeLibAttribute>getAttributes(module, IncludeLibAttribute.class);
+    Collection<IncludeLibAttribute> _allItemsOfType = ModelExtensions.<IncludeLibAttribute>getAllItemsOfType(module, IncludeLibAttribute.class);
     final Function1<IncludeLibAttribute,String> _function = new Function1<IncludeLibAttribute,String>() {
         public String apply(final IncludeLibAttribute it) {
           String _importURI = it.getImportURI();
           return _importURI;
         }
       };
-    Iterable<String> _map = IterableExtensions.<IncludeLibAttribute, String>map(_attributes, _function);
+    Iterable<String> _map = IterableExtensions.<IncludeLibAttribute, String>map(_allItemsOfType, _function);
     List<String> _list = IterableExtensions.<String>toList(_map);
     return _list;
   }
   
   public boolean exportsFunction(final Module module, final Function function) {
+    boolean _or = false;
     Collection<String> _declaredExportNames = this.getDeclaredExportNames(module);
     QualifiedName _fullyQualifiedName = this.namer.getFullyQualifiedName(function);
     String _lastSegment = _fullyQualifiedName.getLastSegment();
     boolean _contains = _declaredExportNames.contains(_lastSegment);
-    return _contains;
+    if (_contains) {
+      _or = true;
+    } else {
+      boolean _exportsAll = this.exportsAll(module);
+      _or = (_contains || _exportsAll);
+    }
+    return _or;
   }
   
   public Collection<Function> getDeclaredExports(final Module module) {
@@ -459,22 +466,43 @@ public class ModelExtensions {
     return _xifexpression;
   }
   
-  public static <T extends Object> Collection<T> getAttributes(final Module module, final Class<T> type) {
-    EList<EObject> _eContents = module.eContents();
+  public static <T extends Object> Collection<T> getItemsOfType(final EObject obj, final Class<T> type) {
+    EList<EObject> _eContents = obj.eContents();
     Iterable<T> _filter = Iterables.<T>filter(_eContents, type);
     List<T> _list = IterableExtensions.<T>toList(_filter);
     return _list;
   }
   
+  public static <T extends Object> Collection<T> getAllItemsOfType(final EObject obj, final Class<T> type) {
+    List<T> _xblockexpression = null;
+    {
+      Collection<T> _itemsOfType = ModelExtensions.<T>getItemsOfType(obj, type);
+      final List<T> direct = IterableExtensions.<T>toList(_itemsOfType);
+      final Collection<ConditionalFormBlock> ifblocks = ModelExtensions.<ConditionalFormBlock>getItemsOfType(obj, ConditionalFormBlock.class);
+      final Function1<ConditionalFormBlock,Collection<T>> _function = new Function1<ConditionalFormBlock,Collection<T>>() {
+          public Collection<T> apply(final ConditionalFormBlock it) {
+            Collection<T> _allItemsOfType = ModelExtensions.<T>getAllItemsOfType(it, type);
+            return _allItemsOfType;
+          }
+        };
+      Iterable<Collection<T>> _map = IterableExtensions.<ConditionalFormBlock, Collection<T>>map(ifblocks, _function);
+      Iterable<T> _flatten = Iterables.<T>concat(_map);
+      List<T> _list = IterableExtensions.<T>toList(_flatten);
+      Iterables.<T>addAll(direct, _list);
+      _xblockexpression = (direct);
+    }
+    return _xblockexpression;
+  }
+  
   public static Collection<Expression> getRawCompileOptions(final Module module) {
-    Collection<CompileAttribute> _attributes = ModelExtensions.<CompileAttribute>getAttributes(module, CompileAttribute.class);
+    Collection<CompileAttribute> _allItemsOfType = ModelExtensions.<CompileAttribute>getAllItemsOfType(module, CompileAttribute.class);
     final Function1<CompileAttribute,Expression> _function = new Function1<CompileAttribute,Expression>() {
         public Expression apply(final CompileAttribute it) {
           Expression _options = it.getOptions();
           return _options;
         }
       };
-    Iterable<Expression> _map = IterableExtensions.<CompileAttribute, Expression>map(_attributes, _function);
+    Iterable<Expression> _map = IterableExtensions.<CompileAttribute, Expression>map(_allItemsOfType, _function);
     List<Expression> _list = IterableExtensions.<Expression>toList(_map);
     return _list;
   }
