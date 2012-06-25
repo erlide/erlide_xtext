@@ -27163,8 +27163,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA64_specialS =
         "\14\uffff}>";
     static final String[] DFA64_transitionS = {
-            "\6\1\10\uffff\1\1\1\2\2\uffff\13\1\3\uffff\2\1\1\uffff\4\1\1"+
-            "\uffff\2\1\2\uffff\2\1\3\uffff\1\1\1\uffff\1\3\2\uffff\1\12"+
+            "\6\1\10\uffff\1\1\1\2\2\uffff\13\1\3\uffff\2\1\1\uffff\4\1"+
+            "\1\uffff\2\1\2\uffff\2\1\3\uffff\1\1\1\uffff\1\3\2\uffff\1\12"+
             "\1\11\1\13\1\4\1\5\1\uffff\1\6\1\uffff\1\7\1\uffff\1\10\2\uffff"+
             "\1\1\34\uffff\1\1",
             "",
@@ -27226,8 +27226,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA65_specialS =
         "\2\uffff\1\0\1\1\40\uffff}>";
     static final String[] DFA65_transitionS = {
-            "\6\5\10\uffff\1\5\3\uffff\12\5\1\1\3\uffff\1\5\1\2\1\uffff\4"+
-            "\5\1\uffff\2\5\2\uffff\2\5\3\uffff\1\4\21\uffff\1\3\34\uffff"+
+            "\6\5\10\uffff\1\5\3\uffff\12\5\1\1\3\uffff\1\5\1\2\1\uffff"+
+            "\4\5\1\uffff\2\5\2\uffff\2\5\3\uffff\1\4\21\uffff\1\3\34\uffff"+
             "\1\5",
             "",
             "\1\uffff",
@@ -27353,9 +27353,10 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     static final String DFA68_specialS =
         "\1\uffff\1\0\65\uffff}>";
     static final String[] DFA68_transitionS = {
-            "\2\2\14\uffff\1\2\1\uffff\1\1\2\2\13\uffff\3\2\2\uffff\1\2\4"+
-            "\uffff\1\2\2\uffff\3\2\1\uffff\5\2\1\uffff\1\2\6\uffff\1\2\1"+
-            "\uffff\1\2\1\uffff\1\2\1\uffff\2\2\1\uffff\17\2\2\uffff\14\2",
+            "\2\2\14\uffff\1\2\1\uffff\1\1\2\2\13\uffff\3\2\2\uffff\1\2"+
+            "\4\uffff\1\2\2\uffff\3\2\1\uffff\5\2\1\uffff\1\2\6\uffff\1\2"+
+            "\1\uffff\1\2\1\uffff\1\2\1\uffff\2\2\1\uffff\17\2\2\uffff\14"+
+            "\2",
             "\1\uffff",
             "",
             "",
@@ -27581,12 +27582,12 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\31\14\uffff\1\30",
             "\1\31\14\uffff\1\30",
             "\1\31\14\uffff\1\30",
-            "\1\32\1\uffff\1\55\12\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51"+
-            "\1\34\1\44\1\45\1\47\1\43\1\41\4\uffff\1\52\2\uffff\1\53\1\54"+
-            "\1\33\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\uffff\1\55\12\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51"+
-            "\1\34\1\44\1\45\1\47\1\43\1\41\4\uffff\1\52\2\uffff\1\53\1\54"+
-            "\1\33\1\50\1\uffff\1\37\1\40",
+            "\1\32\1\uffff\1\55\12\uffff\1\46\3\uffff\1\42\1\35\1\36\1"+
+            "\51\1\34\1\44\1\45\1\47\1\43\1\41\4\uffff\1\52\2\uffff\1\53"+
+            "\1\54\1\33\1\50\1\uffff\1\37\1\40",
+            "\1\32\1\uffff\1\55\12\uffff\1\46\3\uffff\1\42\1\35\1\36\1"+
+            "\51\1\34\1\44\1\45\1\47\1\43\1\41\4\uffff\1\52\2\uffff\1\53"+
+            "\1\54\1\33\1\50\1\uffff\1\37\1\40",
             "",
             "",
             "\1\31\14\uffff\1\30",
@@ -28083,12 +28084,12 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             "\1\30\42\uffff\1\31\14\uffff\1\30",
             "\1\30\42\uffff\1\31\14\uffff\1\30",
             "\1\30\42\uffff\1\31\14\uffff\1\30",
-            "\1\32\1\uffff\1\55\12\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51"+
-            "\1\34\1\44\1\45\1\47\1\43\1\41\4\uffff\1\52\2\uffff\1\53\1\54"+
-            "\1\33\1\50\1\uffff\1\37\1\40",
-            "\1\32\1\uffff\1\55\12\uffff\1\46\3\uffff\1\42\1\35\1\36\1\51"+
-            "\1\34\1\44\1\45\1\47\1\43\1\41\4\uffff\1\52\2\uffff\1\53\1\54"+
-            "\1\33\1\50\1\uffff\1\37\1\40",
+            "\1\32\1\uffff\1\55\12\uffff\1\46\3\uffff\1\42\1\35\1\36\1"+
+            "\51\1\34\1\44\1\45\1\47\1\43\1\41\4\uffff\1\52\2\uffff\1\53"+
+            "\1\54\1\33\1\50\1\uffff\1\37\1\40",
+            "\1\32\1\uffff\1\55\12\uffff\1\46\3\uffff\1\42\1\35\1\36\1"+
+            "\51\1\34\1\44\1\45\1\47\1\43\1\41\4\uffff\1\52\2\uffff\1\53"+
+            "\1\54\1\33\1\50\1\uffff\1\37\1\40",
             "",
             "",
             "\1\30\42\uffff\1\31\14\uffff\1\30",

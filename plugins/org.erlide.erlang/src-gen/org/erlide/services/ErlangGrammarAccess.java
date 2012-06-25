@@ -24,6 +24,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFormsFormParserRuleCall_0 = (RuleCall)cFormsAssignment.eContents().get(0);
 		
 		//Module:
+		//
 		//	forms+=Form*;
 		public ParserRule getRule() { return rule; }
 
@@ -43,6 +44,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRecordFieldDefParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//AtomRefTarget:
+		//
 		//	Module | Function | RecordAttribute | RecordFieldDef;
 		public ParserRule getRule() { return rule; }
 
@@ -75,6 +77,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_3_2 = (RuleCall)cGroup_3.eContents().get(2);
 		
 		//Form:
+		//
 		//	Attribute | Function | ConditionalFormBlock | {MacroForm} call=MacroCall FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -122,6 +125,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEndEndifAttributeParserRuleCall_3_0 = (RuleCall)cEndAssignment_3.eContents().get(0);
 		
 		//ConditionalFormBlock:
+		//
 		//	condition=IfdefAttribute ifForms+=Form* (=> hasElse?=ElseAttribute elseForms+=Form*)? end=EndifAttribute;
 		public ParserRule getRule() { return rule; }
 
@@ -178,12 +182,16 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCustomAttributeParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
 		
 		//// Attributes
+		//
 		//Attribute:
+		//
 		//	ModuleAttribute | DefineAttribute | UndefAttribute | AbstractIncludeAttribute | FileAttribute | RecordAttribute |
+		//
 		//	AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute;
 		public ParserRule getRule() { return rule; }
 
 		//ModuleAttribute | DefineAttribute | UndefAttribute | AbstractIncludeAttribute | FileAttribute | RecordAttribute |
+		//
 		//AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -229,6 +237,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEndifAttributeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//ConditionalAttribute:
+		//
 		//	IfdefAttribute | ElseAttribute | EndifAttribute;
 		public ParserRule getRule() { return rule; }
 
@@ -252,6 +261,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUndefAttributeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//AbstractDefineAttribute:
+		//
 		//	DefineAttribute | UndefAttribute;
 		public ParserRule getRule() { return rule; }
 
@@ -292,11 +302,14 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_7 = (RuleCall)cGroup.eContents().get(7);
 		
 		//DefineAttribute:
+		//
 		//	"-" => tag="define" "(" macroName= // can't have feature 'name' because multiple defines with the same macro can exist 
+		//
 		//	NAMEVAR ("(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")")? ("," value=Guard?)? ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
 		//"-" => tag="define" "(" macroName= // can't have feature 'name' because multiple defines with the same macro can exist 
+		//
 		//NAMEVAR ("(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")")? ("," value=Guard?)? ")" FULL_STOP
 		public Group getGroup() { return cGroup; }
 
@@ -313,10 +326,12 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 
 		//macroName= // can't have feature 'name' because multiple defines with the same macro can exist 
+		//
 		//NAMEVAR
 		public Assignment getMacroNameAssignment_3() { return cMacroNameAssignment_3; }
 
 		//// can't have feature 'name' because multiple defines with the same macro can exist 
+		//
 		//NAMEVAR
 		public RuleCall getMacroNameNAMEVARParserRuleCall_3_0() { return cMacroNameNAMEVARParserRuleCall_3_0; }
 
@@ -382,6 +397,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
 		//UndefAttribute:
+		//
 		//	"-" => tag="undef" "(" ref=MacroRef ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -428,6 +444,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
 		//IfdefAttribute:
+		//
 		//	"-" => tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -474,6 +491,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//ElseAttribute:
+		//
 		//	"-" => tag="else" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -502,6 +520,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//EndifAttribute:
+		//
 		//	"-" => tag="endif" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -528,6 +547,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIncludeLibAttributeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//AbstractIncludeAttribute:
+		//
 		//	IncludeAttribute | IncludeLibAttribute;
 		public ParserRule getRule() { return rule; }
 
@@ -554,6 +574,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
 		//IncludeAttribute:
+		//
 		//	"-" => tag="include" "(" importURI=STRING ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -598,6 +619,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
 		//IncludeLibAttribute:
+		//
 		//	"-" => tag="include_lib" "(" importURI=STRING ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -645,6 +667,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_7 = (RuleCall)cGroup.eContents().get(7);
 		
 		//FileAttribute:
+		//
 		//	"-" => tag="file" "(" file=STRING "," line=INTEGER ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -698,6 +721,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
 		//ModuleAttribute:
+		//
 		//	"-" => tag="module" "(" moduleName=NAME ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -756,11 +780,14 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_7 = (RuleCall)cGroup.eContents().get(7);
 		
 		//RecordAttribute:
+		//
 		//	"-" => tag="record" "(" name=NAMEVAR "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
+		//
 		//	recordMacro=MacroCall) ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
 		//"-" => tag="record" "(" name=NAMEVAR "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
+		//
 		//recordMacro=MacroCall) ")" FULL_STOP
 		public Group getGroup() { return cGroup; }
 
@@ -846,6 +873,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeTopTypeParserRuleCall_2_1_0 = (RuleCall)cTypeAssignment_2_1.eContents().get(0);
 		
 		//RecordFieldDef:
+		//
 		//	name=NAMEVAR ("=" value=Expression)? ("::" type=TopType)?;
 		public ParserRule getRule() { return rule; }
 
@@ -903,6 +931,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_7 = (RuleCall)cGroup.eContents().get(7);
 		
 		//ExportAttribute:
+		//
 		//	"-" => tag="export" "(" "[" (funs+=FunRef ("," funs+=FunRef)*)? "]" ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -978,6 +1007,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_9 = (RuleCall)cGroup.eContents().get(9);
 		
 		//ImportAttribute:
+		//
 		//	"-" => tag="import" "(" module=AtomVarMacro "," "[" (funs+=FunRef ("," funs+=FunRef)*)? "]" ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -1052,6 +1082,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
 		//CompileAttribute:
+		//
 		//	"-" => tag="compile" "(" options=Expression ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -1090,6 +1121,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeAttributeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//AbstractTypeAttribute:
+		//
 		//	SpecAttribute | TypeAttribute;
 		public ParserRule getRule() { return rule; }
 
@@ -1135,11 +1167,14 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//SpecAttribute:
+		//
 		//	"-" => tag=("spec" | "callback") (ref=SpecFun signatures+=TypeSig (";" signatures+=TypeSig)* | "(" ref=SpecFun
+		//
 		//	signatures+=TypeSig (";" signatures+=TypeSig)* ")") FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
 		//"-" => tag=("spec" | "callback") (ref=SpecFun signatures+=TypeSig (";" signatures+=TypeSig)* | "(" ref=SpecFun
+		//
 		//signatures+=TypeSig (";" signatures+=TypeSig)* ")") FULL_STOP
 		public Group getGroup() { return cGroup; }
 
@@ -1159,6 +1194,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getTagCallbackKeyword_1_0_1() { return cTagCallbackKeyword_1_0_1; }
 
 		//ref=SpecFun signatures+=TypeSig (";" signatures+=TypeSig)* | "(" ref=SpecFun signatures+=TypeSig (";"
+		//
 		//signatures+=TypeSig)* ")"
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
@@ -1270,13 +1306,18 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//TypeAttribute:
+		//
 		//	"-" => tag=("type" | "opaque") (name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::"
+		//
 		//	type=TopType | "(" name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::" type=TopType
+		//
 		//	")") FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
 		//"-" => tag=("type" | "opaque") (name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::"
+		//
 		//type=TopType | "(" name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::" type=TopType
+		//
 		//")") FULL_STOP
 		public Group getGroup() { return cGroup; }
 
@@ -1296,6 +1337,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getTagOpaqueKeyword_1_0_1() { return cTagOpaqueKeyword_1_0_1; }
 
 		//name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::" type=TopType | "(" name=NAMEVAR "("
+		//
 		//(args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::" type=TopType ")"
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
@@ -1417,6 +1459,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
 		//CustomAttribute:
+		//
 		//	"-" tag=ATOM "(" (value+=Expression ("," value+=Expression)*)? ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -1477,7 +1520,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFULL_STOPTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//// Functions
+		//
 		//Function:
+		//
 		//	name=NAME clauses+=FunctionClause (";" clauses+=FunctionClause)* FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
@@ -1539,12 +1584,16 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBodyLExpressionParserRuleCall_7_1_0 = (RuleCall)cBodyAssignment_7_1.eContents().get(0);
 		
 		//// validate that all names for a function are identical
+		//
 		//FunctionClause:
+		//
 		//	ref=NAME? "(" (params+=Expression ("," params+=Expression)*)? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
+		//
 		//	"->" body+=LExpression ("," body+=LExpression)*;
 		public ParserRule getRule() { return rule; }
 
 		//ref=NAME? "(" (params+=Expression ("," params+=Expression)*)? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
+		//
 		//"->" body+=LExpression ("," body+=LExpression)*
 		public Group getGroup() { return cGroup; }
 
@@ -1626,6 +1675,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cGuardsExpressionsParserRuleCall_1_1_0 = (RuleCall)cGuardsAssignment_1_1.eContents().get(0);
 		
 		//Guard:
+		//
 		//	guards+=Expressions (";" guards+=Expressions)*;
 		public ParserRule getRule() { return rule; }
 
@@ -1662,6 +1712,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprsLExpressionParserRuleCall_1_1_0 = (RuleCall)cExprsAssignment_1_1.eContents().get(0);
 		
 		//Expressions:
+		//
 		//	exprs+=LExpression ("," exprs+=LExpression)*;
 		public ParserRule getRule() { return rule; }
 
@@ -1698,6 +1749,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//LExpression returns Expression:
+		//
 		//	=> line?=LineExpr expr=Expression | Expression;
 		public ParserRule getRule() { return rule; }
 
@@ -1730,6 +1782,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLineKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		//LineExpr:
+		//
 		//	"?" "line";
 		public ParserRule getRule() { return rule; }
 
@@ -1754,6 +1807,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExpr100ParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Expression:
+		//
 		//	{CatchExpr} "catch" expr=Expression | Expr100;
 		public ParserRule getRule() { return rule; }
 
@@ -1798,7 +1852,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOpRightExpr100ParserRuleCall_1_1_2_0 = (RuleCall)cOpRightAssignment_1_1_2.eContents().get(0);
 		
 		//// right-associative
+		//
 		//Expr100 returns Expression:
+		//
 		//	Expr150 ({MatchExpr.opLeft=current} op="=" opRight=Expr100 | {BinOp.opLeft=current} op=SENDOP opRight=Expr100)?;
 		public ParserRule getRule() { return rule; }
 
@@ -1860,6 +1916,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOpRightExpr160ParserRuleCall_1_2_0 = (RuleCall)cOpRightAssignment_1_2.eContents().get(0);
 		
 		//Expr150 returns Expression:
+		//
 		//	Expr160 ({BinOp.opLeft=current} op="orelse" opRight=Expr160)*;
 		public ParserRule getRule() { return rule; }
 
@@ -1900,6 +1957,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOpRight2Expr200ParserRuleCall_1_2_0 = (RuleCall)cOpRight2Assignment_1_2.eContents().get(0);
 		
 		//Expr160 returns Expression:
+		//
 		//	Expr200 ({BinOp.opLeft=current} op="andalso" opRight2=Expr200)*;
 		public ParserRule getRule() { return rule; }
 
@@ -1940,7 +1998,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOpRightExpr300ParserRuleCall_1_2_0 = (RuleCall)cOpRightAssignment_1_2.eContents().get(0);
 		
 		//// non-associative
+		//
 		//Expr200 returns Expression:
+		//
 		//	Expr300 ({BinOp.opLeft=current} op=COMPOP opRight=Expr300)?;
 		public ParserRule getRule() { return rule; }
 
@@ -1981,6 +2041,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOpRightExpr400ParserRuleCall_1_2_0 = (RuleCall)cOpRightAssignment_1_2.eContents().get(0);
 		
 		//Expr300 returns Expression:
+		//
 		//	Expr400 ({BinOp.opLeft=current} op=LISTOP opRight=Expr400)*;
 		public ParserRule getRule() { return rule; }
 
@@ -2021,6 +2082,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOpRightExpr500ParserRuleCall_1_2_0 = (RuleCall)cOpRightAssignment_1_2.eContents().get(0);
 		
 		//Expr400 returns Expression:
+		//
 		//	Expr500 ({AddOp.opLeft=current} op=ADDOP opRight=Expr500)*;
 		public ParserRule getRule() { return rule; }
 
@@ -2061,6 +2123,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOpRightUnaryExprParserRuleCall_1_2_0 = (RuleCall)cOpRightAssignment_1_2.eContents().get(0);
 		
 		//Expr500 returns Expression:
+		//
 		//	UnaryExpr ({MultOp.opLeft=current} op=MULTOP opRight=UnaryExpr)*;
 		public ParserRule getRule() { return rule; }
 
@@ -2101,6 +2164,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExpr700ParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//UnaryExpr returns Expression:
+		//
 		//	{UnaryExpr} op=PREFIXOP operand=Expr700 | Expr700;
 		public ParserRule getRule() { return rule; }
 
@@ -2162,25 +2226,50 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRecordRecordExprParserRuleCall_1_1_2_0 = (RuleCall)cRecordAssignment_1_1_2.eContents().get(0);
 		
 		//Expr700 returns Expression:
-		//	Expr800 ("(" {FunCall.target=current} (args+=Expression ("," args+=Expression)*)? ")" ("(" (args2+=Expression (","
+		//
+		//	Expr800 // TODO can this be expressed better? 
+		//
+		//	// we can have ?MACRO(args)(args2)
+		//
+		//	("(" {FunCall.target=current} (args+=Expression ("," args+=Expression)*)? ")" ("(" (args2+=Expression (","
+		//
 		//	args2+=Expression)*)? ")")? | ("#" {RecordExpr.ref=current} record=RecordExpr)+)?;
 		public ParserRule getRule() { return rule; }
 
-		//Expr800 ("(" {FunCall.target=current} (args+=Expression ("," args+=Expression)*)? ")" ("(" (args2+=Expression (","
+		//Expr800 // TODO can this be expressed better? 
+		//
+		//// we can have ?MACRO(args)(args2)
+		//
+		//("(" {FunCall.target=current} (args+=Expression ("," args+=Expression)*)? ")" ("(" (args2+=Expression (","
+		//
 		//args2+=Expression)*)? ")")? | ("#" {RecordExpr.ref=current} record=RecordExpr)+)?
 		public Group getGroup() { return cGroup; }
 
 		//Expr800
 		public RuleCall getExpr800ParserRuleCall_0() { return cExpr800ParserRuleCall_0; }
 
+		//// TODO can this be expressed better? 
+		//
+		//// we can have ?MACRO(args)(args2)
+		//
 		//("(" {FunCall.target=current} (args+=Expression ("," args+=Expression)*)? ")" ("(" (args2+=Expression (","
+		//
 		//args2+=Expression)*)? ")")? | ("#" {RecordExpr.ref=current} record=RecordExpr)+)?
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
+		//// TODO can this be expressed better? 
+		//
+		//// we can have ?MACRO(args)(args2)
+		//
 		//"(" {FunCall.target=current} (args+=Expression ("," args+=Expression)*)? ")" ("(" (args2+=Expression (","
+		//
 		//args2+=Expression)*)? ")")?
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
+		//// TODO can this be expressed better? 
+		//
+		//// we can have ?MACRO(args)(args2)
+		//
 		//"("
 		public Keyword getLeftParenthesisKeyword_1_0_0() { return cLeftParenthesisKeyword_1_0_0; }
 
@@ -2268,7 +2357,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFunctionExprMaxParserRuleCall_1_2_0 = (RuleCall)cFunctionAssignment_1_2.eContents().get(0);
 		
 		//// non-associative
+		//
 		//Expr800 returns Expression:
+		//
 		//	ExprMax ({RemoteTarget.module=current} ":" function=ExprMax)?;
 		public ParserRule getRule() { return rule; }
 
@@ -2322,11 +2413,14 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLetExprParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
 		
 		//ExprMax returns Expression:
+		//
 		//	TermExpression | "(" Expression ")" | {BlockExpr} "begin" body+=LExpression ("," body+=LExpression)* "end" | IfExpr |
+		//
 		//	CaseExpr | ReceiveExpr | FunExpr | TryExpr | CondExpr | QueryExpr | LetExpr;
 		public ParserRule getRule() { return rule; }
 
 		//TermExpression | "(" Expression ")" | {BlockExpr} "begin" body+=LExpression ("," body+=LExpression)* "end" | IfExpr |
+		//
 		//CaseExpr | ReceiveExpr | FunExpr | TryExpr | CondExpr | QueryExpr | LetExpr
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -2414,6 +2508,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLiteralExpressionParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
 		//TermExpression returns Expression:
+		//
 		//	Tuple | => ListComprehension | List | => BinaryComprehension | Binary | "#" RecordExpr | LiteralExpression;
 		public ParserRule getRule() { return rule; }
 
@@ -2465,6 +2560,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		
 		//MacroCall:
+		//
 		//	macroName=MacroLiteral ("(" (args+=Expression ("," args+=Expression)*)? ")")?;
 		public ParserRule getRule() { return rule; }
 
@@ -2522,6 +2618,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTupleRecordTupleParserRuleCall_1_1_0 = (RuleCall)cTupleAssignment_1_1.eContents().get(0);
 		
 		//RecordExpr:
+		//
 		//	rec=AtomVarMacro ("." field=AtomVarMacro | tuple=RecordTuple);
 		public ParserRule getRule() { return rule; }
 
@@ -2563,7 +2660,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cQueryKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		//// NYI
+		//
 		//QueryExpr:
+		//
 		//	{QueryExpr} "query";
 		public ParserRule getRule() { return rule; }
 
@@ -2584,7 +2683,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCondKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		//// NYI
+		//
 		//CondExpr:
+		//
 		//	{CondExpr} "cond";
 		public ParserRule getRule() { return rule; }
 
@@ -2605,7 +2706,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLetKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		//// NYI
+		//
 		//LetExpr:
+		//
 		//	{LetExpr} "let";
 		public ParserRule getRule() { return rule; }
 
@@ -2634,6 +2737,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//RecordTuple:
+		//
 		//	{RecordTuple} "{" (fields+=RecordFieldExpr ("," fields+=RecordFieldExpr)*)? "}";
 		public ParserRule getRule() { return rule; }
 
@@ -2686,6 +2790,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeTopTypeParserRuleCall_2_1_0 = (RuleCall)cTypeAssignment_2_1.eContents().get(0);
 		
 		//RecordFieldExpr:
+		//
 		//	ref=AtomVarMacro ("=" value=Expression)? ("::" type=TopType)?;
 		public ParserRule getRule() { return rule; }
 
@@ -2736,6 +2841,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStringLiteralParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//LiteralExpressionNoNumber returns Expression:
+		//
 		//	AtomRefLiteral | VariableLiteral | {ErlChar} value=CHAR | MacroLiteral | StringLiteral;
 		public ParserRule getRule() { return rule; }
 
@@ -2776,6 +2882,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueAtomRefTargetNAMEParserRuleCall_1_0_1 = (RuleCall)cValueAtomRefTargetCrossReference_1_0.eContents().get(1);
 		
 		//AtomRefLiteral returns Expression:
+		//
 		//	{Atom} value=[AtomRefTarget|NAME];
 		public ParserRule getRule() { return rule; }
 
@@ -2804,6 +2911,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueDefineAttributeMACROParserRuleCall_1_0_1 = (RuleCall)cValueDefineAttributeCrossReference_1_0.eContents().get(1);
 		
 		//MacroLiteral returns Expression:
+		//
 		//	{Macro} value=[DefineAttribute|MACRO];
 		public ParserRule getRule() { return rule; }
 
@@ -2832,6 +2940,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueDefineAttributeNAMEVARParserRuleCall_1_0_1 = (RuleCall)cValueDefineAttributeCrossReference_1_0.eContents().get(1);
 		
 		//MacroRef returns Expression:
+		//
 		//	{Macro} value=[DefineAttribute|NAMEVAR];
 		public ParserRule getRule() { return rule; }
 
@@ -2860,6 +2969,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueExpressionVARIABLETerminalRuleCall_1_0_1 = (RuleCall)cValueExpressionCrossReference_1_0.eContents().get(1);
 		
 		//VariableLiteral returns Expression:
+		//
 		//	{Variable} value=[Expression|VARIABLE];
 		public ParserRule getRule() { return rule; }
 
@@ -2888,6 +2998,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMoreStringLiteralPartParserRuleCall_1_0 = (RuleCall)cMoreAssignment_1.eContents().get(0);
 		
 		//StringLiteral returns Expression:
+		//
 		//	string=STRING more+=StringLiteralPart*;
 		public ParserRule getRule() { return rule; }
 
@@ -2916,6 +3027,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMacroMacroCallParserRuleCall_1_0 = (RuleCall)cMacroAssignment_1.eContents().get(0);
 		
 		//StringLiteralPart:
+		//
 		//	string=STRING | macro=MacroCall;
 		public ParserRule getRule() { return rule; }
 
@@ -2946,6 +3058,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueFLOATParserRuleCall_2_1_0 = (RuleCall)cValueAssignment_2_1.eContents().get(0);
 		
 		//LiteralExpression returns Expression:
+		//
 		//	LiteralExpressionNoNumber | IntegerLiteral | {ErlFloat} value=FLOAT;
 		public ParserRule getRule() { return rule; }
 
@@ -2979,6 +3092,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueINTEGERParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
 		//IntegerLiteral returns Expression:
+		//
 		//	{ErlInteger} value=INTEGER;
 		public ParserRule getRule() { return rule; }
 
@@ -3019,11 +3133,14 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_1_1_3 = (Keyword)cGroup_1_1.eContents().get(3);
 		
 		//PatternExpression returns Expression:
+		//
 		//	TermExpression (({MatchExpr.opLeft=current} op="=" opRight=TermExpression)+ | {FunCall.target=current} "("
+		//
 		//	(args+=Expression ("," args+=Expression)*)? ")")?;
 		public ParserRule getRule() { return rule; }
 
 		//TermExpression (({MatchExpr.opLeft=current} op="=" opRight=TermExpression)+ | {FunCall.target=current} "("
+		//
 		//(args+=Expression ("," args+=Expression)*)? ")")?
 		public Group getGroup() { return cGroup; }
 
@@ -3031,6 +3148,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getTermExpressionParserRuleCall_0() { return cTermExpressionParserRuleCall_0; }
 
 		//(({MatchExpr.opLeft=current} op="=" opRight=TermExpression)+ | {FunCall.target=current} "(" (args+=Expression (","
+		//
 		//args+=Expression)*)? ")")?
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
@@ -3099,6 +3217,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEndKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//IfExpr:
+		//
 		//	"if" clauses+=IfClause (";" clauses+=IfClause)* "end";
 		public ParserRule getRule() { return rule; }
 
@@ -3144,6 +3263,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBodyLExpressionParserRuleCall_3_1_0 = (RuleCall)cBodyAssignment_3_1.eContents().get(0);
 		
 		//IfClause:
+		//
 		//	guard=Guard "->" body+=LExpression ("," body+=LExpression)*;
 		public ParserRule getRule() { return rule; }
 
@@ -3194,6 +3314,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEndKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//CaseExpr:
+		//
 		//	"case" expr=Expression "of" clauses+=CrClause (";" clauses+=CrClause)* "end";
 		public ParserRule getRule() { return rule; }
 
@@ -3252,6 +3373,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBodyLExpressionParserRuleCall_4_1_0 = (RuleCall)cBodyAssignment_4_1.eContents().get(0);
 		
 		//CrClause:
+		//
 		//	expr=Expression ("when" guard=Guard)? "->" body+=LExpression ("," body+=LExpression)*;
 		public ParserRule getRule() { return rule; }
 
@@ -3335,13 +3457,18 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEndKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//ReceiveExpr:
-		//	"receive" (clauses+=CrClause (";" clauses+=CrClause)* ("after" after_expr=Expression "->" after_body+=LExpression (","
-		//	after_body+=LExpression)*)? | "after" after_expr=Expression "->" after_body+=LExpression (","
+		//
+		//	"receive" (clauses+=CrClause (";" clauses+=CrClause)* ("after" after_expr=Expression "->" after_body+=LExpression
+		//
+		//	("," after_body+=LExpression)*)? | "after" after_expr=Expression "->" after_body+=LExpression (","
+		//
 		//	after_body+=LExpression)*) "end";
 		public ParserRule getRule() { return rule; }
 
 		//"receive" (clauses+=CrClause (";" clauses+=CrClause)* ("after" after_expr=Expression "->" after_body+=LExpression (","
+		//
 		//after_body+=LExpression)*)? | "after" after_expr=Expression "->" after_body+=LExpression (","
+		//
 		//after_body+=LExpression)*) "end"
 		public Group getGroup() { return cGroup; }
 
@@ -3349,10 +3476,14 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getReceiveKeyword_0() { return cReceiveKeyword_0; }
 
 		//clauses+=CrClause (";" clauses+=CrClause)* ("after" after_expr=Expression "->" after_body+=LExpression (","
-		//after_body+=LExpression)*)? | "after" after_expr=Expression "->" after_body+=LExpression ("," after_body+=LExpression)*
+		//
+		//after_body+=LExpression)*)? | "after" after_expr=Expression "->" after_body+=LExpression (","
+		//
+		//after_body+=LExpression)*
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
 		//clauses+=CrClause (";" clauses+=CrClause)* ("after" after_expr=Expression "->" after_body+=LExpression (","
+		//
 		//after_body+=LExpression)*)?
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
@@ -3453,6 +3584,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cInlineFunParserRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
 		
 		//FunExpr:
+		//
 		//	"fun" (FunRef | InlineFun);
 		public ParserRule getRule() { return rule; }
 
@@ -3486,6 +3618,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cArity_IntVarMacroParserRuleCall_3_0 = (RuleCall)cArity_Assignment_3.eContents().get(0);
 		
 		//FunRef:
+		//
 		//	(module_=AtomVarMacro ":")? function_=AtomVarMacro "/" arity_=IntVarMacro;
 		public ParserRule getRule() { return rule; }
 
@@ -3532,6 +3665,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEndKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//InlineFun returns FunExpr:
+		//
 		//	clauses+=FunctionClause (";" clauses+=FunctionClause)* "end";
 		public ParserRule getRule() { return rule; }
 
@@ -3606,13 +3740,18 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEndKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//TryExpr:
+		//
 		//	"try" body+=LExpression ("," body+=LExpression)* ("of" of_clauses+=CrClause (";" of_clauses+=CrClause)*)? ("catch"
+		//
 		//	catch+=TryClause (";" catch+=TryClause)* ("after" after_body+=LExpression ("," after_body+=LExpression)*)? | "after"
+		//
 		//	after_body+=LExpression ("," after_body+=LExpression)*) "end";
 		public ParserRule getRule() { return rule; }
 
 		//"try" body+=LExpression ("," body+=LExpression)* ("of" of_clauses+=CrClause (";" of_clauses+=CrClause)*)? ("catch"
+		//
 		//catch+=TryClause (";" catch+=TryClause)* ("after" after_body+=LExpression ("," after_body+=LExpression)*)? | "after"
+		//
 		//after_body+=LExpression ("," after_body+=LExpression)*) "end"
 		public Group getGroup() { return cGroup; }
 
@@ -3662,6 +3801,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getOf_clausesCrClauseParserRuleCall_3_2_1_0() { return cOf_clausesCrClauseParserRuleCall_3_2_1_0; }
 
 		//"catch" catch+=TryClause (";" catch+=TryClause)* ("after" after_body+=LExpression ("," after_body+=LExpression)*)? |
+		//
 		//"after" after_body+=LExpression ("," after_body+=LExpression)*
 		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 
@@ -3764,6 +3904,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBodyLExpressionParserRuleCall_5_1_0 = (RuleCall)cBodyAssignment_5_1.eContents().get(0);
 		
 		//TryClause:
+		//
 		//	=> (hdr=NAMEVAR ":")? cond=PatternExpression ("when" guard=Guard)? "->" body+=LExpression ("," body+=LExpression)*;
 		public ParserRule getRule() { return rule; }
 
@@ -3845,6 +3986,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//List returns ErlList:
+		//
 		//	"[" ({ErlList} | elements+=Expression ("," elements+=Expression)* ("|" tail=Expression)?) "]";
 		public ParserRule getRule() { return rule; }
 
@@ -3913,6 +4055,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//ListComprehension:
+		//
 		//	"[" element=Expression "||" generators+=LCExpr ("," generators+=LCExpr)* "]";
 		public ParserRule getRule() { return rule; }
 
@@ -3969,6 +4112,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//Tuple returns ErlTuple:
+		//
 		//	"{" ({ErlTuple} | elements+=Expression ("," elements+=Expression)*) "}";
 		public ParserRule getRule() { return rule; }
 
@@ -4025,6 +4169,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cGreaterThanSignGreaterThanSignKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//BinaryComprehension:
+		//
 		//	"<<" expr=TermExpression "||" generators+=LCExpr ("," generators+=LCExpr)* ">>";
 		public ParserRule getRule() { return rule; }
 
@@ -4081,6 +4226,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cGreaterThanSignGreaterThanSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//Binary returns ErlBinary:
+		//
 		//	"<<" ({ErlBinary} | elements+=BinaryItem ("," elements+=BinaryItem)*) ">>";
 		public ParserRule getRule() { return rule; }
 
@@ -4140,6 +4286,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeBitTypeParserRuleCall_2_2_1_0 = (RuleCall)cTypeAssignment_2_2_1.eContents().get(0);
 		
 		//BinaryItem:
+		//
 		//	expr=UnaryExprMax (":" size=ExprMax)? ("/" types+=BitType ("-" type+=BitType)*)?;
 		public ParserRule getRule() { return rule; }
 
@@ -4200,6 +4347,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSizeINTTerminalRuleCall_1_1_0 = (RuleCall)cSizeAssignment_1_1.eContents().get(0);
 		
 		//BitType:
+		//
 		//	name=NAME (":" size=INT)?;
 		public ParserRule getRule() { return rule; }
 
@@ -4237,6 +4385,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExprMaxParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//UnaryExprMax returns Expression:
+		//
 		//	{UnaryExpr} op=PREFIXOP operand=ExprMax | ExprMax;
 		public ParserRule getRule() { return rule; }
 
@@ -4279,6 +4428,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cO2ExpressionParserRuleCall_1_1_0 = (RuleCall)cO2Assignment_1_1.eContents().get(0);
 		
 		//LCExpr:
+		//
 		//	o1=Expression (op=("<-" | "<=") o2=Expression)?;
 		public ParserRule getRule() { return rule; }
 
@@ -4326,7 +4476,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cXorKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
 		
 		//// Operators
+		//
 		//ADDOP:
+		//
 		//	"+" | "-" | "bor" | "bxor" | "bsl" | "bsr" | "or" | "xor";
 		public ParserRule getRule() { return rule; }
 
@@ -4369,6 +4521,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAndKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
 		
 		//MULTOP:
+		//
 		//	"*" | "/" | "div" | "rem" | "band" | "and";
 		public ParserRule getRule() { return rule; }
 
@@ -4403,6 +4556,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNotKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
 		
 		//PREFIXOP:
+		//
 		//	"+" | "-" | "bnot" | "not";
 		public ParserRule getRule() { return rule; }
 
@@ -4429,6 +4583,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cHyphenMinusHyphenMinusKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
 		//LISTOP:
+		//
 		//	"++" | "--";
 		public ParserRule getRule() { return rule; }
 
@@ -4455,6 +4610,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignSolidusEqualsSignKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
 		
 		//COMPOP:
+		//
 		//	"==" | "/=" | "=<" | "<" | ">=" | ">" | "=:=" | "=/=";
 		public ParserRule getRule() { return rule; }
 
@@ -4491,6 +4647,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cExclamationMarkKeyword = (Keyword)rule.eContents().get(1);
 		
 		//SENDOP:
+		//
 		//	"!";
 		public ParserRule getRule() { return rule; }
 
@@ -4506,7 +4663,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMacroLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//// Literal combinations
+		//
 		//AtomVarMacro returns Expression:
+		//
 		//	AtomRefLiteral | VariableLiteral | MacroLiteral;
 		public ParserRule getRule() { return rule; }
 
@@ -4531,6 +4690,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMacroLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//IntVarMacro returns Expression:
+		//
 		//	IntegerLiteral | VariableLiteral | MacroLiteral;
 		public ParserRule getRule() { return rule; }
 
@@ -4554,7 +4714,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cKWParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//// Literals
+		//
 		//NAME:
+		//
 		//	ATOM | KW;
 		public ParserRule getRule() { return rule; }
 
@@ -4576,6 +4738,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cVARIABLETerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//NAMEVAR:
+		//
 		//	ATOM | KW | VARIABLE;
 		public ParserRule getRule() { return rule; }
 
@@ -4604,6 +4767,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cVARIABLETerminalRuleCall_1_2 = (RuleCall)cAlternatives_1.eContents().get(2);
 		
 		//MACRO:
+		//
 		//	("?" | "??") (ATOM | KW1 | VARIABLE);
 		public ParserRule getRule() { return rule; }
 
@@ -4639,6 +4803,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLineKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
 		//KW:
+		//
 		//	KW1 | "line";
 		public ParserRule getRule() { return rule; }
 
@@ -4675,11 +4840,14 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCompileKeyword_17 = (Keyword)cAlternatives.eContents().get(17);
 		
 		//KW1:
+		//
 		//	"spec" | "endif" | "ifdef" | "ifndef" | "type" | "opaque" | "record" | "undef" | "module" | "include" | "include_lib"
+		//
 		//	| "define" | "file" | "callback" | "else" | "export" | "import" | "compile";
 		public ParserRule getRule() { return rule; }
 
 		//"spec" | "endif" | "ifdef" | "ifndef" | "type" | "opaque" | "record" | "undef" | "module" | "include" | "include_lib" |
+		//
 		//"define" | "file" | "callback" | "else" | "export" | "import" | "compile"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -4771,13 +4939,18 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cXorKeyword_27 = (Keyword)cAlternatives.eContents().get(27);
 		
 		//RealKw:
-		//	"after" | "and" | "andalso" | "band" | "begin" | "bnot" | "bor" | "bsl" | "bsr" | "bxor" | "case" | "catch" | "cond" |
-		//	"div" | "end" | "fun" | "if" | "let" | "not" | "of" | "or" | "orelse" | "query" | "receive" | "rem" | "try" | "when" |
-		//	"xor";
+		//
+		//	"after" | "and" | "andalso" | "band" | "begin" | "bnot" | "bor" | "bsl" | "bsr" | "bxor" | "case" | "catch" | "cond"
+		//
+		//	| "div" | "end" | "fun" | "if" | "let" | "not" | "of" | "or" | "orelse" | "query" | "receive" | "rem" | "try" |
+		//
+		//	"when" | "xor";
 		public ParserRule getRule() { return rule; }
 
 		//"after" | "and" | "andalso" | "band" | "begin" | "bnot" | "bor" | "bsl" | "bsr" | "bxor" | "case" | "catch" | "cond" |
+		//
 		//"div" | "end" | "fun" | "if" | "let" | "not" | "of" | "or" | "orelse" | "query" | "receive" | "rem" | "try" | "when" |
+		//
 		//"xor"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -4873,6 +5046,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBASED_INTTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//INTEGER:
+		//
 		//	INT | BASED_INT;
 		public ParserRule getRule() { return rule; }
 
@@ -4896,6 +5070,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cINTTerminalRuleCall_2_1 = (RuleCall)cAlternatives_2.eContents().get(1);
 		
 		//FLOAT hidden():
+		//
 		//	INT "." (EXT_INT | INT);
 		public ParserRule getRule() { return rule; }
 
@@ -4934,7 +5109,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonColonKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		
 		//// Type language
+		//
 		//SpecFun returns FunRef:
+		//
 		//	(module_=AtomVarMacro ":")? function_=AtomVarMacro ("/" arity_=IntVarMacro "::")?;
 		public ParserRule getRule() { return rule; }
 
@@ -4986,6 +5163,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cGuardsTypeGuardsParserRuleCall_1_1_0 = (RuleCall)cGuardsAssignment_1_1.eContents().get(0);
 		
 		//TypeSig:
+		//
 		//	decl=FunType ("when" guards=TypeGuards)?;
 		public ParserRule getRule() { return rule; }
 
@@ -5028,6 +5206,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cReturnTopTypeParserRuleCall_4_0 = (RuleCall)cReturnAssignment_4.eContents().get(0);
 		
 		//FunType:
+		//
 		//	"(" (args+=TopType ("," args+=TopType)*)? ")" "->" return=TopType;
 		public ParserRule getRule() { return rule; }
 
@@ -5082,6 +5261,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cItemsTypeGuardParserRuleCall_1_1_0 = (RuleCall)cItemsAssignment_1_1.eContents().get(0);
 		
 		//TypeGuards:
+		//
 		//	items+=TypeGuard ("," items+=TypeGuard)*;
 		public ParserRule getRule() { return rule; }
 
@@ -5129,6 +5309,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeTopTypeParserRuleCall_1_2_0 = (RuleCall)cTypeAssignment_1_2.eContents().get(0);
 		
 		//TypeGuard:
+		//
 		//	name=NAME "(" types+=TopType ("," types+=TopType)* ")" | name=VARIABLE "::" type=TopType;
 		public ParserRule getRule() { return rule; }
 
@@ -5198,6 +5379,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeType100ParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
 		
 		//TopType:
+		//
 		//	(var=VARIABLE "::")? type=Type100;
 		public ParserRule getRule() { return rule; }
 
@@ -5237,6 +5419,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightOperandType200ParserRuleCall_1_1_0 = (RuleCall)cRightOperandAssignment_1_1.eContents().get(0);
 		
 		//Type100:
+		//
 		//	Type200 (=> ({TopType.leftOperand=current} op="|") rightOperand=Type200)*;
 		public ParserRule getRule() { return rule; }
 
@@ -5285,6 +5468,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightOperandType300ParserRuleCall_1_1_0 = (RuleCall)cRightOperandAssignment_1_1.eContents().get(0);
 		
 		//Type200:
+		//
 		//	Type300 (=> ({TopType.leftOperand=current} op="..") rightOperand=Type300)*;
 		public ParserRule getRule() { return rule; }
 
@@ -5333,6 +5517,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightOperandType400ParserRuleCall_1_1_0 = (RuleCall)cRightOperandAssignment_1_1.eContents().get(0);
 		
 		//Type300:
+		//
 		//	Type400 (=> ({TopType.leftOperand=current} op=ADDOP) rightOperand=Type400)*;
 		public ParserRule getRule() { return rule; }
 
@@ -5381,6 +5566,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightOperandType500ParserRuleCall_1_1_0 = (RuleCall)cRightOperandAssignment_1_1.eContents().get(0);
 		
 		//Type400:
+		//
 		//	Type500 (=> ({TopType.leftOperand=current} op=MULTOP) rightOperand=Type500)*;
 		public ParserRule getRule() { return rule; }
 
@@ -5427,6 +5613,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Type500:
+		//
 		//	{UnaryType} op=PREFIXOP operand=Type | Type;
 		public ParserRule getRule() { return rule; }
 
@@ -5529,16 +5716,23 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_8_4 = (Keyword)cGroup_8.eContents().get(4);
 		
 		//Type:
+		//
 		//	"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? name=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")? |
-		//	name=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType (","
-		//	types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" | BinaryType
-		//	| "fun" {FunType} "(" type=FunType100? ")";
+		//
+		//	name=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType
+		//
+		//	("," types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" |
+		//
+		//	BinaryType | "fun" {FunType} "(" type=FunType100? ")";
 		public ParserRule getRule() { return rule; }
 
 		//"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? name=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")? |
+		//
 		//name=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType (","
-		//types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" | BinaryType |
-		//"fun" {FunType} "(" type=FunType100? ")"
+		//
+		//types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" | BinaryType
+		//
+		//| "fun" {FunType} "(" type=FunType100? ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"(" TopType ")"
@@ -5759,6 +5953,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeTopTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//FieldType:
+		//
 		//	name=NAME "::" type=TopType;
 		public ParserRule getRule() { return rule; }
 
@@ -5799,6 +5994,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cGreaterThanSignGreaterThanSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//BinaryType:
+		//
 		//	"<<" {BinaryType} (type+=BinBaseType ("," type+=BinUnitType)? | type+=BinUnitType)? ">>";
 		public ParserRule getRule() { return rule; }
 
@@ -5855,6 +6051,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//BinBaseType:
+		//
 		//	name=VARIABLE ":" type=Type;
 		public ParserRule getRule() { return rule; }
 
@@ -5890,6 +6087,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeTypeParserRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
 		
 		//BinUnitType:
+		//
 		//	name=VARIABLE ":" m=VARIABLE "*" type=Type;
 		public ParserRule getRule() { return rule; }
 
@@ -5941,6 +6139,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cReturnTopTypeParserRuleCall_5_0 = (RuleCall)cReturnAssignment_5.eContents().get(0);
 		
 		//FunType100:
+		//
 		//	{FunTypeList} "(" ("..." | items+=TopType ("," items+=TopType)*)? ")" "->" return=TopType;
 		public ParserRule getRule() { return rule; }
 
@@ -6154,6 +6353,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Module:
+	//
 	//	forms+=Form*;
 	public ModuleElements getModuleAccess() {
 		return (pModule != null) ? pModule : (pModule = new ModuleElements());
@@ -6164,6 +6364,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AtomRefTarget:
+	//
 	//	Module | Function | RecordAttribute | RecordFieldDef;
 	public AtomRefTargetElements getAtomRefTargetAccess() {
 		return (pAtomRefTarget != null) ? pAtomRefTarget : (pAtomRefTarget = new AtomRefTargetElements());
@@ -6174,6 +6375,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Form:
+	//
 	//	Attribute | Function | ConditionalFormBlock | {MacroForm} call=MacroCall FULL_STOP;
 	public FormElements getFormAccess() {
 		return (pForm != null) ? pForm : (pForm = new FormElements());
@@ -6184,6 +6386,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ConditionalFormBlock:
+	//
 	//	condition=IfdefAttribute ifForms+=Form* (=> hasElse?=ElseAttribute elseForms+=Form*)? end=EndifAttribute;
 	public ConditionalFormBlockElements getConditionalFormBlockAccess() {
 		return (pConditionalFormBlock != null) ? pConditionalFormBlock : (pConditionalFormBlock = new ConditionalFormBlockElements());
@@ -6194,8 +6397,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// Attributes
+	//
 	//Attribute:
+	//
 	//	ModuleAttribute | DefineAttribute | UndefAttribute | AbstractIncludeAttribute | FileAttribute | RecordAttribute |
+	//
 	//	AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute;
 	public AttributeElements getAttributeAccess() {
 		return (pAttribute != null) ? pAttribute : (pAttribute = new AttributeElements());
@@ -6206,6 +6412,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ConditionalAttribute:
+	//
 	//	IfdefAttribute | ElseAttribute | EndifAttribute;
 	public ConditionalAttributeElements getConditionalAttributeAccess() {
 		return (pConditionalAttribute != null) ? pConditionalAttribute : (pConditionalAttribute = new ConditionalAttributeElements());
@@ -6216,6 +6423,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AbstractDefineAttribute:
+	//
 	//	DefineAttribute | UndefAttribute;
 	public AbstractDefineAttributeElements getAbstractDefineAttributeAccess() {
 		return (pAbstractDefineAttribute != null) ? pAbstractDefineAttribute : (pAbstractDefineAttribute = new AbstractDefineAttributeElements());
@@ -6226,7 +6434,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DefineAttribute:
+	//
 	//	"-" => tag="define" "(" macroName= // can't have feature 'name' because multiple defines with the same macro can exist 
+	//
 	//	NAMEVAR ("(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")")? ("," value=Guard?)? ")" FULL_STOP;
 	public DefineAttributeElements getDefineAttributeAccess() {
 		return (pDefineAttribute != null) ? pDefineAttribute : (pDefineAttribute = new DefineAttributeElements());
@@ -6237,6 +6447,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UndefAttribute:
+	//
 	//	"-" => tag="undef" "(" ref=MacroRef ")" FULL_STOP;
 	public UndefAttributeElements getUndefAttributeAccess() {
 		return (pUndefAttribute != null) ? pUndefAttribute : (pUndefAttribute = new UndefAttributeElements());
@@ -6247,6 +6458,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IfdefAttribute:
+	//
 	//	"-" => tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP;
 	public IfdefAttributeElements getIfdefAttributeAccess() {
 		return (pIfdefAttribute != null) ? pIfdefAttribute : (pIfdefAttribute = new IfdefAttributeElements());
@@ -6257,6 +6469,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ElseAttribute:
+	//
 	//	"-" => tag="else" FULL_STOP;
 	public ElseAttributeElements getElseAttributeAccess() {
 		return (pElseAttribute != null) ? pElseAttribute : (pElseAttribute = new ElseAttributeElements());
@@ -6267,6 +6480,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EndifAttribute:
+	//
 	//	"-" => tag="endif" FULL_STOP;
 	public EndifAttributeElements getEndifAttributeAccess() {
 		return (pEndifAttribute != null) ? pEndifAttribute : (pEndifAttribute = new EndifAttributeElements());
@@ -6277,6 +6491,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AbstractIncludeAttribute:
+	//
 	//	IncludeAttribute | IncludeLibAttribute;
 	public AbstractIncludeAttributeElements getAbstractIncludeAttributeAccess() {
 		return (pAbstractIncludeAttribute != null) ? pAbstractIncludeAttribute : (pAbstractIncludeAttribute = new AbstractIncludeAttributeElements());
@@ -6287,6 +6502,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IncludeAttribute:
+	//
 	//	"-" => tag="include" "(" importURI=STRING ")" FULL_STOP;
 	public IncludeAttributeElements getIncludeAttributeAccess() {
 		return (pIncludeAttribute != null) ? pIncludeAttribute : (pIncludeAttribute = new IncludeAttributeElements());
@@ -6297,6 +6513,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IncludeLibAttribute:
+	//
 	//	"-" => tag="include_lib" "(" importURI=STRING ")" FULL_STOP;
 	public IncludeLibAttributeElements getIncludeLibAttributeAccess() {
 		return (pIncludeLibAttribute != null) ? pIncludeLibAttribute : (pIncludeLibAttribute = new IncludeLibAttributeElements());
@@ -6307,6 +6524,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FileAttribute:
+	//
 	//	"-" => tag="file" "(" file=STRING "," line=INTEGER ")" FULL_STOP;
 	public FileAttributeElements getFileAttributeAccess() {
 		return (pFileAttribute != null) ? pFileAttribute : (pFileAttribute = new FileAttributeElements());
@@ -6317,6 +6535,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ModuleAttribute:
+	//
 	//	"-" => tag="module" "(" moduleName=NAME ")" FULL_STOP;
 	public ModuleAttributeElements getModuleAttributeAccess() {
 		return (pModuleAttribute != null) ? pModuleAttribute : (pModuleAttribute = new ModuleAttributeElements());
@@ -6327,7 +6546,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RecordAttribute:
+	//
 	//	"-" => tag="record" "(" name=NAMEVAR "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
+	//
 	//	recordMacro=MacroCall) ")" FULL_STOP;
 	public RecordAttributeElements getRecordAttributeAccess() {
 		return (pRecordAttribute != null) ? pRecordAttribute : (pRecordAttribute = new RecordAttributeElements());
@@ -6338,6 +6559,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RecordFieldDef:
+	//
 	//	name=NAMEVAR ("=" value=Expression)? ("::" type=TopType)?;
 	public RecordFieldDefElements getRecordFieldDefAccess() {
 		return (pRecordFieldDef != null) ? pRecordFieldDef : (pRecordFieldDef = new RecordFieldDefElements());
@@ -6348,6 +6570,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExportAttribute:
+	//
 	//	"-" => tag="export" "(" "[" (funs+=FunRef ("," funs+=FunRef)*)? "]" ")" FULL_STOP;
 	public ExportAttributeElements getExportAttributeAccess() {
 		return (pExportAttribute != null) ? pExportAttribute : (pExportAttribute = new ExportAttributeElements());
@@ -6358,6 +6581,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ImportAttribute:
+	//
 	//	"-" => tag="import" "(" module=AtomVarMacro "," "[" (funs+=FunRef ("," funs+=FunRef)*)? "]" ")" FULL_STOP;
 	public ImportAttributeElements getImportAttributeAccess() {
 		return (pImportAttribute != null) ? pImportAttribute : (pImportAttribute = new ImportAttributeElements());
@@ -6368,6 +6592,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CompileAttribute:
+	//
 	//	"-" => tag="compile" "(" options=Expression ")" FULL_STOP;
 	public CompileAttributeElements getCompileAttributeAccess() {
 		return (pCompileAttribute != null) ? pCompileAttribute : (pCompileAttribute = new CompileAttributeElements());
@@ -6378,6 +6603,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AbstractTypeAttribute:
+	//
 	//	SpecAttribute | TypeAttribute;
 	public AbstractTypeAttributeElements getAbstractTypeAttributeAccess() {
 		return (pAbstractTypeAttribute != null) ? pAbstractTypeAttribute : (pAbstractTypeAttribute = new AbstractTypeAttributeElements());
@@ -6388,7 +6614,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SpecAttribute:
+	//
 	//	"-" => tag=("spec" | "callback") (ref=SpecFun signatures+=TypeSig (";" signatures+=TypeSig)* | "(" ref=SpecFun
+	//
 	//	signatures+=TypeSig (";" signatures+=TypeSig)* ")") FULL_STOP;
 	public SpecAttributeElements getSpecAttributeAccess() {
 		return (pSpecAttribute != null) ? pSpecAttribute : (pSpecAttribute = new SpecAttributeElements());
@@ -6399,8 +6627,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TypeAttribute:
+	//
 	//	"-" => tag=("type" | "opaque") (name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::"
+	//
 	//	type=TopType | "(" name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::" type=TopType
+	//
 	//	")") FULL_STOP;
 	public TypeAttributeElements getTypeAttributeAccess() {
 		return (pTypeAttribute != null) ? pTypeAttribute : (pTypeAttribute = new TypeAttributeElements());
@@ -6411,6 +6642,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CustomAttribute:
+	//
 	//	"-" tag=ATOM "(" (value+=Expression ("," value+=Expression)*)? ")" FULL_STOP;
 	public CustomAttributeElements getCustomAttributeAccess() {
 		return (pCustomAttribute != null) ? pCustomAttribute : (pCustomAttribute = new CustomAttributeElements());
@@ -6421,7 +6653,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// Functions
+	//
 	//Function:
+	//
 	//	name=NAME clauses+=FunctionClause (";" clauses+=FunctionClause)* FULL_STOP;
 	public FunctionElements getFunctionAccess() {
 		return (pFunction != null) ? pFunction : (pFunction = new FunctionElements());
@@ -6432,8 +6666,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// validate that all names for a function are identical
+	//
 	//FunctionClause:
+	//
 	//	ref=NAME? "(" (params+=Expression ("," params+=Expression)*)? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
+	//
 	//	"->" body+=LExpression ("," body+=LExpression)*;
 	public FunctionClauseElements getFunctionClauseAccess() {
 		return (pFunctionClause != null) ? pFunctionClause : (pFunctionClause = new FunctionClauseElements());
@@ -6444,6 +6681,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Guard:
+	//
 	//	guards+=Expressions (";" guards+=Expressions)*;
 	public GuardElements getGuardAccess() {
 		return (pGuard != null) ? pGuard : (pGuard = new GuardElements());
@@ -6454,6 +6692,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Expressions:
+	//
 	//	exprs+=LExpression ("," exprs+=LExpression)*;
 	public ExpressionsElements getExpressionsAccess() {
 		return (pExpressions != null) ? pExpressions : (pExpressions = new ExpressionsElements());
@@ -6464,6 +6703,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LExpression returns Expression:
+	//
 	//	=> line?=LineExpr expr=Expression | Expression;
 	public LExpressionElements getLExpressionAccess() {
 		return (pLExpression != null) ? pLExpression : (pLExpression = new LExpressionElements());
@@ -6474,6 +6714,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LineExpr:
+	//
 	//	"?" "line";
 	public LineExprElements getLineExprAccess() {
 		return (pLineExpr != null) ? pLineExpr : (pLineExpr = new LineExprElements());
@@ -6484,6 +6725,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Expression:
+	//
 	//	{CatchExpr} "catch" expr=Expression | Expr100;
 	public ExpressionElements getExpressionAccess() {
 		return (pExpression != null) ? pExpression : (pExpression = new ExpressionElements());
@@ -6494,7 +6736,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// right-associative
+	//
 	//Expr100 returns Expression:
+	//
 	//	Expr150 ({MatchExpr.opLeft=current} op="=" opRight=Expr100 | {BinOp.opLeft=current} op=SENDOP opRight=Expr100)?;
 	public Expr100Elements getExpr100Access() {
 		return (pExpr100 != null) ? pExpr100 : (pExpr100 = new Expr100Elements());
@@ -6505,6 +6749,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Expr150 returns Expression:
+	//
 	//	Expr160 ({BinOp.opLeft=current} op="orelse" opRight=Expr160)*;
 	public Expr150Elements getExpr150Access() {
 		return (pExpr150 != null) ? pExpr150 : (pExpr150 = new Expr150Elements());
@@ -6515,6 +6760,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Expr160 returns Expression:
+	//
 	//	Expr200 ({BinOp.opLeft=current} op="andalso" opRight2=Expr200)*;
 	public Expr160Elements getExpr160Access() {
 		return (pExpr160 != null) ? pExpr160 : (pExpr160 = new Expr160Elements());
@@ -6525,7 +6771,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// non-associative
+	//
 	//Expr200 returns Expression:
+	//
 	//	Expr300 ({BinOp.opLeft=current} op=COMPOP opRight=Expr300)?;
 	public Expr200Elements getExpr200Access() {
 		return (pExpr200 != null) ? pExpr200 : (pExpr200 = new Expr200Elements());
@@ -6536,6 +6784,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Expr300 returns Expression:
+	//
 	//	Expr400 ({BinOp.opLeft=current} op=LISTOP opRight=Expr400)*;
 	public Expr300Elements getExpr300Access() {
 		return (pExpr300 != null) ? pExpr300 : (pExpr300 = new Expr300Elements());
@@ -6546,6 +6795,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Expr400 returns Expression:
+	//
 	//	Expr500 ({AddOp.opLeft=current} op=ADDOP opRight=Expr500)*;
 	public Expr400Elements getExpr400Access() {
 		return (pExpr400 != null) ? pExpr400 : (pExpr400 = new Expr400Elements());
@@ -6556,6 +6806,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Expr500 returns Expression:
+	//
 	//	UnaryExpr ({MultOp.opLeft=current} op=MULTOP opRight=UnaryExpr)*;
 	public Expr500Elements getExpr500Access() {
 		return (pExpr500 != null) ? pExpr500 : (pExpr500 = new Expr500Elements());
@@ -6566,6 +6817,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UnaryExpr returns Expression:
+	//
 	//	{UnaryExpr} op=PREFIXOP operand=Expr700 | Expr700;
 	public UnaryExprElements getUnaryExprAccess() {
 		return (pUnaryExpr != null) ? pUnaryExpr : (pUnaryExpr = new UnaryExprElements());
@@ -6576,7 +6828,13 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Expr700 returns Expression:
-	//	Expr800 ("(" {FunCall.target=current} (args+=Expression ("," args+=Expression)*)? ")" ("(" (args2+=Expression (","
+	//
+	//	Expr800 // TODO can this be expressed better? 
+	//
+	//	// we can have ?MACRO(args)(args2)
+	//
+	//	("(" {FunCall.target=current} (args+=Expression ("," args+=Expression)*)? ")" ("(" (args2+=Expression (","
+	//
 	//	args2+=Expression)*)? ")")? | ("#" {RecordExpr.ref=current} record=RecordExpr)+)?;
 	public Expr700Elements getExpr700Access() {
 		return (pExpr700 != null) ? pExpr700 : (pExpr700 = new Expr700Elements());
@@ -6587,7 +6845,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// non-associative
+	//
 	//Expr800 returns Expression:
+	//
 	//	ExprMax ({RemoteTarget.module=current} ":" function=ExprMax)?;
 	public Expr800Elements getExpr800Access() {
 		return (pExpr800 != null) ? pExpr800 : (pExpr800 = new Expr800Elements());
@@ -6598,7 +6858,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExprMax returns Expression:
+	//
 	//	TermExpression | "(" Expression ")" | {BlockExpr} "begin" body+=LExpression ("," body+=LExpression)* "end" | IfExpr |
+	//
 	//	CaseExpr | ReceiveExpr | FunExpr | TryExpr | CondExpr | QueryExpr | LetExpr;
 	public ExprMaxElements getExprMaxAccess() {
 		return (pExprMax != null) ? pExprMax : (pExprMax = new ExprMaxElements());
@@ -6609,6 +6871,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TermExpression returns Expression:
+	//
 	//	Tuple | => ListComprehension | List | => BinaryComprehension | Binary | "#" RecordExpr | LiteralExpression;
 	public TermExpressionElements getTermExpressionAccess() {
 		return (pTermExpression != null) ? pTermExpression : (pTermExpression = new TermExpressionElements());
@@ -6619,6 +6882,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MacroCall:
+	//
 	//	macroName=MacroLiteral ("(" (args+=Expression ("," args+=Expression)*)? ")")?;
 	public MacroCallElements getMacroCallAccess() {
 		return (pMacroCall != null) ? pMacroCall : (pMacroCall = new MacroCallElements());
@@ -6629,6 +6893,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RecordExpr:
+	//
 	//	rec=AtomVarMacro ("." field=AtomVarMacro | tuple=RecordTuple);
 	public RecordExprElements getRecordExprAccess() {
 		return (pRecordExpr != null) ? pRecordExpr : (pRecordExpr = new RecordExprElements());
@@ -6639,7 +6904,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// NYI
+	//
 	//QueryExpr:
+	//
 	//	{QueryExpr} "query";
 	public QueryExprElements getQueryExprAccess() {
 		return (pQueryExpr != null) ? pQueryExpr : (pQueryExpr = new QueryExprElements());
@@ -6650,7 +6917,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// NYI
+	//
 	//CondExpr:
+	//
 	//	{CondExpr} "cond";
 	public CondExprElements getCondExprAccess() {
 		return (pCondExpr != null) ? pCondExpr : (pCondExpr = new CondExprElements());
@@ -6661,7 +6930,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// NYI
+	//
 	//LetExpr:
+	//
 	//	{LetExpr} "let";
 	public LetExprElements getLetExprAccess() {
 		return (pLetExpr != null) ? pLetExpr : (pLetExpr = new LetExprElements());
@@ -6672,6 +6943,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RecordTuple:
+	//
 	//	{RecordTuple} "{" (fields+=RecordFieldExpr ("," fields+=RecordFieldExpr)*)? "}";
 	public RecordTupleElements getRecordTupleAccess() {
 		return (pRecordTuple != null) ? pRecordTuple : (pRecordTuple = new RecordTupleElements());
@@ -6682,6 +6954,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RecordFieldExpr:
+	//
 	//	ref=AtomVarMacro ("=" value=Expression)? ("::" type=TopType)?;
 	public RecordFieldExprElements getRecordFieldExprAccess() {
 		return (pRecordFieldExpr != null) ? pRecordFieldExpr : (pRecordFieldExpr = new RecordFieldExprElements());
@@ -6692,6 +6965,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LiteralExpressionNoNumber returns Expression:
+	//
 	//	AtomRefLiteral | VariableLiteral | {ErlChar} value=CHAR | MacroLiteral | StringLiteral;
 	public LiteralExpressionNoNumberElements getLiteralExpressionNoNumberAccess() {
 		return (pLiteralExpressionNoNumber != null) ? pLiteralExpressionNoNumber : (pLiteralExpressionNoNumber = new LiteralExpressionNoNumberElements());
@@ -6702,6 +6976,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AtomRefLiteral returns Expression:
+	//
 	//	{Atom} value=[AtomRefTarget|NAME];
 	public AtomRefLiteralElements getAtomRefLiteralAccess() {
 		return (pAtomRefLiteral != null) ? pAtomRefLiteral : (pAtomRefLiteral = new AtomRefLiteralElements());
@@ -6712,6 +6987,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MacroLiteral returns Expression:
+	//
 	//	{Macro} value=[DefineAttribute|MACRO];
 	public MacroLiteralElements getMacroLiteralAccess() {
 		return (pMacroLiteral != null) ? pMacroLiteral : (pMacroLiteral = new MacroLiteralElements());
@@ -6722,6 +6998,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MacroRef returns Expression:
+	//
 	//	{Macro} value=[DefineAttribute|NAMEVAR];
 	public MacroRefElements getMacroRefAccess() {
 		return (pMacroRef != null) ? pMacroRef : (pMacroRef = new MacroRefElements());
@@ -6732,6 +7009,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//VariableLiteral returns Expression:
+	//
 	//	{Variable} value=[Expression|VARIABLE];
 	public VariableLiteralElements getVariableLiteralAccess() {
 		return (pVariableLiteral != null) ? pVariableLiteral : (pVariableLiteral = new VariableLiteralElements());
@@ -6742,6 +7020,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StringLiteral returns Expression:
+	//
 	//	string=STRING more+=StringLiteralPart*;
 	public StringLiteralElements getStringLiteralAccess() {
 		return (pStringLiteral != null) ? pStringLiteral : (pStringLiteral = new StringLiteralElements());
@@ -6752,6 +7031,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StringLiteralPart:
+	//
 	//	string=STRING | macro=MacroCall;
 	public StringLiteralPartElements getStringLiteralPartAccess() {
 		return (pStringLiteralPart != null) ? pStringLiteralPart : (pStringLiteralPart = new StringLiteralPartElements());
@@ -6762,6 +7042,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LiteralExpression returns Expression:
+	//
 	//	LiteralExpressionNoNumber | IntegerLiteral | {ErlFloat} value=FLOAT;
 	public LiteralExpressionElements getLiteralExpressionAccess() {
 		return (pLiteralExpression != null) ? pLiteralExpression : (pLiteralExpression = new LiteralExpressionElements());
@@ -6772,6 +7053,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IntegerLiteral returns Expression:
+	//
 	//	{ErlInteger} value=INTEGER;
 	public IntegerLiteralElements getIntegerLiteralAccess() {
 		return (pIntegerLiteral != null) ? pIntegerLiteral : (pIntegerLiteral = new IntegerLiteralElements());
@@ -6782,7 +7064,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PatternExpression returns Expression:
+	//
 	//	TermExpression (({MatchExpr.opLeft=current} op="=" opRight=TermExpression)+ | {FunCall.target=current} "("
+	//
 	//	(args+=Expression ("," args+=Expression)*)? ")")?;
 	public PatternExpressionElements getPatternExpressionAccess() {
 		return (pPatternExpression != null) ? pPatternExpression : (pPatternExpression = new PatternExpressionElements());
@@ -6793,6 +7077,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IfExpr:
+	//
 	//	"if" clauses+=IfClause (";" clauses+=IfClause)* "end";
 	public IfExprElements getIfExprAccess() {
 		return (pIfExpr != null) ? pIfExpr : (pIfExpr = new IfExprElements());
@@ -6803,6 +7088,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IfClause:
+	//
 	//	guard=Guard "->" body+=LExpression ("," body+=LExpression)*;
 	public IfClauseElements getIfClauseAccess() {
 		return (pIfClause != null) ? pIfClause : (pIfClause = new IfClauseElements());
@@ -6813,6 +7099,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CaseExpr:
+	//
 	//	"case" expr=Expression "of" clauses+=CrClause (";" clauses+=CrClause)* "end";
 	public CaseExprElements getCaseExprAccess() {
 		return (pCaseExpr != null) ? pCaseExpr : (pCaseExpr = new CaseExprElements());
@@ -6823,6 +7110,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CrClause:
+	//
 	//	expr=Expression ("when" guard=Guard)? "->" body+=LExpression ("," body+=LExpression)*;
 	public CrClauseElements getCrClauseAccess() {
 		return (pCrClause != null) ? pCrClause : (pCrClause = new CrClauseElements());
@@ -6833,8 +7121,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ReceiveExpr:
-	//	"receive" (clauses+=CrClause (";" clauses+=CrClause)* ("after" after_expr=Expression "->" after_body+=LExpression (","
-	//	after_body+=LExpression)*)? | "after" after_expr=Expression "->" after_body+=LExpression (","
+	//
+	//	"receive" (clauses+=CrClause (";" clauses+=CrClause)* ("after" after_expr=Expression "->" after_body+=LExpression
+	//
+	//	("," after_body+=LExpression)*)? | "after" after_expr=Expression "->" after_body+=LExpression (","
+	//
 	//	after_body+=LExpression)*) "end";
 	public ReceiveExprElements getReceiveExprAccess() {
 		return (pReceiveExpr != null) ? pReceiveExpr : (pReceiveExpr = new ReceiveExprElements());
@@ -6845,6 +7136,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FunExpr:
+	//
 	//	"fun" (FunRef | InlineFun);
 	public FunExprElements getFunExprAccess() {
 		return (pFunExpr != null) ? pFunExpr : (pFunExpr = new FunExprElements());
@@ -6855,6 +7147,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FunRef:
+	//
 	//	(module_=AtomVarMacro ":")? function_=AtomVarMacro "/" arity_=IntVarMacro;
 	public FunRefElements getFunRefAccess() {
 		return (pFunRef != null) ? pFunRef : (pFunRef = new FunRefElements());
@@ -6865,6 +7158,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//InlineFun returns FunExpr:
+	//
 	//	clauses+=FunctionClause (";" clauses+=FunctionClause)* "end";
 	public InlineFunElements getInlineFunAccess() {
 		return (pInlineFun != null) ? pInlineFun : (pInlineFun = new InlineFunElements());
@@ -6875,8 +7169,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TryExpr:
+	//
 	//	"try" body+=LExpression ("," body+=LExpression)* ("of" of_clauses+=CrClause (";" of_clauses+=CrClause)*)? ("catch"
+	//
 	//	catch+=TryClause (";" catch+=TryClause)* ("after" after_body+=LExpression ("," after_body+=LExpression)*)? | "after"
+	//
 	//	after_body+=LExpression ("," after_body+=LExpression)*) "end";
 	public TryExprElements getTryExprAccess() {
 		return (pTryExpr != null) ? pTryExpr : (pTryExpr = new TryExprElements());
@@ -6887,6 +7184,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TryClause:
+	//
 	//	=> (hdr=NAMEVAR ":")? cond=PatternExpression ("when" guard=Guard)? "->" body+=LExpression ("," body+=LExpression)*;
 	public TryClauseElements getTryClauseAccess() {
 		return (pTryClause != null) ? pTryClause : (pTryClause = new TryClauseElements());
@@ -6897,6 +7195,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//List returns ErlList:
+	//
 	//	"[" ({ErlList} | elements+=Expression ("," elements+=Expression)* ("|" tail=Expression)?) "]";
 	public ListElements getListAccess() {
 		return (pList != null) ? pList : (pList = new ListElements());
@@ -6907,6 +7206,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ListComprehension:
+	//
 	//	"[" element=Expression "||" generators+=LCExpr ("," generators+=LCExpr)* "]";
 	public ListComprehensionElements getListComprehensionAccess() {
 		return (pListComprehension != null) ? pListComprehension : (pListComprehension = new ListComprehensionElements());
@@ -6917,6 +7217,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Tuple returns ErlTuple:
+	//
 	//	"{" ({ErlTuple} | elements+=Expression ("," elements+=Expression)*) "}";
 	public TupleElements getTupleAccess() {
 		return (pTuple != null) ? pTuple : (pTuple = new TupleElements());
@@ -6927,6 +7228,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BinaryComprehension:
+	//
 	//	"<<" expr=TermExpression "||" generators+=LCExpr ("," generators+=LCExpr)* ">>";
 	public BinaryComprehensionElements getBinaryComprehensionAccess() {
 		return (pBinaryComprehension != null) ? pBinaryComprehension : (pBinaryComprehension = new BinaryComprehensionElements());
@@ -6937,6 +7239,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Binary returns ErlBinary:
+	//
 	//	"<<" ({ErlBinary} | elements+=BinaryItem ("," elements+=BinaryItem)*) ">>";
 	public BinaryElements getBinaryAccess() {
 		return (pBinary != null) ? pBinary : (pBinary = new BinaryElements());
@@ -6947,6 +7250,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BinaryItem:
+	//
 	//	expr=UnaryExprMax (":" size=ExprMax)? ("/" types+=BitType ("-" type+=BitType)*)?;
 	public BinaryItemElements getBinaryItemAccess() {
 		return (pBinaryItem != null) ? pBinaryItem : (pBinaryItem = new BinaryItemElements());
@@ -6957,6 +7261,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BitType:
+	//
 	//	name=NAME (":" size=INT)?;
 	public BitTypeElements getBitTypeAccess() {
 		return (pBitType != null) ? pBitType : (pBitType = new BitTypeElements());
@@ -6967,6 +7272,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UnaryExprMax returns Expression:
+	//
 	//	{UnaryExpr} op=PREFIXOP operand=ExprMax | ExprMax;
 	public UnaryExprMaxElements getUnaryExprMaxAccess() {
 		return (pUnaryExprMax != null) ? pUnaryExprMax : (pUnaryExprMax = new UnaryExprMaxElements());
@@ -6977,6 +7283,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LCExpr:
+	//
 	//	o1=Expression (op=("<-" | "<=") o2=Expression)?;
 	public LCExprElements getLCExprAccess() {
 		return (pLCExpr != null) ? pLCExpr : (pLCExpr = new LCExprElements());
@@ -6987,7 +7294,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// Operators
+	//
 	//ADDOP:
+	//
 	//	"+" | "-" | "bor" | "bxor" | "bsl" | "bsr" | "or" | "xor";
 	public ADDOPElements getADDOPAccess() {
 		return (pADDOP != null) ? pADDOP : (pADDOP = new ADDOPElements());
@@ -6998,6 +7307,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MULTOP:
+	//
 	//	"*" | "/" | "div" | "rem" | "band" | "and";
 	public MULTOPElements getMULTOPAccess() {
 		return (pMULTOP != null) ? pMULTOP : (pMULTOP = new MULTOPElements());
@@ -7008,6 +7318,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PREFIXOP:
+	//
 	//	"+" | "-" | "bnot" | "not";
 	public PREFIXOPElements getPREFIXOPAccess() {
 		return (pPREFIXOP != null) ? pPREFIXOP : (pPREFIXOP = new PREFIXOPElements());
@@ -7018,6 +7329,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LISTOP:
+	//
 	//	"++" | "--";
 	public LISTOPElements getLISTOPAccess() {
 		return (pLISTOP != null) ? pLISTOP : (pLISTOP = new LISTOPElements());
@@ -7028,6 +7340,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//COMPOP:
+	//
 	//	"==" | "/=" | "=<" | "<" | ">=" | ">" | "=:=" | "=/=";
 	public COMPOPElements getCOMPOPAccess() {
 		return (pCOMPOP != null) ? pCOMPOP : (pCOMPOP = new COMPOPElements());
@@ -7038,6 +7351,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SENDOP:
+	//
 	//	"!";
 	public SENDOPElements getSENDOPAccess() {
 		return (pSENDOP != null) ? pSENDOP : (pSENDOP = new SENDOPElements());
@@ -7048,7 +7362,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// Literal combinations
+	//
 	//AtomVarMacro returns Expression:
+	//
 	//	AtomRefLiteral | VariableLiteral | MacroLiteral;
 	public AtomVarMacroElements getAtomVarMacroAccess() {
 		return (pAtomVarMacro != null) ? pAtomVarMacro : (pAtomVarMacro = new AtomVarMacroElements());
@@ -7059,6 +7375,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IntVarMacro returns Expression:
+	//
 	//	IntegerLiteral | VariableLiteral | MacroLiteral;
 	public IntVarMacroElements getIntVarMacroAccess() {
 		return (pIntVarMacro != null) ? pIntVarMacro : (pIntVarMacro = new IntVarMacroElements());
@@ -7069,7 +7386,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// Literals
+	//
 	//NAME:
+	//
 	//	ATOM | KW;
 	public NAMEElements getNAMEAccess() {
 		return (pNAME != null) ? pNAME : (pNAME = new NAMEElements());
@@ -7080,6 +7399,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//NAMEVAR:
+	//
 	//	ATOM | KW | VARIABLE;
 	public NAMEVARElements getNAMEVARAccess() {
 		return (pNAMEVAR != null) ? pNAMEVAR : (pNAMEVAR = new NAMEVARElements());
@@ -7090,6 +7410,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MACRO:
+	//
 	//	("?" | "??") (ATOM | KW1 | VARIABLE);
 	public MACROElements getMACROAccess() {
 		return (pMACRO != null) ? pMACRO : (pMACRO = new MACROElements());
@@ -7100,6 +7421,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//KW:
+	//
 	//	KW1 | "line";
 	public KWElements getKWAccess() {
 		return (pKW != null) ? pKW : (pKW = new KWElements());
@@ -7110,7 +7432,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//KW1:
+	//
 	//	"spec" | "endif" | "ifdef" | "ifndef" | "type" | "opaque" | "record" | "undef" | "module" | "include" | "include_lib"
+	//
 	//	| "define" | "file" | "callback" | "else" | "export" | "import" | "compile";
 	public KW1Elements getKW1Access() {
 		return (pKW1 != null) ? pKW1 : (pKW1 = new KW1Elements());
@@ -7121,9 +7445,12 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RealKw:
-	//	"after" | "and" | "andalso" | "band" | "begin" | "bnot" | "bor" | "bsl" | "bsr" | "bxor" | "case" | "catch" | "cond" |
-	//	"div" | "end" | "fun" | "if" | "let" | "not" | "of" | "or" | "orelse" | "query" | "receive" | "rem" | "try" | "when" |
-	//	"xor";
+	//
+	//	"after" | "and" | "andalso" | "band" | "begin" | "bnot" | "bor" | "bsl" | "bsr" | "bxor" | "case" | "catch" | "cond"
+	//
+	//	| "div" | "end" | "fun" | "if" | "let" | "not" | "of" | "or" | "orelse" | "query" | "receive" | "rem" | "try" |
+	//
+	//	"when" | "xor";
 	public RealKwElements getRealKwAccess() {
 		return (pRealKw != null) ? pRealKw : (pRealKw = new RealKwElements());
 	}
@@ -7133,42 +7460,49 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal ATOM:
+	//
 	//	ATOM_STARTER IN_WORD_CHAR* | "\'" ("\\" ESCAPE | !("\\" | "\'"))* ("\'" | EOF);
 	public TerminalRule getATOMRule() {
 		return (tATOM != null) ? tATOM : (tATOM = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ATOM"));
 	} 
 
 	//terminal STRING:
+	//
 	//	"\"" ("\\" ESCAPE | !("\\" | "\""))* ("\"" | EOF);
 	public TerminalRule getSTRINGRule() {
 		return (tSTRING != null) ? tSTRING : (tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING"));
 	} 
 
 	//terminal VARIABLE:
+	//
 	//	("A".."Z" | "_") IN_WORD_CHAR*;
 	public TerminalRule getVARIABLERule() {
 		return (tVARIABLE != null) ? tVARIABLE : (tVARIABLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "VARIABLE"));
 	} 
 
 	//terminal SL_COMMENT:
+	//
 	//	"%" !("\n" | "\r")* ("\r"? "\n" | EOF);
 	public TerminalRule getSL_COMMENTRule() {
 		return (tSL_COMMENT != null) ? tSL_COMMENT : (tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SL_COMMENT"));
 	} 
 
 	//terminal WS:
+	//
 	//	!("!".."~" | "¡".."ÿ")+;
 	public TerminalRule getWSRule() {
 		return (tWS != null) ? tWS : (tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WS"));
 	} 
 
 	//terminal FULL_STOP:
+	//
 	//	"." (WS | SL_COMMENT | EOF);
 	public TerminalRule getFULL_STOPRule() {
 		return (tFULL_STOP != null) ? tFULL_STOP : (tFULL_STOP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FULL_STOP"));
 	} 
 
 	//INTEGER:
+	//
 	//	INT | BASED_INT;
 	public INTEGERElements getINTEGERAccess() {
 		return (pINTEGER != null) ? pINTEGER : (pINTEGER = new INTEGERElements());
@@ -7179,18 +7513,21 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal BASED_INT:
+	//
 	//	"1".."3"? "0".."9" "#" ("0".."9" | "a".."z" | "A".."Z")+;
 	public TerminalRule getBASED_INTRule() {
 		return (tBASED_INT != null) ? tBASED_INT : (tBASED_INT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BASED_INT"));
 	} 
 
 	//terminal INT:
+	//
 	//	"0".."9"+;
 	public TerminalRule getINTRule() {
 		return (tINT != null) ? tINT : (tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT"));
 	} 
 
 	//FLOAT hidden():
+	//
 	//	INT "." (EXT_INT | INT);
 	public FLOATElements getFLOATAccess() {
 		return (pFLOAT != null) ? pFLOAT : (pFLOAT = new FLOATElements());
@@ -7201,44 +7538,53 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal EXT_INT:
+	//
 	//	INT ("e" | "E") ("+" | "-")? INT;
 	public TerminalRule getEXT_INTRule() {
 		return (tEXT_INT != null) ? tEXT_INT : (tEXT_INT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "EXT_INT"));
 	} 
 
 	//terminal CHAR:
+	//
 	//	"$" ("\\" ESCAPE | .);
 	public TerminalRule getCHARRule() {
 		return (tCHAR != null) ? tCHAR : (tCHAR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "CHAR"));
 	} 
 
 	//terminal fragment IN_WORD_CHAR:
+	//
 	//	"a".."z" | "A".."Z" | "_" | "@" | "0".."9" | "ß".."ö" | "ø".."ÿ" | "À".."Ö" | "Ø".."Þ";
 	public TerminalRule getIN_WORD_CHARRule() {
 		return (tIN_WORD_CHAR != null) ? tIN_WORD_CHAR : (tIN_WORD_CHAR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IN_WORD_CHAR"));
 	} 
 
 	//terminal fragment ATOM_STARTER:
+	//
 	//	"a".."z" | "ß".."ö" | "ø".."ÿ";
 	public TerminalRule getATOM_STARTERRule() {
 		return (tATOM_STARTER != null) ? tATOM_STARTER : (tATOM_STARTER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ATOM_STARTER"));
 	} 
 
 	//terminal fragment ESCAPE:
-	//	"b" | "d" | "e" | "f" | "n" | "r" | "s" | "t" | "v" | "0".."7" ("0".."7" "0".."7"?)? | ("x" | "X") HEX_DIGIT HEX_DIGIT
-	//	| ("x" | "X") "{" HEX_DIGIT+ "}" | "^" ("a".."z" | "A".."Z" | "]") | .;
+	//
+	//	"b" | "d" | "e" | "f" | "n" | "r" | "s" | "t" | "v" | "0".."7" ("0".."7" "0".."7"?)? | ("x" | "X") HEX_DIGIT
+	//
+	//	HEX_DIGIT | ("x" | "X") "{" HEX_DIGIT+ "}" | "^" ("a".."z" | "A".."Z" | "]") | .;
 	public TerminalRule getESCAPERule() {
 		return (tESCAPE != null) ? tESCAPE : (tESCAPE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ESCAPE"));
 	} 
 
 	//terminal fragment HEX_DIGIT:
+	//
 	//	"0".."9" | "A".."F" | "a".."f";
 	public TerminalRule getHEX_DIGITRule() {
 		return (tHEX_DIGIT != null) ? tHEX_DIGIT : (tHEX_DIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "HEX_DIGIT"));
 	} 
 
 	//// Type language
+	//
 	//SpecFun returns FunRef:
+	//
 	//	(module_=AtomVarMacro ":")? function_=AtomVarMacro ("/" arity_=IntVarMacro "::")?;
 	public SpecFunElements getSpecFunAccess() {
 		return (pSpecFun != null) ? pSpecFun : (pSpecFun = new SpecFunElements());
@@ -7249,6 +7595,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TypeSig:
+	//
 	//	decl=FunType ("when" guards=TypeGuards)?;
 	public TypeSigElements getTypeSigAccess() {
 		return (pTypeSig != null) ? pTypeSig : (pTypeSig = new TypeSigElements());
@@ -7259,6 +7606,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FunType:
+	//
 	//	"(" (args+=TopType ("," args+=TopType)*)? ")" "->" return=TopType;
 	public FunTypeElements getFunTypeAccess() {
 		return (pFunType != null) ? pFunType : (pFunType = new FunTypeElements());
@@ -7269,6 +7617,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TypeGuards:
+	//
 	//	items+=TypeGuard ("," items+=TypeGuard)*;
 	public TypeGuardsElements getTypeGuardsAccess() {
 		return (pTypeGuards != null) ? pTypeGuards : (pTypeGuards = new TypeGuardsElements());
@@ -7279,6 +7628,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TypeGuard:
+	//
 	//	name=NAME "(" types+=TopType ("," types+=TopType)* ")" | name=VARIABLE "::" type=TopType;
 	public TypeGuardElements getTypeGuardAccess() {
 		return (pTypeGuard != null) ? pTypeGuard : (pTypeGuard = new TypeGuardElements());
@@ -7289,6 +7639,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TopType:
+	//
 	//	(var=VARIABLE "::")? type=Type100;
 	public TopTypeElements getTopTypeAccess() {
 		return (pTopType != null) ? pTopType : (pTopType = new TopTypeElements());
@@ -7299,6 +7650,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Type100:
+	//
 	//	Type200 (=> ({TopType.leftOperand=current} op="|") rightOperand=Type200)*;
 	public Type100Elements getType100Access() {
 		return (pType100 != null) ? pType100 : (pType100 = new Type100Elements());
@@ -7309,6 +7661,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Type200:
+	//
 	//	Type300 (=> ({TopType.leftOperand=current} op="..") rightOperand=Type300)*;
 	public Type200Elements getType200Access() {
 		return (pType200 != null) ? pType200 : (pType200 = new Type200Elements());
@@ -7319,6 +7672,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Type300:
+	//
 	//	Type400 (=> ({TopType.leftOperand=current} op=ADDOP) rightOperand=Type400)*;
 	public Type300Elements getType300Access() {
 		return (pType300 != null) ? pType300 : (pType300 = new Type300Elements());
@@ -7329,6 +7683,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Type400:
+	//
 	//	Type500 (=> ({TopType.leftOperand=current} op=MULTOP) rightOperand=Type500)*;
 	public Type400Elements getType400Access() {
 		return (pType400 != null) ? pType400 : (pType400 = new Type400Elements());
@@ -7339,6 +7694,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Type500:
+	//
 	//	{UnaryType} op=PREFIXOP operand=Type | Type;
 	public Type500Elements getType500Access() {
 		return (pType500 != null) ? pType500 : (pType500 = new Type500Elements());
@@ -7349,10 +7705,14 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Type:
+	//
 	//	"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? name=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")? |
-	//	name=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType (","
-	//	types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" | BinaryType
-	//	| "fun" {FunType} "(" type=FunType100? ")";
+	//
+	//	name=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType
+	//
+	//	("," types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" |
+	//
+	//	BinaryType | "fun" {FunType} "(" type=FunType100? ")";
 	public TypeElements getTypeAccess() {
 		return (pType != null) ? pType : (pType = new TypeElements());
 	}
@@ -7362,6 +7722,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FieldType:
+	//
 	//	name=NAME "::" type=TopType;
 	public FieldTypeElements getFieldTypeAccess() {
 		return (pFieldType != null) ? pFieldType : (pFieldType = new FieldTypeElements());
@@ -7372,6 +7733,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BinaryType:
+	//
 	//	"<<" {BinaryType} (type+=BinBaseType ("," type+=BinUnitType)? | type+=BinUnitType)? ">>";
 	public BinaryTypeElements getBinaryTypeAccess() {
 		return (pBinaryType != null) ? pBinaryType : (pBinaryType = new BinaryTypeElements());
@@ -7382,6 +7744,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BinBaseType:
+	//
 	//	name=VARIABLE ":" type=Type;
 	public BinBaseTypeElements getBinBaseTypeAccess() {
 		return (pBinBaseType != null) ? pBinBaseType : (pBinBaseType = new BinBaseTypeElements());
@@ -7392,6 +7755,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BinUnitType:
+	//
 	//	name=VARIABLE ":" m=VARIABLE "*" type=Type;
 	public BinUnitTypeElements getBinUnitTypeAccess() {
 		return (pBinUnitType != null) ? pBinUnitType : (pBinUnitType = new BinUnitTypeElements());
@@ -7402,6 +7766,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FunType100:
+	//
 	//	{FunTypeList} "(" ("..." | items+=TopType ("," items+=TopType)*)? ")" "->" return=TopType;
 	public FunType100Elements getFunType100Access() {
 		return (pFunType100 != null) ? pFunType100 : (pFunType100 = new FunType100Elements());

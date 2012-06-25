@@ -12,36 +12,36 @@ import org.erlide.erlang.ModelExtensions;
 import com.google.inject.Inject;
 
 public class ErlangResourceDescriptionStrategy extends
-		DefaultResourceDescriptionStrategy {
+        DefaultResourceDescriptionStrategy {
 
-	@Inject
-	private ModelExtensions modelExtensions;
+    @Inject
+    private ModelExtensions modelExtensions;
 
-	@Override
-	public boolean createEObjectDescriptions(final EObject eObject,
-			final IAcceptor<IEObjectDescription> acceptor) {
-		if (getQualifiedNameProvider() == null) {
-			return false;
-		}
-		// System.out.println("??? " + eObject);
-		try {
-			QualifiedName qualifiedName = getQualifiedNameProvider()
-					.getFullyQualifiedName(eObject);
-			if (eObject instanceof Function) {
-				final Function f = (Function) eObject;
-				if (!modelExtensions.isExported(f)) {
-					qualifiedName = null;
-				}
-			}
-			if (qualifiedName != null) {
-				// System.out.println("=== " + qualifiedName);
-				acceptor.accept(EObjectDescription.create(qualifiedName,
-						eObject));
-			}
-		} catch (final Exception exc) {
-			exc.printStackTrace();
-		}
-		return true;
-	}
+    @Override
+    public boolean createEObjectDescriptions(final EObject eObject,
+            final IAcceptor<IEObjectDescription> acceptor) {
+        if (getQualifiedNameProvider() == null) {
+            return false;
+        }
+        // System.out.println("??? " + eObject);
+        try {
+            QualifiedName qualifiedName = getQualifiedNameProvider()
+                    .getFullyQualifiedName(eObject);
+            if (eObject instanceof Function) {
+                final Function f = (Function) eObject;
+                if (!modelExtensions.isExported(f)) {
+                    qualifiedName = null;
+                }
+            }
+            if (qualifiedName != null) {
+                // System.out.println("=== " + qualifiedName);
+                acceptor.accept(EObjectDescription.create(qualifiedName,
+                        eObject));
+            }
+        } catch (final Exception exc) {
+            exc.printStackTrace();
+        }
+        return true;
+    }
 
 }

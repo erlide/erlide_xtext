@@ -1,10 +1,10 @@
 package org.erlide.project.model.impl;
 
-import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -15,81 +15,88 @@ import org.erlide.project.model.IErlangModel;
 import org.erlide.project.model.IErlangModelElement;
 import org.erlide.project.model.IErlangProject;
 import org.erlide.project.model.IProjectFragment;
-import org.erlide.project.model.impl.ErlangModelElement;
+
+import com.google.common.base.Objects;
 
 @SuppressWarnings("all")
 public class ErlangProject extends ErlangModelElement implements IErlangProject {
-  private IErlangModel model;
-  
-  private List<IErlangProject> referencedProjects;
-  
-  private List<IProjectFragment> sourceFragments;
-  
-  private List<IProjectFragment> binaryFragments;
-  
-  private IProject workspaceProject;
-  
-  public ErlangProject(final IErlangModel model, final IProject project) {
-    super();
-    this.model = model;
-    ArrayList<IErlangProject> _newArrayList = CollectionLiterals.<IErlangProject>newArrayList();
-    this.referencedProjects = _newArrayList;
-    ArrayList<IProjectFragment> _newArrayList_1 = CollectionLiterals.<IProjectFragment>newArrayList();
-    this.sourceFragments = _newArrayList_1;
-    ArrayList<IProjectFragment> _newArrayList_2 = CollectionLiterals.<IProjectFragment>newArrayList();
-    this.binaryFragments = _newArrayList_2;
-    this.workspaceProject = project;
-  }
-  
-  public List<IErlangProject> getReferencedProjects() {
-    return this.referencedProjects;
-  }
-  
-  public Collection<IProjectFragment> getSourceFragments() {
-    return Collections.<IProjectFragment>unmodifiableCollection(this.sourceFragments);
-  }
-  
-  public Collection<IProjectFragment> getBinaryFragments() {
-    return Collections.<IProjectFragment>unmodifiableCollection(this.binaryFragments);
-  }
-  
-  public IProject getWorkspaceProject() {
-    return this.workspaceProject;
-  }
-  
-  public String toString() {
-    String _string = super.toString();
-    StringBuffer _stringBuffer = new StringBuffer(_string);
-    final StringBuffer result = _stringBuffer;
-    result.append(" (workspaceProject: ");
-    result.append(this.workspaceProject);
-    result.append(")");
-    return result.toString();
-  }
-  
-  public String getName() {
-    return this.workspaceProject.getName();
-  }
-  
-  public IErlangModelElement getParent() {
-    return this.model;
-  }
-  
-  public IResource getResource() {
-    return this.workspaceProject;
-  }
-  
-  public void realize() {
-    boolean _notEquals = (!Objects.equal(this.workspaceProject, null));
-    if (_notEquals) {
-      String _name = this.getName();
-      ErlLogger.error("Workspace project must exist for %s", _name);
+    private final IErlangModel model;
+
+    private final List<IErlangProject> referencedProjects;
+
+    private final List<IProjectFragment> sourceFragments;
+
+    private final List<IProjectFragment> binaryFragments;
+
+    private final IProject workspaceProject;
+
+    public ErlangProject(final IErlangModel model, final IProject project) {
+        super();
+        this.model = model;
+        final ArrayList<IErlangProject> _newArrayList = CollectionLiterals
+                .<IErlangProject> newArrayList();
+        referencedProjects = _newArrayList;
+        final ArrayList<IProjectFragment> _newArrayList_1 = CollectionLiterals
+                .<IProjectFragment> newArrayList();
+        sourceFragments = _newArrayList_1;
+        final ArrayList<IProjectFragment> _newArrayList_2 = CollectionLiterals
+                .<IProjectFragment> newArrayList();
+        binaryFragments = _newArrayList_2;
+        workspaceProject = project;
     }
-    final Procedure1<IProjectFragment> _function = new Procedure1<IProjectFragment>() {
-        public void apply(final IProjectFragment it) {
-          it.realize();
+
+    public List<IErlangProject> getReferencedProjects() {
+        return referencedProjects;
+    }
+
+    public Collection<IProjectFragment> getSourceFragments() {
+        return Collections
+                .<IProjectFragment> unmodifiableCollection(sourceFragments);
+    }
+
+    public Collection<IProjectFragment> getBinaryFragments() {
+        return Collections
+                .<IProjectFragment> unmodifiableCollection(binaryFragments);
+    }
+
+    public IProject getWorkspaceProject() {
+        return workspaceProject;
+    }
+
+    public String toString() {
+        final String _string = super.toString();
+        final StringBuffer _stringBuffer = new StringBuffer(_string);
+        final StringBuffer result = _stringBuffer;
+        result.append(" (workspaceProject: ");
+        result.append(workspaceProject);
+        result.append(")");
+        return result.toString();
+    }
+
+    public String getName() {
+        return workspaceProject.getName();
+    }
+
+    public IErlangModelElement getParent() {
+        return model;
+    }
+
+    public IResource getResource() {
+        return workspaceProject;
+    }
+
+    public void realize() {
+        final boolean _notEquals = !Objects.equal(workspaceProject, null);
+        if (_notEquals) {
+            final String _name = getName();
+            ErlLogger.error("Workspace project must exist for %s", _name);
         }
-      };
-    IterableExtensions.<IProjectFragment>forEach(this.sourceFragments, _function);
-  }
+        final Procedure1<IProjectFragment> _function = new Procedure1<IProjectFragment>() {
+            public void apply(final IProjectFragment it) {
+                it.realize();
+            }
+        };
+        IterableExtensions.<IProjectFragment> forEach(sourceFragments,
+                _function);
+    }
 }

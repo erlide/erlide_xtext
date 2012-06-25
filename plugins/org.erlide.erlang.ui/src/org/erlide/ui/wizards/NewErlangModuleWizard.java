@@ -37,8 +37,8 @@ public class NewErlangModuleWizard extends Wizard implements IWorkbenchWizard,
     @Override
     public void init(final IWorkbench aWorkbench,
             final IStructuredSelection aSelection) {
-        this.workbench = aWorkbench;
-        this.selection = aSelection;
+        workbench = aWorkbench;
+        selection = aSelection;
     }
 
     @Override
