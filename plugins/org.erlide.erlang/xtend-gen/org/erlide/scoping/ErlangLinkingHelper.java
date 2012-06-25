@@ -24,6 +24,7 @@ import org.erlide.erlang.FunRef;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.RemoteTarget;
+import org.erlide.scoping.AtomLinkingCategory;
 
 @SuppressWarnings("all")
 public class ErlangLinkingHelper {
@@ -32,6 +33,10 @@ public class ErlangLinkingHelper {
   
   @Inject
   private ResourceDescriptionsProvider indexProvider;
+  
+  private AtomLinkingCategory classify(final EObject obj) {
+    return AtomLinkingCategory.NONE;
+  }
   
   protected boolean _isLinkableContext(final EObject context) {
     return true;

@@ -20,6 +20,10 @@ class ErlangLinkingHelper {
     @Inject
     ResourceDescriptionsProvider indexProvider
 
+	def private AtomLinkingCategory classify(EObject obj) {
+		return AtomLinkingCategory::NONE
+	} 
+
 	def dispatch boolean isLinkableContext(EObject context) {
 		true
 	}
