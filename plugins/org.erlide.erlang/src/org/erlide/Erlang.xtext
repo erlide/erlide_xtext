@@ -226,8 +226,10 @@ UnaryExpr returns Expression:
 
 Expr700 returns Expression:
 	Expr800 (	 
+			// TODO can this be expressed better? 
+			// we can have ?MACRO(args)(args2)
 		  '(' {FunCall.target=current} (args+=Expression (',' args+=Expression)*)? ')' 
-		  ('(' (args2+=Expression (',' args2+=Expression)*)? ')')?
+		                                ('(' (args2+=Expression (',' args2+=Expression)*)? ')')?
 		| ('#' {RecordExpr.ref=current} record=RecordExpr )+ 
 	)? 
 ;

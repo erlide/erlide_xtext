@@ -11,13 +11,10 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.erlide.ErlangInjectorProvider;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.ModelExtensions;
@@ -36,13 +33,71 @@ public class ErlangLinkingTest {
   private ParseHelper<Module> parser;
   
   @Inject
-  private IQualifiedNameConverter cvtr;
-  
-  @Inject
   private ModelExtensions _modelExtensions;
   
   @Test
   public void localCallRef() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("-module(m).");
+      _builder.newLine();
+      _builder.append("f() ->");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("g(3),");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("ok.");
+      _builder.newLine();
+      _builder.append("g(X) -> ok.");
+      _builder.newLine();
+      final Module module = this.parser.parse(_builder);
+      Resource _eResource = module.eResource();
+      TreeIterator<EObject> _allContents = _eResource.getAllContents();
+      final Function1<EObject,Boolean> _function = new Function1<EObject,Boolean>() {
+          public Boolean apply(final EObject it) {
+            EList<EObject> _eCrossReferences = it.eCrossReferences();
+            boolean _isEmpty = _eCrossReferences.isEmpty();
+            boolean _not = (!_isEmpty);
+            return Boolean.valueOf(_not);
+          }
+        };
+      Iterator<EObject> _filter = IteratorExtensions.<EObject>filter(_allContents, _function);
+      final Function1<EObject,EObject> _function_1 = new Function1<EObject,EObject>() {
+          public EObject apply(final EObject it) {
+            EList<EObject> _eCrossReferences = it.eCrossReferences();
+            EObject _head = IterableExtensions.<EObject>head(_eCrossReferences);
+            return _head;
+          }
+        };
+      Iterator<EObject> _map = IteratorExtensions.<EObject, EObject>map(_filter, _function_1);
+      final Function1<EObject,Boolean> _function_2 = new Function1<EObject,Boolean>() {
+          public Boolean apply(final EObject it) {
+            boolean _eIsProxy = it.eIsProxy();
+            boolean _not = (!_eIsProxy);
+            return Boolean.valueOf(_not);
+          }
+        };
+      Iterator<EObject> _filter_1 = IteratorExtensions.<EObject>filter(_map, _function_2);
+      final List<EObject> refs = IteratorExtensions.<EObject>toList(_filter_1);
+      int _size = refs.size();
+      Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(1));
+      MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
+      EObject _head = IterableExtensions.<EObject>head(refs);
+      Matcher<EObject> _instanceOf = Matchers.<EObject>instanceOf(Function.class);
+      Matcher<EObject> _is_1 = Matchers.<EObject>is(_instanceOf);
+      MatcherAssert.<EObject>assertThat(_head, _is_1);
+      EObject _head_1 = IterableExtensions.<EObject>head(refs);
+      Function _function_3 = this._modelExtensions.getFunction(module, "g", 1);
+      Matcher<? super Function> _is_2 = Matchers.<Function>is(_function_3);
+      MatcherAssert.<Function>assertThat(((Function) _head_1), _is_2);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void localExportedCallRef() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("-module(m).");
@@ -110,6 +165,8 @@ public class ErlangLinkingTest {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("-module(m).");
       _builder.newLine();
+      _builder.append("-export([g/1]).");
+      _builder.newLine();
       _builder.append("f() ->");
       _builder.newLine();
       _builder.append("\t");
@@ -149,34 +206,29 @@ public class ErlangLinkingTest {
         };
       Iterator<EObject> _filter_1 = IteratorExtensions.<EObject>filter(_map, _function_2);
       final List<EObject> refs = IteratorExtensions.<EObject>toList(_filter_1);
-      final Function1<EObject,String> _function_3 = new Function1<EObject,String>() {
-          public String apply(final EObject it) {
-            String _sourceText = ErlangLinkingTest.this._modelExtensions.getSourceText(it);
-            return _sourceText;
-          }
-        };
-      List<String> _map_1 = ListExtensions.<EObject, String>map(refs, _function_3);
-      String _plus = (">>>" + _map_1);
-      InputOutput.<String>println(_plus);
       int _size = refs.size();
-      Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
+      Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(3));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
-      EObject _head = IterableExtensions.<EObject>head(refs);
+      Iterable<EObject> _tail = IterableExtensions.<EObject>tail(refs);
+      EObject _head = IterableExtensions.<EObject>head(_tail);
       Matcher<EObject> _instanceOf = Matchers.<EObject>instanceOf(Module.class);
       Matcher<EObject> _is_1 = Matchers.<EObject>is(_instanceOf);
       MatcherAssert.<EObject>assertThat(_head, _is_1);
-      EObject _head_1 = IterableExtensions.<EObject>head(refs);
+      Iterable<EObject> _tail_1 = IterableExtensions.<EObject>tail(refs);
+      EObject _head_1 = IterableExtensions.<EObject>head(_tail_1);
       Matcher<? super Module> _is_2 = Matchers.<Module>is(module);
       MatcherAssert.<Module>assertThat(((Module) _head_1), _is_2);
-      Iterable<EObject> _tail = IterableExtensions.<EObject>tail(refs);
-      EObject _head_2 = IterableExtensions.<EObject>head(_tail);
+      Iterable<EObject> _tail_2 = IterableExtensions.<EObject>tail(refs);
+      Iterable<EObject> _tail_3 = IterableExtensions.<EObject>tail(_tail_2);
+      EObject _head_2 = IterableExtensions.<EObject>head(_tail_3);
       Matcher<EObject> _instanceOf_1 = Matchers.<EObject>instanceOf(Function.class);
       Matcher<EObject> _is_3 = Matchers.<EObject>is(_instanceOf_1);
       MatcherAssert.<EObject>assertThat(_head_2, _is_3);
-      Iterable<EObject> _tail_1 = IterableExtensions.<EObject>tail(refs);
-      EObject _head_3 = IterableExtensions.<EObject>head(_tail_1);
-      Function _function_4 = this._modelExtensions.getFunction(module, "g", 1);
-      Matcher<? super Function> _is_4 = Matchers.<Function>is(_function_4);
+      Iterable<EObject> _tail_4 = IterableExtensions.<EObject>tail(refs);
+      Iterable<EObject> _tail_5 = IterableExtensions.<EObject>tail(_tail_4);
+      EObject _head_3 = IterableExtensions.<EObject>head(_tail_5);
+      Function _function_3 = this._modelExtensions.getFunction(module, "g", 1);
+      Matcher<? super Function> _is_4 = Matchers.<Function>is(_function_3);
       MatcherAssert.<Function>assertThat(((Function) _head_3), _is_4);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -186,7 +238,6 @@ public class ErlangLinkingTest {
   @Test
   public void funRef() {
     try {
-      InputOutput.<String>println("----------------------------------------------");
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("-module(m).");
       _builder.newLine();
@@ -232,15 +283,6 @@ public class ErlangLinkingTest {
       int _size = refs.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
-      final Function1<EObject,String> _function_3 = new Function1<EObject,String>() {
-          public String apply(final EObject it) {
-            String _sourceText = ErlangLinkingTest.this._modelExtensions.getSourceText(it);
-            return _sourceText;
-          }
-        };
-      List<String> _map_1 = ListExtensions.<EObject, String>map(refs, _function_3);
-      String _plus = (">>>" + _map_1);
-      InputOutput.<String>println(_plus);
       Iterable<EObject> _tail = IterableExtensions.<EObject>tail(refs);
       EObject _head = IterableExtensions.<EObject>head(_tail);
       Matcher<EObject> _instanceOf = Matchers.<EObject>instanceOf(Function.class);
@@ -248,8 +290,8 @@ public class ErlangLinkingTest {
       MatcherAssert.<EObject>assertThat(_head, _is_1);
       Iterable<EObject> _tail_1 = IterableExtensions.<EObject>tail(refs);
       EObject _head_1 = IterableExtensions.<EObject>head(_tail_1);
-      Function _function_4 = this._modelExtensions.getFunction(module, "g", 1);
-      Matcher<? super Function> _is_2 = Matchers.<Function>is(_function_4);
+      Function _function_3 = this._modelExtensions.getFunction(module, "g", 1);
+      Matcher<? super Function> _is_2 = Matchers.<Function>is(_function_3);
       MatcherAssert.<Function>assertThat(((Function) _head_1), _is_2);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);

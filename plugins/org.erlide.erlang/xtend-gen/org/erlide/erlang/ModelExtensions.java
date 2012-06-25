@@ -10,12 +10,16 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
@@ -30,6 +34,7 @@ import org.erlide.erlang.ConditionalFormBlock;
 import org.erlide.erlang.CustomAttribute;
 import org.erlide.erlang.ErlList;
 import org.erlide.erlang.ErlTuple;
+import org.erlide.erlang.ErlangPackage.Literals;
 import org.erlide.erlang.ExportAttribute;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.Form;
@@ -50,6 +55,23 @@ import org.erlide.erlang.TypeSig;
 public class ModelExtensions {
   @Inject
   private IQualifiedNameProvider namer;
+  
+  public Module getModule(final IResourceDescriptions index, final String name, final ResourceSet rset) {
+    Module _xblockexpression = null;
+    {
+      final QualifiedName qname = QualifiedName.create(name);
+      final Iterable<IEObjectDescription> descr = index.getExportedObjects(Literals.MODULE, qname, false);
+      boolean _isEmpty = IterableExtensions.isEmpty(descr);
+      if (_isEmpty) {
+        return null;
+      }
+      IEObjectDescription _head = IterableExtensions.<IEObjectDescription>head(descr);
+      URI _eObjectURI = _head.getEObjectURI();
+      EObject _eObject = rset.getEObject(_eObjectURI, true);
+      _xblockexpression = (((Module) _eObject));
+    }
+    return _xblockexpression;
+  }
   
   public String getName(final Module module) {
     String _xblockexpression = null;
