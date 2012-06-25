@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
@@ -23,8 +22,10 @@ import org.erlide.erlang.FunCall;
 import org.erlide.erlang.FunRef;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
+import org.erlide.erlang.RecordExpr;
+import org.erlide.erlang.RecordFieldExpr;
 import org.erlide.erlang.RemoteTarget;
-import org.erlide.scoping.AtomLinkingCategory;
+import org.erlide.scoping.ErlangLinkCategory;
 
 @SuppressWarnings("all")
 public class ErlangLinkingHelper {
@@ -34,71 +35,81 @@ public class ErlangLinkingHelper {
   @Inject
   private ResourceDescriptionsProvider indexProvider;
   
-  private AtomLinkingCategory classify(final EObject obj) {
-    return AtomLinkingCategory.NONE;
+  private ErlangLinkCategory _classify(final EObject obj) {
+    return ErlangLinkCategory.NONE;
   }
   
-  protected boolean _isLinkableContext(final EObject context) {
-    return true;
+  private ErlangLinkCategory _classify(final Atom obj) {
+    EObject _eContainer = obj.eContainer();
+    ErlangLinkCategory _classifyAtom = this.classifyAtom(obj, _eContainer);
+    return _classifyAtom;
   }
   
-  protected boolean _isLinkableContext(final Expression context) {
-    return false;
+  private ErlangLinkCategory _classifyAtom(final Atom atom, final EObject context) {
+    return ErlangLinkCategory.NONE;
   }
   
-  protected boolean _isLinkableContext(final Atom context) {
-    boolean _xblockexpression = false;
-    {
-      final EObject parent = context.eContainer();
-      boolean _or = false;
-      boolean _or_1 = false;
-      boolean _and = false;
-      if (!(parent instanceof RemoteTarget)) {
-        _and = false;
-      } else {
-        _and = ((parent instanceof RemoteTarget) && true);
+  private ErlangLinkCategory _classifyAtom(final Atom atom, final RemoteTarget context) {
+    Expression _module = context.getModule();
+    if ((_module instanceof Atom)) {
+      Expression _module_1 = context.getModule();
+      boolean _equals = Objects.equal(atom, _module_1);
+      if (_equals) {
+        return ErlangLinkCategory.MODULE;
       }
-      if (_and) {
-        _or_1 = true;
-      } else {
-        _or_1 = (_and || (parent instanceof FunCall));
-      }
-      if (_or_1) {
-        _or = true;
-      } else {
-        boolean _and_1 = false;
-        if (!(parent instanceof FunRef)) {
-          _and_1 = false;
-        } else {
-          _and_1 = ((parent instanceof FunRef) && true);
+      Expression _function = context.getFunction();
+      if ((_function instanceof Atom)) {
+        Expression _function_1 = context.getFunction();
+        boolean _equals_1 = Objects.equal(atom, _function_1);
+        if (_equals_1) {
+          return ErlangLinkCategory.FUNCTION_CALL;
         }
-        _or = (_or_1 || _and_1);
       }
-      final boolean result = _or;
-      _xblockexpression = (result);
     }
-    return _xblockexpression;
+    return ErlangLinkCategory.NONE;
   }
   
-  protected AtomRefTarget _getAtomReference(final EObject obj, final INode node) {
+  private ErlangLinkCategory _classifyAtom(final Atom atom, final FunCall context) {
+    return ErlangLinkCategory.FUNCTION_CALL;
+  }
+  
+  private ErlangLinkCategory _classifyAtom(final Atom atom, final FunRef context) {
+    return ErlangLinkCategory.FUNCTION_REF;
+  }
+  
+  private ErlangLinkCategory _classifyAtom(final Atom atom, final RecordExpr context) {
+    return ErlangLinkCategory.RECORD;
+  }
+  
+  private ErlangLinkCategory _classifyAtom(final Atom atom, final RecordFieldExpr context) {
+    return ErlangLinkCategory.RECORD_FIELD;
+  }
+  
+  public boolean isLinkableAtom(final Atom atom) {
+    ErlangLinkCategory _classify = this.classify(atom);
+    boolean _notEquals = (!Objects.equal(_classify, ErlangLinkCategory.NONE));
+    return _notEquals;
+  }
+  
+  protected AtomRefTarget _getAtomReference(final EObject obj) {
     return null;
   }
   
-  protected AtomRefTarget _getAtomReference(final Atom atom, final INode node) {
+  protected AtomRefTarget _getAtomReference(final Atom atom) {
     AtomRefTarget _xblockexpression = null;
     {
       final EObject parent = atom.eContainer();
-      AtomRefTarget _atomReferenceFor = this.getAtomReferenceFor(parent, atom, node);
+      AtomRefTarget _atomReferenceFor = this.getAtomReferenceFor(parent, atom);
       _xblockexpression = (_atomReferenceFor);
     }
     return _xblockexpression;
   }
   
-  private AtomRefTarget _getAtomReferenceFor(final EObject parent, final Atom atom, final INode node) {
+  private AtomRefTarget _getAtomReferenceFor(final EObject parent, final Atom atom) {
     return null;
   }
   
-  private AtomRefTarget _getAtomReferenceFor(final RemoteTarget parent, final Atom atom, final INode node) {
+  private AtomRefTarget _getAtomReferenceFor(final RemoteTarget parent, final Atom atom) {
     Resource _eResource = atom.eResource();
     final IResourceDescriptions index = this.indexProvider.getResourceDescriptions(_eResource);
     Resource _eResource_1 = atom.eResource();
@@ -142,7 +153,7 @@ public class ErlangLinkingHelper {
     return null;
   }
   
-  private AtomRefTarget _getAtomReferenceFor(final FunCall parent, final Atom atom, final INode node) {
+  private AtomRefTarget _getAtomReferenceFor(final FunCall parent, final Atom atom) {
     Module _module = this._modelExtensions.getModule(parent);
     Expression _target = parent.getTarget();
     String _sourceText = this._modelExtensions.getSourceText(_target);
@@ -151,7 +162,7 @@ public class ErlangLinkingHelper {
     return this._modelExtensions.getFunction(_module, _sourceText, _size);
   }
   
-  private AtomRefTarget _getAtomReferenceFor(final FunRef parent, final Atom atom, final INode node) {
+  private AtomRefTarget _getAtomReferenceFor(final FunRef parent, final Atom atom) {
     Expression _arity_ = parent.getArity_();
     final String arity = this._modelExtensions.getSourceText(_arity_);
     try {
@@ -170,42 +181,59 @@ public class ErlangLinkingHelper {
     }
   }
   
-  public boolean isLinkableContext(final EObject context) {
-    if (context instanceof Atom) {
-      return _isLinkableContext((Atom)context);
-    } else if (context instanceof Expression) {
-      return _isLinkableContext((Expression)context);
+  private ErlangLinkCategory classify(final EObject obj) {
+    if (obj instanceof Atom) {
+      return _classify((Atom)obj);
+    } else if (obj != null) {
+      return _classify(obj);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(obj).toString());
+    }
+  }
+  
+  private ErlangLinkCategory classifyAtom(final Atom atom, final EObject context) {
+    if (context instanceof FunRef) {
+      return _classifyAtom(atom, (FunRef)context);
+    } else if (context instanceof FunCall) {
+      return _classifyAtom(atom, (FunCall)context);
+    } else if (context instanceof RecordExpr) {
+      return _classifyAtom(atom, (RecordExpr)context);
+    } else if (context instanceof RemoteTarget) {
+      return _classifyAtom(atom, (RemoteTarget)context);
+    } else if (context instanceof RecordFieldExpr) {
+      return _classifyAtom(atom, (RecordFieldExpr)context);
     } else if (context != null) {
-      return _isLinkableContext(context);
+      return _classifyAtom(atom, context);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(context).toString());
+        Arrays.<Object>asList(atom, context).toString());
     }
   }
   
-  public AtomRefTarget getAtomReference(final EObject atom, final INode node) {
+  public AtomRefTarget getAtomReference(final EObject atom) {
     if (atom instanceof Atom) {
-      return _getAtomReference((Atom)atom, node);
+      return _getAtomReference((Atom)atom);
     } else if (atom != null) {
-      return _getAtomReference(atom, node);
+      return _getAtomReference(atom);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(atom, node).toString());
+        Arrays.<Object>asList(atom).toString());
     }
   }
   
-  private AtomRefTarget getAtomReferenceFor(final EObject parent, final Atom atom, final INode node) {
+  private AtomRefTarget getAtomReferenceFor(final EObject parent, final Atom atom) {
     if (parent instanceof FunRef) {
-      return _getAtomReferenceFor((FunRef)parent, atom, node);
+      return _getAtomReferenceFor((FunRef)parent, atom);
     } else if (parent instanceof FunCall) {
-      return _getAtomReferenceFor((FunCall)parent, atom, node);
+      return _getAtomReferenceFor((FunCall)parent, atom);
     } else if (parent instanceof RemoteTarget) {
-      return _getAtomReferenceFor((RemoteTarget)parent, atom, node);
+      return _getAtomReferenceFor((RemoteTarget)parent, atom);
     } else if (parent != null) {
-      return _getAtomReferenceFor(parent, atom, node);
+      return _getAtomReferenceFor(parent, atom);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(parent, atom, node).toString());
+        Arrays.<Object>asList(parent, atom).toString());
     }
   }
 }

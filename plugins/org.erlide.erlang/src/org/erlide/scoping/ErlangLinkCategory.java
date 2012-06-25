@@ -1,6 +1,6 @@
 package org.erlide.scoping;
 
-public enum AtomLinkingCategory {
+public enum ErlangLinkCategory {
     // @formatter:off
 	NONE,
 	MODULE,

@@ -22,14 +22,14 @@ public class ErlangLinkingDiagnosticMessageProvider extends
             return null;
         }
         // TODO if this isn't really a link, return null
-        final boolean linkableContext = linkHelper.isLinkableContext(context
-                .getContext());
-        System.out.println("@@ " + context.getLinkText() + " "
-                + linkableContext + " :: "
+        // final boolean linkableContext = linkHelper.isLinkableContext(context
+        // .getContext());
+        System.out.println("@@ " + context.getLinkText() + " === "
+        // + linkableContext + " :: "
                 + me.getSourceText(context.getContext().eContainer()));
-        if (linkableContext) {
-            return org;
-        }
+        // if (linkableContext) {
+        // return org;
+        // }
         return null;
     }
 }

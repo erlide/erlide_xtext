@@ -86,9 +86,6 @@ public class ErlangLinkingContextTest {
       EObject _head = IterableExtensions.<EObject>head(refs);
       String _sourceText = this._modelExtensions.getSourceText(_head);
       InputOutput.<String>println(_sourceText);
-      EObject _head_1 = IterableExtensions.<EObject>head(refs);
-      boolean _isLinkableContext = this._erlangLinkingHelper.isLinkableContext(_head_1);
-      InputOutput.<Boolean>println(Boolean.valueOf(_isLinkableContext));
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }

@@ -39,7 +39,7 @@ class ErlangLinkingContextTest {
 
 		println(refs.size)
 		println(refs.head.sourceText)
-		println(refs.head.linkableContext)
+		//println(refs.head.linkableAtom)
 	}
 	
 }

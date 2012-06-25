@@ -15,7 +15,7 @@ class ErlangLinkingService extends DefaultLinkingService {
 
 	override List<EObject> getLinkedObjects(EObject context, EReference ref, INode node) {
 		if(ref==ErlangPackage::eINSTANCE.atom_Value) {
-			val aref = linkHelper.getAtomReference(context, node)
+			val aref = linkHelper.getAtomReference(context)
 			if(aref==null) 
 				return newArrayList() 
 			else {

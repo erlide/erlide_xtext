@@ -21,7 +21,7 @@ public class ErlangLinkingService extends DefaultLinkingService {
     EReference _atom_Value = ErlangPackage.eINSTANCE.getAtom_Value();
     boolean _equals = Objects.equal(ref, _atom_Value);
     if (_equals) {
-      final AtomRefTarget aref = this.linkHelper.getAtomReference(context, node);
+      final AtomRefTarget aref = this.linkHelper.getAtomReference(context);
       boolean _equals_1 = Objects.equal(aref, null);
       if (_equals_1) {
         return CollectionLiterals.<EObject>newArrayList();

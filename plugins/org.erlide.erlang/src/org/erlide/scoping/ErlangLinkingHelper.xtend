@@ -1,18 +1,19 @@
 package org.erlide.scoping
 
 import com.google.inject.Inject
-import org.erlide.erlang.ModelExtensions
-import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
-import org.erlide.erlang.AtomRefTarget
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.xtext.nodemodel.INode
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.erlide.erlang.Atom
-import org.erlide.erlang.RemoteTarget
+import org.erlide.erlang.AtomRefTarget
+import org.erlide.erlang.ErlangPackage$Literals
 import org.erlide.erlang.FunCall
 import org.erlide.erlang.FunRef
-import org.erlide.erlang.ErlangPackage
-import org.eclipse.xtext.naming.QualifiedName
-import org.erlide.erlang.Expression
+import org.erlide.erlang.ModelExtensions
+import org.erlide.erlang.RemoteTarget
+import org.erlide.erlang.RecordExpr
+import org.erlide.erlang.RecordFieldExpr
 
 class ErlangLinkingHelper {
 	@Inject
@@ -20,36 +21,58 @@ class ErlangLinkingHelper {
     @Inject
     ResourceDescriptionsProvider indexProvider
 
-	def private AtomLinkingCategory classify(EObject obj) {
-		return AtomLinkingCategory::NONE
+	def private dispatch ErlangLinkCategory classify(EObject obj) {
+		ErlangLinkCategory::NONE
+	} 
+	def private dispatch ErlangLinkCategory classify(Atom obj) {
+		classifyAtom(obj, obj.eContainer)
 	} 
 
-	def dispatch boolean isLinkableContext(EObject context) {
-		true
+	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, EObject context) {
+		ErlangLinkCategory::NONE
 	}
-	def dispatch boolean isLinkableContext(Expression context) {
-		false
+	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, RemoteTarget context) {
+		if(context.module instanceof Atom) {
+			if(atom==context.module) {
+				return ErlangLinkCategory::MODULE
+			} 
+			if(context.function instanceof Atom) {
+				if(atom==context.function) {
+					return ErlangLinkCategory::FUNCTION_CALL
+				}
+			} 
+		}
+		return ErlangLinkCategory::NONE
 	}
-	def dispatch boolean isLinkableContext(Atom context) {
-		val parent = context.eContainer
-		val result = ((parent instanceof RemoteTarget) && true) || 
-			(parent instanceof FunCall) || 
-			((parent instanceof FunRef) && true)
-		result
+	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, FunCall context) {
+		ErlangLinkCategory::FUNCTION_CALL
+	}
+	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, FunRef context) {
+		ErlangLinkCategory::FUNCTION_REF
+	}
+	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, RecordExpr context) {
+		ErlangLinkCategory::RECORD
+	}
+	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, RecordFieldExpr context) {
+		ErlangLinkCategory::RECORD_FIELD
+	}
+
+	def boolean isLinkableAtom(Atom atom) {
+		classify(atom) != org::erlide::scoping::ErlangLinkCategory::NONE
 	}
 	
-	def dispatch AtomRefTarget getAtomReference(EObject obj, INode node) {
+	def dispatch AtomRefTarget getAtomReference(EObject obj) {
 		null
 	}
-	def dispatch AtomRefTarget getAtomReference(Atom atom, INode node) {
+	def dispatch AtomRefTarget getAtomReference(Atom atom) {
 		val parent = atom.eContainer()
-		getAtomReferenceFor(parent, atom, node)
+		getAtomReferenceFor(parent, atom)
 	}		
 	
-	def private dispatch AtomRefTarget getAtomReferenceFor(EObject parent, Atom atom, INode node) {
+	def private dispatch AtomRefTarget getAtomReferenceFor(EObject parent, Atom atom) {
 		null
 	}
-	def private dispatch AtomRefTarget getAtomReferenceFor(RemoteTarget parent, Atom atom, INode node) {
+	def private dispatch AtomRefTarget getAtomReferenceFor(RemoteTarget parent, Atom atom) {
 		val index = indexProvider.getResourceDescriptions(atom.eResource)
 		val rset = atom.eResource.resourceSet
 		if(parent.module instanceof Atom) {
@@ -69,10 +92,10 @@ class ErlangLinkingHelper {
 		}
 		return null
 	}
-	def private dispatch AtomRefTarget getAtomReferenceFor(FunCall parent, Atom atom, INode node) {
+	def private dispatch AtomRefTarget getAtomReferenceFor(FunCall parent, Atom atom) {
 		return parent.module.getFunction(parent.target.sourceText, parent.args.size)
 	}
-	def private dispatch AtomRefTarget getAtomReferenceFor(FunRef parent, Atom atom, INode node) {
+	def private dispatch AtomRefTarget getAtomReferenceFor(FunRef parent, Atom atom) {
 		val arity = parent.arity_.sourceText
 		try {
 			return parent.module.getFunction(parent.function_.sourceText, Integer::parseInt(arity))
