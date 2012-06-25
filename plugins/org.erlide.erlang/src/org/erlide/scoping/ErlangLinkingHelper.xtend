@@ -58,15 +58,24 @@ class ErlangLinkingHelper {
 	}
 
 	def boolean isLinkableAtom(Atom atom) {
-		classify(atom) != org::erlide::scoping::ErlangLinkCategory::NONE
+		classify(atom) != ErlangLinkCategory::NONE
 	}
 	
-	def dispatch AtomRefTarget getAtomReference(EObject obj) {
-		null
-	}
-	def dispatch AtomRefTarget getAtomReference(Atom atom) {
-		val parent = atom.eContainer()
-		getAtomReferenceFor(parent, atom)
+	def AtomRefTarget getAtomReference(EObject obj) {
+		switch(classify(obj)) {
+			case ErlangLinkCategory::NONE:
+				null
+			case ErlangLinkCategory::MODULE:
+				null
+			case ErlangLinkCategory::FUNCTION_CALL:
+				null
+			case ErlangLinkCategory::FUNCTION_REF:
+				null
+			case ErlangLinkCategory::RECORD:
+				null
+			case ErlangLinkCategory::RECORD_FIELD:
+				null
+		}
 	}		
 	
 	def private dispatch AtomRefTarget getAtomReferenceFor(EObject parent, Atom atom) {

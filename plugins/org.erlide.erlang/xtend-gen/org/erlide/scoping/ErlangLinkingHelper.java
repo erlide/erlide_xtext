@@ -91,18 +91,48 @@ public class ErlangLinkingHelper {
     return _notEquals;
   }
   
-  protected AtomRefTarget _getAtomReference(final EObject obj) {
-    return null;
-  }
-  
-  protected AtomRefTarget _getAtomReference(final Atom atom) {
-    AtomRefTarget _xblockexpression = null;
-    {
-      final EObject parent = atom.eContainer();
-      AtomRefTarget _atomReferenceFor = this.getAtomReferenceFor(parent, atom);
-      _xblockexpression = (_atomReferenceFor);
+  public AtomRefTarget getAtomReference(final EObject obj) {
+    AtomRefTarget _switchResult = null;
+    ErlangLinkCategory _classify = this.classify(obj);
+    final ErlangLinkCategory classify = _classify;
+    boolean _matched = false;
+    if (!_matched) {
+      if (Objects.equal(classify,ErlangLinkCategory.NONE)) {
+        _matched=true;
+        _switchResult = null;
+      }
     }
-    return _xblockexpression;
+    if (!_matched) {
+      if (Objects.equal(classify,ErlangLinkCategory.MODULE)) {
+        _matched=true;
+        _switchResult = null;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(classify,ErlangLinkCategory.FUNCTION_CALL)) {
+        _matched=true;
+        _switchResult = null;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(classify,ErlangLinkCategory.FUNCTION_REF)) {
+        _matched=true;
+        _switchResult = null;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(classify,ErlangLinkCategory.RECORD)) {
+        _matched=true;
+        _switchResult = null;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(classify,ErlangLinkCategory.RECORD_FIELD)) {
+        _matched=true;
+        _switchResult = null;
+      }
+    }
+    return _switchResult;
   }
   
   private AtomRefTarget _getAtomReferenceFor(final EObject parent, final Atom atom) {
@@ -208,17 +238,6 @@ public class ErlangLinkingHelper {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(atom, context).toString());
-    }
-  }
-  
-  public AtomRefTarget getAtomReference(final EObject atom) {
-    if (atom instanceof Atom) {
-      return _getAtomReference((Atom)atom);
-    } else if (atom != null) {
-      return _getAtomReference(atom);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(atom).toString());
     }
   }
   
