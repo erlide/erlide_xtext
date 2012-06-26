@@ -1607,18 +1607,18 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (name=VARIABLE type=Type)
+	 *     (typeName=VARIABLE type=Type)
 	 */
 	protected void sequence_BinBaseType(EObject context, BinBaseType semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.BIN_BASE_TYPE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.BIN_BASE_TYPE__NAME));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.BIN_BASE_TYPE__TYPE_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.BIN_BASE_TYPE__TYPE_NAME));
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.BIN_BASE_TYPE__TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.BIN_BASE_TYPE__TYPE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBinBaseTypeAccess().getNameVARIABLETerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getBinBaseTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0(), semanticObject.getTypeName());
 		feeder.accept(grammarAccess.getBinBaseTypeAccess().getTypeTypeParserRuleCall_2_0(), semanticObject.getType());
 		feeder.finish();
 	}
@@ -1626,12 +1626,12 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (name=VARIABLE m=VARIABLE type=Type)
+	 *     (typeName=VARIABLE m=VARIABLE type=Type)
 	 */
 	protected void sequence_BinUnitType(EObject context, BinUnitType semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.BIN_UNIT_TYPE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.BIN_UNIT_TYPE__NAME));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.BIN_UNIT_TYPE__TYPE_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.BIN_UNIT_TYPE__TYPE_NAME));
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.BIN_UNIT_TYPE__M) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.BIN_UNIT_TYPE__M));
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.BIN_UNIT_TYPE__TYPE) == ValueTransient.YES)
@@ -1639,7 +1639,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBinUnitTypeAccess().getNameVARIABLETerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getBinUnitTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0(), semanticObject.getTypeName());
 		feeder.accept(grammarAccess.getBinUnitTypeAccess().getMVARIABLETerminalRuleCall_2_0(), semanticObject.getM());
 		feeder.accept(grammarAccess.getBinUnitTypeAccess().getTypeTypeParserRuleCall_4_0(), semanticObject.getType());
 		feeder.finish();
@@ -1684,7 +1684,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (name=NAME size=INT?)
+	 *     (typeName=NAME size=INT?)
 	 */
 	protected void sequence_BitType(EObject context, BitType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1916,18 +1916,18 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (name=NAME type=TopType)
+	 *     (typeName=NAME type=TopType)
 	 */
 	protected void sequence_FieldType(EObject context, FieldType semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.FIELD_TYPE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.FIELD_TYPE__NAME));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.FIELD_TYPE__TYPE_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.FIELD_TYPE__TYPE_NAME));
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.FIELD_TYPE__TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.FIELD_TYPE__TYPE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFieldTypeAccess().getNameNAMEParserRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getFieldTypeAccess().getTypeNameNAMEParserRuleCall_0_0(), semanticObject.getTypeName());
 		feeder.accept(grammarAccess.getFieldTypeAccess().getTypeTopTypeParserRuleCall_2_0(), semanticObject.getType());
 		feeder.finish();
 	}
@@ -2483,7 +2483,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     ((name=NAME types+=TopType types+=TopType*) | (name=VARIABLE type=TopType))
+	 *     ((typeName=NAME types+=TopType types+=TopType*) | (typeName=VARIABLE type=TopType))
 	 */
 	protected void sequence_TypeGuard(EObject context, TypeGuard semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2537,7 +2537,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (m=AtomVarMacro? name=NAME (args+=TopType args+=TopType*)?)
+	 *     (m=AtomVarMacro? typeName=NAME (args+=TopType args+=TopType*)?)
 	 */
 	protected void sequence_Type(EObject context, RemoteType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2555,7 +2555,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (name=VARIABLE | value=INTEGER)
+	 *     (typeName=VARIABLE | value=INTEGER)
 	 */
 	protected void sequence_Type(EObject context, Type semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

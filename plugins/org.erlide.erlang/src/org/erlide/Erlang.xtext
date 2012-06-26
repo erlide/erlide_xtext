@@ -429,7 +429,7 @@ BinaryItem:
 ;
 
 BitType:
-	name=NAME (':' size=INT)?
+	typeName=NAME (':' size=INT)?
 ;
 
 UnaryExprMax returns Expression:
@@ -572,7 +572,8 @@ terminal fragment HEX_DIGIT:
 // Type language
 
 SpecFun returns FunRef:
-	(module=AtomVarMacro ':')? function=AtomVarMacro ('/' arity=IntVarMacro '::')?;
+	(module=AtomVarMacro ':')? function=AtomVarMacro ('/' arity=IntVarMacro '::')?
+;
 
 TypeSig:
 	decl=FunType ('when' guards=TypeGuards)?;
@@ -584,8 +585,8 @@ TypeGuards:
 	items+=TypeGuard (',' items+=TypeGuard)*;
 
 TypeGuard:
-	  name=NAME '(' types+=TopType (',' types+=TopType)* ')' 
-	| name=VARIABLE '::' type=TopType
+	  typeName=NAME '(' types+=TopType (',' types+=TopType)* ')' 
+	| typeName=VARIABLE '::' type=TopType
 ;
 
 TopType:
@@ -610,8 +611,8 @@ Type500:
 
 Type:
 	'(' TopType ')' 
-	| {RemoteType} (m=AtomVarMacro ':')? name=NAME ('(' (args+=TopType (',' args+=TopType)*)? ')')? 
-	| name=VARIABLE 
+	| {RemoteType} (m=AtomVarMacro ':')? typeName=NAME ('(' (args+=TopType (',' args+=TopType)*)? ')')? 
+	| typeName=VARIABLE 
 	| value=INTEGER 
 	| '[' {ListType} (type=TopType	(',' '...')?)? ']' 
 	| '{' {TupleType} (types+=TopType (',' types+=TopType)*)? '}' 
@@ -621,7 +622,7 @@ Type:
 ;
 
 FieldType:
-	name=NAME '::' type=TopType;
+	typeName=NAME '::' type=TopType;
 
 BinaryType:
 	'<<' {BinaryType}
@@ -630,10 +631,10 @@ BinaryType:
 ;
 
 BinBaseType:
-	name=VARIABLE ':' type=Type;
+	typeName=VARIABLE ':' type=Type;
 
 BinUnitType:
-	name=VARIABLE ':' m=VARIABLE '*' type=Type;
+	typeName=VARIABLE ':' m=VARIABLE '*' type=Type;
 
 FunType100:
 	{FunTypeList} '(' ('...' | (items+=TopType (',' items+=TopType)*))? ')' '->' return=TopType;

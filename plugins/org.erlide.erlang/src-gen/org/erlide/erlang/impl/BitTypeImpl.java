@@ -19,7 +19,7 @@ import org.erlide.erlang.ErlangPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.BitTypeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.BitTypeImpl#getTypeName <em>Type Name</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.BitTypeImpl#getSize <em>Size</em>}</li>
  * </ul>
  * </p>
@@ -29,24 +29,24 @@ import org.erlide.erlang.ErlangPackage;
 public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String TYPE_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String typeName = TYPE_NAME_EDEFAULT;
 
   /**
    * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
@@ -94,9 +94,9 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public String getTypeName()
   {
-    return name;
+    return typeName;
   }
 
   /**
@@ -104,12 +104,12 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setTypeName(String newTypeName)
   {
-    String oldName = name;
-    name = newName;
+    String oldTypeName = typeName;
+    typeName = newTypeName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.BIT_TYPE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.BIT_TYPE__TYPE_NAME, oldTypeName, typeName));
   }
 
   /**
@@ -145,8 +145,8 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
   {
     switch (featureID)
     {
-      case ErlangPackage.BIT_TYPE__NAME:
-        return getName();
+      case ErlangPackage.BIT_TYPE__TYPE_NAME:
+        return getTypeName();
       case ErlangPackage.BIT_TYPE__SIZE:
         return getSize();
     }
@@ -163,8 +163,8 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
   {
     switch (featureID)
     {
-      case ErlangPackage.BIT_TYPE__NAME:
-        setName((String)newValue);
+      case ErlangPackage.BIT_TYPE__TYPE_NAME:
+        setTypeName((String)newValue);
         return;
       case ErlangPackage.BIT_TYPE__SIZE:
         setSize((String)newValue);
@@ -183,8 +183,8 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
   {
     switch (featureID)
     {
-      case ErlangPackage.BIT_TYPE__NAME:
-        setName(NAME_EDEFAULT);
+      case ErlangPackage.BIT_TYPE__TYPE_NAME:
+        setTypeName(TYPE_NAME_EDEFAULT);
         return;
       case ErlangPackage.BIT_TYPE__SIZE:
         setSize(SIZE_EDEFAULT);
@@ -203,8 +203,8 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
   {
     switch (featureID)
     {
-      case ErlangPackage.BIT_TYPE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ErlangPackage.BIT_TYPE__TYPE_NAME:
+        return TYPE_NAME_EDEFAULT == null ? typeName != null : !TYPE_NAME_EDEFAULT.equals(typeName);
       case ErlangPackage.BIT_TYPE__SIZE:
         return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
     }
@@ -222,8 +222,8 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (typeName: ");
+    result.append(typeName);
     result.append(", size: ");
     result.append(size);
     result.append(')');

@@ -206,7 +206,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinaryItem/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BitType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BitType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BitType/typeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BitType/size"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//LCExpr">
@@ -227,7 +227,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TypeGuards/items"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//TypeGuard">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//TypeGuard/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//TypeGuard/typeName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TypeGuard/types"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TypeGuard/type"/>
     </genClasses>
@@ -244,22 +244,22 @@
     <genClasses ecoreClass="Erlang.ecore#//Type400"/>
     <genClasses ecoreClass="Erlang.ecore#//Type500"/>
     <genClasses ecoreClass="Erlang.ecore#//Type">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Type/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Type/typeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Type/value"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//FieldType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FieldType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FieldType/typeName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FieldType/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BinaryType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinaryType/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BinBaseType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BinBaseType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BinBaseType/typeName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinBaseType/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BinUnitType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BinUnitType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BinUnitType/typeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BinUnitType/m"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinUnitType/type"/>
     </genClasses>

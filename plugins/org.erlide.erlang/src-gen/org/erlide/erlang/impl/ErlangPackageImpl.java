@@ -2400,7 +2400,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBitType_Name()
+  public EAttribute getBitType_TypeName()
   {
     return (EAttribute)bitTypeEClass.getEStructuralFeatures().get(0);
   }
@@ -2560,7 +2560,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTypeGuard_Name()
+  public EAttribute getTypeGuard_TypeName()
   {
     return (EAttribute)typeGuardEClass.getEStructuralFeatures().get(0);
   }
@@ -2710,7 +2710,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getType_Name()
+  public EAttribute getType_TypeName()
   {
     return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
   }
@@ -2740,7 +2740,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFieldType_Name()
+  public EAttribute getFieldType_TypeName()
   {
     return (EAttribute)fieldTypeEClass.getEStructuralFeatures().get(0);
   }
@@ -2790,7 +2790,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBinBaseType_Name()
+  public EAttribute getBinBaseType_TypeName()
   {
     return (EAttribute)binBaseTypeEClass.getEStructuralFeatures().get(0);
   }
@@ -2820,7 +2820,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBinUnitType_Name()
+  public EAttribute getBinUnitType_TypeName()
   {
     return (EAttribute)binUnitTypeEClass.getEStructuralFeatures().get(0);
   }
@@ -3695,7 +3695,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(binaryItemEClass, BINARY_ITEM__TYPE);
 
     bitTypeEClass = createEClass(BIT_TYPE);
-    createEAttribute(bitTypeEClass, BIT_TYPE__NAME);
+    createEAttribute(bitTypeEClass, BIT_TYPE__TYPE_NAME);
     createEAttribute(bitTypeEClass, BIT_TYPE__SIZE);
 
     lcExprEClass = createEClass(LC_EXPR);
@@ -3716,7 +3716,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(typeGuardsEClass, TYPE_GUARDS__ITEMS);
 
     typeGuardEClass = createEClass(TYPE_GUARD);
-    createEAttribute(typeGuardEClass, TYPE_GUARD__NAME);
+    createEAttribute(typeGuardEClass, TYPE_GUARD__TYPE_NAME);
     createEReference(typeGuardEClass, TYPE_GUARD__TYPES);
     createEReference(typeGuardEClass, TYPE_GUARD__TYPE);
 
@@ -3738,22 +3738,22 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     type500EClass = createEClass(TYPE500);
 
     typeEClass = createEClass(TYPE);
-    createEAttribute(typeEClass, TYPE__NAME);
+    createEAttribute(typeEClass, TYPE__TYPE_NAME);
     createEAttribute(typeEClass, TYPE__VALUE);
 
     fieldTypeEClass = createEClass(FIELD_TYPE);
-    createEAttribute(fieldTypeEClass, FIELD_TYPE__NAME);
+    createEAttribute(fieldTypeEClass, FIELD_TYPE__TYPE_NAME);
     createEReference(fieldTypeEClass, FIELD_TYPE__TYPE);
 
     binaryTypeEClass = createEClass(BINARY_TYPE);
     createEReference(binaryTypeEClass, BINARY_TYPE__TYPE);
 
     binBaseTypeEClass = createEClass(BIN_BASE_TYPE);
-    createEAttribute(binBaseTypeEClass, BIN_BASE_TYPE__NAME);
+    createEAttribute(binBaseTypeEClass, BIN_BASE_TYPE__TYPE_NAME);
     createEReference(binBaseTypeEClass, BIN_BASE_TYPE__TYPE);
 
     binUnitTypeEClass = createEClass(BIN_UNIT_TYPE);
-    createEAttribute(binUnitTypeEClass, BIN_UNIT_TYPE__NAME);
+    createEAttribute(binUnitTypeEClass, BIN_UNIT_TYPE__TYPE_NAME);
     createEAttribute(binUnitTypeEClass, BIN_UNIT_TYPE__M);
     createEReference(binUnitTypeEClass, BIN_UNIT_TYPE__TYPE);
 
@@ -4159,7 +4159,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getBinaryItem_Type(), this.getBitType(), null, "type", null, 0, -1, BinaryItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(bitTypeEClass, BitType.class, "BitType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBitType_Name(), ecorePackage.getEString(), "name", null, 0, 1, BitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBitType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, BitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBitType_Size(), ecorePackage.getEString(), "size", null, 0, 1, BitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lcExprEClass, LCExpr.class, "LCExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4180,7 +4180,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getTypeGuards_Items(), this.getTypeGuard(), null, "items", null, 0, -1, TypeGuards.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeGuardEClass, TypeGuard.class, "TypeGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTypeGuard_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTypeGuard_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, TypeGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTypeGuard_Types(), this.getTopType(), null, "types", null, 0, -1, TypeGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTypeGuard_Type(), this.getTopType(), null, "type", null, 0, 1, TypeGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -4202,22 +4202,22 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEClass(type500EClass, Type500.class, "Type500", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getType_Name(), ecorePackage.getEString(), "name", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getType_Value(), ecorePackage.getEString(), "value", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldTypeEClass, FieldType.class, "FieldType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFieldType_Name(), ecorePackage.getEString(), "name", null, 0, 1, FieldType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFieldType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, FieldType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFieldType_Type(), this.getTopType(), null, "type", null, 0, 1, FieldType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(binaryTypeEClass, BinaryType.class, "BinaryType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBinaryType_Type(), ecorePackage.getEObject(), null, "type", null, 0, -1, BinaryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(binBaseTypeEClass, BinBaseType.class, "BinBaseType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBinBaseType_Name(), ecorePackage.getEString(), "name", null, 0, 1, BinBaseType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBinBaseType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, BinBaseType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBinBaseType_Type(), this.getType(), null, "type", null, 0, 1, BinBaseType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(binUnitTypeEClass, BinUnitType.class, "BinUnitType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBinUnitType_Name(), ecorePackage.getEString(), "name", null, 0, 1, BinUnitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBinUnitType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, BinUnitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBinUnitType_M(), ecorePackage.getEString(), "m", null, 0, 1, BinUnitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBinUnitType_Type(), this.getType(), null, "type", null, 0, 1, BinUnitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

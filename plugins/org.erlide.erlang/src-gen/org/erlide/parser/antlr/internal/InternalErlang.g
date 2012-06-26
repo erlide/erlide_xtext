@@ -6347,16 +6347,16 @@ ruleBitType returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBitTypeAccess().getNameNAMEParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getBitTypeAccess().getTypeNameNAMEParserRuleCall_0_0()); 
 	    }
-		lv_name_0_0=ruleNAME		{
+		lv_typeName_0_0=ruleNAME		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getBitTypeRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_0_0, 
+       			"typeName",
+        		lv_typeName_0_0, 
         		"NAME");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -7722,16 +7722,16 @@ ruleTypeGuard returns [EObject current=null]
 (((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getTypeGuardAccess().getNameNAMEParserRuleCall_0_0_0()); 
+	        newCompositeNode(grammarAccess.getTypeGuardAccess().getTypeNameNAMEParserRuleCall_0_0_0()); 
 	    }
-		lv_name_0_0=ruleNAME		{
+		lv_typeName_0_0=ruleNAME		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getTypeGuardRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_0_0, 
+       			"typeName",
+        		lv_typeName_0_0, 
         		"NAME");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -7788,9 +7788,9 @@ ruleTypeGuard returns [EObject current=null]
 )
     |((
 (
-		lv_name_6_0=RULE_VARIABLE
+		lv_typeName_6_0=RULE_VARIABLE
 		{
-			newLeafNode(lv_name_6_0, grammarAccess.getTypeGuardAccess().getNameVARIABLETerminalRuleCall_1_0_0()); 
+			newLeafNode(lv_typeName_6_0, grammarAccess.getTypeGuardAccess().getTypeNameVARIABLETerminalRuleCall_1_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -7798,8 +7798,8 @@ ruleTypeGuard returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"name",
-        		lv_name_6_0, 
+       			"typeName",
+        		lv_typeName_6_0, 
         		"VARIABLE");
 	    }
 
@@ -8336,16 +8336,16 @@ ruleType returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getTypeAccess().getNameNAMEParserRuleCall_1_2_0()); 
+	        newCompositeNode(grammarAccess.getTypeAccess().getTypeNameNAMEParserRuleCall_1_2_0()); 
 	    }
-		lv_name_6_0=ruleNAME		{
+		lv_typeName_6_0=ruleNAME		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getTypeRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_6_0, 
+       			"typeName",
+        		lv_typeName_6_0, 
         		"NAME");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -8402,9 +8402,9 @@ ruleType returns [EObject current=null]
 )?)
     |(
 (
-		lv_name_12_0=RULE_VARIABLE
+		lv_typeName_12_0=RULE_VARIABLE
 		{
-			newLeafNode(lv_name_12_0, grammarAccess.getTypeAccess().getNameVARIABLETerminalRuleCall_2_0()); 
+			newLeafNode(lv_typeName_12_0, grammarAccess.getTypeAccess().getTypeNameVARIABLETerminalRuleCall_2_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -8412,8 +8412,8 @@ ruleType returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"name",
-        		lv_name_12_0, 
+       			"typeName",
+        		lv_typeName_12_0, 
         		"VARIABLE");
 	    }
 
@@ -8681,16 +8681,16 @@ ruleFieldType returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFieldTypeAccess().getNameNAMEParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getFieldTypeAccess().getTypeNameNAMEParserRuleCall_0_0()); 
 	    }
-		lv_name_0_0=ruleNAME		{
+		lv_typeName_0_0=ruleNAME		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFieldTypeRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_0_0, 
+       			"typeName",
+        		lv_typeName_0_0, 
         		"NAME");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -8835,9 +8835,9 @@ ruleBinBaseType returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_name_0_0=RULE_VARIABLE
+		lv_typeName_0_0=RULE_VARIABLE
 		{
-			newLeafNode(lv_name_0_0, grammarAccess.getBinBaseTypeAccess().getNameVARIABLETerminalRuleCall_0_0()); 
+			newLeafNode(lv_typeName_0_0, grammarAccess.getBinBaseTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -8845,8 +8845,8 @@ ruleBinBaseType returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"name",
-        		lv_name_0_0, 
+       			"typeName",
+        		lv_typeName_0_0, 
         		"VARIABLE");
 	    }
 
@@ -8896,9 +8896,9 @@ ruleBinUnitType returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_name_0_0=RULE_VARIABLE
+		lv_typeName_0_0=RULE_VARIABLE
 		{
-			newLeafNode(lv_name_0_0, grammarAccess.getBinUnitTypeAccess().getNameVARIABLETerminalRuleCall_0_0()); 
+			newLeafNode(lv_typeName_0_0, grammarAccess.getBinUnitTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -8906,8 +8906,8 @@ ruleBinUnitType returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"name",
-        		lv_name_0_0, 
+       			"typeName",
+        		lv_typeName_0_0, 
         		"VARIABLE");
 	    }
 

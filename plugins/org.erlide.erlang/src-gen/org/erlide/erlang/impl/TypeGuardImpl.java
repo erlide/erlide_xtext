@@ -29,7 +29,7 @@ import org.erlide.erlang.TypeGuard;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.TypeGuardImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.TypeGuardImpl#getTypeName <em>Type Name</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.TypeGuardImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.TypeGuardImpl#getType <em>Type</em>}</li>
  * </ul>
@@ -40,24 +40,24 @@ import org.erlide.erlang.TypeGuard;
 public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeGuard
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String TYPE_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String typeName = TYPE_NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
@@ -105,9 +105,9 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public String getTypeName()
   {
-    return name;
+    return typeName;
   }
 
   /**
@@ -115,12 +115,12 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setTypeName(String newTypeName)
   {
-    String oldName = name;
-    name = newName;
+    String oldTypeName = typeName;
+    typeName = newTypeName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE_GUARD__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE_GUARD__TYPE_NAME, oldTypeName, typeName));
   }
 
   /**
@@ -213,8 +213,8 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
   {
     switch (featureID)
     {
-      case ErlangPackage.TYPE_GUARD__NAME:
-        return getName();
+      case ErlangPackage.TYPE_GUARD__TYPE_NAME:
+        return getTypeName();
       case ErlangPackage.TYPE_GUARD__TYPES:
         return getTypes();
       case ErlangPackage.TYPE_GUARD__TYPE:
@@ -234,8 +234,8 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
   {
     switch (featureID)
     {
-      case ErlangPackage.TYPE_GUARD__NAME:
-        setName((String)newValue);
+      case ErlangPackage.TYPE_GUARD__TYPE_NAME:
+        setTypeName((String)newValue);
         return;
       case ErlangPackage.TYPE_GUARD__TYPES:
         getTypes().clear();
@@ -258,8 +258,8 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
   {
     switch (featureID)
     {
-      case ErlangPackage.TYPE_GUARD__NAME:
-        setName(NAME_EDEFAULT);
+      case ErlangPackage.TYPE_GUARD__TYPE_NAME:
+        setTypeName(TYPE_NAME_EDEFAULT);
         return;
       case ErlangPackage.TYPE_GUARD__TYPES:
         getTypes().clear();
@@ -281,8 +281,8 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
   {
     switch (featureID)
     {
-      case ErlangPackage.TYPE_GUARD__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ErlangPackage.TYPE_GUARD__TYPE_NAME:
+        return TYPE_NAME_EDEFAULT == null ? typeName != null : !TYPE_NAME_EDEFAULT.equals(typeName);
       case ErlangPackage.TYPE_GUARD__TYPES:
         return types != null && !types.isEmpty();
       case ErlangPackage.TYPE_GUARD__TYPE:
@@ -302,8 +302,8 @@ public class TypeGuardImpl extends MinimalEObjectImpl.Container implements TypeG
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (typeName: ");
+    result.append(typeName);
     result.append(')');
     return result.toString();
   }
