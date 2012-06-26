@@ -37,6 +37,7 @@ import org.erlide.erlang.ErlTuple;
 import org.erlide.erlang.ErlangPackage.Literals;
 import org.erlide.erlang.ExportAttribute;
 import org.erlide.erlang.Expression;
+import org.erlide.erlang.Expressions;
 import org.erlide.erlang.Form;
 import org.erlide.erlang.FunRef;
 import org.erlide.erlang.FunType;
@@ -385,8 +386,9 @@ public class ModelExtensions {
   public int getArity(final Function fun) {
     EList<FunctionClause> _clauses = fun.getClauses();
     FunctionClause _head = IterableExtensions.<FunctionClause>head(_clauses);
-    EList<Expression> _params = _head==null?(EList<Expression>)null:_head.getParams();
-    int _size = _params==null?0:_params.size();
+    Expressions _params = _head==null?(Expressions)null:_head.getParams();
+    EList<Expression> _exprs = _params==null?(EList<Expression>)null:_params.getExprs();
+    int _size = _exprs==null?0:_exprs.size();
     return _size;
   }
   

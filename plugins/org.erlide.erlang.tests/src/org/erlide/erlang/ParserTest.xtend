@@ -110,9 +110,9 @@ class ParserTest {
 		''')
 		val fun = model.forms.head as Function
 		val body = fun.clauses.head.body
-		assertEquals(3, body.size)
-		assertTrue(body.head.line)
-		assertFalse(body.tail.head.line)
+		assertEquals(3, body.exprs.size)
+		assertTrue(body.exprs.head.line)
+		assertFalse(body.exprs.tail.head.line)
 	}
 
 	@Test
@@ -122,8 +122,8 @@ class ParserTest {
 		''')
 		val fun = model.forms.head as Function
 		val body = fun.clauses.head.body
-		assertEquals(1, body.size)
-		val expr = body.head
+		assertEquals(1, body.exprs.size)
+		val expr = body.exprs.head
 		assertTrue(expr instanceof Atom) 
 	}
 
@@ -133,8 +133,8 @@ class ParserTest {
 		    f() -> ok.''')
 		val fun = model.forms.head as Function
 		val body = fun.clauses.head.body
-		assertEquals(1, body.size)
-		val expr = body.head
+		assertEquals(1, body.exprs.size)
+		val expr = body.exprs.head
 //		println(expr)
 		assertTrue(expr instanceof Atom) 
 	}

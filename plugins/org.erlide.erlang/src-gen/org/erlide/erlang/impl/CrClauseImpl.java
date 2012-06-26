@@ -2,12 +2,8 @@
  */
 package org.erlide.erlang.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -15,12 +11,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.erlide.erlang.CrClause;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
+import org.erlide.erlang.Expressions;
 import org.erlide.erlang.Guard;
 
 /**
@@ -61,14 +55,14 @@ public class CrClauseImpl extends MinimalEObjectImpl.Container implements CrClau
   protected Guard guard;
 
   /**
-   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference list.
+   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getBody()
    * @generated
    * @ordered
    */
-  protected EList<Expression> body;
+  protected Expressions body;
 
   /**
    * <!-- begin-user-doc -->
@@ -192,13 +186,47 @@ public class CrClauseImpl extends MinimalEObjectImpl.Container implements CrClau
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getBody()
+  public Expressions getBody()
   {
-    if (body == null)
-    {
-      body = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.CR_CLAUSE__BODY);
-    }
     return body;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetBody(Expressions newBody, NotificationChain msgs)
+  {
+    Expressions oldBody = body;
+    body = newBody;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.CR_CLAUSE__BODY, oldBody, newBody);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBody(Expressions newBody)
+  {
+    if (newBody != body)
+    {
+      NotificationChain msgs = null;
+      if (body != null)
+        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.CR_CLAUSE__BODY, null, msgs);
+      if (newBody != null)
+        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.CR_CLAUSE__BODY, null, msgs);
+      msgs = basicSetBody(newBody, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.CR_CLAUSE__BODY, newBody, newBody));
   }
 
   /**
@@ -216,7 +244,7 @@ public class CrClauseImpl extends MinimalEObjectImpl.Container implements CrClau
       case ErlangPackage.CR_CLAUSE__GUARD:
         return basicSetGuard(null, msgs);
       case ErlangPackage.CR_CLAUSE__BODY:
-        return ((InternalEList<?>)getBody()).basicRemove(otherEnd, msgs);
+        return basicSetBody(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -246,7 +274,6 @@ public class CrClauseImpl extends MinimalEObjectImpl.Container implements CrClau
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -259,8 +286,7 @@ public class CrClauseImpl extends MinimalEObjectImpl.Container implements CrClau
         setGuard((Guard)newValue);
         return;
       case ErlangPackage.CR_CLAUSE__BODY:
-        getBody().clear();
-        getBody().addAll((Collection<? extends Expression>)newValue);
+        setBody((Expressions)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -283,7 +309,7 @@ public class CrClauseImpl extends MinimalEObjectImpl.Container implements CrClau
         setGuard((Guard)null);
         return;
       case ErlangPackage.CR_CLAUSE__BODY:
-        getBody().clear();
+        setBody((Expressions)null);
         return;
     }
     super.eUnset(featureID);
@@ -304,7 +330,7 @@ public class CrClauseImpl extends MinimalEObjectImpl.Container implements CrClau
       case ErlangPackage.CR_CLAUSE__GUARD:
         return guard != null;
       case ErlangPackage.CR_CLAUSE__BODY:
-        return body != null && !body.isEmpty();
+        return body != null;
     }
     return super.eIsSet(featureID);
   }

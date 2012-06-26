@@ -4,6 +4,7 @@ package org.erlide.erlang.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -11,12 +12,14 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.erlide.erlang.CrClause;
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.Expression;
+import org.erlide.erlang.Expressions;
 import org.erlide.erlang.TryClause;
 import org.erlide.erlang.TryExpr;
 
@@ -39,14 +42,14 @@ import org.erlide.erlang.TryExpr;
 public class TryExprImpl extends ExpressionImpl implements TryExpr
 {
   /**
-   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference list.
+   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getBody()
    * @generated
    * @ordered
    */
-  protected EList<Expression> body;
+  protected Expressions body;
 
   /**
    * The cached value of the '{@link #getOf_clauses() <em>Of clauses</em>}' containment reference list.
@@ -69,14 +72,14 @@ public class TryExprImpl extends ExpressionImpl implements TryExpr
   protected EList<TryClause> catch_;
 
   /**
-   * The cached value of the '{@link #getAfter_body() <em>After body</em>}' containment reference list.
+   * The cached value of the '{@link #getAfter_body() <em>After body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getAfter_body()
    * @generated
    * @ordered
    */
-  protected EList<Expression> after_body;
+  protected Expressions after_body;
 
   /**
    * <!-- begin-user-doc -->
@@ -104,13 +107,47 @@ public class TryExprImpl extends ExpressionImpl implements TryExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getBody()
+  public Expressions getBody()
   {
-    if (body == null)
-    {
-      body = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.TRY_EXPR__BODY);
-    }
     return body;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetBody(Expressions newBody, NotificationChain msgs)
+  {
+    Expressions oldBody = body;
+    body = newBody;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.TRY_EXPR__BODY, oldBody, newBody);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBody(Expressions newBody)
+  {
+    if (newBody != body)
+    {
+      NotificationChain msgs = null;
+      if (body != null)
+        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TRY_EXPR__BODY, null, msgs);
+      if (newBody != null)
+        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TRY_EXPR__BODY, null, msgs);
+      msgs = basicSetBody(newBody, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TRY_EXPR__BODY, newBody, newBody));
   }
 
   /**
@@ -146,13 +183,47 @@ public class TryExprImpl extends ExpressionImpl implements TryExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getAfter_body()
+  public Expressions getAfter_body()
   {
-    if (after_body == null)
-    {
-      after_body = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.TRY_EXPR__AFTER_BODY);
-    }
     return after_body;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetAfter_body(Expressions newAfter_body, NotificationChain msgs)
+  {
+    Expressions oldAfter_body = after_body;
+    after_body = newAfter_body;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.TRY_EXPR__AFTER_BODY, oldAfter_body, newAfter_body);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAfter_body(Expressions newAfter_body)
+  {
+    if (newAfter_body != after_body)
+    {
+      NotificationChain msgs = null;
+      if (after_body != null)
+        msgs = ((InternalEObject)after_body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TRY_EXPR__AFTER_BODY, null, msgs);
+      if (newAfter_body != null)
+        msgs = ((InternalEObject)newAfter_body).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TRY_EXPR__AFTER_BODY, null, msgs);
+      msgs = basicSetAfter_body(newAfter_body, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TRY_EXPR__AFTER_BODY, newAfter_body, newAfter_body));
   }
 
   /**
@@ -166,13 +237,13 @@ public class TryExprImpl extends ExpressionImpl implements TryExpr
     switch (featureID)
     {
       case ErlangPackage.TRY_EXPR__BODY:
-        return ((InternalEList<?>)getBody()).basicRemove(otherEnd, msgs);
+        return basicSetBody(null, msgs);
       case ErlangPackage.TRY_EXPR__OF_CLAUSES:
         return ((InternalEList<?>)getOf_clauses()).basicRemove(otherEnd, msgs);
       case ErlangPackage.TRY_EXPR__CATCH:
         return ((InternalEList<?>)getCatch()).basicRemove(otherEnd, msgs);
       case ErlangPackage.TRY_EXPR__AFTER_BODY:
-        return ((InternalEList<?>)getAfter_body()).basicRemove(otherEnd, msgs);
+        return basicSetAfter_body(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -211,8 +282,7 @@ public class TryExprImpl extends ExpressionImpl implements TryExpr
     switch (featureID)
     {
       case ErlangPackage.TRY_EXPR__BODY:
-        getBody().clear();
-        getBody().addAll((Collection<? extends Expression>)newValue);
+        setBody((Expressions)newValue);
         return;
       case ErlangPackage.TRY_EXPR__OF_CLAUSES:
         getOf_clauses().clear();
@@ -223,8 +293,7 @@ public class TryExprImpl extends ExpressionImpl implements TryExpr
         getCatch().addAll((Collection<? extends TryClause>)newValue);
         return;
       case ErlangPackage.TRY_EXPR__AFTER_BODY:
-        getAfter_body().clear();
-        getAfter_body().addAll((Collection<? extends Expression>)newValue);
+        setAfter_body((Expressions)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -241,7 +310,7 @@ public class TryExprImpl extends ExpressionImpl implements TryExpr
     switch (featureID)
     {
       case ErlangPackage.TRY_EXPR__BODY:
-        getBody().clear();
+        setBody((Expressions)null);
         return;
       case ErlangPackage.TRY_EXPR__OF_CLAUSES:
         getOf_clauses().clear();
@@ -250,7 +319,7 @@ public class TryExprImpl extends ExpressionImpl implements TryExpr
         getCatch().clear();
         return;
       case ErlangPackage.TRY_EXPR__AFTER_BODY:
-        getAfter_body().clear();
+        setAfter_body((Expressions)null);
         return;
     }
     super.eUnset(featureID);
@@ -267,13 +336,13 @@ public class TryExprImpl extends ExpressionImpl implements TryExpr
     switch (featureID)
     {
       case ErlangPackage.TRY_EXPR__BODY:
-        return body != null && !body.isEmpty();
+        return body != null;
       case ErlangPackage.TRY_EXPR__OF_CLAUSES:
         return of_clauses != null && !of_clauses.isEmpty();
       case ErlangPackage.TRY_EXPR__CATCH:
         return catch_ != null && !catch_.isEmpty();
       case ErlangPackage.TRY_EXPR__AFTER_BODY:
-        return after_body != null && !after_body.isEmpty();
+        return after_body != null;
     }
     return super.eIsSet(featureID);
   }

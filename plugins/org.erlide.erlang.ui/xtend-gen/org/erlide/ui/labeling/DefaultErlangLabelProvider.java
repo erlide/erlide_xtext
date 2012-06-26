@@ -12,6 +12,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.Expression;
+import org.erlide.erlang.Expressions;
 import org.erlide.erlang.Form;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.FunctionClause;
@@ -68,8 +69,9 @@ public class DefaultErlangLabelProvider extends ErlangLabelProvider {
       return "???";
     }
     EList<FunctionClause> _clauses_2 = ele.getClauses();
-    FunctionClause _get = _clauses_2.get(0);
-    final EList<Expression> params = _get.getParams();
+    FunctionClause _head = IterableExtensions.<FunctionClause>head(_clauses_2);
+    Expressions _params = _head.getParams();
+    final EList<Expression> params = _params.getExprs();
     String _name = ele.getName();
     String _plus = (_name + "/");
     Object _xifexpression = null;
@@ -84,8 +86,9 @@ public class DefaultErlangLabelProvider extends ErlangLabelProvider {
   }
   
   public String text(final FunctionClause ele) {
-    EList<Expression> _params = ele.getParams();
-    String _listText = this.getListText(_params);
+    Expressions _params = ele.getParams();
+    EList<Expression> _exprs = _params.getExprs();
+    String _listText = this.getListText(_exprs);
     String _plus = ("(" + _listText);
     return (_plus + ")");
   }

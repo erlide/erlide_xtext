@@ -1739,7 +1739,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (expr=Expression guard=Guard? body+=LExpression body+=LExpression*)
+	 *     (expr=Expression guard=Guard? body=Expressions)
 	 */
 	protected void sequence_CrClause(EObject context, CrClause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1859,8 +1859,8 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	/**
 	 * Constraint:
 	 *     (
-	 *         (target=Expr700_FunCall_1_0_1 (args+=Expression args+=Expression*)? (args2+=Expression args2+=Expression*)?) | 
-	 *         (target=Expr700_FunCall_1_0_1 (args2+=Expression args2+=Expression*)?) | 
+	 *         (target=Expr700_FunCall_1_0_1 args=Expressions? args2=Expressions?) | 
+	 *         (target=Expr700_FunCall_1_0_1 args2=Expressions?) | 
 	 *         target=Expr700_FunCall_1_0_1
 	 *     )
 	 */
@@ -1889,7 +1889,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (body+=LExpression body+=LExpression*)
+	 *     body=Expressions
 	 */
 	protected void sequence_ExprMax(EObject context, BlockExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2000,7 +2000,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (ref=NAME? (params+=Expression params+=Expression*)? guard=Guard? body+=LExpression body+=LExpression*)
+	 *     (ref=NAME? params=Expressions? guard=Guard? body=Expressions)
 	 */
 	protected void sequence_FunctionClause(EObject context, FunctionClause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2027,10 +2027,20 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (guard=Guard body+=LExpression body+=LExpression*)
+	 *     (guard=Guard body=Expressions)
 	 */
 	protected void sequence_IfClause(EObject context, IfClause semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.IF_CLAUSE__GUARD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.IF_CLAUSE__GUARD));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.IF_CLAUSE__BODY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.IF_CLAUSE__BODY));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getIfClauseAccess().getGuardGuardParserRuleCall_0_0(), semanticObject.getGuard());
+		feeder.accept(grammarAccess.getIfClauseAccess().getBodyExpressionsParserRuleCall_2_0(), semanticObject.getBody());
+		feeder.finish();
 	}
 	
 	
@@ -2173,7 +2183,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (macroName=MacroLiteral (args+=Expression args+=Expression*)?)
+	 *     (macroName=MacroLiteral args=Expressions?)
 	 */
 	protected void sequence_MacroCall(EObject context, MacroCall semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2228,7 +2238,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     ((target=PatternExpression_FunCall_1_1_0 (args+=Expression args+=Expression*)?) | target=PatternExpression_FunCall_1_1_0)
+	 *     ((target=PatternExpression_FunCall_1_1_0 args=Expressions?) | target=PatternExpression_FunCall_1_1_0)
 	 */
 	protected void sequence_PatternExpression(EObject context, FunCall semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2255,10 +2265,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         (clauses+=CrClause clauses+=CrClause* (after_expr=Expression after_body+=LExpression after_body+=LExpression*)?) | 
-	 *         (after_expr=Expression after_body+=LExpression after_body+=LExpression*)
-	 *     )
+	 *     ((clauses+=CrClause clauses+=CrClause* (after_expr=Expression after_body=Expressions)?) | (after_expr=Expression after_body=Expressions))
 	 */
 	protected void sequence_ReceiveExpr(EObject context, ReceiveExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2411,7 +2418,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (hdr=NAMEVAR? cond=PatternExpression guard=Guard? body+=LExpression body+=LExpression*)
+	 *     (hdr=NAMEVAR? cond=PatternExpression guard=Guard? body=Expressions)
 	 */
 	protected void sequence_TryClause(EObject context, TryClause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2421,10 +2428,9 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	/**
 	 * Constraint:
 	 *     (
-	 *         body+=LExpression 
-	 *         body+=LExpression* 
+	 *         body=Expressions 
 	 *         (of_clauses+=CrClause of_clauses+=CrClause*)? 
-	 *         ((catch+=TryClause catch+=TryClause* (after_body+=LExpression after_body+=LExpression*)?) | (after_body+=LExpression after_body+=LExpression*))
+	 *         ((catch+=TryClause catch+=TryClause* after_body=Expressions?) | after_body=Expressions)
 	 *     )
 	 */
 	protected void sequence_TryExpr(EObject context, TryExpr semanticObject) {

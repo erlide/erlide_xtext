@@ -141,7 +141,7 @@ class ModelExtensions {
     // Function
     
     def int getArity(Function fun) {
-    	fun.clauses.head?.params?.size
+    	fun.clauses.head?.params?.exprs?.size
     }
     
     def boolean isExported(Function function) {

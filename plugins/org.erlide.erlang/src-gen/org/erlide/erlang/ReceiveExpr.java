@@ -67,19 +67,29 @@ public interface ReceiveExpr extends Expression
   void setAfter_expr(Expression value);
 
   /**
-   * Returns the value of the '<em><b>After body</b></em>' containment reference list.
-   * The list contents are of type {@link org.erlide.erlang.Expression}.
+   * Returns the value of the '<em><b>After body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>After body</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>After body</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>After body</em>' containment reference list.
+   * @return the value of the '<em>After body</em>' containment reference.
+   * @see #setAfter_body(Expressions)
    * @see org.erlide.erlang.ErlangPackage#getReceiveExpr_After_body()
    * @model containment="true"
    * @generated
    */
-  EList<Expression> getAfter_body();
+  Expressions getAfter_body();
+
+  /**
+   * Sets the value of the '{@link org.erlide.erlang.ReceiveExpr#getAfter_body <em>After body</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>After body</em>' containment reference.
+   * @see #getAfter_body()
+   * @generated
+   */
+  void setAfter_body(Expressions value);
 
 } // ReceiveExpr

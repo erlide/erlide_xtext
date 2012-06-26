@@ -2,12 +2,8 @@
  */
 package org.erlide.erlang.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -15,11 +11,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
+import org.erlide.erlang.Expressions;
 import org.erlide.erlang.MacroCall;
 
 /**
@@ -49,14 +43,14 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
   protected Expression macroName;
 
   /**
-   * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
+   * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getArgs()
    * @generated
    * @ordered
    */
-  protected EList<Expression> args;
+  protected Expressions args;
 
   /**
    * <!-- begin-user-doc -->
@@ -132,13 +126,47 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getArgs()
+  public Expressions getArgs()
   {
-    if (args == null)
-    {
-      args = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.MACRO_CALL__ARGS);
-    }
     return args;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetArgs(Expressions newArgs, NotificationChain msgs)
+  {
+    Expressions oldArgs = args;
+    args = newArgs;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO_CALL__ARGS, oldArgs, newArgs);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setArgs(Expressions newArgs)
+  {
+    if (newArgs != args)
+    {
+      NotificationChain msgs = null;
+      if (args != null)
+        msgs = ((InternalEObject)args).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.MACRO_CALL__ARGS, null, msgs);
+      if (newArgs != null)
+        msgs = ((InternalEObject)newArgs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.MACRO_CALL__ARGS, null, msgs);
+      msgs = basicSetArgs(newArgs, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MACRO_CALL__ARGS, newArgs, newArgs));
   }
 
   /**
@@ -154,7 +182,7 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
       case ErlangPackage.MACRO_CALL__MACRO_NAME:
         return basicSetMacroName(null, msgs);
       case ErlangPackage.MACRO_CALL__ARGS:
-        return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
+        return basicSetArgs(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -182,7 +210,6 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -192,8 +219,7 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
         setMacroName((Expression)newValue);
         return;
       case ErlangPackage.MACRO_CALL__ARGS:
-        getArgs().clear();
-        getArgs().addAll((Collection<? extends Expression>)newValue);
+        setArgs((Expressions)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -213,7 +239,7 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
         setMacroName((Expression)null);
         return;
       case ErlangPackage.MACRO_CALL__ARGS:
-        getArgs().clear();
+        setArgs((Expressions)null);
         return;
     }
     super.eUnset(featureID);
@@ -232,7 +258,7 @@ public class MacroCallImpl extends MinimalEObjectImpl.Container implements Macro
       case ErlangPackage.MACRO_CALL__MACRO_NAME:
         return macroName != null;
       case ErlangPackage.MACRO_CALL__ARGS:
-        return args != null && !args.isEmpty();
+        return args != null;
     }
     return super.eIsSet(featureID);
   }

@@ -45,12 +45,12 @@ public class DefaultErlangLabelProvider extends ErlangLabelProvider {
 		if (ele.getClauses() == null || ele.getClauses().size() == 0) {
 			return "???"
 		}
-		val EList<Expression> params = ele.getClauses().get(0).getParams()
+		val EList<Expression> params = ele.clauses.head.params.exprs
 		return ele.getName() + "/" + (if(params == null) "0" else params.size())
 	}
 
 	def String text( FunctionClause ele) {
-		return "(" + getListText(ele.getParams()) + ")"
+		return "(" + getListText(ele.params.exprs) + ")"
 	}
 
 	def String text( EObject ele) {

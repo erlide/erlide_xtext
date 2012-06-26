@@ -117,11 +117,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionClause">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
-        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" eType="#//Expressions"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//Guard"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Expressions"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Guard">
@@ -143,7 +143,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="MacroCall">
     <eStructuralFeatures xsi:type="ecore:EReference" name="macroName" eType="#//Expression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" eType="#//Expressions"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RecordExpr" eSuperTypes="#//Expression">
@@ -185,7 +185,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="IfClause">
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//Guard"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Expressions"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CaseExpr" eSuperTypes="#//Expression">
@@ -197,7 +197,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//Guard"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Expressions"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReceiveExpr" eSuperTypes="#//Expression">
@@ -205,8 +205,8 @@
         eType="#//CrClause" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="after_expr" eType="#//Expression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="after_body" upperBound="-1"
-        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="after_body" eType="#//Expressions"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunExpr" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="clauses" upperBound="-1"
@@ -221,14 +221,14 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TryExpr" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Expressions"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="of_clauses" upperBound="-1"
         eType="#//CrClause" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="catch" upperBound="-1"
         eType="#//TryClause" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="after_body" upperBound="-1"
-        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="after_body" eType="#//Expressions"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TryClause">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hdr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -236,7 +236,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//Guard"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Expressions"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ErlList" eSuperTypes="#//Expression">
@@ -390,10 +390,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="FunCall" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Expression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" eType="#//Expressions"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="args2" upperBound="-1"
-        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args2" eType="#//Expressions"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RemoteTarget" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="module" eType="#//Expression"
@@ -402,7 +402,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BlockExpr" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Expressions"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ErlChar" eSuperTypes="#//Expression">

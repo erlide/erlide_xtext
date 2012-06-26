@@ -1075,7 +1075,7 @@ public interface ErlangPackage extends EPackage
   int FUNCTION_CLAUSE__REF = 0;
 
   /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * The feature id for the '<em><b>Params</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1093,7 +1093,7 @@ public interface ErlangPackage extends EPackage
   int FUNCTION_CLAUSE__GUARD = 2;
 
   /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference list.
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1241,7 +1241,7 @@ public interface ErlangPackage extends EPackage
   int MACRO_CALL__MACRO_NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * The feature id for the '<em><b>Args</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1718,7 +1718,7 @@ public interface ErlangPackage extends EPackage
   int IF_CLAUSE__GUARD = 0;
 
   /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference list.
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1828,7 +1828,7 @@ public interface ErlangPackage extends EPackage
   int CR_CLAUSE__GUARD = 1;
 
   /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference list.
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1910,7 +1910,7 @@ public interface ErlangPackage extends EPackage
   int RECEIVE_EXPR__AFTER_EXPR = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>After body</b></em>' containment reference list.
+   * The feature id for the '<em><b>After body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2129,7 +2129,7 @@ public interface ErlangPackage extends EPackage
   int TRY_EXPR__MORE = EXPRESSION__MORE;
 
   /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference list.
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2156,7 +2156,7 @@ public interface ErlangPackage extends EPackage
   int TRY_EXPR__CATCH = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>After body</b></em>' containment reference list.
+   * The feature id for the '<em><b>After body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2211,7 +2211,7 @@ public interface ErlangPackage extends EPackage
   int TRY_CLAUSE__GUARD = 2;
 
   /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference list.
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -3827,7 +3827,7 @@ public interface ErlangPackage extends EPackage
   int FUN_CALL__TARGET = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * The feature id for the '<em><b>Args</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -3836,7 +3836,7 @@ public interface ErlangPackage extends EPackage
   int FUN_CALL__ARGS = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Args2</b></em>' containment reference list.
+   * The feature id for the '<em><b>Args2</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -3973,7 +3973,7 @@ public interface ErlangPackage extends EPackage
   int BLOCK_EXPR__MORE = EXPRESSION__MORE;
 
   /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference list.
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -5438,10 +5438,10 @@ public interface ErlangPackage extends EPackage
   EAttribute getFunctionClause_Ref();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.FunctionClause#getParams <em>Params</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunctionClause#getParams <em>Params</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Params</em>'.
+   * @return the meta object for the containment reference '<em>Params</em>'.
    * @see org.erlide.erlang.FunctionClause#getParams()
    * @see #getFunctionClause()
    * @generated
@@ -5460,10 +5460,10 @@ public interface ErlangPackage extends EPackage
   EReference getFunctionClause_Guard();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.FunctionClause#getBody <em>Body</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunctionClause#getBody <em>Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Body</em>'.
+   * @return the meta object for the containment reference '<em>Body</em>'.
    * @see org.erlide.erlang.FunctionClause#getBody()
    * @see #getFunctionClause()
    * @generated
@@ -5588,10 +5588,10 @@ public interface ErlangPackage extends EPackage
   EReference getMacroCall_MacroName();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.MacroCall#getArgs <em>Args</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.MacroCall#getArgs <em>Args</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Args</em>'.
+   * @return the meta object for the containment reference '<em>Args</em>'.
    * @see org.erlide.erlang.MacroCall#getArgs()
    * @see #getMacroCall()
    * @generated
@@ -5832,10 +5832,10 @@ public interface ErlangPackage extends EPackage
   EReference getIfClause_Guard();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.IfClause#getBody <em>Body</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.IfClause#getBody <em>Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Body</em>'.
+   * @return the meta object for the containment reference '<em>Body</em>'.
    * @see org.erlide.erlang.IfClause#getBody()
    * @see #getIfClause()
    * @generated
@@ -5896,10 +5896,10 @@ public interface ErlangPackage extends EPackage
   EReference getCrClause_Guard();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.CrClause#getBody <em>Body</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.CrClause#getBody <em>Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Body</em>'.
+   * @return the meta object for the containment reference '<em>Body</em>'.
    * @see org.erlide.erlang.CrClause#getBody()
    * @see #getCrClause()
    * @generated
@@ -5939,10 +5939,10 @@ public interface ErlangPackage extends EPackage
   EReference getReceiveExpr_After_expr();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.ReceiveExpr#getAfter_body <em>After body</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.ReceiveExpr#getAfter_body <em>After body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>After body</em>'.
+   * @return the meta object for the containment reference '<em>After body</em>'.
    * @see org.erlide.erlang.ReceiveExpr#getAfter_body()
    * @see #getReceiveExpr()
    * @generated
@@ -6024,10 +6024,10 @@ public interface ErlangPackage extends EPackage
   EClass getTryExpr();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.TryExpr#getBody <em>Body</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.TryExpr#getBody <em>Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Body</em>'.
+   * @return the meta object for the containment reference '<em>Body</em>'.
    * @see org.erlide.erlang.TryExpr#getBody()
    * @see #getTryExpr()
    * @generated
@@ -6057,10 +6057,10 @@ public interface ErlangPackage extends EPackage
   EReference getTryExpr_Catch();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.TryExpr#getAfter_body <em>After body</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.TryExpr#getAfter_body <em>After body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>After body</em>'.
+   * @return the meta object for the containment reference '<em>After body</em>'.
    * @see org.erlide.erlang.TryExpr#getAfter_body()
    * @see #getTryExpr()
    * @generated
@@ -6111,10 +6111,10 @@ public interface ErlangPackage extends EPackage
   EReference getTryClause_Guard();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.TryClause#getBody <em>Body</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.TryClause#getBody <em>Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Body</em>'.
+   * @return the meta object for the containment reference '<em>Body</em>'.
    * @see org.erlide.erlang.TryClause#getBody()
    * @see #getTryClause()
    * @generated
@@ -7069,10 +7069,10 @@ public interface ErlangPackage extends EPackage
   EReference getFunCall_Target();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.FunCall#getArgs <em>Args</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunCall#getArgs <em>Args</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Args</em>'.
+   * @return the meta object for the containment reference '<em>Args</em>'.
    * @see org.erlide.erlang.FunCall#getArgs()
    * @see #getFunCall()
    * @generated
@@ -7080,10 +7080,10 @@ public interface ErlangPackage extends EPackage
   EReference getFunCall_Args();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.FunCall#getArgs2 <em>Args2</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunCall#getArgs2 <em>Args2</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Args2</em>'.
+   * @return the meta object for the containment reference '<em>Args2</em>'.
    * @see org.erlide.erlang.FunCall#getArgs2()
    * @see #getFunCall()
    * @generated
@@ -7133,10 +7133,10 @@ public interface ErlangPackage extends EPackage
   EClass getBlockExpr();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.BlockExpr#getBody <em>Body</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.BlockExpr#getBody <em>Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Body</em>'.
+   * @return the meta object for the containment reference '<em>Body</em>'.
    * @see org.erlide.erlang.BlockExpr#getBody()
    * @see #getBlockExpr()
    * @generated
@@ -8111,7 +8111,7 @@ public interface ErlangPackage extends EPackage
     EAttribute FUNCTION_CLAUSE__REF = eINSTANCE.getFunctionClause_Ref();
 
     /**
-     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Params</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8127,7 +8127,7 @@ public interface ErlangPackage extends EPackage
     EReference FUNCTION_CLAUSE__GUARD = eINSTANCE.getFunctionClause_Guard();
 
     /**
-     * The meta object literal for the '<em><b>Body</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8231,7 +8231,7 @@ public interface ErlangPackage extends EPackage
     EReference MACRO_CALL__MACRO_NAME = eINSTANCE.getMacroCall_MacroName();
 
     /**
-     * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Args</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8433,7 +8433,7 @@ public interface ErlangPackage extends EPackage
     EReference IF_CLAUSE__GUARD = eINSTANCE.getIfClause_Guard();
 
     /**
-     * The meta object literal for the '<em><b>Body</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8485,7 +8485,7 @@ public interface ErlangPackage extends EPackage
     EReference CR_CLAUSE__GUARD = eINSTANCE.getCrClause_Guard();
 
     /**
-     * The meta object literal for the '<em><b>Body</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8519,7 +8519,7 @@ public interface ErlangPackage extends EPackage
     EReference RECEIVE_EXPR__AFTER_EXPR = eINSTANCE.getReceiveExpr_After_expr();
 
     /**
-     * The meta object literal for the '<em><b>After body</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>After body</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8589,7 +8589,7 @@ public interface ErlangPackage extends EPackage
     EClass TRY_EXPR = eINSTANCE.getTryExpr();
 
     /**
-     * The meta object literal for the '<em><b>Body</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8613,7 +8613,7 @@ public interface ErlangPackage extends EPackage
     EReference TRY_EXPR__CATCH = eINSTANCE.getTryExpr_Catch();
 
     /**
-     * The meta object literal for the '<em><b>After body</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>After body</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8655,7 +8655,7 @@ public interface ErlangPackage extends EPackage
     EReference TRY_CLAUSE__GUARD = eINSTANCE.getTryClause_Guard();
 
     /**
-     * The meta object literal for the '<em><b>Body</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -9439,7 +9439,7 @@ public interface ErlangPackage extends EPackage
     EReference FUN_CALL__TARGET = eINSTANCE.getFunCall_Target();
 
     /**
-     * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Args</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -9447,7 +9447,7 @@ public interface ErlangPackage extends EPackage
     EReference FUN_CALL__ARGS = eINSTANCE.getFunCall_Args();
 
     /**
-     * The meta object literal for the '<em><b>Args2</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Args2</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -9491,7 +9491,7 @@ public interface ErlangPackage extends EPackage
     EClass BLOCK_EXPR = eINSTANCE.getBlockExpr();
 
     /**
-     * The meta object literal for the '<em><b>Body</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

@@ -18,6 +18,7 @@ import org.erlide.erlang.Atom;
 import org.erlide.erlang.AtomRefTarget;
 import org.erlide.erlang.ErlangPackage.Literals;
 import org.erlide.erlang.Expression;
+import org.erlide.erlang.Expressions;
 import org.erlide.erlang.FunCall;
 import org.erlide.erlang.FunRef;
 import org.erlide.erlang.ModelExtensions;
@@ -35,11 +36,11 @@ public class ErlangLinkingHelper {
   @Inject
   private ResourceDescriptionsProvider indexProvider;
   
-  private ErlangLinkCategory _classify(final EObject obj) {
+  protected ErlangLinkCategory _classify(final EObject obj) {
     return ErlangLinkCategory.NONE;
   }
   
-  private ErlangLinkCategory _classify(final Atom obj) {
+  protected ErlangLinkCategory _classify(final Atom obj) {
     EObject _eContainer = obj.eContainer();
     ErlangLinkCategory _classifyAtom = this.classifyAtom(obj, _eContainer);
     return _classifyAtom;
@@ -158,8 +159,9 @@ public class ErlangLinkingHelper {
         boolean _equals_1 = Objects.equal(atom, _function_1);
         if (_equals_1) {
           EObject _eContainer = parent.eContainer();
-          EList<Expression> _args = ((FunCall) _eContainer).getArgs();
-          final int arity = _args.size();
+          Expressions _args = ((FunCall) _eContainer).getArgs();
+          EList<Expression> _exprs = _args.getExprs();
+          final int arity = _exprs.size();
           Expression _module_2 = parent.getModule();
           String _sourceText_1 = this._modelExtensions.getSourceText(_module_2);
           Expression _function_2 = parent.getFunction();
@@ -187,8 +189,9 @@ public class ErlangLinkingHelper {
     Module _module = this._modelExtensions.getModule(parent);
     Expression _target = parent.getTarget();
     String _sourceText = this._modelExtensions.getSourceText(_target);
-    EList<Expression> _args = parent.getArgs();
-    int _size = _args.size();
+    Expressions _args = parent.getArgs();
+    EList<Expression> _exprs = _args.getExprs();
+    int _size = _exprs.size();
     return this._modelExtensions.getFunction(_module, _sourceText, _size);
   }
   
@@ -211,7 +214,7 @@ public class ErlangLinkingHelper {
     }
   }
   
-  private ErlangLinkCategory classify(final EObject obj) {
+  public ErlangLinkCategory classify(final EObject obj) {
     if (obj instanceof Atom) {
       return _classify((Atom)obj);
     } else if (obj != null) {

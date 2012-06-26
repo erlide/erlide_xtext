@@ -21,10 +21,10 @@ class ErlangLinkingHelper {
     @Inject
     ResourceDescriptionsProvider indexProvider
 
-	def private dispatch ErlangLinkCategory classify(EObject obj) {
+	def dispatch ErlangLinkCategory classify(EObject obj) {
 		ErlangLinkCategory::NONE
 	} 
-	def private dispatch ErlangLinkCategory classify(Atom obj) {
+	def dispatch ErlangLinkCategory classify(Atom obj) {
 		classifyAtom(obj, obj.eContainer)
 	} 
 
@@ -90,7 +90,7 @@ class ErlangLinkingHelper {
 			} 
 			if(parent.function instanceof Atom) {
 				if(atom==parent.function) {
-					val arity = (parent.eContainer as FunCall).args.size
+					val arity = (parent.eContainer as FunCall).args.exprs.size
 					val qname = QualifiedName::create(parent.module.sourceText, parent.function.sourceText+"/"+arity)
 					val rfun = index.getExportedObjects(ErlangPackage$Literals::FUNCTION, qname, false)
 					if(!rfun.empty) 
@@ -102,7 +102,7 @@ class ErlangLinkingHelper {
 		return null
 	}
 	def private dispatch AtomRefTarget getAtomReferenceFor(FunCall parent, Atom atom) {
-		return parent.module.getFunction(parent.target.sourceText, parent.args.size)
+		return parent.module.getFunction(parent.target.sourceText, parent.args.exprs.size)
 	}
 	def private dispatch AtomRefTarget getAtomReferenceFor(FunRef parent, Atom atom) {
 		val arity = parent.arity_.sourceText

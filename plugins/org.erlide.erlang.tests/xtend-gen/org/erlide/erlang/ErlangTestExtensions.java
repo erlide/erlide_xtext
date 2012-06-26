@@ -19,4 +19,9 @@ public class ErlangTestExtensions {
     EObject _objectAtOffset = this.modelHelper.getObjectAtOffset(_key, (_get).intValue());
     return _objectAtOffset;
   }
+  
+  public EObject getObjectAtMarker(final Pair<Module,List<Integer>> src) {
+    EObject _objectAtMarker = this.getObjectAtMarker(src, 0);
+    return _objectAtMarker;
+  }
 }

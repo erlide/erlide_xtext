@@ -30,7 +30,7 @@ class ElementExtensionsTest {
         ''')
         val ff = module.getFunction("ff", 0)
         assertThat(ff.module, is(module))
-        val fexpr = ff.clauses.head.body.head
+        val fexpr = ff.clauses.head.body.exprs.head
         assertThat(fexpr.module, is(module))
     }
 

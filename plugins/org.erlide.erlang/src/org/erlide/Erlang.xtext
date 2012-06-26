@@ -168,9 +168,9 @@ Function:
 
 // validate that all names for a function are identical
 FunctionClause:
-	  ref=NAME? '(' (params+=Expression (',' params+=Expression)*)? ')' 
+	  ref=NAME? '(' params=Expressions? ')' 
 	  ('when'? guard=Guard)? // no 'when' if guard is a macro
-	  '->' body+=LExpression (',' body+=LExpression)*
+	  '->' body=Expressions
 ;
 
 Guard:
@@ -228,8 +228,8 @@ Expr700 returns Expression:
 	Expr800 (	 
 			// TODO can this be expressed better? 
 			// we can have ?MACRO(args)(args2)
-		  '(' {FunCall.target=current} (args+=Expression (',' args+=Expression)*)? ')' 
-		                                ('(' (args2+=Expression (',' args2+=Expression)*)? ')')?
+		  '(' {FunCall.target=current} args=Expressions? ')' 
+		                                ('(' args2=Expressions? ')')?
 		| ('#' {RecordExpr.ref=current} record=RecordExpr )+ 
 	)? 
 ;
@@ -241,7 +241,7 @@ Expr800 returns Expression: // non-associative
 ExprMax returns Expression:
 	  TermExpression
 	| '(' Expression ')' 
-	| {BlockExpr} 'begin' body+=LExpression (',' body+=LExpression)* 'end' 
+	| {BlockExpr} 'begin' body=Expressions 'end' 
 	| IfExpr 
 	| CaseExpr 
 	| ReceiveExpr 
@@ -263,7 +263,7 @@ TermExpression returns Expression:
 ;
 
 MacroCall:
-	macroName=MacroLiteral (=> '(' (args+=Expression (',' args+=Expression)*)? ')')?  
+	macroName=MacroLiteral (=> '(' args=Expressions? ')')?  
 ;
 
 RecordExpr:
@@ -338,7 +338,7 @@ IntegerLiteral returns Expression:
 PatternExpression returns Expression:
 	TermExpression (
 		({MatchExpr.opLeft=current} op='=' opRight=TermExpression)+
-	  | ({FunCall.target=current} '(' (args+=Expression (',' args+=Expression)*)? ')') 
+	  | ({FunCall.target=current} '(' args=Expressions? ')') 
 	)?
 ;
 
@@ -347,7 +347,7 @@ IfExpr:
 ;
 
 IfClause:
-	guard=Guard '->' body+=LExpression (',' body+=LExpression)*
+	guard=Guard '->' body=Expressions
 ;
 
 CaseExpr:
@@ -355,14 +355,14 @@ CaseExpr:
 ;
 
 CrClause:
-	expr=Expression ('when' guard=Guard)? '->' body+=LExpression (',' body+=LExpression)*
+	expr=Expression ('when' guard=Guard)? '->' body=Expressions
 ;
 
 ReceiveExpr:
 	'receive' 
 	( clauses+=CrClause (';' clauses+=CrClause)*
-		('after' after_expr=Expression '->' after_body+=LExpression (',' after_body+=LExpression)*)? 
-	  | 'after' after_expr=Expression '->' after_body+=LExpression (',' after_body+=LExpression)*
+		('after' after_expr=Expression '->' after_body=Expressions)? 
+	  | 'after' after_expr=Expression '->' after_body=Expressions 
 	) 
 	'end'
 ;
@@ -380,17 +380,17 @@ InlineFun returns FunExpr:
 ;
 
 TryExpr:
-	'try' body+=LExpression (',' body+=LExpression)* 
+	'try' body=Expressions  
 	('of' of_clauses+=CrClause (';' of_clauses+=CrClause)*)? 
-	( 'catch' catch+=TryClause (';' catch+=TryClause)* ('after' after_body+=LExpression (',' after_body+=LExpression)*)? 
-	  | 'after' after_body+=LExpression (',' after_body+=LExpression)*
+	( 'catch' catch+=TryClause (';' catch+=TryClause)* ('after' after_body=Expressions)? 
+	  | 'after' after_body=Expressions
     )   
 	'end'
 ;
 
 TryClause:
 	(=> (hdr=NAMEVAR ':')?) cond=PatternExpression 	
-	('when' guard=Guard)? '->' body+=LExpression (',' body+=LExpression)*
+	('when' guard=Guard)? '->' body=Expressions
 ;
 
 List returns ErlList:
