@@ -213,11 +213,11 @@
         eType="#//FunctionClause" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunRef" eSuperTypes="#//FunExpr">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="module_" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="module" eType="#//Expression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="function_" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="function" eType="#//Expression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="arity_" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arity" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TryExpr" eSuperTypes="#//Expression">

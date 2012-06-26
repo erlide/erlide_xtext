@@ -29,9 +29,9 @@ class ElementExtensionsTest {
             gg() -> ok.
         ''')
         val ff = module.getFunction("ff", 0)
-        assertThat(ff.module, is(module))
+        assertThat(ff.owningModule, is(module))
         val fexpr = ff.clauses.head.body.exprs.head
-        assertThat(fexpr.module, is(module))
+        assertThat(fexpr.owningModule, is(module))
     }
 
 }

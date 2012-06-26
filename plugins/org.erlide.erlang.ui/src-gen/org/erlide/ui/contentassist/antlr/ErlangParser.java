@@ -446,9 +446,9 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReceiveExprAccess().getAfter_bodyAssignment_1_0_2_3(), "rule__ReceiveExpr__After_bodyAssignment_1_0_2_3");
 					put(grammarAccess.getReceiveExprAccess().getAfter_exprAssignment_1_1_1(), "rule__ReceiveExpr__After_exprAssignment_1_1_1");
 					put(grammarAccess.getReceiveExprAccess().getAfter_bodyAssignment_1_1_3(), "rule__ReceiveExpr__After_bodyAssignment_1_1_3");
-					put(grammarAccess.getFunRefAccess().getModule_Assignment_0_0(), "rule__FunRef__Module_Assignment_0_0");
-					put(grammarAccess.getFunRefAccess().getFunction_Assignment_1(), "rule__FunRef__Function_Assignment_1");
-					put(grammarAccess.getFunRefAccess().getArity_Assignment_3(), "rule__FunRef__Arity_Assignment_3");
+					put(grammarAccess.getFunRefAccess().getModuleAssignment_0_0(), "rule__FunRef__ModuleAssignment_0_0");
+					put(grammarAccess.getFunRefAccess().getFunctionAssignment_1(), "rule__FunRef__FunctionAssignment_1");
+					put(grammarAccess.getFunRefAccess().getArityAssignment_3(), "rule__FunRef__ArityAssignment_3");
 					put(grammarAccess.getInlineFunAccess().getClausesAssignment_0(), "rule__InlineFun__ClausesAssignment_0");
 					put(grammarAccess.getInlineFunAccess().getClausesAssignment_1_1(), "rule__InlineFun__ClausesAssignment_1_1");
 					put(grammarAccess.getTryExprAccess().getBodyAssignment_1(), "rule__TryExpr__BodyAssignment_1");
@@ -486,9 +486,9 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLCExprAccess().getO1Assignment_0(), "rule__LCExpr__O1Assignment_0");
 					put(grammarAccess.getLCExprAccess().getOpAssignment_1_0(), "rule__LCExpr__OpAssignment_1_0");
 					put(grammarAccess.getLCExprAccess().getO2Assignment_1_1(), "rule__LCExpr__O2Assignment_1_1");
-					put(grammarAccess.getSpecFunAccess().getModule_Assignment_0_0(), "rule__SpecFun__Module_Assignment_0_0");
-					put(grammarAccess.getSpecFunAccess().getFunction_Assignment_1(), "rule__SpecFun__Function_Assignment_1");
-					put(grammarAccess.getSpecFunAccess().getArity_Assignment_2_1(), "rule__SpecFun__Arity_Assignment_2_1");
+					put(grammarAccess.getSpecFunAccess().getModuleAssignment_0_0(), "rule__SpecFun__ModuleAssignment_0_0");
+					put(grammarAccess.getSpecFunAccess().getFunctionAssignment_1(), "rule__SpecFun__FunctionAssignment_1");
+					put(grammarAccess.getSpecFunAccess().getArityAssignment_2_1(), "rule__SpecFun__ArityAssignment_2_1");
 					put(grammarAccess.getTypeSigAccess().getDeclAssignment_0(), "rule__TypeSig__DeclAssignment_0");
 					put(grammarAccess.getTypeSigAccess().getGuardsAssignment_1_1(), "rule__TypeSig__GuardsAssignment_1_1");
 					put(grammarAccess.getFunTypeAccess().getArgsAssignment_1_0(), "rule__FunType__ArgsAssignment_1_0");

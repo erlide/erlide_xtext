@@ -47777,26 +47777,26 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunRef__Group__1__Impl"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16544:1: rule__FunRef__Group__1__Impl : ( ( rule__FunRef__Function_Assignment_1 ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16544:1: rule__FunRef__Group__1__Impl : ( ( rule__FunRef__FunctionAssignment_1 ) ) ;
     public final void rule__FunRef__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16548:1: ( ( ( rule__FunRef__Function_Assignment_1 ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16549:1: ( ( rule__FunRef__Function_Assignment_1 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16548:1: ( ( ( rule__FunRef__FunctionAssignment_1 ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16549:1: ( ( rule__FunRef__FunctionAssignment_1 ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16549:1: ( ( rule__FunRef__Function_Assignment_1 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16550:1: ( rule__FunRef__Function_Assignment_1 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16549:1: ( ( rule__FunRef__FunctionAssignment_1 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16550:1: ( rule__FunRef__FunctionAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFunRefAccess().getFunction_Assignment_1()); 
+               before(grammarAccess.getFunRefAccess().getFunctionAssignment_1()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16551:1: ( rule__FunRef__Function_Assignment_1 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16551:2: rule__FunRef__Function_Assignment_1
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16551:1: ( rule__FunRef__FunctionAssignment_1 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16551:2: rule__FunRef__FunctionAssignment_1
             {
-            pushFollow(FOLLOW_rule__FunRef__Function_Assignment_1_in_rule__FunRef__Group__1__Impl33657);
-            rule__FunRef__Function_Assignment_1();
+            pushFollow(FOLLOW_rule__FunRef__FunctionAssignment_1_in_rule__FunRef__Group__1__Impl33657);
+            rule__FunRef__FunctionAssignment_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -47804,7 +47804,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFunRefAccess().getFunction_Assignment_1()); 
+               after(grammarAccess.getFunRefAccess().getFunctionAssignment_1()); 
             }
 
             }
@@ -47940,26 +47940,26 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunRef__Group__3__Impl"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16603:1: rule__FunRef__Group__3__Impl : ( ( rule__FunRef__Arity_Assignment_3 ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16603:1: rule__FunRef__Group__3__Impl : ( ( rule__FunRef__ArityAssignment_3 ) ) ;
     public final void rule__FunRef__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16607:1: ( ( ( rule__FunRef__Arity_Assignment_3 ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16608:1: ( ( rule__FunRef__Arity_Assignment_3 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16607:1: ( ( ( rule__FunRef__ArityAssignment_3 ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16608:1: ( ( rule__FunRef__ArityAssignment_3 ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16608:1: ( ( rule__FunRef__Arity_Assignment_3 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16609:1: ( rule__FunRef__Arity_Assignment_3 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16608:1: ( ( rule__FunRef__ArityAssignment_3 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16609:1: ( rule__FunRef__ArityAssignment_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFunRefAccess().getArity_Assignment_3()); 
+               before(grammarAccess.getFunRefAccess().getArityAssignment_3()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16610:1: ( rule__FunRef__Arity_Assignment_3 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16610:2: rule__FunRef__Arity_Assignment_3
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16610:1: ( rule__FunRef__ArityAssignment_3 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16610:2: rule__FunRef__ArityAssignment_3
             {
-            pushFollow(FOLLOW_rule__FunRef__Arity_Assignment_3_in_rule__FunRef__Group__3__Impl33776);
-            rule__FunRef__Arity_Assignment_3();
+            pushFollow(FOLLOW_rule__FunRef__ArityAssignment_3_in_rule__FunRef__Group__3__Impl33776);
+            rule__FunRef__ArityAssignment_3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -47967,7 +47967,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFunRefAccess().getArity_Assignment_3()); 
+               after(grammarAccess.getFunRefAccess().getArityAssignment_3()); 
             }
 
             }
@@ -48029,26 +48029,26 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunRef__Group_0__0__Impl"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16640:1: rule__FunRef__Group_0__0__Impl : ( ( rule__FunRef__Module_Assignment_0_0 ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16640:1: rule__FunRef__Group_0__0__Impl : ( ( rule__FunRef__ModuleAssignment_0_0 ) ) ;
     public final void rule__FunRef__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16644:1: ( ( ( rule__FunRef__Module_Assignment_0_0 ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16645:1: ( ( rule__FunRef__Module_Assignment_0_0 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16644:1: ( ( ( rule__FunRef__ModuleAssignment_0_0 ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16645:1: ( ( rule__FunRef__ModuleAssignment_0_0 ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16645:1: ( ( rule__FunRef__Module_Assignment_0_0 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16646:1: ( rule__FunRef__Module_Assignment_0_0 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16645:1: ( ( rule__FunRef__ModuleAssignment_0_0 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16646:1: ( rule__FunRef__ModuleAssignment_0_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFunRefAccess().getModule_Assignment_0_0()); 
+               before(grammarAccess.getFunRefAccess().getModuleAssignment_0_0()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16647:1: ( rule__FunRef__Module_Assignment_0_0 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16647:2: rule__FunRef__Module_Assignment_0_0
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16647:1: ( rule__FunRef__ModuleAssignment_0_0 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:16647:2: rule__FunRef__ModuleAssignment_0_0
             {
-            pushFollow(FOLLOW_rule__FunRef__Module_Assignment_0_0_in_rule__FunRef__Group_0__0__Impl33844);
-            rule__FunRef__Module_Assignment_0_0();
+            pushFollow(FOLLOW_rule__FunRef__ModuleAssignment_0_0_in_rule__FunRef__Group_0__0__Impl33844);
+            rule__FunRef__ModuleAssignment_0_0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -48056,7 +48056,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFunRefAccess().getModule_Assignment_0_0()); 
+               after(grammarAccess.getFunRefAccess().getModuleAssignment_0_0()); 
             }
 
             }
@@ -56976,26 +56976,26 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__SpecFun__Group__1__Impl"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19899:1: rule__SpecFun__Group__1__Impl : ( ( rule__SpecFun__Function_Assignment_1 ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19899:1: rule__SpecFun__Group__1__Impl : ( ( rule__SpecFun__FunctionAssignment_1 ) ) ;
     public final void rule__SpecFun__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19903:1: ( ( ( rule__SpecFun__Function_Assignment_1 ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19904:1: ( ( rule__SpecFun__Function_Assignment_1 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19903:1: ( ( ( rule__SpecFun__FunctionAssignment_1 ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19904:1: ( ( rule__SpecFun__FunctionAssignment_1 ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19904:1: ( ( rule__SpecFun__Function_Assignment_1 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19905:1: ( rule__SpecFun__Function_Assignment_1 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19904:1: ( ( rule__SpecFun__FunctionAssignment_1 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19905:1: ( rule__SpecFun__FunctionAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecFunAccess().getFunction_Assignment_1()); 
+               before(grammarAccess.getSpecFunAccess().getFunctionAssignment_1()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19906:1: ( rule__SpecFun__Function_Assignment_1 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19906:2: rule__SpecFun__Function_Assignment_1
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19906:1: ( rule__SpecFun__FunctionAssignment_1 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19906:2: rule__SpecFun__FunctionAssignment_1
             {
-            pushFollow(FOLLOW_rule__SpecFun__Function_Assignment_1_in_rule__SpecFun__Group__1__Impl40270);
-            rule__SpecFun__Function_Assignment_1();
+            pushFollow(FOLLOW_rule__SpecFun__FunctionAssignment_1_in_rule__SpecFun__Group__1__Impl40270);
+            rule__SpecFun__FunctionAssignment_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -57003,7 +57003,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecFunAccess().getFunction_Assignment_1()); 
+               after(grammarAccess.getSpecFunAccess().getFunctionAssignment_1()); 
             }
 
             }
@@ -57160,26 +57160,26 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__SpecFun__Group_0__0__Impl"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19962:1: rule__SpecFun__Group_0__0__Impl : ( ( rule__SpecFun__Module_Assignment_0_0 ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19962:1: rule__SpecFun__Group_0__0__Impl : ( ( rule__SpecFun__ModuleAssignment_0_0 ) ) ;
     public final void rule__SpecFun__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19966:1: ( ( ( rule__SpecFun__Module_Assignment_0_0 ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19967:1: ( ( rule__SpecFun__Module_Assignment_0_0 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19966:1: ( ( ( rule__SpecFun__ModuleAssignment_0_0 ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19967:1: ( ( rule__SpecFun__ModuleAssignment_0_0 ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19967:1: ( ( rule__SpecFun__Module_Assignment_0_0 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19968:1: ( rule__SpecFun__Module_Assignment_0_0 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19967:1: ( ( rule__SpecFun__ModuleAssignment_0_0 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19968:1: ( rule__SpecFun__ModuleAssignment_0_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecFunAccess().getModule_Assignment_0_0()); 
+               before(grammarAccess.getSpecFunAccess().getModuleAssignment_0_0()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19969:1: ( rule__SpecFun__Module_Assignment_0_0 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19969:2: rule__SpecFun__Module_Assignment_0_0
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19969:1: ( rule__SpecFun__ModuleAssignment_0_0 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:19969:2: rule__SpecFun__ModuleAssignment_0_0
             {
-            pushFollow(FOLLOW_rule__SpecFun__Module_Assignment_0_0_in_rule__SpecFun__Group_0__0__Impl40394);
-            rule__SpecFun__Module_Assignment_0_0();
+            pushFollow(FOLLOW_rule__SpecFun__ModuleAssignment_0_0_in_rule__SpecFun__Group_0__0__Impl40394);
+            rule__SpecFun__ModuleAssignment_0_0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -57187,7 +57187,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecFunAccess().getModule_Assignment_0_0()); 
+               after(grammarAccess.getSpecFunAccess().getModuleAssignment_0_0()); 
             }
 
             }
@@ -57402,26 +57402,26 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__SpecFun__Group_2__1__Impl"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20056:1: rule__SpecFun__Group_2__1__Impl : ( ( rule__SpecFun__Arity_Assignment_2_1 ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20056:1: rule__SpecFun__Group_2__1__Impl : ( ( rule__SpecFun__ArityAssignment_2_1 ) ) ;
     public final void rule__SpecFun__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20060:1: ( ( ( rule__SpecFun__Arity_Assignment_2_1 ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20061:1: ( ( rule__SpecFun__Arity_Assignment_2_1 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20060:1: ( ( ( rule__SpecFun__ArityAssignment_2_1 ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20061:1: ( ( rule__SpecFun__ArityAssignment_2_1 ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20061:1: ( ( rule__SpecFun__Arity_Assignment_2_1 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20062:1: ( rule__SpecFun__Arity_Assignment_2_1 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20061:1: ( ( rule__SpecFun__ArityAssignment_2_1 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20062:1: ( rule__SpecFun__ArityAssignment_2_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecFunAccess().getArity_Assignment_2_1()); 
+               before(grammarAccess.getSpecFunAccess().getArityAssignment_2_1()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20063:1: ( rule__SpecFun__Arity_Assignment_2_1 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20063:2: rule__SpecFun__Arity_Assignment_2_1
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20063:1: ( rule__SpecFun__ArityAssignment_2_1 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:20063:2: rule__SpecFun__ArityAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__SpecFun__Arity_Assignment_2_1_in_rule__SpecFun__Group_2__1__Impl40579);
-            rule__SpecFun__Arity_Assignment_2_1();
+            pushFollow(FOLLOW_rule__SpecFun__ArityAssignment_2_1_in_rule__SpecFun__Group_2__1__Impl40579);
+            rule__SpecFun__ArityAssignment_2_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -57429,7 +57429,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecFunAccess().getArity_Assignment_2_1()); 
+               after(grammarAccess.getSpecFunAccess().getArityAssignment_2_1()); 
             }
 
             }
@@ -75782,9 +75782,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__ReceiveExpr__After_bodyAssignment_1_1_3"
 
 
-    // $ANTLR start "rule__FunRef__Module_Assignment_0_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26689:1: rule__FunRef__Module_Assignment_0_0 : ( ruleAtomVarMacro ) ;
-    public final void rule__FunRef__Module_Assignment_0_0() throws RecognitionException {
+    // $ANTLR start "rule__FunRef__ModuleAssignment_0_0"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26689:1: rule__FunRef__ModuleAssignment_0_0 : ( ruleAtomVarMacro ) ;
+    public final void rule__FunRef__ModuleAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -75796,15 +75796,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26695:1: ruleAtomVarMacro
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFunRefAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); 
+               before(grammarAccess.getFunRefAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__FunRef__Module_Assignment_0_053775);
+            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__FunRef__ModuleAssignment_0_053775);
             ruleAtomVarMacro();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFunRefAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); 
+               after(grammarAccess.getFunRefAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); 
             }
 
             }
@@ -75824,12 +75824,12 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__FunRef__Module_Assignment_0_0"
+    // $ANTLR end "rule__FunRef__ModuleAssignment_0_0"
 
 
-    // $ANTLR start "rule__FunRef__Function_Assignment_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26704:1: rule__FunRef__Function_Assignment_1 : ( ruleAtomVarMacro ) ;
-    public final void rule__FunRef__Function_Assignment_1() throws RecognitionException {
+    // $ANTLR start "rule__FunRef__FunctionAssignment_1"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26704:1: rule__FunRef__FunctionAssignment_1 : ( ruleAtomVarMacro ) ;
+    public final void rule__FunRef__FunctionAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -75841,15 +75841,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26710:1: ruleAtomVarMacro
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFunRefAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); 
+               before(grammarAccess.getFunRefAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__FunRef__Function_Assignment_153806);
+            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__FunRef__FunctionAssignment_153806);
             ruleAtomVarMacro();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFunRefAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); 
+               after(grammarAccess.getFunRefAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); 
             }
 
             }
@@ -75869,12 +75869,12 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__FunRef__Function_Assignment_1"
+    // $ANTLR end "rule__FunRef__FunctionAssignment_1"
 
 
-    // $ANTLR start "rule__FunRef__Arity_Assignment_3"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26719:1: rule__FunRef__Arity_Assignment_3 : ( ruleIntVarMacro ) ;
-    public final void rule__FunRef__Arity_Assignment_3() throws RecognitionException {
+    // $ANTLR start "rule__FunRef__ArityAssignment_3"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26719:1: rule__FunRef__ArityAssignment_3 : ( ruleIntVarMacro ) ;
+    public final void rule__FunRef__ArityAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -75886,15 +75886,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:26725:1: ruleIntVarMacro
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFunRefAccess().getArity_IntVarMacroParserRuleCall_3_0()); 
+               before(grammarAccess.getFunRefAccess().getArityIntVarMacroParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleIntVarMacro_in_rule__FunRef__Arity_Assignment_353837);
+            pushFollow(FOLLOW_ruleIntVarMacro_in_rule__FunRef__ArityAssignment_353837);
             ruleIntVarMacro();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFunRefAccess().getArity_IntVarMacroParserRuleCall_3_0()); 
+               after(grammarAccess.getFunRefAccess().getArityIntVarMacroParserRuleCall_3_0()); 
             }
 
             }
@@ -75914,7 +75914,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__FunRef__Arity_Assignment_3"
+    // $ANTLR end "rule__FunRef__ArityAssignment_3"
 
 
     // $ANTLR start "rule__InlineFun__ClausesAssignment_0"
@@ -77584,9 +77584,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__LCExpr__O2Assignment_1_1"
 
 
-    // $ANTLR start "rule__SpecFun__Module_Assignment_0_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27290:1: rule__SpecFun__Module_Assignment_0_0 : ( ruleAtomVarMacro ) ;
-    public final void rule__SpecFun__Module_Assignment_0_0() throws RecognitionException {
+    // $ANTLR start "rule__SpecFun__ModuleAssignment_0_0"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27290:1: rule__SpecFun__ModuleAssignment_0_0 : ( ruleAtomVarMacro ) ;
+    public final void rule__SpecFun__ModuleAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -77598,15 +77598,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27296:1: ruleAtomVarMacro
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecFunAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); 
+               before(grammarAccess.getSpecFunAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__Module_Assignment_0_055017);
+            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__ModuleAssignment_0_055017);
             ruleAtomVarMacro();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecFunAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); 
+               after(grammarAccess.getSpecFunAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); 
             }
 
             }
@@ -77626,12 +77626,12 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__SpecFun__Module_Assignment_0_0"
+    // $ANTLR end "rule__SpecFun__ModuleAssignment_0_0"
 
 
-    // $ANTLR start "rule__SpecFun__Function_Assignment_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27305:1: rule__SpecFun__Function_Assignment_1 : ( ruleAtomVarMacro ) ;
-    public final void rule__SpecFun__Function_Assignment_1() throws RecognitionException {
+    // $ANTLR start "rule__SpecFun__FunctionAssignment_1"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27305:1: rule__SpecFun__FunctionAssignment_1 : ( ruleAtomVarMacro ) ;
+    public final void rule__SpecFun__FunctionAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -77643,15 +77643,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27311:1: ruleAtomVarMacro
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecFunAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); 
+               before(grammarAccess.getSpecFunAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__Function_Assignment_155048);
+            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__FunctionAssignment_155048);
             ruleAtomVarMacro();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecFunAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); 
+               after(grammarAccess.getSpecFunAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); 
             }
 
             }
@@ -77671,12 +77671,12 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__SpecFun__Function_Assignment_1"
+    // $ANTLR end "rule__SpecFun__FunctionAssignment_1"
 
 
-    // $ANTLR start "rule__SpecFun__Arity_Assignment_2_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27320:1: rule__SpecFun__Arity_Assignment_2_1 : ( ruleIntVarMacro ) ;
-    public final void rule__SpecFun__Arity_Assignment_2_1() throws RecognitionException {
+    // $ANTLR start "rule__SpecFun__ArityAssignment_2_1"
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27320:1: rule__SpecFun__ArityAssignment_2_1 : ( ruleIntVarMacro ) ;
+    public final void rule__SpecFun__ArityAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -77688,15 +77688,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27326:1: ruleIntVarMacro
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSpecFunAccess().getArity_IntVarMacroParserRuleCall_2_1_0()); 
+               before(grammarAccess.getSpecFunAccess().getArityIntVarMacroParserRuleCall_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleIntVarMacro_in_rule__SpecFun__Arity_Assignment_2_155079);
+            pushFollow(FOLLOW_ruleIntVarMacro_in_rule__SpecFun__ArityAssignment_2_155079);
             ruleIntVarMacro();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSpecFunAccess().getArity_IntVarMacroParserRuleCall_2_1_0()); 
+               after(grammarAccess.getSpecFunAccess().getArityIntVarMacroParserRuleCall_2_1_0()); 
             }
 
             }
@@ -77716,7 +77716,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__SpecFun__Arity_Assignment_2_1"
+    // $ANTLR end "rule__SpecFun__ArityAssignment_2_1"
 
 
     // $ANTLR start "rule__TypeSig__DeclAssignment_0"
@@ -82478,15 +82478,15 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__FunRef__Group_0__0_in_rule__FunRef__Group__0__Impl33596 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunRef__Group__1__Impl_in_rule__FunRef__Group__133627 = new BitSet(new long[]{0x0000001000000000L});
     public static final BitSet FOLLOW_rule__FunRef__Group__2_in_rule__FunRef__Group__133630 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunRef__Function_Assignment_1_in_rule__FunRef__Group__1__Impl33657 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunRef__FunctionAssignment_1_in_rule__FunRef__Group__1__Impl33657 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunRef__Group__2__Impl_in_rule__FunRef__Group__233687 = new BitSet(new long[]{0xFFE0000011F800F0L,0x000000000000000FL});
     public static final BitSet FOLLOW_rule__FunRef__Group__3_in_rule__FunRef__Group__233690 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_36_in_rule__FunRef__Group__2__Impl33718 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunRef__Group__3__Impl_in_rule__FunRef__Group__333749 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunRef__Arity_Assignment_3_in_rule__FunRef__Group__3__Impl33776 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunRef__ArityAssignment_3_in_rule__FunRef__Group__3__Impl33776 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunRef__Group_0__0__Impl_in_rule__FunRef__Group_0__033814 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
     public static final BitSet FOLLOW_rule__FunRef__Group_0__1_in_rule__FunRef__Group_0__033817 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunRef__Module_Assignment_0_0_in_rule__FunRef__Group_0__0__Impl33844 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunRef__ModuleAssignment_0_0_in_rule__FunRef__Group_0__0__Impl33844 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunRef__Group_0__1__Impl_in_rule__FunRef__Group_0__133874 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_83_in_rule__FunRef__Group_0__1__Impl33902 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__InlineFun__Group__0__Impl_in_rule__InlineFun__Group__033937 = new BitSet(new long[]{0x0000000000000000L,0x0000000000204000L});
@@ -82758,12 +82758,12 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__SpecFun__Group_0__0_in_rule__SpecFun__Group__0__Impl40209 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group__1__Impl_in_rule__SpecFun__Group__140240 = new BitSet(new long[]{0x0000001000000000L});
     public static final BitSet FOLLOW_rule__SpecFun__Group__2_in_rule__SpecFun__Group__140243 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SpecFun__Function_Assignment_1_in_rule__SpecFun__Group__1__Impl40270 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SpecFun__FunctionAssignment_1_in_rule__SpecFun__Group__1__Impl40270 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group__2__Impl_in_rule__SpecFun__Group__240300 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_2__0_in_rule__SpecFun__Group__2__Impl40327 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_0__0__Impl_in_rule__SpecFun__Group_0__040364 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_0__1_in_rule__SpecFun__Group_0__040367 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SpecFun__Module_Assignment_0_0_in_rule__SpecFun__Group_0__0__Impl40394 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SpecFun__ModuleAssignment_0_0_in_rule__SpecFun__Group_0__0__Impl40394 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_0__1__Impl_in_rule__SpecFun__Group_0__140424 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_83_in_rule__SpecFun__Group_0__1__Impl40452 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_2__0__Impl_in_rule__SpecFun__Group_2__040487 = new BitSet(new long[]{0xFFE0000011F800F0L,0x000000000000000FL});
@@ -82771,7 +82771,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_36_in_rule__SpecFun__Group_2__0__Impl40518 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_2__1__Impl_in_rule__SpecFun__Group_2__140549 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_2__2_in_rule__SpecFun__Group_2__140552 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SpecFun__Arity_Assignment_2_1_in_rule__SpecFun__Group_2__1__Impl40579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SpecFun__ArityAssignment_2_1_in_rule__SpecFun__Group_2__1__Impl40579 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__SpecFun__Group_2__2__Impl_in_rule__SpecFun__Group_2__240609 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_75_in_rule__SpecFun__Group_2__2__Impl40637 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__TypeSig__Group__0__Impl_in_rule__TypeSig__Group__040674 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
@@ -83262,9 +83262,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleExpressions_in_rule__ReceiveExpr__After_bodyAssignment_1_0_2_353682 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpression_in_rule__ReceiveExpr__After_exprAssignment_1_1_153713 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpressions_in_rule__ReceiveExpr__After_bodyAssignment_1_1_353744 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__FunRef__Module_Assignment_0_053775 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__FunRef__Function_Assignment_153806 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntVarMacro_in_rule__FunRef__Arity_Assignment_353837 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__FunRef__ModuleAssignment_0_053775 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__FunRef__FunctionAssignment_153806 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntVarMacro_in_rule__FunRef__ArityAssignment_353837 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunctionClause_in_rule__InlineFun__ClausesAssignment_053868 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunctionClause_in_rule__InlineFun__ClausesAssignment_1_153899 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpressions_in_rule__TryExpr__BodyAssignment_153930 = new BitSet(new long[]{0x0000000000000002L});
@@ -83302,9 +83302,9 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleExpression_in_rule__LCExpr__O1Assignment_054922 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LCExpr__OpAlternatives_1_0_0_in_rule__LCExpr__OpAssignment_1_054953 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExpression_in_rule__LCExpr__O2Assignment_1_154986 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__Module_Assignment_0_055017 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__Function_Assignment_155048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntVarMacro_in_rule__SpecFun__Arity_Assignment_2_155079 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__ModuleAssignment_0_055017 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__FunctionAssignment_155048 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntVarMacro_in_rule__SpecFun__ArityAssignment_2_155079 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunType_in_rule__TypeSig__DeclAssignment_055110 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleTypeGuards_in_rule__TypeSig__GuardsAssignment_1_155141 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleTopType_in_rule__FunType__ArgsAssignment_1_055172 = new BitSet(new long[]{0x0000000000000002L});

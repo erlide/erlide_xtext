@@ -1433,16 +1433,16 @@
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Group" cardinality="?">
-        <elements xsi:type="xtext:Assignment" feature="module_" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="module" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="//@rules.87"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value=":"/>
       </elements>
-      <elements xsi:type="xtext:Assignment" feature="function_" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="function" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.87"/>
       </elements>
       <elements xsi:type="xtext:Keyword" value="/"/>
-      <elements xsi:type="xtext:Assignment" feature="arity_" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="arity" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.88"/>
       </elements>
     </alternatives>
@@ -2310,17 +2310,17 @@
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Group" cardinality="?">
-        <elements xsi:type="xtext:Assignment" feature="module_" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="module" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="//@rules.87"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value=":"/>
       </elements>
-      <elements xsi:type="xtext:Assignment" feature="function_" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="function" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.87"/>
       </elements>
       <elements xsi:type="xtext:Group" cardinality="?">
         <elements xsi:type="xtext:Keyword" value="/"/>
-        <elements xsi:type="xtext:Assignment" feature="arity_" operator="=">
+        <elements xsi:type="xtext:Assignment" feature="arity" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="//@rules.88"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value="::"/>

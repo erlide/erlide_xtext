@@ -7,12 +7,12 @@ import java.util.Set
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.resource.IResourceDescriptions
+import org.eclipse.xtext.naming.QualifiedName
+import org.eclipse.emf.ecore.resource.ResourceSet
 
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 import static extension org.erlide.erlang.ModelExtensions.*
-import org.eclipse.xtext.naming.QualifiedName
-import org.eclipse.emf.ecore.resource.ResourceSet
 
 class ModelExtensions {
     
@@ -21,7 +21,7 @@ class ModelExtensions {
     
     // Module
 
-	def Module getModule(IResourceDescriptions index, String name, ResourceSet rset) {
+	def Module findModule(IResourceDescriptions index, String name, ResourceSet rset) {
 		val qname = QualifiedName::create(name)
 		val descr = index.getExportedObjects(ErlangPackage$Literals::MODULE, qname, false)
 		if(descr.empty)
@@ -117,7 +117,7 @@ class ModelExtensions {
 	
 	def Function getFunction(Module module, FunRef ref) {
 		module.allContents.filter(typeof(Function)).findFirst[
-			it.name==ref.function_.sourceText && it.arity==Integer::parseInt(ref.arity_.sourceText)
+			it.name==ref.function.sourceText && it.arity==Integer::parseInt(ref.arity.sourceText)
 		]
 	}
 	
@@ -134,7 +134,7 @@ class ModelExtensions {
  	def SpecAttribute getSpec(Module module, String fname, int farity) {
 		val specs = getSpecs(module)
 		specs.findFirst[
-			ref.function_.sourceText==fname && it.specArity==farity
+			ref.function.sourceText==fname && it.specArity==farity
 		]		
 	}
 	
@@ -145,25 +145,24 @@ class ModelExtensions {
     }
     
     def boolean isExported(Function function) {
-    	function.module.exportsFunction(function)
+    	function.owningModule.exportsFunction(function)
     }
  
  	def SpecAttribute getSpec(Function function) {
-		val module = function.module
+		val module = function.owningModule
 		val specs = module.specs
 		specs.findFirst[
-			ref.function_.sourceText==function.name && it.specArity==function.arity
+			ref.function.sourceText==function.name && it.specArity==function.arity
 		]		
 	}
 
     // Other
     
-    def dispatch Module getModule(Module element) {
+    def dispatch Module getOwningModule(Module element) {
         element
     }
-
-    def dispatch Module getModule(EObject element) {
-        element.eContainer.module
+    def dispatch Module getOwningModule(EObject element) {
+        element.eContainer.owningModule
     }
  
     def String getSourceText(EObject obj) {
@@ -175,8 +174,8 @@ class ModelExtensions {
     }
  
   	def int getSpecArity(SpecAttribute spec) {
- 		if (spec.ref.arity_!=null) {
- 			Integer::parseInt(spec.ref.arity_.sourceText)
+ 		if (spec.ref.arity!=null) {
+ 			Integer::parseInt(spec.ref.arity.sourceText)
 		} else {
 	 		spec.signatures.head.decl.args.size
  		}

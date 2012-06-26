@@ -372,7 +372,7 @@ FunExpr:
 ;
 
 FunRef:
-	(module_=AtomVarMacro ':')? function_=AtomVarMacro '/' arity_=IntVarMacro
+	(module=AtomVarMacro ':')? function=AtomVarMacro '/' arity=IntVarMacro
 ;
 
 InlineFun returns FunExpr:
@@ -572,7 +572,7 @@ terminal fragment HEX_DIGIT:
 // Type language
 
 SpecFun returns FunRef:
-	(module_=AtomVarMacro ':')? function_=AtomVarMacro ('/' arity_=IntVarMacro '::')?;
+	(module=AtomVarMacro ':')? function=AtomVarMacro ('/' arity=IntVarMacro '::')?;
 
 TypeSig:
 	decl=FunType ('when' guards=TypeGuards)?;

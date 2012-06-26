@@ -2047,31 +2047,31 @@ public interface ErlangPackage extends EPackage
   int FUN_REF__CLAUSES = FUN_EXPR__CLAUSES;
 
   /**
-   * The feature id for the '<em><b>Module </b></em>' containment reference.
+   * The feature id for the '<em><b>Module</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN_REF__MODULE_ = FUN_EXPR_FEATURE_COUNT + 0;
+  int FUN_REF__MODULE = FUN_EXPR_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Function </b></em>' containment reference.
+   * The feature id for the '<em><b>Function</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN_REF__FUNCTION_ = FUN_EXPR_FEATURE_COUNT + 1;
+  int FUN_REF__FUNCTION = FUN_EXPR_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Arity </b></em>' containment reference.
+   * The feature id for the '<em><b>Arity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN_REF__ARITY_ = FUN_EXPR_FEATURE_COUNT + 2;
+  int FUN_REF__ARITY = FUN_EXPR_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Fun Ref</em>' class.
@@ -5981,37 +5981,37 @@ public interface ErlangPackage extends EPackage
   EClass getFunRef();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunRef#getModule_ <em>Module </em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Module </em>'.
-   * @see org.erlide.erlang.FunRef#getModule_()
+   * @return the meta object for the containment reference '<em>Module</em>'.
+   * @see org.erlide.erlang.FunRef#getModule()
    * @see #getFunRef()
    * @generated
    */
-  EReference getFunRef_Module_();
+  EReference getFunRef_Module();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunRef#getFunction_ <em>Function </em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Function </em>'.
-   * @see org.erlide.erlang.FunRef#getFunction_()
+   * @return the meta object for the containment reference '<em>Function</em>'.
+   * @see org.erlide.erlang.FunRef#getFunction()
    * @see #getFunRef()
    * @generated
    */
-  EReference getFunRef_Function_();
+  EReference getFunRef_Function();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunRef#getArity_ <em>Arity </em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Arity </em>'.
-   * @see org.erlide.erlang.FunRef#getArity_()
+   * @return the meta object for the containment reference '<em>Arity</em>'.
+   * @see org.erlide.erlang.FunRef#getArity()
    * @see #getFunRef()
    * @generated
    */
-  EReference getFunRef_Arity_();
+  EReference getFunRef_Arity();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.TryExpr <em>Try Expr</em>}'.
@@ -8555,28 +8555,28 @@ public interface ErlangPackage extends EPackage
     EClass FUN_REF = eINSTANCE.getFunRef();
 
     /**
-     * The meta object literal for the '<em><b>Module </b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Module</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUN_REF__MODULE_ = eINSTANCE.getFunRef_Module_();
+    EReference FUN_REF__MODULE = eINSTANCE.getFunRef_Module();
 
     /**
-     * The meta object literal for the '<em><b>Function </b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Function</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUN_REF__FUNCTION_ = eINSTANCE.getFunRef_Function_();
+    EReference FUN_REF__FUNCTION = eINSTANCE.getFunRef_Function();
 
     /**
-     * The meta object literal for the '<em><b>Arity </b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Arity</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUN_REF__ARITY_ = eINSTANCE.getFunRef_Arity_();
+    EReference FUN_REF__ARITY = eINSTANCE.getFunRef_Arity();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.TryExprImpl <em>Try Expr</em>}' class.

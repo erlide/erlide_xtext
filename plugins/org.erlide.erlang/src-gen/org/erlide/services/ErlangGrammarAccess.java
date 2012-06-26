@@ -3285,48 +3285,48 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunRef");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final Assignment cModule_Assignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cModule_AtomVarMacroParserRuleCall_0_0_0 = (RuleCall)cModule_Assignment_0_0.eContents().get(0);
+		private final Assignment cModuleAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final RuleCall cModuleAtomVarMacroParserRuleCall_0_0_0 = (RuleCall)cModuleAssignment_0_0.eContents().get(0);
 		private final Keyword cColonKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Assignment cFunction_Assignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cFunction_AtomVarMacroParserRuleCall_1_0 = (RuleCall)cFunction_Assignment_1.eContents().get(0);
+		private final Assignment cFunctionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFunctionAtomVarMacroParserRuleCall_1_0 = (RuleCall)cFunctionAssignment_1.eContents().get(0);
 		private final Keyword cSolidusKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cArity_Assignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cArity_IntVarMacroParserRuleCall_3_0 = (RuleCall)cArity_Assignment_3.eContents().get(0);
+		private final Assignment cArityAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cArityIntVarMacroParserRuleCall_3_0 = (RuleCall)cArityAssignment_3.eContents().get(0);
 		
 		//FunRef:
-		//	(module_=AtomVarMacro ":")? function_=AtomVarMacro "/" arity_=IntVarMacro;
+		//	(module=AtomVarMacro ":")? function=AtomVarMacro "/" arity=IntVarMacro;
 		public ParserRule getRule() { return rule; }
 
-		//(module_=AtomVarMacro ":")? function_=AtomVarMacro "/" arity_=IntVarMacro
+		//(module=AtomVarMacro ":")? function=AtomVarMacro "/" arity=IntVarMacro
 		public Group getGroup() { return cGroup; }
 
-		//(module_=AtomVarMacro ":")?
+		//(module=AtomVarMacro ":")?
 		public Group getGroup_0() { return cGroup_0; }
 
-		//module_=AtomVarMacro
-		public Assignment getModule_Assignment_0_0() { return cModule_Assignment_0_0; }
+		//module=AtomVarMacro
+		public Assignment getModuleAssignment_0_0() { return cModuleAssignment_0_0; }
 
 		//AtomVarMacro
-		public RuleCall getModule_AtomVarMacroParserRuleCall_0_0_0() { return cModule_AtomVarMacroParserRuleCall_0_0_0; }
+		public RuleCall getModuleAtomVarMacroParserRuleCall_0_0_0() { return cModuleAtomVarMacroParserRuleCall_0_0_0; }
 
 		//":"
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
 
-		//function_=AtomVarMacro
-		public Assignment getFunction_Assignment_1() { return cFunction_Assignment_1; }
+		//function=AtomVarMacro
+		public Assignment getFunctionAssignment_1() { return cFunctionAssignment_1; }
 
 		//AtomVarMacro
-		public RuleCall getFunction_AtomVarMacroParserRuleCall_1_0() { return cFunction_AtomVarMacroParserRuleCall_1_0; }
+		public RuleCall getFunctionAtomVarMacroParserRuleCall_1_0() { return cFunctionAtomVarMacroParserRuleCall_1_0; }
 
 		//"/"
 		public Keyword getSolidusKeyword_2() { return cSolidusKeyword_2; }
 
-		//arity_=IntVarMacro
-		public Assignment getArity_Assignment_3() { return cArity_Assignment_3; }
+		//arity=IntVarMacro
+		public Assignment getArityAssignment_3() { return cArityAssignment_3; }
 
 		//IntVarMacro
-		public RuleCall getArity_IntVarMacroParserRuleCall_3_0() { return cArity_IntVarMacroParserRuleCall_3_0; }
+		public RuleCall getArityIntVarMacroParserRuleCall_3_0() { return cArityIntVarMacroParserRuleCall_3_0; }
 	}
 
 	public class InlineFunElements extends AbstractParserRuleElementFinder {
@@ -4664,54 +4664,54 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SpecFun");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final Assignment cModule_Assignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cModule_AtomVarMacroParserRuleCall_0_0_0 = (RuleCall)cModule_Assignment_0_0.eContents().get(0);
+		private final Assignment cModuleAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final RuleCall cModuleAtomVarMacroParserRuleCall_0_0_0 = (RuleCall)cModuleAssignment_0_0.eContents().get(0);
 		private final Keyword cColonKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Assignment cFunction_Assignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cFunction_AtomVarMacroParserRuleCall_1_0 = (RuleCall)cFunction_Assignment_1.eContents().get(0);
+		private final Assignment cFunctionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFunctionAtomVarMacroParserRuleCall_1_0 = (RuleCall)cFunctionAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cSolidusKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cArity_Assignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cArity_IntVarMacroParserRuleCall_2_1_0 = (RuleCall)cArity_Assignment_2_1.eContents().get(0);
+		private final Assignment cArityAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cArityIntVarMacroParserRuleCall_2_1_0 = (RuleCall)cArityAssignment_2_1.eContents().get(0);
 		private final Keyword cColonColonKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		
 		//// Type language
 		//SpecFun returns FunRef:
-		//	(module_=AtomVarMacro ":")? function_=AtomVarMacro ("/" arity_=IntVarMacro "::")?;
+		//	(module=AtomVarMacro ":")? function=AtomVarMacro ("/" arity=IntVarMacro "::")?;
 		public ParserRule getRule() { return rule; }
 
-		//(module_=AtomVarMacro ":")? function_=AtomVarMacro ("/" arity_=IntVarMacro "::")?
+		//(module=AtomVarMacro ":")? function=AtomVarMacro ("/" arity=IntVarMacro "::")?
 		public Group getGroup() { return cGroup; }
 
-		//(module_=AtomVarMacro ":")?
+		//(module=AtomVarMacro ":")?
 		public Group getGroup_0() { return cGroup_0; }
 
-		//module_=AtomVarMacro
-		public Assignment getModule_Assignment_0_0() { return cModule_Assignment_0_0; }
+		//module=AtomVarMacro
+		public Assignment getModuleAssignment_0_0() { return cModuleAssignment_0_0; }
 
 		//AtomVarMacro
-		public RuleCall getModule_AtomVarMacroParserRuleCall_0_0_0() { return cModule_AtomVarMacroParserRuleCall_0_0_0; }
+		public RuleCall getModuleAtomVarMacroParserRuleCall_0_0_0() { return cModuleAtomVarMacroParserRuleCall_0_0_0; }
 
 		//":"
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
 
-		//function_=AtomVarMacro
-		public Assignment getFunction_Assignment_1() { return cFunction_Assignment_1; }
+		//function=AtomVarMacro
+		public Assignment getFunctionAssignment_1() { return cFunctionAssignment_1; }
 
 		//AtomVarMacro
-		public RuleCall getFunction_AtomVarMacroParserRuleCall_1_0() { return cFunction_AtomVarMacroParserRuleCall_1_0; }
+		public RuleCall getFunctionAtomVarMacroParserRuleCall_1_0() { return cFunctionAtomVarMacroParserRuleCall_1_0; }
 
-		//("/" arity_=IntVarMacro "::")?
+		//("/" arity=IntVarMacro "::")?
 		public Group getGroup_2() { return cGroup_2; }
 
 		//"/"
 		public Keyword getSolidusKeyword_2_0() { return cSolidusKeyword_2_0; }
 
-		//arity_=IntVarMacro
-		public Assignment getArity_Assignment_2_1() { return cArity_Assignment_2_1; }
+		//arity=IntVarMacro
+		public Assignment getArityAssignment_2_1() { return cArityAssignment_2_1; }
 
 		//IntVarMacro
-		public RuleCall getArity_IntVarMacroParserRuleCall_2_1_0() { return cArity_IntVarMacroParserRuleCall_2_1_0; }
+		public RuleCall getArityIntVarMacroParserRuleCall_2_1_0() { return cArityIntVarMacroParserRuleCall_2_1_0; }
 
 		//"::"
 		public Keyword getColonColonKeyword_2_2() { return cColonColonKeyword_2_2; }
@@ -6598,7 +6598,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FunRef:
-	//	(module_=AtomVarMacro ":")? function_=AtomVarMacro "/" arity_=IntVarMacro;
+	//	(module=AtomVarMacro ":")? function=AtomVarMacro "/" arity=IntVarMacro;
 	public FunRefElements getFunRefAccess() {
 		return (pFunRef != null) ? pFunRef : (pFunRef = new FunRefElements());
 	}
@@ -6981,7 +6981,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// Type language
 	//SpecFun returns FunRef:
-	//	(module_=AtomVarMacro ":")? function_=AtomVarMacro ("/" arity_=IntVarMacro "::")?;
+	//	(module=AtomVarMacro ":")? function=AtomVarMacro ("/" arity=IntVarMacro "::")?;
 	public SpecFunElements getSpecFunAccess() {
 		return (pSpecFun != null) ? pSpecFun : (pSpecFun = new SpecFunElements());
 	}

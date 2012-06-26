@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.linking.impl.DefaultLinkingService
 import org.eclipse.xtext.nodemodel.INode
 import org.erlide.erlang.ErlangPackage
+import org.erlide.erlang.Atom
 
 class ErlangLinkingService extends DefaultLinkingService {
 
@@ -15,7 +16,7 @@ class ErlangLinkingService extends DefaultLinkingService {
 
 	override List<EObject> getLinkedObjects(EObject context, EReference ref, INode node) {
 		if(ref==ErlangPackage::eINSTANCE.atom_Value) {
-			val aref = linkHelper.getAtomReference(context)
+			val aref = linkHelper.getAtomReference(context as Atom)
 			if(aref==null) 
 				return newArrayList() 
 			else {

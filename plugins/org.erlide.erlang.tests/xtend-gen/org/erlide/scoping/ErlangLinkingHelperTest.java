@@ -6,15 +6,18 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.erlide.ErlangInjectorProvider;
+import org.erlide.erlang.Atom;
 import org.erlide.erlang.ErlangTestExtensions;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.util.ErlangTestingHelper;
 import org.erlide.scoping.ErlangLinkCategory;
 import org.erlide.scoping.ErlangLinkingHelper;
+import org.hamcrest.Matcher;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -35,37 +38,25 @@ public class ErlangLinkingHelperTest {
   private ErlangTestExtensions _erlangTestExtensions;
   
   @Test
-  public void macro() {
+  public void classify_noLink() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("-define(X, x).");
     _builder.newLine();
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("g(\u00A7?X),");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    _builder.append("g(X) -> ok.");
+    _builder.append("\u00A7ok.");
     _builder.newLine();
     final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
-    String _sourceText = this._modelExtensions.getSourceText(_objectAtMarker);
-    InputOutput.<String>println(_sourceText);
-    EObject _objectAtMarker_1 = this._erlangTestExtensions.getObjectAtMarker(module);
-    EObject _eContainer = _objectAtMarker_1.eContainer();
-    String _sourceText_1 = this._modelExtensions.getSourceText(_eContainer);
-    InputOutput.<String>println(_sourceText_1);
-    EObject _objectAtMarker_2 = this._erlangTestExtensions.getObjectAtMarker(module);
-    ErlangLinkCategory _classify = this._erlangLinkingHelper.classify(_objectAtMarker_2);
-    InputOutput.<ErlangLinkCategory>println(_classify);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.NONE);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
   }
   
   @Test
-  public void noLink() {
+  public void classify_localCall() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("-module(m).");
     _builder.newLine();
@@ -77,11 +68,347 @@ public class ErlangLinkingHelperTest {
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    _builder.append("g(X) -> ok.");
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.FUNCTION_CALL_LOCAL);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_remoteCall() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("w:\u00A7g(3),");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
     _builder.newLine();
     final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
-    String _sourceText = this._modelExtensions.getSourceText(_objectAtMarker);
-    InputOutput.<String>println(_sourceText);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.FUNCTION_CALL_REMOTE);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_remoteCall_moduleMacro() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("?MODULE:\u00A7g(3),");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.FUNCTION_CALL_REMOTE);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_remoteCall_bad() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("W:\u00A7g(3),");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.NONE);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_moduleCall() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\u00A7w:g(3),");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.MODULE);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_moduleCall_1() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\u00A7w:G(3),");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.MODULE);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_moduleRef() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fun \u00A7w:g/3,");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.MODULE);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_functionRef() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fun w:\u00A7g/2,");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.FUNCTION_REF);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_functionRef_moduleMacro() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fun ?MODULE:\u00A7g/2,");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.FUNCTION_REF);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_functionRef_bad() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fun W:\u00A7g/2,");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.NONE);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_functionRef_local() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fun \u00A7g/2,");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.FUNCTION_REF);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_record() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("#\u00A7myrec{},");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.RECORD);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_record_1() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("#\u00A7myrec.az,");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.RECORD);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_recordField() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("#myrec.\u00A7ff,");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.RECORD_FIELD);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_recordField_bad() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("#Myrec.\u00A7ff,");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.NONE);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_recordField_1() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("#myrec{\u00A7ff=2},");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.RECORD_FIELD);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
+  }
+  
+  @Test
+  public void classify_recordField_1_bad() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("#Myrec{\u00A7ff=2},");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    final Atom atom = ((Atom) _objectAtMarker);
+    ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
+    Matcher<? super ErlangLinkCategory> _is = Matchers.<ErlangLinkCategory>is(ErlangLinkCategory.NONE);
+    MatcherAssert.<ErlangLinkCategory>assertThat(_classifyAtom, _is);
   }
 }

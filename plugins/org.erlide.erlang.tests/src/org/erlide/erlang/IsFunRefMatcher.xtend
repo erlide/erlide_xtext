@@ -35,7 +35,7 @@ class IsFunRefMatcher extends BaseMatcher {
 	}
 	
 	def dispatch matches(FunRef item) {
-		item.function_==name && item.arity_==Integer::toString(arity)
+		item.function==name && item.arity==Integer::toString(arity)
 	}
 
 	def dispatch matches(Object item) {

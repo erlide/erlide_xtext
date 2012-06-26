@@ -57,7 +57,7 @@ public class ModelExtensions {
   @Inject
   private IQualifiedNameProvider namer;
   
-  public Module getModule(final IResourceDescriptions index, final String name, final ResourceSet rset) {
+  public Module findModule(final IResourceDescriptions index, final String name, final ResourceSet rset) {
     Module _xblockexpression = null;
     {
       final QualifiedName qname = QualifiedName.create(name);
@@ -297,15 +297,15 @@ public class ModelExtensions {
         public Boolean apply(final Function it) {
           boolean _and = false;
           String _name = it.getName();
-          Expression _function_ = ref.getFunction_();
-          String _sourceText = ModelExtensions.this.getSourceText(_function_);
+          Expression _function = ref.getFunction();
+          String _sourceText = ModelExtensions.this.getSourceText(_function);
           boolean _equals = Objects.equal(_name, _sourceText);
           if (!_equals) {
             _and = false;
           } else {
             int _arity = ModelExtensions.this.getArity(it);
-            Expression _arity_ = ref.getArity_();
-            String _sourceText_1 = ModelExtensions.this.getSourceText(_arity_);
+            Expression _arity_1 = ref.getArity();
+            String _sourceText_1 = ModelExtensions.this.getSourceText(_arity_1);
             int _parseInt = Integer.parseInt(_sourceText_1);
             boolean _equals_1 = (_arity == _parseInt);
             _and = (_equals && _equals_1);
@@ -364,8 +364,8 @@ public class ModelExtensions {
           public Boolean apply(final SpecAttribute it) {
             boolean _and = false;
             FunRef _ref = it.getRef();
-            Expression _function_ = _ref.getFunction_();
-            String _sourceText = ModelExtensions.this.getSourceText(_function_);
+            Expression _function = _ref.getFunction();
+            String _sourceText = ModelExtensions.this.getSourceText(_function);
             boolean _equals = Objects.equal(_sourceText, fname);
             if (!_equals) {
               _and = false;
@@ -393,22 +393,22 @@ public class ModelExtensions {
   }
   
   public boolean isExported(final Function function) {
-    Module _module = this.getModule(function);
-    boolean _exportsFunction = this.exportsFunction(_module, function);
+    Module _owningModule = this.getOwningModule(function);
+    boolean _exportsFunction = this.exportsFunction(_owningModule, function);
     return _exportsFunction;
   }
   
   public SpecAttribute getSpec(final Function function) {
     SpecAttribute _xblockexpression = null;
     {
-      final Module module = this.getModule(function);
+      final Module module = this.getOwningModule(function);
       final Collection<SpecAttribute> specs = this.getSpecs(module);
       final Function1<SpecAttribute,Boolean> _function = new Function1<SpecAttribute,Boolean>() {
           public Boolean apply(final SpecAttribute it) {
             boolean _and = false;
             FunRef _ref = it.getRef();
-            Expression _function_ = _ref.getFunction_();
-            String _sourceText = ModelExtensions.this.getSourceText(_function_);
+            Expression _function = _ref.getFunction();
+            String _sourceText = ModelExtensions.this.getSourceText(_function);
             String _name = function.getName();
             boolean _equals = Objects.equal(_sourceText, _name);
             if (!_equals) {
@@ -428,14 +428,14 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  protected Module _getModule(final Module element) {
+  protected Module _getOwningModule(final Module element) {
     return element;
   }
   
-  protected Module _getModule(final EObject element) {
+  protected Module _getOwningModule(final EObject element) {
     EObject _eContainer = element.eContainer();
-    Module _module = this.getModule(_eContainer);
-    return _module;
+    Module _owningModule = this.getOwningModule(_eContainer);
+    return _owningModule;
   }
   
   public String getSourceText(final EObject obj) {
@@ -471,12 +471,12 @@ public class ModelExtensions {
   public int getSpecArity(final SpecAttribute spec) {
     int _xifexpression = (int) 0;
     FunRef _ref = spec.getRef();
-    Expression _arity_ = _ref.getArity_();
-    boolean _notEquals = (!Objects.equal(_arity_, null));
+    Expression _arity = _ref.getArity();
+    boolean _notEquals = (!Objects.equal(_arity, null));
     if (_notEquals) {
       FunRef _ref_1 = spec.getRef();
-      Expression _arity__1 = _ref_1.getArity_();
-      String _sourceText = this.getSourceText(_arity__1);
+      Expression _arity_1 = _ref_1.getArity();
+      String _sourceText = this.getSourceText(_arity_1);
       int _parseInt = Integer.parseInt(_sourceText);
       _xifexpression = _parseInt;
     } else {
@@ -645,11 +645,11 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  public Module getModule(final EObject element) {
+  public Module getOwningModule(final EObject element) {
     if (element instanceof Module) {
-      return _getModule((Module)element);
+      return _getOwningModule((Module)element);
     } else if (element != null) {
-      return _getModule(element);
+      return _getOwningModule(element);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(element).toString());

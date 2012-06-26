@@ -3,17 +3,18 @@ package org.erlide.scoping
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.naming.QualifiedName
-import org.eclipse.xtext.nodemodel.INode
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.erlide.erlang.Atom
 import org.erlide.erlang.AtomRefTarget
 import org.erlide.erlang.ErlangPackage$Literals
 import org.erlide.erlang.FunCall
 import org.erlide.erlang.FunRef
+import org.erlide.erlang.Macro
 import org.erlide.erlang.ModelExtensions
-import org.erlide.erlang.RemoteTarget
 import org.erlide.erlang.RecordExpr
 import org.erlide.erlang.RecordFieldExpr
+import org.erlide.erlang.RecordTuple
+import org.erlide.erlang.RemoteTarget
 
 class ErlangLinkingHelper {
 	@Inject
@@ -21,10 +22,7 @@ class ErlangLinkingHelper {
     @Inject
     ResourceDescriptionsProvider indexProvider
 
-	def dispatch ErlangLinkCategory classify(EObject obj) {
-		ErlangLinkCategory::NONE
-	} 
-	def dispatch ErlangLinkCategory classify(Atom obj) {
+	def ErlangLinkCategory classifyAtom(Atom obj) {
 		classifyAtom(obj, obj.eContainer)
 	} 
 
@@ -32,42 +30,84 @@ class ErlangLinkingHelper {
 		ErlangLinkCategory::NONE
 	}
 	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, RemoteTarget context) {
-		if(context.module instanceof Atom) {
-			if(atom==context.module) {
-				return ErlangLinkCategory::MODULE
-			} 
-			if(context.function instanceof Atom) {
-				if(atom==context.function) {
-					return ErlangLinkCategory::FUNCTION_CALL
+		if(atom==context.module) {
+			return ErlangLinkCategory::MODULE
+		} 
+		if(atom==context.function) {
+			if(context.module instanceof Atom) {
+				if(context.function instanceof Atom) {
+					return ErlangLinkCategory::FUNCTION_CALL_REMOTE
 				}
 			} 
+			if(context.module instanceof Macro) {
+				val macro = context.module as Macro
+				if(macro.sourceText=="? MODULE") {
+					return ErlangLinkCategory::FUNCTION_CALL_REMOTE
+				}
+			}
 		}
 		return ErlangLinkCategory::NONE
 	}
 	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, FunCall context) {
-		ErlangLinkCategory::FUNCTION_CALL
+		ErlangLinkCategory::FUNCTION_CALL_LOCAL
 	}
 	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, FunRef context) {
-		ErlangLinkCategory::FUNCTION_REF
+		if(atom==context.module) {
+			return ErlangLinkCategory::MODULE
+		} 
+		if(atom==context.function) {
+			if(context.module instanceof Atom || context.module==null) {
+				return ErlangLinkCategory::FUNCTION_REF
+			}
+			if(context.module instanceof Macro) {
+				val macro = context.module as Macro
+				if(macro.sourceText=="? MODULE") {
+					return ErlangLinkCategory::FUNCTION_REF
+				}
+			}
+		}
+		ErlangLinkCategory::NONE
 	}
 	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, RecordExpr context) {
-		ErlangLinkCategory::RECORD
+		if(context.rec instanceof Atom) {
+			if(context.rec==atom) 
+				return ErlangLinkCategory::RECORD
+			if(context.field==atom) 
+				return ErlangLinkCategory::RECORD_FIELD
+		}
+		ErlangLinkCategory::NONE
 	}
 	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, RecordFieldExpr context) {
-		ErlangLinkCategory::RECORD_FIELD
+		if(context.eContainer instanceof RecordExpr) {
+			val expr = context.eContainer as RecordExpr
+			if(expr.rec instanceof Atom) { 
+				return ErlangLinkCategory::RECORD_FIELD
+			}
+		}
+		if(context.eContainer instanceof RecordTuple) {
+			if(context.eContainer.eContainer instanceof RecordExpr) {
+				val expr = context.eContainer.eContainer as RecordExpr
+				if(expr.rec instanceof Atom) { 
+					return ErlangLinkCategory::RECORD_FIELD
+				}
+			}
+		}
+		ErlangLinkCategory::NONE
 	}
 
 	def boolean isLinkableAtom(Atom atom) {
-		classify(atom) != ErlangLinkCategory::NONE
+		classifyAtom(atom) != ErlangLinkCategory::NONE
 	}
 	
-	def AtomRefTarget getAtomReference(EObject obj) {
-		switch(classify(obj)) {
+	def AtomRefTarget getAtomReference(Atom atom) {
+		switch(atom.classifyAtom) {
 			case ErlangLinkCategory::NONE:
 				null
 			case ErlangLinkCategory::MODULE:
 				null
-			case ErlangLinkCategory::FUNCTION_CALL:
+			case ErlangLinkCategory::FUNCTION_CALL_LOCAL:
+				null
+			case ErlangLinkCategory::FUNCTION_CALL_REMOTE:
 				null
 			case ErlangLinkCategory::FUNCTION_REF:
 				null
@@ -86,7 +126,7 @@ class ErlangLinkingHelper {
 		val rset = atom.eResource.resourceSet
 		if(parent.module instanceof Atom) {
 			if(atom==parent.module) {
-				return index.getModule(atom.sourceText, rset)
+				return index.findModule(atom.sourceText, rset)
 			} 
 			if(parent.function instanceof Atom) {
 				if(atom==parent.function) {
@@ -102,12 +142,12 @@ class ErlangLinkingHelper {
 		return null
 	}
 	def private dispatch AtomRefTarget getAtomReferenceFor(FunCall parent, Atom atom) {
-		return parent.module.getFunction(parent.target.sourceText, parent.args.exprs.size)
+		return parent.owningModule.getFunction(parent.target.sourceText, parent.args.exprs.size)
 	}
 	def private dispatch AtomRefTarget getAtomReferenceFor(FunRef parent, Atom atom) {
-		val arity = parent.arity_.sourceText
+		val arity = parent.arity.sourceText
 		try {
-			return parent.module.getFunction(parent.function_.sourceText, Integer::parseInt(arity))
+			return parent.owningModule.getFunction(parent.function.sourceText, Integer::parseInt(arity))
 		} catch (Exception e) {
 			return null
 		}

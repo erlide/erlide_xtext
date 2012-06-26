@@ -16547,9 +16547,9 @@ rule__FunRef__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getFunRefAccess().getFunction_Assignment_1()); }
-(rule__FunRef__Function_Assignment_1)
-{ after(grammarAccess.getFunRefAccess().getFunction_Assignment_1()); }
+{ before(grammarAccess.getFunRefAccess().getFunctionAssignment_1()); }
+(rule__FunRef__FunctionAssignment_1)
+{ after(grammarAccess.getFunRefAccess().getFunctionAssignment_1()); }
 )
 
 ;
@@ -16606,9 +16606,9 @@ rule__FunRef__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getFunRefAccess().getArity_Assignment_3()); }
-(rule__FunRef__Arity_Assignment_3)
-{ after(grammarAccess.getFunRefAccess().getArity_Assignment_3()); }
+{ before(grammarAccess.getFunRefAccess().getArityAssignment_3()); }
+(rule__FunRef__ArityAssignment_3)
+{ after(grammarAccess.getFunRefAccess().getArityAssignment_3()); }
 )
 
 ;
@@ -16643,9 +16643,9 @@ rule__FunRef__Group_0__0__Impl
     }
 :
 (
-{ before(grammarAccess.getFunRefAccess().getModule_Assignment_0_0()); }
-(rule__FunRef__Module_Assignment_0_0)
-{ after(grammarAccess.getFunRefAccess().getModule_Assignment_0_0()); }
+{ before(grammarAccess.getFunRefAccess().getModuleAssignment_0_0()); }
+(rule__FunRef__ModuleAssignment_0_0)
+{ after(grammarAccess.getFunRefAccess().getModuleAssignment_0_0()); }
 )
 
 ;
@@ -19902,9 +19902,9 @@ rule__SpecFun__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getSpecFunAccess().getFunction_Assignment_1()); }
-(rule__SpecFun__Function_Assignment_1)
-{ after(grammarAccess.getSpecFunAccess().getFunction_Assignment_1()); }
+{ before(grammarAccess.getSpecFunAccess().getFunctionAssignment_1()); }
+(rule__SpecFun__FunctionAssignment_1)
+{ after(grammarAccess.getSpecFunAccess().getFunctionAssignment_1()); }
 )
 
 ;
@@ -19965,9 +19965,9 @@ rule__SpecFun__Group_0__0__Impl
     }
 :
 (
-{ before(grammarAccess.getSpecFunAccess().getModule_Assignment_0_0()); }
-(rule__SpecFun__Module_Assignment_0_0)
-{ after(grammarAccess.getSpecFunAccess().getModule_Assignment_0_0()); }
+{ before(grammarAccess.getSpecFunAccess().getModuleAssignment_0_0()); }
+(rule__SpecFun__ModuleAssignment_0_0)
+{ after(grammarAccess.getSpecFunAccess().getModuleAssignment_0_0()); }
 )
 
 ;
@@ -20059,9 +20059,9 @@ rule__SpecFun__Group_2__1__Impl
     }
 :
 (
-{ before(grammarAccess.getSpecFunAccess().getArity_Assignment_2_1()); }
-(rule__SpecFun__Arity_Assignment_2_1)
-{ after(grammarAccess.getSpecFunAccess().getArity_Assignment_2_1()); }
+{ before(grammarAccess.getSpecFunAccess().getArityAssignment_2_1()); }
+(rule__SpecFun__ArityAssignment_2_1)
+{ after(grammarAccess.getSpecFunAccess().getArityAssignment_2_1()); }
 )
 
 ;
@@ -26686,14 +26686,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunRef__Module_Assignment_0_0
+rule__FunRef__ModuleAssignment_0_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunRefAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); }
-	ruleAtomVarMacro{ after(grammarAccess.getFunRefAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); }
+{ before(grammarAccess.getFunRefAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); }
+	ruleAtomVarMacro{ after(grammarAccess.getFunRefAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); }
 )
 
 ;
@@ -26701,14 +26701,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunRef__Function_Assignment_1
+rule__FunRef__FunctionAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunRefAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); }
-	ruleAtomVarMacro{ after(grammarAccess.getFunRefAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); }
+{ before(grammarAccess.getFunRefAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); }
+	ruleAtomVarMacro{ after(grammarAccess.getFunRefAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); }
 )
 
 ;
@@ -26716,14 +26716,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunRef__Arity_Assignment_3
+rule__FunRef__ArityAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunRefAccess().getArity_IntVarMacroParserRuleCall_3_0()); }
-	ruleIntVarMacro{ after(grammarAccess.getFunRefAccess().getArity_IntVarMacroParserRuleCall_3_0()); }
+{ before(grammarAccess.getFunRefAccess().getArityIntVarMacroParserRuleCall_3_0()); }
+	ruleIntVarMacro{ after(grammarAccess.getFunRefAccess().getArityIntVarMacroParserRuleCall_3_0()); }
 )
 
 ;
@@ -27287,14 +27287,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__SpecFun__Module_Assignment_0_0
+rule__SpecFun__ModuleAssignment_0_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecFunAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); }
-	ruleAtomVarMacro{ after(grammarAccess.getSpecFunAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); }
+{ before(grammarAccess.getSpecFunAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); }
+	ruleAtomVarMacro{ after(grammarAccess.getSpecFunAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); }
 )
 
 ;
@@ -27302,14 +27302,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__SpecFun__Function_Assignment_1
+rule__SpecFun__FunctionAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecFunAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); }
-	ruleAtomVarMacro{ after(grammarAccess.getSpecFunAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); }
+{ before(grammarAccess.getSpecFunAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); }
+	ruleAtomVarMacro{ after(grammarAccess.getSpecFunAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); }
 )
 
 ;
@@ -27317,14 +27317,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__SpecFun__Arity_Assignment_2_1
+rule__SpecFun__ArityAssignment_2_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getSpecFunAccess().getArity_IntVarMacroParserRuleCall_2_1_0()); }
-	ruleIntVarMacro{ after(grammarAccess.getSpecFunAccess().getArity_IntVarMacroParserRuleCall_2_1_0()); }
+{ before(grammarAccess.getSpecFunAccess().getArityIntVarMacroParserRuleCall_2_1_0()); }
+	ruleIntVarMacro{ after(grammarAccess.getSpecFunAccess().getArityIntVarMacroParserRuleCall_2_1_0()); }
 )
 
 ;

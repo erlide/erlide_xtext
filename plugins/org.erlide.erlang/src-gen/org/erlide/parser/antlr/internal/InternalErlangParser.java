@@ -14796,48 +14796,48 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunRef"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5356:1: ruleFunRef returns [EObject current=null] : ( ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function__2_0= ruleAtomVarMacro ) ) otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) ) ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5356:1: ruleFunRef returns [EObject current=null] : ( ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function_2_0= ruleAtomVarMacro ) ) otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) ) ) ;
     public final EObject ruleFunRef() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token otherlv_3=null;
-        EObject lv_module__0_0 = null;
+        EObject lv_module_0_0 = null;
 
-        EObject lv_function__2_0 = null;
+        EObject lv_function_2_0 = null;
 
-        EObject lv_arity__4_0 = null;
+        EObject lv_arity_4_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5359:28: ( ( ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function__2_0= ruleAtomVarMacro ) ) otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:1: ( ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function__2_0= ruleAtomVarMacro ) ) otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5359:28: ( ( ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function_2_0= ruleAtomVarMacro ) ) otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:1: ( ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function_2_0= ruleAtomVarMacro ) ) otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:1: ( ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function__2_0= ruleAtomVarMacro ) ) otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:2: ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function__2_0= ruleAtomVarMacro ) ) otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:1: ( ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function_2_0= ruleAtomVarMacro ) ) otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:2: ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function_2_0= ruleAtomVarMacro ) ) otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:2: ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )?
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:2: ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )?
             int alt82=2;
             alt82 = dfa82.predict(input);
             switch (alt82) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:3: ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:3: ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':'
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:3: ( (lv_module__0_0= ruleAtomVarMacro ) )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5361:1: (lv_module__0_0= ruleAtomVarMacro )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5360:3: ( (lv_module_0_0= ruleAtomVarMacro ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5361:1: (lv_module_0_0= ruleAtomVarMacro )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5361:1: (lv_module__0_0= ruleAtomVarMacro )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5362:3: lv_module__0_0= ruleAtomVarMacro
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5361:1: (lv_module_0_0= ruleAtomVarMacro )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5362:3: lv_module_0_0= ruleAtomVarMacro
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getFunRefAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); 
+                      	        newCompositeNode(grammarAccess.getFunRefAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); 
                       	    
                     }
                     pushFollow(FOLLOW_ruleAtomVarMacro_in_ruleFunRef11948);
-                    lv_module__0_0=ruleAtomVarMacro();
+                    lv_module_0_0=ruleAtomVarMacro();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -14848,8 +14848,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       	        }
                              		set(
                              			current, 
-                             			"module_",
-                              		lv_module__0_0, 
+                             			"module",
+                              		lv_module_0_0, 
                               		"AtomVarMacro");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -14872,19 +14872,19 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5382:3: ( (lv_function__2_0= ruleAtomVarMacro ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5383:1: (lv_function__2_0= ruleAtomVarMacro )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5382:3: ( (lv_function_2_0= ruleAtomVarMacro ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5383:1: (lv_function_2_0= ruleAtomVarMacro )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5383:1: (lv_function__2_0= ruleAtomVarMacro )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5384:3: lv_function__2_0= ruleAtomVarMacro
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5383:1: (lv_function_2_0= ruleAtomVarMacro )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5384:3: lv_function_2_0= ruleAtomVarMacro
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getFunRefAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); 
+              	        newCompositeNode(grammarAccess.getFunRefAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); 
               	    
             }
             pushFollow(FOLLOW_ruleAtomVarMacro_in_ruleFunRef11983);
-            lv_function__2_0=ruleAtomVarMacro();
+            lv_function_2_0=ruleAtomVarMacro();
 
             state._fsp--;
             if (state.failed) return current;
@@ -14895,8 +14895,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
               	        }
                      		set(
                      			current, 
-                     			"function_",
-                      		lv_function__2_0, 
+                     			"function",
+                      		lv_function_2_0, 
                       		"AtomVarMacro");
               	        afterParserOrEnumRuleCall();
               	    
@@ -14913,19 +14913,19 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                   	newLeafNode(otherlv_3, grammarAccess.getFunRefAccess().getSolidusKeyword_2());
                   
             }
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5404:1: ( (lv_arity__4_0= ruleIntVarMacro ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5405:1: (lv_arity__4_0= ruleIntVarMacro )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5404:1: ( (lv_arity_4_0= ruleIntVarMacro ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5405:1: (lv_arity_4_0= ruleIntVarMacro )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5405:1: (lv_arity__4_0= ruleIntVarMacro )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5406:3: lv_arity__4_0= ruleIntVarMacro
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5405:1: (lv_arity_4_0= ruleIntVarMacro )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:5406:3: lv_arity_4_0= ruleIntVarMacro
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getFunRefAccess().getArity_IntVarMacroParserRuleCall_3_0()); 
+              	        newCompositeNode(grammarAccess.getFunRefAccess().getArityIntVarMacroParserRuleCall_3_0()); 
               	    
             }
             pushFollow(FOLLOW_ruleIntVarMacro_in_ruleFunRef12016);
-            lv_arity__4_0=ruleIntVarMacro();
+            lv_arity_4_0=ruleIntVarMacro();
 
             state._fsp--;
             if (state.failed) return current;
@@ -14936,8 +14936,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
               	        }
                      		set(
                      			current, 
-                     			"arity_",
-                      		lv_arity__4_0, 
+                     			"arity",
+                      		lv_arity_4_0, 
                       		"IntVarMacro");
               	        afterParserOrEnumRuleCall();
               	    
@@ -21005,49 +21005,49 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSpecFun"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7418:1: ruleSpecFun returns [EObject current=null] : ( ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function__2_0= ruleAtomVarMacro ) ) (otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) ) otherlv_5= '::' )? ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7418:1: ruleSpecFun returns [EObject current=null] : ( ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function_2_0= ruleAtomVarMacro ) ) (otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) ) otherlv_5= '::' )? ) ;
     public final EObject ruleSpecFun() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token otherlv_3=null;
         Token otherlv_5=null;
-        EObject lv_module__0_0 = null;
+        EObject lv_module_0_0 = null;
 
-        EObject lv_function__2_0 = null;
+        EObject lv_function_2_0 = null;
 
-        EObject lv_arity__4_0 = null;
+        EObject lv_arity_4_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7421:28: ( ( ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function__2_0= ruleAtomVarMacro ) ) (otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) ) otherlv_5= '::' )? ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:1: ( ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function__2_0= ruleAtomVarMacro ) ) (otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) ) otherlv_5= '::' )? )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7421:28: ( ( ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function_2_0= ruleAtomVarMacro ) ) (otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) ) otherlv_5= '::' )? ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:1: ( ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function_2_0= ruleAtomVarMacro ) ) (otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) ) otherlv_5= '::' )? )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:1: ( ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function__2_0= ruleAtomVarMacro ) ) (otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) ) otherlv_5= '::' )? )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:2: ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function__2_0= ruleAtomVarMacro ) ) (otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) ) otherlv_5= '::' )?
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:1: ( ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function_2_0= ruleAtomVarMacro ) ) (otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) ) otherlv_5= '::' )? )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:2: ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )? ( (lv_function_2_0= ruleAtomVarMacro ) ) (otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) ) otherlv_5= '::' )?
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:2: ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )?
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:2: ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )?
             int alt122=2;
             alt122 = dfa122.predict(input);
             switch (alt122) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:3: ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:3: ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':'
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:3: ( (lv_module__0_0= ruleAtomVarMacro ) )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7423:1: (lv_module__0_0= ruleAtomVarMacro )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7422:3: ( (lv_module_0_0= ruleAtomVarMacro ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7423:1: (lv_module_0_0= ruleAtomVarMacro )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7423:1: (lv_module__0_0= ruleAtomVarMacro )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7424:3: lv_module__0_0= ruleAtomVarMacro
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7423:1: (lv_module_0_0= ruleAtomVarMacro )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7424:3: lv_module_0_0= ruleAtomVarMacro
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getSpecFunAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); 
+                      	        newCompositeNode(grammarAccess.getSpecFunAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); 
                       	    
                     }
                     pushFollow(FOLLOW_ruleAtomVarMacro_in_ruleSpecFun17016);
-                    lv_module__0_0=ruleAtomVarMacro();
+                    lv_module_0_0=ruleAtomVarMacro();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -21058,8 +21058,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       	        }
                              		set(
                              			current, 
-                             			"module_",
-                              		lv_module__0_0, 
+                             			"module",
+                              		lv_module_0_0, 
                               		"AtomVarMacro");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -21082,19 +21082,19 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7444:3: ( (lv_function__2_0= ruleAtomVarMacro ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7445:1: (lv_function__2_0= ruleAtomVarMacro )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7444:3: ( (lv_function_2_0= ruleAtomVarMacro ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7445:1: (lv_function_2_0= ruleAtomVarMacro )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7445:1: (lv_function__2_0= ruleAtomVarMacro )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7446:3: lv_function__2_0= ruleAtomVarMacro
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7445:1: (lv_function_2_0= ruleAtomVarMacro )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7446:3: lv_function_2_0= ruleAtomVarMacro
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getSpecFunAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); 
+              	        newCompositeNode(grammarAccess.getSpecFunAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); 
               	    
             }
             pushFollow(FOLLOW_ruleAtomVarMacro_in_ruleSpecFun17051);
-            lv_function__2_0=ruleAtomVarMacro();
+            lv_function_2_0=ruleAtomVarMacro();
 
             state._fsp--;
             if (state.failed) return current;
@@ -21105,8 +21105,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
               	        }
                      		set(
                      			current, 
-                     			"function_",
-                      		lv_function__2_0, 
+                     			"function",
+                      		lv_function_2_0, 
                       		"AtomVarMacro");
               	        afterParserOrEnumRuleCall();
               	    
@@ -21117,7 +21117,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7462:2: (otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) ) otherlv_5= '::' )?
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7462:2: (otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) ) otherlv_5= '::' )?
             int alt123=2;
             int LA123_0 = input.LA(1);
 
@@ -21126,7 +21126,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             }
             switch (alt123) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7462:4: otherlv_3= '/' ( (lv_arity__4_0= ruleIntVarMacro ) ) otherlv_5= '::'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7462:4: otherlv_3= '/' ( (lv_arity_4_0= ruleIntVarMacro ) ) otherlv_5= '::'
                     {
                     otherlv_3=(Token)match(input,68,FOLLOW_68_in_ruleSpecFun17064); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -21134,19 +21134,19 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                           	newLeafNode(otherlv_3, grammarAccess.getSpecFunAccess().getSolidusKeyword_2_0());
                           
                     }
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7466:1: ( (lv_arity__4_0= ruleIntVarMacro ) )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7467:1: (lv_arity__4_0= ruleIntVarMacro )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7466:1: ( (lv_arity_4_0= ruleIntVarMacro ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7467:1: (lv_arity_4_0= ruleIntVarMacro )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7467:1: (lv_arity__4_0= ruleIntVarMacro )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7468:3: lv_arity__4_0= ruleIntVarMacro
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7467:1: (lv_arity_4_0= ruleIntVarMacro )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7468:3: lv_arity_4_0= ruleIntVarMacro
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getSpecFunAccess().getArity_IntVarMacroParserRuleCall_2_1_0()); 
+                      	        newCompositeNode(grammarAccess.getSpecFunAccess().getArityIntVarMacroParserRuleCall_2_1_0()); 
                       	    
                     }
                     pushFollow(FOLLOW_ruleIntVarMacro_in_ruleSpecFun17085);
-                    lv_arity__4_0=ruleIntVarMacro();
+                    lv_arity_4_0=ruleIntVarMacro();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -21157,8 +21157,8 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       	        }
                              		set(
                              			current, 
-                             			"arity_",
-                              		lv_arity__4_0, 
+                             			"arity",
+                              		lv_arity_4_0, 
                               		"IntVarMacro");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -26591,7 +26591,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             this.transition = DFA82_transition;
         }
         public String getDescription() {
-            return "5360:2: ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )?";
+            return "5360:2: ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )?";
         }
     }
     static final String DFA89_eotS =
@@ -27093,7 +27093,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             this.transition = DFA122_transition;
         }
         public String getDescription() {
-            return "7422:2: ( ( (lv_module__0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )?";
+            return "7422:2: ( ( (lv_module_0_0= ruleAtomVarMacro ) ) otherlv_1= ':' )?";
         }
     }
     static final String DFA133_eotS =

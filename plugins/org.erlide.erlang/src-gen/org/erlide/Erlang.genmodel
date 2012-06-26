@@ -166,9 +166,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunExpr/clauses"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//FunRef">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/module_"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/function_"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/arity_"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/module"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/function"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/arity"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//TryExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TryExpr/body"/>

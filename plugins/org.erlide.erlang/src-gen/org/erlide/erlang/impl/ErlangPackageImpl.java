@@ -2090,7 +2090,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFunRef_Module_()
+  public EReference getFunRef_Module()
   {
     return (EReference)funRefEClass.getEStructuralFeatures().get(0);
   }
@@ -2100,7 +2100,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFunRef_Function_()
+  public EReference getFunRef_Function()
   {
     return (EReference)funRefEClass.getEStructuralFeatures().get(1);
   }
@@ -2110,7 +2110,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFunRef_Arity_()
+  public EReference getFunRef_Arity()
   {
     return (EReference)funRefEClass.getEStructuralFeatures().get(2);
   }
@@ -3655,9 +3655,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(funExprEClass, FUN_EXPR__CLAUSES);
 
     funRefEClass = createEClass(FUN_REF);
-    createEReference(funRefEClass, FUN_REF__MODULE_);
-    createEReference(funRefEClass, FUN_REF__FUNCTION_);
-    createEReference(funRefEClass, FUN_REF__ARITY_);
+    createEReference(funRefEClass, FUN_REF__MODULE);
+    createEReference(funRefEClass, FUN_REF__FUNCTION);
+    createEReference(funRefEClass, FUN_REF__ARITY);
 
     tryExprEClass = createEClass(TRY_EXPR);
     createEReference(tryExprEClass, TRY_EXPR__BODY);
@@ -4119,9 +4119,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getFunExpr_Clauses(), this.getFunctionClause(), null, "clauses", null, 0, -1, FunExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funRefEClass, FunRef.class, "FunRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFunRef_Module_(), this.getExpression(), null, "module_", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunRef_Function_(), this.getExpression(), null, "function_", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunRef_Arity_(), this.getExpression(), null, "arity_", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunRef_Module(), this.getExpression(), null, "module", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunRef_Function(), this.getExpression(), null, "function", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunRef_Arity(), this.getExpression(), null, "arity", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tryExprEClass, TryExpr.class, "TryExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTryExpr_Body(), this.getExpressions(), null, "body", null, 0, 1, TryExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

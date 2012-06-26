@@ -5360,16 +5360,16 @@ ruleFunRef returns [EObject current=null]
 (((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunRefAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); 
+	        newCompositeNode(grammarAccess.getFunRefAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); 
 	    }
-		lv_module__0_0=ruleAtomVarMacro		{
+		lv_module_0_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunRefRule());
 	        }
        		set(
        			$current, 
-       			"module_",
-        		lv_module__0_0, 
+       			"module",
+        		lv_module_0_0, 
         		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -5382,16 +5382,16 @@ ruleFunRef returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunRefAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getFunRefAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); 
 	    }
-		lv_function__2_0=ruleAtomVarMacro		{
+		lv_function_2_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunRefRule());
 	        }
        		set(
        			$current, 
-       			"function_",
-        		lv_function__2_0, 
+       			"function",
+        		lv_function_2_0, 
         		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -5404,16 +5404,16 @@ ruleFunRef returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunRefAccess().getArity_IntVarMacroParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getFunRefAccess().getArityIntVarMacroParserRuleCall_3_0()); 
 	    }
-		lv_arity__4_0=ruleIntVarMacro		{
+		lv_arity_4_0=ruleIntVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunRefRule());
 	        }
        		set(
        			$current, 
-       			"arity_",
-        		lv_arity__4_0, 
+       			"arity",
+        		lv_arity_4_0, 
         		"IntVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -7422,16 +7422,16 @@ ruleSpecFun returns [EObject current=null]
 (((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecFunAccess().getModule_AtomVarMacroParserRuleCall_0_0_0()); 
+	        newCompositeNode(grammarAccess.getSpecFunAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); 
 	    }
-		lv_module__0_0=ruleAtomVarMacro		{
+		lv_module_0_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSpecFunRule());
 	        }
        		set(
        			$current, 
-       			"module_",
-        		lv_module__0_0, 
+       			"module",
+        		lv_module_0_0, 
         		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -7444,16 +7444,16 @@ ruleSpecFun returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecFunAccess().getFunction_AtomVarMacroParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getSpecFunAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); 
 	    }
-		lv_function__2_0=ruleAtomVarMacro		{
+		lv_function_2_0=ruleAtomVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSpecFunRule());
 	        }
        		set(
        			$current, 
-       			"function_",
-        		lv_function__2_0, 
+       			"function",
+        		lv_function_2_0, 
         		"AtomVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -7466,16 +7466,16 @@ ruleSpecFun returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSpecFunAccess().getArity_IntVarMacroParserRuleCall_2_1_0()); 
+	        newCompositeNode(grammarAccess.getSpecFunAccess().getArityIntVarMacroParserRuleCall_2_1_0()); 
 	    }
-		lv_arity__4_0=ruleIntVarMacro		{
+		lv_arity_4_0=ruleIntVarMacro		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSpecFunRule());
 	        }
        		set(
        			$current, 
-       			"arity_",
-        		lv_arity__4_0, 
+       			"arity",
+        		lv_arity_4_0, 
         		"IntVarMacro");
 	        afterParserOrEnumRuleCall();
 	    }

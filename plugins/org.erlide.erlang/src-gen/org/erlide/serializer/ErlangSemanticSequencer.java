@@ -1973,7 +1973,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (module_=AtomVarMacro? function_=AtomVarMacro arity_=IntVarMacro)
+	 *     (module=AtomVarMacro? function=AtomVarMacro arity=IntVarMacro)
 	 */
 	protected void sequence_FunRef(EObject context, FunRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2331,7 +2331,7 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Constraint:
-	 *     (module_=AtomVarMacro? function_=AtomVarMacro arity_=IntVarMacro?)
+	 *     (module=AtomVarMacro? function=AtomVarMacro arity=IntVarMacro?)
 	 */
 	protected void sequence_SpecFun(EObject context, FunRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

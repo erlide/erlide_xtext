@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.linking.impl.DefaultLinkingService;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.erlide.erlang.Atom;
 import org.erlide.erlang.AtomRefTarget;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.scoping.ErlangLinkingHelper;
@@ -21,7 +22,7 @@ public class ErlangLinkingService extends DefaultLinkingService {
     EReference _atom_Value = ErlangPackage.eINSTANCE.getAtom_Value();
     boolean _equals = Objects.equal(ref, _atom_Value);
     if (_equals) {
-      final AtomRefTarget aref = this.linkHelper.getAtomReference(context);
+      final AtomRefTarget aref = this.linkHelper.getAtomReference(((Atom) context));
       boolean _equals_1 = Objects.equal(aref, null);
       if (_equals_1) {
         return CollectionLiterals.<EObject>newArrayList();

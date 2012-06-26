@@ -11,9 +11,9 @@ package org.erlide.erlang;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.FunRef#getModule_ <em>Module </em>}</li>
- *   <li>{@link org.erlide.erlang.FunRef#getFunction_ <em>Function </em>}</li>
- *   <li>{@link org.erlide.erlang.FunRef#getArity_ <em>Arity </em>}</li>
+ *   <li>{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}</li>
+ *   <li>{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}</li>
+ *   <li>{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}</li>
  * </ul>
  * </p>
  *
@@ -24,81 +24,81 @@ package org.erlide.erlang;
 public interface FunRef extends FunExpr
 {
   /**
-   * Returns the value of the '<em><b>Module </b></em>' containment reference.
+   * Returns the value of the '<em><b>Module</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Module </em>' containment reference isn't clear,
+   * If the meaning of the '<em>Module</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Module </em>' containment reference.
-   * @see #setModule_(Expression)
-   * @see org.erlide.erlang.ErlangPackage#getFunRef_Module_()
+   * @return the value of the '<em>Module</em>' containment reference.
+   * @see #setModule(Expression)
+   * @see org.erlide.erlang.ErlangPackage#getFunRef_Module()
    * @model containment="true"
    * @generated
    */
-  Expression getModule_();
+  Expression getModule();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getModule_ <em>Module </em>}' containment reference.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Module </em>' containment reference.
-   * @see #getModule_()
+   * @param value the new value of the '<em>Module</em>' containment reference.
+   * @see #getModule()
    * @generated
    */
-  void setModule_(Expression value);
+  void setModule(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Function </b></em>' containment reference.
+   * Returns the value of the '<em><b>Function</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Function </em>' containment reference isn't clear,
+   * If the meaning of the '<em>Function</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Function </em>' containment reference.
-   * @see #setFunction_(Expression)
-   * @see org.erlide.erlang.ErlangPackage#getFunRef_Function_()
+   * @return the value of the '<em>Function</em>' containment reference.
+   * @see #setFunction(Expression)
+   * @see org.erlide.erlang.ErlangPackage#getFunRef_Function()
    * @model containment="true"
    * @generated
    */
-  Expression getFunction_();
+  Expression getFunction();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getFunction_ <em>Function </em>}' containment reference.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Function </em>' containment reference.
-   * @see #getFunction_()
+   * @param value the new value of the '<em>Function</em>' containment reference.
+   * @see #getFunction()
    * @generated
    */
-  void setFunction_(Expression value);
+  void setFunction(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Arity </b></em>' containment reference.
+   * Returns the value of the '<em><b>Arity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Arity </em>' containment reference isn't clear,
+   * If the meaning of the '<em>Arity</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Arity </em>' containment reference.
-   * @see #setArity_(Expression)
-   * @see org.erlide.erlang.ErlangPackage#getFunRef_Arity_()
+   * @return the value of the '<em>Arity</em>' containment reference.
+   * @see #setArity(Expression)
+   * @see org.erlide.erlang.ErlangPackage#getFunRef_Arity()
    * @model containment="true"
    * @generated
    */
-  Expression getArity_();
+  Expression getArity();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getArity_ <em>Arity </em>}' containment reference.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Arity </em>' containment reference.
-   * @see #getArity_()
+   * @param value the new value of the '<em>Arity</em>' containment reference.
+   * @see #getArity()
    * @generated
    */
-  void setArity_(Expression value);
+  void setArity(Expression value);
 
 } // FunRef
