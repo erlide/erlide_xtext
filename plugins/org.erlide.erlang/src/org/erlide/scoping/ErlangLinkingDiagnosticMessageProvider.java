@@ -2,6 +2,7 @@ package org.erlide.scoping;
 
 import org.eclipse.xtext.diagnostics.DiagnosticMessage;
 import org.eclipse.xtext.linking.impl.LinkingDiagnosticMessageProvider;
+import org.erlide.erlang.Atom;
 import org.erlide.erlang.ModelExtensions;
 
 import com.google.inject.Inject;
@@ -22,14 +23,16 @@ public class ErlangLinkingDiagnosticMessageProvider extends
             return null;
         }
         // TODO if this isn't really a link, return null
-        // final boolean linkableContext = linkHelper.isLinkableContext(context
-        // .getContext());
-        System.out.println("@@ " + context.getLinkText() + " === "
-        // + linkableContext + " :: "
-                + me.getSourceText(context.getContext().eContainer()));
-        // if (linkableContext) {
-        // return org;
-        // }
+        if (context.getContext() instanceof Atom) {
+            final Atom atom = (Atom) context.getContext();
+            final boolean linkableContext = linkHelper.isLinkableAtom(atom);
+            // System.out.println("linking diagnostic: " + context.getLinkText()
+            // + " === " + linkableContext + " :: "
+            // + me.getSourceText(context.getContext().eContainer()));
+            if (linkableContext) {
+                return null;
+            }
+        }
         return null;
     }
 }

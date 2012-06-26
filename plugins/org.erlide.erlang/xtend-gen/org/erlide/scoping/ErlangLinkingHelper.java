@@ -14,6 +14,7 @@ import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.AtomRefTarget;
 import org.erlide.erlang.ErlangPackage.Literals;
@@ -21,6 +22,7 @@ import org.erlide.erlang.Expression;
 import org.erlide.erlang.Expressions;
 import org.erlide.erlang.FunCall;
 import org.erlide.erlang.FunRef;
+import org.erlide.erlang.Function;
 import org.erlide.erlang.Macro;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
@@ -180,87 +182,67 @@ public class ErlangLinkingHelper {
   }
   
   public AtomRefTarget getAtomReference(final Atom atom) {
-    AtomRefTarget _switchResult = null;
-    ErlangLinkCategory _classifyAtom = this.classifyAtom(atom);
-    final ErlangLinkCategory _switchValue = _classifyAtom;
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_switchValue,ErlangLinkCategory.NONE)) {
-        _matched=true;
-        _switchResult = null;
+    AtomRefTarget _xblockexpression = null;
+    {
+      Resource _eResource = atom.eResource();
+      final IResourceDescriptions index = this.indexProvider.getResourceDescriptions(_eResource);
+      Resource _eResource_1 = atom.eResource();
+      final ResourceSet rset = _eResource_1.getResourceSet();
+      AtomRefTarget _switchResult = null;
+      ErlangLinkCategory _classifyAtom = this.classifyAtom(atom);
+      final ErlangLinkCategory _switchValue = _classifyAtom;
+      boolean _matched = false;
+      if (!_matched) {
+        if (Objects.equal(_switchValue,ErlangLinkCategory.NONE)) {
+          _matched=true;
+          _switchResult = null;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,ErlangLinkCategory.MODULE)) {
-        _matched=true;
-        _switchResult = null;
+      if (!_matched) {
+        if (Objects.equal(_switchValue,ErlangLinkCategory.MODULE)) {
+          _matched=true;
+          String _sourceText = this._modelExtensions.getSourceText(atom);
+          Module _findModule = this._modelExtensions.findModule(index, _sourceText, rset);
+          _switchResult = _findModule;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,ErlangLinkCategory.FUNCTION_CALL_LOCAL)) {
-        _matched=true;
-        _switchResult = null;
+      if (!_matched) {
+        if (Objects.equal(_switchValue,ErlangLinkCategory.FUNCTION_CALL_LOCAL)) {
+          _matched=true;
+          Function _xblockexpression_1 = null;
+          {
+            EObject _eContainer = atom.eContainer();
+            final FunCall parent = ((FunCall) _eContainer);
+            Expressions _args = parent.getArgs();
+            EList<Expression> _exprs = _args==null?(EList<Expression>)null:_args.getExprs();
+            int _size = _exprs==null?0:_exprs.size();
+            final Integer arity = ObjectExtensions.<Integer>operator_elvis(Integer.valueOf(_size), Integer.valueOf(0));
+            Module _owningModule = this._modelExtensions.getOwningModule(parent);
+            Expression _target = parent.getTarget();
+            String _sourceText_1 = this._modelExtensions.getSourceText(_target);
+            Function _function = this._modelExtensions.getFunction(_owningModule, _sourceText_1, (arity).intValue());
+            _xblockexpression_1 = (_function);
+          }
+          _switchResult = _xblockexpression_1;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,ErlangLinkCategory.FUNCTION_CALL_REMOTE)) {
-        _matched=true;
-        _switchResult = null;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,ErlangLinkCategory.FUNCTION_REF)) {
-        _matched=true;
-        _switchResult = null;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,ErlangLinkCategory.RECORD)) {
-        _matched=true;
-        _switchResult = null;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,ErlangLinkCategory.RECORD_FIELD)) {
-        _matched=true;
-        _switchResult = null;
-      }
-    }
-    return _switchResult;
-  }
-  
-  private AtomRefTarget _getAtomReferenceFor(final EObject parent, final Atom atom) {
-    return null;
-  }
-  
-  private AtomRefTarget _getAtomReferenceFor(final RemoteTarget parent, final Atom atom) {
-    Resource _eResource = atom.eResource();
-    final IResourceDescriptions index = this.indexProvider.getResourceDescriptions(_eResource);
-    Resource _eResource_1 = atom.eResource();
-    final ResourceSet rset = _eResource_1.getResourceSet();
-    Expression _module = parent.getModule();
-    if ((_module instanceof Atom)) {
-      Expression _module_1 = parent.getModule();
-      boolean _equals = Objects.equal(atom, _module_1);
-      if (_equals) {
-        String _sourceText = this._modelExtensions.getSourceText(atom);
-        return this._modelExtensions.findModule(index, _sourceText, rset);
-      }
-      Expression _function = parent.getFunction();
-      if ((_function instanceof Atom)) {
-        Expression _function_1 = parent.getFunction();
-        boolean _equals_1 = Objects.equal(atom, _function_1);
-        if (_equals_1) {
-          EObject _eContainer = parent.eContainer();
-          Expressions _args = ((FunCall) _eContainer).getArgs();
-          EList<Expression> _exprs = _args.getExprs();
-          final int arity = _exprs.size();
-          Expression _module_2 = parent.getModule();
-          String _sourceText_1 = this._modelExtensions.getSourceText(_module_2);
-          Expression _function_2 = parent.getFunction();
-          String _sourceText_2 = this._modelExtensions.getSourceText(_function_2);
+      if (!_matched) {
+        if (Objects.equal(_switchValue,ErlangLinkCategory.FUNCTION_CALL_REMOTE)) {
+          _matched=true;
+          EObject _eContainer = atom.eContainer();
+          final RemoteTarget parent = ((RemoteTarget) _eContainer);
+          EObject _eContainer_1 = parent.eContainer();
+          final FunCall call = ((FunCall) _eContainer_1);
+          Expressions _args = call.getArgs();
+          EList<Expression> _exprs = _args==null?(EList<Expression>)null:_args.getExprs();
+          int _size = _exprs==null?0:_exprs.size();
+          final Integer arity = ObjectExtensions.<Integer>operator_elvis(Integer.valueOf(_size), Integer.valueOf(0));
+          Expression _module = parent.getModule();
+          String _sourceText_1 = this._modelExtensions.getSourceText(_module);
+          Expression _function = parent.getFunction();
+          String _sourceText_2 = this._modelExtensions.getSourceText(_function);
           String _plus = (_sourceText_2 + "/");
-          String _plus_1 = (_plus + Integer.valueOf(arity));
+          String _plus_1 = (_plus + arity);
           final QualifiedName qname = QualifiedName.create(_sourceText_1, _plus_1);
           final Iterable<IEObjectDescription> rfun = index.getExportedObjects(Literals.FUNCTION, qname, false);
           boolean _isEmpty = IterableExtensions.isEmpty(rfun);
@@ -273,38 +255,44 @@ public class ErlangLinkingHelper {
           }
         }
       }
-      return null;
-    }
-    return null;
-  }
-  
-  private AtomRefTarget _getAtomReferenceFor(final FunCall parent, final Atom atom) {
-    Module _owningModule = this._modelExtensions.getOwningModule(parent);
-    Expression _target = parent.getTarget();
-    String _sourceText = this._modelExtensions.getSourceText(_target);
-    Expressions _args = parent.getArgs();
-    EList<Expression> _exprs = _args.getExprs();
-    int _size = _exprs.size();
-    return this._modelExtensions.getFunction(_owningModule, _sourceText, _size);
-  }
-  
-  private AtomRefTarget _getAtomReferenceFor(final FunRef parent, final Atom atom) {
-    Expression _arity = parent.getArity();
-    final String arity = this._modelExtensions.getSourceText(_arity);
-    try {
-      Module _owningModule = this._modelExtensions.getOwningModule(parent);
-      Expression _function = parent.getFunction();
-      String _sourceText = this._modelExtensions.getSourceText(_function);
-      int _parseInt = Integer.parseInt(arity);
-      return this._modelExtensions.getFunction(_owningModule, _sourceText, _parseInt);
-    } catch (final Throwable _t) {
-      if (_t instanceof Exception) {
-        final Exception e = (Exception)_t;
-        return null;
-      } else {
-        throw Exceptions.sneakyThrow(_t);
+      if (!_matched) {
+        if (Objects.equal(_switchValue,ErlangLinkCategory.FUNCTION_REF)) {
+          _matched=true;
+          EObject _eContainer_2 = atom.eContainer();
+          final FunRef parent_1 = ((FunRef) _eContainer_2);
+          Expression _arity = parent_1.getArity();
+          final String arity_1 = this._modelExtensions.getSourceText(_arity);
+          try {
+            Module _owningModule = this._modelExtensions.getOwningModule(parent_1);
+            Expression _function_1 = parent_1.getFunction();
+            String _sourceText_3 = this._modelExtensions.getSourceText(_function_1);
+            int _parseInt = Integer.parseInt(arity_1);
+            return this._modelExtensions.getFunction(_owningModule, _sourceText_3, _parseInt);
+          } catch (final Throwable _t) {
+            if (_t instanceof Exception) {
+              final Exception e = (Exception)_t;
+              return null;
+            } else {
+              throw Exceptions.sneakyThrow(_t);
+            }
+          }
+        }
       }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,ErlangLinkCategory.RECORD)) {
+          _matched=true;
+          _switchResult = null;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,ErlangLinkCategory.RECORD_FIELD)) {
+          _matched=true;
+          _switchResult = null;
+        }
+      }
+      _xblockexpression = (_switchResult);
     }
+    return _xblockexpression;
   }
   
   private ErlangLinkCategory classifyAtom(final Atom atom, final EObject context) {
@@ -323,21 +311,6 @@ public class ErlangLinkingHelper {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(atom, context).toString());
-    }
-  }
-  
-  private AtomRefTarget getAtomReferenceFor(final EObject parent, final Atom atom) {
-    if (parent instanceof FunRef) {
-      return _getAtomReferenceFor((FunRef)parent, atom);
-    } else if (parent instanceof FunCall) {
-      return _getAtomReferenceFor((FunCall)parent, atom);
-    } else if (parent instanceof RemoteTarget) {
-      return _getAtomReferenceFor((RemoteTarget)parent, atom);
-    } else if (parent != null) {
-      return _getAtomReferenceFor(parent, atom);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(parent, atom).toString());
     }
   }
 }

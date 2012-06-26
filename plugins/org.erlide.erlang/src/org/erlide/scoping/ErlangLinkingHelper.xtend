@@ -100,17 +100,36 @@ class ErlangLinkingHelper {
 	}
 	
 	def AtomRefTarget getAtomReference(Atom atom) {
+		val index = indexProvider.getResourceDescriptions(atom.eResource)
+		val rset = atom.eResource.resourceSet
 		switch(atom.classifyAtom) {
 			case ErlangLinkCategory::NONE:
 				null
 			case ErlangLinkCategory::MODULE:
-				null
-			case ErlangLinkCategory::FUNCTION_CALL_LOCAL:
-				null
-			case ErlangLinkCategory::FUNCTION_CALL_REMOTE:
-				null
-			case ErlangLinkCategory::FUNCTION_REF:
-				null
+				index.findModule(atom.sourceText, rset)
+			case ErlangLinkCategory::FUNCTION_CALL_LOCAL: {
+				val parent = atom.eContainer as FunCall
+				val arity = parent.args?.exprs?.size?:0
+				parent.owningModule.getFunction(parent.target.sourceText, arity)
+			}
+			case ErlangLinkCategory::FUNCTION_CALL_REMOTE: {
+				val parent = atom.eContainer as RemoteTarget
+				val call = parent.eContainer as FunCall
+				val arity = call.args?.exprs?.size?:0
+				val qname = QualifiedName::create(parent.module.sourceText, parent.function.sourceText+"/"+arity)
+				val rfun = index.getExportedObjects(ErlangPackage$Literals::FUNCTION, qname, false)
+				if(!rfun.empty) 
+					return rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
+			}
+			case ErlangLinkCategory::FUNCTION_REF: {
+				val parent = atom.eContainer as FunRef
+				val arity = parent.arity.sourceText
+				try {
+					return parent.owningModule.getFunction(parent.function.sourceText, Integer::parseInt(arity))
+				} catch (Exception e) {
+					return null
+				}
+			}
 			case ErlangLinkCategory::RECORD:
 				null
 			case ErlangLinkCategory::RECORD_FIELD:
@@ -118,39 +137,4 @@ class ErlangLinkingHelper {
 		}
 	}		
 	
-	def private dispatch AtomRefTarget getAtomReferenceFor(EObject parent, Atom atom) {
-		null
-	}
-	def private dispatch AtomRefTarget getAtomReferenceFor(RemoteTarget parent, Atom atom) {
-		val index = indexProvider.getResourceDescriptions(atom.eResource)
-		val rset = atom.eResource.resourceSet
-		if(parent.module instanceof Atom) {
-			if(atom==parent.module) {
-				return index.findModule(atom.sourceText, rset)
-			} 
-			if(parent.function instanceof Atom) {
-				if(atom==parent.function) {
-					val arity = (parent.eContainer as FunCall).args.exprs.size
-					val qname = QualifiedName::create(parent.module.sourceText, parent.function.sourceText+"/"+arity)
-					val rfun = index.getExportedObjects(ErlangPackage$Literals::FUNCTION, qname, false)
-					if(!rfun.empty) 
-						return rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
-				}
-			} 
-			return null
-		}
-		return null
-	}
-	def private dispatch AtomRefTarget getAtomReferenceFor(FunCall parent, Atom atom) {
-		return parent.owningModule.getFunction(parent.target.sourceText, parent.args.exprs.size)
-	}
-	def private dispatch AtomRefTarget getAtomReferenceFor(FunRef parent, Atom atom) {
-		val arity = parent.arity.sourceText
-		try {
-			return parent.owningModule.getFunction(parent.function.sourceText, Integer::parseInt(arity))
-		} catch (Exception e) {
-			return null
-		}
-	}
-
 }

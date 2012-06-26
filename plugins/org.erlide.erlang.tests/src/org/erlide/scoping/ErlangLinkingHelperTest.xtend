@@ -259,5 +259,7 @@ class ErlangLinkingHelperTest {
     	val atom = module.objectAtMarker as Atom
     	assertThat(atom.classifyAtom, is(ErlangLinkCategory::NONE))
     } 
+ 
+	
      
 }
