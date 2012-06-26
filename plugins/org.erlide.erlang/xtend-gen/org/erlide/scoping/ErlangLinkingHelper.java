@@ -62,12 +62,16 @@ public class ErlangLinkingHelper {
     Expression _function = context.getFunction();
     boolean _equals_1 = Objects.equal(atom, _function);
     if (_equals_1) {
+      boolean _and = false;
       Expression _module_1 = context.getModule();
-      if ((_module_1 instanceof Atom)) {
+      if (!(_module_1 instanceof Atom)) {
+        _and = false;
+      } else {
         Expression _function_1 = context.getFunction();
-        if ((_function_1 instanceof Atom)) {
-          return ErlangLinkCategory.FUNCTION_CALL_REMOTE;
-        }
+        _and = ((_module_1 instanceof Atom) && (_function_1 instanceof Atom));
+      }
+      if (_and) {
+        return ErlangLinkCategory.FUNCTION_CALL_REMOTE;
       }
       Expression _module_2 = context.getModule();
       boolean _isModuleMacro = this._modelExtensions.isModuleMacro(_module_2);
@@ -93,36 +97,25 @@ public class ErlangLinkingHelper {
       Expression _function = context.getFunction();
       boolean _equals_1 = Objects.equal(atom, _function);
       if (_equals_1) {
-        boolean _or = false;
         Expression _module_1 = context.getModule();
         if ((_module_1 instanceof Atom)) {
-          _or = true;
-        } else {
-          Expression _module_2 = context.getModule();
-          boolean _equals_2 = Objects.equal(_module_2, null);
-          _or = ((_module_1 instanceof Atom) || _equals_2);
-        }
-        if (_or) {
           final EObject parent = context.eContainer();
           if ((parent instanceof SpecAttribute)) {
-            Expression _module_3 = context.getModule();
-            boolean _equals_3 = Objects.equal(_module_3, null);
-            if (_equals_3) {
-              return ErlangLinkCategory.FUNCTION_CALL_LOCAL;
-            } else {
-              return ErlangLinkCategory.FUNCTION_CALL_REMOTE;
-            }
+            return ErlangLinkCategory.FUNCTION_CALL_REMOTE;
           }
-          Expression _module_4 = context.getModule();
-          boolean _equals_4 = Objects.equal(_module_4, null);
-          if (_equals_4) {
-            return ErlangLinkCategory.FUNCTION_REF_LOCAL;
-          } else {
-            return ErlangLinkCategory.FUNCTION_REF_REMOTE;
-          }
+          return ErlangLinkCategory.FUNCTION_REF_REMOTE;
         }
-        Expression _module_5 = context.getModule();
-        boolean _isModuleMacro = this._modelExtensions.isModuleMacro(_module_5);
+        Expression _module_2 = context.getModule();
+        boolean _equals_2 = Objects.equal(_module_2, null);
+        if (_equals_2) {
+          final EObject parent_1 = context.eContainer();
+          if ((parent_1 instanceof SpecAttribute)) {
+            return ErlangLinkCategory.FUNCTION_CALL_LOCAL;
+          }
+          return ErlangLinkCategory.FUNCTION_REF_LOCAL;
+        }
+        Expression _module_3 = context.getModule();
+        boolean _isModuleMacro = this._modelExtensions.isModuleMacro(_module_3);
         if (_isModuleMacro) {
           return ErlangLinkCategory.FUNCTION_REF_REMOTE;
         }
@@ -136,17 +129,21 @@ public class ErlangLinkingHelper {
     ErlangLinkCategory _xblockexpression = null;
     {
       Expression _rec = context.getRec();
-      if ((_rec instanceof Atom)) {
-        Expression _rec_1 = context.getRec();
-        boolean _equals = Objects.equal(_rec_1, atom);
-        if (_equals) {
-          return ErlangLinkCategory.RECORD;
-        }
+      boolean _equals = Objects.equal(_rec, atom);
+      if (_equals) {
+        return ErlangLinkCategory.RECORD;
+      }
+      boolean _and = false;
+      Expression _rec_1 = context.getRec();
+      if (!(_rec_1 instanceof Atom)) {
+        _and = false;
+      } else {
         Expression _field = context.getField();
         boolean _equals_1 = Objects.equal(_field, atom);
-        if (_equals_1) {
-          return ErlangLinkCategory.RECORD_FIELD;
-        }
+        _and = ((_rec_1 instanceof Atom) && _equals_1);
+      }
+      if (_and) {
+        return ErlangLinkCategory.RECORD_FIELD;
       }
       _xblockexpression = (ErlangLinkCategory.NONE);
     }
@@ -156,26 +153,32 @@ public class ErlangLinkingHelper {
   private ErlangLinkCategory _classifyAtom(final Atom atom, final RecordFieldExpr context) {
     ErlangLinkCategory _xblockexpression = null;
     {
-      EObject _eContainer = context.eContainer();
-      if ((_eContainer instanceof RecordExpr)) {
-        EObject _eContainer_1 = context.eContainer();
-        final RecordExpr expr = ((RecordExpr) _eContainer_1);
-        Expression _rec = expr.getRec();
-        if ((_rec instanceof Atom)) {
-          return ErlangLinkCategory.RECORD_FIELD;
+      final EObject parent = context.eContainer();
+      boolean _matched = false;
+      if (!_matched) {
+        if (parent instanceof RecordExpr) {
+          final RecordExpr _recordExpr = (RecordExpr)parent;
+          _matched=true;
+          Expression _rec = _recordExpr.getRec();
+          if ((_rec instanceof Atom)) {
+            return ErlangLinkCategory.RECORD_FIELD;
+          }
         }
       }
-      EObject _eContainer_2 = context.eContainer();
-      if ((_eContainer_2 instanceof RecordTuple)) {
-        EObject _eContainer_3 = context.eContainer();
-        EObject _eContainer_4 = _eContainer_3.eContainer();
-        if ((_eContainer_4 instanceof RecordExpr)) {
-          EObject _eContainer_5 = context.eContainer();
-          EObject _eContainer_6 = _eContainer_5.eContainer();
-          final RecordExpr expr_1 = ((RecordExpr) _eContainer_6);
-          Expression _rec_1 = expr_1.getRec();
-          if ((_rec_1 instanceof Atom)) {
-            return ErlangLinkCategory.RECORD_FIELD;
+      if (!_matched) {
+        if (parent instanceof RecordTuple) {
+          final RecordTuple _recordTuple = (RecordTuple)parent;
+          _matched=true;
+          EObject _eContainer = context.eContainer();
+          EObject _eContainer_1 = _eContainer.eContainer();
+          if ((_eContainer_1 instanceof RecordExpr)) {
+            EObject _eContainer_2 = context.eContainer();
+            EObject _eContainer_3 = _eContainer_2.eContainer();
+            final RecordExpr expr = ((RecordExpr) _eContainer_3);
+            Expression _rec = expr.getRec();
+            if ((_rec instanceof Atom)) {
+              return ErlangLinkCategory.RECORD_FIELD;
+            }
           }
         }
       }
@@ -197,66 +200,9 @@ public class ErlangLinkingHelper {
       final IResourceDescriptions index = this.indexProvider.getResourceDescriptions(_eResource);
       Resource _eResource_1 = atom.eResource();
       final ResourceSet rset = _eResource_1.getResourceSet();
-      AtomRefTarget _switchResult = null;
       ErlangLinkCategory _classifyAtom = this.classifyAtom(atom);
-      final ErlangLinkCategory _switchValue = _classifyAtom;
-      boolean _matched = false;
-      if (!_matched) {
-        if (Objects.equal(_switchValue,ErlangLinkCategory.NONE)) {
-          _matched=true;
-          _switchResult = null;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_switchValue,ErlangLinkCategory.MODULE)) {
-          _matched=true;
-          AtomRefTarget _moduleRef = this.getModuleRef(index, atom, rset);
-          _switchResult = _moduleRef;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_switchValue,ErlangLinkCategory.FUNCTION_CALL_LOCAL)) {
-          _matched=true;
-          AtomRefTarget _localCallRef = this.getLocalCallRef(atom);
-          _switchResult = _localCallRef;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_switchValue,ErlangLinkCategory.FUNCTION_CALL_REMOTE)) {
-          _matched=true;
-          AtomRefTarget _remoteCallRef = this.getRemoteCallRef(index, atom, rset);
-          _switchResult = _remoteCallRef;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_switchValue,ErlangLinkCategory.FUNCTION_REF_LOCAL)) {
-          _matched=true;
-          AtomRefTarget _localFunRefRef = this.getLocalFunRefRef(index, atom, rset);
-          _switchResult = _localFunRefRef;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_switchValue,ErlangLinkCategory.FUNCTION_REF_REMOTE)) {
-          _matched=true;
-          AtomRefTarget _remoteFunRefRef = this.getRemoteFunRefRef(index, atom, rset);
-          _switchResult = _remoteFunRefRef;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_switchValue,ErlangLinkCategory.RECORD)) {
-          _matched=true;
-          AtomRefTarget _recordRef = this.getRecordRef(index, atom, rset);
-          _switchResult = _recordRef;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_switchValue,ErlangLinkCategory.RECORD_FIELD)) {
-          _matched=true;
-          AtomRefTarget _recordFieldRef = this.getRecordFieldRef(index, atom, rset);
-          _switchResult = _recordFieldRef;
-        }
-      }
-      _xblockexpression = (_switchResult);
+      AtomRefTarget _ref = _classifyAtom.getRef(index, atom, rset);
+      _xblockexpression = (_ref);
     }
     return _xblockexpression;
   }
@@ -267,7 +213,7 @@ public class ErlangLinkingHelper {
     return _findModule;
   }
   
-  public AtomRefTarget getLocalCallRef(final Atom atom) {
+  public AtomRefTarget getLocalCallRef(final IResourceDescriptions index, final Atom atom, final ResourceSet rset) {
     Function _xblockexpression = null;
     {
       final EObject parent = atom.eContainer();

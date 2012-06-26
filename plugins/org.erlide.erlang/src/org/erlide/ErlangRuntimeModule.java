@@ -13,6 +13,7 @@ import org.erlide.conversion.ErlangValueConverterService;
 import org.erlide.naming.ErlangQualifiedNameConverter;
 import org.erlide.naming.ErlangQualifiedNameProvider;
 import org.erlide.project.ErlideProjectModule;
+import org.erlide.scoping.ErlangLinkCategory;
 import org.erlide.scoping.ErlangLinkingDiagnosticMessageProvider;
 import org.erlide.scoping.ErlangLinkingService;
 import org.erlide.scoping.ErlangResourceDescriptionStrategy;
@@ -29,6 +30,7 @@ public class ErlangRuntimeModule extends org.erlide.AbstractErlangRuntimeModule 
         super.configure(binder);
         binder.install(new CommonModule());
         binder.install(new ErlideProjectModule());
+        binder.requestStaticInjection(ErlangLinkCategory.class);
     }
 
     @Override

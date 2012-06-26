@@ -36,10 +36,8 @@ class ErlangLinkingHelper {
 			return ErlangLinkCategory::MODULE
 		} 
 		if(atom==context.function) {
-			if(context.module instanceof Atom) {
-				if(context.function instanceof Atom) {
-					return ErlangLinkCategory::FUNCTION_CALL_REMOTE
-				}
+			if(context.module instanceof Atom && context.function instanceof Atom) {
+				return ErlangLinkCategory::FUNCTION_CALL_REMOTE
 			} 
 			if(context.module.moduleMacro) {
 				return ErlangLinkCategory::FUNCTION_CALL_REMOTE
@@ -55,18 +53,19 @@ class ErlangLinkingHelper {
 			return ErlangLinkCategory::MODULE
 		} 
 		if(atom==context.function) {
-			if(context.module instanceof Atom || context.module==null) {
+			if(context.module instanceof Atom) {
 				val parent = context.eContainer
 				if(parent instanceof SpecAttribute) {
-					if(context.module==null)
-						return ErlangLinkCategory::FUNCTION_CALL_LOCAL
-					else
-						return ErlangLinkCategory::FUNCTION_CALL_REMOTE
+					return ErlangLinkCategory::FUNCTION_CALL_REMOTE
 				}
-				if(context.module==null)
-					return ErlangLinkCategory::FUNCTION_REF_LOCAL
-				else
-					return ErlangLinkCategory::FUNCTION_REF_REMOTE
+				return ErlangLinkCategory::FUNCTION_REF_REMOTE
+			}
+			if(context.module==null) {
+				val parent = context.eContainer
+				if(parent instanceof SpecAttribute) {
+					return ErlangLinkCategory::FUNCTION_CALL_LOCAL
+				}
+				return ErlangLinkCategory::FUNCTION_REF_LOCAL
 			}
 			if(context.module.moduleMacro) {
 				return ErlangLinkCategory::FUNCTION_REF_REMOTE
@@ -75,26 +74,26 @@ class ErlangLinkingHelper {
 		ErlangLinkCategory::NONE
 	}
 	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, RecordExpr context) {
-		if(context.rec instanceof Atom) {
-			if(context.rec==atom) 
-				return ErlangLinkCategory::RECORD
-			if(context.field==atom) 
-				return ErlangLinkCategory::RECORD_FIELD
-		}
+		if(context.rec==atom) 
+			return ErlangLinkCategory::RECORD
+		if(context.rec instanceof Atom && context.field==atom) 
+			return ErlangLinkCategory::RECORD_FIELD
 		ErlangLinkCategory::NONE
 	}
 	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, RecordFieldExpr context) {
-		if(context.eContainer instanceof RecordExpr) {
-			val expr = context.eContainer as RecordExpr
-			if(expr.rec instanceof Atom) { 
-				return ErlangLinkCategory::RECORD_FIELD
-			}
-		}
-		if(context.eContainer instanceof RecordTuple) {
-			if(context.eContainer.eContainer instanceof RecordExpr) {
-				val expr = context.eContainer.eContainer as RecordExpr
-				if(expr.rec instanceof Atom) { 
+		val parent = context.eContainer
+		switch(parent) {
+			RecordExpr: {
+				if(parent.rec instanceof Atom) { 
 					return ErlangLinkCategory::RECORD_FIELD
+				}
+			}
+			RecordTuple: {
+				if(context.eContainer.eContainer instanceof RecordExpr) {
+					val expr = context.eContainer.eContainer as RecordExpr
+					if(expr.rec instanceof Atom) { 
+						return ErlangLinkCategory::RECORD_FIELD
+					}
 				}
 			}
 		}
@@ -108,31 +107,14 @@ class ErlangLinkingHelper {
 	def AtomRefTarget getAtomReference(Atom atom) {
 		val index = indexProvider.getResourceDescriptions(atom.eResource)
 		val rset = atom.eResource.resourceSet
-		switch(atom.classifyAtom) {
-			case ErlangLinkCategory::NONE:
-				null
-			case ErlangLinkCategory::MODULE:
-				getModuleRef(index, atom, rset)
-			case ErlangLinkCategory::FUNCTION_CALL_LOCAL: 
-				getLocalCallRef(atom)
-			case ErlangLinkCategory::FUNCTION_CALL_REMOTE: 
-				getRemoteCallRef(index, atom, rset)
-			case ErlangLinkCategory::FUNCTION_REF_LOCAL: 
-				getLocalFunRefRef(index, atom, rset)
-			case ErlangLinkCategory::FUNCTION_REF_REMOTE: 
-				getRemoteFunRefRef(index, atom, rset)
-			case ErlangLinkCategory::RECORD:
-				getRecordRef(index, atom, rset)
-			case ErlangLinkCategory::RECORD_FIELD:
-				getRecordFieldRef(index, atom, rset)
-		}
+		atom.classifyAtom.getRef(index, atom, rset)
 	}
 	
 	def AtomRefTarget getModuleRef(IResourceDescriptions index, Atom atom, ResourceSet rset) { 
 		index.findModule(atom.sourceText, rset)
 	}
 	
-	def AtomRefTarget getLocalCallRef(Atom atom) { 
+	def AtomRefTarget getLocalCallRef(IResourceDescriptions index, Atom atom, ResourceSet rset) { 
 		val parent = atom.eContainer
 		switch(parent) {
 			FunCall: {
