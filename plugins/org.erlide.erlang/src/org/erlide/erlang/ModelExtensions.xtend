@@ -233,6 +233,13 @@ class ModelExtensions {
        	findActualSemanticObjectFor(elem)
 	}
 
+	def dispatch boolean isModuleMacro(EObject obj) {
+		false
+	}
+	def dispatch boolean isModuleMacro(Macro obj) {
+		obj.sourceText=="? MODULE"
+	}
+
 }
 
 

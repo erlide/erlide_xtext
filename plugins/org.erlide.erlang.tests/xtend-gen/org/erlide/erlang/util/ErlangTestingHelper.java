@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -20,13 +22,26 @@ public class ErlangTestingHelper {
   @Inject
   private ParseHelper<Module> parser;
   
-  private final String MARKER = "\u00A7";
+  public final String MARKER = "\u00A7";
   
   public Pair<Module,List<Integer>> parse(final String string) {
     final Pair<String,List<Integer>> res = this.extractMarkers(string);
     try {
       String _key = res.getKey();
       Module _parse = this.parser.parse(_key);
+      List<Integer> _value = res.getValue();
+      return Pair.<Module, List<Integer>>of(_parse, _value);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  public Pair<Module,List<Integer>> parse(final String string, final String uri, final ResourceSet rset) {
+    final Pair<String,List<Integer>> res = this.extractMarkers(string);
+    try {
+      String _key = res.getKey();
+      URI _createURI = URI.createURI(uri);
+      Module _parse = this.parser.parse(_key, _createURI, rset);
       List<Integer> _value = res.getValue();
       return Pair.<Module, List<Integer>>of(_parse, _value);
     } catch (Exception _e) {

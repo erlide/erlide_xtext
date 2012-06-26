@@ -32,7 +32,7 @@ class ErlangLinkingHelperTest {
     	val module = parser.parse('''
 			-module(m).
 			f() ->
-				§ok.
+				[§ok, 0].
         ''')
     	
     	val atom = module.objectAtMarker as Atom
@@ -45,6 +45,20 @@ class ErlangLinkingHelperTest {
 			-module(m).
 			f() ->
 				§g(3),
+				ok.
+        ''')
+    	
+    	val atom = module.objectAtMarker as Atom
+    	assertThat(atom.classifyAtom, is(ErlangLinkCategory::FUNCTION_CALL_LOCAL))
+    } 
+
+    @Test
+    def void classify_localCall_spec() {
+    	val module = parser.parse('''
+			-module(m).
+			-spec §f() -> 'ok'.
+			f() ->
+				g(3),
 				ok.
         ''')
     	
@@ -131,7 +145,20 @@ class ErlangLinkingHelperTest {
     }
      
     @Test
-    def void classify_functionRef() {
+    def void classify_functionRef_local() {
+    	val module = parser.parse('''
+			-module(m).
+			f() ->
+				fun §g/2,
+				ok.
+        ''')
+    	
+    	val atom = module.objectAtMarker as Atom
+    	assertThat(atom.classifyAtom, is(ErlangLinkCategory::FUNCTION_REF_LOCAL))
+    } 
+    
+    @Test
+    def void classify_functionRef_remote() {
     	val module = parser.parse('''
 			-module(m).
 			f() ->
@@ -140,7 +167,7 @@ class ErlangLinkingHelperTest {
         ''')
     	
     	val atom = module.objectAtMarker as Atom
-    	assertThat(atom.classifyAtom, is(ErlangLinkCategory::FUNCTION_REF))
+    	assertThat(atom.classifyAtom, is(ErlangLinkCategory::FUNCTION_REF_REMOTE))
     } 
     
     @Test
@@ -153,7 +180,7 @@ class ErlangLinkingHelperTest {
         ''')
     	
     	val atom = module.objectAtMarker as Atom
-    	assertThat(atom.classifyAtom, is(ErlangLinkCategory::FUNCTION_REF))
+    	assertThat(atom.classifyAtom, is(ErlangLinkCategory::FUNCTION_REF_REMOTE))
     } 
     
     @Test
@@ -167,19 +194,6 @@ class ErlangLinkingHelperTest {
     	
     	val atom = module.objectAtMarker as Atom
     	assertThat(atom.classifyAtom, is(ErlangLinkCategory::NONE))
-    } 
-    
-    @Test
-    def void classify_functionRef_local() {
-    	val module = parser.parse('''
-			-module(m).
-			f() ->
-				fun §g/2,
-				ok.
-        ''')
-    	
-    	val atom = module.objectAtMarker as Atom
-    	assertThat(atom.classifyAtom, is(ErlangLinkCategory::FUNCTION_REF))
     } 
     
     @Test

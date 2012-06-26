@@ -46,6 +46,7 @@ import org.erlide.erlang.FunctionClause;
 import org.erlide.erlang.ImportAttribute;
 import org.erlide.erlang.IncludeAttribute;
 import org.erlide.erlang.IncludeLibAttribute;
+import org.erlide.erlang.Macro;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.ModuleAttribute;
 import org.erlide.erlang.SpecAttribute;
@@ -645,6 +646,16 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
+  protected boolean _isModuleMacro(final EObject obj) {
+    return false;
+  }
+  
+  protected boolean _isModuleMacro(final Macro obj) {
+    String _sourceText = this.getSourceText(obj);
+    boolean _equals = Objects.equal(_sourceText, "? MODULE");
+    return _equals;
+  }
+  
   public Module getOwningModule(final EObject element) {
     if (element instanceof Module) {
       return _getOwningModule((Module)element);
@@ -677,6 +688,17 @@ public class ModelExtensions {
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(atom, s).toString());
+    }
+  }
+  
+  public boolean isModuleMacro(final EObject obj) {
+    if (obj instanceof Macro) {
+      return _isModuleMacro((Macro)obj);
+    } else if (obj != null) {
+      return _isModuleMacro(obj);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(obj).toString());
     }
   }
 }

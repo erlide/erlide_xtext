@@ -22,15 +22,12 @@ public class ErlangLinkingDiagnosticMessageProvider extends
         if (org == null) {
             return null;
         }
-        // TODO if this isn't really a link, return null
+        // if this isn't really a link that can be resolved, return null
         if (context.getContext() instanceof Atom) {
             final Atom atom = (Atom) context.getContext();
             final boolean linkableContext = linkHelper.isLinkableAtom(atom);
-            // System.out.println("linking diagnostic: " + context.getLinkText()
-            // + " === " + linkableContext + " :: "
-            // + me.getSourceText(context.getContext().eContainer()));
             if (linkableContext) {
-                return null;
+                return org;
             }
         }
         return null;

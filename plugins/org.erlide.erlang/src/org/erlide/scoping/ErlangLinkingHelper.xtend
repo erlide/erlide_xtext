@@ -2,19 +2,21 @@ package org.erlide.scoping
 
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.naming.QualifiedName
+import org.eclipse.xtext.resource.IResourceDescriptions
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.erlide.erlang.Atom
 import org.erlide.erlang.AtomRefTarget
 import org.erlide.erlang.ErlangPackage$Literals
 import org.erlide.erlang.FunCall
 import org.erlide.erlang.FunRef
-import org.erlide.erlang.Macro
 import org.erlide.erlang.ModelExtensions
 import org.erlide.erlang.RecordExpr
 import org.erlide.erlang.RecordFieldExpr
 import org.erlide.erlang.RecordTuple
 import org.erlide.erlang.RemoteTarget
+import org.erlide.erlang.SpecAttribute
 
 class ErlangLinkingHelper {
 	@Inject
@@ -39,11 +41,8 @@ class ErlangLinkingHelper {
 					return ErlangLinkCategory::FUNCTION_CALL_REMOTE
 				}
 			} 
-			if(context.module instanceof Macro) {
-				val macro = context.module as Macro
-				if(macro.sourceText=="? MODULE") {
-					return ErlangLinkCategory::FUNCTION_CALL_REMOTE
-				}
+			if(context.module.moduleMacro) {
+				return ErlangLinkCategory::FUNCTION_CALL_REMOTE
 			}
 		}
 		return ErlangLinkCategory::NONE
@@ -57,13 +56,20 @@ class ErlangLinkingHelper {
 		} 
 		if(atom==context.function) {
 			if(context.module instanceof Atom || context.module==null) {
-				return ErlangLinkCategory::FUNCTION_REF
-			}
-			if(context.module instanceof Macro) {
-				val macro = context.module as Macro
-				if(macro.sourceText=="? MODULE") {
-					return ErlangLinkCategory::FUNCTION_REF
+				val parent = context.eContainer
+				if(parent instanceof SpecAttribute) {
+					if(context.module==null)
+						return ErlangLinkCategory::FUNCTION_CALL_LOCAL
+					else
+						return ErlangLinkCategory::FUNCTION_CALL_REMOTE
 				}
+				if(context.module==null)
+					return ErlangLinkCategory::FUNCTION_REF_LOCAL
+				else
+					return ErlangLinkCategory::FUNCTION_REF_REMOTE
+			}
+			if(context.module.moduleMacro) {
+				return ErlangLinkCategory::FUNCTION_REF_REMOTE
 			}
 		}
 		ErlangLinkCategory::NONE
@@ -106,35 +112,87 @@ class ErlangLinkingHelper {
 			case ErlangLinkCategory::NONE:
 				null
 			case ErlangLinkCategory::MODULE:
-				index.findModule(atom.sourceText, rset)
-			case ErlangLinkCategory::FUNCTION_CALL_LOCAL: {
-				val parent = atom.eContainer as FunCall
+				getModuleRef(index, atom, rset)
+			case ErlangLinkCategory::FUNCTION_CALL_LOCAL: 
+				getLocalCallRef(atom)
+			case ErlangLinkCategory::FUNCTION_CALL_REMOTE: 
+				getRemoteCallRef(index, atom, rset)
+			case ErlangLinkCategory::FUNCTION_REF_LOCAL: 
+				getLocalFunRefRef(index, atom, rset)
+			case ErlangLinkCategory::FUNCTION_REF_REMOTE: 
+				getRemoteFunRefRef(index, atom, rset)
+			case ErlangLinkCategory::RECORD:
+				getRecordRef(index, atom, rset)
+			case ErlangLinkCategory::RECORD_FIELD:
+				getRecordFieldRef(index, atom, rset)
+		}
+	}
+	
+	def AtomRefTarget getModuleRef(IResourceDescriptions index, Atom atom, ResourceSet rset) { 
+		index.findModule(atom.sourceText, rset)
+	}
+	
+	def AtomRefTarget getLocalCallRef(Atom atom) { 
+		val parent = atom.eContainer
+		switch(parent) {
+			FunCall: {
 				val arity = parent.args?.exprs?.size?:0
 				parent.owningModule.getFunction(parent.target.sourceText, arity)
 			}
-			case ErlangLinkCategory::FUNCTION_CALL_REMOTE: {
-				val parent = atom.eContainer as RemoteTarget
-				val call = parent.eContainer as FunCall
-				val arity = call.args?.exprs?.size?:0
-				val qname = QualifiedName::create(parent.module.sourceText, parent.function.sourceText+"/"+arity)
-				val rfun = index.getExportedObjects(ErlangPackage$Literals::FUNCTION, qname, false)
-				if(!rfun.empty) 
-					return rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
+			FunRef: {
+				val xparent = (parent.eContainer) as SpecAttribute
+				val arity = xparent.signatures.head.decl.args?.size?:0
+				parent.owningModule.getFunction(atom.sourceText, arity)
 			}
-			case ErlangLinkCategory::FUNCTION_REF: {
-				val parent = atom.eContainer as FunRef
-				val arity = parent.arity.sourceText
-				try {
-					return parent.owningModule.getFunction(parent.function.sourceText, Integer::parseInt(arity))
-				} catch (Exception e) {
-					return null
-				}
-			}
-			case ErlangLinkCategory::RECORD:
-				null
-			case ErlangLinkCategory::RECORD_FIELD:
-				null
+			default:
+				null	
 		}
-	}		
+	}
+		
+	def AtomRefTarget getRemoteCallRef(IResourceDescriptions index, Atom atom, ResourceSet rset) { 
+		val parent = atom.eContainer as RemoteTarget
+		val call = parent.eContainer as FunCall
+		val arity = call.args?.exprs?.size?:0
+		val moduleName = if(parent.module.isModuleMacro) 
+				atom.owningModule.name 
+			else 
+				parent.module.sourceText 
+		val qname = QualifiedName::create(moduleName, parent.function.sourceText+"/"+arity)
+		val rfun = index.getExportedObjects(ErlangPackage$Literals::FUNCTION, qname, false)
+		if(!rfun.empty) 
+			rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
+	}
+	
+	def AtomRefTarget getRemoteFunRefRef(IResourceDescriptions index, Atom atom, ResourceSet rset) {
+		val parent = atom.eContainer as FunRef
+		val arity = parent.arity.sourceText
+		val moduleName = if(parent.module.isModuleMacro) 
+				atom.owningModule.name 
+			else 
+				parent.module.sourceText 
+		val qname = QualifiedName::create(moduleName, parent.function.sourceText+"/"+arity)
+		val rfun = index.getExportedObjects(ErlangPackage$Literals::FUNCTION, qname, false)
+		if(!rfun.empty) 
+			rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
+
+	}
+	
+	def AtomRefTarget getLocalFunRefRef(IResourceDescriptions index, Atom atom, ResourceSet rset) { 
+		val parent = atom.eContainer as FunRef
+		val arity = parent.arity.sourceText
+		try {
+			parent.owningModule.getFunction(parent.function.sourceText, Integer::parseInt(arity))
+		} catch (Exception e) {
+			return null
+		}
+	}
+	
+	def AtomRefTarget getRecordRef(IResourceDescriptions index, Atom atom, ResourceSet rset) { 
+		null
+	}
+	
+	def AtomRefTarget getRecordFieldRef(IResourceDescriptions index, Atom atom, ResourceSet rset) { 
+		null
+	}
 	
 }

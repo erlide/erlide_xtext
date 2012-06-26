@@ -10,7 +10,10 @@ class ErlangTestExtensions {
 	ModelExtensions modelHelper
 	
 	def EObject getObjectAtMarker(Pair<Module, List<Integer>> src, int index) {
-		modelHelper.getObjectAtOffset(src.key, src.value.get(index))
+		if(index>=src.value.size) 
+			return null
+		val pos = src.value.get(index)
+		modelHelper.getObjectAtOffset(src.key, pos)
 	}
 	
 	def EObject getObjectAtMarker(Pair<Module, List<Integer>> src) {

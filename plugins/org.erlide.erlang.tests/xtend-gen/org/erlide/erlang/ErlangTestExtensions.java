@@ -13,11 +13,21 @@ public class ErlangTestExtensions {
   private ModelExtensions modelHelper;
   
   public EObject getObjectAtMarker(final Pair<Module,List<Integer>> src, final int index) {
-    Module _key = src.getKey();
-    List<Integer> _value = src.getValue();
-    Integer _get = _value.get(index);
-    EObject _objectAtOffset = this.modelHelper.getObjectAtOffset(_key, (_get).intValue());
-    return _objectAtOffset;
+    EObject _xblockexpression = null;
+    {
+      List<Integer> _value = src.getValue();
+      int _size = _value.size();
+      boolean _greaterEqualsThan = (index >= _size);
+      if (_greaterEqualsThan) {
+        return null;
+      }
+      List<Integer> _value_1 = src.getValue();
+      final Integer pos = _value_1.get(index);
+      Module _key = src.getKey();
+      EObject _objectAtOffset = this.modelHelper.getObjectAtOffset(_key, (pos).intValue());
+      _xblockexpression = (_objectAtOffset);
+    }
+    return _xblockexpression;
   }
   
   public EObject getObjectAtMarker(final Pair<Module,List<Integer>> src) {
