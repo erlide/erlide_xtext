@@ -516,6 +516,8 @@ public class ErlangLinkingTest {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("-module(m).");
     _builder.newLine();
+    _builder.append("\u00A7-record(myrec, {}).");
+    _builder.newLine();
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
@@ -525,9 +527,30 @@ public class ErlangLinkingTest {
     _builder.append("ok.");
     _builder.newLine();
     final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
     final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 1);
+    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
+    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
+    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
+    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+  }
+  
+  @Test
+  public void resolve_record_bad() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("#\u00A7myrec{},");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 0);
+    final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);

@@ -325,14 +325,27 @@ class ErlangLinkingTest {
     def void resolve_record() {
     	val module = parser.parse('''
 			-module(m).
+			§-record(myrec, {}).
 			f() ->
 				#§myrec{},
 				ok.
         ''')
     	
-    	val atom = module.objectAtMarker as Atom
-    	val tgt = module.getObjectAtMarker(1)
-    	// TODO
+    	val atom = module.getObjectAtMarker(1) as Atom
+    	val tgt = module.getObjectAtMarker(0)
+    	assertThat(atom.atomReference, is(tgt))
+    } 
+    
+    @Test
+    def void resolve_record_bad() {
+    	val module = parser.parse('''
+			-module(m).
+			f() ->
+				#§myrec{},
+				ok.
+        ''')
+    	
+    	val atom = module.getObjectAtMarker(0) as Atom
     	assertThat(atom.atomReference, is(nullValue))
     } 
     

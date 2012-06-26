@@ -170,7 +170,11 @@ class ErlangLinkingHelper {
 	}
 	
 	def AtomRefTarget getRecordRef(IResourceDescriptions index, Atom atom, ResourceSet rset) { 
-		null
+		val moduleName = atom.owningModule.name
+		val qname = QualifiedName::create(moduleName, atom.sourceText)
+		val rfun = index.getExportedObjects(ErlangPackage$Literals::RECORD_ATTRIBUTE, qname, false)
+		if(!rfun.empty) 
+			rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
 	}
 	
 	def AtomRefTarget getRecordFieldRef(IResourceDescriptions index, Atom atom, ResourceSet rset) { 

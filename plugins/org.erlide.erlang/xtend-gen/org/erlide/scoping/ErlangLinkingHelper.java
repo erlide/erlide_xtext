@@ -381,7 +381,25 @@ public class ErlangLinkingHelper {
   }
   
   public AtomRefTarget getRecordRef(final IResourceDescriptions index, final Atom atom, final ResourceSet rset) {
-    return null;
+    AtomRefTarget _xblockexpression = null;
+    {
+      Module _owningModule = this._modelExtensions.getOwningModule(atom);
+      final String moduleName = this._modelExtensions.getName(_owningModule);
+      String _sourceText = this._modelExtensions.getSourceText(atom);
+      final QualifiedName qname = QualifiedName.create(moduleName, _sourceText);
+      final Iterable<IEObjectDescription> rfun = index.getExportedObjects(Literals.RECORD_ATTRIBUTE, qname, false);
+      AtomRefTarget _xifexpression = null;
+      boolean _isEmpty = IterableExtensions.isEmpty(rfun);
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        IEObjectDescription _head = IterableExtensions.<IEObjectDescription>head(rfun);
+        URI _eObjectURI = _head.getEObjectURI();
+        EObject _eObject = rset.getEObject(_eObjectURI, true);
+        _xifexpression = ((AtomRefTarget) _eObject);
+      }
+      _xblockexpression = (_xifexpression);
+    }
+    return _xblockexpression;
   }
   
   public AtomRefTarget getRecordFieldRef(final IResourceDescriptions index, final Atom atom, final ResourceSet rset) {
