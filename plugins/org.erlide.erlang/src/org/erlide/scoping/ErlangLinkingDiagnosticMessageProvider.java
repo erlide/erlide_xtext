@@ -1,6 +1,7 @@
 package org.erlide.scoping;
 
 import org.eclipse.xtext.diagnostics.DiagnosticMessage;
+import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.linking.impl.LinkingDiagnosticMessageProvider;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.ModelExtensions;
@@ -27,9 +28,12 @@ public class ErlangLinkingDiagnosticMessageProvider extends
             final Atom atom = (Atom) context.getContext();
             final boolean linkableContext = linkHelper.isLinkableAtom(atom);
             if (linkableContext) {
-                return org;
+                return new DiagnosticMessage(org.getMessage(),
+                        Severity.WARNING, org.getIssueCode(),
+                        org.getIssueData());
             }
         }
-        return null;
+        return new DiagnosticMessage(org.getMessage(), Severity.WARNING,
+                org.getIssueCode(), org.getIssueData());
     }
 }
