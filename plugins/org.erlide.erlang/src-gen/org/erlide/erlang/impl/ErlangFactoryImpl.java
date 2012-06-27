@@ -65,21 +65,24 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
     switch (eClass.getClassifierID())
     {
       case ErlangPackage.MODULE: return createModule();
+      case ErlangPackage.ATOM_REF_TARGET: return createAtomRefTarget();
       case ErlangPackage.FORM: return createForm();
       case ErlangPackage.CONDITIONAL_FORM_BLOCK: return createConditionalFormBlock();
       case ErlangPackage.ATTRIBUTE: return createAttribute();
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE: return createConditionalAttribute();
       case ErlangPackage.ABSTRACT_DEFINE_ATTRIBUTE: return createAbstractDefineAttribute();
       case ErlangPackage.DEFINE_ATTRIBUTE: return createDefineAttribute();
       case ErlangPackage.UNDEF_ATTRIBUTE: return createUndefAttribute();
       case ErlangPackage.IFDEF_ATTRIBUTE: return createIfdefAttribute();
-      case ErlangPackage.ENDIF_ATTRIBUTE: return createEndifAttribute();
       case ErlangPackage.ELSE_ATTRIBUTE: return createElseAttribute();
+      case ErlangPackage.ENDIF_ATTRIBUTE: return createEndifAttribute();
       case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE: return createAbstractIncludeAttribute();
       case ErlangPackage.INCLUDE_ATTRIBUTE: return createIncludeAttribute();
       case ErlangPackage.INCLUDE_LIB_ATTRIBUTE: return createIncludeLibAttribute();
       case ErlangPackage.FILE_ATTRIBUTE: return createFileAttribute();
       case ErlangPackage.MODULE_ATTRIBUTE: return createModuleAttribute();
       case ErlangPackage.RECORD_ATTRIBUTE: return createRecordAttribute();
+      case ErlangPackage.RECORD_FIELD_DEF: return createRecordFieldDef();
       case ErlangPackage.EXPORT_ATTRIBUTE: return createExportAttribute();
       case ErlangPackage.IMPORT_ATTRIBUTE: return createImportAttribute();
       case ErlangPackage.COMPILE_ATTRIBUTE: return createCompileAttribute();
@@ -98,8 +101,8 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.COND_EXPR: return createCondExpr();
       case ErlangPackage.LET_EXPR: return createLetExpr();
       case ErlangPackage.RECORD_TUPLE: return createRecordTuple();
-      case ErlangPackage.RECORD_FIELD_DEF: return createRecordFieldDef();
-      case ErlangPackage.RECORD_FIELD: return createRecordField();
+      case ErlangPackage.RECORD_FIELD_EXPR: return createRecordFieldExpr();
+      case ErlangPackage.STRING_LITERAL_PART: return createStringLiteralPart();
       case ErlangPackage.IF_EXPR: return createIfExpr();
       case ErlangPackage.IF_CLAUSE: return createIfClause();
       case ErlangPackage.CASE_EXPR: return createCaseExpr();
@@ -117,7 +120,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.BINARY_ITEM: return createBinaryItem();
       case ErlangPackage.BIT_TYPE: return createBitType();
       case ErlangPackage.LC_EXPR: return createLCExpr();
-      case ErlangPackage.SPEC_FUN: return createSpecFun();
       case ErlangPackage.TYPE_SIG: return createTypeSig();
       case ErlangPackage.FUN_TYPE: return createFunType();
       case ErlangPackage.TYPE_GUARDS: return createTypeGuards();
@@ -144,13 +146,12 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.FUN_CALL: return createFunCall();
       case ErlangPackage.REMOTE_TARGET: return createRemoteTarget();
       case ErlangPackage.BLOCK_EXPR: return createBlockExpr();
-      case ErlangPackage.ATOM: return createAtom();
-      case ErlangPackage.VARIABLE: return createVariable();
       case ErlangPackage.ERL_CHAR: return createErlChar();
-      case ErlangPackage.MACRO_EXPR: return createMacroExpr();
-      case ErlangPackage.ERL_STRING: return createErlString();
-      case ErlangPackage.ERL_INTEGER: return createErlInteger();
+      case ErlangPackage.ATOM: return createAtom();
+      case ErlangPackage.MACRO: return createMacro();
+      case ErlangPackage.VARIABLE: return createVariable();
       case ErlangPackage.ERL_FLOAT: return createErlFloat();
+      case ErlangPackage.ERL_INTEGER: return createErlInteger();
       case ErlangPackage.UNARY_TYPE: return createUnaryType();
       case ErlangPackage.REMOTE_TYPE: return createRemoteType();
       case ErlangPackage.LIST_TYPE: return createListType();
@@ -171,6 +172,17 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     ModuleImpl module = new ModuleImpl();
     return module;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AtomRefTarget createAtomRefTarget()
+  {
+    AtomRefTargetImpl atomRefTarget = new AtomRefTargetImpl();
+    return atomRefTarget;
   }
 
   /**
@@ -204,6 +216,17 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     AttributeImpl attribute = new AttributeImpl();
     return attribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConditionalAttribute createConditionalAttribute()
+  {
+    ConditionalAttributeImpl conditionalAttribute = new ConditionalAttributeImpl();
+    return conditionalAttribute;
   }
 
   /**
@@ -255,10 +278,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public EndifAttribute createEndifAttribute()
+  public ElseAttribute createElseAttribute()
   {
-    EndifAttributeImpl endifAttribute = new EndifAttributeImpl();
-    return endifAttribute;
+    ElseAttributeImpl elseAttribute = new ElseAttributeImpl();
+    return elseAttribute;
   }
 
   /**
@@ -266,10 +289,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ElseAttribute createElseAttribute()
+  public EndifAttribute createEndifAttribute()
   {
-    ElseAttributeImpl elseAttribute = new ElseAttributeImpl();
-    return elseAttribute;
+    EndifAttributeImpl endifAttribute = new EndifAttributeImpl();
+    return endifAttribute;
   }
 
   /**
@@ -336,6 +359,17 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     RecordAttributeImpl recordAttribute = new RecordAttributeImpl();
     return recordAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RecordFieldDef createRecordFieldDef()
+  {
+    RecordFieldDefImpl recordFieldDef = new RecordFieldDefImpl();
+    return recordFieldDef;
   }
 
   /**
@@ -541,10 +575,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordFieldDef createRecordFieldDef()
+  public RecordFieldExpr createRecordFieldExpr()
   {
-    RecordFieldDefImpl recordFieldDef = new RecordFieldDefImpl();
-    return recordFieldDef;
+    RecordFieldExprImpl recordFieldExpr = new RecordFieldExprImpl();
+    return recordFieldExpr;
   }
 
   /**
@@ -552,10 +586,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordField createRecordField()
+  public StringLiteralPart createStringLiteralPart()
   {
-    RecordFieldImpl recordField = new RecordFieldImpl();
-    return recordField;
+    StringLiteralPartImpl stringLiteralPart = new StringLiteralPartImpl();
+    return stringLiteralPart;
   }
 
   /**
@@ -743,17 +777,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     LCExprImpl lcExpr = new LCExprImpl();
     return lcExpr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SpecFun createSpecFun()
-  {
-    SpecFunImpl specFun = new SpecFunImpl();
-    return specFun;
   }
 
   /**
@@ -1047,10 +1070,32 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public ErlChar createErlChar()
+  {
+    ErlCharImpl erlChar = new ErlCharImpl();
+    return erlChar;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Atom createAtom()
   {
     AtomImpl atom = new AtomImpl();
     return atom;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Macro createMacro()
+  {
+    MacroImpl macro = new MacroImpl();
+    return macro;
   }
 
   /**
@@ -1069,32 +1114,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ErlChar createErlChar()
+  public ErlFloat createErlFloat()
   {
-    ErlCharImpl erlChar = new ErlCharImpl();
-    return erlChar;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public MacroExpr createMacroExpr()
-  {
-    MacroExprImpl macroExpr = new MacroExprImpl();
-    return macroExpr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ErlString createErlString()
-  {
-    ErlStringImpl erlString = new ErlStringImpl();
-    return erlString;
+    ErlFloatImpl erlFloat = new ErlFloatImpl();
+    return erlFloat;
   }
 
   /**
@@ -1106,17 +1129,6 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     ErlIntegerImpl erlInteger = new ErlIntegerImpl();
     return erlInteger;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ErlFloat createErlFloat()
-  {
-    ErlFloatImpl erlFloat = new ErlFloatImpl();
-    return erlFloat;
   }
 
   /**

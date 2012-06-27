@@ -2,7 +2,6 @@
  */
 package org.erlide.erlang;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,7 +11,6 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.IfdefAttribute#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.IfdefAttribute#getRef <em>Ref</em>}</li>
  * </ul>
  * </p>
@@ -21,58 +19,32 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface IfdefAttribute extends EObject
+public interface IfdefAttribute extends ConditionalAttribute
 {
   /**
-   * Returns the value of the '<em><b>Tag</b></em>' attribute.
+   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Tag</em>' attribute isn't clear,
+   * If the meaning of the '<em>Ref</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Tag</em>' attribute.
-   * @see #setTag(String)
-   * @see org.erlide.erlang.ErlangPackage#getIfdefAttribute_Tag()
-   * @model
-   * @generated
-   */
-  String getTag();
-
-  /**
-   * Sets the value of the '{@link org.erlide.erlang.IfdefAttribute#getTag <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Tag</em>' attribute.
-   * @see #getTag()
-   * @generated
-   */
-  void setTag(String value);
-
-  /**
-   * Returns the value of the '<em><b>Ref</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Ref</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(DefineAttribute)
+   * @return the value of the '<em>Ref</em>' containment reference.
+   * @see #setRef(Expression)
    * @see org.erlide.erlang.ErlangPackage#getIfdefAttribute_Ref()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  DefineAttribute getRef();
+  Expression getRef();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.IfdefAttribute#getRef <em>Ref</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.IfdefAttribute#getRef <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref</em>' reference.
+   * @param value the new value of the '<em>Ref</em>' containment reference.
    * @see #getRef()
    * @generated
    */
-  void setRef(DefineAttribute value);
+  void setRef(Expression value);
 
 } // IfdefAttribute

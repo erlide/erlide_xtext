@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.erlide.erlang.CrClause;
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
+import org.erlide.erlang.Expressions;
 import org.erlide.erlang.ReceiveExpr;
 
 /**
@@ -60,14 +61,14 @@ public class ReceiveExprImpl extends ExpressionImpl implements ReceiveExpr
   protected Expression after_expr;
 
   /**
-   * The cached value of the '{@link #getAfter_body() <em>After body</em>}' containment reference list.
+   * The cached value of the '{@link #getAfter_body() <em>After body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getAfter_body()
    * @generated
    * @ordered
    */
-  protected EList<Expression> after_body;
+  protected Expressions after_body;
 
   /**
    * <!-- begin-user-doc -->
@@ -157,13 +158,47 @@ public class ReceiveExprImpl extends ExpressionImpl implements ReceiveExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getAfter_body()
+  public Expressions getAfter_body()
   {
-    if (after_body == null)
-    {
-      after_body = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.RECEIVE_EXPR__AFTER_BODY);
-    }
     return after_body;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetAfter_body(Expressions newAfter_body, NotificationChain msgs)
+  {
+    Expressions oldAfter_body = after_body;
+    after_body = newAfter_body;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.RECEIVE_EXPR__AFTER_BODY, oldAfter_body, newAfter_body);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAfter_body(Expressions newAfter_body)
+  {
+    if (newAfter_body != after_body)
+    {
+      NotificationChain msgs = null;
+      if (after_body != null)
+        msgs = ((InternalEObject)after_body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECEIVE_EXPR__AFTER_BODY, null, msgs);
+      if (newAfter_body != null)
+        msgs = ((InternalEObject)newAfter_body).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECEIVE_EXPR__AFTER_BODY, null, msgs);
+      msgs = basicSetAfter_body(newAfter_body, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECEIVE_EXPR__AFTER_BODY, newAfter_body, newAfter_body));
   }
 
   /**
@@ -181,7 +216,7 @@ public class ReceiveExprImpl extends ExpressionImpl implements ReceiveExpr
       case ErlangPackage.RECEIVE_EXPR__AFTER_EXPR:
         return basicSetAfter_expr(null, msgs);
       case ErlangPackage.RECEIVE_EXPR__AFTER_BODY:
-        return ((InternalEList<?>)getAfter_body()).basicRemove(otherEnd, msgs);
+        return basicSetAfter_body(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -225,8 +260,7 @@ public class ReceiveExprImpl extends ExpressionImpl implements ReceiveExpr
         setAfter_expr((Expression)newValue);
         return;
       case ErlangPackage.RECEIVE_EXPR__AFTER_BODY:
-        getAfter_body().clear();
-        getAfter_body().addAll((Collection<? extends Expression>)newValue);
+        setAfter_body((Expressions)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -249,7 +283,7 @@ public class ReceiveExprImpl extends ExpressionImpl implements ReceiveExpr
         setAfter_expr((Expression)null);
         return;
       case ErlangPackage.RECEIVE_EXPR__AFTER_BODY:
-        getAfter_body().clear();
+        setAfter_body((Expressions)null);
         return;
     }
     super.eUnset(featureID);
@@ -270,7 +304,7 @@ public class ReceiveExprImpl extends ExpressionImpl implements ReceiveExpr
       case ErlangPackage.RECEIVE_EXPR__AFTER_EXPR:
         return after_expr != null;
       case ErlangPackage.RECEIVE_EXPR__AFTER_BODY:
-        return after_body != null && !after_body.isEmpty();
+        return after_body != null;
     }
     return super.eIsSet(featureID);
   }

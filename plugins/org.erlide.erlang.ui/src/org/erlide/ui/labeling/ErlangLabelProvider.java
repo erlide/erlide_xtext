@@ -3,17 +3,8 @@
  */
 package org.erlide.ui.labeling;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
-import org.erlide.erlang.Attribute;
-import org.erlide.erlang.Expression;
-import org.erlide.erlang.Form;
-import org.erlide.erlang.Function;
-import org.erlide.erlang.FunctionClause;
-import org.erlide.erlang.Module;
-import org.erlide.erlang.ModuleAttribute;
 
 import com.google.inject.Inject;
 
@@ -30,37 +21,11 @@ public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
         super(delegate);
     }
 
-    public String text(final Module ele) {
-        final Form first = ele.getForms().get(0);
-        final String name = first instanceof ModuleAttribute ? ((ModuleAttribute) first)
-                .getName() : first.toString() + "?";
-        return "module " + name;
-    }
-
-    // public String text(final Attribute ele) {
-    // final String tag = ele.getTag();
-    // return "-" + tag + " -- " + ele.getVal();
-    // }
-
-    public String text(final Function ele) {
-        if (ele.getClauses() == null || ele.getClauses().size() == 0) {
-            return "???";
-        }
-        final EList<Expression> params = ele.getClauses().get(0).getParams();
-        return ele.getName() + "/" + (params == null ? "0" : params.size());
-    }
-
-    public String text(final FunctionClause ele) {
-        return "(" + ele.getParams() + ")";
-    }
-
-    public String text(final EObject ele) {
-        return ele.getClass().getSimpleName() + " "
-                + ele.eCrossReferences().size();
-    }
-
-    public String image(final Attribute ele) {
-        return "MyModel.gif";
-    }
-
+    /*
+     * //Labels and icons can be computed like this:
+     * 
+     * String text(MyModel ele) { return "my "+ele.getName(); }
+     * 
+     * String image(MyModel ele) { return "MyModel.gif"; }
+     */
 }

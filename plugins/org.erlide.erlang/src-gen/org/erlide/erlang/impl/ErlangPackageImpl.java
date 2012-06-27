@@ -14,6 +14,7 @@ import org.erlide.erlang.AbstractIncludeAttribute;
 import org.erlide.erlang.AbstractTypeAttribute;
 import org.erlide.erlang.AddOp;
 import org.erlide.erlang.Atom;
+import org.erlide.erlang.AtomRefTarget;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.BinBaseType;
 import org.erlide.erlang.BinOp;
@@ -27,6 +28,7 @@ import org.erlide.erlang.CaseExpr;
 import org.erlide.erlang.CatchExpr;
 import org.erlide.erlang.CompileAttribute;
 import org.erlide.erlang.CondExpr;
+import org.erlide.erlang.ConditionalAttribute;
 import org.erlide.erlang.ConditionalFormBlock;
 import org.erlide.erlang.CrClause;
 import org.erlide.erlang.CustomAttribute;
@@ -38,7 +40,6 @@ import org.erlide.erlang.ErlChar;
 import org.erlide.erlang.ErlFloat;
 import org.erlide.erlang.ErlInteger;
 import org.erlide.erlang.ErlList;
-import org.erlide.erlang.ErlString;
 import org.erlide.erlang.ErlTuple;
 import org.erlide.erlang.ErlangFactory;
 import org.erlide.erlang.ErlangPackage;
@@ -67,8 +68,8 @@ import org.erlide.erlang.LCExpr;
 import org.erlide.erlang.LetExpr;
 import org.erlide.erlang.ListComprehension;
 import org.erlide.erlang.ListType;
+import org.erlide.erlang.Macro;
 import org.erlide.erlang.MacroCall;
-import org.erlide.erlang.MacroExpr;
 import org.erlide.erlang.MacroForm;
 import org.erlide.erlang.MatchExpr;
 import org.erlide.erlang.Module;
@@ -78,14 +79,14 @@ import org.erlide.erlang.QueryExpr;
 import org.erlide.erlang.ReceiveExpr;
 import org.erlide.erlang.RecordAttribute;
 import org.erlide.erlang.RecordExpr;
-import org.erlide.erlang.RecordField;
 import org.erlide.erlang.RecordFieldDef;
+import org.erlide.erlang.RecordFieldExpr;
 import org.erlide.erlang.RecordTuple;
 import org.erlide.erlang.RecordType;
 import org.erlide.erlang.RemoteTarget;
 import org.erlide.erlang.RemoteType;
 import org.erlide.erlang.SpecAttribute;
-import org.erlide.erlang.SpecFun;
+import org.erlide.erlang.StringLiteralPart;
 import org.erlide.erlang.TopType;
 import org.erlide.erlang.TryClause;
 import org.erlide.erlang.TryExpr;
@@ -125,6 +126,13 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass atomRefTargetEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass formEClass = null;
 
   /**
@@ -140,6 +148,13 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * @generated
    */
   private EClass attributeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass conditionalAttributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -174,14 +189,14 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass endifAttributeEClass = null;
+  private EClass elseAttributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass elseAttributeEClass = null;
+  private EClass endifAttributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -224,6 +239,13 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * @generated
    */
   private EClass recordAttributeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass recordFieldDefEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -356,14 +378,14 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass recordFieldDefEClass = null;
+  private EClass recordFieldExprEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass recordFieldEClass = null;
+  private EClass stringLiteralPartEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -483,13 +505,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * @generated
    */
   private EClass lcExprEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass specFunEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -678,7 +693,21 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass erlCharEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass atomEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass macroEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -692,21 +721,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass erlCharEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass macroExprEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass erlStringEClass = null;
+  private EClass erlFloatEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -714,13 +729,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * @generated
    */
   private EClass erlIntegerEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass erlFloatEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -852,6 +860,16 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getAtomRefTarget()
+  {
+    return atomRefTargetEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getForm()
   {
     return formEClass;
@@ -925,6 +943,26 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
   public EClass getAttribute()
   {
     return attributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConditionalAttribute()
+  {
+    return conditionalAttributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConditionalAttribute_Tag()
+  {
+    return (EAttribute)conditionalAttributeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1032,39 +1070,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getIfdefAttribute_Tag()
-  {
-    return (EAttribute)ifdefAttributeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getIfdefAttribute_Ref()
   {
-    return (EReference)ifdefAttributeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getEndifAttribute()
-  {
-    return endifAttributeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getEndifAttribute_Tag()
-  {
-    return (EAttribute)endifAttributeEClass.getEStructuralFeatures().get(0);
+    return (EReference)ifdefAttributeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1082,9 +1090,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getElseAttribute_Tag()
+  public EClass getEndifAttribute()
   {
-    return (EAttribute)elseAttributeEClass.getEStructuralFeatures().get(0);
+    return endifAttributeEClass;
   }
 
   /**
@@ -1202,7 +1210,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getModuleAttribute_Name()
+  public EAttribute getModuleAttribute_ModuleName()
   {
     return (EAttribute)moduleAttributeEClass.getEStructuralFeatures().get(1);
   }
@@ -1262,6 +1270,46 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getRecordFieldDef()
+  {
+    return recordFieldDefEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRecordFieldDef_Name()
+  {
+    return (EAttribute)recordFieldDefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRecordFieldDef_Value()
+  {
+    return (EReference)recordFieldDefEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRecordFieldDef_Type()
+  {
+    return (EReference)recordFieldDefEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getExportAttribute()
   {
     return exportAttributeEClass;
@@ -1312,9 +1360,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getImportAttribute_Module()
+  public EReference getImportAttribute_Module()
   {
-    return (EAttribute)importAttributeEClass.getEStructuralFeatures().get(1);
+    return (EReference)importAttributeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1632,6 +1680,26 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getExpression_String()
+  {
+    return (EAttribute)expressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpression_More()
+  {
+    return (EReference)expressionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getMacroCall()
   {
     return macroCallEClass;
@@ -1772,9 +1840,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRecordFieldDef()
+  public EClass getRecordFieldExpr()
   {
-    return recordFieldDefEClass;
+    return recordFieldExprEClass;
   }
 
   /**
@@ -1782,9 +1850,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRecordFieldDef_Name()
+  public EReference getRecordFieldExpr_Ref()
   {
-    return (EAttribute)recordFieldDefEClass.getEStructuralFeatures().get(0);
+    return (EReference)recordFieldExprEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1792,9 +1860,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRecordFieldDef_Value()
+  public EReference getRecordFieldExpr_Value()
   {
-    return (EReference)recordFieldDefEClass.getEStructuralFeatures().get(1);
+    return (EReference)recordFieldExprEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1802,9 +1870,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRecordFieldDef_Type()
+  public EReference getRecordFieldExpr_Type()
   {
-    return (EReference)recordFieldDefEClass.getEStructuralFeatures().get(2);
+    return (EReference)recordFieldExprEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1812,9 +1880,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRecordField()
+  public EClass getStringLiteralPart()
   {
-    return recordFieldEClass;
+    return stringLiteralPartEClass;
   }
 
   /**
@@ -1822,9 +1890,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRecordField_Ref()
+  public EAttribute getStringLiteralPart_String()
   {
-    return (EReference)recordFieldEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)stringLiteralPartEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1832,19 +1900,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRecordField_Value()
+  public EReference getStringLiteralPart_Macro()
   {
-    return (EReference)recordFieldEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getRecordField_Type()
-  {
-    return (EReference)recordFieldEClass.getEStructuralFeatures().get(2);
+    return (EReference)stringLiteralPartEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2032,9 +2090,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunRef_Module()
+  public EReference getFunRef_Module()
   {
-    return (EAttribute)funRefEClass.getEStructuralFeatures().get(0);
+    return (EReference)funRefEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2042,9 +2100,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunRef_Function()
+  public EReference getFunRef_Function()
   {
-    return (EAttribute)funRefEClass.getEStructuralFeatures().get(1);
+    return (EReference)funRefEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2052,9 +2110,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunRef_Arity()
+  public EReference getFunRef_Arity()
   {
-    return (EAttribute)funRefEClass.getEStructuralFeatures().get(2);
+    return (EReference)funRefEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2342,7 +2400,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBitType_Name()
+  public EAttribute getBitType_TypeName()
   {
     return (EAttribute)bitTypeEClass.getEStructuralFeatures().get(0);
   }
@@ -2395,46 +2453,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
   public EReference getLCExpr_O2()
   {
     return (EReference)lcExprEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSpecFun()
-  {
-    return specFunEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSpecFun_Module()
-  {
-    return (EAttribute)specFunEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSpecFun_Function()
-  {
-    return (EAttribute)specFunEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSpecFun_Arity()
-  {
-    return (EAttribute)specFunEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2542,7 +2560,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTypeGuard_Name()
+  public EAttribute getTypeGuard_TypeName()
   {
     return (EAttribute)typeGuardEClass.getEStructuralFeatures().get(0);
   }
@@ -2692,7 +2710,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getType_Name()
+  public EAttribute getType_TypeName()
   {
     return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
   }
@@ -2722,7 +2740,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFieldType_Name()
+  public EAttribute getFieldType_TypeName()
   {
     return (EAttribute)fieldTypeEClass.getEStructuralFeatures().get(0);
   }
@@ -2772,7 +2790,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBinBaseType_Name()
+  public EAttribute getBinBaseType_TypeName()
   {
     return (EAttribute)binBaseTypeEClass.getEStructuralFeatures().get(0);
   }
@@ -2802,7 +2820,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBinUnitType_Name()
+  public EAttribute getBinUnitType_TypeName()
   {
     return (EAttribute)binUnitTypeEClass.getEStructuralFeatures().get(0);
   }
@@ -3162,46 +3180,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAtom()
-  {
-    return atomEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getAtom_Value()
-  {
-    return (EReference)atomEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getVariable()
-  {
-    return variableEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariable_Value()
-  {
-    return (EAttribute)variableEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getErlChar()
   {
     return erlCharEClass;
@@ -3222,9 +3200,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getMacroExpr()
+  public EClass getAtom()
   {
-    return macroExprEClass;
+    return atomEClass;
   }
 
   /**
@@ -3232,9 +3210,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMacroExpr_Value()
+  public EReference getAtom_Value()
   {
-    return (EReference)macroExprEClass.getEStructuralFeatures().get(0);
+    return (EReference)atomEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3242,9 +3220,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getErlString()
+  public EClass getMacro()
   {
-    return erlStringEClass;
+    return macroEClass;
   }
 
   /**
@@ -3252,9 +3230,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getErlString_Value()
+  public EReference getMacro_Value()
   {
-    return (EAttribute)erlStringEClass.getEStructuralFeatures().get(0);
+    return (EReference)macroEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3262,9 +3240,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getErlInteger()
+  public EClass getVariable()
   {
-    return erlIntegerEClass;
+    return variableEClass;
   }
 
   /**
@@ -3272,9 +3250,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getErlInteger_Value()
+  public EReference getVariable_Value()
   {
-    return (EAttribute)erlIntegerEClass.getEStructuralFeatures().get(0);
+    return (EReference)variableEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3295,6 +3273,26 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
   public EAttribute getErlFloat_Value()
   {
     return (EAttribute)erlFloatEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getErlInteger()
+  {
+    return erlIntegerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getErlInteger_Value()
+  {
+    return (EAttribute)erlIntegerEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3490,6 +3488,8 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     moduleEClass = createEClass(MODULE);
     createEReference(moduleEClass, MODULE__FORMS);
 
+    atomRefTargetEClass = createEClass(ATOM_REF_TARGET);
+
     formEClass = createEClass(FORM);
 
     conditionalFormBlockEClass = createEClass(CONDITIONAL_FORM_BLOCK);
@@ -3500,6 +3500,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(conditionalFormBlockEClass, CONDITIONAL_FORM_BLOCK__END);
 
     attributeEClass = createEClass(ATTRIBUTE);
+
+    conditionalAttributeEClass = createEClass(CONDITIONAL_ATTRIBUTE);
+    createEAttribute(conditionalAttributeEClass, CONDITIONAL_ATTRIBUTE__TAG);
 
     abstractDefineAttributeEClass = createEClass(ABSTRACT_DEFINE_ATTRIBUTE);
 
@@ -3514,14 +3517,11 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(undefAttributeEClass, UNDEF_ATTRIBUTE__REF);
 
     ifdefAttributeEClass = createEClass(IFDEF_ATTRIBUTE);
-    createEAttribute(ifdefAttributeEClass, IFDEF_ATTRIBUTE__TAG);
     createEReference(ifdefAttributeEClass, IFDEF_ATTRIBUTE__REF);
 
-    endifAttributeEClass = createEClass(ENDIF_ATTRIBUTE);
-    createEAttribute(endifAttributeEClass, ENDIF_ATTRIBUTE__TAG);
-
     elseAttributeEClass = createEClass(ELSE_ATTRIBUTE);
-    createEAttribute(elseAttributeEClass, ELSE_ATTRIBUTE__TAG);
+
+    endifAttributeEClass = createEClass(ENDIF_ATTRIBUTE);
 
     abstractIncludeAttributeEClass = createEClass(ABSTRACT_INCLUDE_ATTRIBUTE);
     createEAttribute(abstractIncludeAttributeEClass, ABSTRACT_INCLUDE_ATTRIBUTE__TAG);
@@ -3538,7 +3538,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     moduleAttributeEClass = createEClass(MODULE_ATTRIBUTE);
     createEAttribute(moduleAttributeEClass, MODULE_ATTRIBUTE__TAG);
-    createEAttribute(moduleAttributeEClass, MODULE_ATTRIBUTE__NAME);
+    createEAttribute(moduleAttributeEClass, MODULE_ATTRIBUTE__MODULE_NAME);
 
     recordAttributeEClass = createEClass(RECORD_ATTRIBUTE);
     createEAttribute(recordAttributeEClass, RECORD_ATTRIBUTE__TAG);
@@ -3546,13 +3546,18 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(recordAttributeEClass, RECORD_ATTRIBUTE__FIELDS);
     createEReference(recordAttributeEClass, RECORD_ATTRIBUTE__RECORD_MACRO);
 
+    recordFieldDefEClass = createEClass(RECORD_FIELD_DEF);
+    createEAttribute(recordFieldDefEClass, RECORD_FIELD_DEF__NAME);
+    createEReference(recordFieldDefEClass, RECORD_FIELD_DEF__VALUE);
+    createEReference(recordFieldDefEClass, RECORD_FIELD_DEF__TYPE);
+
     exportAttributeEClass = createEClass(EXPORT_ATTRIBUTE);
     createEAttribute(exportAttributeEClass, EXPORT_ATTRIBUTE__TAG);
     createEReference(exportAttributeEClass, EXPORT_ATTRIBUTE__FUNS);
 
     importAttributeEClass = createEClass(IMPORT_ATTRIBUTE);
     createEAttribute(importAttributeEClass, IMPORT_ATTRIBUTE__TAG);
-    createEAttribute(importAttributeEClass, IMPORT_ATTRIBUTE__MODULE);
+    createEReference(importAttributeEClass, IMPORT_ATTRIBUTE__MODULE);
     createEReference(importAttributeEClass, IMPORT_ATTRIBUTE__FUNS);
 
     compileAttributeEClass = createEClass(COMPILE_ATTRIBUTE);
@@ -3594,6 +3599,8 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     expressionEClass = createEClass(EXPRESSION);
     createEAttribute(expressionEClass, EXPRESSION__LINE);
     createEReference(expressionEClass, EXPRESSION__EXPR);
+    createEAttribute(expressionEClass, EXPRESSION__STRING);
+    createEReference(expressionEClass, EXPRESSION__MORE);
 
     macroCallEClass = createEClass(MACRO_CALL);
     createEReference(macroCallEClass, MACRO_CALL__MACRO_NAME);
@@ -3615,15 +3622,14 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     recordTupleEClass = createEClass(RECORD_TUPLE);
     createEReference(recordTupleEClass, RECORD_TUPLE__FIELDS);
 
-    recordFieldDefEClass = createEClass(RECORD_FIELD_DEF);
-    createEAttribute(recordFieldDefEClass, RECORD_FIELD_DEF__NAME);
-    createEReference(recordFieldDefEClass, RECORD_FIELD_DEF__VALUE);
-    createEReference(recordFieldDefEClass, RECORD_FIELD_DEF__TYPE);
+    recordFieldExprEClass = createEClass(RECORD_FIELD_EXPR);
+    createEReference(recordFieldExprEClass, RECORD_FIELD_EXPR__REF);
+    createEReference(recordFieldExprEClass, RECORD_FIELD_EXPR__VALUE);
+    createEReference(recordFieldExprEClass, RECORD_FIELD_EXPR__TYPE);
 
-    recordFieldEClass = createEClass(RECORD_FIELD);
-    createEReference(recordFieldEClass, RECORD_FIELD__REF);
-    createEReference(recordFieldEClass, RECORD_FIELD__VALUE);
-    createEReference(recordFieldEClass, RECORD_FIELD__TYPE);
+    stringLiteralPartEClass = createEClass(STRING_LITERAL_PART);
+    createEAttribute(stringLiteralPartEClass, STRING_LITERAL_PART__STRING);
+    createEReference(stringLiteralPartEClass, STRING_LITERAL_PART__MACRO);
 
     ifExprEClass = createEClass(IF_EXPR);
     createEReference(ifExprEClass, IF_EXPR__CLAUSES);
@@ -3649,9 +3655,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(funExprEClass, FUN_EXPR__CLAUSES);
 
     funRefEClass = createEClass(FUN_REF);
-    createEAttribute(funRefEClass, FUN_REF__MODULE);
-    createEAttribute(funRefEClass, FUN_REF__FUNCTION);
-    createEAttribute(funRefEClass, FUN_REF__ARITY);
+    createEReference(funRefEClass, FUN_REF__MODULE);
+    createEReference(funRefEClass, FUN_REF__FUNCTION);
+    createEReference(funRefEClass, FUN_REF__ARITY);
 
     tryExprEClass = createEClass(TRY_EXPR);
     createEReference(tryExprEClass, TRY_EXPR__BODY);
@@ -3689,18 +3695,13 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(binaryItemEClass, BINARY_ITEM__TYPE);
 
     bitTypeEClass = createEClass(BIT_TYPE);
-    createEAttribute(bitTypeEClass, BIT_TYPE__NAME);
+    createEAttribute(bitTypeEClass, BIT_TYPE__TYPE_NAME);
     createEAttribute(bitTypeEClass, BIT_TYPE__SIZE);
 
     lcExprEClass = createEClass(LC_EXPR);
     createEReference(lcExprEClass, LC_EXPR__O1);
     createEAttribute(lcExprEClass, LC_EXPR__OP);
     createEReference(lcExprEClass, LC_EXPR__O2);
-
-    specFunEClass = createEClass(SPEC_FUN);
-    createEAttribute(specFunEClass, SPEC_FUN__MODULE);
-    createEAttribute(specFunEClass, SPEC_FUN__FUNCTION);
-    createEAttribute(specFunEClass, SPEC_FUN__ARITY);
 
     typeSigEClass = createEClass(TYPE_SIG);
     createEReference(typeSigEClass, TYPE_SIG__DECL);
@@ -3715,7 +3716,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(typeGuardsEClass, TYPE_GUARDS__ITEMS);
 
     typeGuardEClass = createEClass(TYPE_GUARD);
-    createEAttribute(typeGuardEClass, TYPE_GUARD__NAME);
+    createEAttribute(typeGuardEClass, TYPE_GUARD__TYPE_NAME);
     createEReference(typeGuardEClass, TYPE_GUARD__TYPES);
     createEReference(typeGuardEClass, TYPE_GUARD__TYPE);
 
@@ -3737,22 +3738,22 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     type500EClass = createEClass(TYPE500);
 
     typeEClass = createEClass(TYPE);
-    createEAttribute(typeEClass, TYPE__NAME);
+    createEAttribute(typeEClass, TYPE__TYPE_NAME);
     createEAttribute(typeEClass, TYPE__VALUE);
 
     fieldTypeEClass = createEClass(FIELD_TYPE);
-    createEAttribute(fieldTypeEClass, FIELD_TYPE__NAME);
+    createEAttribute(fieldTypeEClass, FIELD_TYPE__TYPE_NAME);
     createEReference(fieldTypeEClass, FIELD_TYPE__TYPE);
 
     binaryTypeEClass = createEClass(BINARY_TYPE);
     createEReference(binaryTypeEClass, BINARY_TYPE__TYPE);
 
     binBaseTypeEClass = createEClass(BIN_BASE_TYPE);
-    createEAttribute(binBaseTypeEClass, BIN_BASE_TYPE__NAME);
+    createEAttribute(binBaseTypeEClass, BIN_BASE_TYPE__TYPE_NAME);
     createEReference(binBaseTypeEClass, BIN_BASE_TYPE__TYPE);
 
     binUnitTypeEClass = createEClass(BIN_UNIT_TYPE);
-    createEAttribute(binUnitTypeEClass, BIN_UNIT_TYPE__NAME);
+    createEAttribute(binUnitTypeEClass, BIN_UNIT_TYPE__TYPE_NAME);
     createEAttribute(binUnitTypeEClass, BIN_UNIT_TYPE__M);
     createEReference(binUnitTypeEClass, BIN_UNIT_TYPE__TYPE);
 
@@ -3800,26 +3801,23 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     blockExprEClass = createEClass(BLOCK_EXPR);
     createEReference(blockExprEClass, BLOCK_EXPR__BODY);
 
-    atomEClass = createEClass(ATOM);
-    createEReference(atomEClass, ATOM__VALUE);
-
-    variableEClass = createEClass(VARIABLE);
-    createEAttribute(variableEClass, VARIABLE__VALUE);
-
     erlCharEClass = createEClass(ERL_CHAR);
     createEAttribute(erlCharEClass, ERL_CHAR__VALUE);
 
-    macroExprEClass = createEClass(MACRO_EXPR);
-    createEReference(macroExprEClass, MACRO_EXPR__VALUE);
+    atomEClass = createEClass(ATOM);
+    createEReference(atomEClass, ATOM__VALUE);
 
-    erlStringEClass = createEClass(ERL_STRING);
-    createEAttribute(erlStringEClass, ERL_STRING__VALUE);
+    macroEClass = createEClass(MACRO);
+    createEReference(macroEClass, MACRO__VALUE);
 
-    erlIntegerEClass = createEClass(ERL_INTEGER);
-    createEAttribute(erlIntegerEClass, ERL_INTEGER__VALUE);
+    variableEClass = createEClass(VARIABLE);
+    createEReference(variableEClass, VARIABLE__VALUE);
 
     erlFloatEClass = createEClass(ERL_FLOAT);
     createEAttribute(erlFloatEClass, ERL_FLOAT__VALUE);
+
+    erlIntegerEClass = createEClass(ERL_INTEGER);
+    createEAttribute(erlIntegerEClass, ERL_INTEGER__VALUE);
 
     unaryTypeEClass = createEClass(UNARY_TYPE);
     createEAttribute(unaryTypeEClass, UNARY_TYPE__OP);
@@ -3873,18 +3871,25 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    moduleEClass.getESuperTypes().add(this.getAtomRefTarget());
     conditionalFormBlockEClass.getESuperTypes().add(this.getForm());
     attributeEClass.getESuperTypes().add(this.getForm());
+    defineAttributeEClass.getESuperTypes().add(this.getAtomRefTarget());
     defineAttributeEClass.getESuperTypes().add(this.getAttribute());
     defineAttributeEClass.getESuperTypes().add(this.getAbstractDefineAttribute());
     undefAttributeEClass.getESuperTypes().add(this.getAttribute());
     undefAttributeEClass.getESuperTypes().add(this.getAbstractDefineAttribute());
+    ifdefAttributeEClass.getESuperTypes().add(this.getConditionalAttribute());
+    elseAttributeEClass.getESuperTypes().add(this.getConditionalAttribute());
+    endifAttributeEClass.getESuperTypes().add(this.getConditionalAttribute());
     abstractIncludeAttributeEClass.getESuperTypes().add(this.getAttribute());
     includeAttributeEClass.getESuperTypes().add(this.getAbstractIncludeAttribute());
     includeLibAttributeEClass.getESuperTypes().add(this.getAbstractIncludeAttribute());
     fileAttributeEClass.getESuperTypes().add(this.getAttribute());
     moduleAttributeEClass.getESuperTypes().add(this.getAttribute());
+    recordAttributeEClass.getESuperTypes().add(this.getAtomRefTarget());
     recordAttributeEClass.getESuperTypes().add(this.getAttribute());
+    recordFieldDefEClass.getESuperTypes().add(this.getAtomRefTarget());
     exportAttributeEClass.getESuperTypes().add(this.getAttribute());
     importAttributeEClass.getESuperTypes().add(this.getAttribute());
     compileAttributeEClass.getESuperTypes().add(this.getAttribute());
@@ -3892,6 +3897,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     specAttributeEClass.getESuperTypes().add(this.getAbstractTypeAttribute());
     typeAttributeEClass.getESuperTypes().add(this.getAbstractTypeAttribute());
     customAttributeEClass.getESuperTypes().add(this.getAttribute());
+    functionEClass.getESuperTypes().add(this.getAtomRefTarget());
     functionEClass.getESuperTypes().add(this.getForm());
     recordExprEClass.getESuperTypes().add(this.getExpression());
     queryExprEClass.getESuperTypes().add(this.getExpression());
@@ -3930,13 +3936,12 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     funCallEClass.getESuperTypes().add(this.getExpression());
     remoteTargetEClass.getESuperTypes().add(this.getExpression());
     blockExprEClass.getESuperTypes().add(this.getExpression());
-    atomEClass.getESuperTypes().add(this.getExpression());
-    variableEClass.getESuperTypes().add(this.getExpression());
     erlCharEClass.getESuperTypes().add(this.getExpression());
-    macroExprEClass.getESuperTypes().add(this.getExpression());
-    erlStringEClass.getESuperTypes().add(this.getExpression());
-    erlIntegerEClass.getESuperTypes().add(this.getExpression());
+    atomEClass.getESuperTypes().add(this.getExpression());
+    macroEClass.getESuperTypes().add(this.getExpression());
+    variableEClass.getESuperTypes().add(this.getExpression());
     erlFloatEClass.getESuperTypes().add(this.getExpression());
+    erlIntegerEClass.getESuperTypes().add(this.getExpression());
     unaryTypeEClass.getESuperTypes().add(this.getType500());
     remoteTypeEClass.getESuperTypes().add(this.getType());
     listTypeEClass.getESuperTypes().add(this.getType());
@@ -3947,6 +3952,8 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     // Initialize classes and features; add operations and parameters
     initEClass(moduleEClass, Module.class, "Module", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getModule_Forms(), this.getForm(), null, "forms", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(atomRefTargetEClass, AtomRefTarget.class, "AtomRefTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(formEClass, Form.class, "Form", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3959,6 +3966,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(conditionalAttributeEClass, ConditionalAttribute.class, "ConditionalAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getConditionalAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, ConditionalAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(abstractDefineAttributeEClass, AbstractDefineAttribute.class, "AbstractDefineAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(defineAttributeEClass, DefineAttribute.class, "DefineAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3969,17 +3979,14 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     initEClass(undefAttributeEClass, UndefAttribute.class, "UndefAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUndefAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, UndefAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getUndefAttribute_Ref(), this.getDefineAttribute(), null, "ref", null, 0, 1, UndefAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUndefAttribute_Ref(), this.getExpression(), null, "ref", null, 0, 1, UndefAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ifdefAttributeEClass, IfdefAttribute.class, "IfdefAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getIfdefAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, IfdefAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getIfdefAttribute_Ref(), this.getDefineAttribute(), null, "ref", null, 0, 1, IfdefAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(endifAttributeEClass, EndifAttribute.class, "EndifAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEndifAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, EndifAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfdefAttribute_Ref(), this.getExpression(), null, "ref", null, 0, 1, IfdefAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(elseAttributeEClass, ElseAttribute.class, "ElseAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getElseAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, ElseAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(endifAttributeEClass, EndifAttribute.class, "EndifAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(abstractIncludeAttributeEClass, AbstractIncludeAttribute.class, "AbstractIncludeAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAbstractIncludeAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, AbstractIncludeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3996,13 +4003,18 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     initEClass(moduleAttributeEClass, ModuleAttribute.class, "ModuleAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModuleAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, ModuleAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getModuleAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, ModuleAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModuleAttribute_ModuleName(), ecorePackage.getEString(), "moduleName", null, 0, 1, ModuleAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(recordAttributeEClass, RecordAttribute.class, "RecordAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRecordAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, RecordAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRecordAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, RecordAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRecordAttribute_Fields(), this.getRecordFieldDef(), null, "fields", null, 0, -1, RecordAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRecordAttribute_RecordMacro(), this.getDefineAttribute(), null, "recordMacro", null, 0, 1, RecordAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRecordAttribute_RecordMacro(), this.getMacroCall(), null, "recordMacro", null, 0, 1, RecordAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(recordFieldDefEClass, RecordFieldDef.class, "RecordFieldDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRecordFieldDef_Name(), ecorePackage.getEString(), "name", null, 0, 1, RecordFieldDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRecordFieldDef_Value(), this.getExpression(), null, "value", null, 0, 1, RecordFieldDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRecordFieldDef_Type(), this.getTopType(), null, "type", null, 0, 1, RecordFieldDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exportAttributeEClass, ExportAttribute.class, "ExportAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExportAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, ExportAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4010,7 +4022,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     initEClass(importAttributeEClass, ImportAttribute.class, "ImportAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImportAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, ImportAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getImportAttribute_Module(), ecorePackage.getEString(), "module", null, 0, 1, ImportAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getImportAttribute_Module(), this.getExpression(), null, "module", null, 0, 1, ImportAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getImportAttribute_Funs(), this.getFunRef(), null, "funs", null, 0, -1, ImportAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(compileAttributeEClass, CompileAttribute.class, "CompileAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4021,7 +4033,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEAttribute(getAbstractTypeAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, AbstractTypeAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(specAttributeEClass, SpecAttribute.class, "SpecAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSpecAttribute_Ref(), this.getSpecFun(), null, "ref", null, 0, 1, SpecAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSpecAttribute_Ref(), this.getFunRef(), null, "ref", null, 0, 1, SpecAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSpecAttribute_Signatures(), this.getTypeSig(), null, "signatures", null, 0, -1, SpecAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeAttributeEClass, TypeAttribute.class, "TypeAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4039,9 +4051,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     initEClass(functionClauseEClass, FunctionClause.class, "FunctionClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionClause_Ref(), ecorePackage.getEString(), "ref", null, 0, 1, FunctionClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionClause_Params(), this.getExpression(), null, "params", null, 0, -1, FunctionClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionClause_Params(), this.getExpressions(), null, "params", null, 0, 1, FunctionClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionClause_Guard(), this.getGuard(), null, "guard", null, 0, 1, FunctionClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionClause_Body(), this.getExpression(), null, "body", null, 0, -1, FunctionClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionClause_Body(), this.getExpressions(), null, "body", null, 0, 1, FunctionClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(guardEClass, Guard.class, "Guard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getGuard_Guards(), this.getExpressions(), null, "guards", null, 0, -1, Guard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4052,16 +4064,18 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExpression_Line(), ecorePackage.getEBoolean(), "line", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Expr(), this.getExpression(), null, "expr", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExpression_String(), ecorePackage.getEString(), "string", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_More(), this.getStringLiteralPart(), null, "more", null, 0, -1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(macroCallEClass, MacroCall.class, "MacroCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMacroCall_MacroName(), this.getDefineAttribute(), null, "macroName", null, 0, 1, MacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMacroCall_Args(), this.getExpression(), null, "args", null, 0, -1, MacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMacroCall_MacroName(), this.getExpression(), null, "macroName", null, 0, 1, MacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMacroCall_Args(), this.getExpressions(), null, "args", null, 0, 1, MacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(recordExprEClass, RecordExpr.class, "RecordExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getRecordExpr_Ref(), this.getExpression(), null, "ref", null, 0, 1, RecordExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRecordExpr_Record(), this.getRecordExpr(), null, "record", null, 0, 1, RecordExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRecordExpr_Rec(), this.getRecordAttribute(), null, "rec", null, 0, 1, RecordExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRecordExpr_Field(), this.getRecordFieldDef(), null, "field", null, 0, 1, RecordExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRecordExpr_Rec(), this.getExpression(), null, "rec", null, 0, 1, RecordExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRecordExpr_Field(), this.getExpression(), null, "field", null, 0, 1, RecordExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRecordExpr_Tuple(), this.getRecordTuple(), null, "tuple", null, 0, 1, RecordExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(queryExprEClass, QueryExpr.class, "QueryExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4071,24 +4085,23 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEClass(letExprEClass, LetExpr.class, "LetExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(recordTupleEClass, RecordTuple.class, "RecordTuple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRecordTuple_Fields(), this.getRecordField(), null, "fields", null, 0, -1, RecordTuple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRecordTuple_Fields(), this.getRecordFieldExpr(), null, "fields", null, 0, -1, RecordTuple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(recordFieldDefEClass, RecordFieldDef.class, "RecordFieldDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRecordFieldDef_Name(), ecorePackage.getEString(), "name", null, 0, 1, RecordFieldDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRecordFieldDef_Value(), this.getExpression(), null, "value", null, 0, 1, RecordFieldDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRecordFieldDef_Type(), this.getTopType(), null, "type", null, 0, 1, RecordFieldDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(recordFieldExprEClass, RecordFieldExpr.class, "RecordFieldExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRecordFieldExpr_Ref(), this.getExpression(), null, "ref", null, 0, 1, RecordFieldExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRecordFieldExpr_Value(), this.getExpression(), null, "value", null, 0, 1, RecordFieldExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRecordFieldExpr_Type(), this.getTopType(), null, "type", null, 0, 1, RecordFieldExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(recordFieldEClass, RecordField.class, "RecordField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRecordField_Ref(), this.getRecordFieldDef(), null, "ref", null, 0, 1, RecordField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRecordField_Value(), this.getExpression(), null, "value", null, 0, 1, RecordField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRecordField_Type(), this.getTopType(), null, "type", null, 0, 1, RecordField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(stringLiteralPartEClass, StringLiteralPart.class, "StringLiteralPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringLiteralPart_String(), ecorePackage.getEString(), "string", null, 0, 1, StringLiteralPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStringLiteralPart_Macro(), this.getMacroCall(), null, "macro", null, 0, 1, StringLiteralPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ifExprEClass, IfExpr.class, "IfExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getIfExpr_Clauses(), this.getIfClause(), null, "clauses", null, 0, -1, IfExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ifClauseEClass, IfClause.class, "IfClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getIfClause_Guard(), this.getGuard(), null, "guard", null, 0, 1, IfClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getIfClause_Body(), this.getExpression(), null, "body", null, 0, -1, IfClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfClause_Body(), this.getExpressions(), null, "body", null, 0, 1, IfClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(caseExprEClass, CaseExpr.class, "CaseExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCaseExpr_Clauses(), this.getCrClause(), null, "clauses", null, 0, -1, CaseExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4096,32 +4109,32 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEClass(crClauseEClass, CrClause.class, "CrClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCrClause_Expr(), this.getExpression(), null, "expr", null, 0, 1, CrClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCrClause_Guard(), this.getGuard(), null, "guard", null, 0, 1, CrClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCrClause_Body(), this.getExpression(), null, "body", null, 0, -1, CrClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCrClause_Body(), this.getExpressions(), null, "body", null, 0, 1, CrClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(receiveExprEClass, ReceiveExpr.class, "ReceiveExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getReceiveExpr_Clauses(), this.getCrClause(), null, "clauses", null, 0, -1, ReceiveExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getReceiveExpr_After_expr(), this.getExpression(), null, "after_expr", null, 0, 1, ReceiveExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getReceiveExpr_After_body(), this.getExpression(), null, "after_body", null, 0, -1, ReceiveExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getReceiveExpr_After_body(), this.getExpressions(), null, "after_body", null, 0, 1, ReceiveExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funExprEClass, FunExpr.class, "FunExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFunExpr_Clauses(), this.getFunctionClause(), null, "clauses", null, 0, -1, FunExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funRefEClass, FunRef.class, "FunRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunRef_Module(), ecorePackage.getEString(), "module", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunRef_Function(), ecorePackage.getEString(), "function", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunRef_Arity(), ecorePackage.getEString(), "arity", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunRef_Module(), this.getExpression(), null, "module", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunRef_Function(), this.getExpression(), null, "function", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunRef_Arity(), this.getExpression(), null, "arity", null, 0, 1, FunRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tryExprEClass, TryExpr.class, "TryExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTryExpr_Body(), this.getExpression(), null, "body", null, 0, -1, TryExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTryExpr_Body(), this.getExpressions(), null, "body", null, 0, 1, TryExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTryExpr_Of_clauses(), this.getCrClause(), null, "of_clauses", null, 0, -1, TryExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTryExpr_Catch(), this.getTryClause(), null, "catch", null, 0, -1, TryExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTryExpr_After_body(), this.getExpression(), null, "after_body", null, 0, -1, TryExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTryExpr_After_body(), this.getExpressions(), null, "after_body", null, 0, 1, TryExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tryClauseEClass, TryClause.class, "TryClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTryClause_Hdr(), ecorePackage.getEString(), "hdr", null, 0, 1, TryClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTryClause_Cond(), this.getExpression(), null, "cond", null, 0, 1, TryClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTryClause_Guard(), this.getGuard(), null, "guard", null, 0, 1, TryClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTryClause_Body(), this.getExpression(), null, "body", null, 0, -1, TryClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTryClause_Body(), this.getExpressions(), null, "body", null, 0, 1, TryClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(erlListEClass, ErlList.class, "ErlList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getErlList_Elements(), this.getExpression(), null, "elements", null, 0, -1, ErlList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4147,18 +4160,13 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getBinaryItem_Type(), this.getBitType(), null, "type", null, 0, -1, BinaryItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(bitTypeEClass, BitType.class, "BitType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBitType_Name(), ecorePackage.getEString(), "name", null, 0, 1, BitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBitType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, BitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBitType_Size(), ecorePackage.getEString(), "size", null, 0, 1, BitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lcExprEClass, LCExpr.class, "LCExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLCExpr_O1(), this.getExpression(), null, "o1", null, 0, 1, LCExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLCExpr_Op(), ecorePackage.getEString(), "op", null, 0, 1, LCExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLCExpr_O2(), this.getExpression(), null, "o2", null, 0, 1, LCExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(specFunEClass, SpecFun.class, "SpecFun", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSpecFun_Module(), ecorePackage.getEString(), "module", null, 0, 1, SpecFun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSpecFun_Function(), ecorePackage.getEString(), "function", null, 0, 1, SpecFun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSpecFun_Arity(), ecorePackage.getEString(), "arity", null, 0, 1, SpecFun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeSigEClass, TypeSig.class, "TypeSig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTypeSig_Decl(), this.getFunType(), null, "decl", null, 0, 1, TypeSig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4173,7 +4181,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getTypeGuards_Items(), this.getTypeGuard(), null, "items", null, 0, -1, TypeGuards.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeGuardEClass, TypeGuard.class, "TypeGuard", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTypeGuard_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTypeGuard_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, TypeGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTypeGuard_Types(), this.getTopType(), null, "types", null, 0, -1, TypeGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTypeGuard_Type(), this.getTopType(), null, "type", null, 0, 1, TypeGuard.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -4195,22 +4203,22 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEClass(type500EClass, Type500.class, "Type500", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getType_Name(), ecorePackage.getEString(), "name", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getType_Value(), ecorePackage.getEString(), "value", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldTypeEClass, FieldType.class, "FieldType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFieldType_Name(), ecorePackage.getEString(), "name", null, 0, 1, FieldType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFieldType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, FieldType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFieldType_Type(), this.getTopType(), null, "type", null, 0, 1, FieldType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(binaryTypeEClass, BinaryType.class, "BinaryType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBinaryType_Type(), ecorePackage.getEObject(), null, "type", null, 0, -1, BinaryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(binBaseTypeEClass, BinBaseType.class, "BinBaseType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBinBaseType_Name(), ecorePackage.getEString(), "name", null, 0, 1, BinBaseType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBinBaseType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, BinBaseType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBinBaseType_Type(), this.getType(), null, "type", null, 0, 1, BinBaseType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(binUnitTypeEClass, BinUnitType.class, "BinUnitType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBinUnitType_Name(), ecorePackage.getEString(), "name", null, 0, 1, BinUnitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBinUnitType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, BinUnitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBinUnitType_M(), ecorePackage.getEString(), "m", null, 0, 1, BinUnitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBinUnitType_Type(), this.getType(), null, "type", null, 0, 1, BinUnitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -4248,43 +4256,40 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     initEClass(funCallEClass, FunCall.class, "FunCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFunCall_Target(), this.getExpression(), null, "target", null, 0, 1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunCall_Args(), this.getExpression(), null, "args", null, 0, -1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunCall_Args2(), this.getExpression(), null, "args2", null, 0, -1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunCall_Args(), this.getExpressions(), null, "args", null, 0, 1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunCall_Args2(), this.getExpressions(), null, "args2", null, 0, 1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(remoteTargetEClass, RemoteTarget.class, "RemoteTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getRemoteTarget_Module(), this.getExpression(), null, "module", null, 0, 1, RemoteTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRemoteTarget_Function(), this.getExpression(), null, "function", null, 0, 1, RemoteTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(blockExprEClass, BlockExpr.class, "BlockExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBlockExpr_Body(), this.getExpression(), null, "body", null, 0, -1, BlockExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(atomEClass, Atom.class, "Atom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAtom_Value(), this.getForm(), null, "value", null, 0, 1, Atom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVariable_Value(), ecorePackage.getEString(), "value", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBlockExpr_Body(), this.getExpressions(), null, "body", null, 0, 1, BlockExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(erlCharEClass, ErlChar.class, "ErlChar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getErlChar_Value(), ecorePackage.getEString(), "value", null, 0, 1, ErlChar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(macroExprEClass, MacroExpr.class, "MacroExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMacroExpr_Value(), this.getDefineAttribute(), null, "value", null, 0, 1, MacroExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(atomEClass, Atom.class, "Atom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAtom_Value(), this.getAtomRefTarget(), null, "value", null, 0, 1, Atom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(erlStringEClass, ErlString.class, "ErlString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getErlString_Value(), ecorePackage.getEString(), "value", null, 0, 1, ErlString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(macroEClass, Macro.class, "Macro", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMacro_Value(), this.getDefineAttribute(), null, "value", null, 0, 1, Macro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(erlIntegerEClass, ErlInteger.class, "ErlInteger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getErlInteger_Value(), ecorePackage.getEString(), "value", null, 0, 1, ErlInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVariable_Value(), this.getExpression(), null, "value", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(erlFloatEClass, ErlFloat.class, "ErlFloat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getErlFloat_Value(), ecorePackage.getEString(), "value", null, 0, 1, ErlFloat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(erlIntegerEClass, ErlInteger.class, "ErlInteger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getErlInteger_Value(), ecorePackage.getEString(), "value", null, 0, 1, ErlInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(unaryTypeEClass, UnaryType.class, "UnaryType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUnaryType_Op(), ecorePackage.getEString(), "op", null, 0, 1, UnaryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getUnaryType_Operand(), this.getType(), null, "operand", null, 0, 1, UnaryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(remoteTypeEClass, RemoteType.class, "RemoteType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRemoteType_M(), this.getModule(), null, "m", null, 0, 1, RemoteType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRemoteType_M(), this.getExpression(), null, "m", null, 0, 1, RemoteType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRemoteType_Args(), this.getTopType(), null, "args", null, 0, -1, RemoteType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(listTypeEClass, ListType.class, "ListType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

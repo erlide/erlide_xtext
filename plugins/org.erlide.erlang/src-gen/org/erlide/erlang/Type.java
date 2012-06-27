@@ -11,7 +11,7 @@ package org.erlide.erlang;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.Type#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.Type#getTypeName <em>Type Name</em>}</li>
  *   <li>{@link org.erlide.erlang.Type#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
@@ -23,30 +23,30 @@ package org.erlide.erlang;
 public interface Type extends Type500
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Type Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Type Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.erlide.erlang.ErlangPackage#getType_Name()
+   * @return the value of the '<em>Type Name</em>' attribute.
+   * @see #setTypeName(String)
+   * @see org.erlide.erlang.ErlangPackage#getType_TypeName()
    * @model
    * @generated
    */
-  String getName();
+  String getTypeName();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.Type#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.Type#getTypeName <em>Type Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Type Name</em>' attribute.
+   * @see #getTypeName()
    * @generated
    */
-  void setName(String value);
+  void setTypeName(String value);
 
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.

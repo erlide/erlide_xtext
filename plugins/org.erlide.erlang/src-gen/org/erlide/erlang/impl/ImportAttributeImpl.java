@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.FunRef;
 import org.erlide.erlang.ImportAttribute;
 
@@ -59,24 +60,14 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
   protected String tag = TAG_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getModule() <em>Module</em>}' attribute.
+   * The cached value of the '{@link #getModule() <em>Module</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getModule()
    * @generated
    * @ordered
    */
-  protected static final String MODULE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getModule() <em>Module</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getModule()
-   * @generated
-   * @ordered
-   */
-  protected String module = MODULE_EDEFAULT;
+  protected Expression module;
 
   /**
    * The cached value of the '{@link #getFuns() <em>Funs</em>}' containment reference list.
@@ -137,7 +128,7 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getModule()
+  public Expression getModule()
   {
     return module;
   }
@@ -147,12 +138,37 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setModule(String newModule)
+  public NotificationChain basicSetModule(Expression newModule, NotificationChain msgs)
   {
-    String oldModule = module;
+    Expression oldModule = module;
     module = newModule;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.IMPORT_ATTRIBUTE__MODULE, oldModule, module));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.IMPORT_ATTRIBUTE__MODULE, oldModule, newModule);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setModule(Expression newModule)
+  {
+    if (newModule != module)
+    {
+      NotificationChain msgs = null;
+      if (module != null)
+        msgs = ((InternalEObject)module).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.IMPORT_ATTRIBUTE__MODULE, null, msgs);
+      if (newModule != null)
+        msgs = ((InternalEObject)newModule).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.IMPORT_ATTRIBUTE__MODULE, null, msgs);
+      msgs = basicSetModule(newModule, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.IMPORT_ATTRIBUTE__MODULE, newModule, newModule));
   }
 
   /**
@@ -179,6 +195,8 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
   {
     switch (featureID)
     {
+      case ErlangPackage.IMPORT_ATTRIBUTE__MODULE:
+        return basicSetModule(null, msgs);
       case ErlangPackage.IMPORT_ATTRIBUTE__FUNS:
         return ((InternalEList<?>)getFuns()).basicRemove(otherEnd, msgs);
     }
@@ -220,7 +238,7 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
         setTag((String)newValue);
         return;
       case ErlangPackage.IMPORT_ATTRIBUTE__MODULE:
-        setModule((String)newValue);
+        setModule((Expression)newValue);
         return;
       case ErlangPackage.IMPORT_ATTRIBUTE__FUNS:
         getFuns().clear();
@@ -244,7 +262,7 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
         setTag(TAG_EDEFAULT);
         return;
       case ErlangPackage.IMPORT_ATTRIBUTE__MODULE:
-        setModule(MODULE_EDEFAULT);
+        setModule((Expression)null);
         return;
       case ErlangPackage.IMPORT_ATTRIBUTE__FUNS:
         getFuns().clear();
@@ -266,7 +284,7 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
       case ErlangPackage.IMPORT_ATTRIBUTE__TAG:
         return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.IMPORT_ATTRIBUTE__MODULE:
-        return MODULE_EDEFAULT == null ? module != null : !MODULE_EDEFAULT.equals(module);
+        return module != null;
       case ErlangPackage.IMPORT_ATTRIBUTE__FUNS:
         return funs != null && !funs.isEmpty();
     }
@@ -286,8 +304,6 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (tag: ");
     result.append(tag);
-    result.append(", module: ");
-    result.append(module);
     result.append(')');
     return result.toString();
   }

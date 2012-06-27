@@ -10,6 +10,7 @@
     <genClasses ecoreClass="Erlang.ecore#//Module">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Module/forms"/>
     </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//AtomRefTarget"/>
     <genClasses ecoreClass="Erlang.ecore#//Form"/>
     <genClasses ecoreClass="Erlang.ecore#//ConditionalFormBlock">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ConditionalFormBlock/condition"/>
@@ -19,6 +20,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ConditionalFormBlock/end"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//Attribute"/>
+    <genClasses ecoreClass="Erlang.ecore#//ConditionalAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ConditionalAttribute/tag"/>
+    </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//AbstractDefineAttribute"/>
     <genClasses ecoreClass="Erlang.ecore#//DefineAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//DefineAttribute/tag"/>
@@ -28,18 +32,13 @@
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//UndefAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//UndefAttribute/tag"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//UndefAttribute/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//UndefAttribute/ref"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//IfdefAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//IfdefAttribute/tag"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//IfdefAttribute/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//IfdefAttribute/ref"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//EndifAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//EndifAttribute/tag"/>
-    </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//ElseAttribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ElseAttribute/tag"/>
-    </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//ElseAttribute"/>
+    <genClasses ecoreClass="Erlang.ecore#//EndifAttribute"/>
     <genClasses ecoreClass="Erlang.ecore#//AbstractIncludeAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//AbstractIncludeAttribute/tag"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//AbstractIncludeAttribute/importURI"/>
@@ -53,13 +52,18 @@
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ModuleAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ModuleAttribute/tag"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ModuleAttribute/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ModuleAttribute/moduleName"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//RecordAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//RecordAttribute/tag"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//RecordAttribute/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordAttribute/fields"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordAttribute/recordMacro"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordAttribute/recordMacro"/>
+    </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//RecordFieldDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//RecordFieldDef/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordFieldDef/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordFieldDef/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ExportAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ExportAttribute/tag"/>
@@ -67,7 +71,7 @@
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ImportAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ImportAttribute/tag"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ImportAttribute/module"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ImportAttribute/module"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ImportAttribute/funs"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//CompileAttribute">
@@ -109,16 +113,18 @@
     <genClasses ecoreClass="Erlang.ecore#//Expression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Expression/line"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Expression/expr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Expression/string"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Expression/more"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//MacroCall">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//MacroCall/macroName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//MacroCall/macroName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//MacroCall/args"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//RecordExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordExpr/ref"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordExpr/record"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordExpr/rec"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordExpr/field"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordExpr/rec"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordExpr/field"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordExpr/tuple"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//QueryExpr"/>
@@ -127,15 +133,14 @@
     <genClasses ecoreClass="Erlang.ecore#//RecordTuple">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordTuple/fields"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//RecordFieldDef">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//RecordFieldDef/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordFieldDef/value"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordFieldDef/type"/>
+    <genClasses ecoreClass="Erlang.ecore#//RecordFieldExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordFieldExpr/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordFieldExpr/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordFieldExpr/type"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//RecordField">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordField/ref"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordField/value"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordField/type"/>
+    <genClasses ecoreClass="Erlang.ecore#//StringLiteralPart">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//StringLiteralPart/string"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//StringLiteralPart/macro"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//IfExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//IfExpr/clauses"/>
@@ -161,9 +166,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunExpr/clauses"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//FunRef">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FunRef/module"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FunRef/function"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FunRef/arity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/module"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/function"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunRef/arity"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//TryExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TryExpr/body"/>
@@ -201,18 +206,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinaryItem/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BitType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BitType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BitType/typeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BitType/size"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//LCExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//LCExpr/o1"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//LCExpr/op"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//LCExpr/o2"/>
-    </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//SpecFun">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//SpecFun/module"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//SpecFun/function"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//SpecFun/arity"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//TypeSig">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TypeSig/decl"/>
@@ -227,7 +227,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TypeGuards/items"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//TypeGuard">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//TypeGuard/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//TypeGuard/typeName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TypeGuard/types"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//TypeGuard/type"/>
     </genClasses>
@@ -244,22 +244,22 @@
     <genClasses ecoreClass="Erlang.ecore#//Type400"/>
     <genClasses ecoreClass="Erlang.ecore#//Type500"/>
     <genClasses ecoreClass="Erlang.ecore#//Type">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Type/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Type/typeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Type/value"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//FieldType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FieldType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FieldType/typeName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FieldType/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BinaryType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinaryType/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BinBaseType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BinBaseType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BinBaseType/typeName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinBaseType/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BinUnitType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BinUnitType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BinUnitType/typeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BinUnitType/m"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinUnitType/type"/>
     </genClasses>
@@ -305,33 +305,30 @@
     <genClasses ecoreClass="Erlang.ecore#//BlockExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BlockExpr/body"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//Atom">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//Atom/value"/>
-    </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//Variable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Variable/value"/>
-    </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ErlChar">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ErlChar/value"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//MacroExpr">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//MacroExpr/value"/>
+    <genClasses ecoreClass="Erlang.ecore#//Atom">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//Atom/value"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//ErlString">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ErlString/value"/>
+    <genClasses ecoreClass="Erlang.ecore#//Macro">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//Macro/value"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//ErlInteger">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ErlInteger/value"/>
+    <genClasses ecoreClass="Erlang.ecore#//Variable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//Variable/value"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ErlFloat">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ErlFloat/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//ErlInteger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ErlInteger/value"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//UnaryType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//UnaryType/op"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//UnaryType/operand"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//RemoteType">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//RemoteType/m"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RemoteType/m"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RemoteType/args"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ListType">

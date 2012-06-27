@@ -24,81 +24,81 @@ package org.erlide.erlang;
 public interface FunRef extends FunExpr
 {
   /**
-   * Returns the value of the '<em><b>Module</b></em>' attribute.
+   * Returns the value of the '<em><b>Module</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Module</em>' attribute isn't clear,
+   * If the meaning of the '<em>Module</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Module</em>' attribute.
-   * @see #setModule(String)
+   * @return the value of the '<em>Module</em>' containment reference.
+   * @see #setModule(Expression)
    * @see org.erlide.erlang.ErlangPackage#getFunRef_Module()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getModule();
+  Expression getModule();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getModule <em>Module</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Module</em>' attribute.
+   * @param value the new value of the '<em>Module</em>' containment reference.
    * @see #getModule()
    * @generated
    */
-  void setModule(String value);
+  void setModule(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Function</b></em>' attribute.
+   * Returns the value of the '<em><b>Function</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Function</em>' attribute isn't clear,
+   * If the meaning of the '<em>Function</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Function</em>' attribute.
-   * @see #setFunction(String)
+   * @return the value of the '<em>Function</em>' containment reference.
+   * @see #setFunction(Expression)
    * @see org.erlide.erlang.ErlangPackage#getFunRef_Function()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getFunction();
+  Expression getFunction();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getFunction <em>Function</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Function</em>' attribute.
+   * @param value the new value of the '<em>Function</em>' containment reference.
    * @see #getFunction()
    * @generated
    */
-  void setFunction(String value);
+  void setFunction(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Arity</b></em>' attribute.
+   * Returns the value of the '<em><b>Arity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Arity</em>' attribute isn't clear,
+   * If the meaning of the '<em>Arity</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Arity</em>' attribute.
-   * @see #setArity(String)
+   * @return the value of the '<em>Arity</em>' containment reference.
+   * @see #setArity(Expression)
    * @see org.erlide.erlang.ErlangPackage#getFunRef_Arity()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getArity();
+  Expression getArity();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.FunRef#getArity <em>Arity</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Arity</em>' attribute.
+   * @param value the new value of the '<em>Arity</em>' containment reference.
    * @see #getArity()
    * @generated
    */
-  void setArity(String value);
+  void setArity(Expression value);
 
 } // FunRef

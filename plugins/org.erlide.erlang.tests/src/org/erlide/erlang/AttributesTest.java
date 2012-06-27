@@ -27,10 +27,10 @@ public class AttributesTest extends XtextTest {
 
     @Test
     public void recordField() {
-        testParserRule("a", "RecordField");
-        testParserRule("a=3", "RecordField");
-        testParserRule("a::integer()", "RecordField");
-        testParserRule("a=3::integer()", "RecordField");
+        testParserRule("a", "RecordFieldDef");
+        testParserRule("a=3", "RecordFieldDef");
+        testParserRule("a::integer()", "RecordFieldDef");
+        testParserRule("a=3::integer()", "RecordFieldDef");
     }
 
     @Test

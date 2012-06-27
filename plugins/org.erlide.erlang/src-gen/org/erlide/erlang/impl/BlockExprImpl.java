@@ -2,21 +2,17 @@
  */
 package org.erlide.erlang.impl;
 
-import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.erlide.erlang.BlockExpr;
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.Expression;
+import org.erlide.erlang.Expressions;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,14 +30,14 @@ import org.erlide.erlang.Expression;
 public class BlockExprImpl extends ExpressionImpl implements BlockExpr
 {
   /**
-   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference list.
+   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getBody()
    * @generated
    * @ordered
    */
-  protected EList<Expression> body;
+  protected Expressions body;
 
   /**
    * <!-- begin-user-doc -->
@@ -69,13 +65,47 @@ public class BlockExprImpl extends ExpressionImpl implements BlockExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getBody()
+  public Expressions getBody()
   {
-    if (body == null)
-    {
-      body = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.BLOCK_EXPR__BODY);
-    }
     return body;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetBody(Expressions newBody, NotificationChain msgs)
+  {
+    Expressions oldBody = body;
+    body = newBody;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.BLOCK_EXPR__BODY, oldBody, newBody);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBody(Expressions newBody)
+  {
+    if (newBody != body)
+    {
+      NotificationChain msgs = null;
+      if (body != null)
+        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.BLOCK_EXPR__BODY, null, msgs);
+      if (newBody != null)
+        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.BLOCK_EXPR__BODY, null, msgs);
+      msgs = basicSetBody(newBody, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.BLOCK_EXPR__BODY, newBody, newBody));
   }
 
   /**
@@ -89,7 +119,7 @@ public class BlockExprImpl extends ExpressionImpl implements BlockExpr
     switch (featureID)
     {
       case ErlangPackage.BLOCK_EXPR__BODY:
-        return ((InternalEList<?>)getBody()).basicRemove(otherEnd, msgs);
+        return basicSetBody(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -115,15 +145,13 @@ public class BlockExprImpl extends ExpressionImpl implements BlockExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case ErlangPackage.BLOCK_EXPR__BODY:
-        getBody().clear();
-        getBody().addAll((Collection<? extends Expression>)newValue);
+        setBody((Expressions)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -140,7 +168,7 @@ public class BlockExprImpl extends ExpressionImpl implements BlockExpr
     switch (featureID)
     {
       case ErlangPackage.BLOCK_EXPR__BODY:
-        getBody().clear();
+        setBody((Expressions)null);
         return;
     }
     super.eUnset(featureID);
@@ -157,7 +185,7 @@ public class BlockExprImpl extends ExpressionImpl implements BlockExpr
     switch (featureID)
     {
       case ErlangPackage.BLOCK_EXPR__BODY:
-        return body != null && !body.isEmpty();
+        return body != null;
     }
     return super.eIsSet(featureID);
   }

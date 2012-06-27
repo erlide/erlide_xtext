@@ -14,7 +14,6 @@ import org.erlide.erlang.Atom;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.CustomAttribute;
 import org.erlide.erlang.Expression;
-import org.erlide.erlang.FunRef;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.IsFunRefMatcher;
 import org.erlide.erlang.ModelExtensions;
@@ -32,6 +31,9 @@ public class ModuleExtensionsTest {
   @Inject
   private ParseHelper<Module> parser;
   
+  @Inject
+  private ModelExtensions _modelExtensions;
+  
   @Test
   public void moduleName() {
     try {
@@ -39,7 +41,7 @@ public class ModuleExtensionsTest {
       _builder.append("-module(x).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final String myname = ModelExtensions.getName(module);
+      final String myname = this._modelExtensions.getName(module);
       Matcher<? super String> _is = Matchers.<String>is("x");
       MatcherAssert.<String>assertThat(myname, _is);
     } catch (Exception _e) {
@@ -56,7 +58,7 @@ public class ModuleExtensionsTest {
       _builder.append("-module(x).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final String myname = ModelExtensions.getName(module);
+      final String myname = this._modelExtensions.getName(module);
       Matcher<? super String> _is = Matchers.<String>is("x");
       MatcherAssert.<String>assertThat(myname, _is);
     } catch (Exception _e) {
@@ -71,7 +73,7 @@ public class ModuleExtensionsTest {
       _builder.append("-include(\"x\").");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final String myname = ModelExtensions.getName(module);
+      final String myname = this._modelExtensions.getName(module);
       Matcher<String> _nullValue = Matchers.<String>nullValue();
       Matcher<String> _is = Matchers.<String>is(_nullValue);
       MatcherAssert.<String>assertThat(myname, _is);
@@ -87,7 +89,7 @@ public class ModuleExtensionsTest {
       _builder.append("-include(\"x\").");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      boolean _isHeader = ModelExtensions.isHeader(module);
+      boolean _isHeader = this._modelExtensions.isHeader(module);
       Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(true));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(_isHeader), _is);
     } catch (Exception _e) {
@@ -102,7 +104,7 @@ public class ModuleExtensionsTest {
       _builder.append("-module(x).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      boolean _isHeader = ModelExtensions.isHeader(module);
+      boolean _isHeader = this._modelExtensions.isHeader(module);
       Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(false));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(_isHeader), _is);
     } catch (Exception _e) {
@@ -123,7 +125,7 @@ public class ModuleExtensionsTest {
       _builder.append("-foo(bar).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<Attribute> attrs = ModelExtensions.getAttributes(module);
+      final Collection<Attribute> attrs = this._modelExtensions.<Attribute>getAllItemsOfType(module, Attribute.class);
       int _size = attrs.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(3));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -147,7 +149,7 @@ public class ModuleExtensionsTest {
       _builder.append("-foo(bar).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<CustomAttribute> attrs = ModelExtensions.getCustomAttributesWithTag(module, "foo");
+      final Collection<CustomAttribute> attrs = this._modelExtensions.getCustomAttributesWithTag(module, "foo");
       int _size = attrs.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -166,7 +168,7 @@ public class ModuleExtensionsTest {
   }
   
   @Test
-  public void getExportFunctions() {
+  public void getExportedFunctions() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("-module(x).");
@@ -182,7 +184,7 @@ public class ModuleExtensionsTest {
       _builder.append("foo()->ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<Function> attrs = ModelExtensions.getExportedFunctions(module);
+      final Collection<Function> attrs = this._modelExtensions.getDeclaredExports(module);
       int _size = attrs.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(3));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -204,38 +206,6 @@ public class ModuleExtensionsTest {
   }
   
   @Test
-  public void getExportFunRefs() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("-module(x).");
-      _builder.newLine();
-      _builder.append("-export([bar/0, baz/1]).");
-      _builder.newLine();
-      _builder.append("-export([foo/0]).");
-      _builder.newLine();
-      final Module module = this.parser.parse(_builder);
-      final Collection<FunRef> attrs = ModelExtensions.getExportedFunRefs(module);
-      int _size = attrs.size();
-      Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(3));
-      MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
-      FunRef _head = IterableExtensions.<FunRef>head(attrs);
-      Matcher<FunRef> _isFunRef = IsFunRefMatcher.isFunRef("bar", 0);
-      MatcherAssert.<FunRef>assertThat(_head, _isFunRef);
-      Iterable<FunRef> _tail = IterableExtensions.<FunRef>tail(attrs);
-      FunRef _head_1 = IterableExtensions.<FunRef>head(_tail);
-      Matcher<FunRef> _isFunRef_1 = IsFunRefMatcher.isFunRef("baz", 1);
-      MatcherAssert.<FunRef>assertThat(_head_1, _isFunRef_1);
-      Iterable<FunRef> _tail_1 = IterableExtensions.<FunRef>tail(attrs);
-      Iterable<FunRef> _tail_2 = IterableExtensions.<FunRef>tail(_tail_1);
-      FunRef _head_2 = IterableExtensions.<FunRef>head(_tail_2);
-      Matcher<FunRef> _isFunRef_2 = IsFunRefMatcher.isFunRef("foo", 0);
-      MatcherAssert.<FunRef>assertThat(_head_2, _isFunRef_2);
-    } catch (Exception _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
-  @Test
   public void getFunction() {
     try {
       StringConcatenation _builder = new StringConcatenation();
@@ -248,7 +218,7 @@ public class ModuleExtensionsTest {
       _builder.append("foo()->ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Function bar = ModelExtensions.getFunction(module, "bar", 0);
+      final Function bar = this._modelExtensions.getFunction(module, "bar", 0);
       Matcher<Function> _notNullValue = Matchers.<Function>notNullValue();
       Matcher<Function> _is = Matchers.<Function>is(_notNullValue);
       MatcherAssert.<Function>assertThat(bar, _is);
@@ -272,7 +242,7 @@ public class ModuleExtensionsTest {
       _builder.append("foo()->ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Function bar1 = ModelExtensions.getFunction(module, "bar", 1);
+      final Function bar1 = this._modelExtensions.getFunction(module, "bar", 1);
       Matcher<Function> _nullValue = Matchers.<Function>nullValue();
       Matcher<Function> _is = Matchers.<Function>is(_nullValue);
       MatcherAssert.<Function>assertThat(bar1, _is);
@@ -290,7 +260,7 @@ public class ModuleExtensionsTest {
       _builder.append("-include(\"bar.hrl\").");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<String> bar1 = ModelExtensions.getIncludes(module);
+      final Collection<String> bar1 = this._modelExtensions.getIncludes(module);
       String _head = IterableExtensions.<String>head(bar1);
       Matcher<? super String> _is = Matchers.<String>is("\"bar.hrl\"");
       MatcherAssert.<String>assertThat(_head, _is);
@@ -308,7 +278,7 @@ public class ModuleExtensionsTest {
       _builder.append("-include_lib(\"foo.hrl\").");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<String> bar1 = ModelExtensions.getIncludeLibs(module);
+      final Collection<String> bar1 = this._modelExtensions.getIncludeLibs(module);
       String _head = IterableExtensions.<String>head(bar1);
       Matcher<? super String> _is = Matchers.<String>is("\"foo.hrl\"");
       MatcherAssert.<String>assertThat(_head, _is);
@@ -326,7 +296,7 @@ public class ModuleExtensionsTest {
       _builder.append("-compile(export_all).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final boolean bar1 = ModelExtensions.exportsAll(module);
+      final boolean bar1 = this._modelExtensions.exportsAll(module);
       Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(true));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(bar1), _is);
     } catch (Exception _e) {
@@ -341,7 +311,7 @@ public class ModuleExtensionsTest {
       _builder.append("-module(x).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final boolean bar1 = ModelExtensions.exportsAll(module);
+      final boolean bar1 = this._modelExtensions.exportsAll(module);
       Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(false));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(bar1), _is);
     } catch (Exception _e) {
@@ -358,7 +328,7 @@ public class ModuleExtensionsTest {
       _builder.append("-compile([debug_info, export_all]).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final boolean bar1 = ModelExtensions.exportsAll(module);
+      final boolean bar1 = this._modelExtensions.exportsAll(module);
       Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(true));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(bar1), _is);
     } catch (Exception _e) {
@@ -375,9 +345,9 @@ public class ModuleExtensionsTest {
       _builder.append("-compile({parse_transform, x}).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<Atom> bar1 = ModelExtensions.getParseTransforms(module);
+      final Collection<Atom> bar1 = this._modelExtensions.getParseTransforms(module);
       Atom _head = IterableExtensions.<Atom>head(bar1);
-      String _sourceText = ModelExtensions.getSourceText(_head);
+      String _sourceText = this._modelExtensions.getSourceText(_head);
       Matcher<? super String> _is = Matchers.<String>is("x");
       MatcherAssert.<String>assertThat(_sourceText, _is);
     } catch (Exception _e) {
@@ -394,12 +364,12 @@ public class ModuleExtensionsTest {
       _builder.append("-compile([debug_info, {parse_transform, x}]).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<Atom> bar1 = ModelExtensions.getParseTransforms(module);
+      final Collection<Atom> bar1 = this._modelExtensions.getParseTransforms(module);
       int _size = bar1.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(1));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
       Atom _head = IterableExtensions.<Atom>head(bar1);
-      String _sourceText = ModelExtensions.getSourceText(_head);
+      String _sourceText = this._modelExtensions.getSourceText(_head);
       Matcher<? super String> _is_1 = Matchers.<String>is("x");
       MatcherAssert.<String>assertThat(_sourceText, _is_1);
     } catch (Exception _e) {
@@ -418,13 +388,13 @@ public class ModuleExtensionsTest {
       _builder.append("-compile({parse_transform, y}).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<Atom> bar1 = ModelExtensions.getParseTransforms(module);
+      final Collection<Atom> bar1 = this._modelExtensions.getParseTransforms(module);
       int _size = bar1.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
       final Function1<Atom,String> _function = new Function1<Atom,String>() {
           public String apply(final Atom it) {
-            String _sourceText = ModelExtensions.getSourceText(it);
+            String _sourceText = ModuleExtensionsTest.this._modelExtensions.getSourceText(it);
             return _sourceText;
           }
         };
@@ -433,7 +403,7 @@ public class ModuleExtensionsTest {
       MatcherAssert.<Iterable<String>>assertThat(_map, _hasItem);
       final Function1<Atom,String> _function_1 = new Function1<Atom,String>() {
           public String apply(final Atom it) {
-            String _sourceText = ModelExtensions.getSourceText(it);
+            String _sourceText = ModuleExtensionsTest.this._modelExtensions.getSourceText(it);
             return _sourceText;
           }
         };
@@ -456,7 +426,7 @@ public class ModuleExtensionsTest {
       _builder.append("-compile([debug_info, {parse_transform, x}]).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<Expression> opts = ModelExtensions.getCompileOptions(module);
+      final Collection<Expression> opts = this._modelExtensions.getCompileOptions(module);
       int _size = opts.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);

@@ -10,6 +10,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.ErlangInjectorProvider;
 import org.erlide.erlang.Expression;
+import org.erlide.erlang.Expressions;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.FunctionClause;
 import org.erlide.erlang.ModelExtensions;
@@ -27,6 +28,9 @@ public class ElementExtensionsTest {
   @Inject
   private ParseHelper<Module> parser;
   
+  @Inject
+  private ModelExtensions _modelExtensions;
+  
   @Test
   public void getModule() {
     try {
@@ -40,17 +44,18 @@ public class ElementExtensionsTest {
       _builder.append("gg() -> ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Function ff = ModelExtensions.getFunction(module, "ff", 0);
-      Module _module = ModelExtensions.getModule(ff);
+      final Function ff = this._modelExtensions.getFunction(module, "ff", 0);
+      Module _owningModule = this._modelExtensions.getOwningModule(ff);
       Matcher<? super Module> _is = Matchers.<Module>is(module);
-      MatcherAssert.<Module>assertThat(_module, _is);
+      MatcherAssert.<Module>assertThat(_owningModule, _is);
       EList<FunctionClause> _clauses = ff.getClauses();
       FunctionClause _head = IterableExtensions.<FunctionClause>head(_clauses);
-      EList<Expression> _body = _head.getBody();
-      final Expression fexpr = IterableExtensions.<Expression>head(_body);
-      Module _module_1 = ModelExtensions.getModule(fexpr);
+      Expressions _body = _head.getBody();
+      EList<Expression> _exprs = _body.getExprs();
+      final Expression fexpr = IterableExtensions.<Expression>head(_exprs);
+      Module _owningModule_1 = this._modelExtensions.getOwningModule(fexpr);
       Matcher<? super Module> _is_1 = Matchers.<Module>is(module);
-      MatcherAssert.<Module>assertThat(_module_1, _is_1);
+      MatcherAssert.<Module>assertThat(_owningModule_1, _is_1);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }

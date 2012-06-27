@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.Module;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.RemoteType;
 import org.erlide.erlang.TopType;
 
@@ -39,14 +39,14 @@ import org.erlide.erlang.TopType;
 public class RemoteTypeImpl extends TypeImpl implements RemoteType
 {
   /**
-   * The cached value of the '{@link #getM() <em>M</em>}' reference.
+   * The cached value of the '{@link #getM() <em>M</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getM()
    * @generated
    * @ordered
    */
-  protected Module m;
+  protected Expression m;
 
   /**
    * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
@@ -84,27 +84,7 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
    * <!-- end-user-doc -->
    * @generated
    */
-  public Module getM()
-  {
-    if (m != null && m.eIsProxy())
-    {
-      InternalEObject oldM = (InternalEObject)m;
-      m = (Module)eResolveProxy(oldM);
-      if (m != oldM)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.REMOTE_TYPE__M, oldM, m));
-      }
-    }
-    return m;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Module basicGetM()
+  public Expression getM()
   {
     return m;
   }
@@ -114,12 +94,37 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setM(Module newM)
+  public NotificationChain basicSetM(Expression newM, NotificationChain msgs)
   {
-    Module oldM = m;
+    Expression oldM = m;
     m = newM;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.REMOTE_TYPE__M, oldM, m));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.REMOTE_TYPE__M, oldM, newM);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setM(Expression newM)
+  {
+    if (newM != m)
+    {
+      NotificationChain msgs = null;
+      if (m != null)
+        msgs = ((InternalEObject)m).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.REMOTE_TYPE__M, null, msgs);
+      if (newM != null)
+        msgs = ((InternalEObject)newM).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.REMOTE_TYPE__M, null, msgs);
+      msgs = basicSetM(newM, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.REMOTE_TYPE__M, newM, newM));
   }
 
   /**
@@ -146,6 +151,8 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
   {
     switch (featureID)
     {
+      case ErlangPackage.REMOTE_TYPE__M:
+        return basicSetM(null, msgs);
       case ErlangPackage.REMOTE_TYPE__ARGS:
         return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
     }
@@ -163,8 +170,7 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
     switch (featureID)
     {
       case ErlangPackage.REMOTE_TYPE__M:
-        if (resolve) return getM();
-        return basicGetM();
+        return getM();
       case ErlangPackage.REMOTE_TYPE__ARGS:
         return getArgs();
     }
@@ -183,7 +189,7 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
     switch (featureID)
     {
       case ErlangPackage.REMOTE_TYPE__M:
-        setM((Module)newValue);
+        setM((Expression)newValue);
         return;
       case ErlangPackage.REMOTE_TYPE__ARGS:
         getArgs().clear();
@@ -204,7 +210,7 @@ public class RemoteTypeImpl extends TypeImpl implements RemoteType
     switch (featureID)
     {
       case ErlangPackage.REMOTE_TYPE__M:
-        setM((Module)null);
+        setM((Expression)null);
         return;
       case ErlangPackage.REMOTE_TYPE__ARGS:
         getArgs().clear();

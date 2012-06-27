@@ -4,8 +4,6 @@ package org.erlide.erlang;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Module</b></em>'.
@@ -22,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Module extends EObject
+public interface Module extends AtomRefTarget
 {
   /**
    * Returns the value of the '<em><b>Forms</b></em>' containment reference list.

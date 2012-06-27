@@ -47,7 +47,7 @@ public class ErlangSemanticHighlightingCalculator implements
                         ErlangSemanticHighlightingConfiguration.STRUCTURAL_ATTRIBUTE_ID,
                         acceptor);
             }
-            if (matchesRule(grammarElement, grammarAccess.getMacroRule())) {
+            if (matchesRule(grammarElement, grammarAccess.getMacroLiteralRule())) {
                 highlightNode(node,
                         ErlangSemanticHighlightingConfiguration.MACRO_ID,
                         acceptor);

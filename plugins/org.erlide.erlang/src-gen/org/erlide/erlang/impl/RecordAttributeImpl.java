@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.MacroCall;
 import org.erlide.erlang.RecordAttribute;
 import org.erlide.erlang.RecordFieldDef;
 
@@ -38,7 +38,7 @@ import org.erlide.erlang.RecordFieldDef;
  *
  * @generated
  */
-public class RecordAttributeImpl extends AttributeImpl implements RecordAttribute
+public class RecordAttributeImpl extends AtomRefTargetImpl implements RecordAttribute
 {
   /**
    * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
@@ -91,14 +91,14 @@ public class RecordAttributeImpl extends AttributeImpl implements RecordAttribut
   protected EList<RecordFieldDef> fields;
 
   /**
-   * The cached value of the '{@link #getRecordMacro() <em>Record Macro</em>}' reference.
+   * The cached value of the '{@link #getRecordMacro() <em>Record Macro</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRecordMacro()
    * @generated
    * @ordered
    */
-  protected DefineAttribute recordMacro;
+  protected MacroCall recordMacro;
 
   /**
    * <!-- begin-user-doc -->
@@ -186,27 +186,7 @@ public class RecordAttributeImpl extends AttributeImpl implements RecordAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public DefineAttribute getRecordMacro()
-  {
-    if (recordMacro != null && recordMacro.eIsProxy())
-    {
-      InternalEObject oldRecordMacro = (InternalEObject)recordMacro;
-      recordMacro = (DefineAttribute)eResolveProxy(oldRecordMacro);
-      if (recordMacro != oldRecordMacro)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.RECORD_ATTRIBUTE__RECORD_MACRO, oldRecordMacro, recordMacro));
-      }
-    }
-    return recordMacro;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DefineAttribute basicGetRecordMacro()
+  public MacroCall getRecordMacro()
   {
     return recordMacro;
   }
@@ -216,12 +196,37 @@ public class RecordAttributeImpl extends AttributeImpl implements RecordAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRecordMacro(DefineAttribute newRecordMacro)
+  public NotificationChain basicSetRecordMacro(MacroCall newRecordMacro, NotificationChain msgs)
   {
-    DefineAttribute oldRecordMacro = recordMacro;
+    MacroCall oldRecordMacro = recordMacro;
     recordMacro = newRecordMacro;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_ATTRIBUTE__RECORD_MACRO, oldRecordMacro, recordMacro));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_ATTRIBUTE__RECORD_MACRO, oldRecordMacro, newRecordMacro);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRecordMacro(MacroCall newRecordMacro)
+  {
+    if (newRecordMacro != recordMacro)
+    {
+      NotificationChain msgs = null;
+      if (recordMacro != null)
+        msgs = ((InternalEObject)recordMacro).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_ATTRIBUTE__RECORD_MACRO, null, msgs);
+      if (newRecordMacro != null)
+        msgs = ((InternalEObject)newRecordMacro).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_ATTRIBUTE__RECORD_MACRO, null, msgs);
+      msgs = basicSetRecordMacro(newRecordMacro, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_ATTRIBUTE__RECORD_MACRO, newRecordMacro, newRecordMacro));
   }
 
   /**
@@ -236,6 +241,8 @@ public class RecordAttributeImpl extends AttributeImpl implements RecordAttribut
     {
       case ErlangPackage.RECORD_ATTRIBUTE__FIELDS:
         return ((InternalEList<?>)getFields()).basicRemove(otherEnd, msgs);
+      case ErlangPackage.RECORD_ATTRIBUTE__RECORD_MACRO:
+        return basicSetRecordMacro(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -257,8 +264,7 @@ public class RecordAttributeImpl extends AttributeImpl implements RecordAttribut
       case ErlangPackage.RECORD_ATTRIBUTE__FIELDS:
         return getFields();
       case ErlangPackage.RECORD_ATTRIBUTE__RECORD_MACRO:
-        if (resolve) return getRecordMacro();
-        return basicGetRecordMacro();
+        return getRecordMacro();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -285,7 +291,7 @@ public class RecordAttributeImpl extends AttributeImpl implements RecordAttribut
         getFields().addAll((Collection<? extends RecordFieldDef>)newValue);
         return;
       case ErlangPackage.RECORD_ATTRIBUTE__RECORD_MACRO:
-        setRecordMacro((DefineAttribute)newValue);
+        setRecordMacro((MacroCall)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -311,7 +317,7 @@ public class RecordAttributeImpl extends AttributeImpl implements RecordAttribut
         getFields().clear();
         return;
       case ErlangPackage.RECORD_ATTRIBUTE__RECORD_MACRO:
-        setRecordMacro((DefineAttribute)null);
+        setRecordMacro((MacroCall)null);
         return;
     }
     super.eUnset(featureID);

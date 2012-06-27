@@ -2,12 +2,8 @@
  */
 package org.erlide.erlang.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -15,11 +11,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.Expression;
+import org.erlide.erlang.Expressions;
 import org.erlide.erlang.FunctionClause;
 import org.erlide.erlang.Guard;
 
@@ -62,14 +55,14 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
   protected String ref = REF_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
+   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getParams()
    * @generated
    * @ordered
    */
-  protected EList<Expression> params;
+  protected Expressions params;
 
   /**
    * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
@@ -82,14 +75,14 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
   protected Guard guard;
 
   /**
-   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference list.
+   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getBody()
    * @generated
    * @ordered
    */
-  protected EList<Expression> body;
+  protected Expressions body;
 
   /**
    * <!-- begin-user-doc -->
@@ -140,13 +133,47 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getParams()
+  public Expressions getParams()
   {
-    if (params == null)
-    {
-      params = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.FUNCTION_CLAUSE__PARAMS);
-    }
     return params;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetParams(Expressions newParams, NotificationChain msgs)
+  {
+    Expressions oldParams = params;
+    params = newParams;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.FUNCTION_CLAUSE__PARAMS, oldParams, newParams);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setParams(Expressions newParams)
+  {
+    if (newParams != params)
+    {
+      NotificationChain msgs = null;
+      if (params != null)
+        msgs = ((InternalEObject)params).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUNCTION_CLAUSE__PARAMS, null, msgs);
+      if (newParams != null)
+        msgs = ((InternalEObject)newParams).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUNCTION_CLAUSE__PARAMS, null, msgs);
+      msgs = basicSetParams(newParams, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUNCTION_CLAUSE__PARAMS, newParams, newParams));
   }
 
   /**
@@ -202,13 +229,47 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getBody()
+  public Expressions getBody()
   {
-    if (body == null)
-    {
-      body = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.FUNCTION_CLAUSE__BODY);
-    }
     return body;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetBody(Expressions newBody, NotificationChain msgs)
+  {
+    Expressions oldBody = body;
+    body = newBody;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.FUNCTION_CLAUSE__BODY, oldBody, newBody);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBody(Expressions newBody)
+  {
+    if (newBody != body)
+    {
+      NotificationChain msgs = null;
+      if (body != null)
+        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUNCTION_CLAUSE__BODY, null, msgs);
+      if (newBody != null)
+        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FUNCTION_CLAUSE__BODY, null, msgs);
+      msgs = basicSetBody(newBody, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUNCTION_CLAUSE__BODY, newBody, newBody));
   }
 
   /**
@@ -222,11 +283,11 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case ErlangPackage.FUNCTION_CLAUSE__PARAMS:
-        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
+        return basicSetParams(null, msgs);
       case ErlangPackage.FUNCTION_CLAUSE__GUARD:
         return basicSetGuard(null, msgs);
       case ErlangPackage.FUNCTION_CLAUSE__BODY:
-        return ((InternalEList<?>)getBody()).basicRemove(otherEnd, msgs);
+        return basicSetBody(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -258,7 +319,6 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -268,15 +328,13 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
         setRef((String)newValue);
         return;
       case ErlangPackage.FUNCTION_CLAUSE__PARAMS:
-        getParams().clear();
-        getParams().addAll((Collection<? extends Expression>)newValue);
+        setParams((Expressions)newValue);
         return;
       case ErlangPackage.FUNCTION_CLAUSE__GUARD:
         setGuard((Guard)newValue);
         return;
       case ErlangPackage.FUNCTION_CLAUSE__BODY:
-        getBody().clear();
-        getBody().addAll((Collection<? extends Expression>)newValue);
+        setBody((Expressions)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -296,13 +354,13 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
         setRef(REF_EDEFAULT);
         return;
       case ErlangPackage.FUNCTION_CLAUSE__PARAMS:
-        getParams().clear();
+        setParams((Expressions)null);
         return;
       case ErlangPackage.FUNCTION_CLAUSE__GUARD:
         setGuard((Guard)null);
         return;
       case ErlangPackage.FUNCTION_CLAUSE__BODY:
-        getBody().clear();
+        setBody((Expressions)null);
         return;
     }
     super.eUnset(featureID);
@@ -321,11 +379,11 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
       case ErlangPackage.FUNCTION_CLAUSE__REF:
         return REF_EDEFAULT == null ? ref != null : !REF_EDEFAULT.equals(ref);
       case ErlangPackage.FUNCTION_CLAUSE__PARAMS:
-        return params != null && !params.isEmpty();
+        return params != null;
       case ErlangPackage.FUNCTION_CLAUSE__GUARD:
         return guard != null;
       case ErlangPackage.FUNCTION_CLAUSE__BODY:
-        return body != null && !body.isEmpty();
+        return body != null;
     }
     return super.eIsSet(featureID);
   }

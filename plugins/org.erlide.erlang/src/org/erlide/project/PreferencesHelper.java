@@ -33,8 +33,8 @@ public final class PreferencesHelper {
     public static PreferencesHelper getHelper(final String qualifier) {
         final IScopeContext instanceScope = InstanceScope.INSTANCE;
         return new PreferencesHelper(qualifier, new IScopeContext[] {
-                instanceScope, ConfigurationScope.INSTANCE, DefaultScope.INSTANCE },
-                instanceScope);
+                instanceScope, ConfigurationScope.INSTANCE,
+                DefaultScope.INSTANCE }, instanceScope);
     }
 
     private PreferencesHelper(final String qualifier,

@@ -7,7 +7,6 @@ import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.ErlangInjectorProvider;
 import org.erlide.erlang.Atom;
@@ -15,6 +14,7 @@ import org.erlide.erlang.CustomAttribute;
 import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ErlList;
 import org.erlide.erlang.Expression;
+import org.erlide.erlang.Expressions;
 import org.erlide.erlang.Form;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.FunctionClause;
@@ -46,7 +46,7 @@ public class ParserTest {
       final ModuleAttribute entity = ((ModuleAttribute) _head);
       String _tag = entity.getTag();
       Assert.assertEquals(_tag, "module");
-      final String mod = entity.getName();
+      final String mod = entity.getModuleName();
       Assert.assertEquals(mod, "x");
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -60,7 +60,6 @@ public class ParserTest {
       _builder.append("x+1.");
       _builder.newLine();
       final Module model = this.parser.parse(_builder);
-      InputOutput.<Module>print(model);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -184,13 +183,16 @@ public class ParserTest {
       final Function fun = ((Function) _head);
       EList<FunctionClause> _clauses = fun.getClauses();
       FunctionClause _head_1 = IterableExtensions.<FunctionClause>head(_clauses);
-      final EList<Expression> body = _head_1.getBody();
-      int _size = body.size();
+      final Expressions body = _head_1.getBody();
+      EList<Expression> _exprs = body.getExprs();
+      int _size = _exprs.size();
       Assert.assertEquals(3, _size);
-      Expression _head_2 = IterableExtensions.<Expression>head(body);
+      EList<Expression> _exprs_1 = body.getExprs();
+      Expression _head_2 = IterableExtensions.<Expression>head(_exprs_1);
       boolean _isLine = _head_2.isLine();
       Assert.assertTrue(_isLine);
-      Iterable<Expression> _tail = IterableExtensions.<Expression>tail(body);
+      EList<Expression> _exprs_2 = body.getExprs();
+      Iterable<Expression> _tail = IterableExtensions.<Expression>tail(_exprs_2);
       Expression _head_3 = IterableExtensions.<Expression>head(_tail);
       boolean _isLine_1 = _head_3.isLine();
       Assert.assertFalse(_isLine_1);
@@ -211,10 +213,12 @@ public class ParserTest {
       final Function fun = ((Function) _head);
       EList<FunctionClause> _clauses = fun.getClauses();
       FunctionClause _head_1 = IterableExtensions.<FunctionClause>head(_clauses);
-      final EList<Expression> body = _head_1.getBody();
-      int _size = body.size();
+      final Expressions body = _head_1.getBody();
+      EList<Expression> _exprs = body.getExprs();
+      int _size = _exprs.size();
       Assert.assertEquals(1, _size);
-      final Expression expr = IterableExtensions.<Expression>head(body);
+      EList<Expression> _exprs_1 = body.getExprs();
+      final Expression expr = IterableExtensions.<Expression>head(_exprs_1);
       Assert.assertTrue((expr instanceof Atom));
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -232,10 +236,12 @@ public class ParserTest {
       final Function fun = ((Function) _head);
       EList<FunctionClause> _clauses = fun.getClauses();
       FunctionClause _head_1 = IterableExtensions.<FunctionClause>head(_clauses);
-      final EList<Expression> body = _head_1.getBody();
-      int _size = body.size();
+      final Expressions body = _head_1.getBody();
+      EList<Expression> _exprs = body.getExprs();
+      int _size = _exprs.size();
       Assert.assertEquals(1, _size);
-      final Expression expr = IterableExtensions.<Expression>head(body);
+      EList<Expression> _exprs_1 = body.getExprs();
+      final Expression expr = IterableExtensions.<Expression>head(_exprs_1);
       Assert.assertTrue((expr instanceof Atom));
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);

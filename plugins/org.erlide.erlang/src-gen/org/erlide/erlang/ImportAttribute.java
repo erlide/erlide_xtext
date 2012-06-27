@@ -51,30 +51,30 @@ public interface ImportAttribute extends Attribute
   void setTag(String value);
 
   /**
-   * Returns the value of the '<em><b>Module</b></em>' attribute.
+   * Returns the value of the '<em><b>Module</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Module</em>' attribute isn't clear,
+   * If the meaning of the '<em>Module</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Module</em>' attribute.
-   * @see #setModule(String)
+   * @return the value of the '<em>Module</em>' containment reference.
+   * @see #setModule(Expression)
    * @see org.erlide.erlang.ErlangPackage#getImportAttribute_Module()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getModule();
+  Expression getModule();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.ImportAttribute#getModule <em>Module</em>}' attribute.
+   * Sets the value of the '{@link org.erlide.erlang.ImportAttribute#getModule <em>Module</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Module</em>' attribute.
+   * @param value the new value of the '<em>Module</em>' containment reference.
    * @see #getModule()
    * @generated
    */
-  void setModule(String value);
+  void setModule(Expression value);
 
   /**
    * Returns the value of the '<em><b>Funs</b></em>' containment reference list.

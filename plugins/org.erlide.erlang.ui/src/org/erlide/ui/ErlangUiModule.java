@@ -14,7 +14,6 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.eclipse.xtext.ui.resource.SimpleResourceSetProvider;
 import org.erlide.ui.folding.MyFoldingRegionProvider;
-import org.erlide.ui.labeling.ErlangLabelProvider;
 import org.erlide.ui.navigator.ErlangContentProvider;
 import org.erlide.ui.syntaxcoloring.ErlangAntlrTokenToAttributeIdMapper;
 import org.erlide.ui.syntaxcoloring.ErlangSemanticHighlightingCalculator;
@@ -56,10 +55,6 @@ public class ErlangUiModule extends org.erlide.ui.AbstractErlangUiModule {
 
     public Class<? extends ITreeContentProvider> bindTreeContentProvider() {
         return ErlangContentProvider.class;
-    }
-
-    public Class<? extends ErlangLabelProvider> bindErlangLabelProvider() {
-        return ErlangLabelProvider.class;
     }
 
     // This makes the editors update when opened (don't wait for a change and

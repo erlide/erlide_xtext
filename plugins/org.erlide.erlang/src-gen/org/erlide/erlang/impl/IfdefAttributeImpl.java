@@ -3,15 +3,15 @@
 package org.erlide.erlang.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.IfdefAttribute;
 
 /**
@@ -21,44 +21,23 @@ import org.erlide.erlang.IfdefAttribute;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.IfdefAttributeImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.IfdefAttributeImpl#getRef <em>Ref</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class IfdefAttributeImpl extends MinimalEObjectImpl.Container implements IfdefAttribute
+public class IfdefAttributeImpl extends ConditionalAttributeImpl implements IfdefAttribute
 {
   /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRef()
    * @generated
    * @ordered
    */
-  protected DefineAttribute ref;
+  protected Expression ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -86,50 +65,7 @@ public class IfdefAttributeImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.IFDEF_ATTRIBUTE__TAG, oldTag, tag));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DefineAttribute getRef()
-  {
-    if (ref != null && ref.eIsProxy())
-    {
-      InternalEObject oldRef = (InternalEObject)ref;
-      ref = (DefineAttribute)eResolveProxy(oldRef);
-      if (ref != oldRef)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.IFDEF_ATTRIBUTE__REF, oldRef, ref));
-      }
-    }
-    return ref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DefineAttribute basicGetRef()
+  public Expression getRef()
   {
     return ref;
   }
@@ -139,12 +75,53 @@ public class IfdefAttributeImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(DefineAttribute newRef)
+  public NotificationChain basicSetRef(Expression newRef, NotificationChain msgs)
   {
-    DefineAttribute oldRef = ref;
+    Expression oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.IFDEF_ATTRIBUTE__REF, oldRef, ref));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.IFDEF_ATTRIBUTE__REF, oldRef, newRef);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRef(Expression newRef)
+  {
+    if (newRef != ref)
+    {
+      NotificationChain msgs = null;
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.IFDEF_ATTRIBUTE__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.IFDEF_ATTRIBUTE__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.IFDEF_ATTRIBUTE__REF, newRef, newRef));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ErlangPackage.IFDEF_ATTRIBUTE__REF:
+        return basicSetRef(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -157,11 +134,8 @@ public class IfdefAttributeImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case ErlangPackage.IFDEF_ATTRIBUTE__TAG:
-        return getTag();
       case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        if (resolve) return getRef();
-        return basicGetRef();
+        return getRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -176,11 +150,8 @@ public class IfdefAttributeImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case ErlangPackage.IFDEF_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
       case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        setRef((DefineAttribute)newValue);
+        setRef((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -196,11 +167,8 @@ public class IfdefAttributeImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case ErlangPackage.IFDEF_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
       case ErlangPackage.IFDEF_ATTRIBUTE__REF:
-        setRef((DefineAttribute)null);
+        setRef((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -216,29 +184,10 @@ public class IfdefAttributeImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case ErlangPackage.IFDEF_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.IFDEF_ATTRIBUTE__REF:
         return ref != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(')');
-    return result.toString();
   }
 
 } //IfdefAttributeImpl

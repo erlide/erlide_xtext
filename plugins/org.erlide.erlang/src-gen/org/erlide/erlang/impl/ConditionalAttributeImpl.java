@@ -7,51 +7,52 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.erlide.erlang.ErlString;
+import org.erlide.erlang.ConditionalAttribute;
 import org.erlide.erlang.ErlangPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Erl String</b></em>'.
+ * An implementation of the model object '<em><b>Conditional Attribute</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.ErlStringImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ConditionalAttributeImpl#getTag <em>Tag</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ErlStringImpl extends ExpressionImpl implements ErlString
+public class ConditionalAttributeImpl extends MinimalEObjectImpl.Container implements ConditionalAttribute
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getTag()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
+  protected static final String TAG_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getTag()
    * @generated
    * @ordered
    */
-  protected String value = VALUE_EDEFAULT;
+  protected String tag = TAG_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ErlStringImpl()
+  protected ConditionalAttributeImpl()
   {
     super();
   }
@@ -64,7 +65,7 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.ERL_STRING;
+    return ErlangPackage.Literals.CONDITIONAL_ATTRIBUTE;
   }
 
   /**
@@ -72,9 +73,9 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public String getTag()
   {
-    return value;
+    return tag;
   }
 
   /**
@@ -82,12 +83,12 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(String newValue)
+  public void setTag(String newTag)
   {
-    String oldValue = value;
-    value = newValue;
+    String oldTag = tag;
+    tag = newTag;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ERL_STRING__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.CONDITIONAL_ATTRIBUTE__TAG, oldTag, tag));
   }
 
   /**
@@ -100,8 +101,8 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
   {
     switch (featureID)
     {
-      case ErlangPackage.ERL_STRING__VALUE:
-        return getValue();
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE__TAG:
+        return getTag();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -116,8 +117,8 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
   {
     switch (featureID)
     {
-      case ErlangPackage.ERL_STRING__VALUE:
-        setValue((String)newValue);
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE__TAG:
+        setTag((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -133,8 +134,8 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
   {
     switch (featureID)
     {
-      case ErlangPackage.ERL_STRING__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE__TAG:
+        setTag(TAG_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -150,8 +151,8 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
   {
     switch (featureID)
     {
-      case ErlangPackage.ERL_STRING__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case ErlangPackage.CONDITIONAL_ATTRIBUTE__TAG:
+        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
     }
     return super.eIsSet(featureID);
   }
@@ -167,10 +168,10 @@ public class ErlStringImpl extends ExpressionImpl implements ErlString
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(value);
+    result.append(" (tag: ");
+    result.append(tag);
     result.append(')');
     return result.toString();
   }
 
-} //ErlStringImpl
+} //ConditionalAttributeImpl

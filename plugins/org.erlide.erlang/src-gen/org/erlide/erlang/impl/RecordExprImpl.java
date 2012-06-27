@@ -12,9 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
-import org.erlide.erlang.RecordAttribute;
 import org.erlide.erlang.RecordExpr;
-import org.erlide.erlang.RecordFieldDef;
 import org.erlide.erlang.RecordTuple;
 
 /**
@@ -57,24 +55,24 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
   protected RecordExpr record;
 
   /**
-   * The cached value of the '{@link #getRec() <em>Rec</em>}' reference.
+   * The cached value of the '{@link #getRec() <em>Rec</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRec()
    * @generated
    * @ordered
    */
-  protected RecordAttribute rec;
+  protected Expression rec;
 
   /**
-   * The cached value of the '{@link #getField() <em>Field</em>}' reference.
+   * The cached value of the '{@link #getField() <em>Field</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getField()
    * @generated
    * @ordered
    */
-  protected RecordFieldDef field;
+  protected Expression field;
 
   /**
    * The cached value of the '{@link #getTuple() <em>Tuple</em>}' containment reference.
@@ -208,27 +206,7 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordAttribute getRec()
-  {
-    if (rec != null && rec.eIsProxy())
-    {
-      InternalEObject oldRec = (InternalEObject)rec;
-      rec = (RecordAttribute)eResolveProxy(oldRec);
-      if (rec != oldRec)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.RECORD_EXPR__REC, oldRec, rec));
-      }
-    }
-    return rec;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RecordAttribute basicGetRec()
+  public Expression getRec()
   {
     return rec;
   }
@@ -238,32 +216,16 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRec(RecordAttribute newRec)
+  public NotificationChain basicSetRec(Expression newRec, NotificationChain msgs)
   {
-    RecordAttribute oldRec = rec;
+    Expression oldRec = rec;
     rec = newRec;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_EXPR__REC, oldRec, rec));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RecordFieldDef getField()
-  {
-    if (field != null && field.eIsProxy())
     {
-      InternalEObject oldField = (InternalEObject)field;
-      field = (RecordFieldDef)eResolveProxy(oldField);
-      if (field != oldField)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.RECORD_EXPR__FIELD, oldField, field));
-      }
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_EXPR__REC, oldRec, newRec);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return field;
+    return msgs;
   }
 
   /**
@@ -271,7 +233,28 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordFieldDef basicGetField()
+  public void setRec(Expression newRec)
+  {
+    if (newRec != rec)
+    {
+      NotificationChain msgs = null;
+      if (rec != null)
+        msgs = ((InternalEObject)rec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_EXPR__REC, null, msgs);
+      if (newRec != null)
+        msgs = ((InternalEObject)newRec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_EXPR__REC, null, msgs);
+      msgs = basicSetRec(newRec, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_EXPR__REC, newRec, newRec));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expression getField()
   {
     return field;
   }
@@ -281,12 +264,37 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setField(RecordFieldDef newField)
+  public NotificationChain basicSetField(Expression newField, NotificationChain msgs)
   {
-    RecordFieldDef oldField = field;
+    Expression oldField = field;
     field = newField;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_EXPR__FIELD, oldField, field));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_EXPR__FIELD, oldField, newField);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setField(Expression newField)
+  {
+    if (newField != field)
+    {
+      NotificationChain msgs = null;
+      if (field != null)
+        msgs = ((InternalEObject)field).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_EXPR__FIELD, null, msgs);
+      if (newField != null)
+        msgs = ((InternalEObject)newField).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_EXPR__FIELD, null, msgs);
+      msgs = basicSetField(newField, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_EXPR__FIELD, newField, newField));
   }
 
   /**
@@ -351,6 +359,10 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
         return basicSetRef(null, msgs);
       case ErlangPackage.RECORD_EXPR__RECORD:
         return basicSetRecord(null, msgs);
+      case ErlangPackage.RECORD_EXPR__REC:
+        return basicSetRec(null, msgs);
+      case ErlangPackage.RECORD_EXPR__FIELD:
+        return basicSetField(null, msgs);
       case ErlangPackage.RECORD_EXPR__TUPLE:
         return basicSetTuple(null, msgs);
     }
@@ -372,11 +384,9 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
       case ErlangPackage.RECORD_EXPR__RECORD:
         return getRecord();
       case ErlangPackage.RECORD_EXPR__REC:
-        if (resolve) return getRec();
-        return basicGetRec();
+        return getRec();
       case ErlangPackage.RECORD_EXPR__FIELD:
-        if (resolve) return getField();
-        return basicGetField();
+        return getField();
       case ErlangPackage.RECORD_EXPR__TUPLE:
         return getTuple();
     }
@@ -400,10 +410,10 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
         setRecord((RecordExpr)newValue);
         return;
       case ErlangPackage.RECORD_EXPR__REC:
-        setRec((RecordAttribute)newValue);
+        setRec((Expression)newValue);
         return;
       case ErlangPackage.RECORD_EXPR__FIELD:
-        setField((RecordFieldDef)newValue);
+        setField((Expression)newValue);
         return;
       case ErlangPackage.RECORD_EXPR__TUPLE:
         setTuple((RecordTuple)newValue);
@@ -429,10 +439,10 @@ public class RecordExprImpl extends ExpressionImpl implements RecordExpr
         setRecord((RecordExpr)null);
         return;
       case ErlangPackage.RECORD_EXPR__REC:
-        setRec((RecordAttribute)null);
+        setRec((Expression)null);
         return;
       case ErlangPackage.RECORD_EXPR__FIELD:
-        setField((RecordFieldDef)null);
+        setField((Expression)null);
         return;
       case ErlangPackage.RECORD_EXPR__TUPLE:
         setTuple((RecordTuple)null);

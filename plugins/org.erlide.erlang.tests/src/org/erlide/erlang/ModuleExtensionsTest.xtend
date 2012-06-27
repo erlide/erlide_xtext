@@ -12,14 +12,14 @@ import static org.erlide.erlang.IsFunRefMatcher.*
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
 
-import static extension org.erlide.erlang.ModelExtensions.*
-
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
 class ModuleExtensionsTest {
 	
     @Inject
     ParseHelper<Module> parser
+    @Inject
+    extension ModelExtensions 
 	
     @Test
     def void moduleName() {
@@ -73,7 +73,7 @@ class ModuleExtensionsTest {
             foo() -> ok.
             -foo(bar).
         ''')
-        val attrs = module.attributes
+        val attrs = module.getAllItemsOfType(typeof(Attribute))
         assertThat(attrs.size, is(3))
     }
     
@@ -93,7 +93,7 @@ class ModuleExtensionsTest {
     }
  
     @Test
-    def void getExportFunctions() {
+    def void getExportedFunctions() {
         val module = parser.parse('''
             -module(x).
             -export([bar/0, baz/1]).
@@ -102,27 +102,12 @@ class ModuleExtensionsTest {
             baz(X)->ok.
             foo()->ok.
         ''')
-        val attrs = module.exportedFunctions
+        val attrs = module.getDeclaredExports
         assertThat(attrs.size, is(3))
         
         assertThat(attrs.head, isFunction("bar", 0))
         assertThat(attrs.tail.head, isFunction("baz", 1))
         assertThat(attrs.tail.tail.head, isFunction("foo", 0))
-    }
-
-    @Test
-    def void getExportFunRefs() {
-        val module = parser.parse('''
-            -module(x).
-            -export([bar/0, baz/1]).
-            -export([foo/0]).
-        ''')
-        val attrs = module.exportedFunRefs
-        assertThat(attrs.size, is(3))
-        
-        assertThat(attrs.head, isFunRef("bar", 0))
-        assertThat(attrs.tail.head, isFunRef("baz", 1))
-        assertThat(attrs.tail.tail.head, isFunRef("foo", 0))
     }
 
     @Test

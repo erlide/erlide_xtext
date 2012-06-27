@@ -2,8 +2,6 @@
  */
 package org.erlide.erlang;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -54,20 +52,30 @@ public interface FunctionClause extends EObject
   void setRef(String value);
 
   /**
-   * Returns the value of the '<em><b>Params</b></em>' containment reference list.
-   * The list contents are of type {@link org.erlide.erlang.Expression}.
+   * Returns the value of the '<em><b>Params</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Params</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Params</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Params</em>' containment reference list.
+   * @return the value of the '<em>Params</em>' containment reference.
+   * @see #setParams(Expressions)
    * @see org.erlide.erlang.ErlangPackage#getFunctionClause_Params()
    * @model containment="true"
    * @generated
    */
-  EList<Expression> getParams();
+  Expressions getParams();
+
+  /**
+   * Sets the value of the '{@link org.erlide.erlang.FunctionClause#getParams <em>Params</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Params</em>' containment reference.
+   * @see #getParams()
+   * @generated
+   */
+  void setParams(Expressions value);
 
   /**
    * Returns the value of the '<em><b>Guard</b></em>' containment reference.
@@ -96,19 +104,29 @@ public interface FunctionClause extends EObject
   void setGuard(Guard value);
 
   /**
-   * Returns the value of the '<em><b>Body</b></em>' containment reference list.
-   * The list contents are of type {@link org.erlide.erlang.Expression}.
+   * Returns the value of the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Body</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Body</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Body</em>' containment reference list.
+   * @return the value of the '<em>Body</em>' containment reference.
+   * @see #setBody(Expressions)
    * @see org.erlide.erlang.ErlangPackage#getFunctionClause_Body()
    * @model containment="true"
    * @generated
    */
-  EList<Expression> getBody();
+  Expressions getBody();
+
+  /**
+   * Sets the value of the '{@link org.erlide.erlang.FunctionClause#getBody <em>Body</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Body</em>' containment reference.
+   * @see #getBody()
+   * @generated
+   */
+  void setBody(Expressions value);
 
 } // FunctionClause

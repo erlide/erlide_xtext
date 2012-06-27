@@ -5,21 +5,21 @@ package org.erlide.erlang;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Macro Expr</b></em>'.
+ * A representation of the model object '<em><b>Macro</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.MacroExpr#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.Macro#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.erlide.erlang.ErlangPackage#getMacroExpr()
+ * @see org.erlide.erlang.ErlangPackage#getMacro()
  * @model
  * @generated
  */
-public interface MacroExpr extends Expression
+public interface Macro extends Expression
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' reference.
@@ -31,14 +31,14 @@ public interface MacroExpr extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' reference.
    * @see #setValue(DefineAttribute)
-   * @see org.erlide.erlang.ErlangPackage#getMacroExpr_Value()
+   * @see org.erlide.erlang.ErlangPackage#getMacro_Value()
    * @model
    * @generated
    */
   DefineAttribute getValue();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.MacroExpr#getValue <em>Value</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.Macro#getValue <em>Value</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' reference.
@@ -47,4 +47,4 @@ public interface MacroExpr extends Expression
    */
   void setValue(DefineAttribute value);
 
-} // MacroExpr
+} // Macro

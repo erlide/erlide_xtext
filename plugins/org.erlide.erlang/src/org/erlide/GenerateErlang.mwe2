@@ -5,7 +5,8 @@ import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
 var grammarURI = "classpath:/org/erlide/Erlang.xtext"
-var file.extensions = "erl,hrl"
+var file.extensions = "erl"
+//var file.extensions = "erl,hrl"
 var projectName = "org.erlide.erlang"
 var runtimeProject = "../${projectName}"
 
@@ -65,7 +66,7 @@ Workflow {
 			// java-based API for validation 
 			fragment = validation.JavaValidatorFragment {
 				composedCheck = "org.eclipse.xtext.validation.ImportUriValidator"
-//				composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+				composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}
 
 			// scoping and exporting API

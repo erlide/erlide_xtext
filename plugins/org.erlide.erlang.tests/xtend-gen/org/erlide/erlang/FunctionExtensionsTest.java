@@ -24,6 +24,9 @@ public class FunctionExtensionsTest {
   @Inject
   private ParseHelper<Module> parser;
   
+  @Inject
+  private ModelExtensions _modelExtensions;
+  
   @Test
   public void isExported() {
     try {
@@ -37,12 +40,12 @@ public class FunctionExtensionsTest {
       _builder.append("gg() -> ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Function ff = ModelExtensions.getFunction(module, "ff", 0);
-      boolean _isExported = ModelExtensions.isExported(ff);
+      final Function ff = this._modelExtensions.getFunction(module, "ff", 0);
+      boolean _isExported = this._modelExtensions.isExported(ff);
       Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(true));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(_isExported), _is);
-      final Function gg = ModelExtensions.getFunction(module, "gg", 0);
-      boolean _isExported_1 = ModelExtensions.isExported(gg);
+      final Function gg = this._modelExtensions.getFunction(module, "gg", 0);
+      boolean _isExported_1 = this._modelExtensions.isExported(gg);
       Matcher<? super Boolean> _is_1 = Matchers.<Boolean>is(Boolean.valueOf(false));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(_isExported_1), _is_1);
     } catch (Exception _e) {
@@ -51,7 +54,7 @@ public class FunctionExtensionsTest {
   }
   
   @Test
-  public void getSpec_old() {
+  public void getSpecWithOldFormat() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("-module(x).");
@@ -65,24 +68,24 @@ public class FunctionExtensionsTest {
       _builder.append("ff(X) -> ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Function ff = ModelExtensions.getFunction(module, "ff", 0);
-      SpecAttribute _spec = ModelExtensions.getSpec(ff);
+      final Function ff = this._modelExtensions.getFunction(module, "ff", 0);
+      SpecAttribute _spec = this._modelExtensions.getSpec(ff);
       Matcher<SpecAttribute> _notNullValue = Matchers.<SpecAttribute>notNullValue();
       Matcher<SpecAttribute> _is = Matchers.<SpecAttribute>is(_notNullValue);
       MatcherAssert.<SpecAttribute>assertThat(_spec, _is);
-      SpecAttribute _spec_1 = ModelExtensions.getSpec(ff);
-      SpecAttribute _spec_2 = ModelExtensions.getSpec(module, "ff", 0);
-      Matcher<? super SpecAttribute> _is_1 = Matchers.<SpecAttribute>is(_spec_2);
+      final SpecAttribute spec = this._modelExtensions.getSpec(module, "ff", 0);
+      SpecAttribute _spec_1 = this._modelExtensions.getSpec(ff);
+      Matcher<? super SpecAttribute> _is_1 = Matchers.<SpecAttribute>is(spec);
       MatcherAssert.<SpecAttribute>assertThat(_spec_1, _is_1);
-      final Function gg = ModelExtensions.getFunction(module, "ff", 1);
-      SpecAttribute _spec_3 = ModelExtensions.getSpec(gg);
+      final Function gg = this._modelExtensions.getFunction(module, "ff", 1);
+      SpecAttribute _spec_2 = this._modelExtensions.getSpec(gg);
       Matcher<SpecAttribute> _nullValue = Matchers.<SpecAttribute>nullValue();
       Matcher<SpecAttribute> _is_2 = Matchers.<SpecAttribute>is(_nullValue);
-      MatcherAssert.<SpecAttribute>assertThat(_spec_3, _is_2);
-      SpecAttribute _spec_4 = ModelExtensions.getSpec(module, "gg", 0);
+      MatcherAssert.<SpecAttribute>assertThat(_spec_2, _is_2);
+      SpecAttribute _spec_3 = this._modelExtensions.getSpec(module, "gg", 0);
       Matcher<SpecAttribute> _nullValue_1 = Matchers.<SpecAttribute>nullValue();
       Matcher<SpecAttribute> _is_3 = Matchers.<SpecAttribute>is(_nullValue_1);
-      MatcherAssert.<SpecAttribute>assertThat(_spec_4, _is_3);
+      MatcherAssert.<SpecAttribute>assertThat(_spec_3, _is_3);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -103,21 +106,21 @@ public class FunctionExtensionsTest {
       _builder.append("ff(X) -> ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Function ff = ModelExtensions.getFunction(module, "ff", 1);
-      SpecAttribute _spec = ModelExtensions.getSpec(ff);
+      final Function ff = this._modelExtensions.getFunction(module, "ff", 1);
+      SpecAttribute _spec = this._modelExtensions.getSpec(ff);
       Matcher<SpecAttribute> _notNullValue = Matchers.<SpecAttribute>notNullValue();
       Matcher<SpecAttribute> _is = Matchers.<SpecAttribute>is(_notNullValue);
       MatcherAssert.<SpecAttribute>assertThat(_spec, _is);
-      SpecAttribute _spec_1 = ModelExtensions.getSpec(ff);
-      SpecAttribute _spec_2 = ModelExtensions.getSpec(module, "ff", 1);
+      SpecAttribute _spec_1 = this._modelExtensions.getSpec(ff);
+      SpecAttribute _spec_2 = this._modelExtensions.getSpec(module, "ff", 1);
       Matcher<? super SpecAttribute> _is_1 = Matchers.<SpecAttribute>is(_spec_2);
       MatcherAssert.<SpecAttribute>assertThat(_spec_1, _is_1);
-      final Function gg = ModelExtensions.getFunction(module, "ff", 0);
-      SpecAttribute _spec_3 = ModelExtensions.getSpec(gg);
+      final Function gg = this._modelExtensions.getFunction(module, "ff", 0);
+      SpecAttribute _spec_3 = this._modelExtensions.getSpec(gg);
       Matcher<SpecAttribute> _nullValue = Matchers.<SpecAttribute>nullValue();
       Matcher<SpecAttribute> _is_2 = Matchers.<SpecAttribute>is(_nullValue);
       MatcherAssert.<SpecAttribute>assertThat(_spec_3, _is_2);
-      SpecAttribute _spec_4 = ModelExtensions.getSpec(module, "gg", 0);
+      SpecAttribute _spec_4 = this._modelExtensions.getSpec(module, "gg", 0);
       Matcher<SpecAttribute> _nullValue_1 = Matchers.<SpecAttribute>nullValue();
       Matcher<SpecAttribute> _is_3 = Matchers.<SpecAttribute>is(_nullValue_1);
       MatcherAssert.<SpecAttribute>assertThat(_spec_4, _is_3);

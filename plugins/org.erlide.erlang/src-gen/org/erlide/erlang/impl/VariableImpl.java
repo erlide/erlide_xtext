@@ -5,10 +5,12 @@ package org.erlide.erlang.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.Variable;
 
 /**
@@ -27,24 +29,14 @@ import org.erlide.erlang.Variable;
 public class VariableImpl extends ExpressionImpl implements Variable
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
+  protected Expression value;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,7 +64,27 @@ public class VariableImpl extends ExpressionImpl implements Variable
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public Expression getValue()
+  {
+    if (value != null && value.eIsProxy())
+    {
+      InternalEObject oldValue = (InternalEObject)value;
+      value = (Expression)eResolveProxy(oldValue);
+      if (value != oldValue)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.VARIABLE__VALUE, oldValue, value));
+      }
+    }
+    return value;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expression basicGetValue()
   {
     return value;
   }
@@ -82,9 +94,9 @@ public class VariableImpl extends ExpressionImpl implements Variable
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(String newValue)
+  public void setValue(Expression newValue)
   {
-    String oldValue = value;
+    Expression oldValue = value;
     value = newValue;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.VARIABLE__VALUE, oldValue, value));
@@ -101,7 +113,8 @@ public class VariableImpl extends ExpressionImpl implements Variable
     switch (featureID)
     {
       case ErlangPackage.VARIABLE__VALUE:
-        return getValue();
+        if (resolve) return getValue();
+        return basicGetValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -117,7 +130,7 @@ public class VariableImpl extends ExpressionImpl implements Variable
     switch (featureID)
     {
       case ErlangPackage.VARIABLE__VALUE:
-        setValue((String)newValue);
+        setValue((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,7 +147,7 @@ public class VariableImpl extends ExpressionImpl implements Variable
     switch (featureID)
     {
       case ErlangPackage.VARIABLE__VALUE:
-        setValue(VALUE_EDEFAULT);
+        setValue((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -151,26 +164,9 @@ public class VariableImpl extends ExpressionImpl implements Variable
     switch (featureID)
     {
       case ErlangPackage.VARIABLE__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+        return value != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(value);
-    result.append(')');
-    return result.toString();
   }
 
 } //VariableImpl

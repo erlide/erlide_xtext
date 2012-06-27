@@ -13,36 +13,35 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
-import org.erlide.erlang.RecordField;
-import org.erlide.erlang.RecordFieldDef;
+import org.erlide.erlang.RecordFieldExpr;
 import org.erlide.erlang.TopType;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Record Field</b></em>'.
+ * An implementation of the model object '<em><b>Record Field Expr</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.RecordFieldImpl#getRef <em>Ref</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.RecordFieldImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.RecordFieldImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.RecordFieldExprImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.RecordFieldExprImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.RecordFieldExprImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RecordFieldImpl extends MinimalEObjectImpl.Container implements RecordField
+public class RecordFieldExprImpl extends MinimalEObjectImpl.Container implements RecordFieldExpr
 {
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRef()
    * @generated
    * @ordered
    */
-  protected RecordFieldDef ref;
+  protected Expression ref;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
@@ -69,7 +68,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
    * <!-- end-user-doc -->
    * @generated
    */
-  protected RecordFieldImpl()
+  protected RecordFieldExprImpl()
   {
     super();
   }
@@ -82,7 +81,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.RECORD_FIELD;
+    return ErlangPackage.Literals.RECORD_FIELD_EXPR;
   }
 
   /**
@@ -90,27 +89,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordFieldDef getRef()
-  {
-    if (ref != null && ref.eIsProxy())
-    {
-      InternalEObject oldRef = (InternalEObject)ref;
-      ref = (RecordFieldDef)eResolveProxy(oldRef);
-      if (ref != oldRef)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.RECORD_FIELD__REF, oldRef, ref));
-      }
-    }
-    return ref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RecordFieldDef basicGetRef()
+  public Expression getRef()
   {
     return ref;
   }
@@ -120,12 +99,37 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(RecordFieldDef newRef)
+  public NotificationChain basicSetRef(Expression newRef, NotificationChain msgs)
   {
-    RecordFieldDef oldRef = ref;
+    Expression oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD__REF, oldRef, ref));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD_EXPR__REF, oldRef, newRef);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRef(Expression newRef)
+  {
+    if (newRef != ref)
+    {
+      NotificationChain msgs = null;
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD_EXPR__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD_EXPR__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD_EXPR__REF, newRef, newRef));
   }
 
   /**
@@ -149,7 +153,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
     value = newValue;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD__VALUE, oldValue, newValue);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD_EXPR__VALUE, oldValue, newValue);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -166,14 +170,14 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
     {
       NotificationChain msgs = null;
       if (value != null)
-        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD__VALUE, null, msgs);
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD_EXPR__VALUE, null, msgs);
       if (newValue != null)
-        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD__VALUE, null, msgs);
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD_EXPR__VALUE, null, msgs);
       msgs = basicSetValue(newValue, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD__VALUE, newValue, newValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD_EXPR__VALUE, newValue, newValue));
   }
 
   /**
@@ -197,7 +201,7 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
     type = newType;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD__TYPE, oldType, newType);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD_EXPR__TYPE, oldType, newType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -214,14 +218,14 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
     {
       NotificationChain msgs = null;
       if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD__TYPE, null, msgs);
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD_EXPR__TYPE, null, msgs);
       if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD__TYPE, null, msgs);
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_FIELD_EXPR__TYPE, null, msgs);
       msgs = basicSetType(newType, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD__TYPE, newType, newType));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_FIELD_EXPR__TYPE, newType, newType));
   }
 
   /**
@@ -234,9 +238,11 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
   {
     switch (featureID)
     {
-      case ErlangPackage.RECORD_FIELD__VALUE:
+      case ErlangPackage.RECORD_FIELD_EXPR__REF:
+        return basicSetRef(null, msgs);
+      case ErlangPackage.RECORD_FIELD_EXPR__VALUE:
         return basicSetValue(null, msgs);
-      case ErlangPackage.RECORD_FIELD__TYPE:
+      case ErlangPackage.RECORD_FIELD_EXPR__TYPE:
         return basicSetType(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -252,12 +258,11 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
   {
     switch (featureID)
     {
-      case ErlangPackage.RECORD_FIELD__REF:
-        if (resolve) return getRef();
-        return basicGetRef();
-      case ErlangPackage.RECORD_FIELD__VALUE:
+      case ErlangPackage.RECORD_FIELD_EXPR__REF:
+        return getRef();
+      case ErlangPackage.RECORD_FIELD_EXPR__VALUE:
         return getValue();
-      case ErlangPackage.RECORD_FIELD__TYPE:
+      case ErlangPackage.RECORD_FIELD_EXPR__TYPE:
         return getType();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -273,13 +278,13 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
   {
     switch (featureID)
     {
-      case ErlangPackage.RECORD_FIELD__REF:
-        setRef((RecordFieldDef)newValue);
+      case ErlangPackage.RECORD_FIELD_EXPR__REF:
+        setRef((Expression)newValue);
         return;
-      case ErlangPackage.RECORD_FIELD__VALUE:
+      case ErlangPackage.RECORD_FIELD_EXPR__VALUE:
         setValue((Expression)newValue);
         return;
-      case ErlangPackage.RECORD_FIELD__TYPE:
+      case ErlangPackage.RECORD_FIELD_EXPR__TYPE:
         setType((TopType)newValue);
         return;
     }
@@ -296,13 +301,13 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
   {
     switch (featureID)
     {
-      case ErlangPackage.RECORD_FIELD__REF:
-        setRef((RecordFieldDef)null);
+      case ErlangPackage.RECORD_FIELD_EXPR__REF:
+        setRef((Expression)null);
         return;
-      case ErlangPackage.RECORD_FIELD__VALUE:
+      case ErlangPackage.RECORD_FIELD_EXPR__VALUE:
         setValue((Expression)null);
         return;
-      case ErlangPackage.RECORD_FIELD__TYPE:
+      case ErlangPackage.RECORD_FIELD_EXPR__TYPE:
         setType((TopType)null);
         return;
     }
@@ -319,14 +324,14 @@ public class RecordFieldImpl extends MinimalEObjectImpl.Container implements Rec
   {
     switch (featureID)
     {
-      case ErlangPackage.RECORD_FIELD__REF:
+      case ErlangPackage.RECORD_FIELD_EXPR__REF:
         return ref != null;
-      case ErlangPackage.RECORD_FIELD__VALUE:
+      case ErlangPackage.RECORD_FIELD_EXPR__VALUE:
         return value != null;
-      case ErlangPackage.RECORD_FIELD__TYPE:
+      case ErlangPackage.RECORD_FIELD_EXPR__TYPE:
         return type != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //RecordFieldImpl
+} //RecordFieldExprImpl

@@ -35,7 +35,7 @@ import org.erlide.erlang.FunctionClause;
  *
  * @generated
  */
-public class FunctionImpl extends FormImpl implements Function
+public class FunctionImpl extends AtomRefTargetImpl implements Function
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.

@@ -2,6 +2,8 @@ package org.erlide.erlang;
 
 import com.google.common.base.Objects;
 import java.util.Arrays;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.FunRef;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.ModelExtensions;
@@ -15,6 +17,13 @@ public class IsFunRefMatcher extends BaseMatcher {
   private String name;
   
   private int arity;
+  
+  private ModelExtensions _modelExtensions = new Function0<ModelExtensions>() {
+    public ModelExtensions apply() {
+      ModelExtensions _modelExtensions = new ModelExtensions();
+      return _modelExtensions;
+    }
+  }.apply();
   
   public IsFunRefMatcher(final String name, final int arity) {
     this.name = name;
@@ -46,7 +55,7 @@ public class IsFunRefMatcher extends BaseMatcher {
     if (!_equals) {
       _and = false;
     } else {
-      int _arity = ModelExtensions.getArity(item);
+      int _arity = this._modelExtensions.getArity(item);
       boolean _equals_1 = (_arity == this.arity);
       _and = (_equals && _equals_1);
     }
@@ -55,12 +64,12 @@ public class IsFunRefMatcher extends BaseMatcher {
   
   protected boolean _matches(final FunRef item) {
     boolean _and = false;
-    String _function = item.getFunction();
+    Expression _function = item.getFunction();
     boolean _equals = Objects.equal(_function, this.name);
     if (!_equals) {
       _and = false;
     } else {
-      String _arity = item.getArity();
+      Expression _arity = item.getArity();
       String _string = Integer.toString(this.arity);
       boolean _equals_1 = Objects.equal(_arity, _string);
       _and = (_equals && _equals_1);

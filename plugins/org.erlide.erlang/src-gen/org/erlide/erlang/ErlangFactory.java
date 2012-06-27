@@ -32,6 +32,15 @@ public interface ErlangFactory extends EFactory
   Module createModule();
 
   /**
+   * Returns a new object of class '<em>Atom Ref Target</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Atom Ref Target</em>'.
+   * @generated
+   */
+  AtomRefTarget createAtomRefTarget();
+
+  /**
    * Returns a new object of class '<em>Form</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -57,6 +66,15 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   Attribute createAttribute();
+
+  /**
+   * Returns a new object of class '<em>Conditional Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Conditional Attribute</em>'.
+   * @generated
+   */
+  ConditionalAttribute createConditionalAttribute();
 
   /**
    * Returns a new object of class '<em>Abstract Define Attribute</em>'.
@@ -95,15 +113,6 @@ public interface ErlangFactory extends EFactory
   IfdefAttribute createIfdefAttribute();
 
   /**
-   * Returns a new object of class '<em>Endif Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Endif Attribute</em>'.
-   * @generated
-   */
-  EndifAttribute createEndifAttribute();
-
-  /**
    * Returns a new object of class '<em>Else Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -111,6 +120,15 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   ElseAttribute createElseAttribute();
+
+  /**
+   * Returns a new object of class '<em>Endif Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Endif Attribute</em>'.
+   * @generated
+   */
+  EndifAttribute createEndifAttribute();
 
   /**
    * Returns a new object of class '<em>Abstract Include Attribute</em>'.
@@ -165,6 +183,15 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   RecordAttribute createRecordAttribute();
+
+  /**
+   * Returns a new object of class '<em>Record Field Def</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Record Field Def</em>'.
+   * @generated
+   */
+  RecordFieldDef createRecordFieldDef();
 
   /**
    * Returns a new object of class '<em>Export Attribute</em>'.
@@ -329,22 +356,22 @@ public interface ErlangFactory extends EFactory
   RecordTuple createRecordTuple();
 
   /**
-   * Returns a new object of class '<em>Record Field Def</em>'.
+   * Returns a new object of class '<em>Record Field Expr</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Record Field Def</em>'.
+   * @return a new object of class '<em>Record Field Expr</em>'.
    * @generated
    */
-  RecordFieldDef createRecordFieldDef();
+  RecordFieldExpr createRecordFieldExpr();
 
   /**
-   * Returns a new object of class '<em>Record Field</em>'.
+   * Returns a new object of class '<em>String Literal Part</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Record Field</em>'.
+   * @return a new object of class '<em>String Literal Part</em>'.
    * @generated
    */
-  RecordField createRecordField();
+  StringLiteralPart createStringLiteralPart();
 
   /**
    * Returns a new object of class '<em>If Expr</em>'.
@@ -498,15 +525,6 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   LCExpr createLCExpr();
-
-  /**
-   * Returns a new object of class '<em>Spec Fun</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Spec Fun</em>'.
-   * @generated
-   */
-  SpecFun createSpecFun();
 
   /**
    * Returns a new object of class '<em>Type Sig</em>'.
@@ -743,6 +761,15 @@ public interface ErlangFactory extends EFactory
   BlockExpr createBlockExpr();
 
   /**
+   * Returns a new object of class '<em>Erl Char</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Erl Char</em>'.
+   * @generated
+   */
+  ErlChar createErlChar();
+
+  /**
    * Returns a new object of class '<em>Atom</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -750,6 +777,15 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   Atom createAtom();
+
+  /**
+   * Returns a new object of class '<em>Macro</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Macro</em>'.
+   * @generated
+   */
+  Macro createMacro();
 
   /**
    * Returns a new object of class '<em>Variable</em>'.
@@ -761,31 +797,13 @@ public interface ErlangFactory extends EFactory
   Variable createVariable();
 
   /**
-   * Returns a new object of class '<em>Erl Char</em>'.
+   * Returns a new object of class '<em>Erl Float</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Erl Char</em>'.
+   * @return a new object of class '<em>Erl Float</em>'.
    * @generated
    */
-  ErlChar createErlChar();
-
-  /**
-   * Returns a new object of class '<em>Macro Expr</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Macro Expr</em>'.
-   * @generated
-   */
-  MacroExpr createMacroExpr();
-
-  /**
-   * Returns a new object of class '<em>Erl String</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Erl String</em>'.
-   * @generated
-   */
-  ErlString createErlString();
+  ErlFloat createErlFloat();
 
   /**
    * Returns a new object of class '<em>Erl Integer</em>'.
@@ -795,15 +813,6 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   ErlInteger createErlInteger();
-
-  /**
-   * Returns a new object of class '<em>Erl Float</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Erl Float</em>'.
-   * @generated
-   */
-  ErlFloat createErlFloat();
 
   /**
    * Returns a new object of class '<em>Unary Type</em>'.

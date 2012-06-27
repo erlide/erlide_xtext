@@ -24,30 +24,30 @@ import org.eclipse.emf.common.util.EList;
 public interface RemoteType extends Type
 {
   /**
-   * Returns the value of the '<em><b>M</b></em>' reference.
+   * Returns the value of the '<em><b>M</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>M</em>' reference isn't clear,
+   * If the meaning of the '<em>M</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>M</em>' reference.
-   * @see #setM(Module)
+   * @return the value of the '<em>M</em>' containment reference.
+   * @see #setM(Expression)
    * @see org.erlide.erlang.ErlangPackage#getRemoteType_M()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  Module getM();
+  Expression getM();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.RemoteType#getM <em>M</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.RemoteType#getM <em>M</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>M</em>' reference.
+   * @param value the new value of the '<em>M</em>' containment reference.
    * @see #getM()
    * @generated
    */
-  void setM(Module value);
+  void setM(Expression value);
 
   /**
    * Returns the value of the '<em><b>Args</b></em>' containment reference list.

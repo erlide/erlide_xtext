@@ -60,7 +60,7 @@ public abstract class AbstractGuiceAwareExecutableExtensionFactory implements
             }
             return result;
         } catch (final Exception e) {
-            log.error(e);
+            ErlLogger.error(e);
             throw new CoreException(new Status(IStatus.ERROR, getBundle()
                     .getSymbolicName(), e.getMessage() + " ExtensionFactory: "
                     + getClass().getName(), e));

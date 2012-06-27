@@ -14,34 +14,34 @@ import org.junit.runner.RunWith;
 @InjectWith(ErlangInjectorProvider.class)
 public class FilesTest extends XtextTest {
 
-	@Before
-	public void setup() {
-		ignoreFormattingDifferences();
-		// ignoreSerializationDifferences();
-	}
+    @Before
+    public void setup() {
+        ignoreFormattingDifferences();
+        // ignoreSerializationDifferences();
+    }
 
-	@Test
-	public void test1() {
-		testFile("test1.erl");
-	}
+    @Test
+    public void test1() {
+        testFile("test1.erl");
+    }
 
-	@Test
-	public void test2() {
-		testFile("test2.erl");
-	}
+    @Test
+    public void test2() {
+        testFile("test2.erl");
+    }
 
-	@Test
-	public void test3() {
-		testFile("test3.erl");
-	}
+    @Test
+    public void test3() {
+        testFile("test3.erl");
+    }
 
-	@Test
-	public void testDocs() {
-		// testFile("test_docs.erl");
-	}
+    @Test
+    public void testDocs() {
+        // testFile("test_docs.erl");
+    }
 
-	@Test
-	public void erlide_scan() {
-		testFileNoSerializer("reference/erlide_scan.erl");
-	}
+    @Test
+    public void erlide_scan() {
+        testFileNoSerializer("reference/erlide_scan.erl");
+    }
 }

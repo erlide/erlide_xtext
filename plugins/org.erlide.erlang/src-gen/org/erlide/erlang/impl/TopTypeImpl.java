@@ -26,7 +26,7 @@ import org.erlide.erlang.Type500;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.TopTypeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.TopTypeImpl#getTypeName <em>Type Name</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.TopTypeImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.TopTypeImpl#getVar <em>Var</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.TopTypeImpl#getType <em>Type</em>}</li>
@@ -41,24 +41,24 @@ import org.erlide.erlang.Type500;
 public class TopTypeImpl extends Type100Impl implements TopType
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String TYPE_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String typeName = TYPE_NAME_EDEFAULT;
 
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -176,9 +176,9 @@ public class TopTypeImpl extends Type100Impl implements TopType
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public String getTypeName()
   {
-    return name;
+    return typeName;
   }
 
   /**
@@ -186,12 +186,12 @@ public class TopTypeImpl extends Type100Impl implements TopType
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setTypeName(String newTypeName)
   {
-    String oldName = name;
-    name = newName;
+    String oldTypeName = typeName;
+    typeName = newTypeName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TOP_TYPE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TOP_TYPE__TYPE_NAME, oldTypeName, typeName));
   }
 
   /**
@@ -437,8 +437,8 @@ public class TopTypeImpl extends Type100Impl implements TopType
   {
     switch (featureID)
     {
-      case ErlangPackage.TOP_TYPE__NAME:
-        return getName();
+      case ErlangPackage.TOP_TYPE__TYPE_NAME:
+        return getTypeName();
       case ErlangPackage.TOP_TYPE__VALUE:
         return getValue();
       case ErlangPackage.TOP_TYPE__VAR:
@@ -465,8 +465,8 @@ public class TopTypeImpl extends Type100Impl implements TopType
   {
     switch (featureID)
     {
-      case ErlangPackage.TOP_TYPE__NAME:
-        setName((String)newValue);
+      case ErlangPackage.TOP_TYPE__TYPE_NAME:
+        setTypeName((String)newValue);
         return;
       case ErlangPackage.TOP_TYPE__VALUE:
         setValue((String)newValue);
@@ -500,8 +500,8 @@ public class TopTypeImpl extends Type100Impl implements TopType
   {
     switch (featureID)
     {
-      case ErlangPackage.TOP_TYPE__NAME:
-        setName(NAME_EDEFAULT);
+      case ErlangPackage.TOP_TYPE__TYPE_NAME:
+        setTypeName(TYPE_NAME_EDEFAULT);
         return;
       case ErlangPackage.TOP_TYPE__VALUE:
         setValue(VALUE_EDEFAULT);
@@ -535,8 +535,8 @@ public class TopTypeImpl extends Type100Impl implements TopType
   {
     switch (featureID)
     {
-      case ErlangPackage.TOP_TYPE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ErlangPackage.TOP_TYPE__TYPE_NAME:
+        return TYPE_NAME_EDEFAULT == null ? typeName != null : !TYPE_NAME_EDEFAULT.equals(typeName);
       case ErlangPackage.TOP_TYPE__VALUE:
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
       case ErlangPackage.TOP_TYPE__VAR:
@@ -593,7 +593,7 @@ public class TopTypeImpl extends Type100Impl implements TopType
     {
       switch (derivedFeatureID)
       {
-        case ErlangPackage.TOP_TYPE__NAME: return ErlangPackage.TYPE__NAME;
+        case ErlangPackage.TOP_TYPE__TYPE_NAME: return ErlangPackage.TYPE__TYPE_NAME;
         case ErlangPackage.TOP_TYPE__VALUE: return ErlangPackage.TYPE__VALUE;
         default: return -1;
       }
@@ -641,7 +641,7 @@ public class TopTypeImpl extends Type100Impl implements TopType
     {
       switch (baseFeatureID)
       {
-        case ErlangPackage.TYPE__NAME: return ErlangPackage.TOP_TYPE__NAME;
+        case ErlangPackage.TYPE__TYPE_NAME: return ErlangPackage.TOP_TYPE__TYPE_NAME;
         case ErlangPackage.TYPE__VALUE: return ErlangPackage.TOP_TYPE__VALUE;
         default: return -1;
       }
@@ -660,8 +660,8 @@ public class TopTypeImpl extends Type100Impl implements TopType
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (typeName: ");
+    result.append(typeName);
     result.append(", value: ");
     result.append(value);
     result.append(", var: ");

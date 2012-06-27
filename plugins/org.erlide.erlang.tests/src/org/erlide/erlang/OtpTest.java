@@ -77,7 +77,7 @@ public class OtpTest extends XtextTest {
     @Before
     public void setup() {
         ignoreFormattingDifferences();
-        //ignoreSerializationDifferences();
+        // ignoreSerializationDifferences();
     }
 
     private FluentIssueCollection doTest(final String file) {

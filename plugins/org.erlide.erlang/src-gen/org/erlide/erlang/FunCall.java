@@ -2,7 +2,6 @@
  */
 package org.erlide.erlang;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,35 +50,55 @@ public interface FunCall extends Expression
   void setTarget(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Args</b></em>' containment reference list.
-   * The list contents are of type {@link org.erlide.erlang.Expression}.
+   * Returns the value of the '<em><b>Args</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Args</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Args</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Args</em>' containment reference list.
+   * @return the value of the '<em>Args</em>' containment reference.
+   * @see #setArgs(Expressions)
    * @see org.erlide.erlang.ErlangPackage#getFunCall_Args()
    * @model containment="true"
    * @generated
    */
-  EList<Expression> getArgs();
+  Expressions getArgs();
 
   /**
-   * Returns the value of the '<em><b>Args2</b></em>' containment reference list.
-   * The list contents are of type {@link org.erlide.erlang.Expression}.
+   * Sets the value of the '{@link org.erlide.erlang.FunCall#getArgs <em>Args</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Args</em>' containment reference.
+   * @see #getArgs()
+   * @generated
+   */
+  void setArgs(Expressions value);
+
+  /**
+   * Returns the value of the '<em><b>Args2</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Args2</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Args2</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Args2</em>' containment reference list.
+   * @return the value of the '<em>Args2</em>' containment reference.
+   * @see #setArgs2(Expressions)
    * @see org.erlide.erlang.ErlangPackage#getFunCall_Args2()
    * @model containment="true"
    * @generated
    */
-  EList<Expression> getArgs2();
+  Expressions getArgs2();
+
+  /**
+   * Sets the value of the '{@link org.erlide.erlang.FunCall#getArgs2 <em>Args2</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Args2</em>' containment reference.
+   * @see #getArgs2()
+   * @generated
+   */
+  void setArgs2(Expressions value);
 
 } // FunCall

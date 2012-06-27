@@ -14,4 +14,10 @@ public class ErlangOutlineTreeProvider extends DefaultOutlineTreeProvider {
     // protected boolean _isLeaf(FunctionClause c) {
     // return true;
     // }
+
+    @Override
+    protected void _createChildren(final Object parent, final Object element) {
+        // TODO Auto-generated method stub
+        super._createChildren(parent, element);
+    }
 }

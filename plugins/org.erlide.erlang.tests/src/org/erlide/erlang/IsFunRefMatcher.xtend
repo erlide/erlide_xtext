@@ -5,10 +5,11 @@ import org.hamcrest.Description
 import org.hamcrest.Factory
 import org.hamcrest.Matcher
 
-import static extension org.erlide.erlang.ModelExtensions.*class IsFunRefMatcher extends BaseMatcher {
+class IsFunRefMatcher extends BaseMatcher {
 
 	String name
 	int arity
+	extension ModelExtensions = new ModelExtensions
 
 	new(String name, int arity) {
 		this.name = name

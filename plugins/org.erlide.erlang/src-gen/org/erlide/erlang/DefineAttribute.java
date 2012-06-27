@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface DefineAttribute extends Attribute, AbstractDefineAttribute
+public interface DefineAttribute extends AtomRefTarget, Attribute, AbstractDefineAttribute
 {
   /**
    * Returns the value of the '<em><b>Tag</b></em>' attribute.

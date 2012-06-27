@@ -8,7 +8,6 @@ import org.erlide.ErlangInjectorProvider
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static extension org.erlide.erlang.ModelExtensions.*
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
 
@@ -18,6 +17,8 @@ class ElementExtensionsTest {
 	
 	@Inject
 	ParseHelper<Module> parser
+    @Inject
+    extension ModelExtensions 
 	
     @Test
     def void getModule() {
@@ -28,9 +29,9 @@ class ElementExtensionsTest {
             gg() -> ok.
         ''')
         val ff = module.getFunction("ff", 0)
-        assertThat(ff.module, is(module))
-        val fexpr = ff.clauses.head.body.head
-        assertThat(fexpr.module, is(module))
+        assertThat(ff.owningModule, is(module))
+        val fexpr = ff.clauses.head.body.exprs.head
+        assertThat(fexpr.owningModule, is(module))
     }
 
 }

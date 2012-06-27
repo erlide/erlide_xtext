@@ -6,11 +6,11 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class ErlangQualifiedNameConverter extends
-		IQualifiedNameConverter.DefaultImpl {
+        IQualifiedNameConverter.DefaultImpl {
 
-	@Override
-	public String getDelimiter() {
-		return ":";
-	}
+    @Override
+    public String getDelimiter() {
+        return ":";
+    }
 
 }

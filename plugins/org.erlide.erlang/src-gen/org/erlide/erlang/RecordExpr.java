@@ -78,56 +78,56 @@ public interface RecordExpr extends Expression
   void setRecord(RecordExpr value);
 
   /**
-   * Returns the value of the '<em><b>Rec</b></em>' reference.
+   * Returns the value of the '<em><b>Rec</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Rec</em>' reference isn't clear,
+   * If the meaning of the '<em>Rec</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Rec</em>' reference.
-   * @see #setRec(RecordAttribute)
+   * @return the value of the '<em>Rec</em>' containment reference.
+   * @see #setRec(Expression)
    * @see org.erlide.erlang.ErlangPackage#getRecordExpr_Rec()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  RecordAttribute getRec();
+  Expression getRec();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.RecordExpr#getRec <em>Rec</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.RecordExpr#getRec <em>Rec</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Rec</em>' reference.
+   * @param value the new value of the '<em>Rec</em>' containment reference.
    * @see #getRec()
    * @generated
    */
-  void setRec(RecordAttribute value);
+  void setRec(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Field</b></em>' reference.
+   * Returns the value of the '<em><b>Field</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Field</em>' reference isn't clear,
+   * If the meaning of the '<em>Field</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Field</em>' reference.
-   * @see #setField(RecordFieldDef)
+   * @return the value of the '<em>Field</em>' containment reference.
+   * @see #setField(Expression)
    * @see org.erlide.erlang.ErlangPackage#getRecordExpr_Field()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  RecordFieldDef getField();
+  Expression getField();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.RecordExpr#getField <em>Field</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.RecordExpr#getField <em>Field</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Field</em>' reference.
+   * @param value the new value of the '<em>Field</em>' containment reference.
    * @see #getField()
    * @generated
    */
-  void setField(RecordFieldDef value);
+  void setField(Expression value);
 
   /**
    * Returns the value of the '<em><b>Tuple</b></em>' containment reference.

@@ -22,7 +22,7 @@ import org.erlide.erlang.Type;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.BinBaseTypeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.BinBaseTypeImpl#getTypeName <em>Type Name</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.BinBaseTypeImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
@@ -32,24 +32,24 @@ import org.erlide.erlang.Type;
 public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements BinBaseType
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String TYPE_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String typeName = TYPE_NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -87,9 +87,9 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public String getTypeName()
   {
-    return name;
+    return typeName;
   }
 
   /**
@@ -97,12 +97,12 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setTypeName(String newTypeName)
   {
-    String oldName = name;
-    name = newName;
+    String oldTypeName = typeName;
+    typeName = newTypeName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.BIN_BASE_TYPE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.BIN_BASE_TYPE__TYPE_NAME, oldTypeName, typeName));
   }
 
   /**
@@ -179,8 +179,8 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
   {
     switch (featureID)
     {
-      case ErlangPackage.BIN_BASE_TYPE__NAME:
-        return getName();
+      case ErlangPackage.BIN_BASE_TYPE__TYPE_NAME:
+        return getTypeName();
       case ErlangPackage.BIN_BASE_TYPE__TYPE:
         return getType();
     }
@@ -197,8 +197,8 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
   {
     switch (featureID)
     {
-      case ErlangPackage.BIN_BASE_TYPE__NAME:
-        setName((String)newValue);
+      case ErlangPackage.BIN_BASE_TYPE__TYPE_NAME:
+        setTypeName((String)newValue);
         return;
       case ErlangPackage.BIN_BASE_TYPE__TYPE:
         setType((Type)newValue);
@@ -217,8 +217,8 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
   {
     switch (featureID)
     {
-      case ErlangPackage.BIN_BASE_TYPE__NAME:
-        setName(NAME_EDEFAULT);
+      case ErlangPackage.BIN_BASE_TYPE__TYPE_NAME:
+        setTypeName(TYPE_NAME_EDEFAULT);
         return;
       case ErlangPackage.BIN_BASE_TYPE__TYPE:
         setType((Type)null);
@@ -237,8 +237,8 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
   {
     switch (featureID)
     {
-      case ErlangPackage.BIN_BASE_TYPE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ErlangPackage.BIN_BASE_TYPE__TYPE_NAME:
+        return TYPE_NAME_EDEFAULT == null ? typeName != null : !TYPE_NAME_EDEFAULT.equals(typeName);
       case ErlangPackage.BIN_BASE_TYPE__TYPE:
         return type != null;
     }
@@ -256,8 +256,8 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (typeName: ");
+    result.append(typeName);
     result.append(')');
     return result.toString();
   }

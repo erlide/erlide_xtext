@@ -22,18 +22,19 @@ public class ErlangFormatter extends AbstractDeclarativeFormatter {
     protected void configureFormatting(final FormattingConfig c) {
         // It's usually a good idea to activate the following three statements.
         // They will add and preserve newlines around comments
-		c.setLinewrap(0, 1, 2).before(getGrammarAccess().getSL_COMMENTRule());
-//		c.setLinewrap(0, 1, 2).before(getGrammarAccess().getML_COMMENTRule());
-//		c.setLinewrap(0, 1, 1).after(getGrammarAccess().getML_COMMENTRule());
+        c.setLinewrap(0, 1, 2).before(getGrammarAccess().getSL_COMMENTRule());
+        // c.setLinewrap(0, 1,
+        // 2).before(getGrammarAccess().getML_COMMENTRule());
+        // c.setLinewrap(0, 1, 1).after(getGrammarAccess().getML_COMMENTRule());
 
-//		c.setSpace("\n\n").after(getGrammarAccess().getFunctionAccess().getFullStopKeyword_3());
-//		c.setSpace("\n").after(getGrammarAccess().getFunctionAccess().getSemicolonKeyword_2_0());
-//		c.setSpace("\n\n").after(getGrammarAccess().getAttributeAccess().getFullStopKeyword_2());
-		
+        // c.setSpace("\n\n").after(getGrammarAccess().getFunctionAccess().getFullStopKeyword_3());
+        // c.setSpace("\n").after(getGrammarAccess().getFunctionAccess().getSemicolonKeyword_2_0());
+        // c.setSpace("\n\n").after(getGrammarAccess().getAttributeAccess().getFullStopKeyword_2());
+
     }
-    
-	@Override
-	protected ErlangGrammarAccess getGrammarAccess() {
-		return (ErlangGrammarAccess) super.getGrammarAccess();
-	} 
+
+    @Override
+    protected ErlangGrammarAccess getGrammarAccess() {
+        return (ErlangGrammarAccess) super.getGrammarAccess();
+    }
 }

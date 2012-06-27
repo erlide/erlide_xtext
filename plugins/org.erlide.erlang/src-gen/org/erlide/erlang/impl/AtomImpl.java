@@ -10,8 +10,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.erlide.erlang.Atom;
+import org.erlide.erlang.AtomRefTarget;
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.Form;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +36,7 @@ public class AtomImpl extends ExpressionImpl implements Atom
    * @generated
    * @ordered
    */
-  protected Form value;
+  protected AtomRefTarget value;
 
   /**
    * <!-- begin-user-doc -->
@@ -64,12 +64,12 @@ public class AtomImpl extends ExpressionImpl implements Atom
    * <!-- end-user-doc -->
    * @generated
    */
-  public Form getValue()
+  public AtomRefTarget getValue()
   {
     if (value != null && value.eIsProxy())
     {
       InternalEObject oldValue = (InternalEObject)value;
-      value = (Form)eResolveProxy(oldValue);
+      value = (AtomRefTarget)eResolveProxy(oldValue);
       if (value != oldValue)
       {
         if (eNotificationRequired())
@@ -84,7 +84,7 @@ public class AtomImpl extends ExpressionImpl implements Atom
    * <!-- end-user-doc -->
    * @generated
    */
-  public Form basicGetValue()
+  public AtomRefTarget basicGetValue()
   {
     return value;
   }
@@ -94,9 +94,9 @@ public class AtomImpl extends ExpressionImpl implements Atom
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(Form newValue)
+  public void setValue(AtomRefTarget newValue)
   {
-    Form oldValue = value;
+    AtomRefTarget oldValue = value;
     value = newValue;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ATOM__VALUE, oldValue, value));
@@ -130,7 +130,7 @@ public class AtomImpl extends ExpressionImpl implements Atom
     switch (featureID)
     {
       case ErlangPackage.ATOM__VALUE:
-        setValue((Form)newValue);
+        setValue((AtomRefTarget)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -147,7 +147,7 @@ public class AtomImpl extends ExpressionImpl implements Atom
     switch (featureID)
     {
       case ErlangPackage.ATOM__VALUE:
-        setValue((Form)null);
+        setValue((AtomRefTarget)null);
         return;
     }
     super.eUnset(featureID);

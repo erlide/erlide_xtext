@@ -11,8 +11,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -33,7 +31,7 @@ import org.erlide.erlang.Module;
  *
  * @generated
  */
-public class ModuleImpl extends MinimalEObjectImpl.Container implements Module
+public class ModuleImpl extends AtomRefTargetImpl implements Module
 {
   /**
    * The cached value of the '{@link #getForms() <em>Forms</em>}' containment reference list.

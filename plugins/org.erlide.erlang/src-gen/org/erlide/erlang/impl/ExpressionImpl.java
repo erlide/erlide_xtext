@@ -2,8 +2,12 @@
  */
 package org.erlide.erlang.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -11,8 +15,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
+import org.erlide.erlang.StringLiteralPart;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +31,8 @@ import org.erlide.erlang.Expression;
  * <ul>
  *   <li>{@link org.erlide.erlang.impl.ExpressionImpl#isLine <em>Line</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.ExpressionImpl#getExpr <em>Expr</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ExpressionImpl#getString <em>String</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ExpressionImpl#getMore <em>More</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,6 +69,36 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * @ordered
    */
   protected Expression expr;
+
+  /**
+   * The default value of the '{@link #getString() <em>String</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getString()
+   * @generated
+   * @ordered
+   */
+  protected static final String STRING_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getString() <em>String</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getString()
+   * @generated
+   * @ordered
+   */
+  protected String string = STRING_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getMore() <em>More</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMore()
+   * @generated
+   * @ordered
+   */
+  protected EList<StringLiteralPart> more;
 
   /**
    * <!-- begin-user-doc -->
@@ -157,6 +197,43 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getString()
+  {
+    return string;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setString(String newString)
+  {
+    String oldString = string;
+    string = newString;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.EXPRESSION__STRING, oldString, string));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<StringLiteralPart> getMore()
+  {
+    if (more == null)
+    {
+      more = new EObjectContainmentEList<StringLiteralPart>(StringLiteralPart.class, this, ErlangPackage.EXPRESSION__MORE);
+    }
+    return more;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -164,6 +241,8 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
     {
       case ErlangPackage.EXPRESSION__EXPR:
         return basicSetExpr(null, msgs);
+      case ErlangPackage.EXPRESSION__MORE:
+        return ((InternalEList<?>)getMore()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -182,6 +261,10 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
         return isLine();
       case ErlangPackage.EXPRESSION__EXPR:
         return getExpr();
+      case ErlangPackage.EXPRESSION__STRING:
+        return getString();
+      case ErlangPackage.EXPRESSION__MORE:
+        return getMore();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -191,6 +274,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -201,6 +285,13 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
         return;
       case ErlangPackage.EXPRESSION__EXPR:
         setExpr((Expression)newValue);
+        return;
+      case ErlangPackage.EXPRESSION__STRING:
+        setString((String)newValue);
+        return;
+      case ErlangPackage.EXPRESSION__MORE:
+        getMore().clear();
+        getMore().addAll((Collection<? extends StringLiteralPart>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -222,6 +313,12 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
       case ErlangPackage.EXPRESSION__EXPR:
         setExpr((Expression)null);
         return;
+      case ErlangPackage.EXPRESSION__STRING:
+        setString(STRING_EDEFAULT);
+        return;
+      case ErlangPackage.EXPRESSION__MORE:
+        getMore().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -240,6 +337,10 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
         return line != LINE_EDEFAULT;
       case ErlangPackage.EXPRESSION__EXPR:
         return expr != null;
+      case ErlangPackage.EXPRESSION__STRING:
+        return STRING_EDEFAULT == null ? string != null : !STRING_EDEFAULT.equals(string);
+      case ErlangPackage.EXPRESSION__MORE:
+        return more != null && !more.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -257,6 +358,8 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (line: ");
     result.append(line);
+    result.append(", string: ");
+    result.append(string);
     result.append(')');
     return result.toString();
   }
