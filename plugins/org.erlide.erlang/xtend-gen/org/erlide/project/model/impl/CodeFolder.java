@@ -1,8 +1,8 @@
 package org.erlide.project.model.impl;
 
+import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IPath;
@@ -14,98 +14,97 @@ import org.erlide.project.model.ICodeFolder;
 import org.erlide.project.model.ICodeUnit;
 import org.erlide.project.model.IErlangModelElement;
 import org.erlide.project.model.IProjectFragment;
-
-import com.google.common.base.Objects;
+import org.erlide.project.model.impl.ErlangModelElement;
+import org.erlide.project.model.impl.ErlangModelFactory;
 
 @SuppressWarnings("all")
 public class CodeFolder extends ErlangModelElement implements ICodeFolder {
-    private List<ICodeUnit> sourceUnits;
-
-    private IFolder folder = null;
-
-    private IPath path = null;
-
-    private IPath outputPath = null;
-
-    private IProjectFragment fragment;
-
-    public CodeFolder(final IPath aPath) {
-        super();
-        path = aPath;
+  private List<ICodeUnit> sourceUnits;
+  
+  private IFolder folder = null;
+  
+  private IPath path = null;
+  
+  private IPath outputPath = null;
+  
+  private IProjectFragment fragment;
+  
+  public CodeFolder(final IPath aPath) {
+    super();
+    this.path = aPath;
+  }
+  
+  public List<ICodeUnit> getCodeUnits() {
+    boolean _equals = Objects.equal(this.sourceUnits, null);
+    if (_equals) {
+      ArrayList<ICodeUnit> _newArrayList = CollectionLiterals.<ICodeUnit>newArrayList();
+      this.sourceUnits = _newArrayList;
     }
-
-    public List<ICodeUnit> getCodeUnits() {
-        final boolean _equals = Objects.equal(sourceUnits, null);
-        if (_equals) {
-            final ArrayList<ICodeUnit> _newArrayList = CollectionLiterals
-                    .<ICodeUnit> newArrayList();
-            sourceUnits = _newArrayList;
+    return this.sourceUnits;
+  }
+  
+  public IPath getPath() {
+    return this.path;
+  }
+  
+  public IFolder getFolder() {
+    return this.folder;
+  }
+  
+  public IPath setFolder(final IFolder folder) {
+    IPath _xblockexpression = null;
+    {
+      this.folder = folder;
+      IPath _projectRelativePath = folder.getProjectRelativePath();
+      IPath _path = this.path = _projectRelativePath;
+      _xblockexpression = (_path);
+    }
+    return _xblockexpression;
+  }
+  
+  public IPath getOutputPath() {
+    return this.outputPath;
+  }
+  
+  public IPath setOutputPath(final IPath newOutputPath) {
+    IPath _outputPath = this.outputPath = newOutputPath;
+    return _outputPath;
+  }
+  
+  public String toString() {
+    StringConcatenation _builder = new StringConcatenation();
+    String _string = super.toString();
+    _builder.append(_string, "");
+    _builder.append(" (folder: ");
+    IPath _projectRelativePath = this.folder.getProjectRelativePath();
+    _builder.append(_projectRelativePath, "");
+    _builder.append(", outputPath: ");
+    _builder.append(this.outputPath, "");
+    _builder.append(")");
+    String _string_1 = _builder.toString();
+    return _string_1;
+  }
+  
+  public String getName() {
+    return this.folder==null?(String)null:this.folder.getName();
+  }
+  
+  public IErlangModelElement getParent() {
+    return this.fragment;
+  }
+  
+  public IResource getResource() {
+    return this.folder;
+  }
+  
+  public void realize() {
+    ErlangModelFactory.createFolder(this.path);
+    final Procedure1<ICodeUnit> _function = new Procedure1<ICodeUnit>() {
+        public void apply(final ICodeUnit it) {
+          it.realize();
         }
-        return sourceUnits;
-    }
-
-    public IPath getPath() {
-        return path;
-    }
-
-    public IFolder getFolder() {
-        return folder;
-    }
-
-    public IPath setFolder(final IFolder folder) {
-        IPath _xblockexpression = null;
-        {
-            this.folder = folder;
-            final IPath _projectRelativePath = folder.getProjectRelativePath();
-            final IPath _path = path = _projectRelativePath;
-            _xblockexpression = _path;
-        }
-        return _xblockexpression;
-    }
-
-    public IPath getOutputPath() {
-        return outputPath;
-    }
-
-    public IPath setOutputPath(final IPath newOutputPath) {
-        final IPath _outputPath = outputPath = newOutputPath;
-        return _outputPath;
-    }
-
-    public String toString() {
-        final StringConcatenation _builder = new StringConcatenation();
-        final String _string = super.toString();
-        _builder.append(_string, "");
-        _builder.append(" (folder: ");
-        final IPath _projectRelativePath = folder.getProjectRelativePath();
-        _builder.append(_projectRelativePath, "");
-        _builder.append(", outputPath: ");
-        _builder.append(outputPath, "");
-        _builder.append(")");
-        final String _string_1 = _builder.toString();
-        return _string_1;
-    }
-
-    public String getName() {
-        return folder == null ? (String) null : folder.getName();
-    }
-
-    public IErlangModelElement getParent() {
-        return fragment;
-    }
-
-    public IResource getResource() {
-        return folder;
-    }
-
-    public void realize() {
-        ErlangModelFactory.createFolder(path);
-        final Procedure1<ICodeUnit> _function = new Procedure1<ICodeUnit>() {
-            public void apply(final ICodeUnit it) {
-                it.realize();
-            }
-        };
-        IterableExtensions.<ICodeUnit> forEach(sourceUnits, _function);
-        ErlangModelFactory.createFolder(outputPath);
-    }
+      };
+    IterableExtensions.<ICodeUnit>forEach(this.sourceUnits, _function);
+    ErlangModelFactory.createFolder(this.outputPath);
+  }
 }

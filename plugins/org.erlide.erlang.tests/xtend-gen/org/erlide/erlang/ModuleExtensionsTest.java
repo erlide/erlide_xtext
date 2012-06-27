@@ -125,7 +125,7 @@ public class ModuleExtensionsTest {
       _builder.append("-foo(bar).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Collection<Attribute> attrs = this._modelExtensions.getAllItemsOfType(module);
+      final Collection<Attribute> attrs = this._modelExtensions.<Attribute>getAllItemsOfType(module, Attribute.class);
       int _size = attrs.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(3));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);

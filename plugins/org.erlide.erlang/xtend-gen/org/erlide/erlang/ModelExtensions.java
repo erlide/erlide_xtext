@@ -26,7 +26,6 @@ import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.erlide.erlang.Atom;
-import org.erlide.erlang.Attribute;
 import org.erlide.erlang.CompileAttribute;
 import org.erlide.erlang.ConditionalAttribute;
 import org.erlide.erlang.ConditionalFormBlock;
@@ -98,13 +97,6 @@ public class ModelExtensions {
     return _equals;
   }
   
-  public Collection<Attribute> getAllItemsOfType(final Module module) {
-    EList<EObject> _eContents = module.eContents();
-    Iterable<Attribute> _filter = Iterables.<Attribute>filter(_eContents, Attribute.class);
-    List<Attribute> _list = IterableExtensions.<Attribute>toList(_filter);
-    return _list;
-  }
-  
   public Collection<CustomAttribute> getCustomAttributesWithTag(final Module module, final String mytag) {
     EList<EObject> _eContents = module.eContents();
     Iterable<CustomAttribute> _filter = Iterables.<CustomAttribute>filter(_eContents, CustomAttribute.class);
@@ -121,22 +113,22 @@ public class ModelExtensions {
   }
   
   public Collection<ExportAttribute> getExportAttributes(final Module module) {
-    Collection<ExportAttribute> _allItemsOfType = ModelExtensions.<ExportAttribute>getAllItemsOfType(module, ExportAttribute.class);
+    Collection<ExportAttribute> _allItemsOfType = this.<ExportAttribute>getAllItemsOfType(module, ExportAttribute.class);
     return _allItemsOfType;
   }
   
   public Collection<ImportAttribute> getImportAttributes(final Module module) {
-    Collection<ImportAttribute> _allItemsOfType = ModelExtensions.<ImportAttribute>getAllItemsOfType(module, ImportAttribute.class);
+    Collection<ImportAttribute> _allItemsOfType = this.<ImportAttribute>getAllItemsOfType(module, ImportAttribute.class);
     return _allItemsOfType;
   }
   
   public Collection<SpecAttribute> getSpecs(final Module module) {
-    Collection<SpecAttribute> _allItemsOfType = ModelExtensions.<SpecAttribute>getAllItemsOfType(module, SpecAttribute.class);
+    Collection<SpecAttribute> _allItemsOfType = this.<SpecAttribute>getAllItemsOfType(module, SpecAttribute.class);
     return _allItemsOfType;
   }
   
   public Collection<String> getIncludes(final Module module) {
-    Collection<IncludeAttribute> _allItemsOfType = ModelExtensions.<IncludeAttribute>getAllItemsOfType(module, IncludeAttribute.class);
+    Collection<IncludeAttribute> _allItemsOfType = this.<IncludeAttribute>getAllItemsOfType(module, IncludeAttribute.class);
     final Function1<IncludeAttribute,String> _function = new Function1<IncludeAttribute,String>() {
         public String apply(final IncludeAttribute it) {
           String _importURI = it.getImportURI();
@@ -149,7 +141,7 @@ public class ModelExtensions {
   }
   
   public Collection<String> getIncludeLibs(final Module module) {
-    Collection<IncludeLibAttribute> _allItemsOfType = ModelExtensions.<IncludeLibAttribute>getAllItemsOfType(module, IncludeLibAttribute.class);
+    Collection<IncludeLibAttribute> _allItemsOfType = this.<IncludeLibAttribute>getAllItemsOfType(module, IncludeLibAttribute.class);
     final Function1<IncludeLibAttribute,String> _function = new Function1<IncludeLibAttribute,String>() {
         public String apply(final IncludeLibAttribute it) {
           String _importURI = it.getImportURI();
@@ -495,7 +487,7 @@ public class ModelExtensions {
     return _list;
   }
   
-  public static <T extends Object> Collection<T> getAllItemsOfType(final EObject obj, final Class<T> type) {
+  public <T extends Object> Collection<T> getAllItemsOfType(final EObject obj, final Class<T> type) {
     List<T> _xblockexpression = null;
     {
       Collection<T> _itemsOfType = ModelExtensions.<T>getItemsOfType(obj, type);
@@ -503,7 +495,7 @@ public class ModelExtensions {
       final Collection<ConditionalFormBlock> ifblocks = ModelExtensions.<ConditionalFormBlock>getItemsOfType(obj, ConditionalFormBlock.class);
       final Function1<ConditionalFormBlock,Collection<T>> _function = new Function1<ConditionalFormBlock,Collection<T>>() {
           public Collection<T> apply(final ConditionalFormBlock it) {
-            Collection<T> _allItemsOfType = ModelExtensions.<T>getAllItemsOfType(it, type);
+            Collection<T> _allItemsOfType = ModelExtensions.this.<T>getAllItemsOfType(it, type);
             return _allItemsOfType;
           }
         };
@@ -516,8 +508,8 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  public static Collection<Expression> getRawCompileOptions(final Module module) {
-    Collection<CompileAttribute> _allItemsOfType = ModelExtensions.<CompileAttribute>getAllItemsOfType(module, CompileAttribute.class);
+  public Collection<Expression> getRawCompileOptions(final Module module) {
+    Collection<CompileAttribute> _allItemsOfType = this.<CompileAttribute>getAllItemsOfType(module, CompileAttribute.class);
     final Function1<CompileAttribute,Expression> _function = new Function1<CompileAttribute,Expression>() {
         public Expression apply(final CompileAttribute it) {
           Expression _options = it.getOptions();
@@ -564,7 +556,7 @@ public class ModelExtensions {
             return _function.apply(o1,o2);
           }
       });
-      Collection<Expression> _rawCompileOptions = ModelExtensions.getRawCompileOptions(module);
+      Collection<Expression> _rawCompileOptions = this.getRawCompileOptions(module);
       final Function2<Set<Expression>,Expression,Set<Expression>> _function_1 = new Function2<Set<Expression>,Expression,Set<Expression>>() {
           public Set<Expression> apply(final Set<Expression> acc, final Expression item) {
             Set<Expression> _merge = ModelExtensions.this.merge(acc, item);

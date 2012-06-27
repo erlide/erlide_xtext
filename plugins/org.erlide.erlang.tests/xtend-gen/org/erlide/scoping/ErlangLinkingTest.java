@@ -12,7 +12,9 @@ import org.eclipse.xtext.xbase.lib.Pair;
 import org.erlide.ErlangInjectorProvider;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.AtomRefTarget;
+import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ErlangTestExtensions;
+import org.erlide.erlang.Macro;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.util.ErlangTestingHelper;
@@ -697,5 +699,93 @@ public class ErlangLinkingTest {
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
     MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+  }
+  
+  @Test
+  public void resolve_macro() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("\u00A7-define(Z, zz).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("?\u00A7Z,");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
+    final Macro macro = ((Macro) _objectAtMarker);
+    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
+    DefineAttribute _macroReference = this._erlangLinkingHelper.getMacroReference(macro);
+    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
+    MatcherAssert.<DefineAttribute>assertThat(_macroReference, _is);
+  }
+  
+  @Test
+  public void resolve_macro_atom() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("\u00A7-define(z, zz).");
+    _builder.newLine();
+    _builder.append("f() ->");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("?\u00A7z,");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ok.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
+    final Macro macro = ((Macro) _objectAtMarker);
+    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
+    DefineAttribute _macroReference = this._erlangLinkingHelper.getMacroReference(macro);
+    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
+    MatcherAssert.<DefineAttribute>assertThat(_macroReference, _is);
+  }
+  
+  @Test
+  public void resolve_macro_1() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("\u00A7-define(Z, zz).");
+    _builder.newLine();
+    _builder.append("-ifdef(\u00A7Z).");
+    _builder.newLine();
+    _builder.append("-endif.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
+    final Macro macro = ((Macro) _objectAtMarker);
+    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
+    DefineAttribute _macroReference = this._erlangLinkingHelper.getMacroReference(macro);
+    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
+    MatcherAssert.<DefineAttribute>assertThat(_macroReference, _is);
+  }
+  
+  @Test
+  public void resolve_macro_1_atom() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("-module(m).");
+    _builder.newLine();
+    _builder.append("\u00A7-define(z, zz).");
+    _builder.newLine();
+    _builder.append("-ifdef(\u00A7z).");
+    _builder.newLine();
+    _builder.append("-endif.");
+    _builder.newLine();
+    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
+    final Macro macro = ((Macro) _objectAtMarker);
+    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
+    DefineAttribute _macroReference = this._erlangLinkingHelper.getMacroReference(macro);
+    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
+    MatcherAssert.<DefineAttribute>assertThat(_macroReference, _is);
   }
 }

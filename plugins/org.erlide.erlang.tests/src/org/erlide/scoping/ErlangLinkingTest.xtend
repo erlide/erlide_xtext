@@ -10,11 +10,12 @@ import org.erlide.erlang.ModelExtensions
 import org.erlide.erlang.util.ErlangTestingHelper
 import org.junit.Test
 import org.junit.runner.RunWith
+import com.google.inject.Provider
+import org.eclipse.xtext.resource.XtextResourceSet
 
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
-import com.google.inject.Provider
-import org.eclipse.xtext.resource.XtextResourceSet
+import org.erlide.erlang.Macro
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
@@ -435,4 +436,61 @@ class ErlangLinkingTest {
     	assertThat(atom.atomReference, is(nullValue))
     } 
  
-}
+    @Test
+    def void resolve_macro() {
+    	val module = parser.parse('''
+			-module(m).
+			§-define(Z, zz).
+			f() ->
+				?§Z,
+				ok.
+        ''')
+    	
+    	val macro = module.getObjectAtMarker(1) as Macro
+    	val tgt = module.getObjectAtMarker(0)
+    	assertThat(macro.macroReference, is(tgt))
+    } 
+ 
+    @Test
+    def void resolve_macro_atom() {
+    	val module = parser.parse('''
+			-module(m).
+			§-define(z, zz).
+			f() ->
+				?§z,
+				ok.
+        ''')
+    	
+    	val macro = module.getObjectAtMarker(1) as Macro
+    	val tgt = module.getObjectAtMarker(0)
+    	assertThat(macro.macroReference, is(tgt))
+    } 
+ 
+    @Test
+    def void resolve_macro_1() {
+    	val module = parser.parse('''
+			-module(m).
+			§-define(Z, zz).
+			-ifdef(§Z).
+			-endif.
+        ''')
+    	
+    	val macro = module.getObjectAtMarker(1) as Macro
+    	val tgt = module.getObjectAtMarker(0)
+    	assertThat(macro.macroReference, is(tgt))
+    } 
+ 
+    @Test
+    def void resolve_macro_1_atom() {
+    	val module = parser.parse('''
+			-module(m).
+			§-define(z, zz).
+			-ifdef(§z).
+			-endif.
+        ''')
+    	
+    	val macro = module.getObjectAtMarker(1) as Macro
+    	val tgt = module.getObjectAtMarker(0)
+    	assertThat(macro.macroReference, is(tgt))
+    } 
+ }

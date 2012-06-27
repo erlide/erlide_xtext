@@ -3,6 +3,7 @@ package org.erlide.scoping;
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.util.Arrays;
+import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -18,6 +19,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.AtomRefTarget;
+import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ErlangPackage.Literals;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.Expressions;
@@ -25,6 +27,7 @@ import org.erlide.erlang.FunCall;
 import org.erlide.erlang.FunRef;
 import org.erlide.erlang.FunType;
 import org.erlide.erlang.Function;
+import org.erlide.erlang.Macro;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.RecordAttribute;
@@ -441,6 +444,53 @@ public class ErlangLinkingHelper {
         };
       RecordFieldDef _findFirst = IterableExtensions.<RecordFieldDef>findFirst(_fields, _function);
       _xblockexpression = (_findFirst);
+    }
+    return _xblockexpression;
+  }
+  
+  public AtomRefTarget getMacroRef(final IResourceDescriptions index, final Atom atom, final ResourceSet rset) {
+    Module _owningModule = this._modelExtensions.getOwningModule(atom);
+    Collection<DefineAttribute> _allItemsOfType = this._modelExtensions.<DefineAttribute>getAllItemsOfType(_owningModule, DefineAttribute.class);
+    final Function1<DefineAttribute,Boolean> _function = new Function1<DefineAttribute,Boolean>() {
+        public Boolean apply(final DefineAttribute it) {
+          String _macroName = it.getMacroName();
+          String _sourceText = ErlangLinkingHelper.this._modelExtensions.getSourceText(atom);
+          boolean _equals = Objects.equal(_macroName, _sourceText);
+          return Boolean.valueOf(_equals);
+        }
+      };
+    DefineAttribute _findFirst = IterableExtensions.<DefineAttribute>findFirst(_allItemsOfType, _function);
+    return _findFirst;
+  }
+  
+  public DefineAttribute getMacroReference(final Macro macro) {
+    Module _owningModule = this._modelExtensions.getOwningModule(macro);
+    Collection<DefineAttribute> _allItemsOfType = this._modelExtensions.<DefineAttribute>getAllItemsOfType(_owningModule, DefineAttribute.class);
+    final Function1<DefineAttribute,Boolean> _function = new Function1<DefineAttribute,Boolean>() {
+        public Boolean apply(final DefineAttribute it) {
+          String _macroName = it.getMacroName();
+          String _macroName_1 = ErlangLinkingHelper.this.getMacroName(macro);
+          boolean _equals = Objects.equal(_macroName, _macroName_1);
+          return Boolean.valueOf(_equals);
+        }
+      };
+    DefineAttribute _findFirst = IterableExtensions.<DefineAttribute>findFirst(_allItemsOfType, _function);
+    return _findFirst;
+  }
+  
+  public String getMacroName(final Macro macro) {
+    String _xblockexpression = null;
+    {
+      final String txt = this._modelExtensions.getSourceText(macro);
+      String _xifexpression = null;
+      boolean _startsWith = txt.startsWith("? ");
+      if (_startsWith) {
+        String _substring = txt.substring(2);
+        _xifexpression = _substring;
+      } else {
+        _xifexpression = txt;
+      }
+      _xblockexpression = (_xifexpression);
     }
     return _xblockexpression;
   }

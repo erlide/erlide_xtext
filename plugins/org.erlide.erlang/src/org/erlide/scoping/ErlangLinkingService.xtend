@@ -8,6 +8,7 @@ import org.eclipse.xtext.linking.impl.DefaultLinkingService
 import org.eclipse.xtext.nodemodel.INode
 import org.erlide.erlang.ErlangPackage
 import org.erlide.erlang.Atom
+import org.erlide.erlang.Macro
 
 class ErlangLinkingService extends DefaultLinkingService {
 
@@ -15,17 +16,23 @@ class ErlangLinkingService extends DefaultLinkingService {
     ErlangLinkingHelper linkHelper
 
 	override List<EObject> getLinkedObjects(EObject context, EReference ref, INode node) {
+		var EObject aref
 		if(ref==ErlangPackage::eINSTANCE.atom_Value) {
-			val aref = linkHelper.getAtomReference(context as Atom)
-			if(aref==null) 
-				return newArrayList() 
-			else {
-				val aref2 = aref as EObject
-				return newArrayList(aref2)
-			}
+			aref = linkHelper.getAtomReference(context as Atom)
+			return wrap(aref)
+		}
+		if(ref==ErlangPackage::eINSTANCE.macro_Value) {
+			aref = linkHelper.getMacroReference(context as Macro)
+			return wrap(aref)
 		}
 		return super.getLinkedObjects(context, ref, node)		
 	}
 
-
+	def private List<EObject> wrap(EObject aref) {
+		if(aref==null) 
+			return newArrayList() 
+		else {
+			return newArrayList(aref)
+		}
+	}
 }

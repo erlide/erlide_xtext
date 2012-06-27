@@ -12,6 +12,7 @@ AtomRefTarget:
 	| Function
 	| RecordAttribute
 	| RecordFieldDef
+	| DefineAttribute
 ;
 
 Form:

@@ -42,10 +42,6 @@ class ModelExtensions {
         module.name == null
     }
 
-    def Collection<Attribute> getAllItemsOfType(Module module) {
-        module.eContents.filter(typeof(Attribute)).toList
-    }
-
     def Collection<CustomAttribute> getCustomAttributesWithTag(Module module, String mytag) {
         module.eContents.filter(typeof(CustomAttribute)).filter[
             tag == mytag
@@ -185,14 +181,14 @@ class ModelExtensions {
         obj.eContents.filter(type).toList
     }
 
-    def static <T> Collection<T> getAllItemsOfType(EObject obj, Class<T> type) {
+    def <T> Collection<T> getAllItemsOfType(EObject obj, Class<T> type) {
         val direct = obj.getItemsOfType(type).toList
         val ifblocks = obj.getItemsOfType(typeof(ConditionalFormBlock))
         direct.addAll(ifblocks.map[it.getAllItemsOfType(type)].flatten.toList)
         direct
     }
 
- 	def static Collection<Expression> getRawCompileOptions(Module module) {
+ 	def Collection<Expression> getRawCompileOptions(Module module) {
 		module.getAllItemsOfType(typeof(CompileAttribute)).map[options].toList
  	}
     

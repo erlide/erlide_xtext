@@ -8,16 +8,18 @@ import org.eclipse.xtext.resource.IResourceDescriptions
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.erlide.erlang.Atom
 import org.erlide.erlang.AtomRefTarget
+import org.erlide.erlang.DefineAttribute
 import org.erlide.erlang.ErlangPackage$Literals
 import org.erlide.erlang.FunCall
 import org.erlide.erlang.FunRef
+import org.erlide.erlang.Macro
 import org.erlide.erlang.ModelExtensions
+import org.erlide.erlang.RecordAttribute
 import org.erlide.erlang.RecordExpr
 import org.erlide.erlang.RecordFieldExpr
 import org.erlide.erlang.RecordTuple
 import org.erlide.erlang.RemoteTarget
 import org.erlide.erlang.SpecAttribute
-import org.erlide.erlang.RecordAttribute
 
 class ErlangLinkingHelper {
 	@Inject
@@ -193,6 +195,22 @@ class ErlangLinkingHelper {
 		val recExpr = atom.recordExprForField
 		val record = getRecordRef(index, recExpr.rec as Atom, rset) as RecordAttribute
 		record.fields.findFirst[it.name==atom.sourceText]
+	}
+	
+	def AtomRefTarget getMacroRef(IResourceDescriptions index, Atom atom, ResourceSet rset) {
+		atom.owningModule.getAllItemsOfType(typeof(DefineAttribute)).findFirst[macroName==atom.sourceText]
+	}
+
+	def DefineAttribute getMacroReference(Macro macro) {
+		macro.owningModule.getAllItemsOfType(typeof(DefineAttribute)).findFirst[macroName==macro.macroName]
+	}
+
+	def String getMacroName(Macro macro) {
+		val txt = macro.sourceText
+		if(txt.startsWith("? "))
+			txt.substring(2)
+		else 
+			txt
 	}
 	
 }

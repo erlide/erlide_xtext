@@ -41,12 +41,13 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFunctionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cRecordAttributeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cRecordFieldDefParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cDefineAttributeParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//AtomRefTarget:
-		//	Module | Function | RecordAttribute | RecordFieldDef;
+		//	Module | Function | RecordAttribute | RecordFieldDef | DefineAttribute;
 		public ParserRule getRule() { return rule; }
 
-		//Module | Function | RecordAttribute | RecordFieldDef
+		//Module | Function | RecordAttribute | RecordFieldDef | DefineAttribute
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Module
@@ -60,6 +61,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//RecordFieldDef
 		public RuleCall getRecordFieldDefParserRuleCall_3() { return cRecordFieldDefParserRuleCall_3; }
+
+		//DefineAttribute
+		public RuleCall getDefineAttributeParserRuleCall_4() { return cDefineAttributeParserRuleCall_4; }
 	}
 
 	public class FormElements extends AbstractParserRuleElementFinder {
@@ -5906,7 +5910,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AtomRefTarget:
-	//	Module | Function | RecordAttribute | RecordFieldDef;
+	//	Module | Function | RecordAttribute | RecordFieldDef | DefineAttribute;
 	public AtomRefTargetElements getAtomRefTargetAccess() {
 		return (pAtomRefTarget != null) ? pAtomRefTarget : (pAtomRefTarget = new AtomRefTargetElements());
 	}

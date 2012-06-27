@@ -269,7 +269,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int DEFINE_ATTRIBUTE__TAG = ATOM_REF_TARGET_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Macro Name</b></em>' attribute.
@@ -278,7 +278,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__MACRO_NAME = ATTRIBUTE_FEATURE_COUNT + 1;
+  int DEFINE_ATTRIBUTE__MACRO_NAME = ATOM_REF_TARGET_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -287,7 +287,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__ARGS = ATTRIBUTE_FEATURE_COUNT + 2;
+  int DEFINE_ATTRIBUTE__ARGS = ATOM_REF_TARGET_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -296,7 +296,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 3;
+  int DEFINE_ATTRIBUTE__VALUE = ATOM_REF_TARGET_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Define Attribute</em>' class.
@@ -305,7 +305,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 4;
+  int DEFINE_ATTRIBUTE_FEATURE_COUNT = ATOM_REF_TARGET_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.UndefAttributeImpl <em>Undef Attribute</em>}' class.
