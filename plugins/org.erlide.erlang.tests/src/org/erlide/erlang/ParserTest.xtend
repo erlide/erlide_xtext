@@ -33,7 +33,7 @@ class ParserTest {
 		val model = parser.parse('''
 		    x+1.
 		''')
-		print(model)
+		//println(model)
 	}
 
 	@Test

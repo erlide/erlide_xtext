@@ -17,6 +17,7 @@ import org.erlide.erlang.RecordFieldExpr
 import org.erlide.erlang.RecordTuple
 import org.erlide.erlang.RemoteTarget
 import org.erlide.erlang.SpecAttribute
+import org.erlide.erlang.RecordAttribute
 
 class ErlangLinkingHelper {
 	@Inject
@@ -176,9 +177,22 @@ class ErlangLinkingHelper {
 		if(!rfun.empty) 
 			rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
 	}
+
+	def private RecordExpr getRecordExprForField(EObject field) {
+		switch(field){
+			RecordExpr: {
+				field as RecordExpr
+			}
+			default: {
+				field.eContainer.recordExprForField
+			}
+		}
+	}
 	
-	def AtomRefTarget getRecordFieldRef(IResourceDescriptions index, Atom atom, ResourceSet rset) { 
-		null
+	def AtomRefTarget getRecordFieldRef(IResourceDescriptions index, Atom atom, ResourceSet rset) {
+		val recExpr = atom.recordExprForField
+		val record = getRecordRef(index, recExpr.rec as Atom, rset) as RecordAttribute
+		record.fields.findFirst[it.name==atom.sourceText]
 	}
 	
 }

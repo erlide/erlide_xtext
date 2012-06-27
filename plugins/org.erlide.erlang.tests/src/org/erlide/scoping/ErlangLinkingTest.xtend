@@ -353,30 +353,30 @@ class ErlangLinkingTest {
     def void resolve_record_1() {
     	val module = parser.parse('''
 			-module(m).
+			§-record(myrec, {}).
 			f() ->
 				#§myrec.az,
 				ok.
         ''')
     	
-    	val atom = module.objectAtMarker as Atom
-    	val tgt = module.getObjectAtMarker(1)
-    	// TODO
-    	assertThat(atom.atomReference, is(nullValue))
+    	val atom = module.getObjectAtMarker(1) as Atom
+    	val tgt = module.getObjectAtMarker(0)
+    	assertThat(atom.atomReference, is(tgt))
     } 
     
     @Test
     def void resolve_recordField() {
     	val module = parser.parse('''
 			-module(m).
+			-record(myrec, {§ff}).
 			f() ->
 				#myrec.§ff,
 				ok.
         ''')
     	
-    	val atom = module.objectAtMarker as Atom
-    	val tgt = module.getObjectAtMarker(1)
-    	// TODO
-    	assertThat(atom.atomReference, is(nullValue))
+    	val atom = module.getObjectAtMarker(1) as Atom
+    	val tgt = module.getObjectAtMarker(0)
+    	assertThat(atom.atomReference, is(tgt))
     } 
 
     @Test
@@ -393,24 +393,39 @@ class ErlangLinkingTest {
     } 
 
     @Test
+    def void resolve_recordField_bad_1() {
+    	val module = parser.parse('''
+			-module(m).
+			-record(myrec, {gg}).
+			f() ->
+				#myrec.§ff,
+				ok.
+        ''')
+    	
+    	val atom = module.objectAtMarker as Atom
+    	assertThat(atom.atomReference, is(nullValue))
+    } 
+
+    @Test
     def void resolve_recordField_1() {
     	val module = parser.parse('''
 			-module(m).
+			-record(myrec, {§ff}).
 			f() ->
 				#myrec{§ff=2},
 				ok.
         ''')
     	
-    	val atom = module.objectAtMarker as Atom
-    	val tgt = module.getObjectAtMarker(1)
-    	// TODO
-    	assertThat(atom.atomReference, is(nullValue))
+    	val atom = module.getObjectAtMarker(1) as Atom
+    	val tgt = module.getObjectAtMarker(0)
+    	assertThat(atom.atomReference, is(tgt))
     }
     
     @Test
     def void resolve_recordField_1_bad() {
     	val module = parser.parse('''
 			-module(m).
+			-record(myrec, {gg}).
 			f() ->
 				#Myrec{§ff=2},
 				ok.

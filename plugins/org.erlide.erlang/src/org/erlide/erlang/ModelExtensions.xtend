@@ -87,9 +87,7 @@ class ModelExtensions {
 	def Collection<Function> getDeclaredExports(Module module) {
 		val exported = getExportAttributes(module)
 		val refs = Iterables::concat(exported.map[funs])
-		val xx = refs.map[module.getFunction(it)].toList
-		println("!"+xx)
-		xx
+		refs.map[module.getFunction(it)].toList
 	}
 	
 	def Collection<String> getDeclaredExportNames(Module module) {

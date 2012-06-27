@@ -37,8 +37,9 @@ class ErlangLinkingContextTest {
 
 		// TODO more work here!
 
-		println(refs.size)
-		println(refs.head.sourceText)
+//		println("link context test")
+//		println(refs.size)
+//		println(refs.head.sourceText)
 		//println(refs.head.linkableAtom)
 	}
 	

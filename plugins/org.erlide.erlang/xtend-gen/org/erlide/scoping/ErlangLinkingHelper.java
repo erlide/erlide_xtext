@@ -13,6 +13,7 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.erlide.erlang.Atom;
@@ -26,7 +27,9 @@ import org.erlide.erlang.FunType;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
+import org.erlide.erlang.RecordAttribute;
 import org.erlide.erlang.RecordExpr;
+import org.erlide.erlang.RecordFieldDef;
 import org.erlide.erlang.RecordFieldExpr;
 import org.erlide.erlang.RecordTuple;
 import org.erlide.erlang.RemoteTarget;
@@ -402,8 +405,44 @@ public class ErlangLinkingHelper {
     return _xblockexpression;
   }
   
+  private RecordExpr getRecordExprForField(final EObject field) {
+    RecordExpr _switchResult = null;
+    boolean _matched = false;
+    if (!_matched) {
+      if (field instanceof RecordExpr) {
+        final RecordExpr _recordExpr = (RecordExpr)field;
+        _matched=true;
+        _switchResult = ((RecordExpr) _recordExpr);
+      }
+    }
+    if (!_matched) {
+      EObject _eContainer = field.eContainer();
+      RecordExpr _recordExprForField = this.getRecordExprForField(_eContainer);
+      _switchResult = _recordExprForField;
+    }
+    return _switchResult;
+  }
+  
   public AtomRefTarget getRecordFieldRef(final IResourceDescriptions index, final Atom atom, final ResourceSet rset) {
-    return null;
+    RecordFieldDef _xblockexpression = null;
+    {
+      final RecordExpr recExpr = this.getRecordExprForField(atom);
+      Expression _rec = recExpr.getRec();
+      AtomRefTarget _recordRef = this.getRecordRef(index, ((Atom) _rec), rset);
+      final RecordAttribute record = ((RecordAttribute) _recordRef);
+      EList<RecordFieldDef> _fields = record.getFields();
+      final Function1<RecordFieldDef,Boolean> _function = new Function1<RecordFieldDef,Boolean>() {
+          public Boolean apply(final RecordFieldDef it) {
+            String _name = it.getName();
+            String _sourceText = ErlangLinkingHelper.this._modelExtensions.getSourceText(atom);
+            boolean _equals = Objects.equal(_name, _sourceText);
+            return Boolean.valueOf(_equals);
+          }
+        };
+      RecordFieldDef _findFirst = IterableExtensions.<RecordFieldDef>findFirst(_fields, _function);
+      _xblockexpression = (_findFirst);
+    }
+    return _xblockexpression;
   }
   
   private ErlangLinkCategory classifyAtom(final Atom atom, final EObject context) {

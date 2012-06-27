@@ -13,7 +13,6 @@ import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.erlide.ErlangInjectorProvider;
@@ -81,11 +80,6 @@ public class ErlangLinkingContextTest {
         };
       Iterator<EObject> _filter_1 = IteratorExtensions.<EObject>filter(_map, _function_2);
       final List<EObject> refs = IteratorExtensions.<EObject>toList(_filter_1);
-      int _size = refs.size();
-      InputOutput.<Integer>println(Integer.valueOf(_size));
-      EObject _head = IterableExtensions.<EObject>head(refs);
-      String _sourceText = this._modelExtensions.getSourceText(_head);
-      InputOutput.<String>println(_sourceText);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }

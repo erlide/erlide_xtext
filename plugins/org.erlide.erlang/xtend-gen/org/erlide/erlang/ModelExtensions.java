@@ -23,7 +23,6 @@ import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.erlide.erlang.Atom;
@@ -196,10 +195,8 @@ public class ModelExtensions {
           }
         };
       Iterable<Function> _map_1 = IterableExtensions.<FunRef, Function>map(refs, _function_1);
-      final List<Function> xx = IterableExtensions.<Function>toList(_map_1);
-      String _plus = ("!" + xx);
-      InputOutput.<String>println(_plus);
-      _xblockexpression = (xx);
+      List<Function> _list = IterableExtensions.<Function>toList(_map_1);
+      _xblockexpression = (_list);
     }
     return _xblockexpression;
   }

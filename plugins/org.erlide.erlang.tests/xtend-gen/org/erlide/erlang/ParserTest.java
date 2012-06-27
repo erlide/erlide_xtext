@@ -7,7 +7,6 @@ import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.ErlangInjectorProvider;
 import org.erlide.erlang.Atom;
@@ -61,7 +60,6 @@ public class ParserTest {
       _builder.append("x+1.");
       _builder.newLine();
       final Module model = this.parser.parse(_builder);
-      InputOutput.<Module>print(model);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }
