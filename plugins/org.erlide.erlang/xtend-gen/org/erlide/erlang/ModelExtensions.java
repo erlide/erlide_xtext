@@ -645,6 +645,34 @@ public class ModelExtensions {
     return _equals;
   }
   
+  protected boolean _isPredefinedMacro(final EObject obj) {
+    return false;
+  }
+  
+  protected boolean _isPredefinedMacro(final Macro obj) {
+    boolean _xblockexpression = false;
+    {
+      final String txt = this.getSourceText(obj);
+      boolean _or = false;
+      boolean _or_1 = false;
+      boolean _equals = Objects.equal(txt, "? MODULE");
+      if (_equals) {
+        _or_1 = true;
+      } else {
+        boolean _equals_1 = Objects.equal(txt, "? FILE");
+        _or_1 = (_equals || _equals_1);
+      }
+      if (_or_1) {
+        _or = true;
+      } else {
+        boolean _equals_2 = Objects.equal(txt, "? LINE");
+        _or = (_or_1 || _equals_2);
+      }
+      _xblockexpression = (_or);
+    }
+    return _xblockexpression;
+  }
+  
   public Module getOwningModule(final EObject element) {
     if (element instanceof Module) {
       return _getOwningModule((Module)element);
@@ -685,6 +713,17 @@ public class ModelExtensions {
       return _isModuleMacro((Macro)obj);
     } else if (obj != null) {
       return _isModuleMacro(obj);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(obj).toString());
+    }
+  }
+  
+  public boolean isPredefinedMacro(final EObject obj) {
+    if (obj instanceof Macro) {
+      return _isPredefinedMacro((Macro)obj);
+    } else if (obj != null) {
+      return _isPredefinedMacro(obj);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(obj).toString());

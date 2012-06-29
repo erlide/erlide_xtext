@@ -235,6 +235,14 @@ class ModelExtensions {
 		obj.sourceText=="? MODULE"
 	}
 
+	def dispatch boolean isPredefinedMacro(EObject obj) {
+		false
+	}
+	def dispatch boolean isPredefinedMacro(Macro obj) {
+		val txt = obj.sourceText
+		txt=="? MODULE" || txt=="? FILE" || txt=="? LINE"
+	}
+
 }
 
 

@@ -5,6 +5,7 @@ import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.linking.impl.LinkingDiagnosticMessageProvider;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.ModelExtensions;
+import org.erlide.erlang.Variable;
 
 import com.google.inject.Inject;
 
@@ -27,11 +28,19 @@ public class ErlangLinkingDiagnosticMessageProvider extends
         if (context.getContext() instanceof Atom) {
             final Atom atom = (Atom) context.getContext();
             final boolean linkableContext = linkHelper.isLinkableAtom(atom);
-            if (linkableContext) {
-                return new DiagnosticMessage(org.getMessage(),
-                        Severity.WARNING, org.getIssueCode(),
-                        org.getIssueData());
+            if (!linkableContext) {
+                return null;
             }
+            return new DiagnosticMessage(org.getMessage(), Severity.WARNING,
+                    org.getIssueCode(), org.getIssueData());
+        }
+        if (context.getContext() instanceof Variable) {
+            // TODO
+            return null;
+        }
+        if (me.isPredefinedMacro(context.getContext())) {
+            // this can't be handled with scoping, I think
+            return null;
         }
         return new DiagnosticMessage(org.getMessage(), Severity.WARNING,
                 org.getIssueCode(), org.getIssueData());
