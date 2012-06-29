@@ -63,13 +63,6 @@ public enum ErlangLinkCategory {
                 final Atom atom, final ResourceSet rset) {
             return helper.getRecordFieldRef(index, atom, rset);
         }
-    },
-    MACRO_REF {
-        @Override
-        public AtomRefTarget getRef(final IResourceDescriptions index,
-                final Atom atom, final ResourceSet rset) {
-            return helper.getMacroRef(index, atom, rset);
-        }
     };
 
     @Inject

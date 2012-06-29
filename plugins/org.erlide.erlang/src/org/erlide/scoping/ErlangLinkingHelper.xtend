@@ -197,10 +197,6 @@ class ErlangLinkingHelper {
 		record.fields.findFirst[it.name==atom.sourceText]
 	}
 	
-	def AtomRefTarget getMacroRef(IResourceDescriptions index, Atom atom, ResourceSet rset) {
-		atom.owningModule.getAllItemsOfType(typeof(DefineAttribute)).findFirst[macroName==atom.sourceText]
-	}
-
 	def DefineAttribute getMacroReference(Macro macro) {
 		macro.owningModule.getAllItemsOfType(typeof(DefineAttribute)).findFirst[macroName==macro.macroName]
 	}

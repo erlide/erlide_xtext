@@ -448,21 +448,6 @@ public class ErlangLinkingHelper {
     return _xblockexpression;
   }
   
-  public AtomRefTarget getMacroRef(final IResourceDescriptions index, final Atom atom, final ResourceSet rset) {
-    Module _owningModule = this._modelExtensions.getOwningModule(atom);
-    Collection<DefineAttribute> _allItemsOfType = this._modelExtensions.<DefineAttribute>getAllItemsOfType(_owningModule, DefineAttribute.class);
-    final Function1<DefineAttribute,Boolean> _function = new Function1<DefineAttribute,Boolean>() {
-        public Boolean apply(final DefineAttribute it) {
-          String _macroName = it.getMacroName();
-          String _sourceText = ErlangLinkingHelper.this._modelExtensions.getSourceText(atom);
-          boolean _equals = Objects.equal(_macroName, _sourceText);
-          return Boolean.valueOf(_equals);
-        }
-      };
-    DefineAttribute _findFirst = IterableExtensions.<DefineAttribute>findFirst(_allItemsOfType, _function);
-    return _findFirst;
-  }
-  
   public DefineAttribute getMacroReference(final Macro macro) {
     Module _owningModule = this._modelExtensions.getOwningModule(macro);
     Collection<DefineAttribute> _allItemsOfType = this._modelExtensions.<DefineAttribute>getAllItemsOfType(_owningModule, DefineAttribute.class);

@@ -1,15 +1,13 @@
 package org.erlide.erlang.util
 
 import com.google.common.collect.Lists
+import com.google.inject.Inject
 import java.util.List
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.xbase.lib.Pair
 import org.erlide.erlang.Module
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.common.util.URI
-import com.google.inject.Inject
-import com.google.inject.Provider
-import org.eclipse.xtext.resource.XtextResourceSet
 
 class ErlangTestingHelper {
 	@Inject

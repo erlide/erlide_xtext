@@ -216,8 +216,9 @@ class ModelExtensions {
 		false    	
     }
 
-	def private boolean parseTransformTuple(ErlTuple expr) {
-		if(expr.elements.size!=2 || !(expr.elements.head instanceof Atom)) return false
+	def private boolean isParseTransformTuple(ErlTuple expr) {
+		if(expr.elements.size!=2 || !(expr.elements.head instanceof Atom)) 
+			return false
 		val hd = expr.elements.head as Atom
 		return hd.sourceText=="parse_transform" && expr.elements.tail.head instanceof Atom
 	}

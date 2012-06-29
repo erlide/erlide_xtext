@@ -326,8 +326,8 @@ public class ModelExtensions {
       final Iterable<ErlTuple> tuples = Iterables.<ErlTuple>filter(options, ErlTuple.class);
       final Function1<ErlTuple,Boolean> _function = new Function1<ErlTuple,Boolean>() {
           public Boolean apply(final ErlTuple it) {
-            boolean _parseTransformTuple = ModelExtensions.this.parseTransformTuple(it);
-            return Boolean.valueOf(_parseTransformTuple);
+            boolean _isParseTransformTuple = ModelExtensions.this.isParseTransformTuple(it);
+            return Boolean.valueOf(_isParseTransformTuple);
           }
         };
       Iterable<ErlTuple> _filter = IterableExtensions.<ErlTuple>filter(tuples, _function);
@@ -591,7 +591,7 @@ public class ModelExtensions {
     return false;
   }
   
-  private boolean parseTransformTuple(final ErlTuple expr) {
+  private boolean isParseTransformTuple(final ErlTuple expr) {
     boolean _or = false;
     EList<Expression> _elements = expr.getElements();
     int _size = _elements.size();
