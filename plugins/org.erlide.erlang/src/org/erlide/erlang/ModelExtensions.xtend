@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 import static extension org.erlide.erlang.ModelExtensions.*
+import org.eclipse.jdt.annotation.NonNull
 
 class ModelExtensions {
     
