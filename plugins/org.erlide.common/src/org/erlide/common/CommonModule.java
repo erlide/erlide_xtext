@@ -9,7 +9,6 @@ import com.google.inject.Provider;
 public class CommonModule extends AbstractGenericModule {
 
     public CommonModule() {
-        // TODO Auto-generated constructor stub
     }
 
     public Provider<IWorkspace> provideIWorkspace() {
