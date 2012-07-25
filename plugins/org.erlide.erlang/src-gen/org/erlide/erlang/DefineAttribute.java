@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package org.erlide.erlang;
 
@@ -23,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface DefineAttribute extends AtomRefTarget, Attribute, AbstractDefineAttribute
+public interface DefineAttribute extends Attribute, AbstractDefineAttribute
 {
   /**
    * Returns the value of the '<em><b>Tag</b></em>' attribute.

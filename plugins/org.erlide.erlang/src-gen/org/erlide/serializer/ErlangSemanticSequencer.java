@@ -431,7 +431,6 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				else break;
 			case ErlangPackage.DEFINE_ATTRIBUTE:
 				if(context == grammarAccess.getAbstractDefineAttributeRule() ||
-				   context == grammarAccess.getAtomRefTargetRule() ||
 				   context == grammarAccess.getAttributeRule() ||
 				   context == grammarAccess.getDefineAttributeRule() ||
 				   context == grammarAccess.getFormRule()) {

@@ -4,7 +4,7 @@
     editorDirectory="/org.erlide.erlang.editor/src" modelPluginID="org.erlide.erlang"
     forceOverwrite="true" modelName="Erlang" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.erlide.erlang.edit"
-    editorPluginID="org.erlide.erlang.editor" runtimeVersion="2.8">
+    editorPluginID="org.erlide.erlang.editor" runtimeVersion="2.7">
   <genPackages prefix="Erlang" basePackage="org.erlide" disposableProviderFactory="true"
       ecorePackage="Erlang.ecore#/">
     <genClasses ecoreClass="Erlang.ecore#//Module">

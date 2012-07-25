@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package org.erlide.erlang.impl;
 
@@ -3874,7 +3877,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     moduleEClass.getESuperTypes().add(this.getAtomRefTarget());
     conditionalFormBlockEClass.getESuperTypes().add(this.getForm());
     attributeEClass.getESuperTypes().add(this.getForm());
-    defineAttributeEClass.getESuperTypes().add(this.getAtomRefTarget());
     defineAttributeEClass.getESuperTypes().add(this.getAttribute());
     defineAttributeEClass.getESuperTypes().add(this.getAbstractDefineAttribute());
     undefAttributeEClass.getESuperTypes().add(this.getAttribute());

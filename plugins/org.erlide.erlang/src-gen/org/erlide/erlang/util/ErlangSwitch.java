@@ -1,4 +1,7 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
  */
 package org.erlide.erlang.util;
 
@@ -128,7 +131,6 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         DefineAttribute defineAttribute = (DefineAttribute)theEObject;
         T result = caseDefineAttribute(defineAttribute);
-        if (result == null) result = caseAtomRefTarget(defineAttribute);
         if (result == null) result = caseAttribute(defineAttribute);
         if (result == null) result = caseAbstractDefineAttribute(defineAttribute);
         if (result == null) result = caseForm(defineAttribute);
