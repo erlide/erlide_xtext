@@ -19,6 +19,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.erlide.common.util.ErlLogger;
+
 import com.ericsson.otp.erlang.OtpErlang;
 import com.ericsson.otp.erlang.OtpErlangAtom;
 import com.ericsson.otp.erlang.OtpErlangBinary;
@@ -102,7 +104,7 @@ public final class TypeConverter {
         try {
             return Class.forName(arg);
         } catch (final ClassNotFoundException e) {
-            ErlLogger_2.warn("Rpc TypeConverter: can't find class " + arg);
+            ErlLogger.warn("Rpc TypeConverter: can't find class " + arg);
             return Object.class;
         }
     }
@@ -421,12 +423,12 @@ public final class TypeConverter {
 
                 }
             }
-            ErlLogger_2.debug(" *** deprecated use of java2erlang: "
+            ErlLogger.debug(" *** deprecated use of java2erlang: "
                     + obj.getClass().getSimpleName() + " " + el);
             if (el == null) {
-                ErlLogger_2.debug("$$$");
+                ErlLogger.debug("$$$");
                 for (final StackTraceElement ste : st) {
-                    ErlLogger_2.debug("   " + ste);
+                    ErlLogger.debug("   " + ste);
                 }
             }
         }

@@ -1,3 +1,5 @@
+package org.erlide.common.util;
+
 /*******************************************************************************
  * Copyright (c) 2007 Vlad Dumitrescu and others.
  * All rights reserved. This program and the accompanying materials
@@ -8,31 +10,26 @@
  * Contributors:
  *     Vlad Dumitrescu
  *******************************************************************************/
-package org.erlide.jinterface;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.MessageFormat;
 import java.util.Date;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
 import java.util.logging.Formatter;
-import java.util.logging.Level;
 import java.util.logging.LogRecord;
-import java.util.logging.Logger;
 
-public class ErlLogger_2 {
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
-    private static ErlLogger_2 instance;
+public class ErlLogger {
+
+    private static ErlLogger instance;
     private Logger logger;
     private String logDir;
-    private ConsoleHandler consoleHandler = null;
-    private FileHandler fileHandler = null;
 
-    public static ErlLogger_2 getInstance() {
+    public static ErlLogger getInstance() {
         if (instance == null) {
-            instance = new ErlLogger_2();
+            instance = new ErlLogger();
         }
         return instance;
     }
@@ -42,41 +39,24 @@ public class ErlLogger_2 {
     }
 
     public final void setLogDir(final String dir) {
-        logger.removeHandler(consoleHandler);
-        logger.removeHandler(fileHandler);
         logDir = dir == null ? "./" : dir;
-        final ErlSimpleFormatter erlSimpleFormatter = new ErlSimpleFormatter();
-        addFileHandler(erlSimpleFormatter);
-        addConsoleHandler(erlSimpleFormatter);
     }
 
     public String getLogLocation() {
         return logDir + "/erlide.log";
     }
 
-    public void log(final Level kind, final String fmt, final Object... o) {
+    private static String format(final String fmt, final Object... o) {
         final StackTraceElement el = getCaller();
         final String str = o.length == 0 ? fmt : String.format(fmt, o);
         final String msg = "(" + el.getFileName() + ":" + el.getLineNumber()
                 + ") : " + str;
-        if (logger != null) {
-            logger.log(kind, msg);
-        }
-    }
-
-    public void log(final Level kind, final Throwable exception) {
-        final StackTraceElement el = getCaller();
-        final String str = exception.getMessage();
-        final String msg = "(" + el.getFileName() + ":" + el.getLineNumber()
-                + ") : " + str;
-        if (logger != null) {
-            logger.log(kind, msg, exception);
-        }
+        return msg;
     }
 
     public void erlangLog(final String module, final int line,
             final String skind, final String fmt, final Object... o) {
-        final Level kind = Level.parse(skind);
+        final Level kind = Level.toLevel(skind);
         final String str = o.length == 0 ? fmt : String.format(fmt, o);
         final String msg = "(" + module + ":" + line + ") : " + str;
         if (logger != null) {
@@ -85,63 +65,44 @@ public class ErlLogger_2 {
     }
 
     public static void debug(final String fmt, final Object... o) {
-        getInstance().log(Level.FINEST, fmt, o);
+        if (getInstance().logger.isDebugEnabled()) {
+            getInstance().logger.debug(format(fmt, o));
+        }
     }
 
     public static void info(final String fmt, final Object... o) {
-        getInstance().log(Level.INFO, fmt, o);
+        if (getInstance().logger.isInfoEnabled()) {
+            getInstance().logger.info(format(fmt, o));
+        }
     }
 
     public static void warn(final String fmt, final Object... o) {
-        getInstance().log(Level.WARNING, fmt, o);
+        getInstance().logger.warn(format(fmt, o));
     }
 
     public static void error(final String fmt, final Object... o) {
-        getInstance().log(Level.SEVERE, fmt, o);
+        getInstance().logger.error(format(fmt, o));
     }
 
     public static void debug(final Throwable e) {
-        getInstance().log(Level.FINEST, e);
+        getInstance().debug(e);
     }
 
     public static void info(final Throwable e) {
-        getInstance().log(Level.INFO, e);
+        getInstance().info(e);
     }
 
     public static void warn(final Throwable e) {
-        getInstance().log(Level.WARNING, e);
+        getInstance().warn(e);
     }
 
     public static void error(final Throwable exception) {
-        getInstance().log(Level.SEVERE, exception);
+        getInstance().error(exception);
     }
 
-    private ErlLogger_2() {
-        final ErlSimpleFormatter erlSimpleFormatter = new ErlSimpleFormatter();
+    private ErlLogger() {
         logger = Logger.getLogger("org.erlide");
-        logger.setUseParentHandlers(false);
-        logger.setLevel(java.util.logging.Level.FINEST);
-    }
-
-    private void addConsoleHandler(final ErlSimpleFormatter erlSimpleFormatter) {
-        consoleHandler = new ConsoleHandler();
-        consoleHandler.setFormatter(erlSimpleFormatter);
-        final Level lvl = java.util.logging.Level.FINEST;
-        consoleHandler.setLevel(lvl);
-        logger.addHandler(consoleHandler);
-    }
-
-    private void addFileHandler(final ErlSimpleFormatter erlSimpleFormatter) {
-        try {
-            fileHandler = new FileHandler(getLogLocation());
-            fileHandler.setFormatter(erlSimpleFormatter);
-            fileHandler.setLevel(java.util.logging.Level.FINEST);
-            logger.addHandler(fileHandler);
-        } catch (final SecurityException e) {
-            e.printStackTrace();
-        } catch (final IOException e) {
-            e.printStackTrace();
-        }
+        logger.setLevel(Level.DEBUG);
     }
 
     private static StackTraceElement getCaller() {
@@ -150,7 +111,7 @@ public class ErlLogger_2 {
         int i = 2;
         do {
             el = st[i++];
-        } while (el.getClassName().equals(ErlLogger_2.class.getName()));
+        } while (el.getClassName().equals(ErlLogger.class.getName()));
         return el;
     }
 

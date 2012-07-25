@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.erlide.jinterface.ErlLogger_2;
+import org.erlide.common.util.ErlLogger;
 
 import com.ericsson.otp.erlang.OtpEpmd;
 
@@ -101,7 +101,7 @@ public final class EpmdWatcher {
                     // InterfacePlugin.getDefault().getLog().log(
                     // new Status(IStatus.WARNING,
                     // InterfacePlugin.PLUGIN_ID, msg));
-                    ErlLogger_2.warn(msg);
+                    ErlLogger.warn(msg);
                     epmdStarted = false;
                 }
             }
