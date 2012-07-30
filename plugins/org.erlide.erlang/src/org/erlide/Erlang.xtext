@@ -510,7 +510,7 @@ terminal STRING:
 	'"' ('\\' ESCAPE | !('\\' | '"'))* ('"' | EOF);
 
 terminal VARIABLE:
-	('A'..'Z' | '_') IN_WORD_CHAR*;
+	('A'..'Z' | '_' | 'À'..'Ö' | 'Ø'..'Þ') IN_WORD_CHAR*;
 
 terminal SL_COMMENT:
 	'%' !('\n' | '\r')* ('\r'? '\n' | EOF);
@@ -557,7 +557,7 @@ terminal fragment ATOM_STARTER:
 
 terminal fragment ESCAPE:
 	( 'b' | 'd' | 'e' | 'f' | 'n' | 'r' | 's' | 't' | 'v'
-		| ('0'..'7' ('0'..'7' '0'..'7'?)?)
+		| '0'..'7' ('0'..'7' '0'..'7'?)?
 		| ('x'|'X') HEX_DIGIT HEX_DIGIT
 		| ('x'|'X') '{' HEX_DIGIT+ '}'
 		| '^' ('a'..'z' | 'A'..'Z' | ']')

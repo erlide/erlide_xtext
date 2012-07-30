@@ -6887,7 +6887,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal VARIABLE:
-	//	("A".."Z" | "_") IN_WORD_CHAR*;
+	//	("A".."Z" | "_" | "À".."Ö" | "Ø".."Þ") IN_WORD_CHAR*;
 	public TerminalRule getVARIABLERule() {
 		return (tVARIABLE != null) ? tVARIABLE : (tVARIABLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "VARIABLE"));
 	} 

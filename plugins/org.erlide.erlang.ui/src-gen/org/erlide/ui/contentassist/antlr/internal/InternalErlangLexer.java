@@ -2157,10 +2157,10 @@ public class InternalErlangLexer extends Lexer {
         try {
             int _type = RULE_VARIABLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28106:15: ( ( 'A' .. 'Z' | '_' ) ( RULE_IN_WORD_CHAR )* )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28106:17: ( 'A' .. 'Z' | '_' ) ( RULE_IN_WORD_CHAR )*
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28106:15: ( ( 'A' .. 'Z' | '_' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00DE' ) ( RULE_IN_WORD_CHAR )* )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28106:17: ( 'A' .. 'Z' | '_' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00DE' ) ( RULE_IN_WORD_CHAR )*
             {
-            if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_' ) {
+            if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='\u00C0' && input.LA(1)<='\u00D6')||(input.LA(1)>='\u00D8' && input.LA(1)<='\u00DE') ) {
                 input.consume();
 
             }
@@ -2169,7 +2169,7 @@ public class InternalErlangLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28106:32: ( RULE_IN_WORD_CHAR )*
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28106:70: ( RULE_IN_WORD_CHAR )*
             loop7:
             do {
                 int alt7=2;
@@ -2182,7 +2182,7 @@ public class InternalErlangLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28106:32: RULE_IN_WORD_CHAR
+            	    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28106:70: RULE_IN_WORD_CHAR
             	    {
             	    mRULE_IN_WORD_CHAR(); 
 
@@ -3834,7 +3834,8 @@ public class InternalErlangLexer extends Lexer {
             "\23\1\24\1\uffff\32\52\1\41\1\uffff\1\42\1\uffff\1\52\1\uffff"+
             "\1\20\1\12\1\4\1\16\1\26\1\31\2\50\1\2\2\50\1\25\1\30\1\21\1"+
             "\6\1\50\1\46\1\17\1\3\1\5\1\27\1\50\1\44\1\13\2\50\1\36\1\47"+
-            "\1\37\1\uffff\42\54\76\uffff\30\50\1\uffff\10\50\uff00\54",
+            "\1\37\1\uffff\42\54\37\uffff\27\52\1\uffff\7\52\30\50\1\uffff"+
+            "\10\50\uff00\54",
             "",
             "\1\60\6\uffff\1\62\1\61",
             "\1\63",
@@ -4297,7 +4298,7 @@ public class InternalErlangLexer extends Lexer {
 
                         else if ( (LA22_0=='\"') ) {s = 41;}
 
-                        else if ( ((LA22_0>='A' && LA22_0<='Z')||LA22_0=='_') ) {s = 42;}
+                        else if ( ((LA22_0>='A' && LA22_0<='Z')||LA22_0=='_'||(LA22_0>='\u00C0' && LA22_0<='\u00D6')||(LA22_0>='\u00D8' && LA22_0<='\u00DE')) ) {s = 42;}
 
                         else if ( (LA22_0=='%') ) {s = 43;}
 

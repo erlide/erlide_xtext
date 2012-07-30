@@ -9069,7 +9069,7 @@ RULE_ATOM : (RULE_ATOM_STARTER RULE_IN_WORD_CHAR*|'\'' ('\\' RULE_ESCAPE|~(('\\'
 
 RULE_STRING : '"' ('\\' RULE_ESCAPE|~(('\\'|'"')))* ('"'|EOF);
 
-RULE_VARIABLE : ('A'..'Z'|'_') RULE_IN_WORD_CHAR*;
+RULE_VARIABLE : ('A'..'Z'|'_'|'\u00C0'..'\u00D6'|'\u00D8'..'\u00DE') RULE_IN_WORD_CHAR*;
 
 RULE_SL_COMMENT : '%' ~(('\n'|'\r'))* ('\r'? '\n'|EOF);
 
