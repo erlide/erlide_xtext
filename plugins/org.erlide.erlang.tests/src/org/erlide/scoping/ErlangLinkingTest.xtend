@@ -493,4 +493,5 @@ class ErlangLinkingTest {
     	val tgt = module.getObjectAtMarker(0)
     	assertThat(macro.macroReference, is(tgt))
     } 
- }
+}
+ 

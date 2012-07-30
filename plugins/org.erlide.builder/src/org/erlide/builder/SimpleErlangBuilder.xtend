@@ -36,7 +36,5 @@ public class SimpleErlangBuilder {
         
         callback.apply(file, msg, nline, severity)                
     }
-
-
     
 }
