@@ -1,8 +1,6 @@
-package org.erlide.builder;
+package org.erlide.builder.compiler;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.core.resources.IContainer;
@@ -11,49 +9,37 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure4;
-import org.erlide.builder.StreamListener;
+import org.erlide.builder.BuilderPlugin;
+import org.erlide.builder.compiler.AbstractCompiler;
+import org.erlide.builder.compiler.CompilerOptions;
 
 @SuppressWarnings("all")
-public class SimpleErlangBuilder {
-  public static void compileResource(final IFile file, final Procedure4<? super IFile,? super String,? super Integer,? super Integer> callback) {
+public class MakeCompiler extends AbstractCompiler {
+  public final static String COMPILER_ID = new Function0<String>() {
+    public String apply() {
+      String _plus = (BuilderPlugin.PLUGIN_ID + ".compiler.make");
+      return _plus;
+    }
+  }.apply();
+  
+  public String getId() {
+    return MakeCompiler.COMPILER_ID;
+  }
+  
+  public void compileResource(final IFile file, final CompilerOptions options, final Procedure4<? super IFile,? super String,? super Integer,? super Integer> resultsHandler) {
     String _name = file.getName();
-    ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("erlc", _name);
+    ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("make", _name);
     IContainer _parent = file.getParent();
     IPath _location = _parent.getLocation();
     String _portableString = _location.toPortableString();
     File _file = new File(_portableString);
-    SimpleErlangBuilder.launchProcess(file, _newArrayList, _file, callback);
+    this.launchProcess(file, _newArrayList, _file, resultsHandler);
   }
   
-  public static Process launchProcess(final IFile file, final List<String> cmdLine, final File workingDirectory, final Procedure4<? super IFile,? super String,? super Integer,? super Integer> callback) {
-    ProcessBuilder _processBuilder = new ProcessBuilder(cmdLine);
-    final ProcessBuilder builder = _processBuilder;
-    builder.directory(workingDirectory);
-    try {
-      final Process process = builder.start();
-      InputStream _inputStream = process.getInputStream();
-      final Procedure1<String> _function = new Procedure1<String>() {
-          public void apply(final String it) {
-            SimpleErlangBuilder.parseLine(it, file, callback);
-          }
-        };
-      new StreamListener(_inputStream, _function);
-      return process;
-    } catch (final Throwable _t) {
-      if (_t instanceof IOException) {
-        final IOException e = (IOException)_t;
-        return null;
-      } else {
-        throw Exceptions.sneakyThrow(_t);
-      }
-    }
-  }
-  
-  public static void parseLine(final String line, final IFile file, final Procedure4<? super IFile,? super String,? super Integer,? super Integer> callback) {
+  protected void parseLine(final String line, final IFile file, final Procedure4<? super IFile,? super String,? super Integer,? super Integer> callback) {
     final List<String> parts = ((List<String>)Conversions.doWrapArray(line.split(": ")));
     String _head = IterableExtensions.<String>head(parts);
     final List<String> heads = ((List<String>)Conversions.doWrapArray(_head.split(":")));

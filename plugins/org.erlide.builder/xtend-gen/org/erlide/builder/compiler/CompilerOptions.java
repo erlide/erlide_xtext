@@ -1,4 +1,4 @@
-package org.erlide.project.compiler;
+package org.erlide.builder.compiler;
 
 import com.ericsson.otp.erlang.OtpErlang;
 import com.ericsson.otp.erlang.OtpErlangList;
@@ -23,16 +23,16 @@ import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
+import org.erlide.builder.compiler.BooleanOption;
+import org.erlide.builder.compiler.CompilerOption;
+import org.erlide.builder.compiler.DefineOption;
+import org.erlide.builder.compiler.ModuleOption;
+import org.erlide.builder.compiler.PathsOption;
+import org.erlide.builder.compiler.WarningOption;
 import org.erlide.common.util.ErlLogger;
+import org.erlide.common.util.PreferencesHelper;
 import org.erlide.common.util.TermParserException;
 import org.erlide.common.util.Tuple;
-import org.erlide.project.PreferencesHelper;
-import org.erlide.project.compiler.BooleanOption;
-import org.erlide.project.compiler.CompilerOption;
-import org.erlide.project.compiler.DefineOption;
-import org.erlide.project.compiler.ModuleOption;
-import org.erlide.project.compiler.PathsOption;
-import org.erlide.project.compiler.WarningOption;
 import org.osgi.service.prefs.BackingStoreException;
 
 @SuppressWarnings("all")

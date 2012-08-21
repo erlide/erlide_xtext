@@ -1,4 +1,4 @@
-package org.erlide.project.compiler
+package org.erlide.builder.compiler
 
 import com.ericsson.otp.erlang.OtpErlang
 import com.ericsson.otp.erlang.OtpErlangList
@@ -16,11 +16,10 @@ import org.eclipse.core.runtime.Status
 import org.erlide.common.util.ErlLogger
 import org.erlide.common.util.TermParserException
 import org.erlide.common.util.Tuple
-import org.erlide.project.PreferencesHelper
 import org.osgi.service.prefs.BackingStoreException
 
-import static org.erlide.project.compiler.CompilerOptions.*
 import org.eclipse.xtext.xbase.lib.Pair
+import org.erlide.common.util.PreferencesHelper
 
 class CompilerOptions {
 

@@ -8,17 +8,28 @@ import org.eclipse.core.resources.IResource
 import org.eclipse.core.resources.IResourceDelta
 import org.eclipse.core.resources.IncrementalProjectBuilder
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.IConfigurationElement
+import org.eclipse.core.runtime.IExtensionRegistry
 import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.core.runtime.Platform
 import org.eclipse.core.runtime.SubProgressMonitor
+import org.erlide.builder.compiler.ErlCompiler
+import org.erlide.builder.compiler.IErlangCompiler
 
 import static org.eclipse.core.resources.IncrementalProjectBuilder.*
+import static org.erlide.builder.ErlangBuilder.*
 
 class ErlangBuilder extends IncrementalProjectBuilder {
 
     public static String BUILDER_ID = "org.erlide.builder.erlangBuilder"
     public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem"
 
+    Map<String, IErlangCompiler> compilers;
 
+	new() {
+		compilers = newHashMap()
+	}
+	
     def static void addMarker(IFile file, String message,
             int lineNumber, int severity) {
         var ln = lineNumber
@@ -36,6 +47,8 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     }
 
 	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor monitor) throws CoreException {
+		loadCompilers()
+		
 	    if (kind == FULL_BUILD) {
             fullBuild(monitor)
         } else {
@@ -56,7 +69,8 @@ class ErlangBuilder extends IncrementalProjectBuilder {
             return;
         }
         deleteMarkers(resource as IFile)
-        SimpleErlangBuilder::compileResource(resource as IFile) 
+        //TODO get project's compiler setting
+        compilers.get(ErlCompiler::COMPILER_ID).compileResource(resource as IFile, null) 
         	[ file, message, lineNumber, severity |
             	addMarker(file, message, lineNumber, severity)
 			]
@@ -96,6 +110,20 @@ class ErlangBuilder extends IncrementalProjectBuilder {
             }
             return true
         ]
+    }
+
+    def private void loadCompilers() {
+        val IExtensionRegistry reg = Platform::getExtensionRegistry()
+        val IConfigurationElement[] elements = reg.getConfigurationElementsFor("org.erlide.builder.compilers")
+        for (element : elements) {
+            try {
+            	val compiler = element.createExecutableExtension("class") as IErlangCompiler
+                compilers.put(compiler.id, compiler);
+            } catch (CoreException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 
 }

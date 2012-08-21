@@ -1,4 +1,4 @@
-package org.erlide.project.compiler;
+package org.erlide.builder.compiler;
 
 import com.ericsson.otp.erlang.OtpErlang;
 import com.ericsson.otp.erlang.OtpErlangAtom;
@@ -13,8 +13,8 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Pair;
+import org.erlide.builder.compiler.CompilerOption;
 import org.erlide.common.util.TermParser;
-import org.erlide.project.compiler.CompilerOption;
 
 @SuppressWarnings("all")
 public class DefineOption extends CompilerOption {

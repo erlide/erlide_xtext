@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Builder tests
+Bundle-SymbolicName: org.erlide.builder.tests
+Bundle-Version: 0.101.0.qualifier
+Bundle-Activator: org.erlide.builder.tests.Activator
+Bundle-Vendor: erlide.org
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.erlide.builder;bundle-version="0.101.0",
+ org.erlide.testing.libs;bundle-version="0.101.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

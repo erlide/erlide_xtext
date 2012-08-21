@@ -1,6 +1,7 @@
 package org.erlide.builder;
 
 import com.google.common.base.Objects;
+import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -11,19 +12,31 @@ import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure4;
-import org.erlide.builder.SimpleErlangBuilder;
+import org.erlide.builder.compiler.ErlCompiler;
+import org.erlide.builder.compiler.IErlangCompiler;
 
 @SuppressWarnings("all")
 public class ErlangBuilder extends IncrementalProjectBuilder {
   public static String BUILDER_ID = "org.erlide.builder.erlangBuilder";
   
   public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem";
+  
+  private Map<String,IErlangCompiler> compilers;
+  
+  public ErlangBuilder() {
+    HashMap<String,IErlangCompiler> _newHashMap = CollectionLiterals.<String, IErlangCompiler>newHashMap();
+    this.compilers = _newHashMap;
+  }
   
   public static void addMarker(final IFile file, final String message, final int lineNumber, final int severity) {
     int ln = lineNumber;
@@ -49,6 +62,7 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   }
   
   protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
+    this.loadCompilers();
     boolean _equals = (kind == IncrementalProjectBuilder.FULL_BUILD);
     if (_equals) {
       this.fullBuild(monitor);
@@ -82,12 +96,13 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
       return;
     }
     this.deleteMarkers(((IFile) resource));
+    IErlangCompiler _get = this.compilers.get(ErlCompiler.COMPILER_ID);
     final Procedure4<IFile,String,Integer,Integer> _function = new Procedure4<IFile,String,Integer,Integer>() {
         public void apply(final IFile file, final String message, final Integer lineNumber, final Integer severity) {
           ErlangBuilder.addMarker(file, message, (lineNumber).intValue(), (severity).intValue());
         }
       };
-    SimpleErlangBuilder.compileResource(((IFile) resource), _function);
+    _get.compileResource(((IFile) resource), null, _function);
   }
   
   private boolean isErlangResource(final IResource resource) {
@@ -159,5 +174,25 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
           return _function.apply(delta);
         }
     });
+  }
+  
+  private void loadCompilers() {
+    final IExtensionRegistry reg = Platform.getExtensionRegistry();
+    final IConfigurationElement[] elements = reg.getConfigurationElementsFor("org.erlide.builder.compilers");
+    for (final IConfigurationElement element : elements) {
+      try {
+        Object _createExecutableExtension = element.createExecutableExtension("class");
+        final IErlangCompiler compiler = ((IErlangCompiler) _createExecutableExtension);
+        String _id = compiler.getId();
+        this.compilers.put(_id, compiler);
+      } catch (final Throwable _t) {
+        if (_t instanceof CoreException) {
+          final CoreException e = (CoreException)_t;
+          e.printStackTrace();
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
+    }
   }
 }

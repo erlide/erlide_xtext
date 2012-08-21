@@ -1,4 +1,4 @@
-package org.erlide.project.compiler
+package org.erlide.builder.compiler
 
 import com.ericsson.otp.erlang.OtpErlang
 import com.ericsson.otp.erlang.OtpErlangAtom
@@ -13,7 +13,6 @@ import java.util.List
 import org.eclipse.core.runtime.Assert
 import org.erlide.common.util.TermParser
 
-import static org.erlide.project.compiler.CompilerOption.*
 import org.eclipse.xtext.xbase.lib.Pair
 
 abstract class CompilerOption {

@@ -1,10 +1,10 @@
-package org.erlide.project.compiler;
+package org.erlide.builder.compiler;
 
 import com.ericsson.otp.erlang.OtpErlang;
 import com.ericsson.otp.erlang.OtpErlangAtom;
 import com.ericsson.otp.erlang.OtpErlangObject;
 import com.ericsson.otp.erlang.OtpErlangTuple;
-import org.erlide.project.compiler.CompilerOption;
+import org.erlide.builder.compiler.CompilerOption;
 
 @SuppressWarnings("all")
 public class ModuleOption extends CompilerOption {

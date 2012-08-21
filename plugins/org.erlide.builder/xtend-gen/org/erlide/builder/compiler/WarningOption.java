@@ -1,8 +1,8 @@
-package org.erlide.project.compiler;
+package org.erlide.builder.compiler;
 
 import com.ericsson.otp.erlang.OtpErlangAtom;
 import com.ericsson.otp.erlang.OtpErlangObject;
-import org.erlide.project.compiler.BooleanOption;
+import org.erlide.builder.compiler.BooleanOption;
 
 @SuppressWarnings("all")
 public class WarningOption extends BooleanOption {
