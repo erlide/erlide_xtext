@@ -14,12 +14,12 @@ public class ErlCompiler extends AbstractCompiler {
 		COMPILER_ID
 	}
 	
-    override compileResource(IFile file, CompilerOptions options, (IFile, String, int, int)=>void resultsHandler) {
+    override compileResource(IFile file, CompilerOptions options, (CompilerProblem)=>void resultsHandler) {
         launchProcess(file, newArrayList("erlc", file.getName()), new File(
             file.getParent().getLocation().toPortableString()), resultsHandler)
     }
     
-    override protected void parseLine(String line, IFile file, (IFile, String, int, int)=>void callback) {
+    override protected void parseLine(String line, IFile file, (CompilerProblem)=>void callback) {
         val List<String> parts = line.split(": ")
         val List<String> heads = parts.head.split(":") 
         val warning = parts.size==3
@@ -27,7 +27,7 @@ public class ErlCompiler extends AbstractCompiler {
         val severity = if(warning) IMarker::SEVERITY_WARNING else IMarker::SEVERITY_ERROR
         val nline = Integer::parseInt(heads.tail.head)
         
-        callback.apply(file, msg, nline, severity)                
+        callback.apply(new CompilerProblem(file, msg, nline, severity))                
     }
   
 }

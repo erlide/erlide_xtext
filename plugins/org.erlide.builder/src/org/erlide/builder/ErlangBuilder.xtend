@@ -71,9 +71,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         deleteMarkers(resource as IFile)
         //TODO get project's compiler setting
         compilers.get(ErlCompiler::COMPILER_ID).compileResource(resource as IFile, null) 
-        	[ file, message, lineNumber, severity |
-            	addMarker(file, message, lineNumber, severity)
-			]
+        	[ addMarker(file, message, line, severity) ]
 	}
 
     def private boolean isErlangResource(IResource resource) {

@@ -10,7 +10,7 @@ import org.erlide.builder.StreamListener
 abstract class AbstractCompiler implements IErlangCompiler {
 	
 	def Process launchProcess(IFile file, List<String> cmdLine,
-            File workingDirectory, (IFile, String, int, int)=>void callback) {
+            File workingDirectory, (CompilerProblem)=>void callback) {
         val ProcessBuilder builder = new ProcessBuilder(cmdLine)
         builder.directory(workingDirectory)
         // builder.redirectErrorStream(true)
@@ -23,7 +23,7 @@ abstract class AbstractCompiler implements IErlangCompiler {
         }
     }
     
-    def protected void parseLine(String line, IFile file, (IFile, String, int, int)=>void callback) {
+    def protected void parseLine(String line, IFile file, (CompilerProblem)=>void callback) {
 		throw new UnsupportedOperationException("AbstractCompiler needs to be subclassed")
     }
     

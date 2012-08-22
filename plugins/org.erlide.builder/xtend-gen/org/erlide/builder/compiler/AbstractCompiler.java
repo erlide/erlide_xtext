@@ -7,13 +7,13 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure4;
 import org.erlide.builder.StreamListener;
+import org.erlide.builder.compiler.CompilerProblem;
 import org.erlide.builder.compiler.IErlangCompiler;
 
 @SuppressWarnings("all")
 public abstract class AbstractCompiler implements IErlangCompiler {
-  public Process launchProcess(final IFile file, final List<String> cmdLine, final File workingDirectory, final Procedure4<? super IFile,? super String,? super Integer,? super Integer> callback) {
+  public Process launchProcess(final IFile file, final List<String> cmdLine, final File workingDirectory, final Procedure1<? super CompilerProblem> callback) {
     ProcessBuilder _processBuilder = new ProcessBuilder(cmdLine);
     final ProcessBuilder builder = _processBuilder;
     builder.directory(workingDirectory);
@@ -37,7 +37,7 @@ public abstract class AbstractCompiler implements IErlangCompiler {
     }
   }
   
-  protected void parseLine(final String line, final IFile file, final Procedure4<? super IFile,? super String,? super Integer,? super Integer> callback) {
+  protected void parseLine(final String line, final IFile file, final Procedure1<? super CompilerProblem> callback) {
     UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("AbstractCompiler needs to be subclassed");
     throw _unsupportedOperationException;
   }

@@ -21,7 +21,8 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure4;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.erlide.builder.compiler.CompilerProblem;
 import org.erlide.builder.compiler.ErlCompiler;
 import org.erlide.builder.compiler.IErlangCompiler;
 
@@ -97,9 +98,13 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     }
     this.deleteMarkers(((IFile) resource));
     IErlangCompiler _get = this.compilers.get(ErlCompiler.COMPILER_ID);
-    final Procedure4<IFile,String,Integer,Integer> _function = new Procedure4<IFile,String,Integer,Integer>() {
-        public void apply(final IFile file, final String message, final Integer lineNumber, final Integer severity) {
-          ErlangBuilder.addMarker(file, message, (lineNumber).intValue(), (severity).intValue());
+    final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
+        public void apply(final CompilerProblem it) {
+          IFile _file = it.getFile();
+          String _message = it.getMessage();
+          int _line = it.getLine();
+          int _severity = it.getSeverity();
+          ErlangBuilder.addMarker(_file, _message, _line, _severity);
         }
       };
     _get.compileResource(((IFile) resource), null, _function);

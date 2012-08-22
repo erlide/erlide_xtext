@@ -11,10 +11,11 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure4;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.compiler.AbstractCompiler;
 import org.erlide.builder.compiler.CompilerOptions;
+import org.erlide.builder.compiler.CompilerProblem;
 
 @SuppressWarnings("all")
 public class MakeCompiler extends AbstractCompiler {
@@ -29,7 +30,7 @@ public class MakeCompiler extends AbstractCompiler {
     return MakeCompiler.COMPILER_ID;
   }
   
-  public void compileResource(final IFile file, final CompilerOptions options, final Procedure4<? super IFile,? super String,? super Integer,? super Integer> resultsHandler) {
+  public void compileResource(final IFile file, final CompilerOptions options, final Procedure1<? super CompilerProblem> resultsHandler) {
     String _name = file.getName();
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("make", _name);
     IContainer _parent = file.getParent();
@@ -39,7 +40,7 @@ public class MakeCompiler extends AbstractCompiler {
     this.launchProcess(file, _newArrayList, _file, resultsHandler);
   }
   
-  protected void parseLine(final String line, final IFile file, final Procedure4<? super IFile,? super String,? super Integer,? super Integer> callback) {
+  protected void parseLine(final String line, final IFile file, final Procedure1<? super CompilerProblem> callback) {
     final List<String> parts = ((List<String>)Conversions.doWrapArray(line.split(": ")));
     String _head = IterableExtensions.<String>head(parts);
     final List<String> heads = ((List<String>)Conversions.doWrapArray(_head.split(":")));
@@ -64,6 +65,7 @@ public class MakeCompiler extends AbstractCompiler {
     Iterable<String> _tail = IterableExtensions.<String>tail(heads);
     String _head_1 = IterableExtensions.<String>head(_tail);
     final int nline = Integer.parseInt(_head_1);
-    callback.apply(file, msg, Integer.valueOf(nline), Integer.valueOf(severity));
+    CompilerProblem _compilerProblem = new CompilerProblem(file, msg, nline, severity);
+    callback.apply(_compilerProblem);
   }
 }

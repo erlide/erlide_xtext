@@ -7,8 +7,9 @@ Bundle-Activator: org.erlide.builder.BuilderPlugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;bundle-version="3.7.101",
  org.eclipse.xtext.xbase.lib;bundle-version="2.3.0",
+ org.erlide.common;bundle-version="0.101.0",
  org.erlide.jinterface;bundle-version="0.115.2",
- org.erlide.common;bundle-version="0.101.0"
+ org.erlide.libs;bundle-version="1.108.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.erlide.builder,
