@@ -25,27 +25,13 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem"
 
     Map<String, IErlangCompiler> compilers;
+    BuilderMarkerUpdater markerUpdater;
 
 	new() {
 		compilers = newHashMap()
+		markerUpdater = new BuilderMarkerUpdater(MARKER_TYPE)
 	}
 	
-    def static void addMarker(IFile file, String message,
-            int lineNumber, int severity) {
-        var ln = lineNumber
-        try {
-            val marker = file.createMarker(MARKER_TYPE)
-            marker.setAttribute(IMarker::MESSAGE, message)
-            marker.setAttribute(IMarker::SEVERITY, severity)
-            if (lineNumber == -1) {
-                ln = 1
-            } else
-            	ln = lineNumber
-            marker.setAttribute(IMarker::LINE_NUMBER, lineNumber);
-        } catch (CoreException e) {
-        }
-    }
-
 	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor monitor) throws CoreException {
 		loadCompilers()
 		
@@ -68,21 +54,20 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         if (!(resource instanceof IFile) || !isErlangResource(resource)) {
             return;
         }
-        deleteMarkers(resource as IFile)
+        val erlFile = resource as IFile
+        markerUpdater.deleteMarkers(erlFile)
         //TODO get project's compiler setting
-        compilers.get(ErlCompiler::COMPILER_ID).compileResource(resource as IFile, null) 
-        	[ addMarker(file, message, line, severity) ]
+        val compiler = compilers.get(ErlCompiler::COMPILER_ID)
+        if (compiler==null) {
+        	//TODO issue warning
+        } else {
+        	compiler.compileResource(erlFile, null) 
+        		[ markerUpdater.addMarker(file, message, line, severity) ]
+        }
 	}
 
     def private boolean isErlangResource(IResource resource) {
         return resource.projectRelativePath.fileExtension == "erl"
-    }
-
-    def void deleteMarkers(IFile file) {
-        try {
-            file.deleteMarkers(MARKER_TYPE, false, IResource::DEPTH_ZERO);
-        } catch (CoreException ce) {
-        }
     }
 
     def protected void fullBuild(IProgressMonitor monitor)
@@ -118,8 +103,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
             	val compiler = element.createExecutableExtension("class") as IErlangCompiler
                 compilers.put(compiler.id, compiler);
             } catch (CoreException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                // ignore
             }
         }
     }

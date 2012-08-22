@@ -4,7 +4,6 @@ import com.google.common.base.Objects;
 import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceDelta;
@@ -22,6 +21,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.compiler.CompilerProblem;
 import org.erlide.builder.compiler.ErlCompiler;
 import org.erlide.builder.compiler.IErlangCompiler;
@@ -34,32 +34,13 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   private Map<String,IErlangCompiler> compilers;
   
+  private BuilderMarkerUpdater markerUpdater;
+  
   public ErlangBuilder() {
     HashMap<String,IErlangCompiler> _newHashMap = CollectionLiterals.<String, IErlangCompiler>newHashMap();
     this.compilers = _newHashMap;
-  }
-  
-  public static void addMarker(final IFile file, final String message, final int lineNumber, final int severity) {
-    int ln = lineNumber;
-    try {
-      final IMarker marker = file.createMarker(ErlangBuilder.MARKER_TYPE);
-      marker.setAttribute(IMarker.MESSAGE, message);
-      marker.setAttribute(IMarker.SEVERITY, severity);
-      int _minus = (-1);
-      boolean _equals = (lineNumber == _minus);
-      if (_equals) {
-        ln = 1;
-      } else {
-        ln = lineNumber;
-      }
-      marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
-    } catch (final Throwable _t) {
-      if (_t instanceof CoreException) {
-        final CoreException e = (CoreException)_t;
-      } else {
-        throw Exceptions.sneakyThrow(_t);
-      }
-    }
+    BuilderMarkerUpdater _builderMarkerUpdater = new BuilderMarkerUpdater(ErlangBuilder.MARKER_TYPE);
+    this.markerUpdater = _builderMarkerUpdater;
   }
   
   protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
@@ -96,36 +77,29 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     if (_or) {
       return;
     }
-    this.deleteMarkers(((IFile) resource));
-    IErlangCompiler _get = this.compilers.get(ErlCompiler.COMPILER_ID);
-    final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
-        public void apply(final CompilerProblem it) {
-          IFile _file = it.getFile();
-          String _message = it.getMessage();
-          int _line = it.getLine();
-          int _severity = it.getSeverity();
-          ErlangBuilder.addMarker(_file, _message, _line, _severity);
-        }
-      };
-    _get.compileResource(((IFile) resource), null, _function);
+    final IFile erlFile = ((IFile) resource);
+    this.markerUpdater.deleteMarkers(erlFile);
+    final IErlangCompiler compiler = this.compilers.get(ErlCompiler.COMPILER_ID);
+    boolean _equals = Objects.equal(compiler, null);
+    if (_equals) {
+    } else {
+      final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
+          public void apply(final CompilerProblem it) {
+            IFile _file = it.getFile();
+            String _message = it.getMessage();
+            int _line = it.getLine();
+            int _severity = it.getSeverity();
+            ErlangBuilder.this.markerUpdater.addMarker(_file, _message, _line, _severity);
+          }
+        };
+      compiler.compileResource(erlFile, null, _function);
+    }
   }
   
   private boolean isErlangResource(final IResource resource) {
     IPath _projectRelativePath = resource.getProjectRelativePath();
     String _fileExtension = _projectRelativePath.getFileExtension();
     return Objects.equal(_fileExtension, "erl");
-  }
-  
-  public void deleteMarkers(final IFile file) {
-    try {
-      file.deleteMarkers(ErlangBuilder.MARKER_TYPE, false, IResource.DEPTH_ZERO);
-    } catch (final Throwable _t) {
-      if (_t instanceof CoreException) {
-        final CoreException ce = (CoreException)_t;
-      } else {
-        throw Exceptions.sneakyThrow(_t);
-      }
-    }
   }
   
   protected void fullBuild(final IProgressMonitor monitor) throws CoreException {
@@ -193,7 +167,6 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
       } catch (final Throwable _t) {
         if (_t instanceof CoreException) {
           final CoreException e = (CoreException)_t;
-          e.printStackTrace();
         } else {
           throw Exceptions.sneakyThrow(_t);
         }
