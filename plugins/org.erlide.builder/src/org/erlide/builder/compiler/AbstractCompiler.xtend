@@ -4,7 +4,7 @@ abstract class AbstractCompiler implements IErlangCompiler {
 
 	protected var IProblemLineParser lineParser
 	
-    def void setLineParser(IProblemLineParser parser) {
+    override void setLineParser(IProblemLineParser parser) {
     	lineParser = parser
     }
 }

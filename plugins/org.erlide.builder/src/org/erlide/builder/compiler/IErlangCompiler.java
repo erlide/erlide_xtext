@@ -10,4 +10,6 @@ public interface IErlangCompiler {
     void compileResource(final IFile file, final CompilerOptions options,
             Procedure1<? super CompilerProblem> resultsHandler);
 
+    void setLineParser(IProblemLineParser parser);
+
 }

@@ -2,7 +2,6 @@ package org.erlide.builder
 
 import java.util.Map
 import org.eclipse.core.resources.IFile
-import org.eclipse.core.resources.IMarker
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.resources.IResourceDelta
@@ -18,6 +17,7 @@ import org.erlide.builder.compiler.IErlangCompiler
 
 import static org.eclipse.core.resources.IncrementalProjectBuilder.*
 import static org.erlide.builder.ErlangBuilder.*
+import org.erlide.builder.compiler.DefaultLineParser
 
 class ErlangBuilder extends IncrementalProjectBuilder {
 
@@ -25,7 +25,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem"
 
     Map<String, IErlangCompiler> compilers;
-    BuilderMarkerUpdater markerUpdater;
+	BuilderMarkerUpdater markerUpdater;
 
 	new() {
 		compilers = newHashMap()
@@ -56,14 +56,18 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         }
         val erlFile = resource as IFile
         markerUpdater.deleteMarkers(erlFile)
-        //TODO get project's compiler setting
-        val compiler = compilers.get(ErlCompiler::COMPILER_ID)
+        val compiler = compilers.get(getCompilerId(project))
         if (compiler==null) {
         	//TODO issue warning
         } else {
         	compiler.compileResource(erlFile, null) 
         		[ markerUpdater.addMarker(file, message, line, severity) ]
         }
+	}
+
+	def private String getCompilerId(IProject project) {
+		//TODO get it from project settings
+		ErlCompiler::COMPILER_ID
 	}
 
     def private boolean isErlangResource(IResource resource) {
@@ -101,6 +105,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         for (element : elements) {
             try {
             	val compiler = element.createExecutableExtension("class") as IErlangCompiler
+            	compiler.setLineParser(new DefaultLineParser())
                 compilers.put(compiler.id, compiler);
             } catch (CoreException e) {
                 // ignore

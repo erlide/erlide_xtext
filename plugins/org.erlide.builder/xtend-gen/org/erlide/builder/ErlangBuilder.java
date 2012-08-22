@@ -23,6 +23,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.compiler.CompilerProblem;
+import org.erlide.builder.compiler.DefaultLineParser;
 import org.erlide.builder.compiler.ErlCompiler;
 import org.erlide.builder.compiler.IErlangCompiler;
 
@@ -79,7 +80,9 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     }
     final IFile erlFile = ((IFile) resource);
     this.markerUpdater.deleteMarkers(erlFile);
-    final IErlangCompiler compiler = this.compilers.get(ErlCompiler.COMPILER_ID);
+    IProject _project = this.getProject();
+    String _compilerId = this.getCompilerId(_project);
+    final IErlangCompiler compiler = this.compilers.get(_compilerId);
     boolean _equals = Objects.equal(compiler, null);
     if (_equals) {
     } else {
@@ -94,6 +97,10 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
         };
       compiler.compileResource(erlFile, null, _function);
     }
+  }
+  
+  private String getCompilerId(final IProject project) {
+    return ErlCompiler.COMPILER_ID;
   }
   
   private boolean isErlangResource(final IResource resource) {
@@ -162,6 +169,8 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
       try {
         Object _createExecutableExtension = element.createExecutableExtension("class");
         final IErlangCompiler compiler = ((IErlangCompiler) _createExecutableExtension);
+        DefaultLineParser _defaultLineParser = new DefaultLineParser();
+        compiler.setLineParser(_defaultLineParser);
         String _id = compiler.getId();
         this.compilers.put(_id, compiler);
       } catch (final Throwable _t) {
