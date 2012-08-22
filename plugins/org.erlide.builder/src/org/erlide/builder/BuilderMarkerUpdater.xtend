@@ -1,9 +1,11 @@
 package org.erlide.builder
 
 import org.eclipse.core.resources.IFile
-import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.resources.IResource
 import org.eclipse.core.resources.IMarker
+import org.eclipse.core.resources.IProject
+import org.eclipse.core.resources.IResource
+import org.eclipse.core.runtime.CoreException
+import org.erlide.common.util.ErlLogger
 
 class BuilderMarkerUpdater {
 	
@@ -23,18 +25,23 @@ class BuilderMarkerUpdater {
                 ln = 1
             } else
             	ln = lineNumber
-            marker.setAttribute(IMarker::LINE_NUMBER, lineNumber);
+            marker.setAttribute(IMarker::LINE_NUMBER, lineNumber)
         } catch (CoreException e) {
+        	ErlLogger::warn("Could not add marker for "+file+": "+e.message)
         }
     }
 
 	
 	def void deleteMarkers(IFile file) {
         try {
-            file.deleteMarkers(markerType, false, IResource::DEPTH_ZERO);
-        } catch (CoreException ce) {
+            file.deleteMarkers(markerType, false, IResource::DEPTH_ZERO)
+        } catch (CoreException e) {
+        	ErlLogger::warn("Could not delete markers for "+file+": "+e.message)
         }
     }
 
+	def clean(IProject project) {
+		project.deleteMarkers(markerType, false, IResource::DEPTH_INFINITE)
+	}
 	
 }

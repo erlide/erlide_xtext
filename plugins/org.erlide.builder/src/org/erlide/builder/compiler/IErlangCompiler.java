@@ -1,15 +1,14 @@
 package org.erlide.builder.compiler;
 
+import java.util.Collection;
+
 import org.eclipse.core.resources.IFile;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 public interface IErlangCompiler {
 
     String getId();
 
-    void compileResource(final IFile file, final CompilerOptions options,
-            Procedure1<? super CompilerProblem> resultsHandler);
-
-    void setLineParser(IProblemLineParser parser);
+    Collection<CompilerProblem> compileResource(final IFile file,
+            final CompilerOptions options);
 
 }

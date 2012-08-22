@@ -22,4 +22,5 @@ public class StreamListener extends Thread {
             callback.apply(line)
         }
     }
+    
 }

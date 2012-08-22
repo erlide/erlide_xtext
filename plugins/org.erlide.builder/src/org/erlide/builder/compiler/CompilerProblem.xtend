@@ -1,11 +1,12 @@
 package org.erlide.builder.compiler
 
-import org.eclipse.core.resources.IFile
+import org.eclipse.xtend.lib.Data
 
 @Data
 class CompilerProblem {
-	IFile file
+	String fileName
 	String message
 	int line
 	int severity
+	
 }

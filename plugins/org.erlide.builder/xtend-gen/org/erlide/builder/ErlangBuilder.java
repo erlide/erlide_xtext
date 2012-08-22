@@ -1,6 +1,7 @@
 package org.erlide.builder;
 
 import com.google.common.base.Objects;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.core.resources.IFile;
@@ -20,10 +21,11 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.BuilderMarkerUpdater;
+import org.erlide.builder.compiler.CompilerOptions;
 import org.erlide.builder.compiler.CompilerProblem;
-import org.erlide.builder.compiler.DefaultLineParser;
 import org.erlide.builder.compiler.ErlCompiler;
 import org.erlide.builder.compiler.IErlangCompiler;
 
@@ -65,6 +67,11 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     return null;
   }
   
+  protected void clean(final IProgressMonitor monitor) throws CoreException {
+    IProject _project = this.getProject();
+    this.markerUpdater.clean(_project);
+  }
+  
   private void compileResource(final IResource resource) {
     boolean _or = false;
     boolean _not = (!(resource instanceof IFile));
@@ -86,16 +93,18 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     boolean _equals = Objects.equal(compiler, null);
     if (_equals) {
     } else {
+      CompilerOptions _compilerOptions = new CompilerOptions();
+      final CompilerOptions options = _compilerOptions;
+      Collection<CompilerProblem> _compileResource = compiler.compileResource(erlFile, options);
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {
-            IFile _file = it.getFile();
             String _message = it.getMessage();
             int _line = it.getLine();
             int _severity = it.getSeverity();
-            ErlangBuilder.this.markerUpdater.addMarker(_file, _message, _line, _severity);
+            ErlangBuilder.this.markerUpdater.addMarker(erlFile, _message, _line, _severity);
           }
         };
-      compiler.compileResource(erlFile, null, _function);
+      IterableExtensions.<CompilerProblem>forEach(_compileResource, _function);
     }
   }
   
@@ -169,8 +178,6 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
       try {
         Object _createExecutableExtension = element.createExecutableExtension("class");
         final IErlangCompiler compiler = ((IErlangCompiler) _createExecutableExtension);
-        DefaultLineParser _defaultLineParser = new DefaultLineParser();
-        compiler.setLineParser(_defaultLineParser);
         String _id = compiler.getId();
         this.compilers.put(_id, compiler);
       } catch (final Throwable _t) {

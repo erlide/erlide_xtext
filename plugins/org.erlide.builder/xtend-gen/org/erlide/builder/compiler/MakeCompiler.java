@@ -1,6 +1,8 @@
 package org.erlide.builder.compiler;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
@@ -11,6 +13,7 @@ import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.compiler.AbstractExternalProcessCompiler;
 import org.erlide.builder.compiler.CompilerOptions;
 import org.erlide.builder.compiler.CompilerProblem;
+import org.erlide.builder.compiler.DefaultLineParser;
 
 @SuppressWarnings("all")
 public class MakeCompiler extends AbstractExternalProcessCompiler {
@@ -21,16 +24,32 @@ public class MakeCompiler extends AbstractExternalProcessCompiler {
     }
   }.apply();
   
+  public MakeCompiler() {
+    super(new Function0<DefaultLineParser>() {
+      public DefaultLineParser apply() {
+        DefaultLineParser _defaultLineParser = new DefaultLineParser();
+        return _defaultLineParser;
+      }
+    }.apply());
+  }
+  
   public String getId() {
     return MakeCompiler.COMPILER_ID;
   }
   
-  public void compileResource(final IFile file, final CompilerOptions options, final Procedure1<? super CompilerProblem> resultsHandler) {
+  public Collection<CompilerProblem> compileResource(final IFile file, final CompilerOptions options) {
+    final List<CompilerProblem> result = CollectionLiterals.<CompilerProblem>newArrayList();
     String _name = file.getName();
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("make", _name);
     IContainer _parent = file.getParent();
     IPath _location = _parent.getLocation();
     String _portableString = _location.toPortableString();
-    this.launchProcess(file, _newArrayList, _portableString, resultsHandler);
+    final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
+        public void apply(final CompilerProblem problem) {
+          result.add(problem);
+        }
+      };
+    this.executeProcess(file, _newArrayList, _portableString, _function);
+    return result;
   }
 }

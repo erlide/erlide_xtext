@@ -1,6 +1,6 @@
 package org.erlide.builder.compiler
 
-import java.io.File
+import java.util.List
 import org.eclipse.core.resources.IFile
 import org.erlide.builder.BuilderPlugin
 
@@ -10,13 +10,21 @@ public class MakeCompiler extends AbstractExternalProcessCompiler {
 	
 	public static val String COMPILER_ID = BuilderPlugin::PLUGIN_ID + ".compiler.make"
 	
+	new() {
+		super(new DefaultLineParser())
+	}
+	
 	override getId() {
 		COMPILER_ID
 	}
 	
-    override compileResource(IFile file, CompilerOptions options, (CompilerProblem)=>void resultsHandler) {
-        launchProcess(file, newArrayList("make", file.getName()), 
-            file.getParent().getLocation().toPortableString(), resultsHandler)
+    override compileResource(IFile file, CompilerOptions options) {
+    	val List<CompilerProblem> result = newArrayList()
+        executeProcess(file, newArrayList("make", file.getName()), 
+            file.getParent().getLocation().toPortableString()) [
+            	problem | result.add(problem)
+            ]
+        return result
     }
     
 }

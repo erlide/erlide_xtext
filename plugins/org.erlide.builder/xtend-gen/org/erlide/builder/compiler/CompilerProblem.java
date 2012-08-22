@@ -1,16 +1,15 @@
 package org.erlide.builder.compiler;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 
 @Data
 @SuppressWarnings("all")
 public class CompilerProblem {
-  private final IFile _file;
+  private final String _fileName;
   
-  public IFile getFile() {
-    return this._file;
+  public String getFileName() {
+    return this._fileName;
   }
   
   private final String _message;
@@ -31,9 +30,9 @@ public class CompilerProblem {
     return this._severity;
   }
   
-  public CompilerProblem(final IFile file, final String message, final int line, final int severity) {
+  public CompilerProblem(final String fileName, final String message, final int line, final int severity) {
     super();
-    this._file = file;
+    this._fileName = fileName;
     this._message = message;
     this._line = line;
     this._severity = severity;
@@ -43,7 +42,7 @@ public class CompilerProblem {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((_file== null) ? 0 : _file.hashCode());
+    result = prime * result + ((_fileName== null) ? 0 : _fileName.hashCode());
     result = prime * result + ((_message== null) ? 0 : _message.hashCode());
     result = prime * result + _line;
     result = prime * result + _severity;
@@ -59,10 +58,10 @@ public class CompilerProblem {
     if (getClass() != obj.getClass())
       return false;
     CompilerProblem other = (CompilerProblem) obj;
-    if (_file == null) {
-      if (other._file != null)
+    if (_fileName == null) {
+      if (other._fileName != null)
         return false;
-    } else if (!_file.equals(other._file))
+    } else if (!_fileName.equals(other._fileName))
       return false;
     if (_message == null) {
       if (other._message != null)

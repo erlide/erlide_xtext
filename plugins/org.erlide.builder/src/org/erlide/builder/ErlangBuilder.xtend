@@ -12,12 +12,12 @@ import org.eclipse.core.runtime.IExtensionRegistry
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.Platform
 import org.eclipse.core.runtime.SubProgressMonitor
+import org.erlide.builder.compiler.CompilerOptions
 import org.erlide.builder.compiler.ErlCompiler
 import org.erlide.builder.compiler.IErlangCompiler
 
 import static org.eclipse.core.resources.IncrementalProjectBuilder.*
 import static org.erlide.builder.ErlangBuilder.*
-import org.erlide.builder.compiler.DefaultLineParser
 
 class ErlangBuilder extends IncrementalProjectBuilder {
 
@@ -34,7 +34,6 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	
 	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor monitor) throws CoreException {
 		loadCompilers()
-		
 	    if (kind == FULL_BUILD) {
             fullBuild(monitor)
         } else {
@@ -45,11 +44,15 @@ class ErlangBuilder extends IncrementalProjectBuilder {
                 incrementalBuild(delta, monitor)
             }
         }
-        getProject().refreshLocal(IResource::DEPTH_INFINITE,
+        project.refreshLocal(IResource::DEPTH_INFINITE,
                 new SubProgressMonitor(monitor, 10))
         return null
     }
 
+	override protected clean(IProgressMonitor monitor) throws CoreException {
+		markerUpdater.clean(project)
+	}
+	
     def private void compileResource(IResource resource) {
         if (!(resource instanceof IFile) || !isErlangResource(resource)) {
             return;
@@ -58,15 +61,18 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         markerUpdater.deleteMarkers(erlFile)
         val compiler = compilers.get(getCompilerId(project))
         if (compiler==null) {
-        	//TODO issue warning
+        	// TODO issue warning
         } else {
-        	compiler.compileResource(erlFile, null) 
-        		[ markerUpdater.addMarker(file, message, line, severity) ]
+        	// TODO get options from project
+	        val options = new CompilerOptions()
+        	compiler.compileResource(erlFile, options).forEach [ 
+        		markerUpdater.addMarker(erlFile, message, line, severity)
+        	]
         }
 	}
 
 	def private String getCompilerId(IProject project) {
-		//TODO get it from project settings
+		// TODO get compilerId from project settings
 		ErlCompiler::COMPILER_ID
 	}
 
@@ -105,7 +111,6 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         for (element : elements) {
             try {
             	val compiler = element.createExecutableExtension("class") as IErlangCompiler
-            	compiler.setLineParser(new DefaultLineParser())
                 compilers.put(compiler.id, compiler);
             } catch (CoreException e) {
                 // ignore

@@ -1,27 +1,37 @@
 package org.erlide.builder.compiler
 
-import org.erlide.builder.compiler.AbstractCompiler
-import org.eclipse.core.resources.IFile
 import java.io.File
-import java.util.List
-import org.erlide.builder.StreamListener
 import java.io.IOException
+import java.util.List
+import org.eclipse.core.resources.IFile
+import org.erlide.builder.StreamListener
 import org.erlide.common.util.ErlLogger
 
 abstract class AbstractExternalProcessCompiler extends AbstractCompiler {
 	
-	def Process launchProcess(IFile file, List<String> cmdLine,
+	protected var IProblemLineParser lineParser
+	
+	new(IProblemLineParser parser) {
+		lineParser = parser
+	}
+	
+	def void executeProcess(IFile file, List<String> cmdLine,
             String workingDirectory, (CompilerProblem)=>void callback) {
         val ProcessBuilder builder = new ProcessBuilder(cmdLine)
         builder.directory(new File(workingDirectory))
         // builder.redirectErrorStream(true)
         try {
             val Process process = builder.start()
-            new StreamListener(process.getInputStream()) [ lineParser.parseLine(it, file, callback) ] 
-            return process
+            val listener = new StreamListener(process.getInputStream()) [ 
+            	val problem = lineParser.parseLine(it)
+            		callback.apply(problem) 
+            ]
+            while(listener.alive) {
+            	try { listener.join } catch (InterruptedException e) {}
+           	}
+            return 
         } catch (IOException e) {
         	ErlLogger::error(e)
-            return null
         }
     }
     
