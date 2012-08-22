@@ -10,10 +10,6 @@ public class MakeCompiler extends AbstractExternalProcessCompiler {
 	
 	public static val String COMPILER_ID = BuilderPlugin::PLUGIN_ID + ".compiler.make"
 	
-	new() {
-		super(new DefaultLineParser())
-	}
-	
 	override getId() {
 		COMPILER_ID
 	}
@@ -21,7 +17,7 @@ public class MakeCompiler extends AbstractExternalProcessCompiler {
     override compileResource(IFile file, CompilerOptions options) {
     	val List<CompilerProblem> result = newArrayList()
         executeProcess(file, newArrayList("make", file.getName()), 
-            file.getParent().getLocation().toPortableString()) [
+            file.getParent().getLocation().toPortableString(), new DefaultLineParser()) [
             	problem | result.add(problem)
             ]
         return result

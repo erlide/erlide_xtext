@@ -15,13 +15,7 @@ import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
 public abstract class AbstractExternalProcessCompiler extends AbstractCompiler {
-  protected IProblemLineParser lineParser;
-  
-  public AbstractExternalProcessCompiler(final IProblemLineParser parser) {
-    this.lineParser = parser;
-  }
-  
-  public void executeProcess(final IFile file, final List<String> cmdLine, final String workingDirectory, final Procedure1<? super CompilerProblem> callback) {
+  public void executeProcess(final IFile file, final List<String> cmdLine, final String workingDirectory, final IProblemLineParser lineParser, final Procedure1<? super CompilerProblem> callback) {
     ProcessBuilder _processBuilder = new ProcessBuilder(cmdLine);
     final ProcessBuilder builder = _processBuilder;
     File _file = new File(workingDirectory);
@@ -31,7 +25,7 @@ public abstract class AbstractExternalProcessCompiler extends AbstractCompiler {
       InputStream _inputStream = process.getInputStream();
       final Procedure1<String> _function = new Procedure1<String>() {
           public void apply(final String it) {
-            final CompilerProblem problem = AbstractExternalProcessCompiler.this.lineParser.parseLine(it);
+            final CompilerProblem problem = lineParser.parseLine(it);
             callback.apply(problem);
           }
         };

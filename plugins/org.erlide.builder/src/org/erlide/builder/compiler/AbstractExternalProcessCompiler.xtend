@@ -9,14 +9,9 @@ import org.erlide.common.util.ErlLogger
 
 abstract class AbstractExternalProcessCompiler extends AbstractCompiler {
 	
-	protected var IProblemLineParser lineParser
-	
-	new(IProblemLineParser parser) {
-		lineParser = parser
-	}
-	
 	def void executeProcess(IFile file, List<String> cmdLine,
-            String workingDirectory, (CompilerProblem)=>void callback) {
+            String workingDirectory, IProblemLineParser lineParser, 
+            (CompilerProblem)=>void callback) {
         val ProcessBuilder builder = new ProcessBuilder(cmdLine)
         builder.directory(new File(workingDirectory))
         // builder.redirectErrorStream(true)

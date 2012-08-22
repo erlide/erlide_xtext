@@ -24,15 +24,6 @@ public class MakeCompiler extends AbstractExternalProcessCompiler {
     }
   }.apply();
   
-  public MakeCompiler() {
-    super(new Function0<DefaultLineParser>() {
-      public DefaultLineParser apply() {
-        DefaultLineParser _defaultLineParser = new DefaultLineParser();
-        return _defaultLineParser;
-      }
-    }.apply());
-  }
-  
   public String getId() {
     return MakeCompiler.COMPILER_ID;
   }
@@ -44,12 +35,13 @@ public class MakeCompiler extends AbstractExternalProcessCompiler {
     IContainer _parent = file.getParent();
     IPath _location = _parent.getLocation();
     String _portableString = _location.toPortableString();
+    DefaultLineParser _defaultLineParser = new DefaultLineParser();
     final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
         public void apply(final CompilerProblem problem) {
           result.add(problem);
         }
       };
-    this.executeProcess(file, _newArrayList, _portableString, _function);
+    this.executeProcess(file, _newArrayList, _portableString, _defaultLineParser, _function);
     return result;
   }
 }
