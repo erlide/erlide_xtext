@@ -8,7 +8,8 @@ import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelElement
 import org.erlide.project.model.IErlangProject
 
-import static extension java.util.Collections.*
+import static extension java.util.Collections.*
+import org.erlide.project.ErlangCore
 public class ErlangModel extends ErlangModelElement implements IErlangModel {
 
     IWorkspace workspace
@@ -21,28 +22,43 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
     }
 
     override Collection<IErlangProject> getProjects() {
-        return projects.unmodifiableCollection;
+        return projects.unmodifiableCollection
     }
 
     override IErlangProject getErlangProject(IProject project) {
+    	if (!project.exists) {
+    		return null
+    	}
         for (IErlangProject prj : projects) {
             if (prj.workspaceProject== project) {
-                return prj;
+                return prj
             }
         }
-        return null;
+        
+        val IErlangProject erlPrj = ErlangCore::getModelFactory().createErlangProject(project)
+        projects.add(erlPrj)
+        return erlPrj
     }
 
     override IWorkspace getWorkspace() {
-        return workspace;
+        workspace
     }
 
     override String getName() {
-        return "Erlang model";
+        "Erlang model"
     }
 
     override IErlangModelElement getParent() {
-        return null;
+        return null
     }
 
+
+	override getResource() {
+		workspace.root
+	}
+	
+	override realize() {
+		// do nothing
+	}
+	
 } // ErlModel

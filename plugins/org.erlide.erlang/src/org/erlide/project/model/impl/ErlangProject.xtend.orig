@@ -17,7 +17,7 @@ import org.erlide.project.model.ILibrary
 =======
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.resources.IResourceDelta
->>>>>>> integrate with project model
+>>>>>>> de221c7... integrate with project model
 
 import static extension org.eclipse.xtext.xbase.lib.IntegerExtensions.*
 
@@ -32,7 +32,7 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
     IPath outputPath = null
 =======
     boolean closed
->>>>>>> integrate with project model
+>>>>>>> de221c7... integrate with project model
 
     new(IErlangModel model, IProject project) {
         super()
@@ -70,7 +70,7 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
         return Collections::unmodifiableCollection(binaryFragments)
     }
 
->>>>>>> integrate with project model
+>>>>>>> de221c7... integrate with project model
     override IProject getWorkspaceProject() {
         return workspaceProject
     }
@@ -150,5 +150,5 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
 		bitwiseAnd(v, flag) != 0
 	}
 	
->>>>>>> integrate with project model
+>>>>>>> de221c7... integrate with project model
 } // ErlangProject

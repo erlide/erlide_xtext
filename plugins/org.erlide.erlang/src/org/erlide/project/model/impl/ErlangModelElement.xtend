@@ -4,7 +4,7 @@ import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelElement
 import org.erlide.project.model.IErlangProject
 
-class ErlangModelElement implements IErlangModelElement {
+abstract class ErlangModelElement implements IErlangModelElement {
 
     protected new(){
     }
@@ -26,16 +26,4 @@ class ErlangModelElement implements IErlangModelElement {
         return crt as T
     }
 
-    override getName() {
-        throw new UnsupportedOperationException("Auto-generated function stub")
-    }
-    
-    override getParent() {
-        throw new UnsupportedOperationException("Auto-generated function stub")
-    }
-
-    override getResource() {
-        throw new UnsupportedOperationException("Abstract operation")
-    }
-    
 }

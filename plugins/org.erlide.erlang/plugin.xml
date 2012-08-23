@@ -10,6 +10,16 @@
        genModel = "org/erlide/Erlang.genmodel" /> 
 	
   </extension>
+  <extension
+        point="org.eclipse.core.runtime.adapters">
+     <factory
+           adaptableType="org.eclipse.core.resources.IProject"
+           class="org.erlide.project.ProjectAdapterFactory">
+        <adapter
+              type="org.erlide.project.model.IErlangProject">
+        </adapter>
+     </factory>
+  </extension>
 
 
 

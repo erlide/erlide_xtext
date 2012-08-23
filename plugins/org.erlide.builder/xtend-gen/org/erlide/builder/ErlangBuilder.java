@@ -12,6 +12,7 @@ import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IAdapterManager;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IPath;
@@ -21,6 +22,7 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.BuilderMarkerUpdater;
@@ -28,6 +30,7 @@ import org.erlide.builder.compiler.CompilerOptions;
 import org.erlide.builder.compiler.CompilerProblem;
 import org.erlide.builder.compiler.ErlCompiler;
 import org.erlide.builder.compiler.IErlangCompiler;
+import org.erlide.project.model.IErlangProject;
 
 @SuppressWarnings("all")
 public class ErlangBuilder extends IncrementalProjectBuilder {
@@ -73,16 +76,8 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   }
   
   private void compileResource(final IResource resource) {
-    boolean _or = false;
-    boolean _not = (!(resource instanceof IFile));
-    if (_not) {
-      _or = true;
-    } else {
-      boolean _isErlangResource = this.isErlangResource(resource);
-      boolean _not_1 = (!_isErlangResource);
-      _or = (_not || _not_1);
-    }
-    if (_or) {
+    boolean _ignoreResource = this.ignoreResource(resource);
+    if (_ignoreResource) {
       return;
     }
     final IFile erlFile = ((IFile) resource);
@@ -106,6 +101,49 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
         };
       IterableExtensions.<CompilerProblem>forEach(_compileResource, _function);
     }
+  }
+  
+  private boolean ignoreResource(final IResource resource) {
+    final boolean isFile = (resource instanceof IFile);
+    IAdapterManager _adapterManager = Platform.getAdapterManager();
+    IProject _project = this.getProject();
+    final Object erlProject = _adapterManager.getAdapter(_project, IErlangProject.class);
+    IProject _project_1 = this.getProject();
+    String _plus = ("!!! " + _project_1);
+    String _plus_1 = (_plus + " ");
+    String _plus_2 = (_plus_1 + erlProject);
+    InputOutput.<String>println(_plus_2);
+    boolean _or = false;
+    if (true) {
+      _or = true;
+    } else {
+      boolean _and = false;
+      boolean _notEquals = (!Objects.equal(erlProject, null));
+      if (!_notEquals) {
+        _and = false;
+      } else {
+        _and = (_notEquals && true);
+      }
+      _or = (true || _and);
+    }
+    final boolean onSourcePath = _or;
+    boolean _or_1 = false;
+    boolean _or_2 = false;
+    boolean _not = (!isFile);
+    if (_not) {
+      _or_2 = true;
+    } else {
+      boolean _isErlangResource = this.isErlangResource(resource);
+      boolean _not_1 = (!_isErlangResource);
+      _or_2 = (_not || _not_1);
+    }
+    if (_or_2) {
+      _or_1 = true;
+    } else {
+      boolean _not_2 = (!onSourcePath);
+      _or_1 = (_or_2 || _not_2);
+    }
+    return _or_1;
   }
   
   private String getCompilerId(final IProject project) {

@@ -40,5 +40,5 @@ abstract class ErlangModelElement implements IErlangModelElement {
     }
     
 =======
->>>>>>> integrate with project model
+>>>>>>> de221c7... integrate with project model
 }

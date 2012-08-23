@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.SubProgressMonitor
 import org.erlide.builder.compiler.CompilerOptions
 import org.erlide.builder.compiler.ErlCompiler
 import org.erlide.builder.compiler.IErlangCompiler
+import org.erlide.project.model.IErlangProject
 
 import static org.eclipse.core.resources.IncrementalProjectBuilder.*
 import static org.erlide.builder.ErlangBuilder.*
@@ -54,7 +55,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	}
 	
     def private void compileResource(IResource resource) {
-        if (!(resource instanceof IFile) || !isErlangResource(resource)) {
+        if (ignoreResource(resource)) {
             return;
         }
         val erlFile = resource as IFile
@@ -69,6 +70,15 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         		markerUpdater.addMarker(erlFile, message, line, severity)
         	]
         }
+	}
+
+	def private ignoreResource(IResource resource) {
+		val isFile = resource instanceof IFile
+		val erlProject = Platform::adapterManager.getAdapter(project, typeof(IErlangProject))
+		println("!!! "+project+" "+erlProject) 
+		// TODO check project setting
+		val onSourcePath = true || erlProject!=null && true
+		return !isFile || !isErlangResource(resource) || !onSourcePath 
 	}
 
 	def private String getCompilerId(IProject project) {
