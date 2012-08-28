@@ -1,4 +1,4 @@
-package org.erlide.builder
+package org.erlide.common.process
 
 import java.io.BufferedReader
 import java.io.InputStream

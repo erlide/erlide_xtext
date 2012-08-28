@@ -7,10 +7,10 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.erlide.builder.StreamListener;
 import org.erlide.builder.compiler.AbstractCompiler;
 import org.erlide.builder.compiler.CompilerProblem;
 import org.erlide.builder.compiler.IProblemLineParser;
+import org.erlide.common.process.StreamListener;
 import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")

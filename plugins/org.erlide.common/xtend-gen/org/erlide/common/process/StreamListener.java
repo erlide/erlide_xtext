@@ -1,4 +1,4 @@
-package org.erlide.builder;
+package org.erlide.common.process;
 
 import com.google.common.base.Objects;
 import java.io.BufferedReader;

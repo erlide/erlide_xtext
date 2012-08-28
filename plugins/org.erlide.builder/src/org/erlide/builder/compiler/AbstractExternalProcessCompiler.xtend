@@ -4,7 +4,7 @@ import java.io.File
 import java.io.IOException
 import java.util.List
 import org.eclipse.core.resources.IFile
-import org.erlide.builder.StreamListener
+import org.erlide.common.process.StreamListener
 import org.erlide.common.util.ErlLogger
 
 abstract class AbstractExternalProcessCompiler extends AbstractCompiler {
