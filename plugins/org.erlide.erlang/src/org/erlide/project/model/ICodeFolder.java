@@ -13,6 +13,4 @@ public interface ICodeFolder extends IErlangModelElement {
 
     IPath getPath();
 
-    IPath getOutputPath();
-
 } // ICodeFolder

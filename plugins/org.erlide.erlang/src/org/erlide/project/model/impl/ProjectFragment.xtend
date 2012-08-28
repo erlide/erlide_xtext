@@ -10,7 +10,7 @@ import org.erlide.project.model.IProjectFragment
 
 import static extension java.util.Collections.*
 
-public class ProjectFragment extends ErlangModelElement implements
+public abstract class ProjectFragment extends ErlangModelElement implements
         IProjectFragment {
 
     IErlangProject project
@@ -19,6 +19,7 @@ public class ProjectFragment extends ErlangModelElement implements
     protected Set<ICodeFolder> includeFolders
     protected IPath docPath
     protected IPath privPath
+    protected IPath outputPath = null
 
     new(IErlangProject project, String name) {
         super()
@@ -80,5 +81,9 @@ public class ProjectFragment extends ErlangModelElement implements
         // create privPath
         ErlangModelFactory::createFolder(privPath)
     }
+    
+	override getOutputPath() {
+		return outputPath
+	}
 
 } // ProjectFragment

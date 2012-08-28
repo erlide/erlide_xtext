@@ -38,8 +38,4 @@ class ErlangModelElement implements IErlangModelElement {
         throw new UnsupportedOperationException("Abstract operation")
     }
     
-    override realize() {
-        throw new UnsupportedOperationException("Abstract operation")
-    }
-    
 }

@@ -13,8 +13,6 @@ public interface IErlangModelFactory {
 
     IErlangProject createErlangProject(IProject workspaceProject);
 
-    IExternalErlangProject createExternalErlangProject();
-
     IProjectFragment createErlangProjectFragment(IErlangProject project,
             String name);
 

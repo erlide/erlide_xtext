@@ -1,6 +1,7 @@
 package org.erlide.project.model;
 
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.IPath;
 
 public interface IErlangModelElement {
 
@@ -15,8 +16,11 @@ public interface IErlangModelElement {
     IResource getResource();
 
     /**
-     * Creates the necessary resources, if they don't exist yet.
+     * Specifies default path to put beam files created from sources in this
+     * element. If null, use parent's value.
+     * 
+     * @return the path to the ebin folder
      */
-    void realize();
+    IPath getOutputPath();
 
 } // IErlModelElement

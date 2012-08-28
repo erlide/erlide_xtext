@@ -2,6 +2,8 @@ package org.erlide.project.model;
 
 public class ErlangModelException extends Exception {
 
+    private static final long serialVersionUID = 1L;
+
     public ErlangModelException() {
         super();
     }

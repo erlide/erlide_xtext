@@ -5,6 +5,7 @@ Bundle-Vendor: erlide.org
 Bundle-Version: 0.101.0.qualifier
 Bundle-SymbolicName: org.erlide.erlang.tests; singleton:=true
 Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources;bundle-version="3.7.101",
  org.eclipse.ui;bundle-version="3.7.0",
  org.eclipse.xtext;bundle-version="2.3.0",
  org.erlide.erlang;bundle-version="0.101.0",

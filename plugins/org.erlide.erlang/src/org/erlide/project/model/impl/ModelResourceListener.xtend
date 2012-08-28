@@ -31,8 +31,7 @@ class ModelResourceListener implements IResourceChangeListener {
     }
     
     def dispatch void updateModel(IErlangProject project, IResourceChangeEvent event) {
-         project.sourceFragments.forEach [ updateModel(event) ]
-         project.binaryFragments.forEach [ updateModel(event) ]
+         project.fragments.forEach [ updateModel(event) ]
     }
     
     def dispatch void updateModel(IProjectFragment fragment, IResourceChangeEvent event) {

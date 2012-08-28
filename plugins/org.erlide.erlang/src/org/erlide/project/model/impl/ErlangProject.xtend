@@ -9,34 +9,33 @@ import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelElement
 import org.erlide.project.model.IErlangProject
 import org.erlide.project.model.IProjectFragment
+import org.eclipse.core.runtime.IPath
+import org.erlide.project.model.ILibrary
 
 public class ErlangProject extends ErlangModelElement implements IErlangProject {
 
     IErlangModel model
-    List<IErlangProject> referencedProjects
+    List<ILibrary> libraries
     List<IProjectFragment> sourceFragments
     List<IProjectFragment> binaryFragments
     IProject workspaceProject
+    IPath outputPath = null
 
     new(IErlangModel model, IProject project) {
         super()
         this.model = model
-        referencedProjects = newArrayList()
+        libraries = newArrayList()
         sourceFragments = newArrayList()
         binaryFragments = newArrayList()
         workspaceProject = project
      }
 
-    override List<IErlangProject> getReferencedProjects() {
-        return referencedProjects
+    override List<ILibrary> getLibraries() {
+        return libraries
     }
 
-    override Collection<IProjectFragment> getSourceFragments() {
+    override Collection<IProjectFragment> getFragments() {
         return Collections::unmodifiableCollection(sourceFragments)
-    }
-
-    override Collection<IProjectFragment> getBinaryFragments() {
-        return Collections::unmodifiableCollection(binaryFragments)
     }
 
     override IProject getWorkspaceProject() {
@@ -71,4 +70,10 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject 
         sourceFragments.forEach[realize]
         // binaryFragments 
     }
+    
+	override getOutputPath() {
+		return outputPath
+	}
+	
+
 } // ErlangProject

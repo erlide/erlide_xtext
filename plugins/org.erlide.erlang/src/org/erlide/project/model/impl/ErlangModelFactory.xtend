@@ -1,5 +1,6 @@
 package org.erlide.project.model.impl
 
+import java.io.File
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.IPath
@@ -9,9 +10,7 @@ import org.erlide.project.model.ICodeUnit
 import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelFactory
 import org.erlide.project.model.IErlangProject
-import org.erlide.project.model.IExternalErlangProject
 import org.erlide.project.model.IProjectFragment
-import java.io.File
 
 public class ErlangModelFactory implements IErlangModelFactory {
 
@@ -27,10 +26,6 @@ public class ErlangModelFactory implements IErlangModelFactory {
 
     override IErlangProject createErlangProject(IProject workspaceProject) {
         return new ErlangProject(erlModel, workspaceProject)
-    }
-
-    override IExternalErlangProject createExternalErlangProject() {
-        return new ExternalErlangProject(erlModel)
     }
 
     override ICodeFolder createCodeFolder(IProjectFragment project,

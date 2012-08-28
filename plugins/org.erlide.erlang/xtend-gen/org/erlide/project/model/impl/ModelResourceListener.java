@@ -45,20 +45,13 @@ public class ModelResourceListener implements IResourceChangeListener {
   }
   
   protected void _updateModel(final IErlangProject project, final IResourceChangeEvent event) {
-    Collection<IProjectFragment> _sourceFragments = project.getSourceFragments();
+    Collection<IProjectFragment> _fragments = project.getFragments();
     final Procedure1<IProjectFragment> _function = new Procedure1<IProjectFragment>() {
         public void apply(final IProjectFragment it) {
           ModelResourceListener.this.updateModel(it, event);
         }
       };
-    IterableExtensions.<IProjectFragment>forEach(_sourceFragments, _function);
-    Collection<IProjectFragment> _binaryFragments = project.getBinaryFragments();
-    final Procedure1<IProjectFragment> _function_1 = new Procedure1<IProjectFragment>() {
-        public void apply(final IProjectFragment it) {
-          ModelResourceListener.this.updateModel(it, event);
-        }
-      };
-    IterableExtensions.<IProjectFragment>forEach(_binaryFragments, _function_1);
+    IterableExtensions.<IProjectFragment>forEach(_fragments, _function);
   }
   
   protected void _updateModel(final IProjectFragment fragment, final IResourceChangeEvent event) {
