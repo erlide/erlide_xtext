@@ -391,6 +391,10 @@ public class ErlangLinkingHelper {
     {
       Module _owningModule = this._modelExtensions.getOwningModule(atom);
       final String moduleName = this._modelExtensions.getName(_owningModule);
+      boolean _equals = Objects.equal(moduleName, null);
+      if (_equals) {
+        return null;
+      }
       String _sourceText = this._modelExtensions.getSourceText(atom);
       final QualifiedName qname = QualifiedName.create(moduleName, _sourceText);
       final Iterable<IEObjectDescription> rfun = index.getExportedObjects(Literals.RECORD_ATTRIBUTE, qname, false);
@@ -433,6 +437,10 @@ public class ErlangLinkingHelper {
       Expression _rec = recExpr.getRec();
       AtomRefTarget _recordRef = this.getRecordRef(index, ((Atom) _rec), rset);
       final RecordAttribute record = ((RecordAttribute) _recordRef);
+      boolean _equals = Objects.equal(record, null);
+      if (_equals) {
+        return null;
+      }
       EList<RecordFieldDef> _fields = record.getFields();
       final Function1<RecordFieldDef,Boolean> _function = new Function1<RecordFieldDef,Boolean>() {
           public Boolean apply(final RecordFieldDef it) {
