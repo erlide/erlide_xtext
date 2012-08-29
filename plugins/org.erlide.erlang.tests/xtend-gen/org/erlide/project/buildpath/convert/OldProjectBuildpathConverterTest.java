@@ -10,11 +10,11 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
-import org.erlide.project.buildpath.IBuildpathContainer;
-import org.erlide.project.buildpath.IBuildpathContainer.ContainerKind;
-import org.erlide.project.buildpath.IBuildpathEntry;
-import org.erlide.project.buildpath.IBuildpathFolder;
-import org.erlide.project.buildpath.IBuildpathFolder.FolderKind;
+import org.erlide.project.buildpath.BuildpathApp;
+import org.erlide.project.buildpath.BuildpathEntry;
+import org.erlide.project.buildpath.BuildpathFolder;
+import org.erlide.project.buildpath.BuildpathLibrary;
+import org.erlide.project.buildpath.FolderKind;
 import org.erlide.project.buildpath.convert.OldErlangProjectProperties;
 import org.erlide.project.buildpath.convert.OldProjectBuildpathConverter;
 import org.erlide.project.buildpath.convert.PathExpander;
@@ -46,7 +46,7 @@ public class OldProjectBuildpathConverterTest {
     OldProjectBuildpathConverter _oldProjectBuildpathConverter = new OldProjectBuildpathConverter();
     final OldProjectBuildpathConverter converter = _oldProjectBuildpathConverter;
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("foo", "bar");
-    final IBuildpathEntry entry = converter.convert(props, "projname", _newArrayList, this.externals);
+    final BuildpathEntry entry = converter.convert(props, "projname", _newArrayList, this.externals);
     String _debugPrint = this.debugPrint(entry);
     InputOutput.<String>println(_debugPrint);
   }
@@ -69,23 +69,48 @@ public class OldProjectBuildpathConverterTest {
     final IPath[] _converted_paths_1 = (IPath[])paths;
     props.setIncludeDirs(((Collection<IPath>)Conversions.doWrapArray(_converted_paths_1)));
     ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("bar");
-    final IBuildpathEntry entry = converter.convert(props, "projname", _newArrayList_1, this.externals);
+    final BuildpathEntry entry = converter.convert(props, "projname", _newArrayList_1, this.externals);
     String _debugPrint = this.debugPrint(entry);
     InputOutput.<String>println(_debugPrint);
   }
   
-  private String _debugPrint(final IBuildpathContainer container) {
+  private String _debugPrint(final BuildpathLibrary container) {
     StringConcatenation _builder = new StringConcatenation();
-    ContainerKind _kind = container.getKind();
-    _builder.append(_kind, "");
-    _builder.append(" \'");
+    _builder.append("LIB \'");
     String _name = container.getName();
     _builder.append(_name, "");
     _builder.append("\' {");
     _builder.newLineIfNotEmpty();
     {
-      Collection<IBuildpathEntry> _children = container.getChildren();
-      for(final IBuildpathEntry e : _children) {
+      Collection<BuildpathApp> _apps = container.getApps();
+      for(final BuildpathApp e : _apps) {
+        _builder.append("\t");
+        String _debugPrint = this.debugPrint(e);
+        _builder.append(_debugPrint, "	");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      Collection<BuildpathLibrary> _libraries = container.getLibraries();
+      for(final BuildpathLibrary e_1 : _libraries) {
+        _builder.append("\t");
+        String _debugPrint_1 = this.debugPrint(e_1);
+        _builder.append(_debugPrint_1, "	");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("}");
+    _builder.newLine();
+    return _builder.toString();
+  }
+  
+  private String _debugPrint(final BuildpathApp container) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("APP {");
+    _builder.newLine();
+    {
+      Collection<BuildpathFolder> _folders = container.getFolders();
+      for(final BuildpathFolder e : _folders) {
         _builder.append("\t");
         String _debugPrint = this.debugPrint(e);
         _builder.append(_debugPrint, "	");
@@ -97,35 +122,30 @@ public class OldProjectBuildpathConverterTest {
     return _builder.toString();
   }
   
-  private String _debugPrint(final IBuildpathFolder folder) {
+  private String _debugPrint(final BuildpathFolder folder) {
     StringConcatenation _builder = new StringConcatenation();
     FolderKind _kind = folder.getKind();
     _builder.append(_kind, "");
-    _builder.append(" @path=\'");
+    _builder.append(" path=\'");
     IPath _path = folder.getPath();
     _builder.append(_path, "");
-    _builder.append("\'");
+    _builder.append("\' inc=");
+    Collection<IPath> _inclusionPatterns = folder.getInclusionPatterns();
+    _builder.append(_inclusionPatterns, "");
+    _builder.append(" exc=");
+    Collection<IPath> _exclusionPatterns = folder.getExclusionPatterns();
+    _builder.append(_exclusionPatterns, "");
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
   
-  private String _debugPrint(final IBuildpathEntry entry) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Entry { \'");
-    String _name = entry.getName();
-    _builder.append(_name, "");
-    _builder.append("\' }");
-    _builder.newLineIfNotEmpty();
-    return _builder.toString();
-  }
-  
-  private String debugPrint(final IBuildpathEntry container) {
-    if (container instanceof IBuildpathContainer) {
-      return _debugPrint((IBuildpathContainer)container);
-    } else if (container instanceof IBuildpathFolder) {
-      return _debugPrint((IBuildpathFolder)container);
-    } else if (container != null) {
-      return _debugPrint(container);
+  private String debugPrint(final BuildpathEntry container) {
+    if (container instanceof BuildpathApp) {
+      return _debugPrint((BuildpathApp)container);
+    } else if (container instanceof BuildpathFolder) {
+      return _debugPrint((BuildpathFolder)container);
+    } else if (container instanceof BuildpathLibrary) {
+      return _debugPrint((BuildpathLibrary)container);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(container).toString());

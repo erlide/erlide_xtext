@@ -10,6 +10,4 @@ public interface IErlangProject extends IErlangModelElement {
 
     Collection<IProjectFragment> getFragments();
 
-    Collection<IProjectFragment> getLibraries();
-
 } // IErlangProject

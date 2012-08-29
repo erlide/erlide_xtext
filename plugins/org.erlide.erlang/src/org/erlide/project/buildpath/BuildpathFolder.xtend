@@ -4,29 +4,29 @@ import java.util.Collection
 import java.util.Collections
 import java.util.List
 import org.eclipse.core.runtime.IPath
-import org.erlide.project.buildpath.IBuildpathFolder$FolderKind
-import org.erlide.project.buildpath.BuildpathEntry
-import org.erlide.project.buildpath.BuildpathAttributes
-import org.erlide.project.buildpath.IBuildpathContainer
+import org.eclipse.xtend.lib.Data
 
-class BuildpathFolder extends BuildpathEntry implements IBuildpathFolder {
+@Data
+class BuildpathFolder extends BuildpathEntry {
 
-    @Property IPath path;
-    @Property FolderKind kind;
+    IPath path;
+    FolderKind kind
     List<IPath> inclusionPatterns = newArrayList();
     List<IPath> exclusionPatterns = newArrayList();
 
-    override Collection<IPath> getInclusionPatterns() {
-        return Collections::unmodifiableList(inclusionPatterns)
+    def Collection<IPath> getInclusionPatterns() {
+        return Collections::unmodifiableList(_inclusionPatterns)
     }
 
-    override Collection<IPath> getExclusionPatterns() {
-        return Collections::unmodifiableList(exclusionPatterns)
+    def Collection<IPath> getExclusionPatterns() {
+        return Collections::unmodifiableList(_exclusionPatterns)
     }
 
-	new(IBuildpathContainer aParent, String aName, BuildpathAttributes attrs, IPath path, FolderKind kind) {
-		super(aParent, aName, attrs)
+	new(BuildpathApp aParent, BuildpathAttributes attrs, IPath path, FolderKind kind) {
+		super(aParent, attrs)
 		_path = path
 		_kind = kind
 	}
+	
 }
+

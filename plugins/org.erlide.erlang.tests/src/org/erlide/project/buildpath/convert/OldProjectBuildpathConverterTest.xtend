@@ -1,13 +1,16 @@
 package org.erlide.project.buildpath.convert
 
-import org.erlide.project.buildpath.IBuildpathContainer
-import org.erlide.project.buildpath.IBuildpathEntry
-import org.erlide.project.buildpath.IBuildpathFolder
-import org.junit.Test
-import org.eclipse.core.runtime.Path
-import org.eclipse.core.runtime.IPath
-import org.junit.Before
 import java.util.Collection
+import org.eclipse.core.runtime.IPath
+import org.eclipse.core.runtime.Path
+import org.erlide.project.buildpath.BuildpathApp
+import org.erlide.project.buildpath.BuildpathEntry
+import org.erlide.project.buildpath.BuildpathFolder
+import org.erlide.project.buildpath.BuildpathLibrary
+import org.junit.Before
+import org.junit.Test
+
+import static org.erlide.project.buildpath.convert.AbstractContentProvider.*
 
 class OldProjectBuildpathConverterTest {
 
@@ -24,7 +27,7 @@ class OldProjectBuildpathConverterTest {
     def void emptyProperties() {
     	val props = new OldErlangProjectProperties()
     	val converter = new OldProjectBuildpathConverter()
-    	val IBuildpathEntry entry = converter.convert(props, "projname", newArrayList("foo", "bar"), externals)
+    	val BuildpathEntry entry = converter.convert(props, "projname", newArrayList("foo", "bar"), externals)
     	println(entry.debugPrint)
     }
     
@@ -36,27 +39,34 @@ class OldProjectBuildpathConverterTest {
     	paths = newArrayList(new Path("i1/i1"), new Path("i2"))
     	val converter = new OldProjectBuildpathConverter()
     	props.setIncludeDirs(paths)
-    	val IBuildpathEntry entry = converter.convert(props, "projname", newArrayList("bar"), externals)
+    	val BuildpathEntry entry = converter.convert(props, "projname", newArrayList("bar"), externals)
     	println(entry.debugPrint)
     }
     
-    def private dispatch String debugPrint(IBuildpathContainer container) {
+    def private dispatch String debugPrint(BuildpathLibrary container) {
     	'''
-    		«container.kind» '«container.name»' {
-    			«FOR e: container.children»
+    		LIB '«container.name»' {
+    			«FOR e: container.apps»
+    				«e.debugPrint»
+    			«ENDFOR»
+    			«FOR e: container.libraries»
     				«e.debugPrint»
     			«ENDFOR»
     		}
     	'''
     }
-    def private dispatch String debugPrint(IBuildpathFolder folder) {
+    def private dispatch String debugPrint(BuildpathApp container) {
     	'''
-    		«folder.kind» @path='«folder.path»'
+    		APP {
+    			«FOR e: container.folders»
+    				«e.debugPrint»
+    			«ENDFOR»
+    		}
     	'''
     }
-    def private dispatch String debugPrint(IBuildpathEntry entry) {
+    def private dispatch String debugPrint(BuildpathFolder folder) {
     	'''
-    		Entry { '«entry.name»' }
+    		«folder.kind» path='«folder.path»' inc=«folder.inclusionPatterns» exc=«folder.exclusionPatterns»
     	'''
     }
 

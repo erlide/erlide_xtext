@@ -1,51 +1,64 @@
 package org.erlide.project.buildpath.convert
 
+import java.io.FileNotFoundException
 import java.util.Collection
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.IPath
-import org.erlide.project.buildpath.BuildpathContainer
-import org.erlide.project.buildpath.BuildpathFolder
-import org.erlide.project.buildpath.IBuildpathContainer
-import org.erlide.project.buildpath.IBuildpathContainer$ContainerKind
-import org.erlide.project.buildpath.IBuildpathEntry
-import org.erlide.project.buildpath.IBuildpathFolder
-import org.erlide.project.buildpath.IBuildpathFolder$FolderKind
-import java.util.Map
 import org.eclipse.core.runtime.Path
-import java.io.FileNotFoundException
+import org.erlide.project.buildpath.BuildpathApp
+import org.erlide.project.buildpath.BuildpathEntry
+import org.erlide.project.buildpath.BuildpathFolder
+import org.erlide.project.buildpath.BuildpathLibrary
+import org.erlide.project.buildpath.FolderKind
 
-class OldProjectBuildpathConverter implements IOldProjectBuildpathConverter {
+class OldProjectBuildpathConverter {
 
-	override IBuildpathEntry convert(IProject project) {
+   /**
+     * Old-style projects will be converted to a buildpath consisting of the
+     * following containers:
+     * <ul>
+     * <li>the project proper, with folders for all source & include paths</li>
+     * <li>the OTP library</li>
+     * <li>referenced projects</li>
+     * </ul>
+     * 
+     * If "external modules" has references to modules not in any refernced
+     * project, they will be lost. We could scan and compare to the projects, in
+     * order to extract the real external libraries, but at the moment it feels
+     * too much work for too little benefit.
+     * 
+     * Project must have an old Erlang nature.
+     */
+	def BuildpathEntry convert(IProject project) {
 		val externals = new PathExpander().expandFile(new Path(".settings/modules.erlidex"), newHashMap())
 		convert(getOldProjectProperties(project), project.name, project.referencedProjects.map[name], externals)
 	}
 	
-	def IBuildpathEntry convert(OldErlangProjectProperties properties, String name, 
+	def BuildpathEntry convert(OldErlangProjectProperties properties, String name, 
 		Collection<String>refProjects, Collection<IPath> externals) {
 		println("CONVERTING "+properties.debugPrint)
-		val result = new BuildpathContainer(null, "root", ContainerKind::ROOT)
-		val IBuildpathContainer crt = newContainer(result, name,  ContainerKind::FRAGMENT)
+		val result = new BuildpathLibrary(null, "root")
+		val crt = newApp(result)
 		properties.sourceDirs.forEach [
-			newFolder(crt, it.lastSegment,  it, FolderKind::SOURCE)
+			newFolder(crt, it, FolderKind::SOURCE)
 		]
 		properties.includeDirs.forEach [
-			newFolder(crt, it.lastSegment,  it, FolderKind::INCLUDE)
+			newFolder(crt, it, FolderKind::INCLUDE)
 		]
 		properties.outputDirs.forEach [
-			newFolder(crt, it.lastSegment,  it, FolderKind::EBIN)
+			newFolder(crt, it, FolderKind::EBIN)
 		]
 		
-		val otp = newContainer(result, properties.runtimeVersion.toString, ContainerKind::OTP)
+		val otp = newLibrary(result, properties.runtimeVersion.toString)
 
 		refProjects.forEach [
-			newContainer(result, it, ContainerKind::LIBRARY)
+			newLibrary(result, it)
 		]
 		
 		try {
 			val roots = externals.map[segments.head].toSet
 			for(root: roots) {
-				newContainer(result, root, ContainerKind::LIBRARY)
+				newLibrary(result, root)
 			}
 		} catch (FileNotFoundException e) {
 			// ignore? 
@@ -72,15 +85,21 @@ class OldProjectBuildpathConverter implements IOldProjectBuildpathConverter {
 		'''
 	}
 	
-	def IBuildpathContainer newContainer(IBuildpathContainer parent, String name, ContainerKind kind) {
-		val result = new BuildpathContainer(parent, name, kind)
+	def BuildpathLibrary newLibrary(BuildpathLibrary parent, String name) {
+		val result = new BuildpathLibrary(parent, name)
 		parent.addChild(result)
 		return result
 	}
 
-	def IBuildpathFolder newFolder(IBuildpathContainer parent, String name, IPath path, FolderKind kind) {
-		val result = new BuildpathFolder(parent, name, null, path, kind)
+	def BuildpathApp newApp(BuildpathLibrary parent) {
+		val result = new BuildpathApp(parent)
 		parent.addChild(result)
+		return result
+	}
+
+	def BuildpathFolder newFolder(BuildpathApp parent, IPath path, FolderKind kind) {
+		val result = new BuildpathFolder(parent, null, path, kind)
+		parent.addFolder(result)
 		return result
 	}
 	
