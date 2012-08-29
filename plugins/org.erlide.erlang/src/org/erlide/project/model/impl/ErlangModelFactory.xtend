@@ -18,6 +18,7 @@ public class ErlangModelFactory implements IErlangModelFactory {
 
     new() {
         erlModel = new ErlangModel(ResourcesPlugin::getWorkspace())
+        populateProjects
     }
 
     override IErlangModel getModel() {
@@ -77,6 +78,10 @@ public class ErlangModelFactory implements IErlangModelFactory {
         }
     }
     
-    
+	def private populateProjects() {
+		model.workspace.root.projects.forEach [
+			createErlangProject
+		]
+	}    
 
 } // ErlModelFactory

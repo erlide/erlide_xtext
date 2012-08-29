@@ -1,9 +1,10 @@
 package org.erlide.builder;
 
 import com.google.common.base.Objects;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceDelta;
@@ -11,13 +12,25 @@ import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IAdapterManager;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure4;
-import org.erlide.builder.SimpleErlangBuilder;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.erlide.builder.BuilderMarkerUpdater;
+import org.erlide.builder.compiler.CompilerOptions;
+import org.erlide.builder.compiler.CompilerProblem;
+import org.erlide.builder.compiler.ErlCompiler;
+import org.erlide.builder.compiler.IErlangCompiler;
+import org.erlide.project.model.IErlangProject;
 
 @SuppressWarnings("all")
 public class ErlangBuilder extends IncrementalProjectBuilder {
@@ -25,30 +38,19 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem";
   
-  public static void addMarker(final IFile file, final String message, final int lineNumber, final int severity) {
-    int ln = lineNumber;
-    try {
-      final IMarker marker = file.createMarker(ErlangBuilder.MARKER_TYPE);
-      marker.setAttribute(IMarker.MESSAGE, message);
-      marker.setAttribute(IMarker.SEVERITY, severity);
-      int _minus = (-1);
-      boolean _equals = (lineNumber == _minus);
-      if (_equals) {
-        ln = 1;
-      } else {
-        ln = lineNumber;
-      }
-      marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
-    } catch (final Throwable _t) {
-      if (_t instanceof CoreException) {
-        final CoreException e = (CoreException)_t;
-      } else {
-        throw Exceptions.sneakyThrow(_t);
-      }
-    }
+  private Map<String,IErlangCompiler> compilers;
+  
+  private BuilderMarkerUpdater markerUpdater;
+  
+  public ErlangBuilder() {
+    HashMap<String,IErlangCompiler> _newHashMap = CollectionLiterals.<String, IErlangCompiler>newHashMap();
+    this.compilers = _newHashMap;
+    BuilderMarkerUpdater _builderMarkerUpdater = new BuilderMarkerUpdater(ErlangBuilder.MARKER_TYPE);
+    this.markerUpdater = _builderMarkerUpdater;
   }
   
   protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
+    this.loadCompilers();
     boolean _equals = (kind == IncrementalProjectBuilder.FULL_BUILD);
     if (_equals) {
       this.fullBuild(monitor);
@@ -68,44 +70,90 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     return null;
   }
   
+  protected void clean(final IProgressMonitor monitor) throws CoreException {
+    IProject _project = this.getProject();
+    this.markerUpdater.clean(_project);
+  }
+  
   private void compileResource(final IResource resource) {
+    boolean _ignoreResource = this.ignoreResource(resource);
+    if (_ignoreResource) {
+      return;
+    }
+    final IFile erlFile = ((IFile) resource);
+    this.markerUpdater.deleteMarkers(erlFile);
+    IProject _project = this.getProject();
+    String _compilerId = this.getCompilerId(_project);
+    final IErlangCompiler compiler = this.compilers.get(_compilerId);
+    boolean _equals = Objects.equal(compiler, null);
+    if (_equals) {
+    } else {
+      CompilerOptions _compilerOptions = new CompilerOptions();
+      final CompilerOptions options = _compilerOptions;
+      Collection<CompilerProblem> _compileResource = compiler.compileResource(erlFile, options);
+      final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
+          public void apply(final CompilerProblem it) {
+            String _message = it.getMessage();
+            int _line = it.getLine();
+            int _severity = it.getSeverity();
+            ErlangBuilder.this.markerUpdater.addMarker(erlFile, _message, _line, _severity);
+          }
+        };
+      IterableExtensions.<CompilerProblem>forEach(_compileResource, _function);
+    }
+  }
+  
+  private boolean ignoreResource(final IResource resource) {
+    final boolean isFile = (resource instanceof IFile);
+    IAdapterManager _adapterManager = Platform.getAdapterManager();
+    IProject _project = this.getProject();
+    final Object erlProject = _adapterManager.getAdapter(_project, IErlangProject.class);
+    IProject _project_1 = this.getProject();
+    String _plus = ("!!! " + _project_1);
+    String _plus_1 = (_plus + " ");
+    String _plus_2 = (_plus_1 + erlProject);
+    InputOutput.<String>println(_plus_2);
     boolean _or = false;
-    boolean _not = (!(resource instanceof IFile));
-    if (_not) {
+    if (true) {
       _or = true;
+    } else {
+      boolean _and = false;
+      boolean _notEquals = (!Objects.equal(erlProject, null));
+      if (!_notEquals) {
+        _and = false;
+      } else {
+        _and = (_notEquals && true);
+      }
+      _or = (true || _and);
+    }
+    final boolean onSourcePath = _or;
+    boolean _or_1 = false;
+    boolean _or_2 = false;
+    boolean _not = (!isFile);
+    if (_not) {
+      _or_2 = true;
     } else {
       boolean _isErlangResource = this.isErlangResource(resource);
       boolean _not_1 = (!_isErlangResource);
-      _or = (_not || _not_1);
+      _or_2 = (_not || _not_1);
     }
-    if (_or) {
-      return;
+    if (_or_2) {
+      _or_1 = true;
+    } else {
+      boolean _not_2 = (!onSourcePath);
+      _or_1 = (_or_2 || _not_2);
     }
-    this.deleteMarkers(((IFile) resource));
-    final Procedure4<IFile,String,Integer,Integer> _function = new Procedure4<IFile,String,Integer,Integer>() {
-        public void apply(final IFile file, final String message, final Integer lineNumber, final Integer severity) {
-          ErlangBuilder.addMarker(file, message, (lineNumber).intValue(), (severity).intValue());
-        }
-      };
-    SimpleErlangBuilder.compileResource(((IFile) resource), _function);
+    return _or_1;
+  }
+  
+  private String getCompilerId(final IProject project) {
+    return ErlCompiler.COMPILER_ID;
   }
   
   private boolean isErlangResource(final IResource resource) {
     IPath _projectRelativePath = resource.getProjectRelativePath();
     String _fileExtension = _projectRelativePath.getFileExtension();
     return Objects.equal(_fileExtension, "erl");
-  }
-  
-  public void deleteMarkers(final IFile file) {
-    try {
-      file.deleteMarkers(ErlangBuilder.MARKER_TYPE, false, IResource.DEPTH_ZERO);
-    } catch (final Throwable _t) {
-      if (_t instanceof CoreException) {
-        final CoreException ce = (CoreException)_t;
-      } else {
-        throw Exceptions.sneakyThrow(_t);
-      }
-    }
   }
   
   protected void fullBuild(final IProgressMonitor monitor) throws CoreException {
@@ -159,5 +207,24 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
           return _function.apply(delta);
         }
     });
+  }
+  
+  private void loadCompilers() {
+    final IExtensionRegistry reg = Platform.getExtensionRegistry();
+    final IConfigurationElement[] elements = reg.getConfigurationElementsFor("org.erlide.builder.compilers");
+    for (final IConfigurationElement element : elements) {
+      try {
+        Object _createExecutableExtension = element.createExecutableExtension("class");
+        final IErlangCompiler compiler = ((IErlangCompiler) _createExecutableExtension);
+        String _id = compiler.getId();
+        this.compilers.put(_id, compiler);
+      } catch (final Throwable _t) {
+        if (_t instanceof CoreException) {
+          final CoreException e = (CoreException)_t;
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
+    }
   }
 }

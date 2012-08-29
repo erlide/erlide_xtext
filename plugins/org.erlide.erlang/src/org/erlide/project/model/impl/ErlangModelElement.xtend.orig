@@ -26,4 +26,19 @@ abstract class ErlangModelElement implements IErlangModelElement {
         return crt as T
     }
 
+<<<<<<< HEAD
+    override getName() {
+        throw new UnsupportedOperationException("Auto-generated function stub")
+    }
+    
+    override getParent() {
+        throw new UnsupportedOperationException("Auto-generated function stub")
+    }
+
+    override getResource() {
+        throw new UnsupportedOperationException("Abstract operation")
+    }
+    
+=======
+>>>>>>> de221c7... integrate with project model
 }

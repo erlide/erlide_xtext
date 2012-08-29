@@ -4,10 +4,14 @@ import com.google.common.base.Objects;
 import java.io.File;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.project.model.IBinaryCodeUnit;
 import org.erlide.project.model.ICodeFolder;
 import org.erlide.project.model.ICodeUnit;
@@ -31,6 +35,7 @@ public class ErlangModelFactory implements IErlangModelFactory {
     IWorkspace _workspace = ResourcesPlugin.getWorkspace();
     ErlangModel _erlangModel = new ErlangModel(_workspace);
     this.erlModel = _erlangModel;
+    this.populateProjects();
   }
   
   public IErlangModel getModel() {
@@ -109,5 +114,18 @@ public class ErlangModelFactory implements IErlangModelFactory {
         throw Exceptions.sneakyThrow(_t);
       }
     }
+  }
+  
+  private void populateProjects() {
+    IErlangModel _model = this.getModel();
+    IWorkspace _workspace = _model.getWorkspace();
+    IWorkspaceRoot _root = _workspace.getRoot();
+    IProject[] _projects = _root.getProjects();
+    final Procedure1<IProject> _function = new Procedure1<IProject>() {
+        public void apply(final IProject it) {
+          ErlangModelFactory.this.createErlangProject(it);
+        }
+      };
+    IterableExtensions.<IProject>forEach(((Iterable<IProject>)Conversions.doWrapArray(_projects)), _function);
   }
 }

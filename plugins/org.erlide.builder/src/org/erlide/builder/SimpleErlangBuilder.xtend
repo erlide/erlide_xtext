@@ -1,32 +1,28 @@
 package org.erlide.builder
 
-import java.util.List
 import java.io.File
-import java.io.IOException
+import java.util.List
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IMarker
+import org.erlide.common.process.OutputParser
+import org.erlide.common.process.ProcessLauncher
 
 public class SimpleErlangBuilder {
+
     def static void compileResource(IFile file, (IFile, String, int, int)=>void callback) {
-        launchProcess(file, newArrayList("erlc", file.getName()), new File(
-            file.getParent().getLocation().toPortableString()), callback)
+        ProcessLauncher::launchProcess(file, newArrayList("erlc", file.getName()), new File(
+            file.getParent().getLocation().toPortableString()), new ErlParser(file, callback))
     }
-    
-    def static Process launchProcess(IFile file, List<String> cmdLine,
-            File workingDirectory, (IFile, String, int, int)=>void callback) {
-        val ProcessBuilder builder = new ProcessBuilder(cmdLine)
-        builder.directory(workingDirectory)
-        // builder.redirectErrorStream(true)
-        try {
-            val Process process = builder.start()
-            new StreamListener(process.getInputStream()) [ parseLine(it, file, callback) ] 
-            return process
-        } catch (IOException e) {
-            return null
-        }
-    }
-    
-    def static void parseLine(String line, IFile file, (IFile, String, int, int)=>void callback) {
+
+}
+
+class ErlParser extends OutputParser {
+	
+	new(IFile file, (IFile, String, int, int)=>void callback) {
+		super(file, callback)
+	}
+	
+   override void parseLine(String line) {
         val List<String> parts = line.split(": ")
         val List<String> heads = parts.head.split(":") 
         val warning = parts.size==3

@@ -13,6 +13,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",
  org.erlide.jinterface;bundle-version="0.115.2",
  com.google.guava
 Export-Package: org.erlide.common,
+ org.erlide.common.process,
  org.erlide.common.util
 Import-Package: com.google.common.annotations,
  com.google.common.base,

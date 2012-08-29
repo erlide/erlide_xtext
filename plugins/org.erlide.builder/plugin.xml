@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="compilers" name="Erlang compilers" schema="schema/compilers.exsd"/>
    <extension
          id="erlangBuilder"
          name="Erlang Project Builder"
@@ -35,6 +36,15 @@
       <persistent
             value="true">
       </persistent>
+   </extension>
+   <extension
+         point="org.erlide.builder.compilers">
+      <compiler
+            class="org.erlide.builder.compiler.ErlCompiler">
+      </compiler>
+      <compiler
+            class="org.erlide.builder.compiler.MakeCompiler">
+      </compiler>
    </extension>
 
 </plugin>
