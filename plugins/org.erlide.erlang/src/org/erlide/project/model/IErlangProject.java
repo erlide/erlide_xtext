@@ -8,6 +8,6 @@ public interface IErlangProject extends IErlangModelElement {
 
     IProject getWorkspaceProject();
 
-    Collection<IProjectFragment> getFragments();
+    Collection<ICodeUnit> getUnits();
 
 } // IErlangProject

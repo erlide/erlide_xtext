@@ -5,23 +5,23 @@ import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.IPath
 import org.erlide.common.util.ErlLogger
-import org.erlide.project.model.ICodeFolder
 import org.erlide.project.model.ICodeUnit
 import org.erlide.project.model.IErlangModelElement
+import org.erlide.project.model.IErlangProject
 
 public class CodeUnit extends ErlangModelElement implements ICodeUnit {
 
-    ICodeFolder folder
+    IErlangProject folder
     String name
     IFile file 
 
-    new(ICodeFolder folder, String name) {
+    new(IErlangProject folder, String name) {
         this.folder = folder
         this.name = name
     }
 
     override IPath getPath() {
-        return folder.getFolder().getProjectRelativePath().append(name)
+        return null; //folder.getFolder().getProjectRelativePath().append(name)
     }
 
     override String getName() {
@@ -43,7 +43,4 @@ public class CodeUnit extends ErlangModelElement implements ICodeUnit {
         return file
     }
     
-    override realize() {
-        ErlangModelFactory::createFile(path)
-    }
 } // CodeUnit

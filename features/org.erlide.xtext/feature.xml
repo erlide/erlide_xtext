@@ -48,7 +48,7 @@
       <import plugin="org.apache.commons.logging"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.erlide.builder" version="0.101.0" match="greaterOrEqual"/>
-      <import plugin="org.slf4j.log4j"/>
+      <import plugin="org.apache.log4j"/>
    </requires>
 
    <plugin

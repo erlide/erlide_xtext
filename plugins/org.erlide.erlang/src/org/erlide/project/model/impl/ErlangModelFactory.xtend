@@ -5,12 +5,10 @@ import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.IPath
 import org.erlide.project.model.IBinaryCodeUnit
-import org.erlide.project.model.ICodeFolder
 import org.erlide.project.model.ICodeUnit
 import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelFactory
 import org.erlide.project.model.IErlangProject
-import org.erlide.project.model.IProjectFragment
 
 public class ErlangModelFactory implements IErlangModelFactory {
 
@@ -29,27 +27,11 @@ public class ErlangModelFactory implements IErlangModelFactory {
         return new ErlangProject(erlModel, workspaceProject)
     }
 
-    override ICodeFolder createCodeFolder(IProjectFragment project,
-            IPath path) {
-        return new CodeFolder(path)
-    }
-
-    override IProjectFragment createErlangProjectFragment(
-            IErlangProject project, String name) {
-        return new GenericProjectFragment(project, name)
-    }
-
-    override IProjectFragment createBterlProjectFragment(
-            IErlangProject project, String name,
-            IProjectFragment parent) {
-        return new BterlProjectFragment(project, name, parent)
-    }
-
-    override ICodeUnit createCodeUnit(ICodeFolder folder, String name) {
+    override ICodeUnit createCodeUnit(IErlangProject folder, String name) {
         return new CodeUnit(folder, name)
     }
 
-    override IBinaryCodeUnit createBinaryCodeUnit(ICodeFolder folder,
+    override IBinaryCodeUnit createBinaryCodeUnit(IErlangProject folder,
             String name) {
         return new BinaryCodeUnit(folder, name)
     }

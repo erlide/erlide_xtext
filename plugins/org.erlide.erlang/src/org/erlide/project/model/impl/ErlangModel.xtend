@@ -57,8 +57,4 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
 		workspace.root
 	}
 	
-	override realize() {
-		// do nothing
-	}
-	
 } // ErlModel

@@ -6,44 +6,39 @@ import java.util.List
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IResourceChangeEvent
 import org.eclipse.core.resources.IResourceChangeListener
-import org.erlide.common.util.ErlLogger
+import org.eclipse.core.resources.IResourceDelta
+import org.eclipse.core.resources.ResourcesPlugin
+import org.erlide.project.model.ICodeUnit
 import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelElement
 import org.erlide.project.model.IErlangProject
-import org.erlide.project.model.IProjectFragment
-import org.eclipse.core.resources.ResourcesPlugin
-import org.eclipse.core.resources.IResourceDelta
 
 import static extension org.eclipse.xtext.xbase.lib.IntegerExtensions.*
 
 public class ErlangProject extends ErlangModelElement implements IErlangProject, IResourceChangeListener {
 
     IErlangModel model
-    List<ILibrary> libraries
-    List<IProjectFragment> sourceFragments
-    List<IProjectFragment> binaryFragments
+    List<ICodeUnit> units
     IProject workspaceProject
     boolean closed
 
     new(IErlangModel model, IProject project) {
         super()
         this.model = model
-        libraries = newArrayList()
-        sourceFragments = newArrayList()
-        binaryFragments = newArrayList()
+        units = newArrayList()
         workspaceProject = project
     	ResourcesPlugin::workspace.addResourceChangeListener(this)
         if(project.open) open()
      }
 
-    override List<IErlangProject> getReferencedProjects() {
+    def List<IProject> getReferencedProjects() {
     	open()
-        return referencedProjects
+        return workspaceProject.referencedProjects
     }
 
-    override Collection<IProjectFragment> getFragments() {
+    override Collection<ICodeUnit> getUnits() {
     	open()
-        return Collections::unmodifiableCollection(sourceFragments)
+        return Collections::unmodifiableCollection(units)
     }
 
     override IProject getWorkspaceProject() {
@@ -68,15 +63,6 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
 
     override getResource() {
         return workspaceProject
-    }
-    
-    override realize() {
-        if(workspaceProject != null) {
-            ErlLogger::error("Workspace project must exist for %s", name)
-            // TODO create project 
-        }
-        sourceFragments.forEach[realize]
-        // binaryFragments 
     }
     
     def private open() {
@@ -114,10 +100,6 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
 		]
 	}
 	
-	override getOutputPath() {
-		return outputPath
-	}
-
 	def private boolean match(int v, int flag) {
 		bitwiseAnd(v, flag) != 0
 	}
