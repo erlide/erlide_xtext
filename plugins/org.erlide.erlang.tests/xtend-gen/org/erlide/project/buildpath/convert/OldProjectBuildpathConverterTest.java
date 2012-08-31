@@ -17,8 +17,8 @@ import org.erlide.project.buildpath.BuildpathLibrary;
 import org.erlide.project.buildpath.FolderKind;
 import org.erlide.project.buildpath.convert.OldErlangProjectProperties;
 import org.erlide.project.buildpath.convert.OldProjectBuildpathConverter;
+import org.erlide.project.buildpath.convert.OpbTestContentProvider;
 import org.erlide.project.buildpath.convert.PathExpander;
-import org.erlide.project.buildpath.convert.TestContentProvider;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,8 +30,8 @@ public class OldProjectBuildpathConverterTest {
   
   @Before
   public void prepare() {
-    TestContentProvider _testContentProvider = new TestContentProvider();
-    PathExpander _pathExpander = new PathExpander(_testContentProvider);
+    OpbTestContentProvider _opbTestContentProvider = new OpbTestContentProvider();
+    PathExpander _pathExpander = new PathExpander(_opbTestContentProvider);
     this.expander = _pathExpander;
     Path _path = new Path("foo");
     HashMap<String,String> _newHashMap = CollectionLiterals.<String, String>newHashMap();

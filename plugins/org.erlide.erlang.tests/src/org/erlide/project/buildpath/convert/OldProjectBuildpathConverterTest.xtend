@@ -19,7 +19,7 @@ class OldProjectBuildpathConverterTest {
 
 	@Before
 	def void prepare() {
-		expander = new PathExpander(new TestContentProvider())
+		expander = new PathExpander(new OpbTestContentProvider())
 		externals = expander.expandFile(new Path("foo"), newHashMap())
 	}
 
@@ -72,7 +72,7 @@ class OldProjectBuildpathConverterTest {
 
 }
 
-class TestContentProvider extends AbstractContentProvider {
+class OpbTestContentProvider extends AbstractContentProvider {
 	
 	override get(IPath path) {
 		switch path.toPortableString {

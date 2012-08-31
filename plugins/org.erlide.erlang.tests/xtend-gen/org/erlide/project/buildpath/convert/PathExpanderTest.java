@@ -10,7 +10,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.project.buildpath.convert.PathExpander;
-import org.erlide.project.buildpath.convert.TestContentProvider;
+import org.erlide.project.buildpath.convert.PeTestContentProvider;
 import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -21,8 +21,8 @@ public class PathExpanderTest {
   @Test
   public void expandPaths() {
     final Map<String,String> pathVars = CollectionLiterals.<String, String>newHashMap();
-    TestContentProvider _testContentProvider = new TestContentProvider();
-    PathExpander _pathExpander = new PathExpander(_testContentProvider);
+    PeTestContentProvider _peTestContentProvider = new PeTestContentProvider();
+    PathExpander _pathExpander = new PathExpander(_peTestContentProvider);
     final PathExpander expander = _pathExpander;
     Path _path = new Path("demo.erlidex");
     final Collection<IPath> result = expander.expandFile(_path, pathVars);

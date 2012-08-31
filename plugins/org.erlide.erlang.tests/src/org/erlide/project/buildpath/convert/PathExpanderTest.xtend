@@ -13,7 +13,7 @@ class PathExpanderTest {
 	@Test
 	def void expandPaths() {
 		val Map<String, String> pathVars = newHashMap()
-		val expander = new PathExpander(new TestContentProvider())
+		val expander = new PathExpander(new PeTestContentProvider())
 		
 		val result = expander.expandFile(new Path("demo.erlidex"), pathVars)
 		assertThat("expandFile failed", 
@@ -23,7 +23,7 @@ class PathExpanderTest {
 	}
 }
 
-class TestContentProvider extends AbstractContentProvider {
+class PeTestContentProvider extends AbstractContentProvider {
 	
 	override get(IPath path) {
 		switch path.toPortableString {
