@@ -12,40 +12,51 @@ import org.erlide.builder.compiler.IProblemLineParser;
 @SuppressWarnings("all")
 public class DefaultLineParser implements IProblemLineParser {
   public CompilerProblem parseLine(final String line) {
-    CompilerProblem _xblockexpression = null;
-    {
-      final List<String> parts = ((List<String>)Conversions.doWrapArray(line.split(":")));
-      String _get = parts.get(2);
-      final boolean warning = Objects.equal(_get, " Warning");
-      Iterable<String> _tail = IterableExtensions.<String>tail(parts);
-      Iterable<String> _tail_1 = IterableExtensions.<String>tail(_tail);
-      String _join = IterableExtensions.join(_tail_1, ":");
-      final String msg = _join.trim();
-      int _xifexpression = (int) 0;
-      if (warning) {
-        _xifexpression = IMarker.SEVERITY_WARNING;
-      } else {
-        _xifexpression = IMarker.SEVERITY_ERROR;
-      }
-      final int severity = _xifexpression;
-      int _xtrycatchfinallyexpression = (int) 0;
-      try {
-        Iterable<String> _tail_2 = IterableExtensions.<String>tail(parts);
-        String _head = IterableExtensions.<String>head(_tail_2);
-        int _parseInt = Integer.parseInt(_head);
-        _xtrycatchfinallyexpression = _parseInt;
-      } catch (final Throwable _t) {
-        if (_t instanceof Exception) {
-          final Exception e = (Exception)_t;
-          _xtrycatchfinallyexpression = 0;
+    CompilerProblem _xtrycatchfinallyexpression = null;
+    try {
+      CompilerProblem _xblockexpression = null;
+      {
+        final List<String> parts = ((List<String>)Conversions.doWrapArray(line.split(":")));
+        String _get = parts.get(2);
+        final boolean warning = Objects.equal(_get, " Warning");
+        Iterable<String> _tail = IterableExtensions.<String>tail(parts);
+        Iterable<String> _tail_1 = IterableExtensions.<String>tail(_tail);
+        String _join = IterableExtensions.join(_tail_1, ":");
+        final String msg = _join.trim();
+        int _xifexpression = (int) 0;
+        if (warning) {
+          _xifexpression = IMarker.SEVERITY_WARNING;
         } else {
-          throw Exceptions.sneakyThrow(_t);
+          _xifexpression = IMarker.SEVERITY_ERROR;
         }
+        final int severity = _xifexpression;
+        int _xtrycatchfinallyexpression_1 = (int) 0;
+        try {
+          Iterable<String> _tail_2 = IterableExtensions.<String>tail(parts);
+          String _head = IterableExtensions.<String>head(_tail_2);
+          int _parseInt = Integer.parseInt(_head);
+          _xtrycatchfinallyexpression_1 = _parseInt;
+        } catch (final Throwable _t) {
+          if (_t instanceof Exception) {
+            final Exception e = (Exception)_t;
+            _xtrycatchfinallyexpression_1 = 0;
+          } else {
+            throw Exceptions.sneakyThrow(_t);
+          }
+        }
+        final int nline = _xtrycatchfinallyexpression_1;
+        CompilerProblem _compilerProblem = new CompilerProblem(null, msg, nline, severity);
+        _xblockexpression = (_compilerProblem);
       }
-      final int nline = _xtrycatchfinallyexpression;
-      CompilerProblem _compilerProblem = new CompilerProblem(null, msg, nline, severity);
-      _xblockexpression = (_compilerProblem);
+      _xtrycatchfinallyexpression = _xblockexpression;
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+        _xtrycatchfinallyexpression = null;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
     }
-    return _xblockexpression;
+    return _xtrycatchfinallyexpression;
   }
 }

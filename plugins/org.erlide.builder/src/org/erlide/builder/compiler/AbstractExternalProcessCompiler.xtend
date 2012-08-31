@@ -19,6 +19,7 @@ abstract class AbstractExternalProcessCompiler extends AbstractCompiler {
             val Process process = builder.start()
             val listener = new StreamListener(process.getInputStream()) [ 
             	val problem = lineParser.parseLine(it)
+            	if(problem!=null)
             		callback.apply(problem) 
             ]
             while(listener.alive) {

@@ -1,5 +1,6 @@
 package org.erlide.builder.compiler;
 
+import com.google.common.base.Objects;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,7 +27,10 @@ public abstract class AbstractExternalProcessCompiler extends AbstractCompiler {
       final Procedure1<String> _function = new Procedure1<String>() {
           public void apply(final String it) {
             final CompilerProblem problem = lineParser.parseLine(it);
-            callback.apply(problem);
+            boolean _notEquals = (!Objects.equal(problem, null));
+            if (_notEquals) {
+              callback.apply(problem);
+            }
           }
         };
       StreamListener _streamListener = new StreamListener(_inputStream, _function);
