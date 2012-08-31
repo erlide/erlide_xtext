@@ -10,6 +10,7 @@ import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
@@ -30,8 +31,12 @@ public class ErlangSemanticHighlightingCalculator implements
             return;
         }
 
-        final Iterator<INode> allNodes = resource.getParseResult()
-                .getRootNode().getAsTreeIterable().iterator();
+        final IParseResult parseResult = resource.getParseResult();
+        if (parseResult == null) {
+            return;
+        }
+        final Iterator<INode> allNodes = parseResult.getRootNode()
+                .getAsTreeIterable().iterator();
         while (allNodes.hasNext()) {
             final INode node = allNodes.next();
             final EObject grammarElement = node.getGrammarElement();
