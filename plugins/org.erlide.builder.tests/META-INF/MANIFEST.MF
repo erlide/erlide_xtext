@@ -11,3 +11,5 @@ Require-Bundle: org.eclipse.ui,
  org.erlide.testing.libs;bundle-version="0.101.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Export-Package: org.erlide.builder.tests,
+ org.erlide.project.compiler

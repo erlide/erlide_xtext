@@ -21,3 +21,4 @@ Import-Package: com.google.common.annotations,
  com.google.common.primitives,
  com.google.common.util.concurrent
 Bundle-Vendor: erlide.org
+Export-Package: org.erlide.builder.ui

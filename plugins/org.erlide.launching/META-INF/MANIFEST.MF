@@ -12,3 +12,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: com.google.common.base,
  com.google.common.collect
 Bundle-Vendor: erlide.org
+Export-Package: org.erlide.backend,
+ org.erlide.launching

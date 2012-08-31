@@ -16,7 +16,10 @@ Bundle-ClassPath: jbehave-core-3.0.jar,
  jmock-2.5.1/jmock-legacy-2.5.1.jar,
  jmock-2.5.1/jmock-script-2.5.1.jar,
  jmock-2.5.1/objenesis-1.0.jar
-Export-Package: org.jbehave.core;uses:="org.jbehave.core.steps,org.jbehave.core.configuration,org.jbehave.core.embedder",
+Export-Package: ftl,
+ i18n,
+ js,
+ org.jbehave.core;uses:="org.jbehave.core.steps,org.jbehave.core.configuration,org.jbehave.core.embedder",
  org.jbehave.core.annotations,
  org.jbehave.core.configuration;
   uses:="org.jbehave.core.reporters,
@@ -62,4 +65,5 @@ Export-Package: org.jbehave.core;uses:="org.jbehave.core.steps,org.jbehave.core.
  org.jmock.lib.concurrent,
  org.jmock.lib.legacy,
  org.jmock.lib.script,
- org.jmock.syntax
+ org.jmock.syntax,
+ style
