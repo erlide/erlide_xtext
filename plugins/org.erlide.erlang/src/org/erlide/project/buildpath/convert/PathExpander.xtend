@@ -5,7 +5,6 @@ import java.util.Collection
 import java.util.Map
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.Path
-import java.util.List
 
 class PathExpander {
 	

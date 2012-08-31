@@ -72,6 +72,7 @@ public class OtpTest extends XtextTest {
         }
         out.println(">>>> TOTAL:: " + ok + " / " + tested + "   "
                 + (results.entrySet().size() + ok));
+        out.close();
     }
 
     @Before
