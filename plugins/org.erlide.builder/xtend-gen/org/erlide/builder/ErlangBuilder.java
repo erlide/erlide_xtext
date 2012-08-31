@@ -51,6 +51,7 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
     this.loadCompilers();
+    InputOutput.<String>println("HHHHHHHHHHHHHHHHHHHHHHHH");
     boolean _equals = (kind == IncrementalProjectBuilder.FULL_BUILD);
     if (_equals) {
       this.fullBuild(monitor);

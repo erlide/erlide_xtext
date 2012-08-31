@@ -10,7 +10,7 @@ class DefaultLineParser implements IProblemLineParser {
         val warning = parts.get(2)==" Warning"
         val msg = parts.tail.tail.join(":").trim
         val severity = if(warning) IMarker::SEVERITY_WARNING else IMarker::SEVERITY_ERROR
-        val nline = Integer::parseInt(parts.tail.head)
+        val nline = try { Integer::parseInt(parts.tail.head) } catch (Exception e) { 0 }
         
         new CompilerProblem(null, msg, nline, severity)
     }

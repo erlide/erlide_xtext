@@ -11,6 +11,7 @@ import org.junit.Before
 import org.junit.Test
 
 import static org.erlide.project.buildpath.convert.AbstractContentProvider.*
+import org.erlide.project.buildpath.convert.OldErlangProjectProperties
 
 class OldProjectBuildpathConverterTest {
 

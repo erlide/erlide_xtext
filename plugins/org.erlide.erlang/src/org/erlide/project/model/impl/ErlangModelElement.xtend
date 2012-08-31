@@ -20,7 +20,7 @@ abstract class ErlangModelElement implements IErlangModelElement {
     @SuppressWarnings("unchecked")
     def private <T> T getParentOfType(Class<? extends T> clazz) {
         var IErlangModelElement crt = this
-        while (!crt.getClass().isAssignableFrom(clazz)) {
+        while (crt!=null && !crt.getClass().isAssignableFrom(clazz)) {
             crt = crt.getParent()
         }
         return crt as T
