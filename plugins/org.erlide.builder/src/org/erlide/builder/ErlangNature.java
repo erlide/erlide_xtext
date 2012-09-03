@@ -8,8 +8,6 @@ import org.eclipse.core.runtime.CoreException;
 
 public class ErlangNature implements IProjectNature {
 
-    public static final String NATURE_ID = "org.erlide.builder.erlangNature";
-
     private IProject project;
 
     @Override
@@ -29,6 +27,7 @@ public class ErlangNature implements IProjectNature {
         command.setBuilderName(ErlangBuilder.BUILDER_ID);
         newCommands[newCommands.length - 1] = command;
         desc.setBuildSpec(newCommands);
+
         project.setDescription(desc, null);
     }
 

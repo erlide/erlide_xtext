@@ -4,12 +4,15 @@ import java.util.Collection
 import java.util.List
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IWorkspace
+import org.eclipse.jdt.annotation.Nullable
+import org.erlide.common.NatureConstants
+import org.erlide.project.ErlangCore
 import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelElement
 import org.erlide.project.model.IErlangProject
 
 import static extension java.util.Collections.*
-import org.erlide.project.ErlangCore
+
 public class ErlangModel extends ErlangModelElement implements IErlangModel {
 
     IWorkspace workspace
@@ -25,6 +28,7 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
         return projects.unmodifiableCollection
     }
 
+	@Nullable
     override IErlangProject getErlangProject(IProject project) {
     	if (!project.exists) {
     		return null
@@ -34,6 +38,10 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
                 return prj
             }
         }
+        
+        if (!isErlangProject(project)) {
+        	return null
+       	}
         
         val IErlangProject erlPrj = ErlangCore::getModelFactory().createErlangProject(project)
         projects.add(erlPrj)
@@ -55,6 +63,10 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
 
 	override getResource() {
 		workspace.root
+	}
+
+	def isErlangProject(IProject project) {
+		project.hasNature(NatureConstants::NATURE_ID) || project.hasNature(NatureConstants::OLD_NATURE_ID)
 	}
 	
 } // ErlModel

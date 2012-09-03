@@ -104,4 +104,12 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
 		bitwiseAnd(v, flag) != 0
 	}
 	
+
+	override getBuildpath() {
+		if (workspaceProject.hasNature("org.erlide.core.erlnature")){
+			return null
+		}
+		return null
+	}
+	
 } // ErlangProject

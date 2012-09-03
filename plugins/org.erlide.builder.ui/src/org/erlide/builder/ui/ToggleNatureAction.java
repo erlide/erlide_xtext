@@ -11,7 +11,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.erlide.builder.ErlangNature;
+import org.erlide.common.NatureConstants;
 
 public class ToggleNatureAction implements IObjectActionDelegate {
 
@@ -60,7 +60,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
             final String[] natures = description.getNatureIds();
 
             for (int i = 0; i < natures.length; ++i) {
-                if (ErlangNature.NATURE_ID.equals(natures[i])) {
+                if (NatureConstants.NATURE_ID.equals(natures[i])) {
                     // Remove the nature
                     final String[] newNatures = new String[natures.length - 1];
                     System.arraycopy(natures, 0, newNatures, 0, i);
@@ -75,7 +75,7 @@ public class ToggleNatureAction implements IObjectActionDelegate {
             // Add the nature
             final String[] newNatures = new String[natures.length + 1];
             System.arraycopy(natures, 0, newNatures, 0, natures.length);
-            newNatures[natures.length] = ErlangNature.NATURE_ID;
+            newNatures[natures.length] = NatureConstants.NATURE_ID;
             description.setNatureIds(newNatures);
             project.setDescription(description, null);
         } catch (final CoreException e) {

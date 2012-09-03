@@ -9,7 +9,10 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.erlide.common.NatureConstants;
 import org.erlide.project.ErlangCore;
 import org.erlide.project.model.IErlangModel;
 import org.erlide.project.model.IErlangModelElement;
@@ -34,6 +37,7 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
     return Collections.<IErlangProject>unmodifiableCollection(this.projects);
   }
   
+  @Nullable
   public IErlangProject getErlangProject(final IProject project) {
     boolean _exists = project.exists();
     boolean _not = (!_exists);
@@ -46,6 +50,11 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
       if (_equals) {
         return prj;
       }
+    }
+    boolean _isErlangProject = this.isErlangProject(project);
+    boolean _not_1 = (!_isErlangProject);
+    if (_not_1) {
+      return null;
     }
     IErlangModelFactory _modelFactory = ErlangCore.getModelFactory();
     final IErlangProject erlPrj = _modelFactory.createErlangProject(project);
@@ -68,5 +77,21 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
   public IResource getResource() {
     IWorkspaceRoot _root = this.workspace.getRoot();
     return _root;
+  }
+  
+  public boolean isErlangProject(final IProject project) {
+    try {
+      boolean _or = false;
+      boolean _hasNature = project.hasNature(NatureConstants.NATURE_ID);
+      if (_hasNature) {
+        _or = true;
+      } else {
+        boolean _hasNature_1 = project.hasNature(NatureConstants.OLD_NATURE_ID);
+        _or = (_hasNature || _hasNature_1);
+      }
+      return _or;
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }

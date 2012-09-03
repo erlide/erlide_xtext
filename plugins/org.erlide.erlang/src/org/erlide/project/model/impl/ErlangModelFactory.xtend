@@ -9,6 +9,7 @@ import org.erlide.project.model.ICodeUnit
 import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelFactory
 import org.erlide.project.model.IErlangProject
+import org.erlide.common.NatureConstants
 
 public class ErlangModelFactory implements IErlangModelFactory {
 
@@ -16,7 +17,6 @@ public class ErlangModelFactory implements IErlangModelFactory {
 
     new() {
         erlModel = new ErlangModel(ResourcesPlugin::getWorkspace())
-        populateProjects
     }
 
     override IErlangModel getModel() {
@@ -24,7 +24,7 @@ public class ErlangModelFactory implements IErlangModelFactory {
     }
 
     override IErlangProject createErlangProject(IProject workspaceProject) {
-        return new ErlangProject(erlModel, workspaceProject)
+       	return new ErlangProject(erlModel, workspaceProject)
     }
 
     override ICodeUnit createCodeUnit(IErlangProject folder, String name) {
@@ -60,10 +60,4 @@ public class ErlangModelFactory implements IErlangModelFactory {
         }
     }
     
-	def private populateProjects() {
-		model.workspace.root.projects.forEach [
-			createErlangProject
-		]
-	}    
-
 } // ErlModelFactory

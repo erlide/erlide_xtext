@@ -18,6 +18,7 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.erlide.project.buildpath.BuildpathEntry;
 import org.erlide.project.model.ICodeUnit;
 import org.erlide.project.model.IErlangModel;
 import org.erlide.project.model.IErlangModelElement;
@@ -179,5 +180,17 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
     int _bitwiseAnd = (v & flag);
     boolean _notEquals = (_bitwiseAnd != 0);
     return _notEquals;
+  }
+  
+  public BuildpathEntry getBuildpath() {
+    try {
+      boolean _hasNature = this.workspaceProject.hasNature("org.erlide.core.erlnature");
+      if (_hasNature) {
+        return null;
+      }
+      return null;
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }
