@@ -1,17 +1,24 @@
 package org.erlide.builder;
 
-import java.util.Map;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IncrementalProjectBuilder;
+import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.erlide.builder.AbstractErlangBuilder;
 
 @SuppressWarnings("all")
-public class MakeBuilder extends IncrementalProjectBuilder {
-  protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
-    IProject _project = this.getProject();
-    final IPath projdir = _project.getLocation();
-    return null;
+public class MakeBuilder extends AbstractErlangBuilder {
+  public void clean(final IProgressMonitor monitor) throws CoreException {
+    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
+    throw _unsupportedOperationException;
+  }
+  
+  public void fullBuild(final IProgressMonitor monitor) throws CoreException {
+    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
+    throw _unsupportedOperationException;
+  }
+  
+  public void incrementalBuild(final IResourceDelta delta, final IProgressMonitor monitor) throws CoreException {
+    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
+    throw _unsupportedOperationException;
   }
 }

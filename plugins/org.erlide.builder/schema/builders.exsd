@@ -3,7 +3,7 @@
 <schema targetNamespace="org.erlide.builder" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.erlide.builder" id="compilers" name="compilers"/>
+         <meta.schema plugin="org.erlide.builder" id="builders" name="builders"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <sequence minOccurs="1" maxOccurs="unbounded">
-            <element ref="compiler"/>
+            <element ref="builder"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,10 +47,10 @@
       </complexType>
    </element>
 
-   <element name="compiler">
+   <element name="builder">
       <annotation>
          <documentation>
-            a compiler Implementing IErlangCompiler
+            a builder Implementing IErlangBuilder
          </documentation>
       </annotation>
       <complexType>
@@ -67,7 +67,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.erlide.builder.resourcecompiler.IErlangCompiler"/>
+                  <meta.attribute kind="java" basedOn=":org.erlide.builder.resourcecompiler.IErlangBuilder"/>
                </appinfo>
             </annotation>
          </attribute>

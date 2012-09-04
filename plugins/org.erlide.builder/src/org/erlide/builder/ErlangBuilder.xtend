@@ -10,7 +10,8 @@ import org.eclipse.core.runtime.IExtensionRegistry
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.Platform
 import org.eclipse.core.runtime.SubProgressMonitor
-import org.erlide.builder.compiler.ErlCompiler
+import org.erlide.builder.resourcecompiler.ErlCompiler
+import org.erlide.builder.IErlangBuilder
 
 import static org.erlide.builder.ErlangBuilder.*
 
@@ -20,22 +21,27 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     public static String OLD_BUILDER_ID = "org.erlide.core.erlbuilder"
     public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem"
 
-    Map<String, IncrementalProjectBuilder> builders;
+    Map<String, IErlangBuilder> builders;
 	BuilderMarkerUpdater markerUpdater;
 
 	new() {
+		this(new BuilderMarkerUpdater(MARKER_TYPE))
+	}
+	
+	new(BuilderMarkerUpdater markerUpdater) {
 		builders = newHashMap()
 		loadBuilders()
 		
-		markerUpdater = new BuilderMarkerUpdater(MARKER_TYPE)
+		this.markerUpdater = markerUpdater
 	}
 	
 	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor monitor) throws CoreException {
-        val compiler = builders.get(getCompilerId(project))
+        val compiler = builders.get(project)
         if (compiler==null) {
         	// TODO issue warning?
         } else {
-        	compiler.build(kind, args, monitor)
+        	//TODO
+        	//compiler.build(kind, args, monitor)
         }
         project.refreshLocal(IResource::DEPTH_INFINITE,
                 new SubProgressMonitor(monitor, 10))
@@ -43,16 +49,16 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     }
 
 	override protected clean(IProgressMonitor monitor) throws CoreException {
-        val compiler = builders.get(getCompilerId(project))
-        if (compiler==null) {
+        val builder = builders.get(getBuilderId(project))
+        if (builder==null) {
         	// TODO issue warning?
         } else {
-        	compiler.clean(monitor)
+        	builder.clean(monitor)
         }
 		markerUpdater.clean(project)
 	}
 	
-	def private String getCompilerId(IProject project) {
+	def private String getBuilderId(IProject project) {
 		// TODO get compilerId from project settings
 		ErlCompiler::COMPILER_ID
 	}
@@ -62,9 +68,9 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         val IConfigurationElement[] elements = reg.getConfigurationElementsFor("org.erlide.builder.builders")
         for (element : elements) {
             try {
-            	val compiler = element.createExecutableExtension("class") as IncrementalProjectBuilder
-            	// TODO fix id
-                builders.put(getCompilerId(null), compiler);
+            	val builder = element.createExecutableExtension("class") as IErlangBuilder
+            	builder.setProject(project)
+                builders.put(getBuilderId(project), builder);
             } catch (CoreException e) {
                 // ignore
             }

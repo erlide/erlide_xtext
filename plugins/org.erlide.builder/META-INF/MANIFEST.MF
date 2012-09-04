@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.erlide.builder,
- org.erlide.builder.compiler
+ org.erlide.builder.resourcecompiler
 Import-Package: com.google.common.annotations,
  com.google.common.base,
  com.google.common.base.internal,

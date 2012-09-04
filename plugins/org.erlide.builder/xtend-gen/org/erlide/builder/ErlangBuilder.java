@@ -14,8 +14,10 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.erlide.builder.BuilderMarkerUpdater;
-import org.erlide.builder.compiler.ErlCompiler;
+import org.erlide.builder.IErlangBuilder;
+import org.erlide.builder.resourcecompiler.ErlCompiler;
 
 @SuppressWarnings("all")
 public class ErlangBuilder extends IncrementalProjectBuilder {
@@ -25,26 +27,32 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem";
   
-  private Map<String,IncrementalProjectBuilder> builders;
+  private Map<String,IErlangBuilder> builders;
   
   private BuilderMarkerUpdater markerUpdater;
   
   public ErlangBuilder() {
-    HashMap<String,IncrementalProjectBuilder> _newHashMap = CollectionLiterals.<String, IncrementalProjectBuilder>newHashMap();
+    this(new Function0<BuilderMarkerUpdater>() {
+      public BuilderMarkerUpdater apply() {
+        BuilderMarkerUpdater _builderMarkerUpdater = new BuilderMarkerUpdater(ErlangBuilder.MARKER_TYPE);
+        return _builderMarkerUpdater;
+      }
+    }.apply());
+  }
+  
+  public ErlangBuilder(final BuilderMarkerUpdater markerUpdater) {
+    HashMap<String,IErlangBuilder> _newHashMap = CollectionLiterals.<String, IErlangBuilder>newHashMap();
     this.builders = _newHashMap;
     this.loadBuilders();
-    BuilderMarkerUpdater _builderMarkerUpdater = new BuilderMarkerUpdater(ErlangBuilder.MARKER_TYPE);
-    this.markerUpdater = _builderMarkerUpdater;
+    this.markerUpdater = markerUpdater;
   }
   
   protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
-    String _compilerId = this.getCompilerId(_project);
-    final IncrementalProjectBuilder compiler = this.builders.get(_compilerId);
+    final IErlangBuilder compiler = this.builders.get(_project);
     boolean _equals = Objects.equal(compiler, null);
     if (_equals) {
     } else {
-      compiler.build(kind, args, monitor);
     }
     IProject _project_1 = this.getProject();
     SubProgressMonitor _subProgressMonitor = new SubProgressMonitor(monitor, 10);
@@ -54,18 +62,18 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   protected void clean(final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
-    String _compilerId = this.getCompilerId(_project);
-    final IncrementalProjectBuilder compiler = this.builders.get(_compilerId);
-    boolean _equals = Objects.equal(compiler, null);
+    String _builderId = this.getBuilderId(_project);
+    final IErlangBuilder builder = this.builders.get(_builderId);
+    boolean _equals = Objects.equal(builder, null);
     if (_equals) {
     } else {
-      compiler.clean(monitor);
+      builder.clean(monitor);
     }
     IProject _project_1 = this.getProject();
     this.markerUpdater.clean(_project_1);
   }
   
-  private String getCompilerId(final IProject project) {
+  private String getBuilderId(final IProject project) {
     return ErlCompiler.COMPILER_ID;
   }
   
@@ -75,9 +83,12 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     for (final IConfigurationElement element : elements) {
       try {
         Object _createExecutableExtension = element.createExecutableExtension("class");
-        final IncrementalProjectBuilder compiler = ((IncrementalProjectBuilder) _createExecutableExtension);
-        String _compilerId = this.getCompilerId(null);
-        this.builders.put(_compilerId, compiler);
+        final IErlangBuilder builder = ((IErlangBuilder) _createExecutableExtension);
+        IProject _project = this.getProject();
+        builder.setProject(_project);
+        IProject _project_1 = this.getProject();
+        String _builderId = this.getBuilderId(_project_1);
+        this.builders.put(_builderId, builder);
       } catch (final Throwable _t) {
         if (_t instanceof CoreException) {
           final CoreException e = (CoreException)_t;

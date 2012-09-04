@@ -1,32 +1,32 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>compilers</title>
+<title>builders</title>
 <style type="text/css">@import url("file:/home/qvladum/eclipse42/eclipse/plugins/org.eclipse.sdk_4.2.0.v201206081400/book.css");</style>
 <style type="text/css">@import url("file:/home/qvladum/eclipse42/eclipse/configuration/org.eclipse.osgi/bundles/187/2/.cp/schema.css");</style>
 </HEAD>
 <BODY>
-<H1 style="text-align:center">compilers</H1>
+<H1 style="text-align:center">builders</H1>
 <p></p>
-<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.erlide.builder.compilers<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.erlide.builder.builders<p></p>
 <h6 class="CaptionFigColumn SchemaHeader">Since: </h6>[Enter the first release in which this extension point appears.]
 <p></p>
 
 <h6 class="CaptionFigColumn SchemaHeader">Description: </h6>[Enter description of this extension point.]<p></p>
 <h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
 <p></p>
-<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.compiler">compiler</a>)+&gt;</p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.builder">builder</a>)+&gt;</p>
 <p class="code SchemaDtd">&lt;!ATTLIST extension</p>
 <p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
 <p></p>
 <ul class="ConfigMarkupAttlistDesc">
 </ul>
-<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.compiler">compiler</a> EMPTY&gt;</p>
-<p class="code SchemaDtd">&lt;!ATTLIST compiler</p>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.builder">builder</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST builder</p>
 <p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">class&nbsp;CDATA #REQUIRED</p>&gt;</p>
 <p></p>
 <p class="ConfigMarkupElementDesc">
-a compiler Implementing IErlangCompiler</p>
+a builder Implementing IErlangBuilder</p>
 <br>
 <ul class="ConfigMarkupAttlistDesc">
 <li><b>id</b> - </li>

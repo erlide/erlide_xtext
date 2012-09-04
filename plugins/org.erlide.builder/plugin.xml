@@ -40,10 +40,12 @@
    <extension
          point="org.erlide.builder.compilers">
       <compiler
-            class="org.erlide.builder.compiler.ErlCompiler">
+      		id="org.erlide.builder.compiler.erlcompiler"
+            class="org.erlide.builder.resourcecompiler.ErlCompiler">
       </compiler>
       <compiler
-            class="org.erlide.builder.compiler.MakeCompiler">
+      		id="org.erlide.builder.compiler.makecompiler"
+            class="org.erlide.builder.resourcecompiler.MakeCompiler">
       </compiler>
    </extension>
 
