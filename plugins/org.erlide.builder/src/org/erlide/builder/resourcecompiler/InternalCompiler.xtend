@@ -1,6 +1,7 @@
 package org.erlide.builder.resourcecompiler
 
 import org.eclipse.core.resources.IFile
+import org.erlide.builder.CompilerOptions
 
 class InternalCompiler extends AbstractCompiler {
 

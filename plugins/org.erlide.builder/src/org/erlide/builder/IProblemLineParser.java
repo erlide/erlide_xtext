@@ -1,4 +1,4 @@
-package org.erlide.builder.resourcecompiler;
+package org.erlide.builder;
 
 public interface IProblemLineParser {
 

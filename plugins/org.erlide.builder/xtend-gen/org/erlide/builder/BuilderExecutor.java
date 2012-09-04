@@ -1,22 +1,20 @@
-package org.erlide.builder.resourcecompiler;
+package org.erlide.builder;
 
 import com.google.common.base.Objects;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.erlide.builder.resourcecompiler.AbstractCompiler;
-import org.erlide.builder.resourcecompiler.CompilerProblem;
-import org.erlide.builder.resourcecompiler.IProblemLineParser;
+import org.erlide.builder.CompilerProblem;
+import org.erlide.builder.IProblemLineParser;
 import org.erlide.common.process.StreamListener;
 import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
-public abstract class AbstractExternalProcessBuilder extends AbstractCompiler {
-  public void executeProcess(final IFile file, final List<String> cmdLine, final String workingDirectory, final IProblemLineParser lineParser, final Procedure1<? super CompilerProblem> callback) {
+public class BuilderExecutor {
+  public void executeProcess(final List<String> cmdLine, final String workingDirectory, final IProblemLineParser lineParser, final Procedure1<? super CompilerProblem> callback) {
     ProcessBuilder _processBuilder = new ProcessBuilder(cmdLine);
     final ProcessBuilder builder = _processBuilder;
     File _file = new File(workingDirectory);

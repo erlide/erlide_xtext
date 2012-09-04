@@ -1,8 +1,8 @@
-package org.erlide.builder.resourcecompiler;
+package org.erlide.builder;
 
 import com.ericsson.otp.erlang.OtpErlangAtom;
 import com.ericsson.otp.erlang.OtpErlangObject;
-import org.erlide.builder.resourcecompiler.CompilerOption;
+import org.erlide.builder.CompilerOption;
 
 @SuppressWarnings("all")
 public class BooleanOption extends CompilerOption {

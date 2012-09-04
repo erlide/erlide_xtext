@@ -1,4 +1,4 @@
-package org.erlide.builder.resourcecompiler;
+package org.erlide.builder;
 
 import com.ericsson.otp.erlang.OtpErlang;
 import com.ericsson.otp.erlang.OtpErlangAtom;
@@ -13,7 +13,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Pair;
-import org.erlide.builder.resourcecompiler.CompilerOption;
+import org.erlide.builder.CompilerOption;
 import org.erlide.common.util.TermParser;
 
 @SuppressWarnings("all")

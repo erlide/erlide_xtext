@@ -30,8 +30,8 @@ public abstract class AbstractErlangBuilder implements IErlangBuilder {
   }
   
   public AbstractErlangBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater) {
-    this.setProject(project);
-    this.setMarkerUpdater(markerUpdater);
+    this._project = project;
+    this._markerUpdater = markerUpdater;
   }
   
   public String getId() {

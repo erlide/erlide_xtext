@@ -1,4 +1,4 @@
-package org.erlide.builder.resourcecompiler;
+package org.erlide.builder;
 
 import com.ericsson.otp.erlang.OtpErlang;
 import com.ericsson.otp.erlang.OtpErlangList;
@@ -23,12 +23,12 @@ import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
-import org.erlide.builder.resourcecompiler.BooleanOption;
-import org.erlide.builder.resourcecompiler.CompilerOption;
-import org.erlide.builder.resourcecompiler.DefineOption;
-import org.erlide.builder.resourcecompiler.ModuleOption;
-import org.erlide.builder.resourcecompiler.PathsOption;
-import org.erlide.builder.resourcecompiler.WarningOption;
+import org.erlide.builder.BooleanOption;
+import org.erlide.builder.CompilerOption;
+import org.erlide.builder.DefineOption;
+import org.erlide.builder.ModuleOption;
+import org.erlide.builder.PathsOption;
+import org.erlide.builder.WarningOption;
 import org.erlide.common.util.ErlLogger;
 import org.erlide.common.util.PreferencesHelper;
 import org.erlide.common.util.TermParserException;

@@ -36,12 +36,12 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	}
 	
 	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor monitor) throws CoreException {
-        val compiler = builders.get(project)
-        if (compiler==null) {
+        val builder = new MakeBuilder(project, markerUpdater); //builders.get(project)
+        if (builder==null) {
         	// TODO issue warning?
         } else {
         	//TODO
-        	//compiler.build(kind, args, monitor)
+        	builder.fullBuild(monitor)
         }
         project.refreshLocal(IResource::DEPTH_INFINITE,
                 new SubProgressMonitor(monitor, 10))
@@ -49,7 +49,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     }
 
 	override protected clean(IProgressMonitor monitor) throws CoreException {
-        val builder = builders.get(getBuilderId(project))
+        val builder = new MakeBuilder(project, markerUpdater); //builders.get(project)
         if (builder==null) {
         	// TODO issue warning?
         } else {

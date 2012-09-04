@@ -1,4 +1,4 @@
-package org.erlide.builder.resourcecompiler;
+package org.erlide.builder;
 
 import com.ericsson.otp.erlang.OtpErlang;
 import com.ericsson.otp.erlang.OtpErlangAtom;
@@ -10,7 +10,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.erlide.builder.resourcecompiler.CompilerOption;
+import org.erlide.builder.CompilerOption;
 
 @SuppressWarnings("all")
 public class PathsOption extends CompilerOption {

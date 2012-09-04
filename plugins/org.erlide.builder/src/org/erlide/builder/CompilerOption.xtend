@@ -1,4 +1,4 @@
-package org.erlide.builder.resourcecompiler
+package org.erlide.builder
 
 import com.ericsson.otp.erlang.OtpErlang
 import com.ericsson.otp.erlang.OtpErlangAtom

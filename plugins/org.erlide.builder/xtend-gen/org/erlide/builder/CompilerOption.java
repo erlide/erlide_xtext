@@ -1,15 +1,15 @@
-package org.erlide.builder.resourcecompiler;
+package org.erlide.builder;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
-import org.erlide.builder.resourcecompiler.BooleanOption;
-import org.erlide.builder.resourcecompiler.DefineOption;
-import org.erlide.builder.resourcecompiler.ModuleOption;
-import org.erlide.builder.resourcecompiler.PathsOption;
-import org.erlide.builder.resourcecompiler.WarningOption;
+import org.erlide.builder.BooleanOption;
+import org.erlide.builder.DefineOption;
+import org.erlide.builder.ModuleOption;
+import org.erlide.builder.PathsOption;
+import org.erlide.builder.WarningOption;
 
 @SuppressWarnings("all")
 public abstract class CompilerOption {

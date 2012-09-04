@@ -3,10 +3,13 @@ package org.erlide.builder.resourcecompiler
 import java.util.List
 import org.eclipse.core.resources.IFile
 import org.erlide.builder.BuilderPlugin
+import org.erlide.builder.CompilerOptions
+import org.erlide.builder.CompilerProblem
+import org.erlide.builder.DefaultLineParser
 
 import static org.erlide.builder.resourcecompiler.ErlCompiler.*
 
-public class ErlCompiler extends AbstractExternalProcessBuilder {
+public class ErlCompiler extends AbstractExternalProcessCompiler {
 	
 	public static val String COMPILER_ID = BuilderPlugin::PLUGIN_ID + ".compiler.erl"
 	
@@ -16,7 +19,7 @@ public class ErlCompiler extends AbstractExternalProcessBuilder {
 	
     override compileResource(IFile file, CompilerOptions options) {
     	val List<CompilerProblem> result = newArrayList()
-        executeProcess(file, newArrayList("erlc", file.getName()), 
+        executor.executeProcess(newArrayList("erlc", file.getName()), 
             file.getParent().getLocation().toPortableString(), new DefaultLineParser()) [ 
             	problem | result.add(problem) 
             ]

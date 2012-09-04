@@ -1,4 +1,4 @@
-package org.erlide.builder.resourcecompiler;
+package org.erlide.builder;
 
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;

@@ -1,4 +1,4 @@
-package org.erlide.builder.resourcecompiler
+package org.erlide.builder
 
 import org.eclipse.xtend.lib.Data
 
@@ -8,5 +8,4 @@ class CompilerProblem {
 	String message
 	int line
 	int severity
-	
 }

@@ -17,6 +17,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.IErlangBuilder;
+import org.erlide.builder.MakeBuilder;
 import org.erlide.builder.resourcecompiler.ErlCompiler;
 
 @SuppressWarnings("all")
@@ -49,10 +50,12 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
-    final IErlangBuilder compiler = this.builders.get(_project);
-    boolean _equals = Objects.equal(compiler, null);
+    MakeBuilder _makeBuilder = new MakeBuilder(_project, this.markerUpdater);
+    final MakeBuilder builder = _makeBuilder;
+    boolean _equals = Objects.equal(builder, null);
     if (_equals) {
     } else {
+      builder.fullBuild(monitor);
     }
     IProject _project_1 = this.getProject();
     SubProgressMonitor _subProgressMonitor = new SubProgressMonitor(monitor, 10);
@@ -62,8 +65,8 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   protected void clean(final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
-    String _builderId = this.getBuilderId(_project);
-    final IErlangBuilder builder = this.builders.get(_builderId);
+    MakeBuilder _makeBuilder = new MakeBuilder(_project, this.markerUpdater);
+    final MakeBuilder builder = _makeBuilder;
     boolean _equals = Objects.equal(builder, null);
     if (_equals) {
     } else {

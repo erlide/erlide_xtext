@@ -10,8 +10,8 @@ abstract class AbstractErlangBuilder implements IErlangBuilder {
 	}
 
 	new(IProject project, BuilderMarkerUpdater markerUpdater) {
-		this.project = project
-		this.markerUpdater = markerUpdater
+		this._project = project
+		this._markerUpdater = markerUpdater
 	}
 	
 	override getId() {

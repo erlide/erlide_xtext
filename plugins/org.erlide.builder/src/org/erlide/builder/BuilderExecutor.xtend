@@ -1,15 +1,14 @@
-package org.erlide.builder.resourcecompiler
+package org.erlide.builder
 
 import java.io.File
 import java.io.IOException
 import java.util.List
-import org.eclipse.core.resources.IFile
 import org.erlide.common.process.StreamListener
 import org.erlide.common.util.ErlLogger
 
-abstract class AbstractExternalProcessBuilder extends AbstractCompiler {
+class BuilderExecutor {
 	
-	def void executeProcess(IFile file, List<String> cmdLine,
+		def void executeProcess(List<String> cmdLine,
             String workingDirectory, IProblemLineParser lineParser, 
             (CompilerProblem)=>void callback) {
         val ProcessBuilder builder = new ProcessBuilder(cmdLine)
@@ -17,7 +16,7 @@ abstract class AbstractExternalProcessBuilder extends AbstractCompiler {
         // builder.redirectErrorStream(true)
         try {
             val Process process = builder.start()
-            val listener = new StreamListener(process.getInputStream()) [ 
+            val listener = new StreamListener(process.inputStream) [ 
             	val problem = lineParser.parseLine(it)
             	if(problem!=null)
             		callback.apply(problem) 
@@ -31,5 +30,4 @@ abstract class AbstractExternalProcessBuilder extends AbstractCompiler {
         }
     }
     
-	
 }

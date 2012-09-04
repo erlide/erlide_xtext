@@ -9,14 +9,15 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.erlide.builder.BuilderExecutor;
 import org.erlide.builder.BuilderPlugin;
-import org.erlide.builder.resourcecompiler.AbstractExternalProcessBuilder;
-import org.erlide.builder.resourcecompiler.CompilerOptions;
-import org.erlide.builder.resourcecompiler.CompilerProblem;
-import org.erlide.builder.resourcecompiler.DefaultLineParser;
+import org.erlide.builder.CompilerOptions;
+import org.erlide.builder.CompilerProblem;
+import org.erlide.builder.DefaultLineParser;
+import org.erlide.builder.resourcecompiler.AbstractExternalProcessCompiler;
 
 @SuppressWarnings("all")
-public class ErlCompiler extends AbstractExternalProcessBuilder {
+public class ErlCompiler extends AbstractExternalProcessCompiler {
   public final static String COMPILER_ID = new Function0<String>() {
     public String apply() {
       String _plus = (BuilderPlugin.PLUGIN_ID + ".compiler.erl");
@@ -30,6 +31,7 @@ public class ErlCompiler extends AbstractExternalProcessBuilder {
   
   public Collection<CompilerProblem> compileResource(final IFile file, final CompilerOptions options) {
     final List<CompilerProblem> result = CollectionLiterals.<CompilerProblem>newArrayList();
+    BuilderExecutor _executor = this.getExecutor();
     String _name = file.getName();
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("erlc", _name);
     IContainer _parent = file.getParent();
@@ -41,7 +43,7 @@ public class ErlCompiler extends AbstractExternalProcessBuilder {
           result.add(problem);
         }
       };
-    this.executeProcess(file, _newArrayList, _portableString, _defaultLineParser, _function);
+    _executor.executeProcess(_newArrayList, _portableString, _defaultLineParser, _function);
     return result;
   }
 }

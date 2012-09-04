@@ -14,8 +14,7 @@ import org.eclipse.core.runtime.Platform
 import org.erlide.builder.AbstractErlangBuilder
 import org.erlide.builder.BuilderMarkerUpdater
 import org.erlide.project.model.IErlangProject
-
-import static org.erlide.builder.ErlangBuilder.*
+import org.erlide.builder.CompilerOptions
 
 class ErlangResourceCompiler extends AbstractErlangBuilder {
 
