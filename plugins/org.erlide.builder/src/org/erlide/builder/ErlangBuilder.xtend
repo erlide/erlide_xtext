@@ -5,13 +5,8 @@ import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.resources.IncrementalProjectBuilder
 import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.runtime.IConfigurationElement
-import org.eclipse.core.runtime.IExtensionRegistry
 import org.eclipse.core.runtime.IProgressMonitor
-import org.eclipse.core.runtime.Platform
 import org.eclipse.core.runtime.SubProgressMonitor
-import org.erlide.builder.resourcecompiler.ErlCompiler
-import org.erlide.builder.IErlangBuilder
 
 import static org.erlide.builder.ErlangBuilder.*
 
@@ -21,16 +16,14 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     public static String OLD_BUILDER_ID = "org.erlide.core.erlbuilder"
     public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem"
 
-    Map<String, IErlangBuilder> builders;
 	BuilderMarkerUpdater markerUpdater;
 
 	new() {
-		this(new BuilderMarkerUpdater(MARKER_TYPE))
+		this(new BuilderMarkerUpdater(MARKER_TYPE), new BuildersProvider())
 	}
 	
-	new(BuilderMarkerUpdater markerUpdater) {
-		builders = newHashMap()
-		loadBuilders()
+	new(BuilderMarkerUpdater markerUpdater, BuildersProvider builderProvider) {
+		builderProvider.loadBuilders()
 		
 		this.markerUpdater = markerUpdater
 	}
@@ -58,23 +51,4 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 		markerUpdater.clean(project)
 	}
 	
-	def private String getBuilderId(IProject project) {
-		// TODO get compilerId from project settings
-		ErlCompiler::COMPILER_ID
-	}
-
-    def private void loadBuilders() {
-        val IExtensionRegistry reg = Platform::getExtensionRegistry()
-        val IConfigurationElement[] elements = reg.getConfigurationElementsFor("org.erlide.builder.builders")
-        for (element : elements) {
-            try {
-            	val builder = element.createExecutableExtension("class") as IErlangBuilder
-            	builder.setProject(project)
-                builders.put(getBuilderId(project), builder);
-            } catch (CoreException e) {
-                // ignore
-            }
-        }
-    }
-
 }

@@ -2,8 +2,6 @@ package org.erlide.builder;
 
 import java.util.List;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResourceDelta;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.InputOutput;
@@ -35,12 +33,8 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     this.executor = executor;
   }
   
-  public void incrementalBuild(final IResourceDelta delta, final IProgressMonitor monitor) throws CoreException {
-    this.fullBuild(monitor);
-  }
-  
-  protected List<CompilerProblem> execute(final List<String> cmds) {
-    String _plus = ("run \'" + cmds);
+  protected List<CompilerProblem> execute(final List<String> cmds, final IProgressMonitor monitor) {
+    String _plus = ("EXEC \'" + cmds);
     String _plus_1 = (_plus + "\' in ");
     IProject _project = this.getProject();
     String _name = _project.getName();
@@ -54,7 +48,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
         }
       };
     this.executor.executeProcess(cmds, 
-      "/vobs/gsn/product/code/sgsn-w/ups", _defaultLineParser, _function);
+      "/vobs/gsn/product/code/sgsn-w/ups", monitor, _defaultLineParser, _function);
     return result;
   }
 }

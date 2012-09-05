@@ -15,7 +15,7 @@ class DefaultLineParser implements IProblemLineParser {
 	        
 	        return new CompilerProblem(parts.head, msg, nline, severity)
         } catch (Exception e) {
-        	println("ERR>"+line+"<")
+        	//println("ERR>"+line+"<")
         	null
         }
     }

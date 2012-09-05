@@ -6,6 +6,7 @@ import java.util.List;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -37,13 +38,14 @@ public class ErlCompiler extends AbstractExternalProcessCompiler {
     IContainer _parent = file.getParent();
     IPath _location = _parent.getLocation();
     String _portableString = _location.toPortableString();
+    NullProgressMonitor _nullProgressMonitor = new NullProgressMonitor();
     DefaultLineParser _defaultLineParser = new DefaultLineParser();
     final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
         public void apply(final CompilerProblem problem) {
           result.add(problem);
         }
       };
-    _executor.executeProcess(_newArrayList, _portableString, _defaultLineParser, _function);
+    _executor.executeProcess(_newArrayList, _portableString, _nullProgressMonitor, _defaultLineParser, _function);
     return result;
   }
 }

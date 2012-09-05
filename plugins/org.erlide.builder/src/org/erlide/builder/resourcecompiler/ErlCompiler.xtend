@@ -8,6 +8,7 @@ import org.erlide.builder.CompilerProblem
 import org.erlide.builder.DefaultLineParser
 
 import static org.erlide.builder.resourcecompiler.ErlCompiler.*
+import org.eclipse.core.runtime.NullProgressMonitor
 
 public class ErlCompiler extends AbstractExternalProcessCompiler {
 	
@@ -20,7 +21,8 @@ public class ErlCompiler extends AbstractExternalProcessCompiler {
     override compileResource(IFile file, CompilerOptions options) {
     	val List<CompilerProblem> result = newArrayList()
         executor.executeProcess(newArrayList("erlc", file.getName()), 
-            file.getParent().getLocation().toPortableString(), new DefaultLineParser()) [ 
+            file.getParent().getLocation().toPortableString(), new NullProgressMonitor(), 
+            new DefaultLineParser()) [ 
             	problem | result.add(problem) 
             ]
         return result

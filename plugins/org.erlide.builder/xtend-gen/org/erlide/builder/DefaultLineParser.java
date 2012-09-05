@@ -5,7 +5,6 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.builder.CompilerProblem;
 import org.erlide.builder.IProblemLineParser;
@@ -38,14 +37,7 @@ public class DefaultLineParser implements IProblemLineParser {
     } catch (final Throwable _t) {
       if (_t instanceof Exception) {
         final Exception e = (Exception)_t;
-        CompilerProblem _xblockexpression = null;
-        {
-          String _plus = ("ERR>" + line);
-          String _plus_1 = (_plus + "<");
-          InputOutput.<String>println(_plus_1);
-          _xblockexpression = (null);
-        }
-        _xtrycatchfinallyexpression = _xblockexpression;
+        _xtrycatchfinallyexpression = null;
       } else {
         throw Exceptions.sneakyThrow(_t);
       }

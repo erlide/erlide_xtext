@@ -8,6 +8,7 @@ import org.erlide.builder.CompilerProblem
 import org.erlide.builder.DefaultLineParser
 
 import static org.erlide.builder.resourcecompiler.MakeCompiler.*
+import org.eclipse.core.runtime.NullProgressMonitor
 
 public class MakeCompiler extends AbstractExternalProcessCompiler {
 	
@@ -20,7 +21,7 @@ public class MakeCompiler extends AbstractExternalProcessCompiler {
     override compileResource(IFile file, CompilerOptions options) {
     	val List<CompilerProblem> result = newArrayList()
         executor.executeProcess(newArrayList("make", file.getName()), 
-            file.getParent().getLocation().toPortableString(), 
+            file.getParent().getLocation().toPortableString(), new NullProgressMonitor(),
             new DefaultLineParser()) [
             	problem | result.add(problem)
             ]
