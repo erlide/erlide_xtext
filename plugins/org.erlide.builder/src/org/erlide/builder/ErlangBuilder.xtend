@@ -1,8 +1,10 @@
 package org.erlide.builder
 
 import java.util.Map
+import javax.inject.Inject
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IResource
+import org.eclipse.core.resources.IWorkspace
 import org.eclipse.core.resources.IncrementalProjectBuilder
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IProgressMonitor
@@ -29,6 +31,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	}
 	
 	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor monitor) throws CoreException {
+		
         val builder = new MakeBuilder(project, markerUpdater); //builders.get(project)
         if (builder==null) {
         	// TODO issue warning?

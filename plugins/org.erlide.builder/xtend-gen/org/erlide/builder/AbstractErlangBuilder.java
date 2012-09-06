@@ -38,4 +38,7 @@ public abstract class AbstractErlangBuilder implements IErlangBuilder {
     UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
     throw _unsupportedOperationException;
   }
+  
+  public void loadConfiguration() {
+  }
 }

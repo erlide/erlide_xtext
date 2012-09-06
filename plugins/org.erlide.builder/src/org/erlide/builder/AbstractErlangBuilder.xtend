@@ -17,5 +17,10 @@ abstract class AbstractErlangBuilder implements IErlangBuilder {
 	override getId() {
 		throw new UnsupportedOperationException("Auto-generated function stub")
 	}
+
+	override loadConfiguration() {
+		// do nothing by default
+	}
+	
 	
 }

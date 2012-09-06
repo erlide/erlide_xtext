@@ -28,6 +28,7 @@ public class BuildersProvider {
       try {
         Object _createExecutableExtension = element.createExecutableExtension("class");
         final IErlangBuilder builder = ((IErlangBuilder) _createExecutableExtension);
+        builder.loadConfiguration();
       } catch (final Throwable _t) {
         if (_t instanceof CoreException) {
           final CoreException e = (CoreException)_t;

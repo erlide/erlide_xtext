@@ -22,6 +22,7 @@ class BuildersProvider {
             try {
             	val builder = element.createExecutableExtension("class") as IErlangBuilder
             	// TODO builder.setProject(project)
+            	builder.loadConfiguration()
                 //builders.put(getBuilderId(project), builder);
             } catch (CoreException e) {
                 // ignore

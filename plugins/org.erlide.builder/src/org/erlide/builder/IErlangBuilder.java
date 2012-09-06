@@ -13,6 +13,8 @@ public interface IErlangBuilder {
 
     void setMarkerUpdater(BuilderMarkerUpdater markerUpdater);
 
+    void loadConfiguration();
+
     void clean(IProgressMonitor monitor) throws CoreException;
 
     void fullBuild(IProgressMonitor monitor) throws CoreException;
