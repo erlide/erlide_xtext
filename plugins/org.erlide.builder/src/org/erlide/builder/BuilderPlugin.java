@@ -3,6 +3,9 @@ package org.erlide.builder;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -34,8 +37,11 @@ public class BuilderPlugin extends Plugin {
      * 
      * @return the shared instance
      */
-    public static BuilderPlugin getDefault() {
+    public static BuilderPlugin getInstance() {
         return plugin;
     }
 
+    public Injector getInjector() {
+        return Guice.createInjector(new BuilderModule());
+    }
 }

@@ -18,19 +18,27 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     public static String OLD_BUILDER_ID = "org.erlide.core.erlbuilder"
     public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem"
 
-	BuilderMarkerUpdater markerUpdater;
+	@Inject BuilderMarkerUpdater markerUpdater
+	@Inject BuildersProvider builderProvider
+	@Inject	IWorkspace wspace
 
 	new() {
-		this(new BuilderMarkerUpdater(MARKER_TYPE), new BuildersProvider())
+		println("CREATED BUILDER 1")
+        BuilderPlugin::instance.injector.injectMembers(this);
+
+		builderProvider.loadBuilders()
 	}
 	
 	new(BuilderMarkerUpdater markerUpdater, BuildersProvider builderProvider) {
-		builderProvider.loadBuilders()
-		
+		println("CREATED BUILDER 2")
 		this.markerUpdater = markerUpdater
+		this.builderProvider = builderProvider
+		
+		builderProvider.loadBuilders()
 	}
 	
 	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor monitor) throws CoreException {
+		println("INJECT "+wspace)
 		
         val builder = new MakeBuilder(project, markerUpdater); //builders.get(project)
         if (builder==null) {
@@ -51,7 +59,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         } else {
         	builder.clean(monitor)
         }
-		markerUpdater.clean(project)
+		markerUpdater.clean(project, MARKER_TYPE)
 	}
 	
 }

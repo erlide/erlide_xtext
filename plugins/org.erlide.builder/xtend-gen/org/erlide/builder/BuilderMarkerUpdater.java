@@ -10,16 +10,13 @@ import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
 public class BuilderMarkerUpdater {
-  private String markerType;
-  
-  public BuilderMarkerUpdater(final String type) {
-    this.markerType = type;
+  public BuilderMarkerUpdater() {
   }
   
-  public void addMarker(final IFile file, final String message, final int lineNumber, final int severity) {
+  public void addMarker(final IFile file, final String markerType, final String message, final int lineNumber, final int severity) {
     int ln = lineNumber;
     try {
-      final IMarker marker = file.createMarker(this.markerType);
+      final IMarker marker = file.createMarker(markerType);
       marker.setAttribute(IMarker.MESSAGE, message);
       marker.setAttribute(IMarker.SEVERITY, severity);
       int _minus = (-1);
@@ -44,9 +41,9 @@ public class BuilderMarkerUpdater {
     }
   }
   
-  public void deleteMarkers(final IFile file) {
+  public void deleteMarkers(final IFile file, final String markerType) {
     try {
-      file.deleteMarkers(this.markerType, false, IResource.DEPTH_ZERO);
+      file.deleteMarkers(markerType, false, IResource.DEPTH_ZERO);
     } catch (final Throwable _t) {
       if (_t instanceof CoreException) {
         final CoreException e = (CoreException)_t;
@@ -61,9 +58,9 @@ public class BuilderMarkerUpdater {
     }
   }
   
-  public void clean(final IProject project) {
+  public void clean(final IProject project, final String markerType) {
     try {
-      project.deleteMarkers(this.markerType, false, IResource.DEPTH_INFINITE);
+      project.deleteMarkers(markerType, false, IResource.DEPTH_INFINITE);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }

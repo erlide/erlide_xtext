@@ -9,7 +9,7 @@
       <builder
             hasNature="true">
          <run
-               class="org.erlide.builder.ErlangBuilder">
+               class="org.erlide.builder.BuilderExtensionFactory:org.erlide.builder.ErlangBuilder">
          </run>
       </builder>
    </extension>

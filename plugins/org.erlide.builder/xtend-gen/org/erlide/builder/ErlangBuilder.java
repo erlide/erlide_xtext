@@ -1,15 +1,19 @@
 package org.erlide.builder;
 
 import com.google.common.base.Objects;
+import com.google.inject.Injector;
 import java.util.Map;
+import javax.inject.Inject;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.erlide.builder.BuilderMarkerUpdater;
+import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.BuildersProvider;
 import org.erlide.builder.MakeBuilder;
 
@@ -21,28 +25,33 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem";
   
+  @Inject
   private BuilderMarkerUpdater markerUpdater;
   
+  @Inject
+  private BuildersProvider builderProvider;
+  
+  @Inject
+  private IWorkspace wspace;
+  
   public ErlangBuilder() {
-    this(new Function0<BuilderMarkerUpdater>() {
-      public BuilderMarkerUpdater apply() {
-        BuilderMarkerUpdater _builderMarkerUpdater = new BuilderMarkerUpdater(ErlangBuilder.MARKER_TYPE);
-        return _builderMarkerUpdater;
-      }
-    }.apply(), new Function0<BuildersProvider>() {
-      public BuildersProvider apply() {
-        BuildersProvider _buildersProvider = new BuildersProvider();
-        return _buildersProvider;
-      }
-    }.apply());
+    InputOutput.<String>println("CREATED BUILDER 1");
+    BuilderPlugin _instance = BuilderPlugin.getInstance();
+    Injector _injector = _instance.getInjector();
+    _injector.injectMembers(this);
+    this.builderProvider.loadBuilders();
   }
   
   public ErlangBuilder(final BuilderMarkerUpdater markerUpdater, final BuildersProvider builderProvider) {
-    builderProvider.loadBuilders();
+    InputOutput.<String>println("CREATED BUILDER 2");
     this.markerUpdater = markerUpdater;
+    this.builderProvider = builderProvider;
+    builderProvider.loadBuilders();
   }
   
   protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
+    String _plus = ("INJECT " + this.wspace);
+    InputOutput.<String>println(_plus);
     IProject _project = this.getProject();
     MakeBuilder _makeBuilder = new MakeBuilder(_project, this.markerUpdater);
     final MakeBuilder builder = _makeBuilder;
@@ -67,6 +76,6 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
       builder.clean(monitor);
     }
     IProject _project_1 = this.getProject();
-    this.markerUpdater.clean(_project_1);
+    this.markerUpdater.clean(_project_1, ErlangBuilder.MARKER_TYPE);
   }
 }

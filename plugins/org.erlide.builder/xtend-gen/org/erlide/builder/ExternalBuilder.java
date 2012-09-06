@@ -23,6 +23,7 @@ import org.erlide.builder.BuilderExecutor;
 import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.CompilerProblem;
 import org.erlide.builder.DefaultLineParser;
+import org.erlide.builder.ErlangBuilder;
 
 @SuppressWarnings("all")
 public abstract class ExternalBuilder extends AbstractErlangBuilder {
@@ -109,7 +110,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   public void fullBuild(final IProgressMonitor monitor) throws CoreException {
     BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
     IProject _project = this.getProject();
-    _markerUpdater.clean(_project);
+    _markerUpdater.clean(_project, ErlangBuilder.MARKER_TYPE);
     List<String> _fullCmdLine = this.getFullCmdLine();
     final List<CompilerProblem> errors = this.execute(_fullCmdLine, monitor);
     final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
@@ -130,7 +131,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
             String _message = it.getMessage();
             int _line = it.getLine();
             int _severity = it.getSeverity();
-            _markerUpdater.addMarker(file, _message, _line, _severity);
+            _markerUpdater.addMarker(file, ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
           }
         }
       };
@@ -179,7 +180,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   
   public void singleBuild(final IFile file, final IProgressMonitor monitor) {
     BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
-    _markerUpdater.deleteMarkers(file);
+    _markerUpdater.deleteMarkers(file, ErlangBuilder.MARKER_TYPE);
     List<String> _singleCmdLine = this.getSingleCmdLine();
     final List<CompilerProblem> errors = this.execute(_singleCmdLine, monitor);
     final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
@@ -189,7 +190,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
           String _message = it.getMessage();
           int _line = it.getLine();
           int _severity = it.getSeverity();
-          _markerUpdater.addMarker(file, _message, _line, _severity);
+          _markerUpdater.addMarker(file, ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
         }
       };
     IterableExtensions.<CompilerProblem>forEach(errors, _function);

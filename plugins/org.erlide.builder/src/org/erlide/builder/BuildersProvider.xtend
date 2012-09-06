@@ -7,6 +7,7 @@ import org.eclipse.core.runtime.Platform
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.resources.IProject
 import org.erlide.builder.resourcecompiler.ErlCompiler
+import javax.inject.Inject
 
 class BuildersProvider {
 	    Map<String, IErlangBuilder> builders;

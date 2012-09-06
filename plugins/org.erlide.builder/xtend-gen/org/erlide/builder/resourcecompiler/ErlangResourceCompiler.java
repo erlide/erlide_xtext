@@ -28,6 +28,7 @@ import org.erlide.builder.AbstractErlangBuilder;
 import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.CompilerOptions;
 import org.erlide.builder.CompilerProblem;
+import org.erlide.builder.ErlangBuilder;
 import org.erlide.builder.resourcecompiler.ErlCompiler;
 import org.erlide.builder.resourcecompiler.IErlangCompiler;
 import org.erlide.project.model.IErlangProject;
@@ -62,7 +63,7 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
   public void clean(final IProgressMonitor monitor) throws CoreException {
     BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
     IProject _project = this.getProject();
-    _markerUpdater.clean(_project);
+    _markerUpdater.clean(_project, ErlangBuilder.MARKER_TYPE);
   }
   
   private void compileResource(final IResource resource) {
@@ -72,7 +73,7 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
     }
     final IFile erlFile = ((IFile) resource);
     BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
-    _markerUpdater.deleteMarkers(erlFile);
+    _markerUpdater.deleteMarkers(erlFile, ErlangBuilder.MARKER_TYPE);
     IProject _project = this.getProject();
     String _compilerId = this.getCompilerId(_project);
     final IErlangCompiler compiler = this.compilers.get(_compilerId);
@@ -90,7 +91,7 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
             String _message = it.getMessage();
             int _line = it.getLine();
             int _severity = it.getSeverity();
-            _markerUpdater.addMarker(erlFile, _message, _line, _severity);
+            _markerUpdater.addMarker(erlFile, ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
           }
         };
       IterableExtensions.<CompilerProblem>forEach(_compileResource, _function);

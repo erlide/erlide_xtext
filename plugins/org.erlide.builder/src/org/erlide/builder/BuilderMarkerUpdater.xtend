@@ -9,13 +9,10 @@ import org.erlide.common.util.ErlLogger
 
 class BuilderMarkerUpdater {
 	
-	String markerType
-	
-	new(String type) {
-		markerType = type
+	new() {
 	}
 	
-	def void addMarker(IFile file, String message, int lineNumber, int severity) {
+	def void addMarker(IFile file, String markerType, String message, int lineNumber, int severity) {
         var ln = lineNumber
         try {
             val marker = file.createMarker(markerType)
@@ -32,7 +29,7 @@ class BuilderMarkerUpdater {
     }
 
 	
-	def void deleteMarkers(IFile file) {
+	def void deleteMarkers(IFile file, String markerType) {
         try {
             file.deleteMarkers(markerType, false, IResource::DEPTH_ZERO)
         } catch (CoreException e) {
@@ -40,7 +37,7 @@ class BuilderMarkerUpdater {
         }
     }
 
-	def clean(IProject project) {
+	def clean(IProject project, String markerType) {
 		project.deleteMarkers(markerType, false, IResource::DEPTH_INFINITE)
 	}
 	

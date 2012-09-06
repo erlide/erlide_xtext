@@ -45,7 +45,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	override fullBuild(IProgressMonitor monitor) throws CoreException {
-		markerUpdater.clean(project)
+		markerUpdater.clean(project, ErlangBuilder::MARKER_TYPE)
 		// TODO cmdline
 		val errors = execute(fullCmdLine, monitor)
 		errors.forEach[ 
@@ -53,7 +53,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 			val IFile file = project.findMember(fileName) as IFile
 			println("FILE "+fileName+" = "+file)
 			if(file!=null) {
-				markerUpdater.addMarker(file, message, line, severity)
+				markerUpdater.addMarker(file, ErlangBuilder::MARKER_TYPE, message, line, severity)
 			}
 		]
 	}
@@ -76,12 +76,12 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 
 	def singleBuild(IFile file, IProgressMonitor monitor) {
-		markerUpdater.deleteMarkers(file)
+		markerUpdater.deleteMarkers(file, ErlangBuilder::MARKER_TYPE)
 		// TODO cmdline
 		val errors = execute(singleCmdLine, monitor)
 		errors.forEach[ 
 			println(it) 
-			markerUpdater.addMarker(file, message, line, severity)
+			markerUpdater.addMarker(file, ErlangBuilder::MARKER_TYPE, message, line, severity)
 		]
 	}
 	

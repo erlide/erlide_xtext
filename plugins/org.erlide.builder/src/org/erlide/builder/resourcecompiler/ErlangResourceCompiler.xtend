@@ -15,6 +15,7 @@ import org.erlide.builder.AbstractErlangBuilder
 import org.erlide.builder.BuilderMarkerUpdater
 import org.erlide.project.model.IErlangProject
 import org.erlide.builder.CompilerOptions
+import org.erlide.builder.ErlangBuilder
 
 class ErlangResourceCompiler extends AbstractErlangBuilder {
 
@@ -39,7 +40,7 @@ class ErlangResourceCompiler extends AbstractErlangBuilder {
 	}
 	
 	override clean(IProgressMonitor monitor) throws CoreException {
-		markerUpdater.clean(project)
+		markerUpdater.clean(project, ErlangBuilder::MARKER_TYPE)
 	}
 	
     def private void compileResource(IResource resource) {
@@ -47,7 +48,7 @@ class ErlangResourceCompiler extends AbstractErlangBuilder {
             return;
         }
         val erlFile = resource as IFile
-        markerUpdater.deleteMarkers(erlFile)
+        markerUpdater.deleteMarkers(erlFile, ErlangBuilder::MARKER_TYPE)
         val compiler = compilers.get(getCompilerId(project))
         if (compiler==null) {
         	// TODO issue warning
@@ -56,7 +57,7 @@ class ErlangResourceCompiler extends AbstractErlangBuilder {
 	        val options = new CompilerOptions()
 	        println("compile "+erlFile)
         	compiler.compileResource(erlFile, options).forEach [ 
-        		markerUpdater.addMarker(erlFile, message, line, severity)
+        		markerUpdater.addMarker(erlFile, ErlangBuilder::MARKER_TYPE, message, line, severity)
         	]
         }
 	}
