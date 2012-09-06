@@ -6,10 +6,16 @@ class MakeBuilder extends ExternalBuilder {
 
 	new() {
 		super()
+		cleanCmdLine = newArrayList("make", "clean")
+		fullCmdLine = newArrayList("make", "beam")
+		singleCmdLine = newArrayList("make", "-W", "$file")
 	}
 
 	new(IProject project, BuilderMarkerUpdater markerUpdater) {
 		super(project, markerUpdater)
+		cleanCmdLine = newArrayList("make", "clean")
+		fullCmdLine = newArrayList("make", "beam")
+		singleCmdLine = newArrayList("make", "-W", "$file")
 	}
 	
 	new(IProject project, BuilderMarkerUpdater markerUpdater, BuilderExecutor executor) {

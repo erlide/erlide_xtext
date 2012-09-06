@@ -11,10 +11,22 @@ import org.erlide.builder.ExternalBuilder;
 public class MakeBuilder extends ExternalBuilder {
   public MakeBuilder() {
     super();
+    ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("make", "clean");
+    this.setCleanCmdLine(_newArrayList);
+    ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("make", "beam");
+    this.setFullCmdLine(_newArrayList_1);
+    ArrayList<String> _newArrayList_2 = CollectionLiterals.<String>newArrayList("make", "-W", "$file");
+    this.setSingleCmdLine(_newArrayList_2);
   }
   
   public MakeBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater) {
     super(project, markerUpdater);
+    ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("make", "clean");
+    this.setCleanCmdLine(_newArrayList);
+    ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("make", "beam");
+    this.setFullCmdLine(_newArrayList_1);
+    ArrayList<String> _newArrayList_2 = CollectionLiterals.<String>newArrayList("make", "-W", "$file");
+    this.setSingleCmdLine(_newArrayList_2);
   }
   
   public MakeBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final BuilderExecutor executor) {
