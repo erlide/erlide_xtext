@@ -6,16 +6,15 @@ import java.util.Map;
 import javax.inject.Inject;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.BuildersProvider;
-import org.erlide.builder.MakeBuilder;
+import org.erlide.builder.SgsnBuilder;
 
 @SuppressWarnings("all")
 public class ErlangBuilder extends IncrementalProjectBuilder {
@@ -31,45 +30,47 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   @Inject
   private BuildersProvider builderProvider;
   
-  @Inject
-  private IWorkspace wspace;
-  
   public ErlangBuilder() {
-    InputOutput.<String>println("CREATED BUILDER 1");
     BuilderPlugin _instance = BuilderPlugin.getInstance();
     Injector _injector = _instance.getInjector();
     _injector.injectMembers(this);
-    this.builderProvider.loadBuilders();
   }
   
   public ErlangBuilder(final BuilderMarkerUpdater markerUpdater, final BuildersProvider builderProvider) {
-    InputOutput.<String>println("CREATED BUILDER 2");
     this.markerUpdater = markerUpdater;
     this.builderProvider = builderProvider;
-    builderProvider.loadBuilders();
   }
   
   protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
-    String _plus = ("INJECT " + this.wspace);
-    InputOutput.<String>println(_plus);
     IProject _project = this.getProject();
-    MakeBuilder _makeBuilder = new MakeBuilder(_project, this.markerUpdater);
-    final MakeBuilder builder = _makeBuilder;
+    SgsnBuilder _sgsnBuilder = new SgsnBuilder(_project, this.markerUpdater);
+    final SgsnBuilder builder = _sgsnBuilder;
     boolean _equals = Objects.equal(builder, null);
     if (_equals) {
     } else {
-      builder.fullBuild(monitor);
+      boolean _matched = false;
+      if (!_matched) {
+        if (Objects.equal(kind,IncrementalProjectBuilder.FULL_BUILD)) {
+          _matched=true;
+          builder.fullBuild(monitor);
+        }
+      }
+      if (!_matched) {
+        IProject _project_1 = this.getProject();
+        IResourceDelta _delta = this.getDelta(_project_1);
+        builder.incrementalBuild(_delta, monitor);
+      }
     }
-    IProject _project_1 = this.getProject();
+    IProject _project_2 = this.getProject();
     SubProgressMonitor _subProgressMonitor = new SubProgressMonitor(monitor, 10);
-    _project_1.refreshLocal(IResource.DEPTH_INFINITE, _subProgressMonitor);
+    _project_2.refreshLocal(IResource.DEPTH_INFINITE, _subProgressMonitor);
     return null;
   }
   
   protected void clean(final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
-    MakeBuilder _makeBuilder = new MakeBuilder(_project, this.markerUpdater);
-    final MakeBuilder builder = _makeBuilder;
+    SgsnBuilder _sgsnBuilder = new SgsnBuilder(_project, this.markerUpdater);
+    final SgsnBuilder builder = _sgsnBuilder;
     boolean _equals = Objects.equal(builder, null);
     if (_equals) {
     } else {

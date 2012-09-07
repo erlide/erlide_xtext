@@ -21,7 +21,7 @@ public class BuildersProvider {
     this.builders = _newHashMap;
   }
   
-  public void loadBuilders() {
+  protected void loadBuilders() {
     final IExtensionRegistry reg = Platform.getExtensionRegistry();
     final IConfigurationElement[] elements = reg.getConfigurationElementsFor("org.erlide.builder.builders");
     for (final IConfigurationElement element : elements) {
@@ -41,5 +41,18 @@ public class BuildersProvider {
   
   public String getBuilderId(final IProject project) {
     return ErlCompiler.COMPILER_ID;
+  }
+  
+  public IErlangBuilder get(final String id) {
+    IErlangBuilder _xblockexpression = null;
+    {
+      boolean _isEmpty = this.builders.isEmpty();
+      if (_isEmpty) {
+        this.loadBuilders();
+      }
+      IErlangBuilder _get = this.builders.get(id);
+      _xblockexpression = (_get);
+    }
+    return _xblockexpression;
   }
 }

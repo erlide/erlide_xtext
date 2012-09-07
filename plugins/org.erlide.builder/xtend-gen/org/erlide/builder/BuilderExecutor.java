@@ -28,6 +28,7 @@ public class BuilderExecutor {
           public void apply(final String it) {
             boolean _isCanceled = monitor.isCanceled();
             if (_isCanceled) {
+              process.destroy();
               OperationCanceledException _operationCanceledException = new OperationCanceledException();
               throw _operationCanceledException;
             }

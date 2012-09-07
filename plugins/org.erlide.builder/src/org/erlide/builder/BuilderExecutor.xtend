@@ -15,12 +15,14 @@ class BuilderExecutor {
             (CompilerProblem)=>void callback) {
         val ProcessBuilder builder = new ProcessBuilder(cmdLine)
         builder.directory(new File(workingDirectory))
-        // builder.redirectErrorStream(true)
+        //builder.redirectErrorStream(true)
         try {
             val Process process = builder.start()
             val listener = new StreamListener(process.inputStream) [
-            	if(monitor.canceled)
-	           		throw new OperationCanceledException();
+            	if(monitor.canceled) {
+            		process.destroy
+	           		throw new OperationCanceledException()
+           		}
 	           		
             	val problem = lineParser.parseLine(it)
             	if(problem!=null)

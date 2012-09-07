@@ -9,9 +9,6 @@ import org.erlide.common.util.ErlLogger
 
 class BuilderMarkerUpdater {
 	
-	new() {
-	}
-	
 	def void addMarker(IFile file, String markerType, String message, int lineNumber, int severity) {
         var ln = lineNumber
         try {

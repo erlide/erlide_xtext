@@ -4,8 +4,8 @@ import org.eclipse.core.resources.IProject
 
 import static extension org.erlide.builder.ProjectBuilderExtensions.*
 
-class MakeBuilder extends ExternalBuilder {
-
+class SgsnBuilder extends ExternalBuilder {
+	
 	new() {
 		super()
 		setupCommands()
@@ -13,18 +13,18 @@ class MakeBuilder extends ExternalBuilder {
 
 	new(IProject project, BuilderMarkerUpdater markerUpdater) {
 		super(project, markerUpdater)
-		setupCommands()
 		setupConfig(project)
+		setupCommands()
 	} 
 	
 	new(IProject project, BuilderMarkerUpdater markerUpdater, BuilderExecutor executor) {
 		super(project, markerUpdater, executor)
-		setupCommands()
 		setupConfig(project)
+		setupCommands()
 	}
 	
 	def setupCommands() {
-		cleanCmdLine = newArrayList("make", "clean")
+		cleanCmdLine = newArrayList("rm", "-rf", "do3/erlang/")
 		fullCmdLine = newArrayList("make", "beam")
 		singleCmdLine = newArrayList("make", "-W", "$file")
 	}
@@ -35,5 +35,5 @@ class MakeBuilder extends ExternalBuilder {
 			println("WD="+workingDir)
 		}
 	}
-
+	
 }

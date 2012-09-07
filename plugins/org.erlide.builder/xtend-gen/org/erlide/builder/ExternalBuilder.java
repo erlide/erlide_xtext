@@ -11,12 +11,12 @@ import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.AbstractErlangBuilder;
 import org.erlide.builder.BuilderExecutor;
@@ -24,6 +24,7 @@ import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.CompilerProblem;
 import org.erlide.builder.DefaultLineParser;
 import org.erlide.builder.ErlangBuilder;
+import org.erlide.builder.ProjectBuilderExtensions;
 
 @SuppressWarnings("all")
 public abstract class ExternalBuilder extends AbstractErlangBuilder {
@@ -103,28 +104,29 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   }
   
   public void clean(final IProgressMonitor monitor) {
-    List<String> _cleanCmdLine = this.getCleanCmdLine();
-    this.execute(_cleanCmdLine, monitor);
-  }
-  
-  public void fullBuild(final IProgressMonitor monitor) throws CoreException {
     BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
     IProject _project = this.getProject();
     _markerUpdater.clean(_project, ErlangBuilder.MARKER_TYPE);
-    List<String> _fullCmdLine = this.getFullCmdLine();
-    final List<CompilerProblem> errors = this.execute(_fullCmdLine, monitor);
+    List<String> _cleanCmdLine = this.getCleanCmdLine();
     final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
         public void apply(final CompilerProblem it) {
-          InputOutput.<CompilerProblem>println(it);
+        }
+      };
+    this.execute(_cleanCmdLine, monitor, _function);
+  }
+  
+  public void fullBuild(final IProgressMonitor monitor) throws CoreException {
+    this.clean(monitor);
+    List<String> _fullCmdLine = this.getFullCmdLine();
+    final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
+        public void apply(final CompilerProblem it) {
           IProject _project = ExternalBuilder.this.getProject();
           String _fileName = it.getFileName();
-          IResource _findMember = _project.findMember(_fileName);
+          Path _path = new Path(_fileName);
+          final IPath fPath = ProjectBuilderExtensions.getPathInProject(_project, _path);
+          IProject _project_1 = ExternalBuilder.this.getProject();
+          IResource _findMember = _project_1.findMember(fPath);
           final IFile file = ((IFile) _findMember);
-          String _fileName_1 = it.getFileName();
-          String _plus = ("FILE " + _fileName_1);
-          String _plus_1 = (_plus + " = ");
-          String _plus_2 = (_plus_1 + file);
-          InputOutput.<String>println(_plus_2);
           boolean _notEquals = (!Objects.equal(file, null));
           if (_notEquals) {
             BuilderMarkerUpdater _markerUpdater = ExternalBuilder.this.getMarkerUpdater();
@@ -132,25 +134,22 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
             int _line = it.getLine();
             int _severity = it.getSeverity();
             _markerUpdater.addMarker(file, ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
+            monitor.worked(1);
           }
         }
       };
-    IterableExtensions.<CompilerProblem>forEach(errors, _function);
+    this.execute(_fullCmdLine, monitor, _function);
   }
   
   public void incrementalBuild(final IResourceDelta delta, final IProgressMonitor monitor) throws CoreException {
     final Function1<IResourceDelta,Boolean> _function = new Function1<IResourceDelta,Boolean>() {
         public Boolean apply(final IResourceDelta it) {
-          boolean _isCanceled = monitor.isCanceled();
-          if (_isCanceled) {
-            OperationCanceledException _operationCanceledException = new OperationCanceledException();
-            throw _operationCanceledException;
-          }
           IResource _resource = it.getResource();
           boolean _not = (!(_resource instanceof IFile));
           if (_not) {
             return true;
           }
+          monitor.worked(1);
           int _kind = it.getKind();
           final int getKind = _kind;
           boolean _matched = false;
@@ -182,7 +181,8 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
     _markerUpdater.deleteMarkers(file, ErlangBuilder.MARKER_TYPE);
     List<String> _singleCmdLine = this.getSingleCmdLine();
-    final List<CompilerProblem> errors = this.execute(_singleCmdLine, monitor);
+    String _name = file.getName();
+    final List<String> cmd = this.fillCmdLine(_singleCmdLine, _name);
     final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
         public void apply(final CompilerProblem it) {
           InputOutput.<CompilerProblem>println(it);
@@ -193,26 +193,41 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
           _markerUpdater.addMarker(file, ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
         }
       };
-    IterableExtensions.<CompilerProblem>forEach(errors, _function);
+    this.execute(cmd, monitor, _function);
   }
   
-  private List<CompilerProblem> execute(final List<String> cmds, final IProgressMonitor monitor) {
+  private List<String> fillCmdLine(final List<String> cmds, final String file) {
+    final Function1<String,String> _function = new Function1<String,String>() {
+        public String apply(final String it) {
+          String _xifexpression = null;
+          boolean _equals = Objects.equal(it, "$file");
+          if (_equals) {
+            _xifexpression = file;
+          } else {
+            _xifexpression = it;
+          }
+          return _xifexpression;
+        }
+      };
+    List<String> _map = ListExtensions.<String, String>map(cmds, _function);
+    return _map;
+  }
+  
+  private void execute(final List<String> cmds, final IProgressMonitor monitor, final Procedure1<? super CompilerProblem> callback) {
     String _plus = ("EXEC \'" + cmds);
     String _plus_1 = (_plus + "\' in ");
-    IProject _project = this.getProject();
-    String _name = _project.getName();
-    String _plus_2 = (_plus_1 + _name);
+    IPath _workingDir = this.getWorkingDir();
+    String _plus_2 = (_plus_1 + _workingDir);
     InputOutput.<String>println(_plus_2);
-    final List<CompilerProblem> result = CollectionLiterals.<CompilerProblem>newArrayList();
+    IPath _workingDir_1 = this.getWorkingDir();
+    String _oSString = _workingDir_1.toOSString();
     DefaultLineParser _defaultLineParser = new DefaultLineParser();
     final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
         public void apply(final CompilerProblem problem) {
-          result.add(problem);
+          callback.apply(problem);
         }
       };
-    this.executor.executeProcess(cmds, 
-      "/vobs/gsn/product/code/sgsn-w/ups", monitor, _defaultLineParser, _function);
-    return result;
+    this.executor.executeProcess(cmds, _oSString, monitor, _defaultLineParser, _function);
   }
   
   public void loadConfiguration() {

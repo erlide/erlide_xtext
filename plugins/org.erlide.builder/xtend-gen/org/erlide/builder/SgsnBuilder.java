@@ -12,26 +12,26 @@ import org.erlide.builder.ExternalBuilder;
 import org.erlide.builder.ProjectBuilderExtensions;
 
 @SuppressWarnings("all")
-public class MakeBuilder extends ExternalBuilder {
-  public MakeBuilder() {
+public class SgsnBuilder extends ExternalBuilder {
+  public SgsnBuilder() {
     super();
     this.setupCommands();
   }
   
-  public MakeBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater) {
+  public SgsnBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater) {
     super(project, markerUpdater);
-    this.setupCommands();
     this.setupConfig(project);
+    this.setupCommands();
   }
   
-  public MakeBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final BuilderExecutor executor) {
+  public SgsnBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final BuilderExecutor executor) {
     super(project, markerUpdater, executor);
-    this.setupCommands();
     this.setupConfig(project);
+    this.setupCommands();
   }
   
   public void setupCommands() {
-    ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("make", "clean");
+    ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("rm", "-rf", "do3/erlang/");
     this.setCleanCmdLine(_newArrayList);
     ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("make", "beam");
     this.setFullCmdLine(_newArrayList_1);

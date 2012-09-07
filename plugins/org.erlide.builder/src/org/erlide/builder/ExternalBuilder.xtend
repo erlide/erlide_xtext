@@ -1,14 +1,17 @@
 package org.erlide.builder
 
 import java.util.List
+import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
+import org.eclipse.core.resources.IResourceDelta
+import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.IProgressMonitor
-import org.eclipse.xtend.lib.Property
-import org.eclipse.core.resources.IFile
-import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.resources.IResourceDelta
 import org.eclipse.core.runtime.OperationCanceledException
+import org.eclipse.xtend.lib.Property
+
+import static extension org.erlide.builder.ProjectBuilderExtensions.*
+import org.eclipse.core.runtime.Path
 
 abstract class ExternalBuilder extends AbstractErlangBuilder {
 
@@ -41,29 +44,28 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	override clean(IProgressMonitor monitor) {
-		execute(cleanCmdLine, monitor)
+		markerUpdater.clean(project, ErlangBuilder::MARKER_TYPE)
+		execute(cleanCmdLine, monitor) []
 	}
 	
 	override fullBuild(IProgressMonitor monitor) throws CoreException {
-		markerUpdater.clean(project, ErlangBuilder::MARKER_TYPE)
+		clean(monitor)
 		// TODO cmdline
-		val errors = execute(fullCmdLine, monitor)
-		errors.forEach[ 
-			println(it) 
-			val IFile file = project.findMember(fileName) as IFile
-			println("FILE "+fileName+" = "+file)
+		execute(fullCmdLine, monitor) [ 
+			val fPath = project.getPathInProject(new Path(fileName))
+			val IFile file = project.findMember(fPath) as IFile
 			if(file!=null) {
 				markerUpdater.addMarker(file, ErlangBuilder::MARKER_TYPE, message, line, severity)
+				monitor.worked(1)
 			}
 		]
 	}
 	
 	override incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) throws CoreException {
 		delta.accept [
-           	if(monitor.canceled) 
-           		throw new OperationCanceledException();
            	if (!(resource instanceof IFile)) 
            		return true
+           	monitor.worked(1)
             switch (kind) {
 	            case IResourceDelta::ADDED:
 	                singleBuild(resource as IFile, monitor)
@@ -78,22 +80,24 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	def singleBuild(IFile file, IProgressMonitor monitor) {
 		markerUpdater.deleteMarkers(file, ErlangBuilder::MARKER_TYPE)
 		// TODO cmdline
-		val errors = execute(singleCmdLine, monitor)
-		errors.forEach[ 
+		val cmd = fillCmdLine(singleCmdLine, file.name)
+		execute(cmd, monitor) [ 
 			println(it) 
 			markerUpdater.addMarker(file, ErlangBuilder::MARKER_TYPE, message, line, severity)
 		]
 	}
 	
-	def private execute(List<String> cmds, IProgressMonitor monitor) {
-		println("EXEC '"+cmds+"' in "+project.name)
-		val List<CompilerProblem> result = newArrayList()
+	def private fillCmdLine(List<String> cmds, String file) {
+		cmds.map [ if(it=="$file") file else it ]
+	}
+	
+	def private execute(List<String> cmds, IProgressMonitor monitor, (CompilerProblem)=>void callback) {
+		println("EXEC '"+cmds+"' in "+workingDir)
         executor.executeProcess(cmds, 
-            "/vobs/gsn/product/code/sgsn-w/ups",//project.location.toPortableString(), 
-            monitor, new DefaultLineParser()) [
-            	problem | result.add(problem)
+            workingDir.toOSString, 
+            monitor, new DefaultLineParser()) [ problem |
+            	callback.apply(problem)
             ]
-        return result
 	}
 	
 	override loadConfiguration() {

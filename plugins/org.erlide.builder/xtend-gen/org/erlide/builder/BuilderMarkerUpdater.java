@@ -10,9 +10,6 @@ import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
 public class BuilderMarkerUpdater {
-  public BuilderMarkerUpdater() {
-  }
-  
   public void addMarker(final IFile file, final String markerType, final String message, final int lineNumber, final int severity) {
     int ln = lineNumber;
     try {

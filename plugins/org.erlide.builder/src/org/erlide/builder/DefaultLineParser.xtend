@@ -6,6 +6,7 @@ import org.eclipse.core.resources.IMarker
 class DefaultLineParser implements IProblemLineParser {
 	
 	override parseLine(String line) {
+        	println("@@@>"+line+"<")
         try {
         	val List<String> parts = line.split(":")
 	        val warning = parts.get(2)==" Warning"
