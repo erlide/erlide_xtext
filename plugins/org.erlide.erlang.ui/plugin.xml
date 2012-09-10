@@ -71,6 +71,19 @@
         </page>
     </extension>
     <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.erlide.Erlang"
+            name="Erlang">
+            <keywordReference id="org.erlide.ui.keyword_Erlang"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+    <extension
         point="org.eclipse.ui.keywords">
         <keyword
             id="org.erlide.ui.keyword_Erlang"
@@ -137,6 +150,28 @@
         </resourceServiceProvider>
     </extension>
 
+    <!-- marker definitions for org.erlide.Erlang -->
+    <extension
+            id="erlang.check.fast"
+            name="Erlang Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.fast"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="erlang.check.normal"
+            name="Erlang Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.normal"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="erlang.check.expensive"
+            name="Erlang Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.expensive"/>
+        <persistent value="true"/>
+    </extension>
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
@@ -150,10 +185,6 @@
             uriExtension="hrl">
         </resourceServiceProvider>
     </extension>
-
-
-
-
 	<!-- Quick Outline -->
 	<extension
 		point="org.eclipse.ui.handlers">
@@ -187,16 +218,34 @@
 			</command>
 		</menuContribution>
 	</extension>
-   <!-- quickfix marker resolution generator -->
-   <extension
-         point="org.eclipse.ui.ide.markerResolution">
-      <markerResolutionGenerator
-            class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
-      </markerResolutionGenerator>
-   </extension>
-
-
-
+    <!-- quickfix marker resolution generator for org.erlide.Erlang -->
+    <extension
+            point="org.eclipse.ui.ide.markerResolution">
+        <markerResolutionGenerator
+            class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.erlide.ui.erlang.check.fast">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+        <markerResolutionGenerator
+            class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.erlide.ui.erlang.check.normal">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+        <markerResolutionGenerator
+            class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.erlide.ui.erlang.check.expensive">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+    </extension>
    <extension
          point="org.eclipse.ui.newWizards">
       <wizard
@@ -208,18 +257,18 @@
       </wizard>
    </extension>
 
-    <!-- Rename Refactoring -->
-    <extension point="org.eclipse.ui.handlers">
-        <handler 
-            class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler"
-            commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
-            <activeWhen>
-                <reference
-                    definitionId="org.erlide.Erlang.Editor.opened">
-                </reference>
-            </activeWhen>
-        </handler>
-    </extension>
+   	<!-- Rename Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler"
+			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
+			<activeWhen>
+				<reference
+					definitionId="org.erlide.Erlang.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
     <extension point="org.eclipse.ui.menus">
          <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
@@ -237,19 +286,19 @@
   <extension point="org.eclipse.compare.contentViewers">
     <viewer id="org.erlide.Erlang.compare.contentViewers"
             class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="xerl,xhrl">
+            extensions="erl,hrl">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
     <viewer id="org.erlide.Erlang.compare.contentMergeViewers"
             class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="xerl,xhrl" label="Erlang Compare">
+            extensions="erl,hrl" label="Erlang Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
     <provider id="org.erlide.Erlang.editors.documentProviders"
             class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-            extensions="xerl,xhrl">
+            extensions="erl,xrl">
     </provider>
   </extension>
   <!--extension
