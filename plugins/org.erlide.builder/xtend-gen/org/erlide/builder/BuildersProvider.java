@@ -1,5 +1,6 @@
 package org.erlide.builder;
 
+import com.google.inject.Injector;
 import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.core.resources.IProject;
@@ -9,6 +10,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.IErlangBuilder;
 import org.erlide.builder.resourcecompiler.ErlCompiler;
 
@@ -28,6 +30,9 @@ public class BuildersProvider {
       try {
         Object _createExecutableExtension = element.createExecutableExtension("class");
         final IErlangBuilder builder = ((IErlangBuilder) _createExecutableExtension);
+        BuilderPlugin _instance = BuilderPlugin.getInstance();
+        Injector _injector = _instance.getInjector();
+        _injector.injectMembers(builder);
         builder.loadConfiguration();
       } catch (final Throwable _t) {
         if (_t instanceof CoreException) {

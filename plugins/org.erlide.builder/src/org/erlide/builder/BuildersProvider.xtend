@@ -7,6 +7,7 @@ import org.eclipse.core.runtime.IConfigurationElement
 import org.eclipse.core.runtime.IExtensionRegistry
 import org.eclipse.core.runtime.Platform
 import org.erlide.builder.resourcecompiler.ErlCompiler
+import com.google.inject.Guice
 
 class BuildersProvider {
     Map<String, IErlangBuilder> builders;
@@ -21,6 +22,7 @@ class BuildersProvider {
         for (element : elements) {
             try {
             	val builder = element.createExecutableExtension("class") as IErlangBuilder
+            	BuilderPlugin::instance.injector.injectMembers(builder)
             	// TODO builder.setProject(project)
             	builder.loadConfiguration()
                 //builders.put(getBuilderId(project), builder);
