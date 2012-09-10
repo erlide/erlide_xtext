@@ -6,7 +6,7 @@ Bundle-Version: 0.101.0.qualifier
 Bundle-SymbolicName: org.erlide.erlang; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",
- org.eclipse.core.resources;bundle-version="3.7.101",
+ org.eclipse.core.resources;bundle-version="3.7.100",
  org.eclipse.xtext;bundle-version="2.3.0";visibility:=reexport,
  org.eclipse.xtext.generator;resolution:=optional,
  org.eclipse.emf.ecore;bundle-version="2.7.0",

@@ -6,7 +6,7 @@ Bundle-Version: 0.101.0.qualifier
 Bundle-Activator: org.erlide.builder.ui.BuilderUiPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.core.resources;bundle-version="3.7.101",
+ org.eclipse.core.resources;bundle-version="3.7.100",
  org.erlide.builder;bundle-version="0.101.0",
  org.erlide.common;bundle-version="0.101.0"
 Bundle-ActivationPolicy: lazy

@@ -35,7 +35,7 @@
       <import plugin="org.eclipse.xtext.common.types.ui"/>
       <import plugin="org.eclipse.xtext.ui.codetemplates.ui"/>
       <import plugin="org.eclipse.core.runtime" version="3.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.resources" version="3.7.101" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.7.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtend"/>
       <import plugin="org.eclipse.compare"/>
       <import plugin="org.eclipse.ui.navigator"/>
@@ -46,9 +46,10 @@
       <import plugin="org.antlr.runtime"/>
       <import plugin="com.google.guava" version="11.0.1" match="greaterOrEqual"/>
       <import plugin="org.apache.commons.logging"/>
+      <import plugin="org.apache.log4j"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.erlide.builder" version="0.101.0" match="greaterOrEqual"/>
-      <import plugin="org.apache.log4j"/>
+      <import plugin="org.erlide.common" version="0.101.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

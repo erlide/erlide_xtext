@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.erlide.launching
 Bundle-Version: 0.101.0.qualifier
 Bundle-Activator: org.erlide.launching.LaunchingPlugin
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.core.resources;bundle-version="3.7.101",
+ org.eclipse.core.resources;bundle-version="3.7.100",
  org.erlide.jinterface;bundle-version="0.15.2"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
