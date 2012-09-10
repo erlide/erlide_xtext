@@ -8,8 +8,6 @@ Bundle-ClassPath: jbehave-core-3.0.jar,
  jmock-2.5.1/bsh-core-2.0b4.jar,
  jmock-2.5.1/cglib-2.1_3-src.jar,
  jmock-2.5.1/cglib-nodep-2.1_3.jar,
- jmock-2.5.1/hamcrest-core-1.1.jar,
- jmock-2.5.1/hamcrest-library-1.1.jar,
  jmock-2.5.1/jmock-2.5.1.jar,
  jmock-2.5.1/jmock-junit3-2.5.1.jar,
  jmock-2.5.1/jmock-junit4-2.5.1.jar,
@@ -67,3 +65,4 @@ Export-Package: ftl,
  org.jmock.lib.script,
  org.jmock.syntax,
  style
+Require-Bundle: org.erlide.libs;bundle-version="1.108.1"

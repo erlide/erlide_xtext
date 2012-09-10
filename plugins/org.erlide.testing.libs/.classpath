@@ -6,8 +6,6 @@
 	<classpathentry exported="true" kind="lib" path="jmock-2.5.1/bsh-core-2.0b4.jar"/>
 	<classpathentry exported="true" kind="lib" path="jmock-2.5.1/cglib-2.1_3-src.jar"/>
 	<classpathentry exported="true" kind="lib" path="jmock-2.5.1/cglib-nodep-2.1_3.jar"/>
-	<classpathentry exported="true" kind="lib" path="jmock-2.5.1/hamcrest-core-1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="jmock-2.5.1/hamcrest-library-1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="jmock-2.5.1/jmock-2.5.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="jmock-2.5.1/jmock-junit3-2.5.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="jmock-2.5.1/jmock-junit4-2.5.1.jar"/>
