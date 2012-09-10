@@ -25,11 +25,16 @@ class BuilderExecutor {
            		}
 	           		
             	val problem = lineParser.parseLine(it)
-            	if(problem!=null)
-            		callback.apply(problem) 
+            	if(problem!=null) {
+            		callback.apply(problem)
+           		} 
             ]
             while(listener.alive) {
-            	try { listener.join } catch (InterruptedException e) {}
+            	try { 
+            		listener.join 
+            	} 
+            	catch (InterruptedException e) {
+            	}
            	}
             return 
         } catch (IOException e) {

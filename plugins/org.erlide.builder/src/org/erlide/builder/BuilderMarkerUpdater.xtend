@@ -8,6 +8,9 @@ import org.eclipse.core.runtime.CoreException
 import org.erlide.common.util.ErlLogger
 
 class BuilderMarkerUpdater {
+	def void addMarker(IFile file, CompilerProblem problem) {
+		addMarker(file, ErlangBuilder::MARKER_TYPE, problem.message, problem.line, problem.severity)
+	}
 	
 	def void addMarker(IFile file, String markerType, String message, int lineNumber, int severity) {
         var ln = lineNumber

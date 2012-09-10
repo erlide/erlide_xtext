@@ -46,6 +46,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	override clean(IProgressMonitor monitor) {
 		markerUpdater.clean(project, ErlangBuilder::MARKER_TYPE)
 		execute(cleanCmdLine, monitor) []
+		monitor.worked(1)
 	}
 	
 	override fullBuild(IProgressMonitor monitor) throws CoreException {
@@ -55,7 +56,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 			val fPath = project.getPathInProject(new Path(fileName))
 			val IFile file = project.findMember(fPath) as IFile
 			if(file!=null) {
-				markerUpdater.addMarker(file, ErlangBuilder::MARKER_TYPE, message, line, severity)
+				markerUpdater.addMarker(file, it)
 				monitor.worked(1)
 			}
 		]
@@ -82,8 +83,9 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 		// TODO cmdline
 		val cmd = fillCmdLine(singleCmdLine, file.name)
 		execute(cmd, monitor) [ 
-			println(it) 
-			markerUpdater.addMarker(file, ErlangBuilder::MARKER_TYPE, message, line, severity)
+			println("SINGLE "+it) 
+			markerUpdater.addMarker(file, it)
+			monitor.worked(1)
 		]
 	}
 	
@@ -93,11 +95,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	
 	def private execute(List<String> cmds, IProgressMonitor monitor, (CompilerProblem)=>void callback) {
 		println("EXEC '"+cmds+"' in "+workingDir)
-        executor.executeProcess(cmds, 
-            workingDir.toOSString, 
-            monitor, new DefaultLineParser()) [ problem |
-            	callback.apply(problem)
-            ]
+        executor.executeProcess(cmds, workingDir.toOSString, monitor, new DefaultLineParser(), callback)
 	}
 	
 	override loadConfiguration() {

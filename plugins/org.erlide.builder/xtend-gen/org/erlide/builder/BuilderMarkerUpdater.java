@@ -6,10 +6,19 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.erlide.builder.CompilerProblem;
+import org.erlide.builder.ErlangBuilder;
 import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
 public class BuilderMarkerUpdater {
+  public void addMarker(final IFile file, final CompilerProblem problem) {
+    String _message = problem.getMessage();
+    int _line = problem.getLine();
+    int _severity = problem.getSeverity();
+    this.addMarker(file, ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
+  }
+  
   public void addMarker(final IFile file, final String markerType, final String message, final int lineNumber, final int severity) {
     int ln = lineNumber;
     try {

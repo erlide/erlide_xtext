@@ -113,6 +113,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
         }
       };
     this.execute(_cleanCmdLine, monitor, _function);
+    monitor.worked(1);
   }
   
   public void fullBuild(final IProgressMonitor monitor) throws CoreException {
@@ -130,10 +131,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
           boolean _notEquals = (!Objects.equal(file, null));
           if (_notEquals) {
             BuilderMarkerUpdater _markerUpdater = ExternalBuilder.this.getMarkerUpdater();
-            String _message = it.getMessage();
-            int _line = it.getLine();
-            int _severity = it.getSeverity();
-            _markerUpdater.addMarker(file, ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
+            _markerUpdater.addMarker(file, it);
             monitor.worked(1);
           }
         }
@@ -185,12 +183,11 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     final List<String> cmd = this.fillCmdLine(_singleCmdLine, _name);
     final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
         public void apply(final CompilerProblem it) {
-          InputOutput.<CompilerProblem>println(it);
+          String _plus = ("SINGLE " + it);
+          InputOutput.<String>println(_plus);
           BuilderMarkerUpdater _markerUpdater = ExternalBuilder.this.getMarkerUpdater();
-          String _message = it.getMessage();
-          int _line = it.getLine();
-          int _severity = it.getSeverity();
-          _markerUpdater.addMarker(file, ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
+          _markerUpdater.addMarker(file, it);
+          monitor.worked(1);
         }
       };
     this.execute(cmd, monitor, _function);
@@ -222,12 +219,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     IPath _workingDir_1 = this.getWorkingDir();
     String _oSString = _workingDir_1.toOSString();
     DefaultLineParser _defaultLineParser = new DefaultLineParser();
-    final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
-        public void apply(final CompilerProblem problem) {
-          callback.apply(problem);
-        }
-      };
-    this.executor.executeProcess(cmds, _oSString, monitor, _defaultLineParser, _function);
+    this.executor.executeProcess(cmds, _oSString, monitor, _defaultLineParser, callback);
   }
   
   public void loadConfiguration() {
