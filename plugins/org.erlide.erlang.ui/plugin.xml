@@ -223,7 +223,7 @@
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
             class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.erlide.ui.erlang.check.fast">
+            markerType="org.erlide.erlang.ui.erlang.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -231,7 +231,7 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.erlide.ui.erlang.check.normal">
+            markerType="org.erlide.erlang.ui.erlang.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -239,7 +239,7 @@
         </markerResolutionGenerator>
         <markerResolutionGenerator
             class="org.erlide.ui.ErlangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.erlide.ui.erlang.check.expensive">
+            markerType="org.erlide.erlang.ui.erlang.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
