@@ -367,6 +367,7 @@
       <wizard
             category="org.erlide.project.ui.wizards.newWizards"
             class="org.erlide.ui.wizards.NewErlangProjectWizard"
+            descriptionImage="platform:/plugin/org.erlide.common.ui/icons/erl/erlang160.gif"
             finalPerspective="org.erlide.project.ui.erlangPerspective"
             hasPages="true"
             icon="platform:/plugin/org.erlide.common.ui/icons/full/obj16/newproject.png"
