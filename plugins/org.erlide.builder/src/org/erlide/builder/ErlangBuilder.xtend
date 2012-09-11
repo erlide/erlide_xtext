@@ -30,7 +30,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	}
 	
 	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor monitor) throws CoreException {
-        val builder = new SgsnBuilder(project, markerUpdater); //builders.get(project)
+        val builder = getProjectBuilder(project)
         if (builder==null) {
         	// TODO issue warning?
         } else {
@@ -42,13 +42,12 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 		        	builder.incrementalBuild(getDelta(project), monitor)
         	}
         }
-        project.refreshLocal(IResource::DEPTH_INFINITE,
-                new SubProgressMonitor(monitor, 10))
+        project.refreshLocal(IResource::DEPTH_INFINITE, new SubProgressMonitor(monitor, 10))
         return null
     }
 
 	override protected clean(IProgressMonitor monitor) throws CoreException {
-        val builder = new SgsnBuilder(project, markerUpdater); //builders.get(project)
+        val builder = getProjectBuilder(project)
         if (builder==null) {
         	// TODO issue warning?
         } else {
@@ -57,4 +56,11 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 		markerUpdater.clean(project, MARKER_TYPE)
 	}
 	
+	def getProjectBuilder(IProject project) {
+		val bId = SgsnBuilder::ID // TODO get project's config
+		val builder = builderProvider.get(bId)
+        builder.project = project
+        builder.loadConfiguration
+        builder
+	}	
 }

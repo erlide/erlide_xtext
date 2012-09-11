@@ -1,11 +1,17 @@
 package org.erlide.builder;
 
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExecutableExtension;
 import org.erlide.builder.BuilderMarkerUpdater;
+import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.IErlangBuilder;
 
 @SuppressWarnings("all")
-public abstract class AbstractErlangBuilder implements IErlangBuilder {
+public abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutableExtension {
   private IProject _project;
   
   public IProject getProject() {
@@ -16,6 +22,7 @@ public abstract class AbstractErlangBuilder implements IErlangBuilder {
     this._project = project;
   }
   
+  @Inject
   private BuilderMarkerUpdater _markerUpdater;
   
   public BuilderMarkerUpdater getMarkerUpdater() {
@@ -26,17 +33,27 @@ public abstract class AbstractErlangBuilder implements IErlangBuilder {
     this._markerUpdater = markerUpdater;
   }
   
+  private String id;
+  
   public AbstractErlangBuilder() {
+    BuilderPlugin _instance = BuilderPlugin.getInstance();
+    Injector _injector = _instance.getInjector();
+    _injector.injectMembers(this);
   }
   
   public AbstractErlangBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater) {
+    this();
     this._project = project;
     this._markerUpdater = markerUpdater;
   }
   
+  public void setInitializationData(final IConfigurationElement config, final String propertyName, final Object data) throws CoreException {
+    String _attribute = config.getAttribute("id");
+    this.id = _attribute;
+  }
+  
   public String getId() {
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
-    throw _unsupportedOperationException;
+    return this.id;
   }
   
   public void loadConfiguration() {

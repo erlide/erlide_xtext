@@ -3,7 +3,6 @@ package org.erlide.builder;
 import com.google.inject.Injector;
 import java.util.HashMap;
 import java.util.Map;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
@@ -12,7 +11,6 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.IErlangBuilder;
-import org.erlide.builder.resourcecompiler.ErlCompiler;
 
 @SuppressWarnings("all")
 public class BuildersProvider {
@@ -33,7 +31,8 @@ public class BuildersProvider {
         BuilderPlugin _instance = BuilderPlugin.getInstance();
         Injector _injector = _instance.getInjector();
         _injector.injectMembers(builder);
-        builder.loadConfiguration();
+        String _id = builder.getId();
+        this.builders.put(_id, builder);
       } catch (final Throwable _t) {
         if (_t instanceof CoreException) {
           final CoreException e = (CoreException)_t;
@@ -42,10 +41,6 @@ public class BuildersProvider {
         }
       }
     }
-  }
-  
-  public String getBuilderId(final IProject project) {
-    return ErlCompiler.COMPILER_ID;
   }
   
   public IErlangBuilder get(final String id) {

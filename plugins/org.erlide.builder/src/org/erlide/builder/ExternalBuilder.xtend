@@ -7,11 +7,10 @@ import org.eclipse.core.resources.IResourceDelta
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.IProgressMonitor
-import org.eclipse.core.runtime.OperationCanceledException
+import org.eclipse.core.runtime.Path
 import org.eclipse.xtend.lib.Property
 
 import static extension org.erlide.builder.ProjectBuilderExtensions.*
-import org.eclipse.core.runtime.Path
 
 abstract class ExternalBuilder extends AbstractErlangBuilder {
 
@@ -102,7 +101,11 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 		// TODO load from preferences
 		// - working directory
 		// - cmd lines
-		throw new UnsupportedOperationException("Auto-generated function stub")
+		
+		if(project.location.toPortableString.startsWith("/vobs/gsn")) {
+			workingDir = project.linkedContent?.location
+			println("WD="+workingDir)
+		}
 	}
 	
 }

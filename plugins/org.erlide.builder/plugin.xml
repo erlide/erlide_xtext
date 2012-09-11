@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="compilers" name="Erlang compilers" schema="schema/compilers.exsd"/>
+   <extension-point id="builders" name="Erlang builders" schema="schema/builders.exsd"/>
    <extension
          id="erlangBuilder"
          name="Erlang Project Builder"
@@ -47,6 +48,13 @@
       		id="org.erlide.builder.compiler.makecompiler"
             class="org.erlide.builder.resourcecompiler.MakeCompiler">
       </compiler>
+   </extension>
+   <extension
+         point="org.erlide.builder.builders">
+      <builder
+            class="org.erlide.builder.SgsnBuilder"
+            id="org.erlide.builder.sgsnbuilder">
+      </builder>
    </extension>
 
 </plugin>

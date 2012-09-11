@@ -223,7 +223,18 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   }
   
   public void loadConfiguration() {
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
-    throw _unsupportedOperationException;
+    IProject _project = this.getProject();
+    IPath _location = _project.getLocation();
+    String _portableString = _location.toPortableString();
+    boolean _startsWith = _portableString.startsWith("/vobs/gsn");
+    if (_startsWith) {
+      IProject _project_1 = this.getProject();
+      IResource _linkedContent = ProjectBuilderExtensions.getLinkedContent(_project_1);
+      IPath _location_1 = _linkedContent==null?(IPath)null:_linkedContent.getLocation();
+      this.setWorkingDir(_location_1);
+      IPath _workingDir = this.getWorkingDir();
+      String _plus = ("WD=" + _workingDir);
+      InputOutput.<String>println(_plus);
+    }
   }
 }

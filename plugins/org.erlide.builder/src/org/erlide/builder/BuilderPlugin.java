@@ -24,6 +24,10 @@ public class BuilderPlugin extends Plugin {
     public void start(final BundleContext context) throws Exception {
         super.start(context);
         plugin = this;
+
+        final BuildersProvider builderProvider = getInjector().getInstance(
+                BuildersProvider.class);
+        builderProvider.loadBuilders();
     }
 
     @Override

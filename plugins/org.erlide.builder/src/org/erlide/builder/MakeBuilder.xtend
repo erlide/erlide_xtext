@@ -14,13 +14,13 @@ class MakeBuilder extends ExternalBuilder {
 	new(IProject project, BuilderMarkerUpdater markerUpdater) {
 		super(project, markerUpdater)
 		setupCommands()
-		setupConfig(project)
+		loadConfiguration
 	} 
 	
 	new(IProject project, BuilderMarkerUpdater markerUpdater, BuilderExecutor executor) {
 		super(project, markerUpdater, executor)
 		setupCommands()
-		setupConfig(project)
+		loadConfiguration
 	}
 	
 	def setupCommands() {
@@ -29,11 +29,4 @@ class MakeBuilder extends ExternalBuilder {
 		singleCmdLine = newArrayList("make", "-W", "$file")
 	}
 	
-	def setupConfig(IProject project) {
-		if(project.location.toPortableString.startsWith("/vobs/gsn")) {
-			workingDir = project.linkedContent?.location
-			println("WD="+workingDir)
-		}
-	}
-
 }

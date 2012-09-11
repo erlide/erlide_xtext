@@ -2,14 +2,10 @@ package org.erlide.builder;
 
 import java.util.ArrayList;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.erlide.builder.BuilderExecutor;
 import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.ExternalBuilder;
-import org.erlide.builder.ProjectBuilderExtensions;
 
 @SuppressWarnings("all")
 public class MakeBuilder extends ExternalBuilder {
@@ -21,13 +17,13 @@ public class MakeBuilder extends ExternalBuilder {
   public MakeBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater) {
     super(project, markerUpdater);
     this.setupCommands();
-    this.setupConfig(project);
+    this.loadConfiguration();
   }
   
   public MakeBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final BuilderExecutor executor) {
     super(project, markerUpdater, executor);
     this.setupCommands();
-    this.setupConfig(project);
+    this.loadConfiguration();
   }
   
   public void setupCommands() {
@@ -37,26 +33,5 @@ public class MakeBuilder extends ExternalBuilder {
     this.setFullCmdLine(_newArrayList_1);
     ArrayList<String> _newArrayList_2 = CollectionLiterals.<String>newArrayList("make", "-W", "$file");
     this.setSingleCmdLine(_newArrayList_2);
-  }
-  
-  public String setupConfig(final IProject project) {
-    String _xifexpression = null;
-    IPath _location = project.getLocation();
-    String _portableString = _location.toPortableString();
-    boolean _startsWith = _portableString.startsWith("/vobs/gsn");
-    if (_startsWith) {
-      String _xblockexpression = null;
-      {
-        IResource _linkedContent = ProjectBuilderExtensions.getLinkedContent(project);
-        IPath _location_1 = _linkedContent==null?(IPath)null:_linkedContent.getLocation();
-        this.setWorkingDir(_location_1);
-        IPath _workingDir = this.getWorkingDir();
-        String _plus = ("WD=" + _workingDir);
-        String _println = InputOutput.<String>println(_plus);
-        _xblockexpression = (_println);
-      }
-      _xifexpression = _xblockexpression;
-    }
-    return _xifexpression;
   }
 }

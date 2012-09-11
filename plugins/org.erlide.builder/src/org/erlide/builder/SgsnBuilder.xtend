@@ -6,6 +6,8 @@ import static extension org.erlide.builder.ProjectBuilderExtensions.*
 
 class SgsnBuilder extends ExternalBuilder {
 	
+	public static val String ID = "org.erlide.builder.sgsnbuilder"
+	
 	new() {
 		super()
 		setupCommands()
@@ -13,27 +15,20 @@ class SgsnBuilder extends ExternalBuilder {
 
 	new(IProject project, BuilderMarkerUpdater markerUpdater) {
 		super(project, markerUpdater)
-		setupConfig(project)
 		setupCommands()
+		loadConfiguration
 	} 
 	
 	new(IProject project, BuilderMarkerUpdater markerUpdater, BuilderExecutor executor) {
 		super(project, markerUpdater, executor)
-		setupConfig(project)
 		setupCommands()
+		loadConfiguration
 	}
 	
 	def setupCommands() {
 		cleanCmdLine = newArrayList("rm", "-rf", "do3/erlang/")
 		fullCmdLine = newArrayList("make", "beam")
 		singleCmdLine = newArrayList("make", "-W", "$file")
-	}
-	
-	def setupConfig(IProject project) {
-		if(project.location.toPortableString.startsWith("/vobs/gsn")) {
-			workingDir = project.linkedContent?.location
-			println("WD="+workingDir)
-		}
 	}
 	
 }

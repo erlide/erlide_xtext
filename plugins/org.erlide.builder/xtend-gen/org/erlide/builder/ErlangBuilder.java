@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.BuildersProvider;
+import org.erlide.builder.IErlangBuilder;
 import org.erlide.builder.SgsnBuilder;
 
 @SuppressWarnings("all")
@@ -43,8 +44,7 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
-    SgsnBuilder _sgsnBuilder = new SgsnBuilder(_project, this.markerUpdater);
-    final SgsnBuilder builder = _sgsnBuilder;
+    final IErlangBuilder builder = this.getProjectBuilder(_project);
     boolean _equals = Objects.equal(builder, null);
     if (_equals) {
     } else {
@@ -69,8 +69,7 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   protected void clean(final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
-    SgsnBuilder _sgsnBuilder = new SgsnBuilder(_project, this.markerUpdater);
-    final SgsnBuilder builder = _sgsnBuilder;
+    final IErlangBuilder builder = this.getProjectBuilder(_project);
     boolean _equals = Objects.equal(builder, null);
     if (_equals) {
     } else {
@@ -78,5 +77,17 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     }
     IProject _project_1 = this.getProject();
     this.markerUpdater.clean(_project_1, ErlangBuilder.MARKER_TYPE);
+  }
+  
+  public IErlangBuilder getProjectBuilder(final IProject project) {
+    IErlangBuilder _xblockexpression = null;
+    {
+      final String bId = SgsnBuilder.ID;
+      final IErlangBuilder builder = this.builderProvider.get(bId);
+      builder.setProject(project);
+      builder.loadConfiguration();
+      _xblockexpression = (builder);
+    }
+    return _xblockexpression;
   }
 }
