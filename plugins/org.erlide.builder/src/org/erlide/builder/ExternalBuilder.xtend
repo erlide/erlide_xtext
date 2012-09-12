@@ -47,74 +47,74 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	override clean(IProgressMonitor monitor) {
-		monitor.beginTask("clean", IProgressMonitor::UNKNOWN)
-		markerUpdater.clean(project, ErlangBuilder::MARKER_TYPE)
-		execute(cleanCmdLine, monitor) []
-		monitor.worked(1)
-		monitor.done
+		val progress = SubMonitor::convert(monitor, 1)
+		try {
+			markerUpdater.clean(project, ErlangBuilder::MARKER_TYPE)
+			execute(cleanCmdLine, progress) []
+			progress.worked(1)
+		} finally {
+			monitor?.done
+		}
 	}
 	
 	override fullBuild(IProgressMonitor monitor) throws CoreException {
+		val progress = SubMonitor::convert(monitor, IProgressMonitor::UNKNOWN)
 		try {
-			monitor.beginTask("build", IProgressMonitor::UNKNOWN)
-			clean(new SubProgressMonitor(monitor, 10))
+			clean(progress.newChild(10))
 			// TODO cmdline
-			execute(fullCmdLine, monitor) [ 
+			execute(fullCmdLine, progress) [ 
 				val fPath = project.getPathInProject(new Path(fileName))
 				val file = project.findMember(fPath)
 				switch file {
 					IFile: {
 						if(file!=null) {
 							markerUpdater.addMarker(file, it)
-							println("WORKED")
-							monitor.worked(1)
+							progress.worked(1)
 						}
 					}
 				}
 			]
 		} finally {
-			println("DONE")
-			monitor.done
+			monitor?.done
 		}
 	}
 	
 	override incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) throws CoreException {
+		val progress = SubMonitor::convert(monitor, IProgressMonitor::UNKNOWN);
 		try {
-			monitor.beginTask("build", IProgressMonitor::UNKNOWN)
 			delta.accept [
 	           	if (!(resource instanceof IFile)) 
 	           		return true
-	           	if (monitor.canceled) 
+	           	if (progress.canceled) 
 	           		throw new OperationCanceledException()
-	           	monitor.worked(1)
+	           	progress.worked(1)
 	            switch (kind) {
 		            case IResourceDelta::ADDED:
-		                singleBuild(resource as IFile, new SubProgressMonitor(monitor, 10))
+		                singleBuild(resource as IFile, progress.newChild(1))
 		            //case IResourceDelta::REMOVED:
 		            case IResourceDelta::CHANGED:
-		                singleBuild(resource as IFile, new SubProgressMonitor(monitor, 10))
+		                singleBuild(resource as IFile, progress.newChild(1))
 	            }
 	            return true
 	        ]
         } finally {
-			println("DONE")
-        	monitor.done
+        	monitor?.done
         }
 	}
 
 	def singleBuild(IFile file, IProgressMonitor monitor) {
+		val progress = SubMonitor::convert(monitor, 2);
 		try {
-			monitor.beginTask("single", 10)
 			markerUpdater.deleteMarkers(file, ErlangBuilder::MARKER_TYPE)
-			monitor.worked(1)
+			progress.worked(1)
 			// TODO cmdline
 			val cmd = fillCmdLine(singleCmdLine, file.name)
-			execute(cmd, monitor) [ 
+			execute(cmd, progress) [ 
 				markerUpdater.addMarker(file, it)
-				monitor.worked(1)
+				progress.worked(1)
 			]
 		} finally {
-			monitor.done
+			monitor?.done
 		}
 	}
 	

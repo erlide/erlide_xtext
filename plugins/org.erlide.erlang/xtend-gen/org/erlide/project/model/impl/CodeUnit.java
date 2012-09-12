@@ -54,8 +54,9 @@ public class CodeUnit extends ErlangModelElement implements ICodeUnit {
         IFile _head = IterableExtensions.<IFile>head(possibleFiles);
         this.file = _head;
       }
+      ErlLogger _instance = ErlLogger.getInstance();
       IPath _path_1 = this.getPath();
-      ErlLogger.warn("not able to find file %s", _path_1);
+      _instance.warn("not able to find file %s", _path_1);
     }
     return this.file;
   }

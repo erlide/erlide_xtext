@@ -38,7 +38,7 @@ public class CodeUnit extends ErlangModelElement implements ICodeUnit {
             if(possibleFiles.size == 1) {
                 file = possibleFiles.head
             }
-            ErlLogger::warn("not able to find file %s", path)
+            ErlLogger::instance.warn("not able to find file %s", path)
         }
         return file
     }

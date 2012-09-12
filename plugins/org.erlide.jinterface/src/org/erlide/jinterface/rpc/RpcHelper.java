@@ -295,7 +295,7 @@ public final class RpcHelper {
     }
 
     public void debugLogCallArgs(final String fmt, final Object... args0) {
-        ErlLogger.debug(fmt, args0);
+        ErlLogger.getInstance().debug(fmt, args0);
     }
 
     private OtpErlangObject[] convertArgs(final String signature,
@@ -335,12 +335,12 @@ public final class RpcHelper {
     }
 
     private void debug(final String s) {
-        ErlLogger.debug(s);
+        ErlLogger.getInstance().debug(s);
     }
 
     @SuppressWarnings("unused")
     private void warn(final Exception e) {
-        ErlLogger.debug(e);
+        ErlLogger.getInstance().warn(e);
     }
 
     public void makeAsyncCbCall(final OtpNode node, final String peer,
@@ -359,8 +359,9 @@ public final class RpcHelper {
                     cb.run(result);
                 } catch (final RpcException e) {
                     // TODO do we want to treat a timeout differently?
-                    ErlLogger.error("Could not execute RPC " + module + ":"
-                            + fun + " : " + e.getMessage());
+                    ErlLogger.getInstance().error(
+                            "Could not execute RPC " + module + ":" + fun
+                                    + " : " + e.getMessage());
                 }
             }
         };

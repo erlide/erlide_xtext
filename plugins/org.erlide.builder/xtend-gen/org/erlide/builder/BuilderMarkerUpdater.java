@@ -31,11 +31,12 @@ public class BuilderMarkerUpdater {
     } catch (final Throwable _t) {
       if (_t instanceof CoreException) {
         final CoreException e = (CoreException)_t;
+        ErlLogger _instance = ErlLogger.getInstance();
         String _plus = ("Could not add marker for " + file);
         String _plus_1 = (_plus + ": ");
         String _message = e.getMessage();
         String _plus_2 = (_plus_1 + _message);
-        ErlLogger.warn(_plus_2);
+        _instance.warn(_plus_2);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }
@@ -48,11 +49,12 @@ public class BuilderMarkerUpdater {
     } catch (final Throwable _t) {
       if (_t instanceof CoreException) {
         final CoreException e = (CoreException)_t;
+        ErlLogger _instance = ErlLogger.getInstance();
         String _plus = ("Could not delete markers for " + file);
         String _plus_1 = (_plus + ": ");
         String _message = e.getMessage();
         String _plus_2 = (_plus_1 + _message);
-        ErlLogger.warn(_plus_2);
+        _instance.warn(_plus_2);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }

@@ -60,7 +60,8 @@ public class BuilderExecutor {
     } catch (final Throwable _t) {
       if (_t instanceof IOException) {
         final IOException e = (IOException)_t;
-        ErlLogger.error(e);
+        ErlLogger _instance = ErlLogger.getInstance();
+        _instance.error(e);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }

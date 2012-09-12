@@ -7,8 +7,13 @@ import org.eclipse.core.resources.IResource
 import org.eclipse.core.resources.IncrementalProjectBuilder
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IProgressMonitor
-import org.eclipse.core.runtime.SubProgressMonitor
+import org.eclipse.core.runtime.ProgressMonitorWrapper
+import org.eclipse.core.runtime.SubMonitor
 import org.erlide.common.NatureConstants
+import org.erlide.common.util.ErlLogger
+
+import static extension org.erlide.common.util.ErlLogger.*
+import org.eclipse.core.runtime.OperationCanceledException
 
 class ErlangBuilder extends IncrementalProjectBuilder {
 
@@ -18,6 +23,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 
 	@Inject BuilderMarkerUpdater markerUpdater
 	@Inject BuildersProvider builderProvider
+	@Inject ErlLogger log
 
 	new() {
         BuilderPlugin::instance.injector.injectMembers(this);
@@ -28,35 +34,63 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 		this.builderProvider = builderProvider
 	}
 	
-	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor monitor) throws CoreException {
+	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor _monitor) throws CoreException {
+		val startTime = System::currentTimeMillis
 		cleanXtextMarkers(project)
-		
-        val builder = getProjectBuilder(project)
-        if (builder==null) {
-        	// TODO issue warning?
-        } else {
-        	//TODO
-        	switch(kind) {
-        		case FULL_BUILD:
-		        	builder.fullBuild(monitor)
-		        default:
-		        	builder.incrementalBuild(getDelta(project), monitor)
-        	}
-        }
-        project.refreshLocal(IResource::DEPTH_INFINITE, new SubProgressMonitor(monitor, 10))
-        return null
+
+		try {
+			val monitor = if (_monitor != null) {
+				val taskName = " building" + project.name+ ": "
+				new BuilderProgressMonitorWrapper(_monitor, taskName) 
+			} else 
+				_monitor
+			val progress = SubMonitor::convert(monitor, 1)
+
+	        val builder = getProjectBuilder(project)
+	        if (builder==null) {
+	        	// TODO issue warning?
+	        } else {
+	        	//TODO
+	        	switch(kind) {
+	        		case FULL_BUILD:
+			        	builder.fullBuild(progress.newChild(1))
+			        default:
+			        	builder.incrementalBuild(getDelta(project), progress.newChild(1))
+	        	}
+	        }
+
+		} catch (CoreException e) {
+			log.error(e)
+			throw e
+		} catch (OperationCanceledException e) {
+			forgetLastBuiltState
+			throw e
+		} catch (Exception e) {
+			log.error(e)
+		} finally {
+			if (_monitor != null)
+				_monitor.done()
+			log.info("Build " + getProject().getName() + " in " + (System::currentTimeMillis - startTime) + " ms")
+		}
+		return getProject().getReferencedProjects();
     }
 
 	override protected clean(IProgressMonitor monitor) throws CoreException {
+		val progress = SubMonitor::convert(monitor, 10);
 		cleanXtextMarkers(project)
-
-        val builder = getProjectBuilder(project)
-        if (builder==null) {
-        	// TODO issue warning?
-        } else {
-        	builder.clean(monitor)
-        }
-		markerUpdater.clean(project, MARKER_TYPE)
+		progress.worked(2)
+		try {
+	        val builder = getProjectBuilder(project)
+	        if (builder==null) {
+	        	// TODO issue warning?
+	        } else {
+	        	builder.clean(progress.newChild(8))
+	        }
+			markerUpdater.clean(project, MARKER_TYPE)
+		} finally {
+			if (monitor != null)
+				monitor.done();
+		}
 	}
 	
 	def getProjectBuilder(IProject project) {
@@ -77,4 +111,17 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 			]
 		}
 	}	
+}
+
+class BuilderProgressMonitorWrapper extends ProgressMonitorWrapper {
+	val String taskName
+	
+	new(IProgressMonitor monitor, String taskName) {
+		super(monitor)
+		this.taskName = taskName
+	}
+	
+	override void subTask(String name) {
+		super.subTask(taskName + name);
+	}
 }

@@ -237,7 +237,8 @@ public class CompilerOptions {
                   } catch (final Throwable _t) {
                     if (_t instanceof TermParserException) {
                       final TermParserException e = (TermParserException)_t;
-                      ErlLogger.warn(e);
+                      ErlLogger _instance = ErlLogger.getInstance();
+                      _instance.warn(e);
                     } else {
                       throw Exceptions.sneakyThrow(_t);
                     }

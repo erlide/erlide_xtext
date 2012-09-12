@@ -21,17 +21,26 @@ import java.util.logging.LogRecord;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
+import com.google.inject.Singleton;
+
+@Singleton
 public class ErlLogger {
 
     private static ErlLogger instance;
     private Logger logger;
     private String logDir;
 
+    @Deprecated
     public static ErlLogger getInstance() {
         if (instance == null) {
             instance = new ErlLogger();
         }
         return instance;
+    }
+
+    public ErlLogger() {
+        logger = Logger.getLogger("org.erlide");
+        logger.setLevel(Level.DEBUG);
     }
 
     public void dispose() {
@@ -64,45 +73,40 @@ public class ErlLogger {
         }
     }
 
-    public static void debug(final String fmt, final Object... o) {
-        if (getInstance().logger.isDebugEnabled()) {
-            getInstance().logger.debug(format(fmt, o));
+    public void debug(final String fmt, final Object... o) {
+        if (logger.isDebugEnabled()) {
+            logger.debug(format(fmt, o));
         }
     }
 
-    public static void info(final String fmt, final Object... o) {
-        if (getInstance().logger.isInfoEnabled()) {
-            getInstance().logger.info(format(fmt, o));
+    public void info(final String fmt, final Object... o) {
+        if (logger.isInfoEnabled()) {
+            logger.info(format(fmt, o));
         }
     }
 
-    public static void warn(final String fmt, final Object... o) {
-        getInstance().logger.warn(format(fmt, o));
+    public void warn(final String fmt, final Object... o) {
+        logger.warn(format(fmt, o));
     }
 
-    public static void error(final String fmt, final Object... o) {
-        getInstance().logger.error(format(fmt, o));
+    public void error(final String fmt, final Object... o) {
+        logger.error(format(fmt, o));
     }
 
-    public static void debug(final Throwable e) {
-        getInstance().debug(e);
+    public void debug(final Throwable e) {
+        debug(e);
     }
 
-    public static void info(final Throwable e) {
-        getInstance().info(e);
+    public void info(final Throwable e) {
+        info(e);
     }
 
-    public static void warn(final Throwable e) {
-        getInstance().warn(e);
+    public void warn(final Throwable e) {
+        warn(e);
     }
 
-    public static void error(final Throwable exception) {
-        getInstance().error(exception);
-    }
-
-    private ErlLogger() {
-        logger = Logger.getLogger("org.erlide");
-        logger.setLevel(Level.DEBUG);
+    public void error(final Throwable exception) {
+        error(exception);
     }
 
     private static StackTraceElement getCaller() {

@@ -13,7 +13,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -106,25 +106,28 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   }
   
   public void clean(final IProgressMonitor monitor) {
-    monitor.beginTask("clean", IProgressMonitor.UNKNOWN);
-    BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
-    IProject _project = this.getProject();
-    _markerUpdater.clean(_project, ErlangBuilder.MARKER_TYPE);
-    List<String> _cleanCmdLine = this.getCleanCmdLine();
-    final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
-        public void apply(final CompilerProblem it) {
-        }
-      };
-    this.execute(_cleanCmdLine, monitor, _function);
-    monitor.worked(1);
-    monitor.done();
+    final SubMonitor progress = SubMonitor.convert(monitor, 1);
+    try {
+      BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
+      IProject _project = this.getProject();
+      _markerUpdater.clean(_project, ErlangBuilder.MARKER_TYPE);
+      List<String> _cleanCmdLine = this.getCleanCmdLine();
+      final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
+          public void apply(final CompilerProblem it) {
+          }
+        };
+      this.execute(_cleanCmdLine, progress, _function);
+      progress.worked(1);
+    } finally {
+      if (monitor!=null) monitor.done();
+    }
   }
   
   public void fullBuild(final IProgressMonitor monitor) throws CoreException {
+    final SubMonitor progress = SubMonitor.convert(monitor, IProgressMonitor.UNKNOWN);
     try {
-      monitor.beginTask("build", IProgressMonitor.UNKNOWN);
-      SubProgressMonitor _subProgressMonitor = new SubProgressMonitor(monitor, 10);
-      this.clean(_subProgressMonitor);
+      SubMonitor _newChild = progress.newChild(10);
+      this.clean(_newChild);
       List<String> _fullCmdLine = this.getFullCmdLine();
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {
@@ -143,23 +146,21 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
                 if (_notEquals) {
                   BuilderMarkerUpdater _markerUpdater = ExternalBuilder.this.getMarkerUpdater();
                   _markerUpdater.addMarker(_iFile, it);
-                  InputOutput.<String>println("WORKED");
-                  monitor.worked(1);
+                  progress.worked(1);
                 }
               }
             }
           }
         };
-      this.execute(_fullCmdLine, monitor, _function);
+      this.execute(_fullCmdLine, progress, _function);
     } finally {
-      InputOutput.<String>println("DONE");
-      monitor.done();
+      if (monitor!=null) monitor.done();
     }
   }
   
   public void incrementalBuild(final IResourceDelta delta, final IProgressMonitor monitor) throws CoreException {
+    final SubMonitor progress = SubMonitor.convert(monitor, IProgressMonitor.UNKNOWN);
     try {
-      monitor.beginTask("build", IProgressMonitor.UNKNOWN);
       final Function1<IResourceDelta,Boolean> _function = new Function1<IResourceDelta,Boolean>() {
           public Boolean apply(final IResourceDelta it) {
             IResource _resource = it.getResource();
@@ -167,12 +168,12 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
             if (_not) {
               return true;
             }
-            boolean _isCanceled = monitor.isCanceled();
+            boolean _isCanceled = progress.isCanceled();
             if (_isCanceled) {
               OperationCanceledException _operationCanceledException = new OperationCanceledException();
               throw _operationCanceledException;
             }
-            monitor.worked(1);
+            progress.worked(1);
             int _kind = it.getKind();
             final int getKind = _kind;
             boolean _matched = false;
@@ -180,16 +181,16 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
               if (Objects.equal(getKind,IResourceDelta.ADDED)) {
                 _matched=true;
                 IResource _resource_1 = it.getResource();
-                SubProgressMonitor _subProgressMonitor = new SubProgressMonitor(monitor, 10);
-                ExternalBuilder.this.singleBuild(((IFile) _resource_1), _subProgressMonitor);
+                SubMonitor _newChild = progress.newChild(1);
+                ExternalBuilder.this.singleBuild(((IFile) _resource_1), _newChild);
               }
             }
             if (!_matched) {
               if (Objects.equal(getKind,IResourceDelta.CHANGED)) {
                 _matched=true;
                 IResource _resource_2 = it.getResource();
-                SubProgressMonitor _subProgressMonitor_1 = new SubProgressMonitor(monitor, 10);
-                ExternalBuilder.this.singleBuild(((IFile) _resource_2), _subProgressMonitor_1);
+                SubMonitor _newChild_1 = progress.newChild(1);
+                ExternalBuilder.this.singleBuild(((IFile) _resource_2), _newChild_1);
               }
             }
             return true;
@@ -201,17 +202,16 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
           }
       });
     } finally {
-      InputOutput.<String>println("DONE");
-      monitor.done();
+      if (monitor!=null) monitor.done();
     }
   }
   
   public void singleBuild(final IFile file, final IProgressMonitor monitor) {
+    final SubMonitor progress = SubMonitor.convert(monitor, 2);
     try {
-      monitor.beginTask("single", 10);
       BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
       _markerUpdater.deleteMarkers(file, ErlangBuilder.MARKER_TYPE);
-      monitor.worked(1);
+      progress.worked(1);
       List<String> _singleCmdLine = this.getSingleCmdLine();
       String _name = file.getName();
       final List<String> cmd = this.fillCmdLine(_singleCmdLine, _name);
@@ -219,12 +219,12 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
           public void apply(final CompilerProblem it) {
             BuilderMarkerUpdater _markerUpdater = ExternalBuilder.this.getMarkerUpdater();
             _markerUpdater.addMarker(file, it);
-            monitor.worked(1);
+            progress.worked(1);
           }
         };
-      this.execute(cmd, monitor, _function);
+      this.execute(cmd, progress, _function);
     } finally {
-      monitor.done();
+      if (monitor!=null) monitor.done();
     }
   }
   

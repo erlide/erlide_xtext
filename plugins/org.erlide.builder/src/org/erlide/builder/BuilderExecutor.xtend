@@ -38,7 +38,7 @@ class BuilderExecutor {
            	}
             return 
         } catch (IOException e) {
-        	ErlLogger::error(e)
+        	ErlLogger::instance.error(e)
         }
     }
     

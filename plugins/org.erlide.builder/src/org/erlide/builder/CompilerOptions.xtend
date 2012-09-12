@@ -24,6 +24,7 @@ import org.erlide.common.util.PreferencesHelper
 class CompilerOptions {
 
     static val String QUALIFIER = "org.erlide.erlang" + "/compiler"
+    
     val Map<CompilerOption, Object> options
     private PreferencesHelper helper
 
@@ -145,7 +146,7 @@ class CompilerOptions {
                             result.addAll(Lists::newArrayList(val1.elements()))
                         }
                     } catch (TermParserException e) {
-                        ErlLogger::warn(e)
+                        ErlLogger::instance.warn(e)
                     }
                 }
             }

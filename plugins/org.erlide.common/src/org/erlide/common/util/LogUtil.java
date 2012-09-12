@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.eclipse.core.runtime.Platform;
 
-
 public class LogUtil {
 
     public static String getReportFile() {
@@ -60,7 +59,7 @@ public class LogUtil {
                 reader.close();
             }
         } catch (final Exception e) {
-            ErlLogger.warn(e);
+            ErlLogger.getInstance().warn(e);
         }
         return result.toString();
     }
@@ -90,7 +89,7 @@ public class LogUtil {
                 reader.close();
             }
         } catch (final Exception e) {
-            ErlLogger.warn(e);
+            ErlLogger.getInstance().warn(e);
         }
         final StringBuffer buf = new StringBuffer();
         for (final String s : result) {

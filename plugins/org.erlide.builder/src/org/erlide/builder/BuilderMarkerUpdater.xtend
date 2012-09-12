@@ -21,7 +21,7 @@ class BuilderMarkerUpdater {
             ln = Math::max(lineNumber, 1)
             marker.setAttribute(IMarker::LINE_NUMBER, lineNumber)
         } catch (CoreException e) {
-        	ErlLogger::warn("Could not add marker for "+file+": "+e.message)
+        	ErlLogger::instance.warn("Could not add marker for "+file+": "+e.message)
         }
     }
 
@@ -30,7 +30,7 @@ class BuilderMarkerUpdater {
         try {
             file.deleteMarkers(markerType, false, IResource::DEPTH_ZERO)
         } catch (CoreException e) {
-        	ErlLogger::warn("Could not delete markers for "+file+": "+e.message)
+        	ErlLogger::instance.warn("Could not delete markers for "+file+": "+e.message)
         }
     }
 

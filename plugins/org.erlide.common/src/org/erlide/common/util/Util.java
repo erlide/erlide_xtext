@@ -1628,7 +1628,7 @@ public final class Util {
             try {
                 return l.stringValue();
             } catch (final OtpErlangException e) {
-                ErlLogger.error(e);
+                ErlLogger.getInstance().error(e);
                 return null;
             }
         } else if (o instanceof OtpErlangBinary) {
@@ -1639,13 +1639,12 @@ public final class Util {
                 result = decode(b.binaryValue(), "ISO-8859-1");
             }
             if (result == null) {
-                ErlLogger
-                        .warn("bad binary value in stringValue (can't decode): "
-                                + o);
+                ErlLogger.getInstance().warn(
+                        "bad binary value in stringValue (can't decode): " + o);
             }
             return result;
         }
-        ErlLogger.warn("bad value in stringValue: " + o);
+        ErlLogger.getInstance().warn("bad value in stringValue: " + o);
         return null;
     }
 
