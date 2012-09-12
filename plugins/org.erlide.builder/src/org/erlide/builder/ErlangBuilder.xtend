@@ -113,15 +113,3 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	}	
 }
 
-class BuilderProgressMonitorWrapper extends ProgressMonitorWrapper {
-	val String taskName
-	
-	new(IProgressMonitor monitor, String taskName) {
-		super(monitor)
-		this.taskName = taskName
-	}
-	
-	override void subTask(String name) {
-		super.subTask(taskName + name);
-	}
-}
