@@ -25,13 +25,8 @@ public class BuilderMarkerUpdater {
       final IMarker marker = file.createMarker(markerType);
       marker.setAttribute(IMarker.MESSAGE, message);
       marker.setAttribute(IMarker.SEVERITY, severity);
-      int _minus = (-1);
-      boolean _equals = (lineNumber == _minus);
-      if (_equals) {
-        ln = 1;
-      } else {
-        ln = lineNumber;
-      }
+      int _max = Math.max(lineNumber, 1);
+      ln = _max;
       marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
     } catch (final Throwable _t) {
       if (_t instanceof CoreException) {

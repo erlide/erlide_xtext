@@ -2,6 +2,7 @@ package org.erlide.builder;
 
 import com.google.common.base.Objects;
 import com.google.inject.Injector;
+import java.util.ArrayList;
 import java.util.Map;
 import javax.inject.Inject;
 import org.eclipse.core.resources.IProject;
@@ -11,11 +12,16 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.BuildersProvider;
 import org.erlide.builder.IErlangBuilder;
 import org.erlide.builder.SgsnBuilder;
+import org.erlide.common.NatureConstants;
 
 @SuppressWarnings("all")
 public class ErlangBuilder extends IncrementalProjectBuilder {
@@ -44,7 +50,9 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
-    final IErlangBuilder builder = this.getProjectBuilder(_project);
+    this.cleanXtextMarkers(_project);
+    IProject _project_1 = this.getProject();
+    final IErlangBuilder builder = this.getProjectBuilder(_project_1);
     boolean _equals = Objects.equal(builder, null);
     if (_equals) {
     } else {
@@ -56,27 +64,29 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
         }
       }
       if (!_matched) {
-        IProject _project_1 = this.getProject();
-        IResourceDelta _delta = this.getDelta(_project_1);
+        IProject _project_2 = this.getProject();
+        IResourceDelta _delta = this.getDelta(_project_2);
         builder.incrementalBuild(_delta, monitor);
       }
     }
-    IProject _project_2 = this.getProject();
+    IProject _project_3 = this.getProject();
     SubProgressMonitor _subProgressMonitor = new SubProgressMonitor(monitor, 10);
-    _project_2.refreshLocal(IResource.DEPTH_INFINITE, _subProgressMonitor);
+    _project_3.refreshLocal(IResource.DEPTH_INFINITE, _subProgressMonitor);
     return null;
   }
   
   protected void clean(final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
-    final IErlangBuilder builder = this.getProjectBuilder(_project);
+    this.cleanXtextMarkers(_project);
+    IProject _project_1 = this.getProject();
+    final IErlangBuilder builder = this.getProjectBuilder(_project_1);
     boolean _equals = Objects.equal(builder, null);
     if (_equals) {
     } else {
       builder.clean(monitor);
     }
-    IProject _project_1 = this.getProject();
-    this.markerUpdater.clean(_project_1, ErlangBuilder.MARKER_TYPE);
+    IProject _project_2 = this.getProject();
+    this.markerUpdater.clean(_project_2, ErlangBuilder.MARKER_TYPE);
   }
   
   public IErlangBuilder getProjectBuilder(final IProject project) {
@@ -89,5 +99,29 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
       _xblockexpression = (builder);
     }
     return _xblockexpression;
+  }
+  
+  private void cleanXtextMarkers(final IProject project) {
+    try {
+      boolean _hasNature = project.hasNature(NatureConstants.OLD_NATURE_ID);
+      if (_hasNature) {
+        ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("erlang.check.fast", 
+          "erlang.check.normal", 
+          "erlang.check.expensive");
+        final Procedure1<String> _function = new Procedure1<String>() {
+            public void apply(final String it) {
+              try {
+                String _plus = ("org.erlide.erlang.ui." + it);
+                project.deleteMarkers(_plus, true, IResource.DEPTH_INFINITE);
+              } catch (Exception _e) {
+                throw Exceptions.sneakyThrow(_e);
+              }
+            }
+          };
+        IterableExtensions.<String>forEach(_newArrayList, _function);
+      }
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }

@@ -1,6 +1,9 @@
 package org.erlide.builder;
 
 import com.google.inject.Injector;
+import com.google.inject.Singleton;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import org.eclipse.core.runtime.CoreException;
@@ -12,6 +15,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.IErlangBuilder;
 
+@Singleton
 @SuppressWarnings("all")
 public class BuildersProvider {
   private Map<String,IErlangBuilder> builders;
@@ -21,7 +25,34 @@ public class BuildersProvider {
     this.builders = _newHashMap;
   }
   
-  protected void loadBuilders() {
+  public Collection<IErlangBuilder> get() {
+    Collection<IErlangBuilder> _xblockexpression = null;
+    {
+      boolean _isEmpty = this.builders.isEmpty();
+      if (_isEmpty) {
+        this.loadBuilderExtensions();
+      }
+      Collection<IErlangBuilder> _values = this.builders.values();
+      Collection<IErlangBuilder> _unmodifiableCollection = Collections.<IErlangBuilder>unmodifiableCollection(_values);
+      _xblockexpression = (_unmodifiableCollection);
+    }
+    return _xblockexpression;
+  }
+  
+  public IErlangBuilder get(final String id) {
+    IErlangBuilder _xblockexpression = null;
+    {
+      boolean _isEmpty = this.builders.isEmpty();
+      if (_isEmpty) {
+        this.loadBuilderExtensions();
+      }
+      IErlangBuilder _get = this.builders.get(id);
+      _xblockexpression = (_get);
+    }
+    return _xblockexpression;
+  }
+  
+  private void loadBuilderExtensions() {
     final IExtensionRegistry reg = Platform.getExtensionRegistry();
     final IConfigurationElement[] elements = reg.getConfigurationElementsFor("org.erlide.builder.builders");
     for (final IConfigurationElement element : elements) {
@@ -41,18 +72,5 @@ public class BuildersProvider {
         }
       }
     }
-  }
-  
-  public IErlangBuilder get(final String id) {
-    IErlangBuilder _xblockexpression = null;
-    {
-      boolean _isEmpty = this.builders.isEmpty();
-      if (_isEmpty) {
-        this.loadBuilders();
-      }
-      IErlangBuilder _get = this.builders.get(id);
-      _xblockexpression = (_get);
-    }
-    return _xblockexpression;
   }
 }

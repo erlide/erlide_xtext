@@ -11,7 +11,9 @@ import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -104,6 +106,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   }
   
   public void clean(final IProgressMonitor monitor) {
+    monitor.beginTask("clean", IProgressMonitor.UNKNOWN);
     BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
     IProject _project = this.getProject();
     _markerUpdater.clean(_project, ErlangBuilder.MARKER_TYPE);
@@ -114,83 +117,115 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
       };
     this.execute(_cleanCmdLine, monitor, _function);
     monitor.worked(1);
+    monitor.done();
   }
   
   public void fullBuild(final IProgressMonitor monitor) throws CoreException {
-    this.clean(monitor);
-    List<String> _fullCmdLine = this.getFullCmdLine();
-    final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
-        public void apply(final CompilerProblem it) {
-          IProject _project = ExternalBuilder.this.getProject();
-          String _fileName = it.getFileName();
-          Path _path = new Path(_fileName);
-          final IPath fPath = ProjectBuilderExtensions.getPathInProject(_project, _path);
-          IProject _project_1 = ExternalBuilder.this.getProject();
-          IResource _findMember = _project_1.findMember(fPath);
-          final IFile file = ((IFile) _findMember);
-          boolean _notEquals = (!Objects.equal(file, null));
-          if (_notEquals) {
+    try {
+      monitor.beginTask("build", IProgressMonitor.UNKNOWN);
+      SubProgressMonitor _subProgressMonitor = new SubProgressMonitor(monitor, 10);
+      this.clean(_subProgressMonitor);
+      List<String> _fullCmdLine = this.getFullCmdLine();
+      final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
+          public void apply(final CompilerProblem it) {
+            IProject _project = ExternalBuilder.this.getProject();
+            String _fileName = it.getFileName();
+            Path _path = new Path(_fileName);
+            final IPath fPath = ProjectBuilderExtensions.getPathInProject(_project, _path);
+            IProject _project_1 = ExternalBuilder.this.getProject();
+            final IResource file = _project_1.findMember(fPath);
+            boolean _matched = false;
+            if (!_matched) {
+              if (file instanceof IFile) {
+                final IFile _iFile = (IFile)file;
+                _matched=true;
+                boolean _notEquals = (!Objects.equal(_iFile, null));
+                if (_notEquals) {
+                  BuilderMarkerUpdater _markerUpdater = ExternalBuilder.this.getMarkerUpdater();
+                  _markerUpdater.addMarker(_iFile, it);
+                  InputOutput.<String>println("WORKED");
+                  monitor.worked(1);
+                }
+              }
+            }
+          }
+        };
+      this.execute(_fullCmdLine, monitor, _function);
+    } finally {
+      InputOutput.<String>println("DONE");
+      monitor.done();
+    }
+  }
+  
+  public void incrementalBuild(final IResourceDelta delta, final IProgressMonitor monitor) throws CoreException {
+    try {
+      monitor.beginTask("build", IProgressMonitor.UNKNOWN);
+      final Function1<IResourceDelta,Boolean> _function = new Function1<IResourceDelta,Boolean>() {
+          public Boolean apply(final IResourceDelta it) {
+            IResource _resource = it.getResource();
+            boolean _not = (!(_resource instanceof IFile));
+            if (_not) {
+              return true;
+            }
+            boolean _isCanceled = monitor.isCanceled();
+            if (_isCanceled) {
+              OperationCanceledException _operationCanceledException = new OperationCanceledException();
+              throw _operationCanceledException;
+            }
+            monitor.worked(1);
+            int _kind = it.getKind();
+            final int getKind = _kind;
+            boolean _matched = false;
+            if (!_matched) {
+              if (Objects.equal(getKind,IResourceDelta.ADDED)) {
+                _matched=true;
+                IResource _resource_1 = it.getResource();
+                SubProgressMonitor _subProgressMonitor = new SubProgressMonitor(monitor, 10);
+                ExternalBuilder.this.singleBuild(((IFile) _resource_1), _subProgressMonitor);
+              }
+            }
+            if (!_matched) {
+              if (Objects.equal(getKind,IResourceDelta.CHANGED)) {
+                _matched=true;
+                IResource _resource_2 = it.getResource();
+                SubProgressMonitor _subProgressMonitor_1 = new SubProgressMonitor(monitor, 10);
+                ExternalBuilder.this.singleBuild(((IFile) _resource_2), _subProgressMonitor_1);
+              }
+            }
+            return true;
+          }
+        };
+      delta.accept(new IResourceDeltaVisitor() {
+          public boolean visit(IResourceDelta delta) {
+            return _function.apply(delta);
+          }
+      });
+    } finally {
+      InputOutput.<String>println("DONE");
+      monitor.done();
+    }
+  }
+  
+  public void singleBuild(final IFile file, final IProgressMonitor monitor) {
+    try {
+      monitor.beginTask("single", 10);
+      BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
+      _markerUpdater.deleteMarkers(file, ErlangBuilder.MARKER_TYPE);
+      monitor.worked(1);
+      List<String> _singleCmdLine = this.getSingleCmdLine();
+      String _name = file.getName();
+      final List<String> cmd = this.fillCmdLine(_singleCmdLine, _name);
+      final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
+          public void apply(final CompilerProblem it) {
             BuilderMarkerUpdater _markerUpdater = ExternalBuilder.this.getMarkerUpdater();
             _markerUpdater.addMarker(file, it);
             monitor.worked(1);
           }
-        }
-      };
-    this.execute(_fullCmdLine, monitor, _function);
-  }
-  
-  public void incrementalBuild(final IResourceDelta delta, final IProgressMonitor monitor) throws CoreException {
-    final Function1<IResourceDelta,Boolean> _function = new Function1<IResourceDelta,Boolean>() {
-        public Boolean apply(final IResourceDelta it) {
-          IResource _resource = it.getResource();
-          boolean _not = (!(_resource instanceof IFile));
-          if (_not) {
-            return true;
-          }
-          monitor.worked(1);
-          int _kind = it.getKind();
-          final int getKind = _kind;
-          boolean _matched = false;
-          if (!_matched) {
-            if (Objects.equal(getKind,IResourceDelta.ADDED)) {
-              _matched=true;
-              IResource _resource_1 = it.getResource();
-              ExternalBuilder.this.singleBuild(((IFile) _resource_1), monitor);
-            }
-          }
-          if (!_matched) {
-            if (Objects.equal(getKind,IResourceDelta.CHANGED)) {
-              _matched=true;
-              IResource _resource_2 = it.getResource();
-              ExternalBuilder.this.singleBuild(((IFile) _resource_2), monitor);
-            }
-          }
-          return true;
-        }
-      };
-    delta.accept(new IResourceDeltaVisitor() {
-        public boolean visit(IResourceDelta delta) {
-          return _function.apply(delta);
-        }
-    });
-  }
-  
-  public void singleBuild(final IFile file, final IProgressMonitor monitor) {
-    BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
-    _markerUpdater.deleteMarkers(file, ErlangBuilder.MARKER_TYPE);
-    List<String> _singleCmdLine = this.getSingleCmdLine();
-    String _name = file.getName();
-    final List<String> cmd = this.fillCmdLine(_singleCmdLine, _name);
-    final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
-        public void apply(final CompilerProblem it) {
-          String _plus = ("SINGLE " + it);
-          InputOutput.<String>println(_plus);
-          BuilderMarkerUpdater _markerUpdater = ExternalBuilder.this.getMarkerUpdater();
-          _markerUpdater.addMarker(file, it);
-          monitor.worked(1);
-        }
-      };
-    this.execute(cmd, monitor, _function);
+        };
+      this.execute(cmd, monitor, _function);
+    } finally {
+      monitor.done();
+    }
   }
   
   private List<String> fillCmdLine(final List<String> cmds, final String file) {

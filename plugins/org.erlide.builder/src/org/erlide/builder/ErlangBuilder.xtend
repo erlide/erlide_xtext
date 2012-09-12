@@ -8,8 +8,7 @@ import org.eclipse.core.resources.IncrementalProjectBuilder
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.SubProgressMonitor
-
-import static org.erlide.builder.ErlangBuilder.*
+import org.erlide.common.NatureConstants
 
 class ErlangBuilder extends IncrementalProjectBuilder {
 
@@ -30,6 +29,8 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	}
 	
 	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor monitor) throws CoreException {
+		cleanXtextMarkers(project)
+		
         val builder = getProjectBuilder(project)
         if (builder==null) {
         	// TODO issue warning?
@@ -47,6 +48,8 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     }
 
 	override protected clean(IProgressMonitor monitor) throws CoreException {
+		cleanXtextMarkers(project)
+
         val builder = getProjectBuilder(project)
         if (builder==null) {
         	// TODO issue warning?
@@ -62,5 +65,16 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         builder.project = project
         builder.loadConfiguration
         builder
+	}
+	
+	def private cleanXtextMarkers(IProject project) {
+		// TODO this removes all xtext markers, which are only created when file is open
+		if(project.hasNature(NatureConstants::OLD_NATURE_ID)) {
+			newArrayList("erlang.check.fast", 
+						"erlang.check.normal", 
+						"erlang.check.expensive").forEach [ 
+				project.deleteMarkers("org.erlide.erlang.ui."+it, true, IResource::DEPTH_INFINITE)
+			]
+		}
 	}	
 }

@@ -5,7 +5,11 @@ import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IConfigurationElement
 import org.eclipse.core.runtime.IExtensionRegistry
 import org.eclipse.core.runtime.Platform
+import java.util.Collection
+import java.util.Collections
+import com.google.inject.Singleton
 
+@Singleton
 class BuildersProvider {
     Map<String, IErlangBuilder> builders;
     
@@ -13,7 +17,21 @@ class BuildersProvider {
 		builders = newHashMap()
 	}
 
-    def protected void loadBuilders() {
+	def Collection<IErlangBuilder> get() {
+		if(builders.empty) {
+			loadBuilderExtensions()
+		}
+		Collections::unmodifiableCollection(builders.values)
+	}
+
+	def IErlangBuilder get(String id) {
+		if(builders.empty) {
+			loadBuilderExtensions()
+		}
+		builders.get(id)		
+	}
+
+    def private void loadBuilderExtensions() {
         val IExtensionRegistry reg = Platform::getExtensionRegistry()
         val IConfigurationElement[] elements = reg.getConfigurationElementsFor("org.erlide.builder.builders")
         for (element : elements) {
@@ -26,12 +44,5 @@ class BuildersProvider {
             }
         }
     }
-
-	def IErlangBuilder get(String id) {
-		if(builders.empty) {
-			loadBuilders()
-		}
-		builders.get(id)		
-	}
 
 }

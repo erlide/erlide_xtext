@@ -18,10 +18,7 @@ class BuilderMarkerUpdater {
             val marker = file.createMarker(markerType)
             marker.setAttribute(IMarker::MESSAGE, message)
             marker.setAttribute(IMarker::SEVERITY, severity)
-            if (lineNumber == -1) {
-                ln = 1
-            } else
-            	ln = lineNumber
+            ln = Math::max(lineNumber, 1)
             marker.setAttribute(IMarker::LINE_NUMBER, lineNumber)
         } catch (CoreException e) {
         	ErlLogger::warn("Could not add marker for "+file+": "+e.message)

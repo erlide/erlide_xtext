@@ -38,7 +38,7 @@ public class OldProjectBuildpathConverter {
    * <li>referenced projects</li>
    * </ul>
    * 
-   * If "external modules" has references to modules not in any refernced
+   * If "external modules" has references to modules not in any referenced
    * project, they will be lost. We could scan and compare to the projects, in
    * order to extract the real external libraries, but at the moment it feels
    * too much work for too little benefit.

@@ -11,6 +11,10 @@ import org.eclipse.core.runtime.Path
 import org.eclipse.xtend.lib.Property
 
 import static extension org.erlide.builder.ProjectBuilderExtensions.*
+import org.eclipse.core.runtime.SubMonitor
+import org.eclipse.core.runtime.SubProgressMonitor
+import org.eclipse.core.resources.IResource
+import org.eclipse.core.runtime.OperationCanceledException
 
 abstract class ExternalBuilder extends AbstractErlangBuilder {
 
@@ -43,49 +47,75 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	override clean(IProgressMonitor monitor) {
+		monitor.beginTask("clean", IProgressMonitor::UNKNOWN)
 		markerUpdater.clean(project, ErlangBuilder::MARKER_TYPE)
 		execute(cleanCmdLine, monitor) []
 		monitor.worked(1)
+		monitor.done
 	}
 	
 	override fullBuild(IProgressMonitor monitor) throws CoreException {
-		clean(monitor)
-		// TODO cmdline
-		execute(fullCmdLine, monitor) [ 
-			val fPath = project.getPathInProject(new Path(fileName))
-			val IFile file = project.findMember(fPath) as IFile
-			if(file!=null) {
-				markerUpdater.addMarker(file, it)
-				monitor.worked(1)
-			}
-		]
+		try {
+			monitor.beginTask("build", IProgressMonitor::UNKNOWN)
+			clean(new SubProgressMonitor(monitor, 10))
+			// TODO cmdline
+			execute(fullCmdLine, monitor) [ 
+				val fPath = project.getPathInProject(new Path(fileName))
+				val file = project.findMember(fPath)
+				switch file {
+					IFile: {
+						if(file!=null) {
+							markerUpdater.addMarker(file, it)
+							println("WORKED")
+							monitor.worked(1)
+						}
+					}
+				}
+			]
+		} finally {
+			println("DONE")
+			monitor.done
+		}
 	}
 	
 	override incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) throws CoreException {
-		delta.accept [
-           	if (!(resource instanceof IFile)) 
-           		return true
-           	monitor.worked(1)
-            switch (kind) {
-	            case IResourceDelta::ADDED:
-	                singleBuild(resource as IFile, monitor)
-	            //case IResourceDelta::REMOVED:
-	            case IResourceDelta::CHANGED:
-	                singleBuild(resource as IFile, monitor)
-            }
-            return true
-        ]
+		try {
+			monitor.beginTask("build", IProgressMonitor::UNKNOWN)
+			delta.accept [
+	           	if (!(resource instanceof IFile)) 
+	           		return true
+	           	if (monitor.canceled) 
+	           		throw new OperationCanceledException()
+	           	monitor.worked(1)
+	            switch (kind) {
+		            case IResourceDelta::ADDED:
+		                singleBuild(resource as IFile, new SubProgressMonitor(monitor, 10))
+		            //case IResourceDelta::REMOVED:
+		            case IResourceDelta::CHANGED:
+		                singleBuild(resource as IFile, new SubProgressMonitor(monitor, 10))
+	            }
+	            return true
+	        ]
+        } finally {
+			println("DONE")
+        	monitor.done
+        }
 	}
 
 	def singleBuild(IFile file, IProgressMonitor monitor) {
-		markerUpdater.deleteMarkers(file, ErlangBuilder::MARKER_TYPE)
-		// TODO cmdline
-		val cmd = fillCmdLine(singleCmdLine, file.name)
-		execute(cmd, monitor) [ 
-			println("SINGLE "+it) 
-			markerUpdater.addMarker(file, it)
+		try {
+			monitor.beginTask("single", 10)
+			markerUpdater.deleteMarkers(file, ErlangBuilder::MARKER_TYPE)
 			monitor.worked(1)
-		]
+			// TODO cmdline
+			val cmd = fillCmdLine(singleCmdLine, file.name)
+			execute(cmd, monitor) [ 
+				markerUpdater.addMarker(file, it)
+				monitor.worked(1)
+			]
+		} finally {
+			monitor.done
+		}
 	}
 	
 	def private fillCmdLine(List<String> cmds, String file) {
