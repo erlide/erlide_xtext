@@ -22,12 +22,12 @@ import org.erlide.common.util.ErlLogger;
 @Singleton
 @SuppressWarnings("all")
 public class BuilderMarkerUpdater {
-  @Inject
-  @Named(value = "erlangBuilder")
   private EventBus builderEventBus;
   
-  public BuilderMarkerUpdater() {
-    this.builderEventBus.register(this);
+  @Inject
+  public BuilderMarkerUpdater(@Named(value = "erlangBuilder") final EventBus builderEventBus) {
+    this.builderEventBus = builderEventBus;
+    builderEventBus.register(this);
   }
   
   public void addMarker(final IFile file, final CompilerProblem problem) {

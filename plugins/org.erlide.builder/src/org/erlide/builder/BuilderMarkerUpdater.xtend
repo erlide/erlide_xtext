@@ -15,9 +15,11 @@ import com.google.common.eventbus.Subscribe
 @Singleton
 class BuilderMarkerUpdater {
 
-	@Inject @Named("erlangBuilder") EventBus builderEventBus
+	EventBus builderEventBus
 
-	new() {
+	@Inject
+	new(@Named("erlangBuilder") EventBus builderEventBus) {
+		this.builderEventBus = builderEventBus
 		builderEventBus.register(this)		
 	}
 	
