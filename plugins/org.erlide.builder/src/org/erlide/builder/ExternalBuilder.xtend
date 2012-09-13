@@ -7,14 +7,13 @@ import org.eclipse.core.resources.IResourceDelta
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.core.runtime.OperationCanceledException
 import org.eclipse.core.runtime.Path
+import org.eclipse.core.runtime.SubMonitor
 import org.eclipse.xtend.lib.Property
 
 import static extension org.erlide.builder.ProjectBuilderExtensions.*
-import org.eclipse.core.runtime.SubMonitor
-import org.eclipse.core.runtime.SubProgressMonitor
-import org.eclipse.core.resources.IResource
-import org.eclipse.core.runtime.OperationCanceledException
+import com.google.common.eventbus.EventBus
 
 abstract class ExternalBuilder extends AbstractErlangBuilder {
 
@@ -34,12 +33,8 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 		singleCmdLine = NONE
 	}
 
-	new(IProject project, BuilderMarkerUpdater markerUpdater) {
-		this(project, markerUpdater, new BuilderExecutor())
-	}
-	
-	new(IProject project, BuilderMarkerUpdater markerUpdater, BuilderExecutor executor) {
-		super(project, markerUpdater)
+	new(IProject project, BuilderMarkerUpdater markerUpdater, BuilderExecutor executor, EventBus eventBus) {
+		super(project, markerUpdater, eventBus)
 		this.executor = executor
 		cleanCmdLine = NONE
 		fullCmdLine = NONE
@@ -49,6 +44,9 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	override clean(IProgressMonitor monitor) {
 		val progress = SubMonitor::convert(monitor, 1)
 		try {
+			//TODO 
+			builderEventBus.post(new CompilerProblemEvent(null, project, MarkerOperation::DELETE))
+			
 			markerUpdater.clean(project, ErlangBuilder::MARKER_TYPE)
 			execute(cleanCmdLine, progress) []
 			progress.worked(1)

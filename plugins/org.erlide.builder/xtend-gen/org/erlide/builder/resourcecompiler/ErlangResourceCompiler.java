@@ -38,7 +38,7 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
   private Map<String,IErlangCompiler> compilers;
   
   public ErlangResourceCompiler(final IProject project, final BuilderMarkerUpdater markerUpdater) {
-    super(project, markerUpdater);
+    super(project, markerUpdater, null);
     HashMap<String,IErlangCompiler> _newHashMap = CollectionLiterals.<String, IErlangCompiler>newHashMap();
     this.compilers = _newHashMap;
   }

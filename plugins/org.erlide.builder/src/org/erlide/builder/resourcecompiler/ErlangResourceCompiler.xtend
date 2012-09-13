@@ -22,7 +22,7 @@ class ErlangResourceCompiler extends AbstractErlangBuilder {
     Map<String, IErlangCompiler> compilers
 
 	new(IProject project, BuilderMarkerUpdater markerUpdater) {
-		super(project, markerUpdater)
+		super(project, markerUpdater, null)
 		compilers = newHashMap()
 	}
 	

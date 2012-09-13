@@ -1,17 +1,35 @@
 package org.erlide.builder;
 
+import com.google.common.base.Objects;
+import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import com.google.inject.name.Named;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.erlide.builder.CompilerProblem;
+import org.erlide.builder.CompilerProblemEvent;
 import org.erlide.builder.ErlangBuilder;
+import org.erlide.builder.MarkerOperation;
 import org.erlide.common.util.ErlLogger;
 
+@Singleton
 @SuppressWarnings("all")
 public class BuilderMarkerUpdater {
+  @Inject
+  @Named(value = "erlangBuilder")
+  private EventBus builderEventBus;
+  
+  public BuilderMarkerUpdater() {
+    this.builderEventBus.register(this);
+  }
+  
   public void addMarker(final IFile file, final CompilerProblem problem) {
     String _message = problem.getMessage();
     int _line = problem.getLine();
@@ -66,6 +84,25 @@ public class BuilderMarkerUpdater {
       project.deleteMarkers(markerType, false, IResource.DEPTH_INFINITE);
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Subscribe
+  public void handleCompilerProblem(final CompilerProblemEvent event) {
+    MarkerOperation _op = event.getOp();
+    final MarkerOperation _switchValue = _op;
+    boolean _matched = false;
+    if (!_matched) {
+      if (Objects.equal(_switchValue,MarkerOperation.ADD)) {
+        _matched=true;
+        InputOutput.<String>println("addMarker(event.resource as IFile, event.problem)");
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_switchValue,MarkerOperation.DELETE)) {
+        _matched=true;
+        InputOutput.<String>println("deleteMarkers(event.resource as IFile, ErlangBuilder::MARKER_TYPE)");
+      }
     }
   }
 }

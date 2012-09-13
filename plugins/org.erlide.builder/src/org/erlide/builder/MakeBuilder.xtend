@@ -11,14 +11,8 @@ class MakeBuilder extends ExternalBuilder {
 		setupCommands()
 	}
 
-	new(IProject project, BuilderMarkerUpdater markerUpdater) {
-		super(project, markerUpdater)
-		setupCommands()
-		loadConfiguration
-	} 
-	
 	new(IProject project, BuilderMarkerUpdater markerUpdater, BuilderExecutor executor) {
-		super(project, markerUpdater, executor)
+		super(project, markerUpdater, executor, null)
 		setupCommands()
 		loadConfiguration
 	}

@@ -5,20 +5,24 @@ import org.eclipse.core.runtime.IExecutableExtension
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IConfigurationElement
 import com.google.inject.Inject
+import com.google.inject.name.Named
+import com.google.common.eventbus.EventBus
 
 abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutableExtension {
 	@Property IProject project
 	@Property @Inject BuilderMarkerUpdater markerUpdater
+	@Inject @Named("erlangBuilder") protected EventBus builderEventBus
 	String id
 	
 	new()  {
 		BuilderPlugin::instance.injector.injectMembers(this)
 	}
 
-	new(IProject project, BuilderMarkerUpdater markerUpdater) {
+	new(IProject project, BuilderMarkerUpdater markerUpdater, EventBus eventBus) {
 		this()
 		this._project = project
 		this._markerUpdater = markerUpdater
+		this.builderEventBus = eventBus
 	}
 	
 	override setInitializationData(IConfigurationElement config, String propertyName, Object data) throws CoreException {

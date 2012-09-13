@@ -94,19 +94,19 @@ public class ErlLogger {
     }
 
     public void debug(final Throwable e) {
-        logger.debug(e);
+        logger.debug("debug", e);
     }
 
     public void info(final Throwable e) {
-        logger.info(e);
+        logger.info("info", e);
     }
 
     public void warn(final Throwable e) {
-        logger.warn(e);
+        logger.warn("warning", e);
     }
 
     public void error(final Throwable exception) {
-        logger.error(exception);
+        logger.error("error", exception);
     }
 
     private static StackTraceElement getCaller() {

@@ -1,13 +1,13 @@
 package org.erlide.builder
 
+import com.google.inject.Singleton
+import java.util.Collection
+import java.util.Collections
 import java.util.Map
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IConfigurationElement
 import org.eclipse.core.runtime.IExtensionRegistry
 import org.eclipse.core.runtime.Platform
-import java.util.Collection
-import java.util.Collections
-import com.google.inject.Singleton
 
 @Singleton
 class BuildersProvider {

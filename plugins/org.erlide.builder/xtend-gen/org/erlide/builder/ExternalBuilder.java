@@ -1,6 +1,7 @@
 package org.erlide.builder;
 
 import com.google.common.base.Objects;
+import com.google.common.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.core.resources.IFile;
@@ -24,8 +25,10 @@ import org.erlide.builder.AbstractErlangBuilder;
 import org.erlide.builder.BuilderExecutor;
 import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.CompilerProblem;
+import org.erlide.builder.CompilerProblemEvent;
 import org.erlide.builder.DefaultLineParser;
 import org.erlide.builder.ErlangBuilder;
+import org.erlide.builder.MarkerOperation;
 import org.erlide.builder.ProjectBuilderExtensions;
 
 @SuppressWarnings("all")
@@ -88,17 +91,8 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     this.setSingleCmdLine(this.NONE);
   }
   
-  public ExternalBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater) {
-    this(project, markerUpdater, new Function0<BuilderExecutor>() {
-      public BuilderExecutor apply() {
-        BuilderExecutor _builderExecutor = new BuilderExecutor();
-        return _builderExecutor;
-      }
-    }.apply());
-  }
-  
-  public ExternalBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final BuilderExecutor executor) {
-    super(project, markerUpdater);
+  public ExternalBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final BuilderExecutor executor, final EventBus eventBus) {
+    super(project, markerUpdater, eventBus);
     this.executor = executor;
     this.setCleanCmdLine(this.NONE);
     this.setFullCmdLine(this.NONE);
@@ -108,9 +102,12 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   public void clean(final IProgressMonitor monitor) {
     final SubMonitor progress = SubMonitor.convert(monitor, 1);
     try {
-      BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
       IProject _project = this.getProject();
-      _markerUpdater.clean(_project, ErlangBuilder.MARKER_TYPE);
+      CompilerProblemEvent _compilerProblemEvent = new CompilerProblemEvent(null, _project, MarkerOperation.DELETE);
+      this.builderEventBus.post(_compilerProblemEvent);
+      BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
+      IProject _project_1 = this.getProject();
+      _markerUpdater.clean(_project_1, ErlangBuilder.MARKER_TYPE);
       List<String> _cleanCmdLine = this.getCleanCmdLine();
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {

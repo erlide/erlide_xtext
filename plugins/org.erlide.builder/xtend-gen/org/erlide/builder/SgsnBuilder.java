@@ -16,14 +16,8 @@ public class SgsnBuilder extends ExternalBuilder {
     this.setupCommands();
   }
   
-  public SgsnBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater) {
-    super(project, markerUpdater);
-    this.setupCommands();
-    this.loadConfiguration();
-  }
-  
   public SgsnBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final BuilderExecutor executor) {
-    super(project, markerUpdater, executor);
+    super(project, markerUpdater, executor, null);
     this.setupCommands();
     this.loadConfiguration();
   }

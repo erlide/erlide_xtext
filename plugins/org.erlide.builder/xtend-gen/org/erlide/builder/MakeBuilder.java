@@ -14,14 +14,8 @@ public class MakeBuilder extends ExternalBuilder {
     this.setupCommands();
   }
   
-  public MakeBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater) {
-    super(project, markerUpdater);
-    this.setupCommands();
-    this.loadConfiguration();
-  }
-  
   public MakeBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final BuilderExecutor executor) {
-    super(project, markerUpdater, executor);
+    super(project, markerUpdater, executor, null);
     this.setupCommands();
     this.loadConfiguration();
   }

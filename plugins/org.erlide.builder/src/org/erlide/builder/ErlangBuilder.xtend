@@ -1,5 +1,7 @@
 package org.erlide.builder
 
+import com.google.common.eventbus.EventBus
+import com.google.inject.name.Named
 import java.util.Map
 import javax.inject.Inject
 import org.eclipse.core.resources.IProject
@@ -7,13 +9,12 @@ import org.eclipse.core.resources.IResource
 import org.eclipse.core.resources.IncrementalProjectBuilder
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IProgressMonitor
-import org.eclipse.core.runtime.ProgressMonitorWrapper
+import org.eclipse.core.runtime.OperationCanceledException
 import org.eclipse.core.runtime.SubMonitor
 import org.erlide.common.NatureConstants
 import org.erlide.common.util.ErlLogger
-
-import static extension org.erlide.common.util.ErlLogger.*
-import org.eclipse.core.runtime.OperationCanceledException
+import com.google.common.eventbus.Subscribe
+import com.google.common.eventbus.DeadEvent
 
 class ErlangBuilder extends IncrementalProjectBuilder {
 
@@ -24,19 +25,25 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	@Inject BuilderMarkerUpdater markerUpdater
 	@Inject BuildersProvider builderProvider
 	@Inject ErlLogger log
+	@Inject @Named("erlangBuilder") EventBus builderEventBus
 
 	new() {
         BuilderPlugin::instance.injector.injectMembers(this);
+        builderEventBus.register(this) // for dead event reporting
 	}
 	
-	new(BuilderMarkerUpdater markerUpdater, BuildersProvider builderProvider) {
+	new(BuilderMarkerUpdater markerUpdater, BuildersProvider builderProvider, EventBus eventBus) {
 		this.markerUpdater = markerUpdater
 		this.builderProvider = builderProvider
+		this.builderEventBus = eventBus
+        builderEventBus.register(this)
 	}
 	
 	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor _monitor) throws CoreException {
 		val startTime = System::currentTimeMillis
 		cleanXtextMarkers(project)
+
+		builderEventBus.post("hello")
 
 		try {
 			val monitor = if (_monitor != null) {
@@ -48,7 +55,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 
 	        val builder = getProjectBuilder(project)
 	        if (builder==null) {
-	        	// TODO issue warning?
+	        	log.warn("Project "+project+" has no Erlang builder")
 	        } else {
 	        	//TODO
 	        	switch(kind) {
@@ -76,6 +83,8 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     }
 
 	override protected clean(IProgressMonitor monitor) throws CoreException {
+		builderEventBus.post("hello")
+
 		val progress = SubMonitor::convert(monitor, 10);
 		cleanXtextMarkers(project)
 		progress.worked(2)
@@ -110,6 +119,11 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 				project.deleteMarkers("org.erlide.erlang.ui."+it, true, IResource::DEPTH_INFINITE)
 			]
 		}
+	}
+	
+	@Subscribe
+	def void noBuilderHandler(DeadEvent dead) {
+		log.warn("No builder configured for project %s", project.name)
 	}	
 }
 

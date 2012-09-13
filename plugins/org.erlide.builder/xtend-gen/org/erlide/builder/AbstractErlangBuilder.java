@@ -1,7 +1,9 @@
 package org.erlide.builder;
 
+import com.google.common.eventbus.EventBus;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
+import com.google.inject.name.Named;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -33,6 +35,10 @@ public abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutab
     this._markerUpdater = markerUpdater;
   }
   
+  @Inject
+  @Named(value = "erlangBuilder")
+  protected EventBus builderEventBus;
+  
   private String id;
   
   public AbstractErlangBuilder() {
@@ -41,10 +47,11 @@ public abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutab
     _injector.injectMembers(this);
   }
   
-  public AbstractErlangBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater) {
+  public AbstractErlangBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final EventBus eventBus) {
     this();
     this._project = project;
     this._markerUpdater = markerUpdater;
+    this.builderEventBus = eventBus;
   }
   
   public void setInitializationData(final IConfigurationElement config, final String propertyName, final Object data) throws CoreException {

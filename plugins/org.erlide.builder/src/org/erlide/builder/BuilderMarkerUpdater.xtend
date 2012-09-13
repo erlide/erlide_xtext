@@ -6,8 +6,21 @@ import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.runtime.CoreException
 import org.erlide.common.util.ErlLogger
+import com.google.inject.Singleton
+import com.google.inject.Inject
+import com.google.inject.name.Named
+import com.google.common.eventbus.EventBus
+import com.google.common.eventbus.Subscribe
 
+@Singleton
 class BuilderMarkerUpdater {
+
+	@Inject @Named("erlangBuilder") EventBus builderEventBus
+
+	new() {
+		builderEventBus.register(this)		
+	}
+	
 	def void addMarker(IFile file, CompilerProblem problem) {
 		addMarker(file, ErlangBuilder::MARKER_TYPE, problem.message, problem.line, problem.severity)
 	}
@@ -36,6 +49,16 @@ class BuilderMarkerUpdater {
 
 	def clean(IProject project, String markerType) {
 		project.deleteMarkers(markerType, false, IResource::DEPTH_INFINITE)
+	}
+
+	@Subscribe
+	def void handleCompilerProblem(CompilerProblemEvent event) {
+		switch event.op {
+			case MarkerOperation::ADD:
+				println("addMarker(event.resource as IFile, event.problem)")
+			case MarkerOperation::DELETE:
+				println("deleteMarkers(event.resource as IFile, ErlangBuilder::MARKER_TYPE)")
+		}
 	}
 	
 }
