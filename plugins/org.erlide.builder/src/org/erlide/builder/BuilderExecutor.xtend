@@ -10,9 +10,9 @@ import org.eclipse.core.runtime.OperationCanceledException
 
 class BuilderExecutor {
 	
-		def void executeProcess(List<String> cmdLine,
-            String workingDirectory, IProgressMonitor monitor, IProblemLineParser lineParser, 
-            (CompilerProblem)=>void callback) {
+		def <T> void executeProcess(List<String> cmdLine,
+            String workingDirectory, IProgressMonitor monitor, ILineParser<T> lineParser, 
+            (T)=>void callback) {
         val ProcessBuilder builder = new ProcessBuilder(cmdLine)
         builder.directory(new File(workingDirectory))
         //builder.redirectErrorStream(true)

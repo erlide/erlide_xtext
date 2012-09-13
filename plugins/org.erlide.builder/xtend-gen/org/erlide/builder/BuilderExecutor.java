@@ -9,14 +9,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.erlide.builder.CompilerProblem;
-import org.erlide.builder.IProblemLineParser;
+import org.erlide.builder.ILineParser;
 import org.erlide.common.process.StreamListener;
 import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
 public class BuilderExecutor {
-  public void executeProcess(final List<String> cmdLine, final String workingDirectory, final IProgressMonitor monitor, final IProblemLineParser lineParser, final Procedure1<? super CompilerProblem> callback) {
+  public <T extends Object> void executeProcess(final List<String> cmdLine, final String workingDirectory, final IProgressMonitor monitor, final ILineParser<T> lineParser, final Procedure1<? super T> callback) {
     ProcessBuilder _processBuilder = new ProcessBuilder(cmdLine);
     final ProcessBuilder builder = _processBuilder;
     File _file = new File(workingDirectory);
@@ -32,7 +31,7 @@ public class BuilderExecutor {
               OperationCanceledException _operationCanceledException = new OperationCanceledException();
               throw _operationCanceledException;
             }
-            final CompilerProblem problem = lineParser.parseLine(it);
+            final T problem = lineParser.parseLine(it);
             boolean _notEquals = (!Objects.equal(problem, null));
             if (_notEquals) {
               callback.apply(problem);

@@ -8,10 +8,10 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.builder.CompilerProblem;
-import org.erlide.builder.IProblemLineParser;
+import org.erlide.builder.ILineParser;
 
 @SuppressWarnings("all")
-public class DefaultLineParser implements IProblemLineParser {
+public class DefaultLineParser implements ILineParser<CompilerProblem> {
   public CompilerProblem parseLine(final String line) {
     CompilerProblem _xtrycatchfinallyexpression = null;
     try {

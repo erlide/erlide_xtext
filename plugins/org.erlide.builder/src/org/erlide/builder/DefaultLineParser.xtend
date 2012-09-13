@@ -3,7 +3,7 @@ package org.erlide.builder
 import java.util.List
 import org.eclipse.core.resources.IMarker
 
-class DefaultLineParser implements IProblemLineParser {
+class DefaultLineParser implements ILineParser<CompilerProblem> {
 	
 	override parseLine(String line) {
         //println("@@@>"+line+"<")

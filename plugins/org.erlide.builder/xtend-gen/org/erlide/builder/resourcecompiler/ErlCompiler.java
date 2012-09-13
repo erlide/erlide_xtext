@@ -45,7 +45,7 @@ public class ErlCompiler extends AbstractExternalProcessCompiler {
           result.add(problem);
         }
       };
-    _executor.executeProcess(_newArrayList, _portableString, _nullProgressMonitor, _defaultLineParser, _function);
+    _executor.<CompilerProblem>executeProcess(_newArrayList, _portableString, _nullProgressMonitor, _defaultLineParser, _function);
     return result;
   }
 }

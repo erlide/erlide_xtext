@@ -254,7 +254,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     IPath _workingDir_1 = this.getWorkingDir();
     String _oSString = _workingDir_1.toOSString();
     DefaultLineParser _defaultLineParser = new DefaultLineParser();
-    this.executor.executeProcess(cmds, _oSString, monitor, _defaultLineParser, callback);
+    this.executor.<CompilerProblem>executeProcess(cmds, _oSString, monitor, _defaultLineParser, callback);
   }
   
   public void loadConfiguration() {
