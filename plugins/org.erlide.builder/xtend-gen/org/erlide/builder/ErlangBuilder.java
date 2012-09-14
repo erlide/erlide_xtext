@@ -134,10 +134,7 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
         throw Exceptions.sneakyThrow(_t);
       }
     } finally {
-      boolean _notEquals_1 = (!Objects.equal(_monitor, null));
-      if (_notEquals_1) {
-        _monitor.done();
-      }
+      if (_monitor!=null) _monitor.done();
       IProject _project_4 = this.getProject();
       String _name = _project_4.getName();
       String _plus_2 = ("Build " + _name);

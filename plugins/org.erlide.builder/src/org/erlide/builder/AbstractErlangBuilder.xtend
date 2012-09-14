@@ -1,16 +1,17 @@
 package org.erlide.builder
 
-import org.eclipse.core.resources.IProject
-import org.eclipse.core.runtime.IExecutableExtension
-import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.runtime.IConfigurationElement
+import com.google.common.eventbus.EventBus
 import com.google.inject.Inject
 import com.google.inject.name.Named
-import com.google.common.eventbus.EventBus
-import org.erlide.builder.markers.RemoveMarkersEvent
-import org.eclipse.core.resources.IResource
 import org.eclipse.core.resources.IFile
+import org.eclipse.core.resources.IProject
+import org.eclipse.core.resources.IResource
+import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.IConfigurationElement
+import org.eclipse.core.runtime.IExecutableExtension
+import org.eclipse.xtend.lib.Property
 import org.erlide.builder.markers.AddErlangMarkerEvent
+import org.erlide.builder.markers.RemoveMarkersEvent
 
 abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutableExtension {
 	@Property IProject project

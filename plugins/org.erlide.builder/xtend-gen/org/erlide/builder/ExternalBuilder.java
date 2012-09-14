@@ -13,12 +13,15 @@ import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.AbstractErlangBuilder;
@@ -27,6 +30,7 @@ import org.erlide.builder.CompilerProblem;
 import org.erlide.builder.DefaultLineParser;
 import org.erlide.builder.ErlangBuilder;
 import org.erlide.builder.ProjectBuilderExtensions;
+import org.erlide.builder.ToBuildLineParser;
 import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
@@ -117,11 +121,13 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   }
   
   public void fullBuild(final IProgressMonitor monitor) throws CoreException {
-    final SubMonitor progress = SubMonitor.convert(monitor, IProgressMonitor.UNKNOWN);
+    List<String> _fullCmdLine = this.getFullCmdLine();
+    final int work = this.estimateWork(_fullCmdLine, 1);
+    final SubMonitor progress = SubMonitor.convert(monitor, work);
     try {
-      SubMonitor _newChild = progress.newChild(10);
+      SubMonitor _newChild = progress.newChild(1);
       this.clean(_newChild);
-      List<String> _fullCmdLine = this.getFullCmdLine();
+      List<String> _fullCmdLine_1 = this.getFullCmdLine();
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {
             IProject _project = ExternalBuilder.this.getProject();
@@ -144,14 +150,16 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
             }
           }
         };
-      this.execute(_fullCmdLine, progress, _function);
+      this.execute(_fullCmdLine_1, progress, _function);
     } finally {
       if (monitor!=null) monitor.done();
     }
   }
   
   public void incrementalBuild(final IResourceDelta delta, final IProgressMonitor monitor) throws CoreException {
-    final SubMonitor progress = SubMonitor.convert(monitor, IProgressMonitor.UNKNOWN);
+    List<String> _fullCmdLine = this.getFullCmdLine();
+    final int work = this.estimateWork(_fullCmdLine);
+    final SubMonitor progress = SubMonitor.convert(monitor, work);
     try {
       final Function1<IResourceDelta,Boolean> _function = new Function1<IResourceDelta,Boolean>() {
           public Boolean apply(final IResourceDelta it) {
@@ -165,7 +173,6 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
               OperationCanceledException _operationCanceledException = new OperationCanceledException();
               throw _operationCanceledException;
             }
-            progress.worked(1);
             int _kind = it.getKind();
             final int getKind = _kind;
             boolean _matched = false;
@@ -199,13 +206,14 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   }
   
   public void singleBuild(final IFile file, final IProgressMonitor monitor) {
-    final SubMonitor progress = SubMonitor.convert(monitor, 2);
+    List<String> _singleCmdLine = this.getSingleCmdLine();
+    String _name = file.getName();
+    final List<String> cmd = this.fillCmdLine(_singleCmdLine, _name);
+    final int work = this.estimateWork(cmd, 2);
+    final SubMonitor progress = SubMonitor.convert(monitor, work);
     try {
       this.removeMarkers(file, ErlangBuilder.MARKER_TYPE);
       progress.worked(1);
-      List<String> _singleCmdLine = this.getSingleCmdLine();
-      String _name = file.getName();
-      final List<String> cmd = this.fillCmdLine(_singleCmdLine, _name);
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {
             ExternalBuilder.this.addMarker(file, it);
@@ -261,5 +269,56 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
       String _plus = ("WD=" + _workingDir);
       this.log.debug(_plus);
     }
+  }
+  
+  public int estimateWork(final List<String> cmds) {
+    int _estimateWork = this.estimateWork(cmds, 0);
+    return _estimateWork;
+  }
+  
+  public int estimateWork(final List<String> cmds, final int extra) {
+    int _xtrycatchfinallyexpression = (int) 0;
+    try {
+      int _xblockexpression = (int) 0;
+      {
+        ArrayList<String> _arrayList = new ArrayList<String>(cmds);
+        final ArrayList<String> myCmds = _arrayList;
+        myCmds.add(1, "-dn");
+        String _plus = ("EXC::" + myCmds);
+        InputOutput.<String>println(_plus);
+        final List<String> result = CollectionLiterals.<String>newArrayList();
+        IPath _workingDir = this.getWorkingDir();
+        String _oSString = _workingDir.toOSString();
+        NullProgressMonitor _nullProgressMonitor = new NullProgressMonitor();
+        ToBuildLineParser _toBuildLineParser = new ToBuildLineParser();
+        final Procedure1<String> _function = new Procedure1<String>() {
+            public void apply(final String it) {
+              String _plus = ("### " + it);
+              InputOutput.<String>println(_plus);
+              result.add(it);
+            }
+          };
+        this.executor.<String>executeProcess(myCmds, _oSString, _nullProgressMonitor, _toBuildLineParser, _function);
+        final int guess = result.size();
+        int _xifexpression = (int) 0;
+        boolean _equals = (guess == 0);
+        if (_equals) {
+          _xifexpression = IProgressMonitor.UNKNOWN;
+        } else {
+          int _plus_1 = (guess + extra);
+          _xifexpression = _plus_1;
+        }
+        _xblockexpression = (_xifexpression);
+      }
+      _xtrycatchfinallyexpression = _xblockexpression;
+    } catch (final Throwable _t) {
+      if (_t instanceof Throwable) {
+        final Throwable e = (Throwable)_t;
+        _xtrycatchfinallyexpression = IProgressMonitor.UNKNOWN;
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    return _xtrycatchfinallyexpression;
   }
 }

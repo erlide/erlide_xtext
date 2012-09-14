@@ -16,6 +16,8 @@ import org.eclipse.xtend.lib.Property
 import org.erlide.common.util.ErlLogger
 
 import static extension org.erlide.builder.ProjectBuilderExtensions.*
+import java.util.ArrayList
+import org.eclipse.core.runtime.NullProgressMonitor
 
 abstract class ExternalBuilder extends AbstractErlangBuilder {
 
@@ -56,9 +58,10 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	override fullBuild(IProgressMonitor monitor) throws CoreException {
-		val progress = SubMonitor::convert(monitor, IProgressMonitor::UNKNOWN)
+		val work = estimateWork(fullCmdLine, 1)
+		val progress = SubMonitor::convert(monitor, work)
 		try {
-			clean(progress.newChild(10))
+			clean(progress.newChild(1))
 			// TODO cmdline
 			execute(fullCmdLine, progress) [ 
 				val fPath = project.getPathInProject(new Path(fileName))
@@ -78,14 +81,14 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	override incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) throws CoreException {
-		val progress = SubMonitor::convert(monitor, IProgressMonitor::UNKNOWN);
+		val work = estimateWork(fullCmdLine)
+		val progress = SubMonitor::convert(monitor, work);
 		try {
 			delta.accept [
 	           	if (!(resource instanceof IFile)) 
 	           		return true
 	           	if (progress.canceled) 
 	           		throw new OperationCanceledException()
-	           	progress.worked(1)
 	            switch (kind) {
 		            case IResourceDelta::ADDED:
 		                singleBuild(resource as IFile, progress.newChild(1))
@@ -101,12 +104,13 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 
 	def singleBuild(IFile file, IProgressMonitor monitor) {
-		val progress = SubMonitor::convert(monitor, 2);
+		val cmd = fillCmdLine(singleCmdLine, file.name)
+		val work = estimateWork(cmd, 2)
+		val progress = SubMonitor::convert(monitor, work);
 		try {
 			removeMarkers(file, ErlangBuilder::MARKER_TYPE)
 			progress.worked(1)
 			// TODO cmdline
-			val cmd = fillCmdLine(singleCmdLine, file.name)
 			execute(cmd, progress) [ 
 				addMarker(file, it)
 				progress.worked(1)
@@ -135,5 +139,31 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 			log.debug("WD="+workingDir)
 		}
 	}
+
+	def estimateWork(List<String> cmds) {
+		estimateWork(cmds, 0)
+	}
+	
+	def estimateWork(List<String> cmds, int extra) {
+		try {
+			val myCmds = new ArrayList(cmds)
+			myCmds.add(1, "-dn")
+			println("EXC::"+myCmds)
+			val List<String> result = newArrayList
+	        executor.executeProcess(myCmds, workingDir.toOSString, new NullProgressMonitor(), new ToBuildLineParser()) [
+	        	println("### "+it)
+				result.add(it)			        	
+	        ]
+			val guess = result.size
+			
+			if(guess==0) 
+				IProgressMonitor::UNKNOWN 
+			else 
+				guess+extra
+		} catch (Throwable e) {
+			IProgressMonitor::UNKNOWN 
+		}
+	}
 	
 }
+

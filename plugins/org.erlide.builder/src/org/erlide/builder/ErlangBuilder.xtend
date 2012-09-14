@@ -79,8 +79,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 		} catch (Exception e) {
 			log.error(e)
 		} finally {
-			if (_monitor != null)
-				_monitor.done()
+			_monitor?.done()
 			log.info("Build " + getProject().getName() + " in " + (System::currentTimeMillis - startTime) + " ms")
 		}
 		return getProject().getReferencedProjects();
