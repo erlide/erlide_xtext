@@ -1,5 +1,7 @@
 package org.erlide.builder
 
+import com.google.common.eventbus.EventBus
+import com.google.inject.Inject
 import java.util.List
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
@@ -11,16 +13,15 @@ import org.eclipse.core.runtime.OperationCanceledException
 import org.eclipse.core.runtime.Path
 import org.eclipse.core.runtime.SubMonitor
 import org.eclipse.xtend.lib.Property
+import org.erlide.common.util.ErlLogger
 
 import static extension org.erlide.builder.ProjectBuilderExtensions.*
-import com.google.common.eventbus.EventBus
-import org.erlide.common.util.ErlLogger
-import org.erlide.builder.markers.RemoveMarkersEvent
-import org.erlide.builder.markers.AddErlangMarkerEvent
 
 abstract class ExternalBuilder extends AbstractErlangBuilder {
 
-	BuilderExecutor executor
+	@Inject BuilderExecutor executor
+	@Inject ErlLogger log
+	
 	@Property IPath workingDir
 	@Property List<String> cleanCmdLine
 	@Property List<String> fullCmdLine
@@ -30,7 +31,6 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 
 	new() {
 		super()
-		this.executor = new BuilderExecutor()
 		cleanCmdLine = NONE
 		fullCmdLine = NONE
 		singleCmdLine = NONE
@@ -47,7 +47,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	override clean(IProgressMonitor monitor) {
 		val progress = SubMonitor::convert(monitor, 1)
 		try {
-			builderEventBus.post(new RemoveMarkersEvent(project, ErlangBuilder::MARKER_TYPE))
+			removeMarkers(project, ErlangBuilder::MARKER_TYPE)
 			execute(cleanCmdLine, progress) []
 			progress.worked(1)
 		} finally {
@@ -66,7 +66,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 				switch file {
 					IFile: {
 						if(file!=null) {
-							builderEventBus.post(new AddErlangMarkerEvent(file, it))
+							addMarker(file, it)
 							progress.worked(1)
 						}
 					}
@@ -103,12 +103,12 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	def singleBuild(IFile file, IProgressMonitor monitor) {
 		val progress = SubMonitor::convert(monitor, 2);
 		try {
-			builderEventBus.post(new RemoveMarkersEvent(file, ErlangBuilder::MARKER_TYPE))
+			removeMarkers(file, ErlangBuilder::MARKER_TYPE)
 			progress.worked(1)
 			// TODO cmdline
 			val cmd = fillCmdLine(singleCmdLine, file.name)
 			execute(cmd, progress) [ 
-				builderEventBus.post(new AddErlangMarkerEvent(file, it))
+				addMarker(file, it)
 				progress.worked(1)
 			]
 		} finally {
@@ -121,7 +121,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	def private execute(List<String> cmds, IProgressMonitor monitor, (CompilerProblem)=>void callback) {
-		ErlLogger::instance.debug("EXEC '"+cmds+"' in "+workingDir)
+		log.debug("EXEC '"+cmds+"' in "+workingDir)
         executor.executeProcess(cmds, workingDir.toOSString, monitor, new DefaultLineParser(), callback)
 	}
 	
@@ -132,7 +132,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 		
 		if(project.location.toPortableString.startsWith("/vobs/gsn")) {
 			workingDir = project.linkedContent?.location
-			ErlLogger::instance.debug("WD="+workingDir)
+			log.debug("WD="+workingDir)
 		}
 	}
 	

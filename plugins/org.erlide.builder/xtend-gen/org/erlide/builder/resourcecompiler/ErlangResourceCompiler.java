@@ -2,6 +2,7 @@ package org.erlide.builder.resourcecompiler;
 
 import com.google.common.base.Objects;
 import com.google.common.eventbus.EventBus;
+import com.google.inject.Inject;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,8 +29,6 @@ import org.erlide.builder.AbstractErlangBuilder;
 import org.erlide.builder.CompilerOptions;
 import org.erlide.builder.CompilerProblem;
 import org.erlide.builder.ErlangBuilder;
-import org.erlide.builder.markers.AddErlangMarkerEvent;
-import org.erlide.builder.markers.RemoveMarkersEvent;
 import org.erlide.builder.resourcecompiler.ErlCompiler;
 import org.erlide.builder.resourcecompiler.IErlangCompiler;
 import org.erlide.common.util.ErlLogger;
@@ -38,6 +37,9 @@ import org.erlide.project.model.IErlangProject;
 @SuppressWarnings("all")
 public class ErlangResourceCompiler extends AbstractErlangBuilder {
   private Map<String,IErlangCompiler> compilers;
+  
+  @Inject
+  private ErlLogger log;
   
   public ErlangResourceCompiler(final IProject project, final EventBus eventBus) {
     super(project, eventBus);
@@ -64,8 +66,7 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
   
   public void clean(final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
-    RemoveMarkersEvent _removeMarkersEvent = new RemoveMarkersEvent(_project, ErlangBuilder.MARKER_TYPE);
-    this.builderEventBus.post(_removeMarkersEvent);
+    this.removeMarkers(_project, ErlangBuilder.MARKER_TYPE);
   }
   
   private void compileResource(final IResource resource) {
@@ -74,8 +75,7 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
       return;
     }
     final IFile erlFile = ((IFile) resource);
-    RemoveMarkersEvent _removeMarkersEvent = new RemoveMarkersEvent(erlFile, ErlangBuilder.MARKER_TYPE);
-    this.builderEventBus.post(_removeMarkersEvent);
+    this.removeMarkers(erlFile, ErlangBuilder.MARKER_TYPE);
     IProject _project = this.getProject();
     String _compilerId = this.getCompilerId(_project);
     final IErlangCompiler compiler = this.compilers.get(_compilerId);
@@ -84,9 +84,8 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
     } else {
       CompilerOptions _compilerOptions = new CompilerOptions();
       final CompilerOptions options = _compilerOptions;
-      ErlLogger _instance = ErlLogger.getInstance();
       String _plus = ("compile " + erlFile);
-      _instance.debug(_plus);
+      this.log.debug(_plus);
       Collection<CompilerProblem> _compileResource = compiler.compileResource(erlFile, options);
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {
@@ -94,8 +93,7 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
             int _line = it.getLine();
             int _severity = it.getSeverity();
             CompilerProblem _compilerProblem = new CompilerProblem(ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
-            AddErlangMarkerEvent _addErlangMarkerEvent = new AddErlangMarkerEvent(erlFile, _compilerProblem);
-            ErlangResourceCompiler.this.builderEventBus.post(_addErlangMarkerEvent);
+            ErlangResourceCompiler.this.addMarker(erlFile, _compilerProblem);
           }
         };
       IterableExtensions.<CompilerProblem>forEach(_compileResource, _function);

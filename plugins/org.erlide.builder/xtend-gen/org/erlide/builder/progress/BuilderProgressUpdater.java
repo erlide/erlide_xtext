@@ -12,6 +12,9 @@ public class BuilderProgressUpdater {
   private EventBus builderEventBus;
   
   @Inject
+  private ErlLogger log;
+  
+  @Inject
   public BuilderProgressUpdater(@Named(value = "erlangBuilder") final EventBus builderEventBus) {
     this.builderEventBus = builderEventBus;
     builderEventBus.register(this);
@@ -19,8 +22,7 @@ public class BuilderProgressUpdater {
   
   @Subscribe
   public void handleProgressEvent(final ProgressEvent event) {
-    ErlLogger _instance = ErlLogger.getInstance();
     String _plus = ("PROGRESS " + event);
-    _instance.debug(_plus);
+    this.log.debug(_plus);
   }
 }

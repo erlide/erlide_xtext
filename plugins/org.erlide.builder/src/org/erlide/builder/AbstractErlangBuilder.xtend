@@ -7,14 +7,18 @@ import org.eclipse.core.runtime.IConfigurationElement
 import com.google.inject.Inject
 import com.google.inject.name.Named
 import com.google.common.eventbus.EventBus
+import org.erlide.builder.markers.RemoveMarkersEvent
+import org.eclipse.core.resources.IResource
+import org.eclipse.core.resources.IFile
+import org.erlide.builder.markers.AddErlangMarkerEvent
 
 abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutableExtension {
 	@Property IProject project
-	@Inject @Named("erlangBuilder") protected EventBus builderEventBus
+	@Inject @Named("erlangBuilder") EventBus builderEventBus
 	String id
 	
 	new()  {
-		BuilderPlugin::instance.injector.injectMembers(this)
+		//BuilderPlugin::instance.injector.injectMembers(this)
 	}
 
 	new(IProject project, EventBus eventBus) {
@@ -35,5 +39,12 @@ abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutableExten
 		// do nothing by default
 	}
 	
+	def removeMarkers(IResource resource, String type) {
+		builderEventBus.post(new RemoveMarkersEvent(resource, type))
+	}
+	
+	def addMarker(IFile file, CompilerProblem problem) {
+		builderEventBus.post(new AddErlangMarkerEvent(file, problem))
+	}
 	
 }

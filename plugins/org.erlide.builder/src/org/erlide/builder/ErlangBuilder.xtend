@@ -32,6 +32,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	@Inject @Named("erlangBuilder") EventBus builderEventBus
 
 	new() {
+		// we need this, can't use extensionFactory on builder
         BuilderPlugin::instance.injector.injectMembers(this);
         builderEventBus.register(this) // for dead event reporting
 	}
@@ -126,6 +127,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	@Subscribe
 	def void noBuilderHandler(DeadEvent dead) {
 		log.warn("No builder configured for project %s", project.name)
+		log.debug("From: %s     Event %s", dead.source, dead.event)
 	}	
 }
 

@@ -1,6 +1,7 @@
 package org.erlide.builder.resourcecompiler
 
 import com.google.common.eventbus.EventBus
+import com.google.inject.Inject
 import java.util.Map
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
@@ -18,12 +19,11 @@ import org.erlide.builder.CompilerProblem
 import org.erlide.builder.ErlangBuilder
 import org.erlide.common.util.ErlLogger
 import org.erlide.project.model.IErlangProject
-import org.erlide.builder.markers.AddErlangMarkerEvent
-import org.erlide.builder.markers.RemoveMarkersEvent
 
 class ErlangResourceCompiler extends AbstractErlangBuilder {
 
     Map<String, IErlangCompiler> compilers
+	@Inject ErlLogger log
 
 	new(IProject project, EventBus eventBus) {
 		super(project, eventBus)
@@ -44,7 +44,7 @@ class ErlangResourceCompiler extends AbstractErlangBuilder {
 	}
 	
 	override clean(IProgressMonitor monitor) throws CoreException {
-		builderEventBus.post(new RemoveMarkersEvent(project, ErlangBuilder::MARKER_TYPE))
+		removeMarkers(project, ErlangBuilder::MARKER_TYPE)
 	}
 	
     def private void compileResource(IResource resource) {
@@ -52,16 +52,16 @@ class ErlangResourceCompiler extends AbstractErlangBuilder {
             return;
         }
         val erlFile = resource as IFile
-        builderEventBus.post(new RemoveMarkersEvent(erlFile, ErlangBuilder::MARKER_TYPE))
+        removeMarkers(erlFile, ErlangBuilder::MARKER_TYPE)
         val compiler = compilers.get(getCompilerId(project))
         if (compiler==null) {
         	// TODO issue warning
         } else {
         	// TODO get options from project
 	        val options = new CompilerOptions()
-	        ErlLogger::instance.debug("compile "+erlFile)
+	        log.debug("compile "+erlFile)
         	compiler.compileResource(erlFile, options).forEach [ 
-        		builderEventBus.post(new AddErlangMarkerEvent(erlFile, new CompilerProblem(ErlangBuilder::MARKER_TYPE, message, line, severity)))
+        		addMarker(erlFile, new CompilerProblem(ErlangBuilder::MARKER_TYPE, message, line, severity))
         	]
         }
 	}

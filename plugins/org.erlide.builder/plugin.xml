@@ -52,7 +52,7 @@
    <extension
          point="org.erlide.builder.builders">
       <builder
-            class="org.erlide.builder.SgsnBuilder"
+            class="org.erlide.builder.BuilderExtensionFactory:org.erlide.builder.SgsnBuilder"
             id="org.erlide.builder.sgsnbuilder">
       </builder>
    </extension>

@@ -218,5 +218,8 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     IProject _project = this.getProject();
     String _name = _project.getName();
     this.log.warn("No builder configured for project %s", _name);
+    Object _source = dead.getSource();
+    Object _event = dead.getEvent();
+    this.log.debug("From: %s     Event %s", _source, _event);
   }
 }

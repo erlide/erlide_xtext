@@ -10,6 +10,7 @@ import org.erlide.builder.progress.ProgressEvent
 class BuilderProgressUpdater {
 
 	EventBus builderEventBus
+	@Inject ErlLogger log
 
 	@Inject
 	new(@Named("erlangBuilder") EventBus builderEventBus) {
@@ -19,7 +20,7 @@ class BuilderProgressUpdater {
 
 	@Subscribe
 	def handleProgressEvent(ProgressEvent event) {
-		ErlLogger::instance.debug("PROGRESS "+event)
+		log.debug("PROGRESS "+event)
 	}	
 	
 }

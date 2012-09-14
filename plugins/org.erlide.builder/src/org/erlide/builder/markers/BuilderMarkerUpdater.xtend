@@ -18,6 +18,7 @@ import org.erlide.builder.CompilerProblem
 class BuilderMarkerUpdater {
 
 	EventBus builderEventBus
+	@Inject ErlLogger log
 
 	@Inject
 	new(@Named("erlangBuilder") EventBus builderEventBus) {
@@ -34,7 +35,7 @@ class BuilderMarkerUpdater {
             ln = Math::max(problem.line, 1)
             marker.setAttribute(IMarker::LINE_NUMBER, ln)
         } catch (CoreException e) {
-        	ErlLogger::instance.warn("Could not add marker for "+file+": "+e.message)
+        	log.warn("Could not add marker for "+file+": "+e.message)
         }
     }
 
@@ -43,7 +44,7 @@ class BuilderMarkerUpdater {
         try {
             resource.deleteMarkers(markerType, false, IResource::DEPTH_INFINITE)
         } catch (CoreException e) {
-        	ErlLogger::instance.warn("Could not delete markers for "+resource+": "+e.message)
+        	log.warn("Could not delete markers for "+resource+": "+e.message)
         }
     }
 
