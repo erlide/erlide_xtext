@@ -17,6 +17,8 @@ public class BuilderPlugin extends Plugin {
     // The shared instance
     private static BuilderPlugin plugin;
 
+    private Injector injector;
+
     public BuilderPlugin() {
     }
 
@@ -42,6 +44,9 @@ public class BuilderPlugin extends Plugin {
     }
 
     public Injector getInjector() {
-        return Guice.createInjector(new BuilderModule());
+        if (injector == null) {
+            injector = Guice.createInjector(new BuilderModule());
+        }
+        return injector;
     }
 }

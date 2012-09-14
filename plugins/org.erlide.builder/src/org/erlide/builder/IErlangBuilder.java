@@ -11,8 +11,6 @@ public interface IErlangBuilder {
 
     void setProject(IProject project);
 
-    void setMarkerUpdater(BuilderMarkerUpdater markerUpdater);
-
     void loadConfiguration();
 
     void clean(IProgressMonitor monitor) throws CoreException;

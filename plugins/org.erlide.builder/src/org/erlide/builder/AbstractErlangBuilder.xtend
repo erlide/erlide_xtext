@@ -10,7 +10,6 @@ import com.google.common.eventbus.EventBus
 
 abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutableExtension {
 	@Property IProject project
-	@Property @Inject BuilderMarkerUpdater markerUpdater
 	@Inject @Named("erlangBuilder") protected EventBus builderEventBus
 	String id
 	
@@ -18,10 +17,9 @@ abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutableExten
 		BuilderPlugin::instance.injector.injectMembers(this)
 	}
 
-	new(IProject project, BuilderMarkerUpdater markerUpdater, EventBus eventBus) {
+	new(IProject project, EventBus eventBus) {
 		this()
 		this._project = project
-		this._markerUpdater = markerUpdater
 		this.builderEventBus = eventBus
 	}
 	

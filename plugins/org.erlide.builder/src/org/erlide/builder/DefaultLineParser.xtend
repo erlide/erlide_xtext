@@ -2,6 +2,7 @@ package org.erlide.builder
 
 import java.util.List
 import org.eclipse.core.resources.IMarker
+import org.erlide.common.util.ErlLogger
 
 class DefaultLineParser implements ILineParser<CompilerProblem> {
 	
@@ -10,11 +11,12 @@ class DefaultLineParser implements ILineParser<CompilerProblem> {
         try {
         	val List<String> parts = line.split(":")
 	        val warning = parts.get(2)==" Warning"
-	        val msg = parts.tail.tail.join(":").trim
+	        val msg = if(warning) parts.tail.tail.tail.join(":").trim else parts.tail.tail.join(":").trim
 	        val severity = if(warning) IMarker::SEVERITY_WARNING else IMarker::SEVERITY_ERROR
 	        val nline = getLine(parts.tail.head)
 	      
-	        return println(new CompilerProblem(parts.head, msg, nline, severity))
+	      	val result = new CompilerProblem(parts.head, msg, nline, severity)
+	        return result
         } catch (Exception e) {
         	//println("ERR>"+line+"<")
         	null

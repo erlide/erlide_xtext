@@ -13,8 +13,8 @@ class SgsnBuilder extends ExternalBuilder {
 		setupCommands()
 	}
 
-	new(IProject project, BuilderMarkerUpdater markerUpdater, BuilderExecutor executor) {
-		super(project, markerUpdater, executor, null)
+	new(IProject project, BuilderExecutor executor) {
+		super(project, executor, null)
 		setupCommands()
 		loadConfiguration
 	}

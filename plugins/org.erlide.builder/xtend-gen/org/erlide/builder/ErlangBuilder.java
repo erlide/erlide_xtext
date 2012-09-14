@@ -24,8 +24,10 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.BuilderProgressMonitorWrapper;
+import org.erlide.builder.BuilderProgressUpdater;
 import org.erlide.builder.BuildersProvider;
 import org.erlide.builder.IErlangBuilder;
+import org.erlide.builder.RemoveMarkersEvent;
 import org.erlide.builder.SgsnBuilder;
 import org.erlide.common.NatureConstants;
 import org.erlide.common.util.ErlLogger;
@@ -40,6 +42,9 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   @Inject
   private BuilderMarkerUpdater markerUpdater;
+  
+  @Inject
+  private BuilderProgressUpdater progressUpdater;
   
   @Inject
   private BuildersProvider builderProvider;
@@ -58,8 +63,9 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     this.builderEventBus.register(this);
   }
   
-  public ErlangBuilder(final BuilderMarkerUpdater markerUpdater, final BuildersProvider builderProvider, final EventBus eventBus) {
+  public ErlangBuilder(final BuilderMarkerUpdater markerUpdater, final BuilderProgressUpdater progressUpdater, final BuildersProvider builderProvider, final EventBus eventBus) {
     this.markerUpdater = markerUpdater;
+    this.progressUpdater = progressUpdater;
     this.builderProvider = builderProvider;
     this.builderEventBus = eventBus;
     this.builderEventBus.register(this);
@@ -69,7 +75,6 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     final long startTime = System.currentTimeMillis();
     IProject _project = this.getProject();
     this.cleanXtextMarkers(_project);
-    this.builderEventBus.post("hello");
     try {
       IProgressMonitor _xifexpression = null;
       boolean _notEquals = (!Objects.equal(_monitor, null));
@@ -148,7 +153,6 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   }
   
   protected void clean(final IProgressMonitor monitor) throws CoreException {
-    this.builderEventBus.post("hello");
     final SubMonitor progress = SubMonitor.convert(monitor, 10);
     IProject _project = this.getProject();
     this.cleanXtextMarkers(_project);
@@ -163,7 +167,8 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
         builder.clean(_newChild);
       }
       IProject _project_2 = this.getProject();
-      this.markerUpdater.clean(_project_2, ErlangBuilder.MARKER_TYPE);
+      RemoveMarkersEvent _removeMarkersEvent = new RemoveMarkersEvent(_project_2, ErlangBuilder.MARKER_TYPE);
+      this.builderEventBus.post(_removeMarkersEvent);
     } finally {
       boolean _notEquals = (!Objects.equal(monitor, null));
       if (_notEquals) {

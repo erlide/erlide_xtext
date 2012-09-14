@@ -14,6 +14,7 @@ import org.eclipse.xtend.lib.Property
 
 import static extension org.erlide.builder.ProjectBuilderExtensions.*
 import com.google.common.eventbus.EventBus
+import org.erlide.common.util.ErlLogger
 
 abstract class ExternalBuilder extends AbstractErlangBuilder {
 
@@ -33,8 +34,8 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 		singleCmdLine = NONE
 	}
 
-	new(IProject project, BuilderMarkerUpdater markerUpdater, BuilderExecutor executor, EventBus eventBus) {
-		super(project, markerUpdater, eventBus)
+	new(IProject project, BuilderExecutor executor, EventBus eventBus) {
+		super(project, eventBus)
 		this.executor = executor
 		cleanCmdLine = NONE
 		fullCmdLine = NONE
@@ -44,10 +45,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	override clean(IProgressMonitor monitor) {
 		val progress = SubMonitor::convert(monitor, 1)
 		try {
-			//TODO 
-			builderEventBus.post(new CompilerProblemEvent(null, project, MarkerOperation::DELETE))
-			
-			markerUpdater.clean(project, ErlangBuilder::MARKER_TYPE)
+			builderEventBus.post(new RemoveMarkersEvent(project, ErlangBuilder::MARKER_TYPE))
 			execute(cleanCmdLine, progress) []
 			progress.worked(1)
 		} finally {
@@ -66,7 +64,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 				switch file {
 					IFile: {
 						if(file!=null) {
-							markerUpdater.addMarker(file, it)
+							builderEventBus.post(new AddMarkerEvent(file, it))
 							progress.worked(1)
 						}
 					}
@@ -103,12 +101,12 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	def singleBuild(IFile file, IProgressMonitor monitor) {
 		val progress = SubMonitor::convert(monitor, 2);
 		try {
-			markerUpdater.deleteMarkers(file, ErlangBuilder::MARKER_TYPE)
+			builderEventBus.post(new RemoveMarkersEvent(file, ErlangBuilder::MARKER_TYPE))
 			progress.worked(1)
 			// TODO cmdline
 			val cmd = fillCmdLine(singleCmdLine, file.name)
 			execute(cmd, progress) [ 
-				markerUpdater.addMarker(file, it)
+				builderEventBus.post(new AddMarkerEvent(file, it))
 				progress.worked(1)
 			]
 		} finally {
@@ -121,7 +119,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	def private execute(List<String> cmds, IProgressMonitor monitor, (CompilerProblem)=>void callback) {
-		println("EXEC '"+cmds+"' in "+workingDir)
+		ErlLogger::instance.debug("EXEC '"+cmds+"' in "+workingDir)
         executor.executeProcess(cmds, workingDir.toOSString, monitor, new DefaultLineParser(), callback)
 	}
 	
@@ -132,7 +130,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 		
 		if(project.location.toPortableString.startsWith("/vobs/gsn")) {
 			workingDir = project.linkedContent?.location
-			println("WD="+workingDir)
+			ErlLogger::instance.debug("WD="+workingDir)
 		}
 	}
 	

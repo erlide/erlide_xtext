@@ -1,16 +1,15 @@
 package org.erlide.builder
 
+import com.google.common.eventbus.EventBus
+import com.google.common.eventbus.Subscribe
+import com.google.inject.Inject
+import com.google.inject.name.Named
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IMarker
-import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.runtime.CoreException
 import org.erlide.common.util.ErlLogger
-import com.google.inject.Singleton
-import com.google.inject.Inject
-import com.google.inject.name.Named
-import com.google.common.eventbus.EventBus
-import com.google.common.eventbus.Subscribe
+import javax.inject.Singleton
 
 @Singleton
 class BuilderMarkerUpdater {
@@ -41,26 +40,24 @@ class BuilderMarkerUpdater {
     }
 
 	
-	def void deleteMarkers(IFile file, String markerType) {
+	def void deleteMarkers(IResource resource, String markerType) {
         try {
-            file.deleteMarkers(markerType, false, IResource::DEPTH_ZERO)
+            resource.deleteMarkers(markerType, false, IResource::DEPTH_ZERO)
         } catch (CoreException e) {
-        	ErlLogger::instance.warn("Could not delete markers for "+file+": "+e.message)
+        	ErlLogger::instance.warn("Could not delete markers for "+resource+": "+e.message)
         }
     }
 
-	def clean(IProject project, String markerType) {
-		project.deleteMarkers(markerType, false, IResource::DEPTH_INFINITE)
-	}
-
 	@Subscribe
-	def void handleCompilerProblem(CompilerProblemEvent event) {
-		switch event.op {
-			case MarkerOperation::ADD:
-				println("addMarker(event.resource as IFile, event.problem)")
-			case MarkerOperation::DELETE:
-				println("deleteMarkers(event.resource as IFile, ErlangBuilder::MARKER_TYPE)")
-		}
+	def void handleRemoveMarkers(RemoveMarkersEvent event) {
+		ErlLogger::instance.debug(""+event)
+		deleteMarkers(event.resource, event.markerType)
+	}
+	
+	@Subscribe
+	def void handleAddMarker(AddMarkerEvent event) {
+		ErlLogger::instance.debug(""+event)
+		addMarker(event.file, event.problem)
 	}
 	
 }

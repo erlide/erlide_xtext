@@ -18,18 +18,17 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.AbstractErlangBuilder;
+import org.erlide.builder.AddMarkerEvent;
 import org.erlide.builder.BuilderExecutor;
-import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.CompilerProblem;
-import org.erlide.builder.CompilerProblemEvent;
 import org.erlide.builder.DefaultLineParser;
 import org.erlide.builder.ErlangBuilder;
-import org.erlide.builder.MarkerOperation;
 import org.erlide.builder.ProjectBuilderExtensions;
+import org.erlide.builder.RemoveMarkersEvent;
+import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
 public abstract class ExternalBuilder extends AbstractErlangBuilder {
@@ -91,8 +90,8 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     this.setSingleCmdLine(this.NONE);
   }
   
-  public ExternalBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final BuilderExecutor executor, final EventBus eventBus) {
-    super(project, markerUpdater, eventBus);
+  public ExternalBuilder(final IProject project, final BuilderExecutor executor, final EventBus eventBus) {
+    super(project, eventBus);
     this.executor = executor;
     this.setCleanCmdLine(this.NONE);
     this.setFullCmdLine(this.NONE);
@@ -103,11 +102,8 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     final SubMonitor progress = SubMonitor.convert(monitor, 1);
     try {
       IProject _project = this.getProject();
-      CompilerProblemEvent _compilerProblemEvent = new CompilerProblemEvent(null, _project, MarkerOperation.DELETE);
-      this.builderEventBus.post(_compilerProblemEvent);
-      BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
-      IProject _project_1 = this.getProject();
-      _markerUpdater.clean(_project_1, ErlangBuilder.MARKER_TYPE);
+      RemoveMarkersEvent _removeMarkersEvent = new RemoveMarkersEvent(_project, ErlangBuilder.MARKER_TYPE);
+      this.builderEventBus.post(_removeMarkersEvent);
       List<String> _cleanCmdLine = this.getCleanCmdLine();
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {
@@ -141,8 +137,8 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
                 _matched=true;
                 boolean _notEquals = (!Objects.equal(_iFile, null));
                 if (_notEquals) {
-                  BuilderMarkerUpdater _markerUpdater = ExternalBuilder.this.getMarkerUpdater();
-                  _markerUpdater.addMarker(_iFile, it);
+                  AddMarkerEvent _addMarkerEvent = new AddMarkerEvent(_iFile, it);
+                  ExternalBuilder.this.builderEventBus.post(_addMarkerEvent);
                   progress.worked(1);
                 }
               }
@@ -206,16 +202,16 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   public void singleBuild(final IFile file, final IProgressMonitor monitor) {
     final SubMonitor progress = SubMonitor.convert(monitor, 2);
     try {
-      BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
-      _markerUpdater.deleteMarkers(file, ErlangBuilder.MARKER_TYPE);
+      RemoveMarkersEvent _removeMarkersEvent = new RemoveMarkersEvent(file, ErlangBuilder.MARKER_TYPE);
+      this.builderEventBus.post(_removeMarkersEvent);
       progress.worked(1);
       List<String> _singleCmdLine = this.getSingleCmdLine();
       String _name = file.getName();
       final List<String> cmd = this.fillCmdLine(_singleCmdLine, _name);
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {
-            BuilderMarkerUpdater _markerUpdater = ExternalBuilder.this.getMarkerUpdater();
-            _markerUpdater.addMarker(file, it);
+            AddMarkerEvent _addMarkerEvent = new AddMarkerEvent(file, it);
+            ExternalBuilder.this.builderEventBus.post(_addMarkerEvent);
             progress.worked(1);
           }
         };
@@ -243,11 +239,12 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   }
   
   private void execute(final List<String> cmds, final IProgressMonitor monitor, final Procedure1<? super CompilerProblem> callback) {
+    ErlLogger _instance = ErlLogger.getInstance();
     String _plus = ("EXEC \'" + cmds);
     String _plus_1 = (_plus + "\' in ");
     IPath _workingDir = this.getWorkingDir();
     String _plus_2 = (_plus_1 + _workingDir);
-    InputOutput.<String>println(_plus_2);
+    _instance.debug(_plus_2);
     IPath _workingDir_1 = this.getWorkingDir();
     String _oSString = _workingDir_1.toOSString();
     DefaultLineParser _defaultLineParser = new DefaultLineParser();
@@ -264,9 +261,10 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
       IResource _linkedContent = ProjectBuilderExtensions.getLinkedContent(_project_1);
       IPath _location_1 = _linkedContent==null?(IPath)null:_linkedContent.getLocation();
       this.setWorkingDir(_location_1);
+      ErlLogger _instance = ErlLogger.getInstance();
       IPath _workingDir = this.getWorkingDir();
       String _plus = ("WD=" + _workingDir);
-      InputOutput.<String>println(_plus);
+      _instance.debug(_plus);
     }
   }
 }

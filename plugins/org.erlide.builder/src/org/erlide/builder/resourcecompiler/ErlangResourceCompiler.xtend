@@ -1,5 +1,6 @@
 package org.erlide.builder.resourcecompiler
 
+import com.google.common.eventbus.EventBus
 import java.util.Map
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
@@ -12,17 +13,20 @@ import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.OperationCanceledException
 import org.eclipse.core.runtime.Platform
 import org.erlide.builder.AbstractErlangBuilder
-import org.erlide.builder.BuilderMarkerUpdater
-import org.erlide.project.model.IErlangProject
+import org.erlide.builder.AddMarkerEvent
 import org.erlide.builder.CompilerOptions
+import org.erlide.builder.CompilerProblem
 import org.erlide.builder.ErlangBuilder
+import org.erlide.builder.RemoveMarkersEvent
+import org.erlide.project.model.IErlangProject
+import org.erlide.common.util.ErlLogger
 
 class ErlangResourceCompiler extends AbstractErlangBuilder {
 
     Map<String, IErlangCompiler> compilers
 
-	new(IProject project, BuilderMarkerUpdater markerUpdater) {
-		super(project, markerUpdater, null)
+	new(IProject project, EventBus eventBus) {
+		super(project, eventBus)
 		compilers = newHashMap()
 	}
 	
@@ -40,7 +44,7 @@ class ErlangResourceCompiler extends AbstractErlangBuilder {
 	}
 	
 	override clean(IProgressMonitor monitor) throws CoreException {
-		markerUpdater.clean(project, ErlangBuilder::MARKER_TYPE)
+		builderEventBus.post(new RemoveMarkersEvent(project, ErlangBuilder::MARKER_TYPE))
 	}
 	
     def private void compileResource(IResource resource) {
@@ -48,16 +52,16 @@ class ErlangResourceCompiler extends AbstractErlangBuilder {
             return;
         }
         val erlFile = resource as IFile
-        markerUpdater.deleteMarkers(erlFile, ErlangBuilder::MARKER_TYPE)
+        builderEventBus.post(new RemoveMarkersEvent(erlFile, ErlangBuilder::MARKER_TYPE))
         val compiler = compilers.get(getCompilerId(project))
         if (compiler==null) {
         	// TODO issue warning
         } else {
         	// TODO get options from project
 	        val options = new CompilerOptions()
-	        println("compile "+erlFile)
+	        ErlLogger::instance.debug("compile "+erlFile)
         	compiler.compileResource(erlFile, options).forEach [ 
-        		markerUpdater.addMarker(erlFile, ErlangBuilder::MARKER_TYPE, message, line, severity)
+        		builderEventBus.post(new AddMarkerEvent(erlFile, new CompilerProblem(ErlangBuilder::MARKER_TYPE, message, line, severity)))
         	]
         }
 	}
@@ -119,9 +123,4 @@ class ErlangResourceCompiler extends AbstractErlangBuilder {
         }
     }
 
-
-	override setMarkerUpdater(BuilderMarkerUpdater markerUpdater) {
-		throw new UnsupportedOperationException("Auto-generated function stub")
-	}
-	
 }

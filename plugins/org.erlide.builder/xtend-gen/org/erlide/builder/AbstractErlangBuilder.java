@@ -8,7 +8,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExecutableExtension;
-import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.IErlangBuilder;
 
@@ -25,17 +24,6 @@ public abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutab
   }
   
   @Inject
-  private BuilderMarkerUpdater _markerUpdater;
-  
-  public BuilderMarkerUpdater getMarkerUpdater() {
-    return this._markerUpdater;
-  }
-  
-  public void setMarkerUpdater(final BuilderMarkerUpdater markerUpdater) {
-    this._markerUpdater = markerUpdater;
-  }
-  
-  @Inject
   @Named(value = "erlangBuilder")
   protected EventBus builderEventBus;
   
@@ -47,10 +35,9 @@ public abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutab
     _injector.injectMembers(this);
   }
   
-  public AbstractErlangBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final EventBus eventBus) {
+  public AbstractErlangBuilder(final IProject project, final EventBus eventBus) {
     this();
     this._project = project;
-    this._markerUpdater = markerUpdater;
     this.builderEventBus = eventBus;
   }
   

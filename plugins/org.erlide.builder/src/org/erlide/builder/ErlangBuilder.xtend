@@ -23,6 +23,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem"
 
 	@Inject BuilderMarkerUpdater markerUpdater
+	@Inject BuilderProgressUpdater progressUpdater
 	@Inject BuildersProvider builderProvider
 	@Inject ErlLogger log
 	@Inject @Named("erlangBuilder") EventBus builderEventBus
@@ -32,8 +33,9 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         builderEventBus.register(this) // for dead event reporting
 	}
 	
-	new(BuilderMarkerUpdater markerUpdater, BuildersProvider builderProvider, EventBus eventBus) {
+	new(BuilderMarkerUpdater markerUpdater, BuilderProgressUpdater progressUpdater, BuildersProvider builderProvider, EventBus eventBus) {
 		this.markerUpdater = markerUpdater
+		this.progressUpdater = progressUpdater
 		this.builderProvider = builderProvider
 		this.builderEventBus = eventBus
         builderEventBus.register(this)
@@ -42,8 +44,6 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor _monitor) throws CoreException {
 		val startTime = System::currentTimeMillis
 		cleanXtextMarkers(project)
-
-		builderEventBus.post("hello")
 
 		try {
 			val monitor = if (_monitor != null) {
@@ -83,7 +83,6 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     }
 
 	override protected clean(IProgressMonitor monitor) throws CoreException {
-		builderEventBus.post("hello")
 
 		val progress = SubMonitor::convert(monitor, 10);
 		cleanXtextMarkers(project)
@@ -95,7 +94,7 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 	        } else {
 	        	builder.clean(progress.newChild(8))
 	        }
-			markerUpdater.clean(project, MARKER_TYPE)
+	        builderEventBus.post(new RemoveMarkersEvent(project, MARKER_TYPE))
 		} finally {
 			if (monitor != null)
 				monitor.done();

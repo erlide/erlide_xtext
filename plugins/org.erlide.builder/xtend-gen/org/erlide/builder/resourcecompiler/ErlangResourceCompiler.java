@@ -1,6 +1,7 @@
 package org.erlide.builder.resourcecompiler;
 
 import com.google.common.base.Objects;
+import com.google.common.eventbus.EventBus;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,24 +22,25 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.AbstractErlangBuilder;
-import org.erlide.builder.BuilderMarkerUpdater;
+import org.erlide.builder.AddMarkerEvent;
 import org.erlide.builder.CompilerOptions;
 import org.erlide.builder.CompilerProblem;
 import org.erlide.builder.ErlangBuilder;
+import org.erlide.builder.RemoveMarkersEvent;
 import org.erlide.builder.resourcecompiler.ErlCompiler;
 import org.erlide.builder.resourcecompiler.IErlangCompiler;
+import org.erlide.common.util.ErlLogger;
 import org.erlide.project.model.IErlangProject;
 
 @SuppressWarnings("all")
 public class ErlangResourceCompiler extends AbstractErlangBuilder {
   private Map<String,IErlangCompiler> compilers;
   
-  public ErlangResourceCompiler(final IProject project, final BuilderMarkerUpdater markerUpdater) {
-    super(project, markerUpdater, null);
+  public ErlangResourceCompiler(final IProject project, final EventBus eventBus) {
+    super(project, eventBus);
     HashMap<String,IErlangCompiler> _newHashMap = CollectionLiterals.<String, IErlangCompiler>newHashMap();
     this.compilers = _newHashMap;
   }
@@ -61,9 +63,9 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
   }
   
   public void clean(final IProgressMonitor monitor) throws CoreException {
-    BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
     IProject _project = this.getProject();
-    _markerUpdater.clean(_project, ErlangBuilder.MARKER_TYPE);
+    RemoveMarkersEvent _removeMarkersEvent = new RemoveMarkersEvent(_project, ErlangBuilder.MARKER_TYPE);
+    this.builderEventBus.post(_removeMarkersEvent);
   }
   
   private void compileResource(final IResource resource) {
@@ -72,8 +74,8 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
       return;
     }
     final IFile erlFile = ((IFile) resource);
-    BuilderMarkerUpdater _markerUpdater = this.getMarkerUpdater();
-    _markerUpdater.deleteMarkers(erlFile, ErlangBuilder.MARKER_TYPE);
+    RemoveMarkersEvent _removeMarkersEvent = new RemoveMarkersEvent(erlFile, ErlangBuilder.MARKER_TYPE);
+    this.builderEventBus.post(_removeMarkersEvent);
     IProject _project = this.getProject();
     String _compilerId = this.getCompilerId(_project);
     final IErlangCompiler compiler = this.compilers.get(_compilerId);
@@ -82,16 +84,18 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
     } else {
       CompilerOptions _compilerOptions = new CompilerOptions();
       final CompilerOptions options = _compilerOptions;
+      ErlLogger _instance = ErlLogger.getInstance();
       String _plus = ("compile " + erlFile);
-      InputOutput.<String>println(_plus);
+      _instance.debug(_plus);
       Collection<CompilerProblem> _compileResource = compiler.compileResource(erlFile, options);
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {
-            BuilderMarkerUpdater _markerUpdater = ErlangResourceCompiler.this.getMarkerUpdater();
             String _message = it.getMessage();
             int _line = it.getLine();
             int _severity = it.getSeverity();
-            _markerUpdater.addMarker(erlFile, ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
+            CompilerProblem _compilerProblem = new CompilerProblem(ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
+            AddMarkerEvent _addMarkerEvent = new AddMarkerEvent(erlFile, _compilerProblem);
+            ErlangResourceCompiler.this.builderEventBus.post(_addMarkerEvent);
           }
         };
       IterableExtensions.<CompilerProblem>forEach(_compileResource, _function);
@@ -226,10 +230,5 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
         }
       }
     }
-  }
-  
-  public void setMarkerUpdater(final BuilderMarkerUpdater markerUpdater) {
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
-    throw _unsupportedOperationException;
   }
 }

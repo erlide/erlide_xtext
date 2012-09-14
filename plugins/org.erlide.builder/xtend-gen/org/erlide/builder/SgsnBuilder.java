@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.erlide.builder.BuilderExecutor;
-import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.ExternalBuilder;
 
 @SuppressWarnings("all")
@@ -16,8 +15,8 @@ public class SgsnBuilder extends ExternalBuilder {
     this.setupCommands();
   }
   
-  public SgsnBuilder(final IProject project, final BuilderMarkerUpdater markerUpdater, final BuilderExecutor executor) {
-    super(project, markerUpdater, executor, null);
+  public SgsnBuilder(final IProject project, final BuilderExecutor executor) {
+    super(project, executor, null);
     this.setupCommands();
     this.loadConfiguration();
   }

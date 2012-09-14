@@ -7,8 +7,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
 public class ProjectBuilderExtensions {
@@ -25,7 +25,9 @@ public class ProjectBuilderExtensions {
       int _size = IterableExtensions.size(links);
       boolean _greaterThan = (_size > 1);
       if (_greaterThan) {
-        InputOutput.<String>println("too many...");
+        ErlLogger _instance = ErlLogger.getInstance();
+        String _name = project.getName();
+        _instance.warn("too many links in project %s...", _name);
       }
       return IterableExtensions.<IResource>head(links);
     } catch (Exception _e) {
