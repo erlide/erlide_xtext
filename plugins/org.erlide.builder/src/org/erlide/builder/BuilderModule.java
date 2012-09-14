@@ -20,11 +20,13 @@ public class BuilderModule extends AbstractGenericModule {
         };
     }
 
+    private final EventBus builderEventBus = new EventBus("erlangBuilder");
+
     @Override
     public void configure(final Binder binder) {
         super.configure(binder);
         binder.bind(EventBus.class).annotatedWith(Names.named("erlangBuilder"))
-                .toInstance(new EventBus("erlangBuilder"));
+                .toInstance(builderEventBus);
     }
 
 }

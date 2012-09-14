@@ -1,4 +1,4 @@
-package org.erlide.builder;
+package org.erlide.builder.progress;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.xtend.lib.Data;

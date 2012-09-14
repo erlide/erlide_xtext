@@ -1,46 +1,36 @@
-package org.erlide.builder;
+package org.erlide.builder.markers;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
-import org.erlide.builder.CompilerProblem;
-import org.erlide.builder.MarkerOperation;
 
 @Data
 @SuppressWarnings("all")
-public class CompilerProblemEvent {
-  private final CompilerProblem _problem;
-  
-  public CompilerProblem getProblem() {
-    return this._problem;
-  }
-  
+public class RemoveMarkersEvent {
   private final IResource _resource;
   
   public IResource getResource() {
     return this._resource;
   }
   
-  private final MarkerOperation _op;
+  private final String _markerType;
   
-  public MarkerOperation getOp() {
-    return this._op;
+  public String getMarkerType() {
+    return this._markerType;
   }
   
-  public CompilerProblemEvent(final CompilerProblem problem, final IResource resource, final MarkerOperation op) {
+  public RemoveMarkersEvent(final IResource resource, final String markerType) {
     super();
-    this._problem = problem;
     this._resource = resource;
-    this._op = op;
+    this._markerType = markerType;
   }
   
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((_problem== null) ? 0 : _problem.hashCode());
     result = prime * result + ((_resource== null) ? 0 : _resource.hashCode());
-    result = prime * result + ((_op== null) ? 0 : _op.hashCode());
+    result = prime * result + ((_markerType== null) ? 0 : _markerType.hashCode());
     return result;
   }
   
@@ -52,21 +42,16 @@ public class CompilerProblemEvent {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    CompilerProblemEvent other = (CompilerProblemEvent) obj;
-    if (_problem == null) {
-      if (other._problem != null)
-        return false;
-    } else if (!_problem.equals(other._problem))
-      return false;
+    RemoveMarkersEvent other = (RemoveMarkersEvent) obj;
     if (_resource == null) {
       if (other._resource != null)
         return false;
     } else if (!_resource.equals(other._resource))
       return false;
-    if (_op == null) {
-      if (other._op != null)
+    if (_markerType == null) {
+      if (other._markerType != null)
         return false;
-    } else if (!_op.equals(other._op))
+    } else if (!_markerType.equals(other._markerType))
       return false;
     return true;
   }

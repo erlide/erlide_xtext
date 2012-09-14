@@ -25,11 +25,11 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.AbstractErlangBuilder;
-import org.erlide.builder.AddMarkerEvent;
 import org.erlide.builder.CompilerOptions;
 import org.erlide.builder.CompilerProblem;
 import org.erlide.builder.ErlangBuilder;
-import org.erlide.builder.RemoveMarkersEvent;
+import org.erlide.builder.markers.AddErlangMarkerEvent;
+import org.erlide.builder.markers.RemoveMarkersEvent;
 import org.erlide.builder.resourcecompiler.ErlCompiler;
 import org.erlide.builder.resourcecompiler.IErlangCompiler;
 import org.erlide.common.util.ErlLogger;
@@ -94,8 +94,8 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
             int _line = it.getLine();
             int _severity = it.getSeverity();
             CompilerProblem _compilerProblem = new CompilerProblem(ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
-            AddMarkerEvent _addMarkerEvent = new AddMarkerEvent(erlFile, _compilerProblem);
-            ErlangResourceCompiler.this.builderEventBus.post(_addMarkerEvent);
+            AddErlangMarkerEvent _addErlangMarkerEvent = new AddErlangMarkerEvent(erlFile, _compilerProblem);
+            ErlangResourceCompiler.this.builderEventBus.post(_addErlangMarkerEvent);
           }
         };
       IterableExtensions.<CompilerProblem>forEach(_compileResource, _function);

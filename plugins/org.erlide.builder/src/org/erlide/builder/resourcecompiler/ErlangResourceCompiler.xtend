@@ -13,13 +13,13 @@ import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.OperationCanceledException
 import org.eclipse.core.runtime.Platform
 import org.erlide.builder.AbstractErlangBuilder
-import org.erlide.builder.AddMarkerEvent
 import org.erlide.builder.CompilerOptions
 import org.erlide.builder.CompilerProblem
 import org.erlide.builder.ErlangBuilder
-import org.erlide.builder.RemoveMarkersEvent
-import org.erlide.project.model.IErlangProject
 import org.erlide.common.util.ErlLogger
+import org.erlide.project.model.IErlangProject
+import org.erlide.builder.markers.AddErlangMarkerEvent
+import org.erlide.builder.markers.RemoveMarkersEvent
 
 class ErlangResourceCompiler extends AbstractErlangBuilder {
 
@@ -61,7 +61,7 @@ class ErlangResourceCompiler extends AbstractErlangBuilder {
 	        val options = new CompilerOptions()
 	        ErlLogger::instance.debug("compile "+erlFile)
         	compiler.compileResource(erlFile, options).forEach [ 
-        		builderEventBus.post(new AddMarkerEvent(erlFile, new CompilerProblem(ErlangBuilder::MARKER_TYPE, message, line, severity)))
+        		builderEventBus.post(new AddErlangMarkerEvent(erlFile, new CompilerProblem(ErlangBuilder::MARKER_TYPE, message, line, severity)))
         	]
         }
 	}

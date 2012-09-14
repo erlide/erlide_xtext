@@ -1,6 +1,8 @@
 package org.erlide.builder
 
+import com.google.common.eventbus.DeadEvent
 import com.google.common.eventbus.EventBus
+import com.google.common.eventbus.Subscribe
 import com.google.inject.name.Named
 import java.util.Map
 import javax.inject.Inject
@@ -13,8 +15,9 @@ import org.eclipse.core.runtime.OperationCanceledException
 import org.eclipse.core.runtime.SubMonitor
 import org.erlide.common.NatureConstants
 import org.erlide.common.util.ErlLogger
-import com.google.common.eventbus.Subscribe
-import com.google.common.eventbus.DeadEvent
+import org.erlide.builder.markers.BuilderMarkerUpdater
+import org.erlide.builder.markers.RemoveMarkersEvent
+import org.erlide.builder.progress.BuilderProgressUpdater
 
 class ErlangBuilder extends IncrementalProjectBuilder {
 

@@ -1,10 +1,10 @@
-package org.erlide.builder;
+package org.erlide.builder.progress;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-import org.erlide.builder.ProgressEvent;
+import org.erlide.builder.progress.ProgressEvent;
 import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")

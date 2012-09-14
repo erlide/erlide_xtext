@@ -21,13 +21,13 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.AbstractErlangBuilder;
-import org.erlide.builder.AddMarkerEvent;
 import org.erlide.builder.BuilderExecutor;
 import org.erlide.builder.CompilerProblem;
 import org.erlide.builder.DefaultLineParser;
 import org.erlide.builder.ErlangBuilder;
 import org.erlide.builder.ProjectBuilderExtensions;
-import org.erlide.builder.RemoveMarkersEvent;
+import org.erlide.builder.markers.AddErlangMarkerEvent;
+import org.erlide.builder.markers.RemoveMarkersEvent;
 import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
@@ -137,8 +137,8 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
                 _matched=true;
                 boolean _notEquals = (!Objects.equal(_iFile, null));
                 if (_notEquals) {
-                  AddMarkerEvent _addMarkerEvent = new AddMarkerEvent(_iFile, it);
-                  ExternalBuilder.this.builderEventBus.post(_addMarkerEvent);
+                  AddErlangMarkerEvent _addErlangMarkerEvent = new AddErlangMarkerEvent(_iFile, it);
+                  ExternalBuilder.this.builderEventBus.post(_addErlangMarkerEvent);
                   progress.worked(1);
                 }
               }
@@ -210,8 +210,8 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
       final List<String> cmd = this.fillCmdLine(_singleCmdLine, _name);
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {
-            AddMarkerEvent _addMarkerEvent = new AddMarkerEvent(file, it);
-            ExternalBuilder.this.builderEventBus.post(_addMarkerEvent);
+            AddErlangMarkerEvent _addErlangMarkerEvent = new AddErlangMarkerEvent(file, it);
+            ExternalBuilder.this.builderEventBus.post(_addErlangMarkerEvent);
             progress.worked(1);
           }
         };

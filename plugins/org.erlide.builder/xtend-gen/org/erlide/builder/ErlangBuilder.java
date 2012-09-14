@@ -21,14 +21,14 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.erlide.builder.BuilderMarkerUpdater;
 import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.BuilderProgressMonitorWrapper;
-import org.erlide.builder.BuilderProgressUpdater;
 import org.erlide.builder.BuildersProvider;
 import org.erlide.builder.IErlangBuilder;
-import org.erlide.builder.RemoveMarkersEvent;
 import org.erlide.builder.SgsnBuilder;
+import org.erlide.builder.markers.BuilderMarkerUpdater;
+import org.erlide.builder.markers.RemoveMarkersEvent;
+import org.erlide.builder.progress.BuilderProgressUpdater;
 import org.erlide.common.NatureConstants;
 import org.erlide.common.util.ErlLogger;
 

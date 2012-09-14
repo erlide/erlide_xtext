@@ -15,6 +15,8 @@ import org.eclipse.xtend.lib.Property
 import static extension org.erlide.builder.ProjectBuilderExtensions.*
 import com.google.common.eventbus.EventBus
 import org.erlide.common.util.ErlLogger
+import org.erlide.builder.markers.RemoveMarkersEvent
+import org.erlide.builder.markers.AddErlangMarkerEvent
 
 abstract class ExternalBuilder extends AbstractErlangBuilder {
 
@@ -64,7 +66,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 				switch file {
 					IFile: {
 						if(file!=null) {
-							builderEventBus.post(new AddMarkerEvent(file, it))
+							builderEventBus.post(new AddErlangMarkerEvent(file, it))
 							progress.worked(1)
 						}
 					}
@@ -106,7 +108,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 			// TODO cmdline
 			val cmd = fillCmdLine(singleCmdLine, file.name)
 			execute(cmd, progress) [ 
-				builderEventBus.post(new AddMarkerEvent(file, it))
+				builderEventBus.post(new AddErlangMarkerEvent(file, it))
 				progress.worked(1)
 			]
 		} finally {

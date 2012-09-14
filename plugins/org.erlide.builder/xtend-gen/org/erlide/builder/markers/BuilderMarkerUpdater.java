@@ -1,4 +1,4 @@
-package org.erlide.builder;
+package org.erlide.builder.markers;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
@@ -10,10 +10,9 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.erlide.builder.AddMarkerEvent;
 import org.erlide.builder.CompilerProblem;
-import org.erlide.builder.ErlangBuilder;
-import org.erlide.builder.RemoveMarkersEvent;
+import org.erlide.builder.markers.AddMarkerEvent;
+import org.erlide.builder.markers.RemoveMarkersEvent;
 import org.erlide.common.util.ErlLogger;
 
 @Singleton
@@ -27,30 +26,26 @@ public class BuilderMarkerUpdater {
     builderEventBus.register(this);
   }
   
-  public void addMarker(final IFile file, final CompilerProblem problem) {
-    String _message = problem.getMessage();
-    int _line = problem.getLine();
-    int _severity = problem.getSeverity();
-    this.addMarker(file, ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
-  }
-  
-  public void addMarker(final IFile file, final String markerType, final String message, final int lineNumber, final int severity) {
-    int ln = lineNumber;
+  public void addMarker(final IFile file, final String markerType, final CompilerProblem problem) {
+    int ln = problem.getLine();
     try {
       final IMarker marker = file.createMarker(markerType);
-      marker.setAttribute(IMarker.MESSAGE, message);
-      marker.setAttribute(IMarker.SEVERITY, severity);
-      int _max = Math.max(lineNumber, 1);
+      String _message = problem.getMessage();
+      marker.setAttribute(IMarker.MESSAGE, _message);
+      int _severity = problem.getSeverity();
+      marker.setAttribute(IMarker.SEVERITY, _severity);
+      int _line = problem.getLine();
+      int _max = Math.max(_line, 1);
       ln = _max;
-      marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
+      marker.setAttribute(IMarker.LINE_NUMBER, ln);
     } catch (final Throwable _t) {
       if (_t instanceof CoreException) {
         final CoreException e = (CoreException)_t;
         ErlLogger _instance = ErlLogger.getInstance();
         String _plus = ("Could not add marker for " + file);
         String _plus_1 = (_plus + ": ");
-        String _message = e.getMessage();
-        String _plus_2 = (_plus_1 + _message);
+        String _message_1 = e.getMessage();
+        String _plus_2 = (_plus_1 + _message_1);
         _instance.warn(_plus_2);
       } else {
         throw Exceptions.sneakyThrow(_t);
@@ -60,7 +55,7 @@ public class BuilderMarkerUpdater {
   
   public void deleteMarkers(final IResource resource, final String markerType) {
     try {
-      resource.deleteMarkers(markerType, false, IResource.DEPTH_ZERO);
+      resource.deleteMarkers(markerType, false, IResource.DEPTH_INFINITE);
     } catch (final Throwable _t) {
       if (_t instanceof CoreException) {
         final CoreException e = (CoreException)_t;
@@ -78,9 +73,6 @@ public class BuilderMarkerUpdater {
   
   @Subscribe
   public void handleRemoveMarkers(final RemoveMarkersEvent event) {
-    ErlLogger _instance = ErlLogger.getInstance();
-    String _plus = ("" + event);
-    _instance.debug(_plus);
     IResource _resource = event.getResource();
     String _markerType = event.getMarkerType();
     this.deleteMarkers(_resource, _markerType);
@@ -88,11 +80,9 @@ public class BuilderMarkerUpdater {
   
   @Subscribe
   public void handleAddMarker(final AddMarkerEvent event) {
-    ErlLogger _instance = ErlLogger.getInstance();
-    String _plus = ("" + event);
-    _instance.debug(_plus);
     IFile _file = event.getFile();
+    String _markerType = event.getMarkerType();
     CompilerProblem _problem = event.getProblem();
-    this.addMarker(_file, _problem);
+    this.addMarker(_file, _markerType, _problem);
   }
 }
