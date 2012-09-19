@@ -47,7 +47,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	override clean(IProgressMonitor monitor) {
-		val progress = SubMonitor::convert(monitor, 1)
+		val progress = SubMonitor::convert(monitor, "clean", 1)
 		try {
 			removeMarkers(project, ErlangBuilder::MARKER_TYPE)
 			execute(cleanCmdLine, progress) []
@@ -58,20 +58,15 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	override fullBuild(IProgressMonitor monitor) throws CoreException {
-		val work = estimateWork(fullCmdLine, 1)
-		val progress = SubMonitor::convert(monitor, work)
+		val work = estimateWork(fullCmdLine)
+		val progress = SubMonitor::convert(monitor, "full build", work)
 		try {
-			clean(progress.newChild(1))
-			// TODO cmdline
 			execute(fullCmdLine, progress) [ 
 				val fPath = project.getPathInProject(new Path(fileName))
 				val file = project.findMember(fPath)
 				switch file {
 					IFile: {
-						if(file!=null) {
-							addMarker(file, it)
-							progress.worked(1)
-						}
+						addMarker(file, it)
 					}
 				}
 			]
@@ -110,10 +105,8 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 		try {
 			removeMarkers(file, ErlangBuilder::MARKER_TYPE)
 			progress.worked(1)
-			// TODO cmdline
 			execute(cmd, progress) [ 
 				addMarker(file, it)
-				progress.worked(1)
 			]
 		} finally {
 			monitor?.done
@@ -126,7 +119,11 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	
 	def private execute(List<String> cmds, IProgressMonitor monitor, (CompilerProblem)=>void callback) {
 		log.debug("EXEC '"+cmds+"' in "+workingDir)
-        executor.executeProcess(cmds, workingDir.toOSString, monitor, new DefaultLineParser(), callback)
+		executor.withHandler(new ProgressLineParser(), [ monitor.worked(1) ]) [
+			withHandler(new DefaultLineParser(), callback) [
+        		executeProcess(cmds, workingDir.toOSString, new NullProgressMonitor())
+    		]
+        ]
 	}
 	
 	override loadConfiguration() {
@@ -148,13 +145,14 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 		try {
 			val myCmds = new ArrayList(cmds)
 			myCmds.add(1, "-dn")
-			println("EXC::"+myCmds)
 			val List<String> result = newArrayList
-	        executor.executeProcess(myCmds, workingDir.toOSString, new NullProgressMonitor(), new ToBuildLineParser()) [
-	        	println("### "+it)
-				result.add(it)			        	
+			
+			executor.withHandler(new ToBuildLineParser(), [ result.add(it) ]) [
+        		executeProcess(myCmds, workingDir.toOSString, new NullProgressMonitor())
 	        ]
+			
 			val guess = result.size
+			println("GUESS work::"+(guess+extra))
 			
 			if(guess==0) 
 				IProgressMonitor::UNKNOWN 

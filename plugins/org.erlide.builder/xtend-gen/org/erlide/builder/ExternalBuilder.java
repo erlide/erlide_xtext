@@ -29,6 +29,7 @@ import org.erlide.builder.BuilderExecutor;
 import org.erlide.builder.CompilerProblem;
 import org.erlide.builder.DefaultLineParser;
 import org.erlide.builder.ErlangBuilder;
+import org.erlide.builder.ProgressLineParser;
 import org.erlide.builder.ProjectBuilderExtensions;
 import org.erlide.builder.ToBuildLineParser;
 import org.erlide.common.util.ErlLogger;
@@ -104,7 +105,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   }
   
   public void clean(final IProgressMonitor monitor) {
-    final SubMonitor progress = SubMonitor.convert(monitor, 1);
+    final SubMonitor progress = SubMonitor.convert(monitor, "clean", 1);
     try {
       IProject _project = this.getProject();
       this.removeMarkers(_project, ErlangBuilder.MARKER_TYPE);
@@ -122,11 +123,9 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   
   public void fullBuild(final IProgressMonitor monitor) throws CoreException {
     List<String> _fullCmdLine = this.getFullCmdLine();
-    final int work = this.estimateWork(_fullCmdLine, 1);
-    final SubMonitor progress = SubMonitor.convert(monitor, work);
+    final int work = this.estimateWork(_fullCmdLine);
+    final SubMonitor progress = SubMonitor.convert(monitor, "full build", work);
     try {
-      SubMonitor _newChild = progress.newChild(1);
-      this.clean(_newChild);
       List<String> _fullCmdLine_1 = this.getFullCmdLine();
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {
@@ -141,11 +140,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
               if (file instanceof IFile) {
                 final IFile _iFile = (IFile)file;
                 _matched=true;
-                boolean _notEquals = (!Objects.equal(_iFile, null));
-                if (_notEquals) {
-                  ExternalBuilder.this.addMarker(_iFile, it);
-                  progress.worked(1);
-                }
+                ExternalBuilder.this.addMarker(_iFile, it);
               }
             }
           }
@@ -217,7 +212,6 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
       final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
           public void apply(final CompilerProblem it) {
             ExternalBuilder.this.addMarker(file, it);
-            progress.worked(1);
           }
         };
       this.execute(cmd, progress, _function);
@@ -249,10 +243,27 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     IPath _workingDir = this.getWorkingDir();
     String _plus_2 = (_plus_1 + _workingDir);
     this.log.debug(_plus_2);
-    IPath _workingDir_1 = this.getWorkingDir();
-    String _oSString = _workingDir_1.toOSString();
-    DefaultLineParser _defaultLineParser = new DefaultLineParser();
-    this.executor.<CompilerProblem>executeProcess(cmds, _oSString, monitor, _defaultLineParser, callback);
+    ProgressLineParser _progressLineParser = new ProgressLineParser();
+    final Procedure1<String> _function = new Procedure1<String>() {
+        public void apply(final String it) {
+          monitor.worked(1);
+        }
+      };
+    final Procedure1<BuilderExecutor> _function_1 = new Procedure1<BuilderExecutor>() {
+        public void apply(final BuilderExecutor it) {
+          DefaultLineParser _defaultLineParser = new DefaultLineParser();
+          final Procedure1<BuilderExecutor> _function = new Procedure1<BuilderExecutor>() {
+              public void apply(final BuilderExecutor it) {
+                IPath _workingDir = ExternalBuilder.this.getWorkingDir();
+                String _oSString = _workingDir.toOSString();
+                NullProgressMonitor _nullProgressMonitor = new NullProgressMonitor();
+                it.executeProcess(cmds, _oSString, _nullProgressMonitor);
+              }
+            };
+          it.<CompilerProblem>withHandler(_defaultLineParser, callback, _function);
+        }
+      };
+    this.executor.<String>withHandler(_progressLineParser, _function, _function_1);
   }
   
   public void loadConfiguration() {
@@ -284,29 +295,33 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
         ArrayList<String> _arrayList = new ArrayList<String>(cmds);
         final ArrayList<String> myCmds = _arrayList;
         myCmds.add(1, "-dn");
-        String _plus = ("EXC::" + myCmds);
-        InputOutput.<String>println(_plus);
         final List<String> result = CollectionLiterals.<String>newArrayList();
-        IPath _workingDir = this.getWorkingDir();
-        String _oSString = _workingDir.toOSString();
-        NullProgressMonitor _nullProgressMonitor = new NullProgressMonitor();
         ToBuildLineParser _toBuildLineParser = new ToBuildLineParser();
         final Procedure1<String> _function = new Procedure1<String>() {
             public void apply(final String it) {
-              String _plus = ("### " + it);
-              InputOutput.<String>println(_plus);
               result.add(it);
             }
           };
-        this.executor.<String>executeProcess(myCmds, _oSString, _nullProgressMonitor, _toBuildLineParser, _function);
+        final Procedure1<BuilderExecutor> _function_1 = new Procedure1<BuilderExecutor>() {
+            public void apply(final BuilderExecutor it) {
+              IPath _workingDir = ExternalBuilder.this.getWorkingDir();
+              String _oSString = _workingDir.toOSString();
+              NullProgressMonitor _nullProgressMonitor = new NullProgressMonitor();
+              it.executeProcess(myCmds, _oSString, _nullProgressMonitor);
+            }
+          };
+        this.executor.<String>withHandler(_toBuildLineParser, _function, _function_1);
         final int guess = result.size();
+        int _plus = (guess + extra);
+        String _plus_1 = ("GUESS work::" + Integer.valueOf(_plus));
+        InputOutput.<String>println(_plus_1);
         int _xifexpression = (int) 0;
         boolean _equals = (guess == 0);
         if (_equals) {
           _xifexpression = IProgressMonitor.UNKNOWN;
         } else {
-          int _plus_1 = (guess + extra);
-          _xifexpression = _plus_1;
+          int _plus_2 = (guess + extra);
+          _xifexpression = _plus_2;
         }
         _xblockexpression = (_xifexpression);
       }

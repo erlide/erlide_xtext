@@ -79,14 +79,13 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 		} catch (Exception e) {
 			log.error(e)
 		} finally {
-			_monitor?.done()
+			_monitor?.done
 			log.info("Build " + getProject().getName() + " in " + (System::currentTimeMillis - startTime) + " ms")
 		}
 		return getProject().getReferencedProjects();
     }
 
 	override protected clean(IProgressMonitor monitor) throws CoreException {
-
 		val progress = SubMonitor::convert(monitor, 10);
 		cleanXtextMarkers(project)
 		progress.worked(2)

@@ -1,21 +1,30 @@
 package org.erlide.builder;
 
-import com.google.common.base.Objects;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.erlide.builder.BuilderHandler;
 import org.erlide.builder.ILineParser;
 import org.erlide.common.process.StreamListener;
 import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
 public class BuilderExecutor {
-  public <T extends Object> void executeProcess(final List<String> cmdLine, final String workingDirectory, final IProgressMonitor monitor, final ILineParser<T> lineParser, final Procedure1<? super T> callback) {
+  private List<BuilderHandler<? extends Object>> handlers;
+  
+  public BuilderExecutor() {
+    ArrayList<BuilderHandler<? extends Object>> _newArrayList = CollectionLiterals.<BuilderHandler<? extends Object>>newArrayList();
+    this.handlers = _newArrayList;
+  }
+  
+  public void executeProcess(final List<String> cmdLine, final String workingDirectory, final IProgressMonitor monitor) {
     ProcessBuilder _processBuilder = new ProcessBuilder(cmdLine);
     final ProcessBuilder builder = _processBuilder;
     File _file = new File(workingDirectory);
@@ -31,10 +40,8 @@ public class BuilderExecutor {
               OperationCanceledException _operationCanceledException = new OperationCanceledException();
               throw _operationCanceledException;
             }
-            final T problem = lineParser.parseLine(it);
-            boolean _notEquals = (!Objects.equal(problem, null));
-            if (_notEquals) {
-              callback.apply(problem);
+            for (final BuilderHandler<? extends Object> handler : BuilderExecutor.this.handlers) {
+              handler.eval(it);
             }
           }
         };
@@ -64,6 +71,27 @@ public class BuilderExecutor {
       } else {
         throw Exceptions.sneakyThrow(_t);
       }
+    }
+  }
+  
+  private <T extends Object> BuilderHandler<T> registerHandler(final ILineParser<T> lineParser, final Procedure1<? super T> callback) {
+    BuilderHandler<T> _builderHandler = new BuilderHandler<T>(lineParser, callback);
+    final BuilderHandler<T> handler = _builderHandler;
+    this.handlers.add(handler);
+    return handler;
+  }
+  
+  private <T extends Object> boolean unregisterHandler(final BuilderHandler<T> handler) {
+    boolean _remove = this.handlers.remove(handler);
+    return _remove;
+  }
+  
+  public <T extends Object> void withHandler(final ILineParser<T> lineParser, final Procedure1<? super T> callback, final Procedure1<? super BuilderExecutor> handlerCallback) {
+    final BuilderHandler<T> handler = this.<T>registerHandler(lineParser, callback);
+    try {
+      handlerCallback.apply(this);
+    } finally {
+      this.<T>unregisterHandler(handler);
     }
   }
 }

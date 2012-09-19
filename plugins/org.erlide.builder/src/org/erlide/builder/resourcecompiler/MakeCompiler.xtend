@@ -20,11 +20,14 @@ public class MakeCompiler extends AbstractExternalProcessCompiler {
 	
     override compileResource(IFile file, CompilerOptions options) {
     	val List<CompilerProblem> result = newArrayList()
-        executor.executeProcess(newArrayList("make", file.getName()), 
-            file.getParent().getLocation().toPortableString(), new NullProgressMonitor(),
-            new DefaultLineParser()) [
+        executor.withHandler(new DefaultLineParser(), [
             	problem | result.add(problem)
             ]
+        ) [ 
+        	executeProcess(newArrayList("make", file.getName()), 
+            	file.getParent().getLocation().toPortableString(), 
+            	new NullProgressMonitor())
+           ]
         return result
     }
     

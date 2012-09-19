@@ -9,10 +9,15 @@ import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.OperationCanceledException
 
 class BuilderExecutor {
+
+	List<BuilderHandler<?>> handlers
 	
-		def <T> void executeProcess(List<String> cmdLine,
-            String workingDirectory, IProgressMonitor monitor, ILineParser<T> lineParser, 
-            (T)=>void callback) {
+	new() {
+		handlers = newArrayList()
+	}
+
+	def void executeProcess(List<String> cmdLine,
+            String workingDirectory, IProgressMonitor monitor) {
         val ProcessBuilder builder = new ProcessBuilder(cmdLine)
         builder.directory(new File(workingDirectory))
         //builder.redirectErrorStream(true)
@@ -23,11 +28,9 @@ class BuilderExecutor {
             		process.destroy
 	           		throw new OperationCanceledException()
            		}
-	           		
-            	val problem = lineParser.parseLine(it)
-            	if(problem!=null) {
-            		callback.apply(problem)
-           		} 
+           		for(handler: handlers) {
+           			handler.eval(it)
+           		}
             ]
             while(listener.alive) {
             	try { 
@@ -41,5 +44,39 @@ class BuilderExecutor {
         	ErlLogger::instance.error(e)
         }
     }
+
+	def private <T> registerHandler(ILineParser<T> lineParser, 
+            (T)=>void callback) {
+        val handler = new BuilderHandler<T>(lineParser, callback)
+    	handlers.add(handler)        	
+    	return handler
+    }
+ 
+	def private <T> unregisterHandler(BuilderHandler<T> handler) {
+    	handlers.remove(handler)        	
+    }
+ 
+ 	def <T> withHandler(ILineParser<T> lineParser, 
+            (T)=>void callback, (BuilderExecutor)=>void handlerCallback) {
+ 		val handler = registerHandler(lineParser, callback)
+ 		try {
+ 			handlerCallback.apply(this)
+ 		} finally {
+ 			unregisterHandler(handler)
+ 		}
+ 	}
+ 
+ }
+
+@Data
+class BuilderHandler<T> {
+	ILineParser<T> lineParser 
+    (T)=>void callback
     
+    def eval(String line) {
+ 		val T item = lineParser.parseLine(line)
+    	if(item!=null) {
+    		callback.apply(item)
+   		}
+    }
 }
