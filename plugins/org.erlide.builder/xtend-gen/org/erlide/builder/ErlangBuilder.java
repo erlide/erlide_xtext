@@ -28,7 +28,6 @@ import org.erlide.builder.IErlangBuilder;
 import org.erlide.builder.SgsnBuilder;
 import org.erlide.builder.markers.BuilderMarkerUpdater;
 import org.erlide.builder.markers.RemoveMarkersEvent;
-import org.erlide.builder.progress.BuilderProgressUpdater;
 import org.erlide.common.NatureConstants;
 import org.erlide.common.util.ErlLogger;
 
@@ -42,9 +41,6 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   
   @Inject
   private BuilderMarkerUpdater markerUpdater;
-  
-  @Inject
-  private BuilderProgressUpdater progressUpdater;
   
   @Inject
   private BuildersProvider builderProvider;
@@ -63,9 +59,8 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     this.builderEventBus.register(this);
   }
   
-  public ErlangBuilder(final BuilderMarkerUpdater markerUpdater, final BuilderProgressUpdater progressUpdater, final BuildersProvider builderProvider, final EventBus eventBus) {
+  public ErlangBuilder(final BuilderMarkerUpdater markerUpdater, final BuildersProvider builderProvider, final EventBus eventBus) {
     this.markerUpdater = markerUpdater;
-    this.progressUpdater = progressUpdater;
     this.builderProvider = builderProvider;
     this.builderEventBus = eventBus;
     this.builderEventBus.register(this);

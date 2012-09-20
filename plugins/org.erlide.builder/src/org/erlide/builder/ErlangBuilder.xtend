@@ -17,7 +17,6 @@ import org.erlide.common.NatureConstants
 import org.erlide.common.util.ErlLogger
 import org.erlide.builder.markers.BuilderMarkerUpdater
 import org.erlide.builder.markers.RemoveMarkersEvent
-import org.erlide.builder.progress.BuilderProgressUpdater
 
 class ErlangBuilder extends IncrementalProjectBuilder {
 
@@ -26,7 +25,6 @@ class ErlangBuilder extends IncrementalProjectBuilder {
     public static String MARKER_TYPE = "org.erlide.builder.erlangBuildProblem"
 
 	@Inject BuilderMarkerUpdater markerUpdater
-	@Inject BuilderProgressUpdater progressUpdater
 	@Inject BuildersProvider builderProvider
 	@Inject ErlLogger log
 	@Inject @Named("erlangBuilder") EventBus builderEventBus
@@ -37,9 +35,8 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         builderEventBus.register(this) // for dead event reporting
 	}
 	
-	new(BuilderMarkerUpdater markerUpdater, BuilderProgressUpdater progressUpdater, BuildersProvider builderProvider, EventBus eventBus) {
+	new(BuilderMarkerUpdater markerUpdater, BuildersProvider builderProvider, EventBus eventBus) {
 		this.markerUpdater = markerUpdater
-		this.progressUpdater = progressUpdater
 		this.builderProvider = builderProvider
 		this.builderEventBus = eventBus
         builderEventBus.register(this)
