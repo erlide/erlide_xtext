@@ -47,70 +47,62 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	override clean(IProgressMonitor monitor) {
-		val progress = SubMonitor::convert(monitor, "clean", 1)
-		try {
-			removeMarkers(project, ErlangBuilder::MARKER_TYPE)
-			execute(cleanCmdLine, progress) []
-			progress.worked(1)
-		} finally {
-			monitor?.done
-		}
+		val progress = SubMonitor::convert(monitor, 100)
+		removeMarkers(project, ErlangBuilder::MARKER_TYPE)
+		execute(cleanCmdLine, progress) []
+		progress.worked(100)
 	}
 	
 	override fullBuild(IProgressMonitor monitor) throws CoreException {
+		var progress = SubMonitor::convert(monitor, 100)
 		val work = estimateWork(fullCmdLine)
-		val progress = SubMonitor::convert(monitor, "full build", work)
-		try {
-			execute(fullCmdLine, progress) [ 
-				val fPath = project.getPathInProject(new Path(fileName))
-				val file = project.findMember(fPath)
-				switch file {
-					IFile: {
-						addMarker(file, it)
-					}
-				}
-			]
-		} finally {
-			monitor?.done
+		progress.worked(10)
+		progress = SubMonitor::convert(progress.newChild(90), work)
+		
+		for (i: 0..work) {
+			Thread::sleep(10)
+			progress.newChild(1)
 		}
+		Thread::sleep(1000)
+		 
+//		execute(fullCmdLine, progress) [ 
+//			val fPath = project.getPathInProject(new Path(fileName))
+//			val file = project.findMember(fPath)
+//			switch file {
+//				IFile: {
+//					addMarker(file, it)
+//				}
+//			}
+//		]
 	}
 	
 	override incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) throws CoreException {
 		val work = estimateWork(fullCmdLine)
-		val progress = SubMonitor::convert(monitor, work);
-		try {
-			delta.accept [
-	           	if (!(resource instanceof IFile)) 
-	           		return true
-	           	if (progress.canceled) 
-	           		throw new OperationCanceledException()
-	            switch (kind) {
-		            case IResourceDelta::ADDED:
-		                singleBuild(resource as IFile, progress.newChild(1))
-		            //case IResourceDelta::REMOVED:
-		            case IResourceDelta::CHANGED:
-		                singleBuild(resource as IFile, progress.newChild(1))
-	            }
-	            return true
-	        ]
-        } finally {
-        	monitor?.done
-        }
+		val progress = SubMonitor::convert(monitor, work) 
+		delta.accept [
+           	if (!(resource instanceof IFile)) 
+           		return true
+           	if (progress.canceled) 
+           		throw new OperationCanceledException()
+            switch (kind) {
+	            case IResourceDelta::ADDED:
+	                singleBuild(resource as IFile, progress)
+	            //case IResourceDelta::REMOVED:
+	            case IResourceDelta::CHANGED:
+	                singleBuild(resource as IFile, progress)
+            }
+            return true
+        ]
 	}
 
 	def singleBuild(IFile file, IProgressMonitor monitor) {
 		val cmd = fillCmdLine(singleCmdLine, file.name)
-		val work = estimateWork(cmd, 2)
+		val work = estimateWork(cmd, 1)
 		val progress = SubMonitor::convert(monitor, work);
-		try {
-			removeMarkers(file, ErlangBuilder::MARKER_TYPE)
-			progress.worked(1)
-			execute(cmd, progress) [ 
-				addMarker(file, it)
-			]
-		} finally {
-			monitor?.done
-		}
+		removeMarkers(file, ErlangBuilder::MARKER_TYPE)
+		execute(cmd, progress) [ 
+			addMarker(file, it)
+		]
 	}
 	
 	def private fillCmdLine(List<String> cmds, String file) {
@@ -119,11 +111,23 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	
 	def private execute(List<String> cmds, IProgressMonitor monitor, (CompilerProblem)=>void callback) {
 		log.debug("EXEC '"+cmds+"' in "+workingDir)
-		executor.withHandler(new ProgressLineParser(), [ monitor.worked(1) ]) [
+		REZ
+		executor.withHandler(new ProgressLineParser(), [ monitor.worked(1); INC; print(ASK); print(" ") ]) [
 			withHandler(new DefaultLineParser(), callback) [
-        		executeProcess(cmds, workingDir.toOSString, new NullProgressMonitor())
+        		executeProcess(cmds, workingDir.toOSString, monitor)
     		]
         ]
+	}
+	
+	static int x=0
+	def static void INC() {
+		x=x+1
+	}
+	def static void REZ() {
+		x=1
+	}
+	def static ASK() {
+		x
 	}
 	
 	override loadConfiguration() {

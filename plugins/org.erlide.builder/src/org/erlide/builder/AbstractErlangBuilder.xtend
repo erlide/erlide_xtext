@@ -36,7 +36,7 @@ abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutableExten
 		id
 	}
 		
-	override loadConfiguration() {
+	override void loadConfiguration() {
 		// do nothing by default
 	}
 	

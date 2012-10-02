@@ -17,6 +17,7 @@ import org.erlide.common.NatureConstants
 import org.erlide.common.util.ErlLogger
 import org.erlide.builder.markers.BuilderMarkerUpdater
 import org.erlide.builder.markers.RemoveMarkersEvent
+import org.eclipse.core.runtime.NullProgressMonitor
 
 class ErlangBuilder extends IncrementalProjectBuilder {
 
@@ -42,31 +43,23 @@ class ErlangBuilder extends IncrementalProjectBuilder {
         builderEventBus.register(this)
 	}
 	
-	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor _monitor) throws CoreException {
+	override protected IProject[] build(int kind, Map<String,String> args, IProgressMonitor monitor) throws CoreException {
 		val startTime = System::currentTimeMillis
 		cleanXtextMarkers(project)
-
+		println(monitor)
+		val progress = SubMonitor::convert(monitor, 100)
 		try {
-			val monitor = if (_monitor != null) {
-				val taskName = " building" + project.name+ ": "
-				new BuilderProgressMonitorWrapper(_monitor, taskName) 
-			} else 
-				_monitor
-			val progress = SubMonitor::convert(monitor, 1)
-
 	        val builder = getProjectBuilder(project)
 	        if (builder==null) {
 	        	log.warn("Project "+project+" has no Erlang builder")
 	        } else {
-	        	//TODO
 	        	switch(kind) {
-	        		case FULL_BUILD:
-			        	builder.fullBuild(progress.newChild(1))
+	        		case FULL_BUILD: 
+			        	builder.fullBuild(progress.newChild(100))
 			        default:
-			        	builder.incrementalBuild(getDelta(project), progress.newChild(1))
+			        	builder.incrementalBuild(getDelta(project), progress.newChild(100))
 	        	}
 	        }
-
 		} catch (CoreException e) {
 			log.error(e)
 			throw e
@@ -76,28 +69,26 @@ class ErlangBuilder extends IncrementalProjectBuilder {
 		} catch (Exception e) {
 			log.error(e)
 		} finally {
-			_monitor?.done
+			monitor?.done
 			log.info("Build " + getProject().getName() + " in " + (System::currentTimeMillis - startTime) + " ms")
 		}
+		
 		return getProject().getReferencedProjects();
     }
 
 	override protected clean(IProgressMonitor monitor) throws CoreException {
-		val progress = SubMonitor::convert(monitor, 10);
 		cleanXtextMarkers(project)
-		progress.worked(2)
-		try {
-	        val builder = getProjectBuilder(project)
-	        if (builder==null) {
-	        	// TODO issue warning?
+        val builder = getProjectBuilder(project)
+        try{
+        	if (builder==null) {
+	        	log.warn("Project "+project+" has no Erlang builder")
 	        } else {
-	        	builder.clean(progress.newChild(8))
+	        	builder.clean(new NullProgressMonitor())
 	        }
 	        builderEventBus.post(new RemoveMarkersEvent(project, MARKER_TYPE))
-		} finally {
-			if (monitor != null)
-				monitor.done();
-		}
+        } finally {
+        	monitor?.done
+        }
 	}
 	
 	def getProjectBuilder(IProject project) {

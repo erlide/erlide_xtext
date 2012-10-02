@@ -5,7 +5,7 @@
    <extension-point id="builders" name="Erlang builders" schema="schema/builders.exsd"/>
    <extension
          id="erlangBuilder"
-         name="Erlang Project Builder"
+         name="Erlang project builder"
          point="org.eclipse.core.resources.builders">
       <builder
             hasNature="true">
@@ -16,7 +16,7 @@
    </extension>
    <extension
          id="erlangNature"
-         name="Erlang Project Nature"
+         name="Erlang project nature"
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
@@ -29,7 +29,7 @@
    </extension>
    <extension
          id="erlangBuildProblem"
-         name="Erlang Problem"
+         name="Erlang problem"
          point="org.eclipse.core.resources.markers">
       <super
             type="org.eclipse.core.resources.problemmarker">

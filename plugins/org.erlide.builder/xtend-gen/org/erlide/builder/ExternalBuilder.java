@@ -15,13 +15,13 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.AbstractErlangBuilder;
@@ -105,49 +105,37 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   }
   
   public void clean(final IProgressMonitor monitor) {
-    final SubMonitor progress = SubMonitor.convert(monitor, "clean", 1);
-    try {
-      IProject _project = this.getProject();
-      this.removeMarkers(_project, ErlangBuilder.MARKER_TYPE);
-      List<String> _cleanCmdLine = this.getCleanCmdLine();
-      final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
-          public void apply(final CompilerProblem it) {
-          }
-        };
-      this.execute(_cleanCmdLine, progress, _function);
-      progress.worked(1);
-    } finally {
-      if (monitor!=null) monitor.done();
-    }
+    final SubMonitor progress = SubMonitor.convert(monitor, 100);
+    IProject _project = this.getProject();
+    this.removeMarkers(_project, ErlangBuilder.MARKER_TYPE);
+    List<String> _cleanCmdLine = this.getCleanCmdLine();
+    final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
+        public void apply(final CompilerProblem it) {
+        }
+      };
+    this.execute(_cleanCmdLine, progress, _function);
+    progress.worked(100);
   }
   
   public void fullBuild(final IProgressMonitor monitor) throws CoreException {
-    List<String> _fullCmdLine = this.getFullCmdLine();
-    final int work = this.estimateWork(_fullCmdLine);
-    final SubMonitor progress = SubMonitor.convert(monitor, "full build", work);
     try {
-      List<String> _fullCmdLine_1 = this.getFullCmdLine();
-      final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
-          public void apply(final CompilerProblem it) {
-            IProject _project = ExternalBuilder.this.getProject();
-            String _fileName = it.getFileName();
-            Path _path = new Path(_fileName);
-            final IPath fPath = ProjectBuilderExtensions.getPathInProject(_project, _path);
-            IProject _project_1 = ExternalBuilder.this.getProject();
-            final IResource file = _project_1.findMember(fPath);
-            boolean _matched = false;
-            if (!_matched) {
-              if (file instanceof IFile) {
-                final IFile _iFile = (IFile)file;
-                _matched=true;
-                ExternalBuilder.this.addMarker(_iFile, it);
-              }
-            }
-          }
-        };
-      this.execute(_fullCmdLine_1, progress, _function);
-    } finally {
-      if (monitor!=null) monitor.done();
+      SubMonitor progress = SubMonitor.convert(monitor, 100);
+      List<String> _fullCmdLine = this.getFullCmdLine();
+      final int work = this.estimateWork(_fullCmdLine);
+      progress.worked(10);
+      SubMonitor _newChild = progress.newChild(90);
+      SubMonitor _convert = SubMonitor.convert(_newChild, work);
+      progress = _convert;
+      IntegerRange _upTo = new IntegerRange(0, work);
+      for (final Integer i : _upTo) {
+        {
+          Thread.sleep(10);
+          progress.newChild(1);
+        }
+      }
+      Thread.sleep(1000);
+    } catch (Exception _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
   }
   
@@ -155,69 +143,58 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     List<String> _fullCmdLine = this.getFullCmdLine();
     final int work = this.estimateWork(_fullCmdLine);
     final SubMonitor progress = SubMonitor.convert(monitor, work);
-    try {
-      final Function1<IResourceDelta,Boolean> _function = new Function1<IResourceDelta,Boolean>() {
-          public Boolean apply(final IResourceDelta it) {
-            IResource _resource = it.getResource();
-            boolean _not = (!(_resource instanceof IFile));
-            if (_not) {
-              return true;
-            }
-            boolean _isCanceled = progress.isCanceled();
-            if (_isCanceled) {
-              OperationCanceledException _operationCanceledException = new OperationCanceledException();
-              throw _operationCanceledException;
-            }
-            int _kind = it.getKind();
-            final int getKind = _kind;
-            boolean _matched = false;
-            if (!_matched) {
-              if (Objects.equal(getKind,IResourceDelta.ADDED)) {
-                _matched=true;
-                IResource _resource_1 = it.getResource();
-                SubMonitor _newChild = progress.newChild(1);
-                ExternalBuilder.this.singleBuild(((IFile) _resource_1), _newChild);
-              }
-            }
-            if (!_matched) {
-              if (Objects.equal(getKind,IResourceDelta.CHANGED)) {
-                _matched=true;
-                IResource _resource_2 = it.getResource();
-                SubMonitor _newChild_1 = progress.newChild(1);
-                ExternalBuilder.this.singleBuild(((IFile) _resource_2), _newChild_1);
-              }
-            }
+    final Function1<IResourceDelta,Boolean> _function = new Function1<IResourceDelta,Boolean>() {
+        public Boolean apply(final IResourceDelta it) {
+          IResource _resource = it.getResource();
+          boolean _not = (!(_resource instanceof IFile));
+          if (_not) {
             return true;
           }
-        };
-      delta.accept(new IResourceDeltaVisitor() {
-          public boolean visit(IResourceDelta delta) {
-            return _function.apply(delta);
+          boolean _isCanceled = progress.isCanceled();
+          if (_isCanceled) {
+            OperationCanceledException _operationCanceledException = new OperationCanceledException();
+            throw _operationCanceledException;
           }
-      });
-    } finally {
-      if (monitor!=null) monitor.done();
-    }
+          int _kind = it.getKind();
+          final int getKind = _kind;
+          boolean _matched = false;
+          if (!_matched) {
+            if (Objects.equal(getKind,IResourceDelta.ADDED)) {
+              _matched=true;
+              IResource _resource_1 = it.getResource();
+              ExternalBuilder.this.singleBuild(((IFile) _resource_1), progress);
+            }
+          }
+          if (!_matched) {
+            if (Objects.equal(getKind,IResourceDelta.CHANGED)) {
+              _matched=true;
+              IResource _resource_2 = it.getResource();
+              ExternalBuilder.this.singleBuild(((IFile) _resource_2), progress);
+            }
+          }
+          return true;
+        }
+      };
+    delta.accept(new IResourceDeltaVisitor() {
+        public boolean visit(IResourceDelta delta) {
+          return _function.apply(delta);
+        }
+    });
   }
   
   public void singleBuild(final IFile file, final IProgressMonitor monitor) {
     List<String> _singleCmdLine = this.getSingleCmdLine();
     String _name = file.getName();
     final List<String> cmd = this.fillCmdLine(_singleCmdLine, _name);
-    final int work = this.estimateWork(cmd, 2);
+    final int work = this.estimateWork(cmd, 1);
     final SubMonitor progress = SubMonitor.convert(monitor, work);
-    try {
-      this.removeMarkers(file, ErlangBuilder.MARKER_TYPE);
-      progress.worked(1);
-      final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
-          public void apply(final CompilerProblem it) {
-            ExternalBuilder.this.addMarker(file, it);
-          }
-        };
-      this.execute(cmd, progress, _function);
-    } finally {
-      if (monitor!=null) monitor.done();
-    }
+    this.removeMarkers(file, ErlangBuilder.MARKER_TYPE);
+    final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
+        public void apply(final CompilerProblem it) {
+          ExternalBuilder.this.addMarker(file, it);
+        }
+      };
+    this.execute(cmd, progress, _function);
   }
   
   private List<String> fillCmdLine(final List<String> cmds, final String file) {
@@ -243,10 +220,15 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     IPath _workingDir = this.getWorkingDir();
     String _plus_2 = (_plus_1 + _workingDir);
     this.log.debug(_plus_2);
+    ExternalBuilder.REZ();
     ProgressLineParser _progressLineParser = new ProgressLineParser();
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
           monitor.worked(1);
+          ExternalBuilder.INC();
+          int _ASK = ExternalBuilder.ASK();
+          InputOutput.<Integer>print(Integer.valueOf(_ASK));
+          InputOutput.<String>print(" ");
         }
       };
     final Procedure1<BuilderExecutor> _function_1 = new Procedure1<BuilderExecutor>() {
@@ -256,14 +238,28 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
               public void apply(final BuilderExecutor it) {
                 IPath _workingDir = ExternalBuilder.this.getWorkingDir();
                 String _oSString = _workingDir.toOSString();
-                NullProgressMonitor _nullProgressMonitor = new NullProgressMonitor();
-                it.executeProcess(cmds, _oSString, _nullProgressMonitor);
+                it.executeProcess(cmds, _oSString, monitor);
               }
             };
           it.<CompilerProblem>withHandler(_defaultLineParser, callback, _function);
         }
       };
     this.executor.<String>withHandler(_progressLineParser, _function, _function_1);
+  }
+  
+  private static int x = 0;
+  
+  public static void INC() {
+    int _plus = (ExternalBuilder.x + 1);
+    ExternalBuilder.x = _plus;
+  }
+  
+  public static void REZ() {
+    ExternalBuilder.x = 1;
+  }
+  
+  public static int ASK() {
+    return ExternalBuilder.x;
   }
   
   public void loadConfiguration() {
