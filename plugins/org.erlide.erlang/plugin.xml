@@ -21,6 +21,21 @@
      </factory>
   </extension>
 
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            default-charset="ISO-8859-1"
+            describer="org.erlide.erlang.content.ErlangContentDescriber"
+            file-extensions="erl,hrl"
+            id="org.erlide.core.content.erlang"
+            name="Erlang source file"
+            priority="normal">
+         <describer
+               class="org.erlide.erlang.content.ErlangContentDescriber">
+         </describer>
+      </content-type>
+   </extension>
 
 
 
