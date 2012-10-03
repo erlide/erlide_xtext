@@ -218,6 +218,15 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ErlangPackage.ENCODING_ATTRIBUTE:
+      {
+        EncodingAttribute encodingAttribute = (EncodingAttribute)theEObject;
+        T result = caseEncodingAttribute(encodingAttribute);
+        if (result == null) result = caseAttribute(encodingAttribute);
+        if (result == null) result = caseForm(encodingAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ErlangPackage.RECORD_ATTRIBUTE:
       {
         RecordAttribute recordAttribute = (RecordAttribute)theEObject;
@@ -1146,6 +1155,22 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseModuleAttribute(ModuleAttribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Encoding Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Encoding Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEncodingAttribute(EncodingAttribute object)
   {
     return null;
   }

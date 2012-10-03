@@ -163,6 +163,11 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createModuleAttributeAdapter();
       }
       @Override
+      public Adapter caseEncodingAttribute(EncodingAttribute object)
+      {
+        return createEncodingAttributeAdapter();
+      }
+      @Override
       public Adapter caseRecordAttribute(RecordAttribute object)
       {
         return createRecordAttributeAdapter();
@@ -820,6 +825,21 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createModuleAttributeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.EncodingAttribute <em>Encoding Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.EncodingAttribute
+   * @generated
+   */
+  public Adapter createEncodingAttributeAdapter()
   {
     return null;
   }

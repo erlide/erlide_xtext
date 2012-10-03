@@ -32,6 +32,7 @@ import org.erlide.erlang.CrClause;
 import org.erlide.erlang.CustomAttribute;
 import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ElseAttribute;
+import org.erlide.erlang.EncodingAttribute;
 import org.erlide.erlang.EndifAttribute;
 import org.erlide.erlang.ErlBinary;
 import org.erlide.erlang.ErlChar;
@@ -442,6 +443,14 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				if(context == grammarAccess.getConditionalAttributeRule() ||
 				   context == grammarAccess.getElseAttributeRule()) {
 					sequence_ElseAttribute(context, (ElseAttribute) semanticObject); 
+					return; 
+				}
+				else break;
+			case ErlangPackage.ENCODING_ATTRIBUTE:
+				if(context == grammarAccess.getAttributeRule() ||
+				   context == grammarAccess.getEncodingAttributeRule() ||
+				   context == grammarAccess.getFormRule()) {
+					sequence_EncodingAttribute(context, (EncodingAttribute) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1777,6 +1786,15 @@ public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getElseAttributeAccess().getTagElseKeyword_1_0(), semanticObject.getTag());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (tag='encoding' (charset=NAME | charset=NAME))
+	 */
+	protected void sequence_EncodingAttribute(EObject context, EncodingAttribute semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

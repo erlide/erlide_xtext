@@ -56,6 +56,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ModuleAttribute/tag"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ModuleAttribute/moduleName"/>
     </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//EncodingAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//EncodingAttribute/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//EncodingAttribute/charset"/>
+    </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//RecordAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//RecordAttribute/tag"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//RecordAttribute/name"/>

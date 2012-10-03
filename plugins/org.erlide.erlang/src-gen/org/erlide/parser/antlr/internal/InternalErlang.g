@@ -324,101 +324,111 @@ ruleAttribute returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getDefineAttributeParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getEncodingAttributeParserRuleCall_1()); 
     }
-    this_DefineAttribute_1=ruleDefineAttribute
+    this_EncodingAttribute_1=ruleEncodingAttribute
     { 
-        $current = $this_DefineAttribute_1.current; 
+        $current = $this_EncodingAttribute_1.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getUndefAttributeParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getDefineAttributeParserRuleCall_2()); 
     }
-    this_UndefAttribute_2=ruleUndefAttribute
+    this_DefineAttribute_2=ruleDefineAttribute
     { 
-        $current = $this_UndefAttribute_2.current; 
+        $current = $this_DefineAttribute_2.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getAbstractIncludeAttributeParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getUndefAttributeParserRuleCall_3()); 
     }
-    this_AbstractIncludeAttribute_3=ruleAbstractIncludeAttribute
+    this_UndefAttribute_3=ruleUndefAttribute
     { 
-        $current = $this_AbstractIncludeAttribute_3.current; 
+        $current = $this_UndefAttribute_3.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getFileAttributeParserRuleCall_4()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getAbstractIncludeAttributeParserRuleCall_4()); 
     }
-    this_FileAttribute_4=ruleFileAttribute
+    this_AbstractIncludeAttribute_4=ruleAbstractIncludeAttribute
     { 
-        $current = $this_FileAttribute_4.current; 
+        $current = $this_AbstractIncludeAttribute_4.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getRecordAttributeParserRuleCall_5()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getFileAttributeParserRuleCall_5()); 
     }
-    this_RecordAttribute_5=ruleRecordAttribute
+    this_FileAttribute_5=ruleFileAttribute
     { 
-        $current = $this_RecordAttribute_5.current; 
+        $current = $this_FileAttribute_5.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getAbstractTypeAttributeParserRuleCall_6()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getRecordAttributeParserRuleCall_6()); 
     }
-    this_AbstractTypeAttribute_6=ruleAbstractTypeAttribute
+    this_RecordAttribute_6=ruleRecordAttribute
     { 
-        $current = $this_AbstractTypeAttribute_6.current; 
+        $current = $this_RecordAttribute_6.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getExportAttributeParserRuleCall_7()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getAbstractTypeAttributeParserRuleCall_7()); 
     }
-    this_ExportAttribute_7=ruleExportAttribute
+    this_AbstractTypeAttribute_7=ruleAbstractTypeAttribute
     { 
-        $current = $this_ExportAttribute_7.current; 
+        $current = $this_AbstractTypeAttribute_7.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getImportAttributeParserRuleCall_8()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getExportAttributeParserRuleCall_8()); 
     }
-    this_ImportAttribute_8=ruleImportAttribute
+    this_ExportAttribute_8=ruleExportAttribute
     { 
-        $current = $this_ImportAttribute_8.current; 
+        $current = $this_ExportAttribute_8.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getCompileAttributeParserRuleCall_9()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getImportAttributeParserRuleCall_9()); 
     }
-    this_CompileAttribute_9=ruleCompileAttribute
+    this_ImportAttribute_9=ruleImportAttribute
     { 
-        $current = $this_CompileAttribute_9.current; 
+        $current = $this_ImportAttribute_9.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getCustomAttributeParserRuleCall_10()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getCompileAttributeParserRuleCall_10()); 
     }
-    this_CustomAttribute_10=ruleCustomAttribute
+    this_CompileAttribute_10=ruleCompileAttribute
     { 
-        $current = $this_CustomAttribute_10.current; 
+        $current = $this_CompileAttribute_10.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getAttributeAccess().getCustomAttributeParserRuleCall_11()); 
+    }
+    this_CustomAttribute_11=ruleCustomAttribute
+    { 
+        $current = $this_CustomAttribute_11.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -1209,6 +1219,101 @@ ruleModuleAttribute returns [EObject current=null]
 this_FULL_STOP_5=RULE_FULL_STOP
     { 
     newLeafNode(this_FULL_STOP_5, grammarAccess.getModuleAttributeAccess().getFULL_STOPTerminalRuleCall_5()); 
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleEncodingAttribute
+entryRuleEncodingAttribute returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getEncodingAttributeRule()); }
+	 iv_ruleEncodingAttribute=ruleEncodingAttribute 
+	 { $current=$iv_ruleEncodingAttribute.current; } 
+	 EOF 
+;
+
+// Rule EncodingAttribute
+ruleEncodingAttribute returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='-' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getEncodingAttributeAccess().getHyphenMinusKeyword_0());
+    }
+((
+(
+	'encoding' 
+ 
+
+)
+)=>
+(
+		lv_tag_1_0=	'encoding' 
+    {
+        newLeafNode(lv_tag_1_0, grammarAccess.getEncodingAttributeAccess().getTagEncodingKeyword_1_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getEncodingAttributeRule());
+	        }
+       		setWithLastConsumed($current, "tag", lv_tag_1_0, "encoding");
+	    }
+
+)
+)((	otherlv_2='(' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getEncodingAttributeAccess().getLeftParenthesisKeyword_2_0_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getEncodingAttributeAccess().getCharsetNAMEParserRuleCall_2_0_1_0()); 
+	    }
+		lv_charset_3_0=ruleNAME		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getEncodingAttributeRule());
+	        }
+       		set(
+       			$current, 
+       			"charset",
+        		lv_charset_3_0, 
+        		"NAME");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_4=')' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getEncodingAttributeAccess().getRightParenthesisKeyword_2_0_2());
+    }
+)
+    |(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getEncodingAttributeAccess().getCharsetNAMEParserRuleCall_2_1_0()); 
+	    }
+		lv_charset_5_0=ruleNAME		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getEncodingAttributeRule());
+	        }
+       		set(
+       			$current, 
+       			"charset",
+        		lv_charset_5_0, 
+        		"NAME");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))this_FULL_STOP_6=RULE_FULL_STOP
+    { 
+    newLeafNode(this_FULL_STOP_6, grammarAccess.getEncodingAttributeAccess().getFULL_STOPTerminalRuleCall_3()); 
     }
 )
 ;
@@ -7300,6 +7405,13 @@ ruleKW1 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getKW1Access().getCompileKeyword_17()); 
+    }
+
+    |
+	kw='encoding' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getKW1Access().getEncodingKeyword_18()); 
     }
 )
     ;

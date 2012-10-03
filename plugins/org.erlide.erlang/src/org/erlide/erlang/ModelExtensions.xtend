@@ -243,4 +243,10 @@ class ModelExtensions {
 		txt=="? MODULE" || txt=="? FILE" || txt=="? LINE"
 	}
 
+	def boolean hasParentOfClass(EObject obj, Class<? extends EObject> c) {
+		if(c.isAssignableFrom(obj.^class)) return true
+		if(obj instanceof Module) return false
+		return hasParentOfClass(obj.eContainer, c)
+	}
+
 }

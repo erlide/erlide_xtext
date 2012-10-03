@@ -84,6 +84,7 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.INCLUDE_LIB_ATTRIBUTE: return createIncludeLibAttribute();
       case ErlangPackage.FILE_ATTRIBUTE: return createFileAttribute();
       case ErlangPackage.MODULE_ATTRIBUTE: return createModuleAttribute();
+      case ErlangPackage.ENCODING_ATTRIBUTE: return createEncodingAttribute();
       case ErlangPackage.RECORD_ATTRIBUTE: return createRecordAttribute();
       case ErlangPackage.RECORD_FIELD_DEF: return createRecordFieldDef();
       case ErlangPackage.EXPORT_ATTRIBUTE: return createExportAttribute();
@@ -351,6 +352,17 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     ModuleAttributeImpl moduleAttribute = new ModuleAttributeImpl();
     return moduleAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EncodingAttribute createEncodingAttribute()
+  {
+    EncodingAttributeImpl encodingAttribute = new EncodingAttributeImpl();
+    return encodingAttribute;
   }
 
   /**

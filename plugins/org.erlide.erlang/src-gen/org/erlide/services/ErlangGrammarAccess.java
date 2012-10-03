@@ -42,6 +42,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRecordAttributeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cRecordFieldDefParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
+		//// AtomRefTargets are the elements that an atom can refer to
 		//AtomRefTarget:
 		//	Module | Function | RecordAttribute | RecordFieldDef;
 		public ParserRule getRule() { return rule; }
@@ -166,59 +167,63 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Attribute");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cModuleAttributeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cDefineAttributeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cUndefAttributeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cAbstractIncludeAttributeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cFileAttributeParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cRecordAttributeParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cAbstractTypeAttributeParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cExportAttributeParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		private final RuleCall cImportAttributeParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
-		private final RuleCall cCompileAttributeParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
-		private final RuleCall cCustomAttributeParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
+		private final RuleCall cEncodingAttributeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cDefineAttributeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cUndefAttributeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cAbstractIncludeAttributeParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cFileAttributeParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cRecordAttributeParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cAbstractTypeAttributeParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cExportAttributeParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cImportAttributeParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
+		private final RuleCall cCompileAttributeParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
+		private final RuleCall cCustomAttributeParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
 		
 		//// Attributes
 		//Attribute:
-		//	ModuleAttribute | DefineAttribute | UndefAttribute | AbstractIncludeAttribute | FileAttribute | RecordAttribute |
-		//	AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute;
+		//	ModuleAttribute | EncodingAttribute | DefineAttribute | UndefAttribute | AbstractIncludeAttribute | FileAttribute |
+		//	RecordAttribute | AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute;
 		public ParserRule getRule() { return rule; }
 
-		//ModuleAttribute | DefineAttribute | UndefAttribute | AbstractIncludeAttribute | FileAttribute | RecordAttribute |
-		//AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute
+		//ModuleAttribute | EncodingAttribute | DefineAttribute | UndefAttribute | AbstractIncludeAttribute | FileAttribute |
+		//RecordAttribute | AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ModuleAttribute
 		public RuleCall getModuleAttributeParserRuleCall_0() { return cModuleAttributeParserRuleCall_0; }
 
+		//EncodingAttribute
+		public RuleCall getEncodingAttributeParserRuleCall_1() { return cEncodingAttributeParserRuleCall_1; }
+
 		//DefineAttribute
-		public RuleCall getDefineAttributeParserRuleCall_1() { return cDefineAttributeParserRuleCall_1; }
+		public RuleCall getDefineAttributeParserRuleCall_2() { return cDefineAttributeParserRuleCall_2; }
 
 		//UndefAttribute
-		public RuleCall getUndefAttributeParserRuleCall_2() { return cUndefAttributeParserRuleCall_2; }
+		public RuleCall getUndefAttributeParserRuleCall_3() { return cUndefAttributeParserRuleCall_3; }
 
 		//AbstractIncludeAttribute
-		public RuleCall getAbstractIncludeAttributeParserRuleCall_3() { return cAbstractIncludeAttributeParserRuleCall_3; }
+		public RuleCall getAbstractIncludeAttributeParserRuleCall_4() { return cAbstractIncludeAttributeParserRuleCall_4; }
 
 		//FileAttribute
-		public RuleCall getFileAttributeParserRuleCall_4() { return cFileAttributeParserRuleCall_4; }
+		public RuleCall getFileAttributeParserRuleCall_5() { return cFileAttributeParserRuleCall_5; }
 
 		//RecordAttribute
-		public RuleCall getRecordAttributeParserRuleCall_5() { return cRecordAttributeParserRuleCall_5; }
+		public RuleCall getRecordAttributeParserRuleCall_6() { return cRecordAttributeParserRuleCall_6; }
 
 		//AbstractTypeAttribute
-		public RuleCall getAbstractTypeAttributeParserRuleCall_6() { return cAbstractTypeAttributeParserRuleCall_6; }
+		public RuleCall getAbstractTypeAttributeParserRuleCall_7() { return cAbstractTypeAttributeParserRuleCall_7; }
 
 		//ExportAttribute
-		public RuleCall getExportAttributeParserRuleCall_7() { return cExportAttributeParserRuleCall_7; }
+		public RuleCall getExportAttributeParserRuleCall_8() { return cExportAttributeParserRuleCall_8; }
 
 		//ImportAttribute
-		public RuleCall getImportAttributeParserRuleCall_8() { return cImportAttributeParserRuleCall_8; }
+		public RuleCall getImportAttributeParserRuleCall_9() { return cImportAttributeParserRuleCall_9; }
 
 		//CompileAttribute
-		public RuleCall getCompileAttributeParserRuleCall_9() { return cCompileAttributeParserRuleCall_9; }
+		public RuleCall getCompileAttributeParserRuleCall_10() { return cCompileAttributeParserRuleCall_10; }
 
 		//CustomAttribute
-		public RuleCall getCustomAttributeParserRuleCall_10() { return cCustomAttributeParserRuleCall_10; }
+		public RuleCall getCustomAttributeParserRuleCall_11() { return cCustomAttributeParserRuleCall_11; }
 	}
 
 	public class ConditionalAttributeElements extends AbstractParserRuleElementFinder {
@@ -727,6 +732,66 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//FULL_STOP
 		public RuleCall getFULL_STOPTerminalRuleCall_5() { return cFULL_STOPTerminalRuleCall_5; }
+	}
+
+	public class EncodingAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EncodingAttribute");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTagAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cTagEncodingKeyword_1_0 = (Keyword)cTagAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Assignment cCharsetAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
+		private final RuleCall cCharsetNAMEParserRuleCall_2_0_1_0 = (RuleCall)cCharsetAssignment_2_0_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_0_2 = (Keyword)cGroup_2_0.eContents().get(2);
+		private final Assignment cCharsetAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cCharsetNAMEParserRuleCall_2_1_0 = (RuleCall)cCharsetAssignment_2_1.eContents().get(0);
+		private final RuleCall cFULL_STOPTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		
+		//EncodingAttribute:
+		//	"-" => tag="encoding" ("(" charset=NAME ")" | charset=NAME) FULL_STOP;
+		public ParserRule getRule() { return rule; }
+
+		//"-" => tag="encoding" ("(" charset=NAME ")" | charset=NAME) FULL_STOP
+		public Group getGroup() { return cGroup; }
+
+		//"-"
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
+		//=> tag="encoding"
+		public Assignment getTagAssignment_1() { return cTagAssignment_1; }
+
+		//"encoding"
+		public Keyword getTagEncodingKeyword_1_0() { return cTagEncodingKeyword_1_0; }
+
+		//"(" charset=NAME ")" | charset=NAME
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+
+		//"(" charset=NAME ")"
+		public Group getGroup_2_0() { return cGroup_2_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2_0_0() { return cLeftParenthesisKeyword_2_0_0; }
+
+		//charset=NAME
+		public Assignment getCharsetAssignment_2_0_1() { return cCharsetAssignment_2_0_1; }
+
+		//NAME
+		public RuleCall getCharsetNAMEParserRuleCall_2_0_1_0() { return cCharsetNAMEParserRuleCall_2_0_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_2_0_2() { return cRightParenthesisKeyword_2_0_2; }
+
+		//charset=NAME
+		public Assignment getCharsetAssignment_2_1() { return cCharsetAssignment_2_1; }
+
+		//NAME
+		public RuleCall getCharsetNAMEParserRuleCall_2_1_0() { return cCharsetNAMEParserRuleCall_2_1_0; }
+
+		//FULL_STOP
+		public RuleCall getFULL_STOPTerminalRuleCall_3() { return cFULL_STOPTerminalRuleCall_3; }
 	}
 
 	public class RecordAttributeElements extends AbstractParserRuleElementFinder {
@@ -4415,14 +4480,15 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cExportKeyword_15 = (Keyword)cAlternatives.eContents().get(15);
 		private final Keyword cImportKeyword_16 = (Keyword)cAlternatives.eContents().get(16);
 		private final Keyword cCompileKeyword_17 = (Keyword)cAlternatives.eContents().get(17);
+		private final Keyword cEncodingKeyword_18 = (Keyword)cAlternatives.eContents().get(18);
 		
 		//KW1:
 		//	"spec" | "endif" | "ifdef" | "ifndef" | "type" | "opaque" | "record" | "undef" | "module" | "include" | "include_lib"
-		//	| "define" | "file" | "callback" | "else" | "export" | "import" | "compile";
+		//	| "define" | "file" | "callback" | "else" | "export" | "import" | "compile" | "encoding";
 		public ParserRule getRule() { return rule; }
 
 		//"spec" | "endif" | "ifdef" | "ifndef" | "type" | "opaque" | "record" | "undef" | "module" | "include" | "include_lib" |
-		//"define" | "file" | "callback" | "else" | "export" | "import" | "compile"
+		//"define" | "file" | "callback" | "else" | "export" | "import" | "compile" | "encoding"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"spec"
@@ -4478,6 +4544,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"compile"
 		public Keyword getCompileKeyword_17() { return cCompileKeyword_17; }
+
+		//"encoding"
+		public Keyword getEncodingKeyword_18() { return cEncodingKeyword_18; }
 	}
 
 	public class RealKwElements extends AbstractParserRuleElementFinder {
@@ -5753,6 +5822,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	private IncludeLibAttributeElements pIncludeLibAttribute;
 	private FileAttributeElements pFileAttribute;
 	private ModuleAttributeElements pModuleAttribute;
+	private EncodingAttributeElements pEncodingAttribute;
 	private RecordAttributeElements pRecordAttribute;
 	private RecordFieldDefElements pRecordFieldDef;
 	private ExportAttributeElements pExportAttribute;
@@ -5905,6 +5975,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		return getModuleAccess().getRule();
 	}
 
+	//// AtomRefTargets are the elements that an atom can refer to
 	//AtomRefTarget:
 	//	Module | Function | RecordAttribute | RecordFieldDef;
 	public AtomRefTargetElements getAtomRefTargetAccess() {
@@ -5937,8 +6008,8 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// Attributes
 	//Attribute:
-	//	ModuleAttribute | DefineAttribute | UndefAttribute | AbstractIncludeAttribute | FileAttribute | RecordAttribute |
-	//	AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute;
+	//	ModuleAttribute | EncodingAttribute | DefineAttribute | UndefAttribute | AbstractIncludeAttribute | FileAttribute |
+	//	RecordAttribute | AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute;
 	public AttributeElements getAttributeAccess() {
 		return (pAttribute != null) ? pAttribute : (pAttribute = new AttributeElements());
 	}
@@ -6066,6 +6137,16 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getModuleAttributeRule() {
 		return getModuleAttributeAccess().getRule();
+	}
+
+	//EncodingAttribute:
+	//	"-" => tag="encoding" ("(" charset=NAME ")" | charset=NAME) FULL_STOP;
+	public EncodingAttributeElements getEncodingAttributeAccess() {
+		return (pEncodingAttribute != null) ? pEncodingAttribute : (pEncodingAttribute = new EncodingAttributeElements());
+	}
+	
+	public ParserRule getEncodingAttributeRule() {
+		return getEncodingAttributeAccess().getRule();
 	}
 
 	//RecordAttribute:
@@ -6853,7 +6934,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 	//KW1:
 	//	"spec" | "endif" | "ifdef" | "ifndef" | "type" | "opaque" | "record" | "undef" | "module" | "include" | "include_lib"
-	//	| "define" | "file" | "callback" | "else" | "export" | "import" | "compile";
+	//	| "define" | "file" | "callback" | "else" | "export" | "import" | "compile" | "encoding";
 	public KW1Elements getKW1Access() {
 		return (pKW1 != null) ? pKW1 : (pKW1 = new KW1Elements());
 	}

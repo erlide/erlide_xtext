@@ -179,6 +179,15 @@ public interface ErlangFactory extends EFactory
   ModuleAttribute createModuleAttribute();
 
   /**
+   * Returns a new object of class '<em>Encoding Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Encoding Attribute</em>'.
+   * @generated
+   */
+  EncodingAttribute createEncodingAttribute();
+
+  /**
    * Returns a new object of class '<em>Record Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

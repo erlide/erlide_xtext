@@ -220,15 +220,10 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
     IPath _workingDir = this.getWorkingDir();
     String _plus_2 = (_plus_1 + _workingDir);
     this.log.debug(_plus_2);
-    ExternalBuilder.REZ();
     ProgressLineParser _progressLineParser = new ProgressLineParser();
     final Procedure1<String> _function = new Procedure1<String>() {
         public void apply(final String it) {
           monitor.worked(1);
-          ExternalBuilder.INC();
-          int _ASK = ExternalBuilder.ASK();
-          InputOutput.<Integer>print(Integer.valueOf(_ASK));
-          InputOutput.<String>print(" ");
         }
       };
     final Procedure1<BuilderExecutor> _function_1 = new Procedure1<BuilderExecutor>() {
@@ -245,21 +240,6 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
         }
       };
     this.executor.<String>withHandler(_progressLineParser, _function, _function_1);
-  }
-  
-  private static int x = 0;
-  
-  public static void INC() {
-    int _plus = (ExternalBuilder.x + 1);
-    ExternalBuilder.x = _plus;
-  }
-  
-  public static void REZ() {
-    ExternalBuilder.x = 1;
-  }
-  
-  public static int ASK() {
-    return ExternalBuilder.x;
   }
   
   public void loadConfiguration() {

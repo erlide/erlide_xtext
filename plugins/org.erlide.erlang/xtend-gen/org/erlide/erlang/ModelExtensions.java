@@ -673,6 +673,19 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
+  public boolean hasParentOfClass(final EObject obj, final Class<? extends EObject> c) {
+    Class<? extends Object> _class = obj.getClass();
+    boolean _isAssignableFrom = c.isAssignableFrom(_class);
+    if (_isAssignableFrom) {
+      return true;
+    }
+    if ((obj instanceof Module)) {
+      return false;
+    }
+    EObject _eContainer = obj.eContainer();
+    return this.hasParentOfClass(_eContainer, c);
+  }
+  
   public Module getOwningModule(final EObject element) {
     if (element instanceof Module) {
       return _getOwningModule((Module)element);

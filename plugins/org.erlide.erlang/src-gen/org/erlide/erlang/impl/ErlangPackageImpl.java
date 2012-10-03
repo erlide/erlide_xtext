@@ -37,6 +37,7 @@ import org.erlide.erlang.CrClause;
 import org.erlide.erlang.CustomAttribute;
 import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ElseAttribute;
+import org.erlide.erlang.EncodingAttribute;
 import org.erlide.erlang.EndifAttribute;
 import org.erlide.erlang.ErlBinary;
 import org.erlide.erlang.ErlChar;
@@ -235,6 +236,13 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * @generated
    */
   private EClass moduleAttributeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass encodingAttributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1216,6 +1224,36 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
   public EAttribute getModuleAttribute_ModuleName()
   {
     return (EAttribute)moduleAttributeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEncodingAttribute()
+  {
+    return encodingAttributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEncodingAttribute_Tag()
+  {
+    return (EAttribute)encodingAttributeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEncodingAttribute_Charset()
+  {
+    return (EAttribute)encodingAttributeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3543,6 +3581,10 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEAttribute(moduleAttributeEClass, MODULE_ATTRIBUTE__TAG);
     createEAttribute(moduleAttributeEClass, MODULE_ATTRIBUTE__MODULE_NAME);
 
+    encodingAttributeEClass = createEClass(ENCODING_ATTRIBUTE);
+    createEAttribute(encodingAttributeEClass, ENCODING_ATTRIBUTE__TAG);
+    createEAttribute(encodingAttributeEClass, ENCODING_ATTRIBUTE__CHARSET);
+
     recordAttributeEClass = createEClass(RECORD_ATTRIBUTE);
     createEAttribute(recordAttributeEClass, RECORD_ATTRIBUTE__TAG);
     createEAttribute(recordAttributeEClass, RECORD_ATTRIBUTE__NAME);
@@ -3889,6 +3931,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     includeLibAttributeEClass.getESuperTypes().add(this.getAbstractIncludeAttribute());
     fileAttributeEClass.getESuperTypes().add(this.getAttribute());
     moduleAttributeEClass.getESuperTypes().add(this.getAttribute());
+    encodingAttributeEClass.getESuperTypes().add(this.getAttribute());
     recordAttributeEClass.getESuperTypes().add(this.getAtomRefTarget());
     recordAttributeEClass.getESuperTypes().add(this.getAttribute());
     recordFieldDefEClass.getESuperTypes().add(this.getAtomRefTarget());
@@ -4006,6 +4049,10 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEClass(moduleAttributeEClass, ModuleAttribute.class, "ModuleAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModuleAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, ModuleAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getModuleAttribute_ModuleName(), ecorePackage.getEString(), "moduleName", null, 0, 1, ModuleAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(encodingAttributeEClass, EncodingAttribute.class, "EncodingAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEncodingAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, EncodingAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEncodingAttribute_Charset(), ecorePackage.getEString(), "charset", null, 0, 1, EncodingAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(recordAttributeEClass, RecordAttribute.class, "RecordAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRecordAttribute_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, RecordAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

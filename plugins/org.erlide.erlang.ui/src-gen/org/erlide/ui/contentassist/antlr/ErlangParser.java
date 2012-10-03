@@ -44,6 +44,7 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAbstractDefineAttributeAccess().getAlternatives(), "rule__AbstractDefineAttribute__Alternatives");
 					put(grammarAccess.getIfdefAttributeAccess().getTagAlternatives_1_0(), "rule__IfdefAttribute__TagAlternatives_1_0");
 					put(grammarAccess.getAbstractIncludeAttributeAccess().getAlternatives(), "rule__AbstractIncludeAttribute__Alternatives");
+					put(grammarAccess.getEncodingAttributeAccess().getAlternatives_2(), "rule__EncodingAttribute__Alternatives_2");
 					put(grammarAccess.getRecordAttributeAccess().getAlternatives_5(), "rule__RecordAttribute__Alternatives_5");
 					put(grammarAccess.getAbstractTypeAttributeAccess().getAlternatives(), "rule__AbstractTypeAttribute__Alternatives");
 					put(grammarAccess.getSpecAttributeAccess().getTagAlternatives_1_0(), "rule__SpecAttribute__TagAlternatives_1_0");
@@ -107,6 +108,8 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getIncludeLibAttributeAccess().getGroup(), "rule__IncludeLibAttribute__Group__0");
 					put(grammarAccess.getFileAttributeAccess().getGroup(), "rule__FileAttribute__Group__0");
 					put(grammarAccess.getModuleAttributeAccess().getGroup(), "rule__ModuleAttribute__Group__0");
+					put(grammarAccess.getEncodingAttributeAccess().getGroup(), "rule__EncodingAttribute__Group__0");
+					put(grammarAccess.getEncodingAttributeAccess().getGroup_2_0(), "rule__EncodingAttribute__Group_2_0__0");
 					put(grammarAccess.getRecordAttributeAccess().getGroup(), "rule__RecordAttribute__Group__0");
 					put(grammarAccess.getRecordAttributeAccess().getGroup_5_0(), "rule__RecordAttribute__Group_5_0__0");
 					put(grammarAccess.getRecordAttributeAccess().getGroup_5_0_1(), "rule__RecordAttribute__Group_5_0_1__0");
@@ -333,6 +336,9 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFileAttributeAccess().getLineAssignment_5(), "rule__FileAttribute__LineAssignment_5");
 					put(grammarAccess.getModuleAttributeAccess().getTagAssignment_1(), "rule__ModuleAttribute__TagAssignment_1");
 					put(grammarAccess.getModuleAttributeAccess().getModuleNameAssignment_3(), "rule__ModuleAttribute__ModuleNameAssignment_3");
+					put(grammarAccess.getEncodingAttributeAccess().getTagAssignment_1(), "rule__EncodingAttribute__TagAssignment_1");
+					put(grammarAccess.getEncodingAttributeAccess().getCharsetAssignment_2_0_1(), "rule__EncodingAttribute__CharsetAssignment_2_0_1");
+					put(grammarAccess.getEncodingAttributeAccess().getCharsetAssignment_2_1(), "rule__EncodingAttribute__CharsetAssignment_2_1");
 					put(grammarAccess.getRecordAttributeAccess().getTagAssignment_1(), "rule__RecordAttribute__TagAssignment_1");
 					put(grammarAccess.getRecordAttributeAccess().getNameAssignment_3(), "rule__RecordAttribute__NameAssignment_3");
 					put(grammarAccess.getRecordAttributeAccess().getFieldsAssignment_5_0_1_0(), "rule__RecordAttribute__FieldsAssignment_5_0_1_0");

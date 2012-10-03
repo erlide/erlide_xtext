@@ -111,23 +111,11 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	
 	def private execute(List<String> cmds, IProgressMonitor monitor, (CompilerProblem)=>void callback) {
 		log.debug("EXEC '"+cmds+"' in "+workingDir)
-		REZ
-		executor.withHandler(new ProgressLineParser(), [ monitor.worked(1); INC; print(ASK); print(" ") ]) [
+		executor.withHandler(new ProgressLineParser(), [ monitor.worked(1) ]) [
 			withHandler(new DefaultLineParser(), callback) [
         		executeProcess(cmds, workingDir.toOSString, monitor)
     		]
         ]
-	}
-	
-	static int x=0
-	def static void INC() {
-		x=x+1
-	}
-	def static void REZ() {
-		x=1
-	}
-	def static ASK() {
-		x
 	}
 	
 	override loadConfiguration() {
