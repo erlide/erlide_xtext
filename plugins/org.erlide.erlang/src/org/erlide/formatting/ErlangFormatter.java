@@ -20,6 +20,9 @@ public class ErlangFormatter extends AbstractDeclarativeFormatter {
 
     @Override
     protected void configureFormatting(final FormattingConfig c) {
+
+        c.setAutoLinewrap(80);
+
         // It's usually a good idea to activate the following three statements.
         // They will add and preserve newlines around comments
         c.setLinewrap(0, 1, 2).before(getGrammarAccess().getSL_COMMENTRule());
@@ -27,10 +30,29 @@ public class ErlangFormatter extends AbstractDeclarativeFormatter {
         // 2).before(getGrammarAccess().getML_COMMENTRule());
         // c.setLinewrap(0, 1, 1).after(getGrammarAccess().getML_COMMENTRule());
 
-        // c.setSpace("\n\n").after(getGrammarAccess().getFunctionAccess().getFullStopKeyword_3());
-        // c.setSpace("\n").after(getGrammarAccess().getFunctionAccess().getSemicolonKeyword_2_0());
-        // c.setSpace("\n\n").after(getGrammarAccess().getAttributeAccess().getFullStopKeyword_2());
+        c.setNoSpace().after(
+                getGrammarAccess().getAttributeAccess()
+                        .getHyphenMinusKeyword_0());
 
+        c.setSpace("\n").after(
+                getGrammarAccess().getFunctionAccess()
+                        .getFULL_STOPTerminalRuleCall_3());
+        c.setIndentationDecrement().after(
+                getGrammarAccess().getFunctionAccess()
+                        .getFULL_STOPTerminalRuleCall_3());
+        c.setLinewrap().after(
+                getGrammarAccess().getFunctionAccess()
+                        .getSemicolonKeyword_2_0());
+        c.setIndentationDecrement().after(
+                getGrammarAccess().getFunctionAccess()
+                        .getSemicolonKeyword_2_0());
+
+        c.setLinewrap().after(
+                getGrammarAccess().getFunctionClauseAccess()
+                        .getHyphenMinusGreaterThanSignKeyword_5());
+        c.setIndentationIncrement().after(
+                getGrammarAccess().getFunctionClauseAccess()
+                        .getHyphenMinusGreaterThanSignKeyword_5());
     }
 
     @Override

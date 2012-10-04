@@ -35,6 +35,7 @@ ConditionalFormBlock:
 // Attributes
 
 Attribute:
+	'-' (
 	  ModuleAttribute
 	| EncodingAttribute
 	| AbstractDefineAttribute
@@ -46,6 +47,7 @@ Attribute:
 	| ImportAttribute
 	| CompileAttribute
 	| CustomAttribute
+	)
 ;
 
 ConditionalAttribute:
@@ -60,7 +62,7 @@ AbstractDefineAttribute:
 ;
 
 DefineAttribute:
-    '-' => tag='define' 		    
+    => tag='define' 		    
 		'(' macroName=NAMEVAR // can't have feature 'name' because multiple defines with the same macro can exist 
 		    ('(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' )? 
 	    	(',' value=Guard?)? 
@@ -69,19 +71,19 @@ DefineAttribute:
 ;
 
 UndefAttribute:
-	'-' => tag='undef' '(' ref=MacroRef ')' FULL_STOP
+	=> tag='undef' '(' ref=MacroRef ')' FULL_STOP
 ;
 
 IfdefAttribute:
-	'-' => tag=('ifdef'|'ifndef') '(' ref=MacroRef ')' FULL_STOP
+	=> tag=('ifdef'|'ifndef') '(' ref=MacroRef ')' FULL_STOP
 ;
 
 ElseAttribute:
-	'-' => tag='else' FULL_STOP
+	=> tag='else' FULL_STOP
 ;
 
 EndifAttribute:
-	'-' => tag='endif'	FULL_STOP
+	=> tag='endif'	FULL_STOP
 ;
 
 AbstractIncludeAttribute:
@@ -90,23 +92,23 @@ AbstractIncludeAttribute:
 ;
 	
 IncludeAttribute:
-	'-' => tag=('include') '(' importURI=STRING ')' FULL_STOP
+	=> tag=('include') '(' importURI=STRING ')' FULL_STOP
 ;
 
 IncludeLibAttribute:
-	'-' => tag=('include_lib') '(' importURI=STRING ')' FULL_STOP
+	=> tag=('include_lib') '(' importURI=STRING ')' FULL_STOP
 ;
 
 FileAttribute:
-	'-' => tag='file' '(' file=STRING ',' line=INTEGER ')' FULL_STOP
+	=> tag='file' '(' file=STRING ',' line=INTEGER ')' FULL_STOP
 ;
 
 ModuleAttribute:
-	'-' => tag='module' '(' moduleName=NAME ')' FULL_STOP
+	=> tag='module' '(' moduleName=NAME ')' FULL_STOP
 ;
 
 EncodingAttribute:
-	'-' => tag='encoding' 
+	=> tag='encoding' 
 	  ( '(' charset=NAME ')' | 
 		charset=NAME
 	  ) 
@@ -114,7 +116,7 @@ EncodingAttribute:
 ;
 
 RecordAttribute:
-	'-' => tag='record' '(' name=NAMEVAR ',' 
+	=> tag='record' '(' name=NAMEVAR ',' 
 		(     '{' (fields+=RecordFieldDef (',' fields+=RecordFieldDef)*)? '}' 
 			| recordMacro=MacroCall
 		) 
@@ -127,19 +129,19 @@ RecordFieldDef:
 ;
 
 ExportAttribute:
-	'-' => tag='export' 
+	=> tag='export' 
 		'(' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
 	FULL_STOP
 ;
 
 ImportAttribute:
-	'-' => tag='import' 
+	=> tag='import' 
 		'(' module=AtomVarMacro ',' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
 	FULL_STOP
 ;
 
 CompileAttribute:
-	'-' => tag='compile' '(' options=Expression ')' 
+	=> tag='compile' '(' options=Expression ')' 
 	FULL_STOP
 ;
 
@@ -149,7 +151,7 @@ AbstractTypeAttribute:
 ;
 
 SpecAttribute:
-	'-' => tag=('spec'|'callback') 
+	=> tag=('spec'|'callback') 
 	(
   		      ref=SpecFun signatures+=TypeSig (';' signatures+=TypeSig)*
   		| '(' ref=SpecFun signatures+=TypeSig (';' signatures+=TypeSig)* ')'
@@ -158,7 +160,7 @@ SpecAttribute:
 ;
 
 TypeAttribute:
-	'-' => tag=('type'|'opaque') 
+	=> tag=('type'|'opaque') 
 	(
   	    	name=NAMEVAR '(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' '::' type=TopType 
   	  | '(' name=NAMEVAR '(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' '::' type=TopType ')'
@@ -167,7 +169,7 @@ TypeAttribute:
 ;
 
 CustomAttribute:
-	'-' tag=ATOM '(' (value+=Expression (',' value+=Expression)*)? ')' FULL_STOP
+	tag=ATOM '(' (value+=Expression (',' value+=Expression)*)? ')' FULL_STOP
 ;
 
 // Functions

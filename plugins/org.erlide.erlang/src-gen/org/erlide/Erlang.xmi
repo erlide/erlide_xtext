@@ -74,18 +74,21 @@
     <type metamodel="//@metamodelDeclarations.1">
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//Attribute"/>
     </type>
-    <alternatives xsi:type="xtext:Alternatives">
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.16"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.17"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.6"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.12"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.15"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.18"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.23"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.20"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.21"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.22"/>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.26"/>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="-"/>
+      <elements xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.16"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.17"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.6"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.12"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.15"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.18"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.23"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.20"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.21"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.22"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.26"/>
+      </elements>
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="ConditionalAttribute">
@@ -112,7 +115,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//DefineAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="define"/>
       </elements>
@@ -150,7 +152,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//UndefAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="undef"/>
       </elements>
@@ -167,7 +168,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//IfdefAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Alternatives">
           <elements xsi:type="xtext:Keyword" value="ifdef"/>
@@ -187,7 +187,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//ElseAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="else"/>
       </elements>
@@ -199,7 +198,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//EndifAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="endif"/>
       </elements>
@@ -220,7 +218,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//IncludeAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="include"/>
       </elements>
@@ -237,7 +234,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//IncludeLibAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="include_lib"/>
       </elements>
@@ -254,7 +250,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//FileAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="file"/>
       </elements>
@@ -275,7 +270,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//ModuleAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="module"/>
       </elements>
@@ -292,7 +286,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//EncodingAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="encoding"/>
       </elements>
@@ -316,7 +309,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//RecordAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="record"/>
       </elements>
@@ -376,7 +368,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//ExportAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="export"/>
       </elements>
@@ -403,7 +394,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//ImportAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="import"/>
       </elements>
@@ -434,7 +424,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//CompileAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="compile"/>
       </elements>
@@ -460,7 +449,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//SpecAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Alternatives">
           <elements xsi:type="xtext:Keyword" value="spec"/>
@@ -507,7 +495,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//TypeAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Alternatives">
           <elements xsi:type="xtext:Keyword" value="type"/>
@@ -570,7 +557,6 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//CustomAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
-      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" feature="tag" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.96"/>
       </elements>

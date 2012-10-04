@@ -18,8 +18,8 @@ import org.erlide.services.ErlangGrammarAccess;
 public abstract class AbstractErlangSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ErlangGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_DefineAttribute_CommaKeyword_5_0_q;
-	protected AbstractElementAlias match_DefineAttribute___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q;
+	protected AbstractElementAlias match_DefineAttribute_CommaKeyword_4_0_q;
+	protected AbstractElementAlias match_DefineAttribute___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_Expr700___LeftParenthesisKeyword_1_0_4_0_RightParenthesisKeyword_1_0_4_2__q;
 	protected AbstractElementAlias match_ExprMax_LeftParenthesisKeyword_1_0_a;
 	protected AbstractElementAlias match_ExprMax_LeftParenthesisKeyword_1_0_p;
@@ -32,8 +32,8 @@ public abstract class AbstractErlangSyntacticSequencer extends AbstractSyntactic
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ErlangGrammarAccess) access;
-		match_DefineAttribute_CommaKeyword_5_0_q = new TokenAlias(false, true, grammarAccess.getDefineAttributeAccess().getCommaKeyword_5_0());
-		match_DefineAttribute___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getDefineAttributeAccess().getLeftParenthesisKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getDefineAttributeAccess().getRightParenthesisKeyword_4_2()));
+		match_DefineAttribute_CommaKeyword_4_0_q = new TokenAlias(false, true, grammarAccess.getDefineAttributeAccess().getCommaKeyword_4_0());
+		match_DefineAttribute___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getDefineAttributeAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getDefineAttributeAccess().getRightParenthesisKeyword_3_2()));
 		match_Expr700___LeftParenthesisKeyword_1_0_4_0_RightParenthesisKeyword_1_0_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getExpr700Access().getLeftParenthesisKeyword_1_0_4_0()), new TokenAlias(false, false, grammarAccess.getExpr700Access().getRightParenthesisKeyword_1_0_4_2()));
 		match_ExprMax_LeftParenthesisKeyword_1_0_a = new TokenAlias(true, true, grammarAccess.getExprMaxAccess().getLeftParenthesisKeyword_1_0());
 		match_ExprMax_LeftParenthesisKeyword_1_0_p = new TokenAlias(true, false, grammarAccess.getExprMaxAccess().getLeftParenthesisKeyword_1_0());
@@ -81,10 +81,10 @@ public abstract class AbstractErlangSyntacticSequencer extends AbstractSyntactic
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_DefineAttribute_CommaKeyword_5_0_q.equals(syntax))
-				emit_DefineAttribute_CommaKeyword_5_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_DefineAttribute___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q.equals(syntax))
-				emit_DefineAttribute___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if(match_DefineAttribute_CommaKeyword_4_0_q.equals(syntax))
+				emit_DefineAttribute_CommaKeyword_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_DefineAttribute___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
+				emit_DefineAttribute___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Expr700___LeftParenthesisKeyword_1_0_4_0_RightParenthesisKeyword_1_0_4_2__q.equals(syntax))
 				emit_Expr700___LeftParenthesisKeyword_1_0_4_0_RightParenthesisKeyword_1_0_4_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_ExprMax_LeftParenthesisKeyword_1_0_a.equals(syntax))
@@ -109,7 +109,7 @@ public abstract class AbstractErlangSyntacticSequencer extends AbstractSyntactic
 	 * Syntax:
 	 *     ','?
 	 */
-	protected void emit_DefineAttribute_CommaKeyword_5_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_DefineAttribute_CommaKeyword_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -117,7 +117,7 @@ public abstract class AbstractErlangSyntacticSequencer extends AbstractSyntactic
 	 * Syntax:
 	 *     ('(' ')')?
 	 */
-	protected void emit_DefineAttribute___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_DefineAttribute___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

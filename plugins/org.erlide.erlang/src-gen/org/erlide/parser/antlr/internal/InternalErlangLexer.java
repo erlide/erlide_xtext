@@ -1939,10 +1939,10 @@ public class InternalErlangLexer extends Lexer {
         try {
             int _type = RULE_ATOM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:11: ( ( RULE_ATOM_STARTER ( RULE_IN_WORD_CHAR )* | '\\'' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' | EOF ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:13: ( RULE_ATOM_STARTER ( RULE_IN_WORD_CHAR )* | '\\'' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' | EOF ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:11: ( ( RULE_ATOM_STARTER ( RULE_IN_WORD_CHAR )* | '\\'' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' | EOF ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:13: ( RULE_ATOM_STARTER ( RULE_IN_WORD_CHAR )* | '\\'' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' | EOF ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:13: ( RULE_ATOM_STARTER ( RULE_IN_WORD_CHAR )* | '\\'' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' | EOF ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:13: ( RULE_ATOM_STARTER ( RULE_IN_WORD_CHAR )* | '\\'' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' | EOF ) )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1960,10 +1960,10 @@ public class InternalErlangLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:14: RULE_ATOM_STARTER ( RULE_IN_WORD_CHAR )*
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:14: RULE_ATOM_STARTER ( RULE_IN_WORD_CHAR )*
                     {
                     mRULE_ATOM_STARTER(); 
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:32: ( RULE_IN_WORD_CHAR )*
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:32: ( RULE_IN_WORD_CHAR )*
                     loop1:
                     do {
                         int alt1=2;
@@ -1976,7 +1976,7 @@ public class InternalErlangLexer extends Lexer {
 
                         switch (alt1) {
                     	case 1 :
-                    	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:32: RULE_IN_WORD_CHAR
+                    	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:32: RULE_IN_WORD_CHAR
                     	    {
                     	    mRULE_IN_WORD_CHAR(); 
 
@@ -1992,10 +1992,10 @@ public class InternalErlangLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:51: '\\'' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' | EOF )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:51: '\\'' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\\'' ) ) )* ( '\\'' | EOF )
                     {
                     match('\''); 
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:56: ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:56: ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop2:
                     do {
                         int alt2=3;
@@ -2011,7 +2011,7 @@ public class InternalErlangLexer extends Lexer {
 
                         switch (alt2) {
                     	case 1 :
-                    	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:57: '\\\\' RULE_ESCAPE
+                    	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:57: '\\\\' RULE_ESCAPE
                     	    {
                     	    match('\\'); 
                     	    mRULE_ESCAPE(); 
@@ -2019,7 +2019,7 @@ public class InternalErlangLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:74: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:74: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2039,7 +2039,7 @@ public class InternalErlangLexer extends Lexer {
                         }
                     } while (true);
 
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:91: ( '\\'' | EOF )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:91: ( '\\'' | EOF )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -2050,14 +2050,14 @@ public class InternalErlangLexer extends Lexer {
                         alt3=2;}
                     switch (alt3) {
                         case 1 :
-                            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:92: '\\''
+                            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:92: '\\''
                             {
                             match('\''); 
 
                             }
                             break;
                         case 2 :
-                            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9208:97: EOF
+                            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9264:97: EOF
                             {
                             match(EOF); 
 
@@ -2088,11 +2088,11 @@ public class InternalErlangLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9210:13: ( '\"' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' | EOF ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9210:15: '\"' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' | EOF )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9266:13: ( '\"' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' | EOF ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9266:15: '\"' ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\"' ) ) )* ( '\"' | EOF )
             {
             match('\"'); 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9210:19: ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\"' ) ) )*
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9266:19: ( '\\\\' RULE_ESCAPE | ~ ( ( '\\\\' | '\"' ) ) )*
             loop5:
             do {
                 int alt5=3;
@@ -2108,7 +2108,7 @@ public class InternalErlangLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9210:20: '\\\\' RULE_ESCAPE
+            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9266:20: '\\\\' RULE_ESCAPE
             	    {
             	    match('\\'); 
             	    mRULE_ESCAPE(); 
@@ -2116,7 +2116,7 @@ public class InternalErlangLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9210:37: ~ ( ( '\\\\' | '\"' ) )
+            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9266:37: ~ ( ( '\\\\' | '\"' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2136,7 +2136,7 @@ public class InternalErlangLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9210:53: ( '\"' | EOF )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9266:53: ( '\"' | EOF )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -2147,14 +2147,14 @@ public class InternalErlangLexer extends Lexer {
                 alt6=2;}
             switch (alt6) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9210:54: '\"'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9266:54: '\"'
                     {
                     match('\"'); 
 
                     }
                     break;
                 case 2 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9210:58: EOF
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9266:58: EOF
                     {
                     match(EOF); 
 
@@ -2179,8 +2179,8 @@ public class InternalErlangLexer extends Lexer {
         try {
             int _type = RULE_VARIABLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9212:15: ( ( 'A' .. 'Z' | '_' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00DE' ) ( RULE_IN_WORD_CHAR )* )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9212:17: ( 'A' .. 'Z' | '_' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00DE' ) ( RULE_IN_WORD_CHAR )*
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9268:15: ( ( 'A' .. 'Z' | '_' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00DE' ) ( RULE_IN_WORD_CHAR )* )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9268:17: ( 'A' .. 'Z' | '_' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00DE' ) ( RULE_IN_WORD_CHAR )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='\u00C0' && input.LA(1)<='\u00D6')||(input.LA(1)>='\u00D8' && input.LA(1)<='\u00DE') ) {
                 input.consume();
@@ -2191,7 +2191,7 @@ public class InternalErlangLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9212:70: ( RULE_IN_WORD_CHAR )*
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9268:70: ( RULE_IN_WORD_CHAR )*
             loop7:
             do {
                 int alt7=2;
@@ -2204,7 +2204,7 @@ public class InternalErlangLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9212:70: RULE_IN_WORD_CHAR
+            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9268:70: RULE_IN_WORD_CHAR
             	    {
             	    mRULE_IN_WORD_CHAR(); 
 
@@ -2232,11 +2232,11 @@ public class InternalErlangLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9214:17: ( '%' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' | EOF ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9214:19: '%' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' | EOF )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9270:17: ( '%' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' | EOF ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9270:19: '%' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' | EOF )
             {
             match('%'); 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9214:23: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9270:23: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -2249,7 +2249,7 @@ public class InternalErlangLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9214:23: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9270:23: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2269,7 +2269,7 @@ public class InternalErlangLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9214:39: ( ( '\\r' )? '\\n' | EOF )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9270:39: ( ( '\\r' )? '\\n' | EOF )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -2280,9 +2280,9 @@ public class InternalErlangLexer extends Lexer {
                 alt10=2;}
             switch (alt10) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9214:40: ( '\\r' )? '\\n'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9270:40: ( '\\r' )? '\\n'
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9214:40: ( '\\r' )?
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9270:40: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -2291,7 +2291,7 @@ public class InternalErlangLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9214:40: '\\r'
+                            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9270:40: '\\r'
                             {
                             match('\r'); 
 
@@ -2305,7 +2305,7 @@ public class InternalErlangLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9214:51: EOF
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9270:51: EOF
                     {
                     match(EOF); 
 
@@ -2330,10 +2330,10 @@ public class InternalErlangLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9216:9: ( (~ ( ( '!' .. '~' | '\\u00A1' .. '\\u00FF' ) ) )+ )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9216:11: (~ ( ( '!' .. '~' | '\\u00A1' .. '\\u00FF' ) ) )+
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9272:9: ( (~ ( ( '!' .. '~' | '\\u00A1' .. '\\u00FF' ) ) )+ )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9272:11: (~ ( ( '!' .. '~' | '\\u00A1' .. '\\u00FF' ) ) )+
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9216:11: (~ ( ( '!' .. '~' | '\\u00A1' .. '\\u00FF' ) ) )+
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9272:11: (~ ( ( '!' .. '~' | '\\u00A1' .. '\\u00FF' ) ) )+
             int cnt11=0;
             loop11:
             do {
@@ -2347,7 +2347,7 @@ public class InternalErlangLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9216:11: ~ ( ( '!' .. '~' | '\\u00A1' .. '\\u00FF' ) )
+            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9272:11: ~ ( ( '!' .. '~' | '\\u00A1' .. '\\u00FF' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<=' ')||(input.LA(1)>='\u007F' && input.LA(1)<='\u00A0')||(input.LA(1)>='\u0100' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2387,11 +2387,11 @@ public class InternalErlangLexer extends Lexer {
         try {
             int _type = RULE_FULL_STOP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9218:16: ( '.' ( RULE_WS | RULE_SL_COMMENT | EOF ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9218:18: '.' ( RULE_WS | RULE_SL_COMMENT | EOF )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9274:16: ( '.' ( RULE_WS | RULE_SL_COMMENT | EOF ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9274:18: '.' ( RULE_WS | RULE_SL_COMMENT | EOF )
             {
             match('.'); 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9218:22: ( RULE_WS | RULE_SL_COMMENT | EOF )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9274:22: ( RULE_WS | RULE_SL_COMMENT | EOF )
             int alt12=3;
             int LA12_0 = input.LA(1);
 
@@ -2405,21 +2405,21 @@ public class InternalErlangLexer extends Lexer {
                 alt12=3;}
             switch (alt12) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9218:23: RULE_WS
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9274:23: RULE_WS
                     {
                     mRULE_WS(); 
 
                     }
                     break;
                 case 2 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9218:31: RULE_SL_COMMENT
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9274:31: RULE_SL_COMMENT
                     {
                     mRULE_SL_COMMENT(); 
 
                     }
                     break;
                 case 3 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9218:47: EOF
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9274:47: EOF
                     {
                     match(EOF); 
 
@@ -2444,10 +2444,10 @@ public class InternalErlangLexer extends Lexer {
         try {
             int _type = RULE_BASED_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9220:16: ( ( '1' .. '3' )? '0' .. '9' '#' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9220:18: ( '1' .. '3' )? '0' .. '9' '#' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9276:16: ( ( '1' .. '3' )? '0' .. '9' '#' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+ )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9276:18: ( '1' .. '3' )? '0' .. '9' '#' ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9220:18: ( '1' .. '3' )?
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9276:18: ( '1' .. '3' )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2460,7 +2460,7 @@ public class InternalErlangLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9220:19: '1' .. '3'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9276:19: '1' .. '3'
                     {
                     matchRange('1','3'); 
 
@@ -2471,7 +2471,7 @@ public class InternalErlangLexer extends Lexer {
 
             matchRange('0','9'); 
             match('#'); 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9220:43: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9276:43: ( '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' )+
             int cnt14=0;
             loop14:
             do {
@@ -2525,10 +2525,10 @@ public class InternalErlangLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9222:10: ( ( '0' .. '9' )+ )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9222:12: ( '0' .. '9' )+
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9278:10: ( ( '0' .. '9' )+ )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9278:12: ( '0' .. '9' )+
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9222:12: ( '0' .. '9' )+
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9278:12: ( '0' .. '9' )+
             int cnt15=0;
             loop15:
             do {
@@ -2542,7 +2542,7 @@ public class InternalErlangLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9222:13: '0' .. '9'
+            	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9278:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -2574,8 +2574,8 @@ public class InternalErlangLexer extends Lexer {
         try {
             int _type = RULE_EXT_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9224:14: ( RULE_INT ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9224:16: RULE_INT ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9280:14: ( RULE_INT ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9280:16: RULE_INT ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
             {
             mRULE_INT(); 
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
@@ -2587,7 +2587,7 @@ public class InternalErlangLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9224:35: ( '+' | '-' )?
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9280:35: ( '+' | '-' )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -2630,11 +2630,11 @@ public class InternalErlangLexer extends Lexer {
         try {
             int _type = RULE_CHAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9226:11: ( '$' ( '\\\\' RULE_ESCAPE | . ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9226:13: '$' ( '\\\\' RULE_ESCAPE | . )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9282:11: ( '$' ( '\\\\' RULE_ESCAPE | . ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9282:13: '$' ( '\\\\' RULE_ESCAPE | . )
             {
             match('$'); 
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9226:17: ( '\\\\' RULE_ESCAPE | . )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9282:17: ( '\\\\' RULE_ESCAPE | . )
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -2658,7 +2658,7 @@ public class InternalErlangLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9226:18: '\\\\' RULE_ESCAPE
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9282:18: '\\\\' RULE_ESCAPE
                     {
                     match('\\'); 
                     mRULE_ESCAPE(); 
@@ -2666,7 +2666,7 @@ public class InternalErlangLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9226:35: .
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9282:35: .
                     {
                     matchAny(); 
 
@@ -2689,8 +2689,8 @@ public class InternalErlangLexer extends Lexer {
     // $ANTLR start "RULE_IN_WORD_CHAR"
     public final void mRULE_IN_WORD_CHAR() throws RecognitionException {
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9228:28: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '@' | '0' .. '9' | '\\u00DF' .. '\\u00F6' | '\\u00F8' .. '\\u00FF' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00DE' ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9228:30: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '@' | '0' .. '9' | '\\u00DF' .. '\\u00F6' | '\\u00F8' .. '\\u00FF' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00DE' )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9284:28: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '@' | '0' .. '9' | '\\u00DF' .. '\\u00F6' | '\\u00F8' .. '\\u00FF' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00DE' ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9284:30: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '@' | '0' .. '9' | '\\u00DF' .. '\\u00F6' | '\\u00F8' .. '\\u00FF' | '\\u00C0' .. '\\u00D6' | '\\u00D8' .. '\\u00DE' )
             {
             if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='@' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z')||(input.LA(1)>='\u00C0' && input.LA(1)<='\u00D6')||(input.LA(1)>='\u00D8' && input.LA(1)<='\u00F6')||(input.LA(1)>='\u00F8' && input.LA(1)<='\u00FF') ) {
                 input.consume();
@@ -2713,8 +2713,8 @@ public class InternalErlangLexer extends Lexer {
     // $ANTLR start "RULE_ATOM_STARTER"
     public final void mRULE_ATOM_STARTER() throws RecognitionException {
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9230:28: ( ( 'a' .. 'z' | '\\u00DF' .. '\\u00F6' | '\\u00F8' .. '\\u00FF' ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9230:30: ( 'a' .. 'z' | '\\u00DF' .. '\\u00F6' | '\\u00F8' .. '\\u00FF' )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9286:28: ( ( 'a' .. 'z' | '\\u00DF' .. '\\u00F6' | '\\u00F8' .. '\\u00FF' ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9286:30: ( 'a' .. 'z' | '\\u00DF' .. '\\u00F6' | '\\u00F8' .. '\\u00FF' )
             {
             if ( (input.LA(1)>='a' && input.LA(1)<='z')||(input.LA(1)>='\u00DF' && input.LA(1)<='\u00F6')||(input.LA(1)>='\u00F8' && input.LA(1)<='\u00FF') ) {
                 input.consume();
@@ -2737,81 +2737,81 @@ public class InternalErlangLexer extends Lexer {
     // $ANTLR start "RULE_ESCAPE"
     public final void mRULE_ESCAPE() throws RecognitionException {
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:22: ( ( 'b' | 'd' | 'e' | 'f' | 'n' | 'r' | 's' | 't' | 'v' | '0' .. '7' ( '0' .. '7' ( '0' .. '7' )? )? | ( 'x' | 'X' ) RULE_HEX_DIGIT RULE_HEX_DIGIT | ( 'x' | 'X' ) '{' ( RULE_HEX_DIGIT )+ '}' | '^' ( 'a' .. 'z' | 'A' .. 'Z' | ']' ) | . ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:24: ( 'b' | 'd' | 'e' | 'f' | 'n' | 'r' | 's' | 't' | 'v' | '0' .. '7' ( '0' .. '7' ( '0' .. '7' )? )? | ( 'x' | 'X' ) RULE_HEX_DIGIT RULE_HEX_DIGIT | ( 'x' | 'X' ) '{' ( RULE_HEX_DIGIT )+ '}' | '^' ( 'a' .. 'z' | 'A' .. 'Z' | ']' ) | . )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:22: ( ( 'b' | 'd' | 'e' | 'f' | 'n' | 'r' | 's' | 't' | 'v' | '0' .. '7' ( '0' .. '7' ( '0' .. '7' )? )? | ( 'x' | 'X' ) RULE_HEX_DIGIT RULE_HEX_DIGIT | ( 'x' | 'X' ) '{' ( RULE_HEX_DIGIT )+ '}' | '^' ( 'a' .. 'z' | 'A' .. 'Z' | ']' ) | . ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:24: ( 'b' | 'd' | 'e' | 'f' | 'n' | 'r' | 's' | 't' | 'v' | '0' .. '7' ( '0' .. '7' ( '0' .. '7' )? )? | ( 'x' | 'X' ) RULE_HEX_DIGIT RULE_HEX_DIGIT | ( 'x' | 'X' ) '{' ( RULE_HEX_DIGIT )+ '}' | '^' ( 'a' .. 'z' | 'A' .. 'Z' | ']' ) | . )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:24: ( 'b' | 'd' | 'e' | 'f' | 'n' | 'r' | 's' | 't' | 'v' | '0' .. '7' ( '0' .. '7' ( '0' .. '7' )? )? | ( 'x' | 'X' ) RULE_HEX_DIGIT RULE_HEX_DIGIT | ( 'x' | 'X' ) '{' ( RULE_HEX_DIGIT )+ '}' | '^' ( 'a' .. 'z' | 'A' .. 'Z' | ']' ) | . )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:24: ( 'b' | 'd' | 'e' | 'f' | 'n' | 'r' | 's' | 't' | 'v' | '0' .. '7' ( '0' .. '7' ( '0' .. '7' )? )? | ( 'x' | 'X' ) RULE_HEX_DIGIT RULE_HEX_DIGIT | ( 'x' | 'X' ) '{' ( RULE_HEX_DIGIT )+ '}' | '^' ( 'a' .. 'z' | 'A' .. 'Z' | ']' ) | . )
             int alt21=14;
             alt21 = dfa21.predict(input);
             switch (alt21) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:25: 'b'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:25: 'b'
                     {
                     match('b'); 
 
                     }
                     break;
                 case 2 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:29: 'd'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:29: 'd'
                     {
                     match('d'); 
 
                     }
                     break;
                 case 3 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:33: 'e'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:33: 'e'
                     {
                     match('e'); 
 
                     }
                     break;
                 case 4 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:37: 'f'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:37: 'f'
                     {
                     match('f'); 
 
                     }
                     break;
                 case 5 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:41: 'n'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:41: 'n'
                     {
                     match('n'); 
 
                     }
                     break;
                 case 6 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:45: 'r'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:45: 'r'
                     {
                     match('r'); 
 
                     }
                     break;
                 case 7 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:49: 's'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:49: 's'
                     {
                     match('s'); 
 
                     }
                     break;
                 case 8 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:53: 't'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:53: 't'
                     {
                     match('t'); 
 
                     }
                     break;
                 case 9 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:57: 'v'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:57: 'v'
                     {
                     match('v'); 
 
                     }
                     break;
                 case 10 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:61: '0' .. '7' ( '0' .. '7' ( '0' .. '7' )? )?
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:61: '0' .. '7' ( '0' .. '7' ( '0' .. '7' )? )?
                     {
                     matchRange('0','7'); 
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:70: ( '0' .. '7' ( '0' .. '7' )? )?
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:70: ( '0' .. '7' ( '0' .. '7' )? )?
                     int alt19=2;
                     int LA19_0 = input.LA(1);
 
@@ -2820,10 +2820,10 @@ public class InternalErlangLexer extends Lexer {
                     }
                     switch (alt19) {
                         case 1 :
-                            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:71: '0' .. '7' ( '0' .. '7' )?
+                            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:71: '0' .. '7' ( '0' .. '7' )?
                             {
                             matchRange('0','7'); 
-                            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:80: ( '0' .. '7' )?
+                            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:80: ( '0' .. '7' )?
                             int alt18=2;
                             int LA18_0 = input.LA(1);
 
@@ -2832,7 +2832,7 @@ public class InternalErlangLexer extends Lexer {
                             }
                             switch (alt18) {
                                 case 1 :
-                                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:81: '0' .. '7'
+                                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:81: '0' .. '7'
                                     {
                                     matchRange('0','7'); 
 
@@ -2851,7 +2851,7 @@ public class InternalErlangLexer extends Lexer {
                     }
                     break;
                 case 11 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:94: ( 'x' | 'X' ) RULE_HEX_DIGIT RULE_HEX_DIGIT
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:94: ( 'x' | 'X' ) RULE_HEX_DIGIT RULE_HEX_DIGIT
                     {
                     if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
                         input.consume();
@@ -2868,7 +2868,7 @@ public class InternalErlangLexer extends Lexer {
                     }
                     break;
                 case 12 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:134: ( 'x' | 'X' ) '{' ( RULE_HEX_DIGIT )+ '}'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:134: ( 'x' | 'X' ) '{' ( RULE_HEX_DIGIT )+ '}'
                     {
                     if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
                         input.consume();
@@ -2880,7 +2880,7 @@ public class InternalErlangLexer extends Lexer {
                         throw mse;}
 
                     match('{'); 
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:148: ( RULE_HEX_DIGIT )+
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:148: ( RULE_HEX_DIGIT )+
                     int cnt20=0;
                     loop20:
                     do {
@@ -2894,7 +2894,7 @@ public class InternalErlangLexer extends Lexer {
 
                         switch (alt20) {
                     	case 1 :
-                    	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:148: RULE_HEX_DIGIT
+                    	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:148: RULE_HEX_DIGIT
                     	    {
                     	    mRULE_HEX_DIGIT(); 
 
@@ -2915,7 +2915,7 @@ public class InternalErlangLexer extends Lexer {
                     }
                     break;
                 case 13 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:168: '^' ( 'a' .. 'z' | 'A' .. 'Z' | ']' )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:168: '^' ( 'a' .. 'z' | 'A' .. 'Z' | ']' )
                     {
                     match('^'); 
                     if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)==']'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
@@ -2931,7 +2931,7 @@ public class InternalErlangLexer extends Lexer {
                     }
                     break;
                 case 14 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9232:196: .
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9288:196: .
                     {
                     matchAny(); 
 
@@ -2952,8 +2952,8 @@ public class InternalErlangLexer extends Lexer {
     // $ANTLR start "RULE_HEX_DIGIT"
     public final void mRULE_HEX_DIGIT() throws RecognitionException {
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9234:25: ( ( '0' .. '9' | 'A' .. 'F' | 'a' .. 'f' ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9234:27: ( '0' .. '9' | 'A' .. 'F' | 'a' .. 'f' )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9290:25: ( ( '0' .. '9' | 'A' .. 'F' | 'a' .. 'f' ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9290:27: ( '0' .. '9' | 'A' .. 'F' | 'a' .. 'f' )
             {
             if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='F')||(input.LA(1)>='a' && input.LA(1)<='f') ) {
                 input.consume();
@@ -3729,7 +3729,7 @@ public class InternalErlangLexer extends Lexer {
             this.transition = DFA21_transition;
         }
         public String getDescription() {
-            return "9232:24: ( 'b' | 'd' | 'e' | 'f' | 'n' | 'r' | 's' | 't' | 'v' | '0' .. '7' ( '0' .. '7' ( '0' .. '7' )? )? | ( 'x' | 'X' ) RULE_HEX_DIGIT RULE_HEX_DIGIT | ( 'x' | 'X' ) '{' ( RULE_HEX_DIGIT )+ '}' | '^' ( 'a' .. 'z' | 'A' .. 'Z' | ']' ) | . )";
+            return "9288:24: ( 'b' | 'd' | 'e' | 'f' | 'n' | 'r' | 's' | 't' | 'v' | '0' .. '7' ( '0' .. '7' ( '0' .. '7' )? )? | ( 'x' | 'X' ) RULE_HEX_DIGIT RULE_HEX_DIGIT | ( 'x' | 'X' ) '{' ( RULE_HEX_DIGIT )+ '}' | '^' ( 'a' .. 'z' | 'A' .. 'Z' | ']' ) | . )";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;

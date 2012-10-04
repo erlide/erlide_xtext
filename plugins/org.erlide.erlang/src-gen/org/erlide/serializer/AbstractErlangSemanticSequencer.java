@@ -1722,8 +1722,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getCompileAttributeAccess().getTagCompileKeyword_1_0(), semanticObject.getTag());
-		feeder.accept(grammarAccess.getCompileAttributeAccess().getOptionsExpressionParserRuleCall_3_0(), semanticObject.getOptions());
+		feeder.accept(grammarAccess.getCompileAttributeAccess().getTagCompileKeyword_0_0(), semanticObject.getTag());
+		feeder.accept(grammarAccess.getCompileAttributeAccess().getOptionsExpressionParserRuleCall_2_0(), semanticObject.getOptions());
 		feeder.finish();
 	}
 	
@@ -1784,7 +1784,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getElseAttributeAccess().getTagElseKeyword_1_0(), semanticObject.getTag());
+		feeder.accept(grammarAccess.getElseAttributeAccess().getTagElseKeyword_0_0(), semanticObject.getTag());
 		feeder.finish();
 	}
 	
@@ -1809,7 +1809,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_1_0(), semanticObject.getTag());
+		feeder.accept(grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_0_0(), semanticObject.getTag());
 		feeder.finish();
 	}
 	
@@ -1966,9 +1966,9 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFileAttributeAccess().getTagFileKeyword_1_0(), semanticObject.getTag());
-		feeder.accept(grammarAccess.getFileAttributeAccess().getFileSTRINGTerminalRuleCall_3_0(), semanticObject.getFile());
-		feeder.accept(grammarAccess.getFileAttributeAccess().getLineINTEGERParserRuleCall_5_0(), semanticObject.getLine());
+		feeder.accept(grammarAccess.getFileAttributeAccess().getTagFileKeyword_0_0(), semanticObject.getTag());
+		feeder.accept(grammarAccess.getFileAttributeAccess().getFileSTRINGTerminalRuleCall_2_0(), semanticObject.getFile());
+		feeder.accept(grammarAccess.getFileAttributeAccess().getLineINTEGERParserRuleCall_4_0(), semanticObject.getLine());
 		feeder.finish();
 	}
 	
@@ -2102,8 +2102,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getIncludeAttributeAccess().getTagIncludeKeyword_1_0(), semanticObject.getTag());
-		feeder.accept(grammarAccess.getIncludeAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0(), semanticObject.getImportURI());
+		feeder.accept(grammarAccess.getIncludeAttributeAccess().getTagIncludeKeyword_0_0(), semanticObject.getTag());
+		feeder.accept(grammarAccess.getIncludeAttributeAccess().getImportURISTRINGTerminalRuleCall_2_0(), semanticObject.getImportURI());
 		feeder.finish();
 	}
 	
@@ -2121,8 +2121,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getIncludeLibAttributeAccess().getTagInclude_libKeyword_1_0(), semanticObject.getTag());
-		feeder.accept(grammarAccess.getIncludeLibAttributeAccess().getImportURISTRINGTerminalRuleCall_3_0(), semanticObject.getImportURI());
+		feeder.accept(grammarAccess.getIncludeLibAttributeAccess().getTagInclude_libKeyword_0_0(), semanticObject.getTag());
+		feeder.accept(grammarAccess.getIncludeLibAttributeAccess().getImportURISTRINGTerminalRuleCall_2_0(), semanticObject.getImportURI());
 		feeder.finish();
 	}
 	
@@ -2239,8 +2239,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getModuleAttributeAccess().getTagModuleKeyword_1_0(), semanticObject.getTag());
-		feeder.accept(grammarAccess.getModuleAttributeAccess().getModuleNameNAMEParserRuleCall_3_0(), semanticObject.getModuleName());
+		feeder.accept(grammarAccess.getModuleAttributeAccess().getTagModuleKeyword_0_0(), semanticObject.getTag());
+		feeder.accept(grammarAccess.getModuleAttributeAccess().getModuleNameNAMEParserRuleCall_2_0(), semanticObject.getModuleName());
 		feeder.finish();
 	}
 	
@@ -2611,8 +2611,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getUndefAttributeAccess().getTagUndefKeyword_1_0(), semanticObject.getTag());
-		feeder.accept(grammarAccess.getUndefAttributeAccess().getRefMacroRefParserRuleCall_3_0(), semanticObject.getRef());
+		feeder.accept(grammarAccess.getUndefAttributeAccess().getTagUndefKeyword_0_0(), semanticObject.getTag());
+		feeder.accept(grammarAccess.getUndefAttributeAccess().getRefMacroRefParserRuleCall_2_0(), semanticObject.getRef());
 		feeder.finish();
 	}
 	
