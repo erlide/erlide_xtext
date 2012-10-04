@@ -168,6 +168,7 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//IfdefAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Alternatives">
           <elements xsi:type="xtext:Keyword" value="ifdef"/>
@@ -187,6 +188,7 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//ElseAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="else"/>
       </elements>
@@ -198,6 +200,7 @@
       <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//EndifAttribute"/>
     </type>
     <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Assignment" predicated="true" feature="tag" operator="=">
         <terminal xsi:type="xtext:Keyword" value="endif"/>
       </elements>

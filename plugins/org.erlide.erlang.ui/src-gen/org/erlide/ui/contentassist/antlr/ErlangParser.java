@@ -42,7 +42,7 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAttributeAccess().getAlternatives_1(), "rule__Attribute__Alternatives_1");
 					put(grammarAccess.getConditionalAttributeAccess().getAlternatives(), "rule__ConditionalAttribute__Alternatives");
 					put(grammarAccess.getAbstractDefineAttributeAccess().getAlternatives(), "rule__AbstractDefineAttribute__Alternatives");
-					put(grammarAccess.getIfdefAttributeAccess().getTagAlternatives_0_0(), "rule__IfdefAttribute__TagAlternatives_0_0");
+					put(grammarAccess.getIfdefAttributeAccess().getTagAlternatives_1_0(), "rule__IfdefAttribute__TagAlternatives_1_0");
 					put(grammarAccess.getAbstractIncludeAttributeAccess().getAlternatives(), "rule__AbstractIncludeAttribute__Alternatives");
 					put(grammarAccess.getEncodingAttributeAccess().getAlternatives_1(), "rule__EncodingAttribute__Alternatives_1");
 					put(grammarAccess.getRecordAttributeAccess().getAlternatives_4(), "rule__RecordAttribute__Alternatives_4");
@@ -324,10 +324,10 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDefineAttributeAccess().getValueAssignment_4_1(), "rule__DefineAttribute__ValueAssignment_4_1");
 					put(grammarAccess.getUndefAttributeAccess().getTagAssignment_0(), "rule__UndefAttribute__TagAssignment_0");
 					put(grammarAccess.getUndefAttributeAccess().getRefAssignment_2(), "rule__UndefAttribute__RefAssignment_2");
-					put(grammarAccess.getIfdefAttributeAccess().getTagAssignment_0(), "rule__IfdefAttribute__TagAssignment_0");
-					put(grammarAccess.getIfdefAttributeAccess().getRefAssignment_2(), "rule__IfdefAttribute__RefAssignment_2");
-					put(grammarAccess.getElseAttributeAccess().getTagAssignment_0(), "rule__ElseAttribute__TagAssignment_0");
-					put(grammarAccess.getEndifAttributeAccess().getTagAssignment_0(), "rule__EndifAttribute__TagAssignment_0");
+					put(grammarAccess.getIfdefAttributeAccess().getTagAssignment_1(), "rule__IfdefAttribute__TagAssignment_1");
+					put(grammarAccess.getIfdefAttributeAccess().getRefAssignment_3(), "rule__IfdefAttribute__RefAssignment_3");
+					put(grammarAccess.getElseAttributeAccess().getTagAssignment_1(), "rule__ElseAttribute__TagAssignment_1");
+					put(grammarAccess.getEndifAttributeAccess().getTagAssignment_1(), "rule__EndifAttribute__TagAssignment_1");
 					put(grammarAccess.getIncludeAttributeAccess().getTagAssignment_0(), "rule__IncludeAttribute__TagAssignment_0");
 					put(grammarAccess.getIncludeAttributeAccess().getImportURIAssignment_2(), "rule__IncludeAttribute__ImportURIAssignment_2");
 					put(grammarAccess.getIncludeLibAttributeAccess().getTagAssignment_0(), "rule__IncludeLibAttribute__TagAssignment_0");

@@ -1784,7 +1784,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getElseAttributeAccess().getTagElseKeyword_0_0(), semanticObject.getTag());
+		feeder.accept(grammarAccess.getElseAttributeAccess().getTagElseKeyword_1_0(), semanticObject.getTag());
 		feeder.finish();
 	}
 	
@@ -1809,7 +1809,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_0_0(), semanticObject.getTag());
+		feeder.accept(grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_1_0(), semanticObject.getTag());
 		feeder.finish();
 	}
 	

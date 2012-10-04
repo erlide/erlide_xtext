@@ -75,15 +75,15 @@ UndefAttribute:
 ;
 
 IfdefAttribute:
-	=> tag=('ifdef'|'ifndef') '(' ref=MacroRef ')' FULL_STOP
+	'-' => tag=('ifdef'|'ifndef') '(' ref=MacroRef ')' FULL_STOP
 ;
 
 ElseAttribute:
-	=> tag='else' FULL_STOP
+	'-' => tag='else' FULL_STOP
 ;
 
 EndifAttribute:
-	=> tag='endif'	FULL_STOP
+	'-' => tag='endif'	FULL_STOP
 ;
 
 AbstractIncludeAttribute:

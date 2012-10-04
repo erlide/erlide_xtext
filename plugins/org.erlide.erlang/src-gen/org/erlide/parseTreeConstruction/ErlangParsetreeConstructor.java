@@ -2460,11 +2460,11 @@ protected class UndefAttribute_FULL_STOPTerminalRuleCall_4 extends UnassignedTex
 /************ begin Rule IfdefAttribute ****************
  *
  * IfdefAttribute:
- * 	=> tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP;
+ * 	"-" => tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP;
  *
  **/
 
-// => tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP
+// "-" => tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP
 protected class IfdefAttribute_Group extends GroupToken {
 	
 	public IfdefAttribute_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2479,7 +2479,7 @@ protected class IfdefAttribute_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IfdefAttribute_FULL_STOPTerminalRuleCall_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IfdefAttribute_FULL_STOPTerminalRuleCall_5(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2493,16 +2493,16 @@ protected class IfdefAttribute_Group extends GroupToken {
 
 }
 
-// => tag=("ifdef" | "ifndef")
-protected class IfdefAttribute_TagAssignment_0 extends AssignmentToken  {
+// "-"
+protected class IfdefAttribute_HyphenMinusKeyword_0 extends KeywordToken  {
 	
-	public IfdefAttribute_TagAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IfdefAttribute_HyphenMinusKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getIfdefAttributeAccess().getTagAssignment_0();
+	public Keyword getGrammarElement() {
+		return grammarAccess.getIfdefAttributeAccess().getHyphenMinusKeyword_0();
 	}
 
     @Override
@@ -2512,18 +2512,40 @@ protected class IfdefAttribute_TagAssignment_0 extends AssignmentToken  {
 		}	
 	}
 
+}
+
+// => tag=("ifdef" | "ifndef")
+protected class IfdefAttribute_TagAssignment_1 extends AssignmentToken  {
+	
+	public IfdefAttribute_TagAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getIfdefAttributeAccess().getTagAssignment_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new IfdefAttribute_HyphenMinusKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
     @Override	
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("tag",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("tag");
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getIfdefAttributeAccess().getTagIfdefKeyword_0_0_0(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getIfdefAttributeAccess().getTagIfdefKeyword_1_0_0(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getIfdefAttributeAccess().getTagIfdefKeyword_0_0_0();
+			element = grammarAccess.getIfdefAttributeAccess().getTagIfdefKeyword_1_0_0();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getIfdefAttributeAccess().getTagIfndefKeyword_0_0_1(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getIfdefAttributeAccess().getTagIfndefKeyword_1_0_1(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getIfdefAttributeAccess().getTagIfndefKeyword_0_0_1();
+			element = grammarAccess.getIfdefAttributeAccess().getTagIfndefKeyword_1_0_1();
 			return obj;
 		}
 		return null;
@@ -2532,21 +2554,21 @@ protected class IfdefAttribute_TagAssignment_0 extends AssignmentToken  {
 }
 
 // "("
-protected class IfdefAttribute_LeftParenthesisKeyword_1 extends KeywordToken  {
+protected class IfdefAttribute_LeftParenthesisKeyword_2 extends KeywordToken  {
 	
-	public IfdefAttribute_LeftParenthesisKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IfdefAttribute_LeftParenthesisKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getIfdefAttributeAccess().getLeftParenthesisKeyword_1();
+		return grammarAccess.getIfdefAttributeAccess().getLeftParenthesisKeyword_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IfdefAttribute_TagAssignment_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IfdefAttribute_TagAssignment_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2554,15 +2576,15 @@ protected class IfdefAttribute_LeftParenthesisKeyword_1 extends KeywordToken  {
 }
 
 // ref=MacroRef
-protected class IfdefAttribute_RefAssignment_2 extends AssignmentToken  {
+protected class IfdefAttribute_RefAssignment_3 extends AssignmentToken  {
 	
-	public IfdefAttribute_RefAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IfdefAttribute_RefAssignment_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getIfdefAttributeAccess().getRefAssignment_2();
+		return grammarAccess.getIfdefAttributeAccess().getRefAssignment_3();
 	}
 
     @Override
@@ -2581,7 +2603,7 @@ protected class IfdefAttribute_RefAssignment_2 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getMacroRefRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getIfdefAttributeAccess().getRefMacroRefParserRuleCall_2_0(); 
+				element = grammarAccess.getIfdefAttributeAccess().getRefMacroRefParserRuleCall_3_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -2593,28 +2615,28 @@ protected class IfdefAttribute_RefAssignment_2 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new IfdefAttribute_LeftParenthesisKeyword_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new IfdefAttribute_LeftParenthesisKeyword_2(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
 
 // ")"
-protected class IfdefAttribute_RightParenthesisKeyword_3 extends KeywordToken  {
+protected class IfdefAttribute_RightParenthesisKeyword_4 extends KeywordToken  {
 	
-	public IfdefAttribute_RightParenthesisKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IfdefAttribute_RightParenthesisKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getIfdefAttributeAccess().getRightParenthesisKeyword_3();
+		return grammarAccess.getIfdefAttributeAccess().getRightParenthesisKeyword_4();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IfdefAttribute_RefAssignment_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IfdefAttribute_RefAssignment_3(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2622,21 +2644,21 @@ protected class IfdefAttribute_RightParenthesisKeyword_3 extends KeywordToken  {
 }
 
 // FULL_STOP
-protected class IfdefAttribute_FULL_STOPTerminalRuleCall_4 extends UnassignedTextToken {
+protected class IfdefAttribute_FULL_STOPTerminalRuleCall_5 extends UnassignedTextToken {
 
-	public IfdefAttribute_FULL_STOPTerminalRuleCall_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public IfdefAttribute_FULL_STOPTerminalRuleCall_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getIfdefAttributeAccess().getFULL_STOPTerminalRuleCall_4();
+		return grammarAccess.getIfdefAttributeAccess().getFULL_STOPTerminalRuleCall_5();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new IfdefAttribute_RightParenthesisKeyword_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IfdefAttribute_RightParenthesisKeyword_4(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2650,11 +2672,11 @@ protected class IfdefAttribute_FULL_STOPTerminalRuleCall_4 extends UnassignedTex
 /************ begin Rule ElseAttribute ****************
  *
  * ElseAttribute:
- * 	=> tag="else" FULL_STOP;
+ * 	"-" => tag="else" FULL_STOP;
  *
  **/
 
-// => tag="else" FULL_STOP
+// "-" => tag="else" FULL_STOP
 protected class ElseAttribute_Group extends GroupToken {
 	
 	public ElseAttribute_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2669,7 +2691,7 @@ protected class ElseAttribute_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new ElseAttribute_FULL_STOPTerminalRuleCall_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new ElseAttribute_FULL_STOPTerminalRuleCall_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2683,16 +2705,16 @@ protected class ElseAttribute_Group extends GroupToken {
 
 }
 
-// => tag="else"
-protected class ElseAttribute_TagAssignment_0 extends AssignmentToken  {
+// "-"
+protected class ElseAttribute_HyphenMinusKeyword_0 extends KeywordToken  {
 	
-	public ElseAttribute_TagAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public ElseAttribute_HyphenMinusKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getElseAttributeAccess().getTagAssignment_0();
+	public Keyword getGrammarElement() {
+		return grammarAccess.getElseAttributeAccess().getHyphenMinusKeyword_0();
 	}
 
     @Override
@@ -2702,13 +2724,35 @@ protected class ElseAttribute_TagAssignment_0 extends AssignmentToken  {
 		}	
 	}
 
+}
+
+// => tag="else"
+protected class ElseAttribute_TagAssignment_1 extends AssignmentToken  {
+	
+	public ElseAttribute_TagAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getElseAttributeAccess().getTagAssignment_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new ElseAttribute_HyphenMinusKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
     @Override	
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("tag",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("tag");
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getElseAttributeAccess().getTagElseKeyword_0_0(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getElseAttributeAccess().getTagElseKeyword_1_0(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getElseAttributeAccess().getTagElseKeyword_0_0();
+			element = grammarAccess.getElseAttributeAccess().getTagElseKeyword_1_0();
 			return obj;
 		}
 		return null;
@@ -2717,21 +2761,21 @@ protected class ElseAttribute_TagAssignment_0 extends AssignmentToken  {
 }
 
 // FULL_STOP
-protected class ElseAttribute_FULL_STOPTerminalRuleCall_1 extends UnassignedTextToken {
+protected class ElseAttribute_FULL_STOPTerminalRuleCall_2 extends UnassignedTextToken {
 
-	public ElseAttribute_FULL_STOPTerminalRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public ElseAttribute_FULL_STOPTerminalRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getElseAttributeAccess().getFULL_STOPTerminalRuleCall_1();
+		return grammarAccess.getElseAttributeAccess().getFULL_STOPTerminalRuleCall_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new ElseAttribute_TagAssignment_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new ElseAttribute_TagAssignment_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2745,11 +2789,11 @@ protected class ElseAttribute_FULL_STOPTerminalRuleCall_1 extends UnassignedText
 /************ begin Rule EndifAttribute ****************
  *
  * EndifAttribute:
- * 	=> tag="endif" FULL_STOP;
+ * 	"-" => tag="endif" FULL_STOP;
  *
  **/
 
-// => tag="endif" FULL_STOP
+// "-" => tag="endif" FULL_STOP
 protected class EndifAttribute_Group extends GroupToken {
 	
 	public EndifAttribute_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2764,7 +2808,7 @@ protected class EndifAttribute_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new EndifAttribute_FULL_STOPTerminalRuleCall_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new EndifAttribute_FULL_STOPTerminalRuleCall_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2778,16 +2822,16 @@ protected class EndifAttribute_Group extends GroupToken {
 
 }
 
-// => tag="endif"
-protected class EndifAttribute_TagAssignment_0 extends AssignmentToken  {
+// "-"
+protected class EndifAttribute_HyphenMinusKeyword_0 extends KeywordToken  {
 	
-	public EndifAttribute_TagAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public EndifAttribute_HyphenMinusKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getEndifAttributeAccess().getTagAssignment_0();
+	public Keyword getGrammarElement() {
+		return grammarAccess.getEndifAttributeAccess().getHyphenMinusKeyword_0();
 	}
 
     @Override
@@ -2797,13 +2841,35 @@ protected class EndifAttribute_TagAssignment_0 extends AssignmentToken  {
 		}	
 	}
 
+}
+
+// => tag="endif"
+protected class EndifAttribute_TagAssignment_1 extends AssignmentToken  {
+	
+	public EndifAttribute_TagAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getEndifAttributeAccess().getTagAssignment_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new EndifAttribute_HyphenMinusKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
     @Override	
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("tag",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("tag");
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_0_0(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_1_0(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_0_0();
+			element = grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_1_0();
 			return obj;
 		}
 		return null;
@@ -2812,21 +2878,21 @@ protected class EndifAttribute_TagAssignment_0 extends AssignmentToken  {
 }
 
 // FULL_STOP
-protected class EndifAttribute_FULL_STOPTerminalRuleCall_1 extends UnassignedTextToken {
+protected class EndifAttribute_FULL_STOPTerminalRuleCall_2 extends UnassignedTextToken {
 
-	public EndifAttribute_FULL_STOPTerminalRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public EndifAttribute_FULL_STOPTerminalRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getEndifAttributeAccess().getFULL_STOPTerminalRuleCall_1();
+		return grammarAccess.getEndifAttributeAccess().getFULL_STOPTerminalRuleCall_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new EndifAttribute_TagAssignment_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new EndifAttribute_TagAssignment_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}

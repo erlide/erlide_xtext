@@ -138,19 +138,7 @@ ruleForm returns [EObject current=null]
         afterParserOrEnumRuleCall();
     }
 
-    |((
-(
-(
-	'ifdef' 
- 
-
-    |			'ifndef' 
- 
-
-)
-
-)
-)=>
+    |
     { 
         newCompositeNode(grammarAccess.getFormAccess().getConditionalFormBlockParserRuleCall_2()); 
     }
@@ -159,7 +147,7 @@ ruleForm returns [EObject current=null]
         $current = $this_ConditionalFormBlock_2.current; 
         afterParserOrEnumRuleCall();
     }
-)
+
     |((
     {
         $current = forceCreateModelElement(
@@ -209,19 +197,7 @@ ruleConditionalFormBlock returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(((
-(
-(
-	'ifdef' 
- 
-
-    |			'ifndef' 
- 
-
-)
-
-)
-)=>
+((
 (
 		{ 
 	        newCompositeNode(grammarAccess.getConditionalFormBlockAccess().getConditionIfdefAttributeParserRuleCall_0_0()); 
@@ -297,13 +273,7 @@ ruleElseAttribute
 	    }
 
 )
-)*)?((
-(
-	'endif' 
- 
-
-)
-)=>
+)*)?(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getConditionalFormBlockAccess().getEndEndifAttributeParserRuleCall_3_0()); 
@@ -786,7 +756,11 @@ ruleIfdefAttribute returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(((
+(	otherlv_0='-' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getIfdefAttributeAccess().getHyphenMinusKeyword_0());
+    }
+((
 (
 (
 	'ifdef' 
@@ -801,62 +775,62 @@ ruleIfdefAttribute returns [EObject current=null]
 )=>
 (
 (
-		lv_tag_0_1=	'ifdef' 
+		lv_tag_1_1=	'ifdef' 
     {
-        newLeafNode(lv_tag_0_1, grammarAccess.getIfdefAttributeAccess().getTagIfdefKeyword_0_0_0());
+        newLeafNode(lv_tag_1_1, grammarAccess.getIfdefAttributeAccess().getTagIfdefKeyword_1_0_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getIfdefAttributeRule());
 	        }
-       		setWithLastConsumed($current, "tag", lv_tag_0_1, null);
+       		setWithLastConsumed($current, "tag", lv_tag_1_1, null);
 	    }
 
-    |		lv_tag_0_2=	'ifndef' 
+    |		lv_tag_1_2=	'ifndef' 
     {
-        newLeafNode(lv_tag_0_2, grammarAccess.getIfdefAttributeAccess().getTagIfndefKeyword_0_0_1());
+        newLeafNode(lv_tag_1_2, grammarAccess.getIfdefAttributeAccess().getTagIfndefKeyword_1_0_1());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getIfdefAttributeRule());
 	        }
-       		setWithLastConsumed($current, "tag", lv_tag_0_2, null);
+       		setWithLastConsumed($current, "tag", lv_tag_1_2, null);
 	    }
 
 )
 
 )
-)	otherlv_1='(' 
+)	otherlv_2='(' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getIfdefAttributeAccess().getLeftParenthesisKeyword_1());
+    	newLeafNode(otherlv_2, grammarAccess.getIfdefAttributeAccess().getLeftParenthesisKeyword_2());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getIfdefAttributeAccess().getRefMacroRefParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getIfdefAttributeAccess().getRefMacroRefParserRuleCall_3_0()); 
 	    }
-		lv_ref_2_0=ruleMacroRef		{
+		lv_ref_3_0=ruleMacroRef		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getIfdefAttributeRule());
 	        }
        		set(
        			$current, 
        			"ref",
-        		lv_ref_2_0, 
+        		lv_ref_3_0, 
         		"MacroRef");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_3=')' 
+)	otherlv_4=')' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getIfdefAttributeAccess().getRightParenthesisKeyword_3());
+    	newLeafNode(otherlv_4, grammarAccess.getIfdefAttributeAccess().getRightParenthesisKeyword_4());
     }
-this_FULL_STOP_4=RULE_FULL_STOP
+this_FULL_STOP_5=RULE_FULL_STOP
     { 
-    newLeafNode(this_FULL_STOP_4, grammarAccess.getIfdefAttributeAccess().getFULL_STOPTerminalRuleCall_4()); 
+    newLeafNode(this_FULL_STOP_5, grammarAccess.getIfdefAttributeAccess().getFULL_STOPTerminalRuleCall_5()); 
     }
 )
 ;
@@ -879,7 +853,11 @@ ruleElseAttribute returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(((
+(	otherlv_0='-' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getElseAttributeAccess().getHyphenMinusKeyword_0());
+    }
+((
 (
 	'else' 
  
@@ -887,22 +865,22 @@ ruleElseAttribute returns [EObject current=null]
 )
 )=>
 (
-		lv_tag_0_0=	'else' 
+		lv_tag_1_0=	'else' 
     {
-        newLeafNode(lv_tag_0_0, grammarAccess.getElseAttributeAccess().getTagElseKeyword_0_0());
+        newLeafNode(lv_tag_1_0, grammarAccess.getElseAttributeAccess().getTagElseKeyword_1_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getElseAttributeRule());
 	        }
-       		setWithLastConsumed($current, "tag", lv_tag_0_0, "else");
+       		setWithLastConsumed($current, "tag", lv_tag_1_0, "else");
 	    }
 
 )
-)this_FULL_STOP_1=RULE_FULL_STOP
+)this_FULL_STOP_2=RULE_FULL_STOP
     { 
-    newLeafNode(this_FULL_STOP_1, grammarAccess.getElseAttributeAccess().getFULL_STOPTerminalRuleCall_1()); 
+    newLeafNode(this_FULL_STOP_2, grammarAccess.getElseAttributeAccess().getFULL_STOPTerminalRuleCall_2()); 
     }
 )
 ;
@@ -925,7 +903,11 @@ ruleEndifAttribute returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(((
+(	otherlv_0='-' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getEndifAttributeAccess().getHyphenMinusKeyword_0());
+    }
+((
 (
 	'endif' 
  
@@ -933,22 +915,22 @@ ruleEndifAttribute returns [EObject current=null]
 )
 )=>
 (
-		lv_tag_0_0=	'endif' 
+		lv_tag_1_0=	'endif' 
     {
-        newLeafNode(lv_tag_0_0, grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_0_0());
+        newLeafNode(lv_tag_1_0, grammarAccess.getEndifAttributeAccess().getTagEndifKeyword_1_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getEndifAttributeRule());
 	        }
-       		setWithLastConsumed($current, "tag", lv_tag_0_0, "endif");
+       		setWithLastConsumed($current, "tag", lv_tag_1_0, "endif");
 	    }
 
 )
-)this_FULL_STOP_1=RULE_FULL_STOP
+)this_FULL_STOP_2=RULE_FULL_STOP
     { 
-    newLeafNode(this_FULL_STOP_1, grammarAccess.getEndifAttributeAccess().getFULL_STOPTerminalRuleCall_1()); 
+    newLeafNode(this_FULL_STOP_2, grammarAccess.getEndifAttributeAccess().getFULL_STOPTerminalRuleCall_2()); 
     }
 )
 ;

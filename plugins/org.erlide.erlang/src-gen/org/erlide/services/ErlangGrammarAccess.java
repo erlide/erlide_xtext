@@ -418,97 +418,109 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	public class IfdefAttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IfdefAttribute");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTagAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Alternatives cTagAlternatives_0_0 = (Alternatives)cTagAssignment_0.eContents().get(0);
-		private final Keyword cTagIfdefKeyword_0_0_0 = (Keyword)cTagAlternatives_0_0.eContents().get(0);
-		private final Keyword cTagIfndefKeyword_0_0_1 = (Keyword)cTagAlternatives_0_0.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cRefAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cRefMacroRefParserRuleCall_2_0 = (RuleCall)cRefAssignment_2.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final RuleCall cFULL_STOPTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTagAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cTagAlternatives_1_0 = (Alternatives)cTagAssignment_1.eContents().get(0);
+		private final Keyword cTagIfdefKeyword_1_0_0 = (Keyword)cTagAlternatives_1_0.eContents().get(0);
+		private final Keyword cTagIfndefKeyword_1_0_1 = (Keyword)cTagAlternatives_1_0.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cRefAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cRefMacroRefParserRuleCall_3_0 = (RuleCall)cRefAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final RuleCall cFULL_STOPTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
 		//IfdefAttribute:
-		//	=> tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP;
+		//	"-" => tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
-		//=> tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP
+		//"-" => tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP
 		public Group getGroup() { return cGroup; }
 
+		//"-"
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
 		//=> tag=("ifdef" | "ifndef")
-		public Assignment getTagAssignment_0() { return cTagAssignment_0; }
+		public Assignment getTagAssignment_1() { return cTagAssignment_1; }
 
 		//"ifdef" | "ifndef"
-		public Alternatives getTagAlternatives_0_0() { return cTagAlternatives_0_0; }
+		public Alternatives getTagAlternatives_1_0() { return cTagAlternatives_1_0; }
 
 		//"ifdef"
-		public Keyword getTagIfdefKeyword_0_0_0() { return cTagIfdefKeyword_0_0_0; }
+		public Keyword getTagIfdefKeyword_1_0_0() { return cTagIfdefKeyword_1_0_0; }
 
 		//"ifndef"
-		public Keyword getTagIfndefKeyword_0_0_1() { return cTagIfndefKeyword_0_0_1; }
+		public Keyword getTagIfndefKeyword_1_0_1() { return cTagIfndefKeyword_1_0_1; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 
 		//ref=MacroRef
-		public Assignment getRefAssignment_2() { return cRefAssignment_2; }
+		public Assignment getRefAssignment_3() { return cRefAssignment_3; }
 
 		//MacroRef
-		public RuleCall getRefMacroRefParserRuleCall_2_0() { return cRefMacroRefParserRuleCall_2_0; }
+		public RuleCall getRefMacroRefParserRuleCall_3_0() { return cRefMacroRefParserRuleCall_3_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 
 		//FULL_STOP
-		public RuleCall getFULL_STOPTerminalRuleCall_4() { return cFULL_STOPTerminalRuleCall_4; }
+		public RuleCall getFULL_STOPTerminalRuleCall_5() { return cFULL_STOPTerminalRuleCall_5; }
 	}
 
 	public class ElseAttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ElseAttribute");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTagAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cTagElseKeyword_0_0 = (Keyword)cTagAssignment_0.eContents().get(0);
-		private final RuleCall cFULL_STOPTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTagAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cTagElseKeyword_1_0 = (Keyword)cTagAssignment_1.eContents().get(0);
+		private final RuleCall cFULL_STOPTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//ElseAttribute:
-		//	=> tag="else" FULL_STOP;
+		//	"-" => tag="else" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
-		//=> tag="else" FULL_STOP
+		//"-" => tag="else" FULL_STOP
 		public Group getGroup() { return cGroup; }
 
+		//"-"
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
 		//=> tag="else"
-		public Assignment getTagAssignment_0() { return cTagAssignment_0; }
+		public Assignment getTagAssignment_1() { return cTagAssignment_1; }
 
 		//"else"
-		public Keyword getTagElseKeyword_0_0() { return cTagElseKeyword_0_0; }
+		public Keyword getTagElseKeyword_1_0() { return cTagElseKeyword_1_0; }
 
 		//FULL_STOP
-		public RuleCall getFULL_STOPTerminalRuleCall_1() { return cFULL_STOPTerminalRuleCall_1; }
+		public RuleCall getFULL_STOPTerminalRuleCall_2() { return cFULL_STOPTerminalRuleCall_2; }
 	}
 
 	public class EndifAttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EndifAttribute");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTagAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cTagEndifKeyword_0_0 = (Keyword)cTagAssignment_0.eContents().get(0);
-		private final RuleCall cFULL_STOPTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTagAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cTagEndifKeyword_1_0 = (Keyword)cTagAssignment_1.eContents().get(0);
+		private final RuleCall cFULL_STOPTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//EndifAttribute:
-		//	=> tag="endif" FULL_STOP;
+		//	"-" => tag="endif" FULL_STOP;
 		public ParserRule getRule() { return rule; }
 
-		//=> tag="endif" FULL_STOP
+		//"-" => tag="endif" FULL_STOP
 		public Group getGroup() { return cGroup; }
 
+		//"-"
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
 		//=> tag="endif"
-		public Assignment getTagAssignment_0() { return cTagAssignment_0; }
+		public Assignment getTagAssignment_1() { return cTagAssignment_1; }
 
 		//"endif"
-		public Keyword getTagEndifKeyword_0_0() { return cTagEndifKeyword_0_0; }
+		public Keyword getTagEndifKeyword_1_0() { return cTagEndifKeyword_1_0; }
 
 		//FULL_STOP
-		public RuleCall getFULL_STOPTerminalRuleCall_1() { return cFULL_STOPTerminalRuleCall_1; }
+		public RuleCall getFULL_STOPTerminalRuleCall_2() { return cFULL_STOPTerminalRuleCall_2; }
 	}
 
 	public class AbstractIncludeAttributeElements extends AbstractParserRuleElementFinder {
@@ -5997,7 +6009,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IfdefAttribute:
-	//	=> tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP;
+	//	"-" => tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" FULL_STOP;
 	public IfdefAttributeElements getIfdefAttributeAccess() {
 		return (pIfdefAttribute != null) ? pIfdefAttribute : (pIfdefAttribute = new IfdefAttributeElements());
 	}
@@ -6007,7 +6019,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ElseAttribute:
-	//	=> tag="else" FULL_STOP;
+	//	"-" => tag="else" FULL_STOP;
 	public ElseAttributeElements getElseAttributeAccess() {
 		return (pElseAttribute != null) ? pElseAttribute : (pElseAttribute = new ElseAttributeElements());
 	}
@@ -6017,7 +6029,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EndifAttribute:
-	//	=> tag="endif" FULL_STOP;
+	//	"-" => tag="endif" FULL_STOP;
 	public EndifAttributeElements getEndifAttributeAccess() {
 		return (pEndifAttribute != null) ? pEndifAttribute : (pEndifAttribute = new EndifAttributeElements());
 	}
