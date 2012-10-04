@@ -124,6 +124,8 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         AbstractDefineAttribute abstractDefineAttribute = (AbstractDefineAttribute)theEObject;
         T result = caseAbstractDefineAttribute(abstractDefineAttribute);
+        if (result == null) result = caseAttribute(abstractDefineAttribute);
+        if (result == null) result = caseForm(abstractDefineAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -131,8 +133,8 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         DefineAttribute defineAttribute = (DefineAttribute)theEObject;
         T result = caseDefineAttribute(defineAttribute);
-        if (result == null) result = caseAttribute(defineAttribute);
         if (result == null) result = caseAbstractDefineAttribute(defineAttribute);
+        if (result == null) result = caseAttribute(defineAttribute);
         if (result == null) result = caseForm(defineAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -141,8 +143,8 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         UndefAttribute undefAttribute = (UndefAttribute)theEObject;
         T result = caseUndefAttribute(undefAttribute);
-        if (result == null) result = caseAttribute(undefAttribute);
         if (result == null) result = caseAbstractDefineAttribute(undefAttribute);
+        if (result == null) result = caseAttribute(undefAttribute);
         if (result == null) result = caseForm(undefAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;

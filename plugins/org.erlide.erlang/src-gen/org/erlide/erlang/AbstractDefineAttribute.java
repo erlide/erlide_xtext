@@ -5,7 +5,6 @@
  */
 package org.erlide.erlang;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,6 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface AbstractDefineAttribute extends EObject
+public interface AbstractDefineAttribute extends Attribute
 {
 } // AbstractDefineAttribute

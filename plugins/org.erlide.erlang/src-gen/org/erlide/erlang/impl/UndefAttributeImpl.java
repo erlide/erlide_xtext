@@ -24,35 +24,14 @@ import org.erlide.erlang.UndefAttribute;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.UndefAttributeImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.UndefAttributeImpl#getRef <em>Ref</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
+public class UndefAttributeImpl extends AbstractDefineAttributeImpl implements UndefAttribute
 {
-  /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -82,29 +61,6 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
   protected EClass eStaticClass()
   {
     return ErlangPackage.Literals.UNDEF_ATTRIBUTE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.UNDEF_ATTRIBUTE__TAG, oldTag, tag));
   }
 
   /**
@@ -181,8 +137,6 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
   {
     switch (featureID)
     {
-      case ErlangPackage.UNDEF_ATTRIBUTE__TAG:
-        return getTag();
       case ErlangPackage.UNDEF_ATTRIBUTE__REF:
         return getRef();
     }
@@ -199,9 +153,6 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
   {
     switch (featureID)
     {
-      case ErlangPackage.UNDEF_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
       case ErlangPackage.UNDEF_ATTRIBUTE__REF:
         setRef((Expression)newValue);
         return;
@@ -219,9 +170,6 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
   {
     switch (featureID)
     {
-      case ErlangPackage.UNDEF_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
       case ErlangPackage.UNDEF_ATTRIBUTE__REF:
         setRef((Expression)null);
         return;
@@ -239,29 +187,10 @@ public class UndefAttributeImpl extends AttributeImpl implements UndefAttribute
   {
     switch (featureID)
     {
-      case ErlangPackage.UNDEF_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.UNDEF_ATTRIBUTE__REF:
         return ref != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(')');
-    return result.toString();
   }
 
 } //UndefAttributeImpl

@@ -21,7 +21,6 @@ import org.erlide.erlang.ModuleAttribute;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.ModuleAttributeImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.ModuleAttributeImpl#getModuleName <em>Module Name</em>}</li>
  * </ul>
  * </p>
@@ -30,26 +29,6 @@ import org.erlide.erlang.ModuleAttribute;
  */
 public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribute
 {
-  /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
-
   /**
    * The default value of the '{@link #getModuleName() <em>Module Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -96,29 +75,6 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.MODULE_ATTRIBUTE__TAG, oldTag, tag));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getModuleName()
   {
     return moduleName;
@@ -147,8 +103,6 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.MODULE_ATTRIBUTE__TAG:
-        return getTag();
       case ErlangPackage.MODULE_ATTRIBUTE__MODULE_NAME:
         return getModuleName();
     }
@@ -165,9 +119,6 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.MODULE_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
       case ErlangPackage.MODULE_ATTRIBUTE__MODULE_NAME:
         setModuleName((String)newValue);
         return;
@@ -185,9 +136,6 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.MODULE_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
       case ErlangPackage.MODULE_ATTRIBUTE__MODULE_NAME:
         setModuleName(MODULE_NAME_EDEFAULT);
         return;
@@ -205,8 +153,6 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.MODULE_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.MODULE_ATTRIBUTE__MODULE_NAME:
         return MODULE_NAME_EDEFAULT == null ? moduleName != null : !MODULE_NAME_EDEFAULT.equals(moduleName);
     }
@@ -224,9 +170,7 @@ public class ModuleAttributeImpl extends AttributeImpl implements ModuleAttribut
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(", moduleName: ");
+    result.append(" (moduleName: ");
     result.append(moduleName);
     result.append(')');
     return result.toString();

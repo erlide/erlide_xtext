@@ -24,7 +24,6 @@ import org.erlide.erlang.Expression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.CompileAttributeImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.CompileAttributeImpl#getOptions <em>Options</em>}</li>
  * </ul>
  * </p>
@@ -33,26 +32,6 @@ import org.erlide.erlang.Expression;
  */
 public class CompileAttributeImpl extends AttributeImpl implements CompileAttribute
 {
-  /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getOptions() <em>Options</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -82,29 +61,6 @@ public class CompileAttributeImpl extends AttributeImpl implements CompileAttrib
   protected EClass eStaticClass()
   {
     return ErlangPackage.Literals.COMPILE_ATTRIBUTE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.COMPILE_ATTRIBUTE__TAG, oldTag, tag));
   }
 
   /**
@@ -181,8 +137,6 @@ public class CompileAttributeImpl extends AttributeImpl implements CompileAttrib
   {
     switch (featureID)
     {
-      case ErlangPackage.COMPILE_ATTRIBUTE__TAG:
-        return getTag();
       case ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS:
         return getOptions();
     }
@@ -199,9 +153,6 @@ public class CompileAttributeImpl extends AttributeImpl implements CompileAttrib
   {
     switch (featureID)
     {
-      case ErlangPackage.COMPILE_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
       case ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS:
         setOptions((Expression)newValue);
         return;
@@ -219,9 +170,6 @@ public class CompileAttributeImpl extends AttributeImpl implements CompileAttrib
   {
     switch (featureID)
     {
-      case ErlangPackage.COMPILE_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
       case ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS:
         setOptions((Expression)null);
         return;
@@ -239,29 +187,10 @@ public class CompileAttributeImpl extends AttributeImpl implements CompileAttrib
   {
     switch (featureID)
     {
-      case ErlangPackage.COMPILE_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.COMPILE_ATTRIBUTE__OPTIONS:
         return options != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(')');
-    return result.toString();
   }
 
 } //CompileAttributeImpl

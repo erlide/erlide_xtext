@@ -7,15 +7,12 @@ package org.erlide.erlang.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -31,7 +28,6 @@ import org.erlide.erlang.FunRef;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.ExportAttributeImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.ExportAttributeImpl#getFuns <em>Funs</em>}</li>
  * </ul>
  * </p>
@@ -40,26 +36,6 @@ import org.erlide.erlang.FunRef;
  */
 public class ExportAttributeImpl extends AttributeImpl implements ExportAttribute
 {
-  /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getFuns() <em>Funs</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -89,29 +65,6 @@ public class ExportAttributeImpl extends AttributeImpl implements ExportAttribut
   protected EClass eStaticClass()
   {
     return ErlangPackage.Literals.EXPORT_ATTRIBUTE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.EXPORT_ATTRIBUTE__TAG, oldTag, tag));
   }
 
   /**
@@ -154,8 +107,6 @@ public class ExportAttributeImpl extends AttributeImpl implements ExportAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.EXPORT_ATTRIBUTE__TAG:
-        return getTag();
       case ErlangPackage.EXPORT_ATTRIBUTE__FUNS:
         return getFuns();
     }
@@ -173,9 +124,6 @@ public class ExportAttributeImpl extends AttributeImpl implements ExportAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.EXPORT_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
       case ErlangPackage.EXPORT_ATTRIBUTE__FUNS:
         getFuns().clear();
         getFuns().addAll((Collection<? extends FunRef>)newValue);
@@ -194,9 +142,6 @@ public class ExportAttributeImpl extends AttributeImpl implements ExportAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.EXPORT_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
       case ErlangPackage.EXPORT_ATTRIBUTE__FUNS:
         getFuns().clear();
         return;
@@ -214,29 +159,10 @@ public class ExportAttributeImpl extends AttributeImpl implements ExportAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.EXPORT_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.EXPORT_ATTRIBUTE__FUNS:
         return funs != null && !funs.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(')');
-    return result.toString();
   }
 
 } //ExportAttributeImpl

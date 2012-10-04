@@ -21,7 +21,6 @@ import org.erlide.erlang.FileAttribute;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.FileAttributeImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.FileAttributeImpl#getFile <em>File</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.FileAttributeImpl#getLine <em>Line</em>}</li>
  * </ul>
@@ -31,26 +30,6 @@ import org.erlide.erlang.FileAttribute;
  */
 public class FileAttributeImpl extends AttributeImpl implements FileAttribute
 {
-  /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
-
   /**
    * The default value of the '{@link #getFile() <em>File</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -117,29 +96,6 @@ public class FileAttributeImpl extends AttributeImpl implements FileAttribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FILE_ATTRIBUTE__TAG, oldTag, tag));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getFile()
   {
     return file;
@@ -191,8 +147,6 @@ public class FileAttributeImpl extends AttributeImpl implements FileAttribute
   {
     switch (featureID)
     {
-      case ErlangPackage.FILE_ATTRIBUTE__TAG:
-        return getTag();
       case ErlangPackage.FILE_ATTRIBUTE__FILE:
         return getFile();
       case ErlangPackage.FILE_ATTRIBUTE__LINE:
@@ -211,9 +165,6 @@ public class FileAttributeImpl extends AttributeImpl implements FileAttribute
   {
     switch (featureID)
     {
-      case ErlangPackage.FILE_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
       case ErlangPackage.FILE_ATTRIBUTE__FILE:
         setFile((String)newValue);
         return;
@@ -234,9 +185,6 @@ public class FileAttributeImpl extends AttributeImpl implements FileAttribute
   {
     switch (featureID)
     {
-      case ErlangPackage.FILE_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
       case ErlangPackage.FILE_ATTRIBUTE__FILE:
         setFile(FILE_EDEFAULT);
         return;
@@ -257,8 +205,6 @@ public class FileAttributeImpl extends AttributeImpl implements FileAttribute
   {
     switch (featureID)
     {
-      case ErlangPackage.FILE_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.FILE_ATTRIBUTE__FILE:
         return FILE_EDEFAULT == null ? file != null : !FILE_EDEFAULT.equals(file);
       case ErlangPackage.FILE_ATTRIBUTE__LINE:
@@ -278,9 +224,7 @@ public class FileAttributeImpl extends AttributeImpl implements FileAttribute
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(", file: ");
+    result.append(" (file: ");
     result.append(file);
     result.append(", line: ");
     result.append(line);

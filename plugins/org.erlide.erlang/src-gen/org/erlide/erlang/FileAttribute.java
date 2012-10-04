@@ -14,7 +14,6 @@ package org.erlide.erlang;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.FileAttribute#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.FileAttribute#getFile <em>File</em>}</li>
  *   <li>{@link org.erlide.erlang.FileAttribute#getLine <em>Line</em>}</li>
  * </ul>
@@ -26,32 +25,6 @@ package org.erlide.erlang;
  */
 public interface FileAttribute extends Attribute
 {
-  /**
-   * Returns the value of the '<em><b>Tag</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Tag</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Tag</em>' attribute.
-   * @see #setTag(String)
-   * @see org.erlide.erlang.ErlangPackage#getFileAttribute_Tag()
-   * @model
-   * @generated
-   */
-  String getTag();
-
-  /**
-   * Sets the value of the '{@link org.erlide.erlang.FileAttribute#getTag <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Tag</em>' attribute.
-   * @see #getTag()
-   * @generated
-   */
-  void setTag(String value);
-
   /**
    * Returns the value of the '<em><b>File</b></em>' attribute.
    * <!-- begin-user-doc -->

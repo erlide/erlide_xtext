@@ -37,8 +37,7 @@ ConditionalFormBlock:
 Attribute:
 	  ModuleAttribute
 	| EncodingAttribute
-	| DefineAttribute
-	| UndefAttribute 
+	| AbstractDefineAttribute
 	| AbstractIncludeAttribute
 	| FileAttribute
 	| RecordAttribute

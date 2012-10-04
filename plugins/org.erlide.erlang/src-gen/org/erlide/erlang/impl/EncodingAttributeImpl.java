@@ -21,7 +21,6 @@ import org.erlide.erlang.ErlangPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.EncodingAttributeImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.EncodingAttributeImpl#getCharset <em>Charset</em>}</li>
  * </ul>
  * </p>
@@ -30,26 +29,6 @@ import org.erlide.erlang.ErlangPackage;
  */
 public class EncodingAttributeImpl extends AttributeImpl implements EncodingAttribute
 {
-  /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
-
   /**
    * The default value of the '{@link #getCharset() <em>Charset</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -96,29 +75,6 @@ public class EncodingAttributeImpl extends AttributeImpl implements EncodingAttr
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ENCODING_ATTRIBUTE__TAG, oldTag, tag));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getCharset()
   {
     return charset;
@@ -147,8 +103,6 @@ public class EncodingAttributeImpl extends AttributeImpl implements EncodingAttr
   {
     switch (featureID)
     {
-      case ErlangPackage.ENCODING_ATTRIBUTE__TAG:
-        return getTag();
       case ErlangPackage.ENCODING_ATTRIBUTE__CHARSET:
         return getCharset();
     }
@@ -165,9 +119,6 @@ public class EncodingAttributeImpl extends AttributeImpl implements EncodingAttr
   {
     switch (featureID)
     {
-      case ErlangPackage.ENCODING_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
       case ErlangPackage.ENCODING_ATTRIBUTE__CHARSET:
         setCharset((String)newValue);
         return;
@@ -185,9 +136,6 @@ public class EncodingAttributeImpl extends AttributeImpl implements EncodingAttr
   {
     switch (featureID)
     {
-      case ErlangPackage.ENCODING_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
       case ErlangPackage.ENCODING_ATTRIBUTE__CHARSET:
         setCharset(CHARSET_EDEFAULT);
         return;
@@ -205,8 +153,6 @@ public class EncodingAttributeImpl extends AttributeImpl implements EncodingAttr
   {
     switch (featureID)
     {
-      case ErlangPackage.ENCODING_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.ENCODING_ATTRIBUTE__CHARSET:
         return CHARSET_EDEFAULT == null ? charset != null : !CHARSET_EDEFAULT.equals(charset);
     }
@@ -224,9 +170,7 @@ public class EncodingAttributeImpl extends AttributeImpl implements EncodingAttr
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(", charset: ");
+    result.append(" (charset: ");
     result.append(charset);
     result.append(')');
     return result.toString();

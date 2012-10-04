@@ -334,101 +334,91 @@ ruleAttribute returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getDefineAttributeParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getAbstractDefineAttributeParserRuleCall_2()); 
     }
-    this_DefineAttribute_2=ruleDefineAttribute
+    this_AbstractDefineAttribute_2=ruleAbstractDefineAttribute
     { 
-        $current = $this_DefineAttribute_2.current; 
+        $current = $this_AbstractDefineAttribute_2.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getUndefAttributeParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getAbstractIncludeAttributeParserRuleCall_3()); 
     }
-    this_UndefAttribute_3=ruleUndefAttribute
+    this_AbstractIncludeAttribute_3=ruleAbstractIncludeAttribute
     { 
-        $current = $this_UndefAttribute_3.current; 
+        $current = $this_AbstractIncludeAttribute_3.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getAbstractIncludeAttributeParserRuleCall_4()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getFileAttributeParserRuleCall_4()); 
     }
-    this_AbstractIncludeAttribute_4=ruleAbstractIncludeAttribute
+    this_FileAttribute_4=ruleFileAttribute
     { 
-        $current = $this_AbstractIncludeAttribute_4.current; 
+        $current = $this_FileAttribute_4.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getFileAttributeParserRuleCall_5()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getRecordAttributeParserRuleCall_5()); 
     }
-    this_FileAttribute_5=ruleFileAttribute
+    this_RecordAttribute_5=ruleRecordAttribute
     { 
-        $current = $this_FileAttribute_5.current; 
+        $current = $this_RecordAttribute_5.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getRecordAttributeParserRuleCall_6()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getAbstractTypeAttributeParserRuleCall_6()); 
     }
-    this_RecordAttribute_6=ruleRecordAttribute
+    this_AbstractTypeAttribute_6=ruleAbstractTypeAttribute
     { 
-        $current = $this_RecordAttribute_6.current; 
+        $current = $this_AbstractTypeAttribute_6.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getAbstractTypeAttributeParserRuleCall_7()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getExportAttributeParserRuleCall_7()); 
     }
-    this_AbstractTypeAttribute_7=ruleAbstractTypeAttribute
+    this_ExportAttribute_7=ruleExportAttribute
     { 
-        $current = $this_AbstractTypeAttribute_7.current; 
+        $current = $this_ExportAttribute_7.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getExportAttributeParserRuleCall_8()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getImportAttributeParserRuleCall_8()); 
     }
-    this_ExportAttribute_8=ruleExportAttribute
+    this_ImportAttribute_8=ruleImportAttribute
     { 
-        $current = $this_ExportAttribute_8.current; 
+        $current = $this_ImportAttribute_8.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getImportAttributeParserRuleCall_9()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getCompileAttributeParserRuleCall_9()); 
     }
-    this_ImportAttribute_9=ruleImportAttribute
+    this_CompileAttribute_9=ruleCompileAttribute
     { 
-        $current = $this_ImportAttribute_9.current; 
+        $current = $this_CompileAttribute_9.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getCompileAttributeParserRuleCall_10()); 
+        newCompositeNode(grammarAccess.getAttributeAccess().getCustomAttributeParserRuleCall_10()); 
     }
-    this_CompileAttribute_10=ruleCompileAttribute
+    this_CustomAttribute_10=ruleCustomAttribute
     { 
-        $current = $this_CompileAttribute_10.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getAttributeAccess().getCustomAttributeParserRuleCall_11()); 
-    }
-    this_CustomAttribute_11=ruleCustomAttribute
-    { 
-        $current = $this_CustomAttribute_11.current; 
+        $current = $this_CustomAttribute_10.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -437,6 +427,44 @@ ruleAttribute returns [EObject current=null]
 
 
 
+
+
+
+// Entry rule entryRuleAbstractDefineAttribute
+entryRuleAbstractDefineAttribute returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getAbstractDefineAttributeRule()); }
+	 iv_ruleAbstractDefineAttribute=ruleAbstractDefineAttribute 
+	 { $current=$iv_ruleAbstractDefineAttribute.current; } 
+	 EOF 
+;
+
+// Rule AbstractDefineAttribute
+ruleAbstractDefineAttribute returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getAbstractDefineAttributeAccess().getDefineAttributeParserRuleCall_0()); 
+    }
+    this_DefineAttribute_0=ruleDefineAttribute
+    { 
+        $current = $this_DefineAttribute_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getAbstractDefineAttributeAccess().getUndefAttributeParserRuleCall_1()); 
+    }
+    this_UndefAttribute_1=ruleUndefAttribute
+    { 
+        $current = $this_UndefAttribute_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
+;
 
 
 

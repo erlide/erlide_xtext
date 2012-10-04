@@ -32,7 +32,6 @@ import org.erlide.erlang.ImportAttribute;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.ImportAttributeImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.ImportAttributeImpl#getModule <em>Module</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.ImportAttributeImpl#getFuns <em>Funs</em>}</li>
  * </ul>
@@ -42,26 +41,6 @@ import org.erlide.erlang.ImportAttribute;
  */
 public class ImportAttributeImpl extends AttributeImpl implements ImportAttribute
 {
-  /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getModule() <em>Module</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -101,29 +80,6 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
   protected EClass eStaticClass()
   {
     return ErlangPackage.Literals.IMPORT_ATTRIBUTE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.IMPORT_ATTRIBUTE__TAG, oldTag, tag));
   }
 
   /**
@@ -216,8 +172,6 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.IMPORT_ATTRIBUTE__TAG:
-        return getTag();
       case ErlangPackage.IMPORT_ATTRIBUTE__MODULE:
         return getModule();
       case ErlangPackage.IMPORT_ATTRIBUTE__FUNS:
@@ -237,9 +191,6 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.IMPORT_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
       case ErlangPackage.IMPORT_ATTRIBUTE__MODULE:
         setModule((Expression)newValue);
         return;
@@ -261,9 +212,6 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.IMPORT_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
       case ErlangPackage.IMPORT_ATTRIBUTE__MODULE:
         setModule((Expression)null);
         return;
@@ -284,31 +232,12 @@ public class ImportAttributeImpl extends AttributeImpl implements ImportAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.IMPORT_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.IMPORT_ATTRIBUTE__MODULE:
         return module != null;
       case ErlangPackage.IMPORT_ATTRIBUTE__FUNS:
         return funs != null && !funs.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(')');
-    return result.toString();
   }
 
 } //ImportAttributeImpl

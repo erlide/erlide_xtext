@@ -21,7 +21,6 @@ import org.erlide.erlang.ErlangPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.AbstractIncludeAttributeImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.AbstractIncludeAttributeImpl#getImportURI <em>Import URI</em>}</li>
  * </ul>
  * </p>
@@ -30,26 +29,6 @@ import org.erlide.erlang.ErlangPackage;
  */
 public class AbstractIncludeAttributeImpl extends AttributeImpl implements AbstractIncludeAttribute
 {
-  /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
-
   /**
    * The default value of the '{@link #getImportURI() <em>Import URI</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -96,29 +75,6 @@ public class AbstractIncludeAttributeImpl extends AttributeImpl implements Abstr
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE__TAG, oldTag, tag));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getImportURI()
   {
     return importURI;
@@ -147,8 +103,6 @@ public class AbstractIncludeAttributeImpl extends AttributeImpl implements Abstr
   {
     switch (featureID)
     {
-      case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE__TAG:
-        return getTag();
       case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI:
         return getImportURI();
     }
@@ -165,9 +119,6 @@ public class AbstractIncludeAttributeImpl extends AttributeImpl implements Abstr
   {
     switch (featureID)
     {
-      case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
       case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI:
         setImportURI((String)newValue);
         return;
@@ -185,9 +136,6 @@ public class AbstractIncludeAttributeImpl extends AttributeImpl implements Abstr
   {
     switch (featureID)
     {
-      case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
       case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI:
         setImportURI(IMPORT_URI_EDEFAULT);
         return;
@@ -205,8 +153,6 @@ public class AbstractIncludeAttributeImpl extends AttributeImpl implements Abstr
   {
     switch (featureID)
     {
-      case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI:
         return IMPORT_URI_EDEFAULT == null ? importURI != null : !IMPORT_URI_EDEFAULT.equals(importURI);
     }
@@ -224,9 +170,7 @@ public class AbstractIncludeAttributeImpl extends AttributeImpl implements Abstr
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(", importURI: ");
+    result.append(" (importURI: ");
     result.append(importURI);
     result.append(')');
     return result.toString();

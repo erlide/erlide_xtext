@@ -200,13 +200,22 @@ public interface ErlangPackage extends EPackage
   int ATTRIBUTE = 4;
 
   /**
+   * The feature id for the '<em><b>Tag</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE__TAG = FORM_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Attribute</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_FEATURE_COUNT = FORM_FEATURE_COUNT + 0;
+  int ATTRIBUTE_FEATURE_COUNT = FORM_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ConditionalAttributeImpl <em>Conditional Attribute</em>}' class.
@@ -247,13 +256,22 @@ public interface ErlangPackage extends EPackage
   int ABSTRACT_DEFINE_ATTRIBUTE = 6;
 
   /**
+   * The feature id for the '<em><b>Tag</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_DEFINE_ATTRIBUTE__TAG = ATTRIBUTE__TAG;
+
+  /**
    * The number of structural features of the '<em>Abstract Define Attribute</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ABSTRACT_DEFINE_ATTRIBUTE_FEATURE_COUNT = 0;
+  int ABSTRACT_DEFINE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.DefineAttributeImpl <em>Define Attribute</em>}' class.
@@ -272,7 +290,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int DEFINE_ATTRIBUTE__TAG = ABSTRACT_DEFINE_ATTRIBUTE__TAG;
 
   /**
    * The feature id for the '<em><b>Macro Name</b></em>' attribute.
@@ -281,7 +299,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__MACRO_NAME = ATTRIBUTE_FEATURE_COUNT + 1;
+  int DEFINE_ATTRIBUTE__MACRO_NAME = ABSTRACT_DEFINE_ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -290,7 +308,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__ARGS = ATTRIBUTE_FEATURE_COUNT + 2;
+  int DEFINE_ATTRIBUTE__ARGS = ABSTRACT_DEFINE_ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -299,7 +317,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 3;
+  int DEFINE_ATTRIBUTE__VALUE = ABSTRACT_DEFINE_ATTRIBUTE_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Define Attribute</em>' class.
@@ -308,7 +326,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEFINE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 4;
+  int DEFINE_ATTRIBUTE_FEATURE_COUNT = ABSTRACT_DEFINE_ATTRIBUTE_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.UndefAttributeImpl <em>Undef Attribute</em>}' class.
@@ -327,7 +345,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int UNDEF_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int UNDEF_ATTRIBUTE__TAG = ABSTRACT_DEFINE_ATTRIBUTE__TAG;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -336,7 +354,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int UNDEF_ATTRIBUTE__REF = ATTRIBUTE_FEATURE_COUNT + 1;
+  int UNDEF_ATTRIBUTE__REF = ABSTRACT_DEFINE_ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Undef Attribute</em>' class.
@@ -345,7 +363,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int UNDEF_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
+  int UNDEF_ATTRIBUTE_FEATURE_COUNT = ABSTRACT_DEFINE_ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.IfdefAttributeImpl <em>Ifdef Attribute</em>}' class.
@@ -457,7 +475,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ABSTRACT_INCLUDE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int ABSTRACT_INCLUDE_ATTRIBUTE__TAG = ATTRIBUTE__TAG;
 
   /**
    * The feature id for the '<em><b>Import URI</b></em>' attribute.
@@ -466,7 +484,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI = ATTRIBUTE_FEATURE_COUNT + 1;
+  int ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Abstract Include Attribute</em>' class.
@@ -475,7 +493,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ABSTRACT_INCLUDE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
+  int ABSTRACT_INCLUDE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.IncludeAttributeImpl <em>Include Attribute</em>}' class.
@@ -568,7 +586,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FILE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int FILE_ATTRIBUTE__TAG = ATTRIBUTE__TAG;
 
   /**
    * The feature id for the '<em><b>File</b></em>' attribute.
@@ -577,7 +595,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FILE_ATTRIBUTE__FILE = ATTRIBUTE_FEATURE_COUNT + 1;
+  int FILE_ATTRIBUTE__FILE = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -586,7 +604,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FILE_ATTRIBUTE__LINE = ATTRIBUTE_FEATURE_COUNT + 2;
+  int FILE_ATTRIBUTE__LINE = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>File Attribute</em>' class.
@@ -595,7 +613,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FILE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 3;
+  int FILE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ModuleAttributeImpl <em>Module Attribute</em>}' class.
@@ -614,7 +632,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int MODULE_ATTRIBUTE__TAG = ATTRIBUTE__TAG;
 
   /**
    * The feature id for the '<em><b>Module Name</b></em>' attribute.
@@ -623,7 +641,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE_ATTRIBUTE__MODULE_NAME = ATTRIBUTE_FEATURE_COUNT + 1;
+  int MODULE_ATTRIBUTE__MODULE_NAME = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Module Attribute</em>' class.
@@ -632,7 +650,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
+  int MODULE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.EncodingAttributeImpl <em>Encoding Attribute</em>}' class.
@@ -651,7 +669,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENCODING_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int ENCODING_ATTRIBUTE__TAG = ATTRIBUTE__TAG;
 
   /**
    * The feature id for the '<em><b>Charset</b></em>' attribute.
@@ -660,7 +678,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENCODING_ATTRIBUTE__CHARSET = ATTRIBUTE_FEATURE_COUNT + 1;
+  int ENCODING_ATTRIBUTE__CHARSET = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Encoding Attribute</em>' class.
@@ -669,7 +687,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENCODING_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
+  int ENCODING_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.RecordAttributeImpl <em>Record Attribute</em>}' class.
@@ -789,7 +807,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPORT_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int EXPORT_ATTRIBUTE__TAG = ATTRIBUTE__TAG;
 
   /**
    * The feature id for the '<em><b>Funs</b></em>' containment reference list.
@@ -798,7 +816,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPORT_ATTRIBUTE__FUNS = ATTRIBUTE_FEATURE_COUNT + 1;
+  int EXPORT_ATTRIBUTE__FUNS = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Export Attribute</em>' class.
@@ -807,7 +825,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPORT_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
+  int EXPORT_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ImportAttributeImpl <em>Import Attribute</em>}' class.
@@ -826,7 +844,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int IMPORT_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int IMPORT_ATTRIBUTE__TAG = ATTRIBUTE__TAG;
 
   /**
    * The feature id for the '<em><b>Module</b></em>' containment reference.
@@ -835,7 +853,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int IMPORT_ATTRIBUTE__MODULE = ATTRIBUTE_FEATURE_COUNT + 1;
+  int IMPORT_ATTRIBUTE__MODULE = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Funs</b></em>' containment reference list.
@@ -844,7 +862,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int IMPORT_ATTRIBUTE__FUNS = ATTRIBUTE_FEATURE_COUNT + 2;
+  int IMPORT_ATTRIBUTE__FUNS = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Import Attribute</em>' class.
@@ -853,7 +871,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int IMPORT_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 3;
+  int IMPORT_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.CompileAttributeImpl <em>Compile Attribute</em>}' class.
@@ -872,7 +890,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPILE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int COMPILE_ATTRIBUTE__TAG = ATTRIBUTE__TAG;
 
   /**
    * The feature id for the '<em><b>Options</b></em>' containment reference.
@@ -881,7 +899,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPILE_ATTRIBUTE__OPTIONS = ATTRIBUTE_FEATURE_COUNT + 1;
+  int COMPILE_ATTRIBUTE__OPTIONS = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Compile Attribute</em>' class.
@@ -890,7 +908,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPILE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
+  int COMPILE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.AbstractTypeAttributeImpl <em>Abstract Type Attribute</em>}' class.
@@ -909,7 +927,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ABSTRACT_TYPE_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int ABSTRACT_TYPE_ATTRIBUTE__TAG = ATTRIBUTE__TAG;
 
   /**
    * The number of structural features of the '<em>Abstract Type Attribute</em>' class.
@@ -918,7 +936,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ABSTRACT_TYPE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
+  int ABSTRACT_TYPE_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.SpecAttributeImpl <em>Spec Attribute</em>}' class.
@@ -1038,7 +1056,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_ATTRIBUTE__TAG = ATTRIBUTE_FEATURE_COUNT + 0;
+  int CUSTOM_ATTRIBUTE__TAG = ATTRIBUTE__TAG;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference list.
@@ -1047,7 +1065,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 1;
+  int CUSTOM_ATTRIBUTE__VALUE = ATTRIBUTE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Custom Attribute</em>' class.
@@ -1056,7 +1074,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 2;
+  int CUSTOM_ATTRIBUTE_FEATURE_COUNT = ATTRIBUTE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.FunctionImpl <em>Function</em>}' class.
@@ -4808,6 +4826,17 @@ public interface ErlangPackage extends EPackage
   EClass getAttribute();
 
   /**
+   * Returns the meta object for the attribute '{@link org.erlide.erlang.Attribute#getTag <em>Tag</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Tag</em>'.
+   * @see org.erlide.erlang.Attribute#getTag()
+   * @see #getAttribute()
+   * @generated
+   */
+  EAttribute getAttribute_Tag();
+
+  /**
    * Returns the meta object for class '{@link org.erlide.erlang.ConditionalAttribute <em>Conditional Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4847,17 +4876,6 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EClass getDefineAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.DefineAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.DefineAttribute#getTag()
-   * @see #getDefineAttribute()
-   * @generated
-   */
-  EAttribute getDefineAttribute_Tag();
 
   /**
    * Returns the meta object for the attribute '{@link org.erlide.erlang.DefineAttribute#getMacroName <em>Macro Name</em>}'.
@@ -4901,17 +4919,6 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EClass getUndefAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.UndefAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.UndefAttribute#getTag()
-   * @see #getUndefAttribute()
-   * @generated
-   */
-  EAttribute getUndefAttribute_Tag();
 
   /**
    * Returns the meta object for the containment reference '{@link org.erlide.erlang.UndefAttribute#getRef <em>Ref</em>}'.
@@ -4976,17 +4983,6 @@ public interface ErlangPackage extends EPackage
   EClass getAbstractIncludeAttribute();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.AbstractIncludeAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.AbstractIncludeAttribute#getTag()
-   * @see #getAbstractIncludeAttribute()
-   * @generated
-   */
-  EAttribute getAbstractIncludeAttribute_Tag();
-
-  /**
    * Returns the meta object for the attribute '{@link org.erlide.erlang.AbstractIncludeAttribute#getImportURI <em>Import URI</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5028,17 +5024,6 @@ public interface ErlangPackage extends EPackage
   EClass getFileAttribute();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.FileAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.FileAttribute#getTag()
-   * @see #getFileAttribute()
-   * @generated
-   */
-  EAttribute getFileAttribute_Tag();
-
-  /**
    * Returns the meta object for the attribute '{@link org.erlide.erlang.FileAttribute#getFile <em>File</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5071,17 +5056,6 @@ public interface ErlangPackage extends EPackage
   EClass getModuleAttribute();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.ModuleAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.ModuleAttribute#getTag()
-   * @see #getModuleAttribute()
-   * @generated
-   */
-  EAttribute getModuleAttribute_Tag();
-
-  /**
    * Returns the meta object for the attribute '{@link org.erlide.erlang.ModuleAttribute#getModuleName <em>Module Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5103,17 +5077,6 @@ public interface ErlangPackage extends EPackage
   EClass getEncodingAttribute();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.EncodingAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.EncodingAttribute#getTag()
-   * @see #getEncodingAttribute()
-   * @generated
-   */
-  EAttribute getEncodingAttribute_Tag();
-
-  /**
    * Returns the meta object for the attribute '{@link org.erlide.erlang.EncodingAttribute#getCharset <em>Charset</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5133,17 +5096,6 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EClass getRecordAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.RecordAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.RecordAttribute#getTag()
-   * @see #getRecordAttribute()
-   * @generated
-   */
-  EAttribute getRecordAttribute_Tag();
 
   /**
    * Returns the meta object for the attribute '{@link org.erlide.erlang.RecordAttribute#getName <em>Name</em>}'.
@@ -5232,17 +5184,6 @@ public interface ErlangPackage extends EPackage
   EClass getExportAttribute();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.ExportAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.ExportAttribute#getTag()
-   * @see #getExportAttribute()
-   * @generated
-   */
-  EAttribute getExportAttribute_Tag();
-
-  /**
    * Returns the meta object for the containment reference list '{@link org.erlide.erlang.ExportAttribute#getFuns <em>Funs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5262,17 +5203,6 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EClass getImportAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.ImportAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.ImportAttribute#getTag()
-   * @see #getImportAttribute()
-   * @generated
-   */
-  EAttribute getImportAttribute_Tag();
 
   /**
    * Returns the meta object for the containment reference '{@link org.erlide.erlang.ImportAttribute#getModule <em>Module</em>}'.
@@ -5307,17 +5237,6 @@ public interface ErlangPackage extends EPackage
   EClass getCompileAttribute();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.CompileAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.CompileAttribute#getTag()
-   * @see #getCompileAttribute()
-   * @generated
-   */
-  EAttribute getCompileAttribute_Tag();
-
-  /**
    * Returns the meta object for the containment reference '{@link org.erlide.erlang.CompileAttribute#getOptions <em>Options</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5337,17 +5256,6 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EClass getAbstractTypeAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.AbstractTypeAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.AbstractTypeAttribute#getTag()
-   * @see #getAbstractTypeAttribute()
-   * @generated
-   */
-  EAttribute getAbstractTypeAttribute_Tag();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.SpecAttribute <em>Spec Attribute</em>}'.
@@ -5433,17 +5341,6 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EClass getCustomAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.CustomAttribute#getTag <em>Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag</em>'.
-   * @see org.erlide.erlang.CustomAttribute#getTag()
-   * @see #getCustomAttribute()
-   * @generated
-   */
-  EAttribute getCustomAttribute_Tag();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.erlide.erlang.CustomAttribute#getValue <em>Value</em>}'.
@@ -7633,6 +7530,14 @@ public interface ErlangPackage extends EPackage
     EClass ATTRIBUTE = eINSTANCE.getAttribute();
 
     /**
+     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ATTRIBUTE__TAG = eINSTANCE.getAttribute_Tag();
+
+    /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.ConditionalAttributeImpl <em>Conditional Attribute</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7671,14 +7576,6 @@ public interface ErlangPackage extends EPackage
     EClass DEFINE_ATTRIBUTE = eINSTANCE.getDefineAttribute();
 
     /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DEFINE_ATTRIBUTE__TAG = eINSTANCE.getDefineAttribute_Tag();
-
-    /**
      * The meta object literal for the '<em><b>Macro Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7711,14 +7608,6 @@ public interface ErlangPackage extends EPackage
      * @generated
      */
     EClass UNDEF_ATTRIBUTE = eINSTANCE.getUndefAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute UNDEF_ATTRIBUTE__TAG = eINSTANCE.getUndefAttribute_Tag();
 
     /**
      * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
@@ -7777,14 +7666,6 @@ public interface ErlangPackage extends EPackage
     EClass ABSTRACT_INCLUDE_ATTRIBUTE = eINSTANCE.getAbstractIncludeAttribute();
 
     /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ABSTRACT_INCLUDE_ATTRIBUTE__TAG = eINSTANCE.getAbstractIncludeAttribute_Tag();
-
-    /**
      * The meta object literal for the '<em><b>Import URI</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7823,14 +7704,6 @@ public interface ErlangPackage extends EPackage
     EClass FILE_ATTRIBUTE = eINSTANCE.getFileAttribute();
 
     /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FILE_ATTRIBUTE__TAG = eINSTANCE.getFileAttribute_Tag();
-
-    /**
      * The meta object literal for the '<em><b>File</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7857,14 +7730,6 @@ public interface ErlangPackage extends EPackage
     EClass MODULE_ATTRIBUTE = eINSTANCE.getModuleAttribute();
 
     /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MODULE_ATTRIBUTE__TAG = eINSTANCE.getModuleAttribute_Tag();
-
-    /**
      * The meta object literal for the '<em><b>Module Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7883,14 +7748,6 @@ public interface ErlangPackage extends EPackage
     EClass ENCODING_ATTRIBUTE = eINSTANCE.getEncodingAttribute();
 
     /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ENCODING_ATTRIBUTE__TAG = eINSTANCE.getEncodingAttribute_Tag();
-
-    /**
      * The meta object literal for the '<em><b>Charset</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7907,14 +7764,6 @@ public interface ErlangPackage extends EPackage
      * @generated
      */
     EClass RECORD_ATTRIBUTE = eINSTANCE.getRecordAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute RECORD_ATTRIBUTE__TAG = eINSTANCE.getRecordAttribute_Tag();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -7985,14 +7834,6 @@ public interface ErlangPackage extends EPackage
     EClass EXPORT_ATTRIBUTE = eINSTANCE.getExportAttribute();
 
     /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EXPORT_ATTRIBUTE__TAG = eINSTANCE.getExportAttribute_Tag();
-
-    /**
      * The meta object literal for the '<em><b>Funs</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8009,14 +7850,6 @@ public interface ErlangPackage extends EPackage
      * @generated
      */
     EClass IMPORT_ATTRIBUTE = eINSTANCE.getImportAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IMPORT_ATTRIBUTE__TAG = eINSTANCE.getImportAttribute_Tag();
 
     /**
      * The meta object literal for the '<em><b>Module</b></em>' containment reference feature.
@@ -8045,14 +7878,6 @@ public interface ErlangPackage extends EPackage
     EClass COMPILE_ATTRIBUTE = eINSTANCE.getCompileAttribute();
 
     /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPILE_ATTRIBUTE__TAG = eINSTANCE.getCompileAttribute_Tag();
-
-    /**
      * The meta object literal for the '<em><b>Options</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8069,14 +7894,6 @@ public interface ErlangPackage extends EPackage
      * @generated
      */
     EClass ABSTRACT_TYPE_ATTRIBUTE = eINSTANCE.getAbstractTypeAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ABSTRACT_TYPE_ATTRIBUTE__TAG = eINSTANCE.getAbstractTypeAttribute_Tag();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.SpecAttributeImpl <em>Spec Attribute</em>}' class.
@@ -8147,14 +7964,6 @@ public interface ErlangPackage extends EPackage
      * @generated
      */
     EClass CUSTOM_ATTRIBUTE = eINSTANCE.getCustomAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CUSTOM_ATTRIBUTE__TAG = eINSTANCE.getCustomAttribute_Tag();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.

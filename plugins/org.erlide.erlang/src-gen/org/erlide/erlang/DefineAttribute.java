@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.erlide.erlang.DefineAttribute#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.DefineAttribute#getMacroName <em>Macro Name</em>}</li>
  *   <li>{@link org.erlide.erlang.DefineAttribute#getArgs <em>Args</em>}</li>
  *   <li>{@link org.erlide.erlang.DefineAttribute#getValue <em>Value</em>}</li>
@@ -26,34 +25,8 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface DefineAttribute extends Attribute, AbstractDefineAttribute
+public interface DefineAttribute extends AbstractDefineAttribute
 {
-  /**
-   * Returns the value of the '<em><b>Tag</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Tag</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Tag</em>' attribute.
-   * @see #setTag(String)
-   * @see org.erlide.erlang.ErlangPackage#getDefineAttribute_Tag()
-   * @model
-   * @generated
-   */
-  String getTag();
-
-  /**
-   * Sets the value of the '{@link org.erlide.erlang.DefineAttribute#getTag <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Tag</em>' attribute.
-   * @see #getTag()
-   * @generated
-   */
-  void setTag(String value);
-
   /**
    * Returns the value of the '<em><b>Macro Name</b></em>' attribute.
    * <!-- begin-user-doc -->

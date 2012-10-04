@@ -20,7 +20,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.erlide.erlang.Attribute;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Form;
 import org.erlide.erlang.MacroCall;
 import org.erlide.erlang.RecordAttribute;
 import org.erlide.erlang.RecordFieldDef;
@@ -346,6 +348,58 @@ public class RecordAttributeImpl extends AtomRefTargetImpl implements RecordAttr
         return recordMacro != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Form.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == Attribute.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case ErlangPackage.RECORD_ATTRIBUTE__TAG: return ErlangPackage.ATTRIBUTE__TAG;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Form.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == Attribute.class)
+    {
+      switch (baseFeatureID)
+      {
+        case ErlangPackage.ATTRIBUTE__TAG: return ErlangPackage.RECORD_ATTRIBUTE__TAG;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

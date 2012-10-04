@@ -7,8 +7,6 @@ package org.erlide.erlang.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.erlide.erlang.AbstractDefineAttribute;
 import org.erlide.erlang.ErlangPackage;
 
@@ -21,7 +19,7 @@ import org.erlide.erlang.ErlangPackage;
  *
  * @generated
  */
-public class AbstractDefineAttributeImpl extends MinimalEObjectImpl.Container implements AbstractDefineAttribute
+public class AbstractDefineAttributeImpl extends AttributeImpl implements AbstractDefineAttribute
 {
   /**
    * <!-- begin-user-doc -->

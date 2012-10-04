@@ -32,7 +32,6 @@ import org.erlide.erlang.Guard;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.DefineAttributeImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.DefineAttributeImpl#getMacroName <em>Macro Name</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.DefineAttributeImpl#getArgs <em>Args</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.DefineAttributeImpl#getValue <em>Value</em>}</li>
@@ -41,28 +40,8 @@ import org.erlide.erlang.Guard;
  *
  * @generated
  */
-public class DefineAttributeImpl extends AttributeImpl implements DefineAttribute
+public class DefineAttributeImpl extends AbstractDefineAttributeImpl implements DefineAttribute
 {
-  /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
-
   /**
    * The default value of the '{@link #getMacroName() <em>Macro Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -122,29 +101,6 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
   protected EClass eStaticClass()
   {
     return ErlangPackage.Literals.DEFINE_ATTRIBUTE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.DEFINE_ATTRIBUTE__TAG, oldTag, tag));
   }
 
   /**
@@ -260,8 +216,6 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.DEFINE_ATTRIBUTE__TAG:
-        return getTag();
       case ErlangPackage.DEFINE_ATTRIBUTE__MACRO_NAME:
         return getMacroName();
       case ErlangPackage.DEFINE_ATTRIBUTE__ARGS:
@@ -283,9 +237,6 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.DEFINE_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
       case ErlangPackage.DEFINE_ATTRIBUTE__MACRO_NAME:
         setMacroName((String)newValue);
         return;
@@ -310,9 +261,6 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.DEFINE_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
       case ErlangPackage.DEFINE_ATTRIBUTE__MACRO_NAME:
         setMacroName(MACRO_NAME_EDEFAULT);
         return;
@@ -336,8 +284,6 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
   {
     switch (featureID)
     {
-      case ErlangPackage.DEFINE_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
       case ErlangPackage.DEFINE_ATTRIBUTE__MACRO_NAME:
         return MACRO_NAME_EDEFAULT == null ? macroName != null : !MACRO_NAME_EDEFAULT.equals(macroName);
       case ErlangPackage.DEFINE_ATTRIBUTE__ARGS:
@@ -359,9 +305,7 @@ public class DefineAttributeImpl extends AttributeImpl implements DefineAttribut
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(", macroName: ");
+    result.append(" (macroName: ");
     result.append(macroName);
     result.append(')');
     return result.toString();

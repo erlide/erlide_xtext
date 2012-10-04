@@ -1715,8 +1715,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	 */
 	protected void sequence_CompileAttribute(EObject context, CompileAttribute semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.COMPILE_ATTRIBUTE__TAG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.COMPILE_ATTRIBUTE__TAG));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG));
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.COMPILE_ATTRIBUTE__OPTIONS) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.COMPILE_ATTRIBUTE__OPTIONS));
 		}
@@ -1957,8 +1957,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	 */
 	protected void sequence_FileAttribute(EObject context, FileAttribute semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.FILE_ATTRIBUTE__TAG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.FILE_ATTRIBUTE__TAG));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG));
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.FILE_ATTRIBUTE__FILE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.FILE_ATTRIBUTE__FILE));
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.FILE_ATTRIBUTE__LINE) == ValueTransient.YES)
@@ -2095,8 +2095,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	 */
 	protected void sequence_IncludeAttribute(EObject context, IncludeAttribute semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__TAG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__TAG));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG));
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI));
 		}
@@ -2114,8 +2114,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	 */
 	protected void sequence_IncludeLibAttribute(EObject context, IncludeLibAttribute semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__TAG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__TAG));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG));
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ABSTRACT_INCLUDE_ATTRIBUTE__IMPORT_URI));
 		}
@@ -2232,8 +2232,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	 */
 	protected void sequence_ModuleAttribute(EObject context, ModuleAttribute semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.MODULE_ATTRIBUTE__TAG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.MODULE_ATTRIBUTE__TAG));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG));
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.MODULE_ATTRIBUTE__MODULE_NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.MODULE_ATTRIBUTE__MODULE_NAME));
 		}
@@ -2604,8 +2604,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	 */
 	protected void sequence_UndefAttribute(EObject context, UndefAttribute semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.UNDEF_ATTRIBUTE__TAG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.UNDEF_ATTRIBUTE__TAG));
+			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.ATTRIBUTE__TAG));
 			if(transientValues.isValueTransient(semanticObject, ErlangPackage.Literals.UNDEF_ATTRIBUTE__REF) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ErlangPackage.Literals.UNDEF_ATTRIBUTE__REF));
 		}
