@@ -15,7 +15,7 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.erlide.services.ErlangGrammarAccess;
 
 @SuppressWarnings("all")
-public class ErlangSyntacticSequencer extends AbstractSyntacticSequencer {
+public abstract class AbstractErlangSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ErlangGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_DefineAttribute_CommaKeyword_5_0_q;

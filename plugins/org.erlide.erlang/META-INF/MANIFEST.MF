@@ -54,4 +54,6 @@ Export-Package: org.erlide,
  org.erlide.scoping,
  org.erlide.serializer,
  org.erlide.services,
- org.erlide.validation
+ org.erlide.validation,
+ org.erlide.parseTreeConstruction
+

@@ -99,7 +99,7 @@ import org.erlide.erlang.Variable;
 import org.erlide.services.ErlangGrammarAccess;
 
 @SuppressWarnings("all")
-public class ErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer {
+public abstract class AbstractErlangSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 
 	@Inject
 	private ErlangGrammarAccess grammarAccess;

@@ -59,6 +59,11 @@ public abstract class AbstractErlangRuntimeModule extends DefaultRuntimeModule {
 		return org.eclipse.xtext.serializer.impl.Serializer.class;
 	}
 
+	// contributed by org.eclipse.xtext.generator.parseTreeConstructor.ParseTreeConstructorFragment
+	public Class<? extends org.eclipse.xtext.parsetree.reconstr.IParseTreeConstructor> bindIParseTreeConstructor() {
+		return org.erlide.parseTreeConstruction.ErlangParsetreeConstructor.class;
+	}
+
 	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
 	public Class<? extends org.eclipse.xtext.parser.IParser> bindIParser() {
 		return org.erlide.parser.antlr.ErlangParser.class;

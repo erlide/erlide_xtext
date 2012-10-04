@@ -48,7 +48,8 @@ Workflow {
 
             // Serializer 2.0
             fragment = serializer.SerializerFragment {
-            	generateStub = false
+            }
+            fragment = parseTreeConstructor.ParseTreeConstructorFragment {
             }
 
 			// a custom ResourceFactory for use with EMF 
