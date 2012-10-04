@@ -18,13 +18,16 @@ class BuilderExecutor {
 
 	def void executeProcess(List<String> cmdLine,
             String workingDirectory, IProgressMonitor monitor) {
+            	
+        if (cmdLine==null || workingDirectory==null) return
+            	
         val ProcessBuilder builder = new ProcessBuilder(cmdLine)
         builder.directory(new File(workingDirectory))
         //builder.redirectErrorStream(true)
         try {
             val Process process = builder.start()
             val listener = new StreamListener(process.inputStream) [
-            	if(monitor.canceled) {
+            	if (monitor.canceled) {
             		process.destroy
 	           		throw new OperationCanceledException()
            		}

@@ -1,5 +1,6 @@
 package org.erlide.builder;
 
+import com.google.common.base.Objects;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +26,17 @@ public class BuilderExecutor {
   }
   
   public void executeProcess(final List<String> cmdLine, final String workingDirectory, final IProgressMonitor monitor) {
+    boolean _or = false;
+    boolean _equals = Objects.equal(cmdLine, null);
+    if (_equals) {
+      _or = true;
+    } else {
+      boolean _equals_1 = Objects.equal(workingDirectory, null);
+      _or = (_equals || _equals_1);
+    }
+    if (_or) {
+      return;
+    }
     ProcessBuilder _processBuilder = new ProcessBuilder(cmdLine);
     final ProcessBuilder builder = _processBuilder;
     File _file = new File(workingDirectory);
