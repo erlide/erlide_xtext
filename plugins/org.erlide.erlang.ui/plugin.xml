@@ -361,6 +361,15 @@
       <perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
          <perspectiveShortcut id="org.erlide.project.ui.erlangPerspective"/>
       </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="org.erlide.erlang.ui.views.ParseDebugView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.ProblemView">
+         </view>
+      </perspectiveExtension>
    </extension>
    <extension
          point="org.eclipse.ui.newWizards">
@@ -397,4 +406,73 @@
             name="Erlang">
       </category>
    </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.erlide.erlang.ui.internal"
+            name="Internal Erlide tools">
+      </category>
+      <view
+            category="org.erlide.erlang.ui.internal"
+            class="org.erlide.erlang.ui.views.ParseDebugView"
+            icon="icons/sample.gif"
+            id="org.erlide.erlang.ui.views.ParseDebugView"
+            name="Parser debug view">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+<!--    
+   <extension
+        point="org.eclipse.ui.handlers">
+     <handler
+           class="org.erlide.ui.ErlangExecutableExtensionFactory:org.erlide.ui.debug.DebugPrintHandler"
+           commandId="org.erlide.erlang.ui.debugPrint">
+     </handler>
+  </extension>
+
+  <extension
+        point="org.eclipse.ui.commands">
+        <command name="Debug print"
+              id="org.erlide.erlang.ui.debugPrint">
+        </command>
+  </extension>
+   
+  <extension point="org.eclipse.ui.menus">
+    <menuContribution locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+        <command
+            commandId="org.erlide.erlang.ui.debugPrint"
+            style="push">
+            <visibleWhen
+                  checkEnabled="false">
+                  <iterate>
+       <adapt type="org.eclipse.core.resources.IResource">
+          <test property="org.eclipse.core.resources.name"
+                value="*.?rl"/>
+       </adapt>
+    </iterate>
+            </visibleWhen>
+        </command>
+    </menuContribution>
+    </extension>
+   
+<extension point="org.eclipse.ui.menus">
+    <menuContribution locationURI="popup:#TextEditorContext?after=additions">
+        <command
+            commandId="org.erlide.erlang.ui.debugPrint"
+            style="push">
+            <visibleWhen
+	                  checkEnabled="false">
+	               <reference
+	                     definitionId="org.erlide.Erlang.Editor.opened">
+	               </reference>
+	            </visibleWhen>
+        </command>
+    </menuContribution>
+</extension>
+-->
 </plugin>
