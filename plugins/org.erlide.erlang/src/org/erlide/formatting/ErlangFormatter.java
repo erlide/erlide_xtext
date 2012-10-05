@@ -3,8 +3,10 @@
  */
 package org.erlide.formatting;
 
+import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
+import org.eclipse.xtext.util.Pair;
 import org.erlide.services.ErlangGrammarAccess;
 
 /**
@@ -20,39 +22,64 @@ public class ErlangFormatter extends AbstractDeclarativeFormatter {
 
     @Override
     protected void configureFormatting(final FormattingConfig c) {
+        final ErlangGrammarAccess g = getGrammarAccess();
 
         c.setAutoLinewrap(80);
 
         // It's usually a good idea to activate the following three statements.
         // They will add and preserve newlines around comments
-        c.setLinewrap(0, 1, 2).before(getGrammarAccess().getSL_COMMENTRule());
+        c.setLinewrap(0, 1, 2).before(g.getSL_COMMENTRule());
         // c.setLinewrap(0, 1,
         // 2).before(getGrammarAccess().getML_COMMENTRule());
         // c.setLinewrap(0, 1, 1).after(getGrammarAccess().getML_COMMENTRule());
 
-        c.setNoSpace().after(
-                getGrammarAccess().getAttributeAccess()
-                        .getHyphenMinusKeyword_0());
+        for (final Pair<Keyword, Keyword> pair : g.findKeywordPairs("(", ")")) {
+            c.setNoSpace().after(pair.getFirst());
+            c.setNoSpace().before(pair.getSecond());
+        }
+        for (final Pair<Keyword, Keyword> pair : g.findKeywordPairs("[", "]")) {
+            c.setNoSpace().after(pair.getFirst());
+            c.setNoSpace().before(pair.getSecond());
+        }
+        for (final Pair<Keyword, Keyword> pair : g.findKeywordPairs("{", "}")) {
+            c.setNoSpace().after(pair.getFirst());
+            c.setNoSpace().before(pair.getSecond());
+        }
+        for (final Pair<Keyword, Keyword> pair : g.findKeywordPairs("<<", ">>")) {
+            c.setNoSpace().after(pair.getFirst());
+            c.setNoSpace().before(pair.getSecond());
+        }
+        for (final Keyword sep : g.findKeywords(",", ";", ".")) {
+            c.setNoSpace().before(sep);
+        }
+        for (final Keyword sep : g.findKeywords(":")) {
+            c.setNoSpace().around(sep);
+        }
 
-        c.setSpace("\n").after(
-                getGrammarAccess().getFunctionAccess()
-                        .getFULL_STOPTerminalRuleCall_3());
-        c.setIndentationDecrement().after(
-                getGrammarAccess().getFunctionAccess()
-                        .getFULL_STOPTerminalRuleCall_3());
-        c.setLinewrap().after(
-                getGrammarAccess().getFunctionAccess()
-                        .getSemicolonKeyword_2_0());
-        c.setIndentationDecrement().after(
-                getGrammarAccess().getFunctionAccess()
-                        .getSemicolonKeyword_2_0());
+        c.setNoSpace().after(g.getAttributeAccess().getHyphenMinusKeyword_0());
+        c.setNoSpace().after(g.getFunctionAccess().getNameAssignment_0());
+        c.setNoSpace().after(g.getFunctionClauseAccess().getRefAssignment_0());
+
+        // c.setLinewrap(1).after(
+        // g.getFunctionAccess().getFULL_STOPTerminalRuleCall_3());
+        c.setIndentationDecrement().before(
+                g.getFunctionAccess().getFULL_STOPTerminalRuleCall_3());
+        c.setLinewrap().after(g.getFunctionAccess().getSemicolonKeyword_2_0());
+        c.setIndentationDecrement().before(
+                g.getFunctionAccess().getSemicolonKeyword_2_0());
 
         c.setLinewrap().after(
-                getGrammarAccess().getFunctionClauseAccess()
+                g.getFunctionClauseAccess()
                         .getHyphenMinusGreaterThanSignKeyword_5());
         c.setIndentationIncrement().after(
-                getGrammarAccess().getFunctionClauseAccess()
+                g.getFunctionClauseAccess()
                         .getHyphenMinusGreaterThanSignKeyword_5());
+
+        // c.setLinewrap().after(g.getListAccess().getCommaKeyword_1_1_1_0());
+        c.setLinewrap().after(g.getExpressionsAccess().getCommaKeyword_1_0());
+        c.setNoLinewrap().after(
+                g.getLExpressionAccess().getExprAssignment_0_1());
+
     }
 
     @Override
