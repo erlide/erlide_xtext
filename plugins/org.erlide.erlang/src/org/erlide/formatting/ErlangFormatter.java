@@ -59,9 +59,11 @@ public class ErlangFormatter extends AbstractDeclarativeFormatter {
         c.setNoSpace().after(g.getAttributeAccess().getHyphenMinusKeyword_0());
         c.setNoSpace().after(g.getFunctionAccess().getNameAssignment_0());
         c.setNoSpace().after(g.getFunctionClauseAccess().getRefAssignment_0());
+        // c.setNoSpace().before(
+        // g.getAttributeAccess().getFileAttributeParserRuleCall_1_4()ULL_STOPTerminalRuleCall_3());
 
-        // c.setLinewrap(1).after(
-        // g.getFunctionAccess().getFULL_STOPTerminalRuleCall_3());
+        c.setLinewrap(1).after(
+                g.getFunctionAccess().getFULL_STOPTerminalRuleCall_3());
         c.setIndentationDecrement().before(
                 g.getFunctionAccess().getFULL_STOPTerminalRuleCall_3());
         c.setLinewrap().after(g.getFunctionAccess().getSemicolonKeyword_2_0());

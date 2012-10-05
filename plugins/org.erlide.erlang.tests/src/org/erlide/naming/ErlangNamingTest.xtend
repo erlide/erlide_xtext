@@ -6,10 +6,10 @@ import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.erlide.ErlangInjectorProvider
+import org.erlide.erlang.ErlangTestExtensions
 import org.erlide.erlang.util.ErlangTestingHelper
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.erlide.erlang.ErlangTestExtensions
 
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
