@@ -5,6 +5,7 @@ package org.erlide.ui;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
 import org.eclipse.xtext.ui.editor.model.ResourceForIEditorInputFactory;
@@ -19,12 +20,24 @@ import org.erlide.ui.syntaxcoloring.ErlangAntlrTokenToAttributeIdMapper;
 import org.erlide.ui.syntaxcoloring.ErlangSemanticHighlightingCalculator;
 import org.erlide.ui.syntaxcoloring.ErlangSemanticHighlightingConfiguration;
 
+import com.google.inject.Binder;
+
 /**
  * Use this class to register components to be used within the IDE.
  */
 public class ErlangUiModule extends org.erlide.ui.AbstractErlangUiModule {
     public ErlangUiModule(final AbstractUIPlugin plugin) {
         super(plugin);
+    }
+
+    @Override
+    public void configure(final Binder binder) {
+        super.configure(binder);
+        binder.bind(String.class)
+                .annotatedWith(
+                        com.google.inject.name.Names
+                                .named((XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS)))
+                .toInstance(":#");
     }
 
     @Override
