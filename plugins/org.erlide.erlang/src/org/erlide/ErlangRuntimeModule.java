@@ -59,4 +59,10 @@ public class ErlangRuntimeModule extends org.erlide.AbstractErlangRuntimeModule 
     public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
         return ErlangResourceDescriptionStrategy.class;
     }
+
+    @Override
+    public Class<? extends org.eclipse.xtext.scoping.IScopeProvider> bindIScopeProvider() {
+        return org.erlide.scoping.ErlangScopeProvider.class;
+    }
+
 }
