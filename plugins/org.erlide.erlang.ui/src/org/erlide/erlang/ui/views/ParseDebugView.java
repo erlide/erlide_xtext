@@ -1,6 +1,7 @@
 package org.erlide.erlang.ui.views;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -23,8 +24,14 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.IResourceDescription;
+import org.eclipse.xtext.resource.IResourceDescription.Manager;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
+import org.eclipse.xtext.resource.IResourceServiceProvider.Registry;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.erlide.erlang.ModelDebugExtensions;
 
@@ -200,11 +207,33 @@ public class ParseDebugView extends ViewPart {
         part.getDocument().readOnly(new IUnitOfWork<Boolean, XtextResource>() {
             @Override
             public Boolean exec(final XtextResource state) throws Exception {
-                String result = "";
+                final StringBuilder result = new StringBuilder();
                 for (final EObject obj : state.getContents()) {
-                    result += new ModelDebugExtensions().debugPrint(obj);
+                    result.append(new ModelDebugExtensions().debugPrint(obj));
                 }
-                crtResult = result;
+                result.append("----------------").append("\n\nEXPORTS:\n\n");
+
+                final IXtextDocument myDocument = part.getDocument();
+                final Resource resource = myDocument
+                        .readOnly(new IUnitOfWork<Resource, XtextResource>() {
+                            @Override
+                            public Resource exec(final XtextResource res) {
+                                return res;
+                            }
+                        });
+
+                final Registry reg = IResourceServiceProvider.Registry.INSTANCE;
+                final Manager mgr = reg.getResourceServiceProvider(
+                        resource.getURI()).getResourceDescriptionManager();
+                final IResourceDescription descr = mgr
+                        .getResourceDescription(resource);
+                for (final IEObjectDescription d : descr.getExportedObjects()) {
+                    result.append("- ").append(d.getQualifiedName())
+                            .append("\t\t ").append(d.getEClass().getName())
+                            .append("\n");
+                }
+
+                crtResult = result.toString();
                 return Boolean.TRUE;
             }
         });
