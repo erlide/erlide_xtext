@@ -46,22 +46,9 @@ public abstract class AbstractErlangSyntacticSequencer extends AbstractSyntactic
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if(ruleCall.getRule() == grammarAccess.getFULL_STOPRule())
-			return getFULL_STOPToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getLineExprRule())
+		if(ruleCall.getRule() == grammarAccess.getLineExprRule())
 			return getLineExprToken(semanticObject, ruleCall, node);
 		return "";
-	}
-	
-	/**
-	 * terminal FULL_STOP:
-	 * 	'.' (WS | SL_COMMENT | EOF)
-	 * ;
-	 */
-	protected String getFULL_STOPToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return ".";
 	}
 	
 	/**

@@ -5024,9 +5024,11 @@ rule__Form__Group_3__2__Impl
     }
 :
 (
-{ before(grammarAccess.getFormAccess().getFULL_STOPTerminalRuleCall_3_2()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getFormAccess().getFULL_STOPTerminalRuleCall_3_2()); }
+{ before(grammarAccess.getFormAccess().getFullStopKeyword_3_2()); }
+
+	'.' 
+
+{ after(grammarAccess.getFormAccess().getFullStopKeyword_3_2()); }
 )
 
 ;
@@ -5483,9 +5485,11 @@ rule__DefineAttribute__Group__6__Impl
     }
 :
 (
-{ before(grammarAccess.getDefineAttributeAccess().getFULL_STOPTerminalRuleCall_6()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getDefineAttributeAccess().getFULL_STOPTerminalRuleCall_6()); }
+{ before(grammarAccess.getDefineAttributeAccess().getFullStopKeyword_6()); }
+
+	'.' 
+
+{ after(grammarAccess.getDefineAttributeAccess().getFullStopKeyword_6()); }
 )
 
 ;
@@ -5928,9 +5932,11 @@ rule__UndefAttribute__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getUndefAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getUndefAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
+{ before(grammarAccess.getUndefAttributeAccess().getFullStopKeyword_4()); }
+
+	'.' 
+
+{ after(grammarAccess.getUndefAttributeAccess().getFullStopKeyword_4()); }
 )
 
 ;
@@ -6117,9 +6123,11 @@ rule__IfdefAttribute__Group__5__Impl
     }
 :
 (
-{ before(grammarAccess.getIfdefAttributeAccess().getFULL_STOPTerminalRuleCall_5()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getIfdefAttributeAccess().getFULL_STOPTerminalRuleCall_5()); }
+{ before(grammarAccess.getIfdefAttributeAccess().getFullStopKeyword_5()); }
+
+	'.' 
+
+{ after(grammarAccess.getIfdefAttributeAccess().getFullStopKeyword_5()); }
 )
 
 ;
@@ -6217,9 +6225,11 @@ rule__ElseAttribute__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getElseAttributeAccess().getFULL_STOPTerminalRuleCall_2()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getElseAttributeAccess().getFULL_STOPTerminalRuleCall_2()); }
+{ before(grammarAccess.getElseAttributeAccess().getFullStopKeyword_2()); }
+
+	'.' 
+
+{ after(grammarAccess.getElseAttributeAccess().getFullStopKeyword_2()); }
 )
 
 ;
@@ -6311,9 +6321,11 @@ rule__EndifAttribute__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getEndifAttributeAccess().getFULL_STOPTerminalRuleCall_2()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getEndifAttributeAccess().getFULL_STOPTerminalRuleCall_2()); }
+{ before(grammarAccess.getEndifAttributeAccess().getFullStopKeyword_2()); }
+
+	'.' 
+
+{ after(grammarAccess.getEndifAttributeAccess().getFullStopKeyword_2()); }
 )
 
 ;
@@ -6465,9 +6477,11 @@ rule__IncludeAttribute__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getIncludeAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getIncludeAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
+{ before(grammarAccess.getIncludeAttributeAccess().getFullStopKeyword_4()); }
+
+	'.' 
+
+{ after(grammarAccess.getIncludeAttributeAccess().getFullStopKeyword_4()); }
 )
 
 ;
@@ -6623,9 +6637,11 @@ rule__IncludeLibAttribute__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getIncludeLibAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getIncludeLibAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
+{ before(grammarAccess.getIncludeLibAttributeAccess().getFullStopKeyword_4()); }
+
+	'.' 
+
+{ after(grammarAccess.getIncludeLibAttributeAccess().getFullStopKeyword_4()); }
 )
 
 ;
@@ -6841,9 +6857,11 @@ rule__FileAttribute__Group__6__Impl
     }
 :
 (
-{ before(grammarAccess.getFileAttributeAccess().getFULL_STOPTerminalRuleCall_6()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getFileAttributeAccess().getFULL_STOPTerminalRuleCall_6()); }
+{ before(grammarAccess.getFileAttributeAccess().getFullStopKeyword_6()); }
+
+	'.' 
+
+{ after(grammarAccess.getFileAttributeAccess().getFullStopKeyword_6()); }
 )
 
 ;
@@ -7003,9 +7021,11 @@ rule__ModuleAttribute__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getModuleAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getModuleAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
+{ before(grammarAccess.getModuleAttributeAccess().getFullStopKeyword_4()); }
+
+	'.' 
+
+{ after(grammarAccess.getModuleAttributeAccess().getFullStopKeyword_4()); }
 )
 
 ;
@@ -7099,9 +7119,11 @@ rule__EncodingAttribute__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getEncodingAttributeAccess().getFULL_STOPTerminalRuleCall_2()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getEncodingAttributeAccess().getFULL_STOPTerminalRuleCall_2()); }
+{ before(grammarAccess.getEncodingAttributeAccess().getFullStopKeyword_2()); }
+
+	'.' 
+
+{ after(grammarAccess.getEncodingAttributeAccess().getFullStopKeyword_2()); }
 )
 
 ;
@@ -7409,9 +7431,11 @@ rule__RecordAttribute__Group__6__Impl
     }
 :
 (
-{ before(grammarAccess.getRecordAttributeAccess().getFULL_STOPTerminalRuleCall_6()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getRecordAttributeAccess().getFULL_STOPTerminalRuleCall_6()); }
+{ before(grammarAccess.getRecordAttributeAccess().getFullStopKeyword_6()); }
+
+	'.' 
+
+{ after(grammarAccess.getRecordAttributeAccess().getFullStopKeyword_6()); }
 )
 
 ;
@@ -8071,9 +8095,11 @@ rule__ExportAttribute__Group__6__Impl
     }
 :
 (
-{ before(grammarAccess.getExportAttributeAccess().getFULL_STOPTerminalRuleCall_6()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getExportAttributeAccess().getFULL_STOPTerminalRuleCall_6()); }
+{ before(grammarAccess.getExportAttributeAccess().getFullStopKeyword_6()); }
+
+	'.' 
+
+{ after(grammarAccess.getExportAttributeAccess().getFullStopKeyword_6()); }
 )
 
 ;
@@ -8479,9 +8505,11 @@ rule__ImportAttribute__Group__8__Impl
     }
 :
 (
-{ before(grammarAccess.getImportAttributeAccess().getFULL_STOPTerminalRuleCall_8()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getImportAttributeAccess().getFULL_STOPTerminalRuleCall_8()); }
+{ before(grammarAccess.getImportAttributeAccess().getFullStopKeyword_8()); }
+
+	'.' 
+
+{ after(grammarAccess.getImportAttributeAccess().getFullStopKeyword_8()); }
 )
 
 ;
@@ -8769,9 +8797,11 @@ rule__CompileAttribute__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getCompileAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getCompileAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
+{ before(grammarAccess.getCompileAttributeAccess().getFullStopKeyword_4()); }
+
+	'.' 
+
+{ after(grammarAccess.getCompileAttributeAccess().getFullStopKeyword_4()); }
 )
 
 ;
@@ -8865,9 +8895,11 @@ rule__SpecAttribute__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getSpecAttributeAccess().getFULL_STOPTerminalRuleCall_2()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getSpecAttributeAccess().getFULL_STOPTerminalRuleCall_2()); }
+{ before(grammarAccess.getSpecAttributeAccess().getFullStopKeyword_2()); }
+
+	'.' 
+
+{ after(grammarAccess.getSpecAttributeAccess().getFullStopKeyword_2()); }
 )
 
 ;
@@ -9333,9 +9365,11 @@ rule__TypeAttribute__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getTypeAttributeAccess().getFULL_STOPTerminalRuleCall_2()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getTypeAttributeAccess().getFULL_STOPTerminalRuleCall_2()); }
+{ before(grammarAccess.getTypeAttributeAccess().getFullStopKeyword_2()); }
+
+	'.' 
+
+{ after(grammarAccess.getTypeAttributeAccess().getFullStopKeyword_2()); }
 )
 
 ;
@@ -10183,9 +10217,11 @@ rule__CustomAttribute__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getCustomAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getCustomAttributeAccess().getFULL_STOPTerminalRuleCall_4()); }
+{ before(grammarAccess.getCustomAttributeAccess().getFullStopKeyword_4()); }
+
+	'.' 
+
+{ after(grammarAccess.getCustomAttributeAccess().getFullStopKeyword_4()); }
 )
 
 ;
@@ -10432,9 +10468,11 @@ rule__Function__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getFunctionAccess().getFULL_STOPTerminalRuleCall_3()); }
-	RULE_FULL_STOP
-{ after(grammarAccess.getFunctionAccess().getFULL_STOPTerminalRuleCall_3()); }
+{ before(grammarAccess.getFunctionAccess().getFullStopKeyword_3()); }
+
+	'.' 
+
+{ after(grammarAccess.getFunctionAccess().getFullStopKeyword_3()); }
 )
 
 ;
@@ -28088,8 +28126,6 @@ RULE_VARIABLE : ('A'..'Z'|'_'|'\u00C0'..'\u00D6'|'\u00D8'..'\u00DE') RULE_IN_WOR
 RULE_SL_COMMENT : '%' ~(('\n'|'\r'))* ('\r'? '\n'|EOF);
 
 RULE_WS : ~(('!'..'~'|'\u00A1'..'\u00FF'))+;
-
-RULE_FULL_STOP : '.' (RULE_WS|RULE_SL_COMMENT|EOF);
 
 RULE_BASED_INT : ('1'..'3')? '0'..'9' '#' ('0'..'9'|'a'..'z'|'A'..'Z')+;
 

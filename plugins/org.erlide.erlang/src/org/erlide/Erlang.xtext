@@ -19,7 +19,7 @@ Form:
 	  Attribute 
 	| Function
 	| ConditionalFormBlock
-	| {MacroForm} call=MacroCall FULL_STOP 
+	| {MacroForm} call=MacroCall '.' 
 ;
 
 
@@ -67,23 +67,23 @@ DefineAttribute:
 		    ('(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' )? 
 	    	(',' value=Guard?)? 
 		')'
-	FULL_STOP		 
+	'.'		 
 ;
 
 UndefAttribute:
-	=> tag='undef' '(' ref=MacroRef ')' FULL_STOP
+	=> tag='undef' '(' ref=MacroRef ')' '.'
 ;
 
 IfdefAttribute:
-	'-' => tag=('ifdef'|'ifndef') '(' ref=MacroRef ')' FULL_STOP
+	'-' => tag=('ifdef'|'ifndef') '(' ref=MacroRef ')' '.'
 ;
 
 ElseAttribute:
-	'-' => tag='else' FULL_STOP
+	'-' => tag='else' '.'
 ;
 
 EndifAttribute:
-	'-' => tag='endif'	FULL_STOP
+	'-' => tag='endif'	'.'
 ;
 
 AbstractIncludeAttribute:
@@ -92,19 +92,19 @@ AbstractIncludeAttribute:
 ;
 	
 IncludeAttribute:
-	=> tag=('include') '(' importURI=STRING ')' FULL_STOP
+	=> tag=('include') '(' importURI=STRING ')' '.'
 ;
 
 IncludeLibAttribute:
-	=> tag=('include_lib') '(' importURI=STRING ')' FULL_STOP
+	=> tag=('include_lib') '(' importURI=STRING ')' '.'
 ;
 
 FileAttribute:
-	=> tag='file' '(' file=STRING ',' line=INTEGER ')' FULL_STOP
+	=> tag='file' '(' file=STRING ',' line=INTEGER ')' '.'
 ;
 
 ModuleAttribute:
-	=> tag='module' '(' moduleName=NAME ')' FULL_STOP
+	=> tag='module' '(' moduleName=NAME ')' '.'
 ;
 
 EncodingAttribute:
@@ -112,7 +112,7 @@ EncodingAttribute:
 	  ( '(' charset=NAME ')' | 
 		charset=NAME
 	  ) 
-	FULL_STOP
+	'.'
 ;
 
 RecordAttribute:
@@ -121,7 +121,7 @@ RecordAttribute:
 			| recordMacro=MacroCall
 		) 
 	')' 
-	FULL_STOP  
+	'.'  
 ;
 
 RecordFieldDef:
@@ -131,18 +131,18 @@ RecordFieldDef:
 ExportAttribute:
 	=> tag='export' 
 		'(' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
-	FULL_STOP
+	'.'
 ;
 
 ImportAttribute:
 	=> tag='import' 
 		'(' module=AtomVarMacro ',' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
-	FULL_STOP
+	'.'
 ;
 
 CompileAttribute:
 	=> tag='compile' '(' options=Expression ')' 
-	FULL_STOP
+	'.'
 ;
 
 AbstractTypeAttribute:
@@ -156,7 +156,7 @@ SpecAttribute:
   		      ref=SpecFun signatures+=TypeSig (';' signatures+=TypeSig)*
   		| '(' ref=SpecFun signatures+=TypeSig (';' signatures+=TypeSig)* ')'
 	)
-	FULL_STOP
+	'.'
 ;
 
 TypeAttribute:
@@ -165,17 +165,17 @@ TypeAttribute:
   	    	name=NAMEVAR '(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' '::' type=TopType 
   	  | '(' name=NAMEVAR '(' (args+=PatternExpression (',' args+=PatternExpression)*)? ')' '::' type=TopType ')'
 	)
-	FULL_STOP
+	'.'
 ;
 
 CustomAttribute:
-	tag=ATOM '(' (value+=Expression (',' value+=Expression)*)? ')' FULL_STOP
+	tag=ATOM '(' (value+=Expression (',' value+=Expression)*)? ')' '.'
 ;
 
 // Functions
 
 Function:
-	name=NAME clauses+=FunctionClause ( ';' clauses+=FunctionClause )* FULL_STOP
+	name=NAME clauses+=FunctionClause ( ';' clauses+=FunctionClause )* '.'
 ;
 
 // validate that all names for a function are identical
@@ -530,10 +530,6 @@ terminal SL_COMMENT:
 
 terminal WS:
 	(!('!'..'~'|'\u00a1'..'\u00ff'))+
-;
-
-terminal FULL_STOP:
-	'.' (WS | SL_COMMENT | EOF)
 ;
 
 INTEGER:

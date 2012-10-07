@@ -37,7 +37,7 @@ class FormattingTest extends AbstractXtextTests {
 	@Test
 	def void test() {
 		val String code = '''
-            -module (x) .'''
+            -module (x).'''
         val module = parser.parse(code)
         val actual = serializeFormatted(module.key)
         assertThat(actual, is(code)) 

@@ -63,7 +63,7 @@ public class FormattingTest extends AbstractXtextTests {
   @Test
   public void test() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module (x) .");
+    _builder.append("-module (x).");
     final String code = _builder.toString();
     final Pair<Module,List<Integer>> module = this.parser.parse(code);
     Module _key = module.getKey();

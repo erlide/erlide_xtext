@@ -59,15 +59,17 @@ public class ErlangFormatter extends AbstractDeclarativeFormatter {
         c.setNoSpace().after(g.getAttributeAccess().getHyphenMinusKeyword_0());
         c.setNoSpace().after(g.getFunctionAccess().getNameAssignment_0());
         c.setNoSpace().after(g.getFunctionClauseAccess().getRefAssignment_0());
-        // c.setNoSpace().before(
-        // g.getAttributeAccess().getFileAttributeParserRuleCall_1_4()ULL_STOPTerminalRuleCall_3());
+        c.setNoSpace().before(g.getFunctionAccess().getFullStopKeyword_3());
+        c.setNoSpace().around(g.getFunRefAccess().getSolidusKeyword_2());
+        c.setNoSpace().around(g.getFunRefAccess().getColonKeyword_0_1());
+        c.setLinewrap(0, 1, 2).before(
+                g.getAttributeAccess().getHyphenMinusKeyword_0());
 
-        c.setLinewrap(1).after(
-                g.getFunctionAccess().getFULL_STOPTerminalRuleCall_3());
-        c.setIndentationDecrement().before(
-                g.getFunctionAccess().getFULL_STOPTerminalRuleCall_3());
+        c.setLinewrap(2).after(g.getFunctionAccess().getFullStopKeyword_3());
+        c.setIndentationDecrement().after(
+                g.getFunctionAccess().getFullStopKeyword_3());
         c.setLinewrap().after(g.getFunctionAccess().getSemicolonKeyword_2_0());
-        c.setIndentationDecrement().before(
+        c.setIndentationDecrement().after(
                 g.getFunctionAccess().getSemicolonKeyword_2_0());
 
         c.setLinewrap().after(
@@ -77,7 +79,7 @@ public class ErlangFormatter extends AbstractDeclarativeFormatter {
                 g.getFunctionClauseAccess()
                         .getHyphenMinusGreaterThanSignKeyword_5());
 
-        // c.setLinewrap().after(g.getListAccess().getCommaKeyword_1_1_1_0());
+        c.setLinewrap().after(g.getListAccess().getCommaKeyword_1_1_1_0());
         c.setLinewrap().after(g.getExpressionsAccess().getCommaKeyword_1_0());
         c.setNoLinewrap().after(
                 g.getLExpressionAccess().getExprAssignment_0_1());
