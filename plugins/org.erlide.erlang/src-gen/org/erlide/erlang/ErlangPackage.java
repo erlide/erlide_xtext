@@ -1124,7 +1124,7 @@ public interface ErlangPackage extends EPackage
   int FUNCTION_CLAUSE = 28;
 
   /**
-   * The feature id for the '<em><b>Ref</b></em>' attribute.
+   * The feature id for the '<em><b>Ref</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -5396,15 +5396,15 @@ public interface ErlangPackage extends EPackage
   EClass getFunctionClause();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.FunctionClause#getRef <em>Ref</em>}'.
+   * Returns the meta object for the reference '{@link org.erlide.erlang.FunctionClause#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ref</em>'.
+   * @return the meta object for the reference '<em>Ref</em>'.
    * @see org.erlide.erlang.FunctionClause#getRef()
    * @see #getFunctionClause()
    * @generated
    */
-  EAttribute getFunctionClause_Ref();
+  EReference getFunctionClause_Ref();
 
   /**
    * Returns the meta object for the containment reference '{@link org.erlide.erlang.FunctionClause#getParams <em>Params</em>}'.
@@ -8010,12 +8010,12 @@ public interface ErlangPackage extends EPackage
     EClass FUNCTION_CLAUSE = eINSTANCE.getFunctionClause();
 
     /**
-     * The meta object literal for the '<em><b>Ref</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUNCTION_CLAUSE__REF = eINSTANCE.getFunctionClause_Ref();
+    EReference FUNCTION_CLAUSE__REF = eINSTANCE.getFunctionClause_Ref();
 
     /**
      * The meta object literal for the '<em><b>Params</b></em>' containment reference feature.

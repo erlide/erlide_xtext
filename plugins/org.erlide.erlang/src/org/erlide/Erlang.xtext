@@ -180,7 +180,7 @@ Function:
 
 // validate that all names for a function are identical
 FunctionClause:
-	  ref=NAME? '(' params=Expressions? ')' 
+	  ref=[Function|NAME]? '(' params=Expressions? ')' 
 	  ('when'? guard=Guard)? // no 'when' if guard is a macro
 	  '->' body=Expressions
 ;

@@ -25552,8 +25552,12 @@ rule__FunctionClause__RefAssignment_0
     }
 :
 (
-{ before(grammarAccess.getFunctionClauseAccess().getRefNAMEParserRuleCall_0_0()); }
-	ruleNAME{ after(grammarAccess.getFunctionClauseAccess().getRefNAMEParserRuleCall_0_0()); }
+{ before(grammarAccess.getFunctionClauseAccess().getRefFunctionCrossReference_0_0()); }
+(
+{ before(grammarAccess.getFunctionClauseAccess().getRefFunctionNAMEParserRuleCall_0_0_1()); }
+	ruleNAME{ after(grammarAccess.getFunctionClauseAccess().getRefFunctionNAMEParserRuleCall_0_0_1()); }
+)
+{ after(grammarAccess.getFunctionClauseAccess().getRefFunctionCrossReference_0_0()); }
 )
 
 ;

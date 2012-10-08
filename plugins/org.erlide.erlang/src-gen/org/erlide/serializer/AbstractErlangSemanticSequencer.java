@@ -2018,7 +2018,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (ref=NAME? params=Expressions? guard=Guard? body=Expressions)
+	 *     (ref=[Function|NAME]? params=Expressions? guard=Guard? body=Expressions)
 	 */
 	protected void sequence_FunctionClause(EObject context, FunctionClause semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

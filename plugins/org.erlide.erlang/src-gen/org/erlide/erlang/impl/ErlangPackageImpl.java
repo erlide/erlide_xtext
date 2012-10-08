@@ -1501,9 +1501,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionClause_Ref()
+  public EReference getFunctionClause_Ref()
   {
-    return (EAttribute)functionClauseEClass.getEStructuralFeatures().get(0);
+    return (EReference)functionClauseEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3509,7 +3509,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(functionEClass, FUNCTION__CLAUSES);
 
     functionClauseEClass = createEClass(FUNCTION_CLAUSE);
-    createEAttribute(functionClauseEClass, FUNCTION_CLAUSE__REF);
+    createEReference(functionClauseEClass, FUNCTION_CLAUSE__REF);
     createEReference(functionClauseEClass, FUNCTION_CLAUSE__PARAMS);
     createEReference(functionClauseEClass, FUNCTION_CLAUSE__GUARD);
     createEReference(functionClauseEClass, FUNCTION_CLAUSE__BODY);
@@ -3966,7 +3966,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getFunction_Clauses(), this.getFunctionClause(), null, "clauses", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionClauseEClass, FunctionClause.class, "FunctionClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunctionClause_Ref(), ecorePackage.getEString(), "ref", null, 0, 1, FunctionClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionClause_Ref(), this.getFunction(), null, "ref", null, 0, 1, FunctionClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionClause_Params(), this.getExpressions(), null, "params", null, 0, 1, FunctionClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionClause_Guard(), this.getGuard(), null, "guard", null, 0, 1, FunctionClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionClause_Body(), this.getExpressions(), null, "body", null, 0, 1, FunctionClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

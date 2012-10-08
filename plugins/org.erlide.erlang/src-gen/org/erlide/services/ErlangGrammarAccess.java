@@ -1530,7 +1530,8 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunctionClause");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cRefAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cRefNAMEParserRuleCall_0_0 = (RuleCall)cRefAssignment_0.eContents().get(0);
+		private final CrossReference cRefFunctionCrossReference_0_0 = (CrossReference)cRefAssignment_0.eContents().get(0);
+		private final RuleCall cRefFunctionNAMEParserRuleCall_0_0_1 = (RuleCall)cRefFunctionCrossReference_0_0.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cParamsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cParamsExpressionsParserRuleCall_2_0 = (RuleCall)cParamsAssignment_2.eContents().get(0);
@@ -1545,19 +1546,22 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//// validate that all names for a function are identical
 		//FunctionClause:
-		//	ref=NAME? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
+		//	ref=[Function|NAME]? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
 		//	"->" body=Expressions;
 		public ParserRule getRule() { return rule; }
 
-		//ref=NAME? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
+		//ref=[Function|NAME]? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
 		//"->" body=Expressions
 		public Group getGroup() { return cGroup; }
 
-		//ref=NAME?
+		//ref=[Function|NAME]?
 		public Assignment getRefAssignment_0() { return cRefAssignment_0; }
 
+		//[Function|NAME]
+		public CrossReference getRefFunctionCrossReference_0_0() { return cRefFunctionCrossReference_0_0; }
+
 		//NAME
-		public RuleCall getRefNAMEParserRuleCall_0_0() { return cRefNAMEParserRuleCall_0_0; }
+		public RuleCall getRefFunctionNAMEParserRuleCall_0_0_1() { return cRefFunctionNAMEParserRuleCall_0_0_1; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
@@ -6205,7 +6209,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// validate that all names for a function are identical
 	//FunctionClause:
-	//	ref=NAME? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
+	//	ref=[Function|NAME]? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
 	//	"->" body=Expressions;
 	public FunctionClauseElements getFunctionClauseAccess() {
 		return (pFunctionClause != null) ? pFunctionClause : (pFunctionClause = new FunctionClauseElements());

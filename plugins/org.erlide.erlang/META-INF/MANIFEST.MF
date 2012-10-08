@@ -40,10 +40,12 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.erlide,
  org.erlide.conversion,
  org.erlide.erlang,
+ org.erlide.erlang.content,
  org.erlide.erlang.impl,
  org.erlide.erlang.util,
  org.erlide.formatting,
  org.erlide.naming,
+ org.erlide.parseTreeConstruction,
  org.erlide.parser.antlr,
  org.erlide.parser.antlr.internal,
  org.erlide.project,
@@ -54,6 +56,5 @@ Export-Package: org.erlide,
  org.erlide.scoping,
  org.erlide.serializer,
  org.erlide.services,
- org.erlide.validation,
- org.erlide.parseTreeConstruction
+ org.erlide.validation
 

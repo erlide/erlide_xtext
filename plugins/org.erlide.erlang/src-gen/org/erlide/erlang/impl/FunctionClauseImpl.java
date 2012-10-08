@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expressions;
+import org.erlide.erlang.Function;
 import org.erlide.erlang.FunctionClause;
 import org.erlide.erlang.Guard;
 
@@ -38,24 +39,14 @@ import org.erlide.erlang.Guard;
 public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements FunctionClause
 {
   /**
-   * The default value of the '{@link #getRef() <em>Ref</em>}' attribute.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRef()
    * @generated
    * @ordered
    */
-  protected static final String REF_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRef()
-   * @generated
-   * @ordered
-   */
-  protected String ref = REF_EDEFAULT;
+  protected Function ref;
 
   /**
    * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference.
@@ -113,7 +104,27 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getRef()
+  public Function getRef()
+  {
+    if (ref != null && ref.eIsProxy())
+    {
+      InternalEObject oldRef = (InternalEObject)ref;
+      ref = (Function)eResolveProxy(oldRef);
+      if (ref != oldRef)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.FUNCTION_CLAUSE__REF, oldRef, ref));
+      }
+    }
+    return ref;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Function basicGetRef()
   {
     return ref;
   }
@@ -123,9 +134,9 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(String newRef)
+  public void setRef(Function newRef)
   {
-    String oldRef = ref;
+    Function oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FUNCTION_CLAUSE__REF, oldRef, ref));
@@ -306,7 +317,8 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case ErlangPackage.FUNCTION_CLAUSE__REF:
-        return getRef();
+        if (resolve) return getRef();
+        return basicGetRef();
       case ErlangPackage.FUNCTION_CLAUSE__PARAMS:
         return getParams();
       case ErlangPackage.FUNCTION_CLAUSE__GUARD:
@@ -328,7 +340,7 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case ErlangPackage.FUNCTION_CLAUSE__REF:
-        setRef((String)newValue);
+        setRef((Function)newValue);
         return;
       case ErlangPackage.FUNCTION_CLAUSE__PARAMS:
         setParams((Expressions)newValue);
@@ -354,7 +366,7 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case ErlangPackage.FUNCTION_CLAUSE__REF:
-        setRef(REF_EDEFAULT);
+        setRef((Function)null);
         return;
       case ErlangPackage.FUNCTION_CLAUSE__PARAMS:
         setParams((Expressions)null);
@@ -380,7 +392,7 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case ErlangPackage.FUNCTION_CLAUSE__REF:
-        return REF_EDEFAULT == null ? ref != null : !REF_EDEFAULT.equals(ref);
+        return ref != null;
       case ErlangPackage.FUNCTION_CLAUSE__PARAMS:
         return params != null;
       case ErlangPackage.FUNCTION_CLAUSE__GUARD:
@@ -389,23 +401,6 @@ public class FunctionClauseImpl extends MinimalEObjectImpl.Container implements 
         return body != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (ref: ");
-    result.append(ref);
-    result.append(')');
-    return result.toString();
   }
 
 } //FunctionClauseImpl

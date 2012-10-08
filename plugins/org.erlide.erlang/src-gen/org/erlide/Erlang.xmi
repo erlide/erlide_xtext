@@ -605,7 +605,12 @@
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Assignment" cardinality="?" feature="ref" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.90"/>
+        <terminal xsi:type="xtext:CrossReference">
+          <type metamodel="//@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.erlide.org/Erlang#//Function"/>
+          </type>
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.90"/>
+        </terminal>
       </elements>
       <elements xsi:type="xtext:Keyword" value="("/>
       <elements xsi:type="xtext:Assignment" cardinality="?" feature="params" operator="=">

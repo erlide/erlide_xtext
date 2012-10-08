@@ -94,7 +94,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Function/clauses"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//FunctionClause">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//FunctionClause/ref"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunctionClause/ref"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunctionClause/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunctionClause/guard"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FunctionClause/body"/>

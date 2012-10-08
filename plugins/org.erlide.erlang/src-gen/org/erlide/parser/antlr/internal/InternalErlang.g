@@ -2614,18 +2614,15 @@ ruleFunctionClause returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		{ 
-	        newCompositeNode(grammarAccess.getFunctionClauseAccess().getRefNAMEParserRuleCall_0_0()); 
-	    }
-		lv_ref_0_0=ruleNAME		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionClauseRule());
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFunctionClauseRule());
 	        }
-       		set(
-       			$current, 
-       			"ref",
-        		lv_ref_0_0, 
-        		"NAME");
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getFunctionClauseAccess().getRefFunctionCrossReference_0_0()); 
+	    }
+		ruleNAME		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 

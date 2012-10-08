@@ -7798,12 +7798,12 @@ protected class Function_FullStopKeyword_3 extends KeywordToken  {
  *
  * // validate that all names for a function are identical
  * FunctionClause:
- * 	ref=NAME? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
+ * 	ref=[Function|NAME]? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
  * 	"->" body=Expressions;
  *
  **/
 
-// ref=NAME? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
+// ref=[Function|NAME]? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
 // "->" body=Expressions
 protected class FunctionClause_Group extends GroupToken {
 	
@@ -7833,7 +7833,7 @@ protected class FunctionClause_Group extends GroupToken {
 
 }
 
-// ref=NAME?
+// ref=[Function|NAME]?
 protected class FunctionClause_RefAssignment_0 extends AssignmentToken  {
 	
 	public FunctionClause_RefAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7856,10 +7856,13 @@ protected class FunctionClause_RefAssignment_0 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("ref",false)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("ref");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getFunctionClauseAccess().getRefNAMEParserRuleCall_0_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getFunctionClauseAccess().getRefNAMEParserRuleCall_0_0();
-			return obj;
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getFunctionClauseAccess().getRefFunctionCrossReference_0_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getFunctionClauseAccess().getRefFunctionCrossReference_0_0(); 
+				return obj;
+			}
 		}
 		return null;
 	}
