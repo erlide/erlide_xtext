@@ -5,8 +5,10 @@ package org.erlide.ui;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
+import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
 import org.eclipse.xtext.ui.editor.model.ResourceForIEditorInputFactory;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
@@ -15,6 +17,8 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.eclipse.xtext.ui.resource.SimpleResourceSetProvider;
 import org.erlide.ui.folding.MyFoldingRegionProvider;
+import org.erlide.ui.hover.ErlangEObjectDocumentationProvider;
+import org.erlide.ui.hover.ErlangEObjectHoverProvider;
 import org.erlide.ui.navigator.ErlangContentProvider;
 import org.erlide.ui.syntaxcoloring.ErlangAntlrTokenToAttributeIdMapper;
 import org.erlide.ui.syntaxcoloring.ErlangSemanticHighlightingCalculator;
@@ -75,5 +79,13 @@ public class ErlangUiModule extends org.erlide.ui.AbstractErlangUiModule {
     @Override
     public Class<? extends org.eclipse.xtext.ui.editor.IXtextEditorCallback> bindIXtextEditorCallback() {
         return org.eclipse.xtext.ui.editor.validation.ValidatingEditorCallback.class;
+    }
+
+    public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
+        return ErlangEObjectHoverProvider.class;
+    }
+
+    public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProviderr() {
+        return ErlangEObjectDocumentationProvider.class;
     }
 }
