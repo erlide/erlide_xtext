@@ -525,9 +525,13 @@ terminal STRING:
 terminal VARIABLE:
 	('A'..'Z' | '_' | 'À'..'Ö' | 'Ø'..'Þ') IN_WORD_CHAR*;
 
-terminal SL_COMMENT:
+terminal fragment COMMENT:
 	'%' !('\n' | '\r')* ('\r'? '\n' | EOF);
 
+terminal SL_COMMENT:
+	COMMENT+;
+
+// FIXME what when input is utf8?
 terminal WS:
 	(!('!'..'~'|'\u00a1'..'\u00ff'))+
 ;

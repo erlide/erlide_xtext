@@ -140,7 +140,6 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule Module ****************
  *
  * Module:
- * 
  * 	forms+=Form*;
  *
  **/
@@ -197,9 +196,7 @@ protected class Module_FormsAssignment extends AssignmentToken  {
 /************ begin Rule AtomRefTarget ****************
  *
  * // AtomRefTargets are the elements that an atom can refer to
- * 
  * AtomRefTarget:
- * 
  * 	Module | Function | RecordAttribute | RecordFieldDef;
  *
  **/
@@ -390,7 +387,6 @@ protected class AtomRefTarget_RecordFieldDefParserRuleCall_3 extends RuleCallTok
 /************ begin Rule Form ****************
  *
  * Form:
- * 
  * 	Attribute | Function | ConditionalFormBlock | {MacroForm} call=MacroCall ".";
  *
  **/
@@ -695,7 +691,6 @@ protected class Form_FullStopKeyword_3_2 extends KeywordToken  {
 /************ begin Rule ConditionalFormBlock ****************
  *
  * ConditionalFormBlock:
- * 
  * 	condition=IfdefAttribute ifForms+=Form* (=> hasElse?=ElseAttribute elseForms+=Form*)? end=EndifAttribute;
  *
  **/
@@ -994,17 +989,13 @@ protected class ConditionalFormBlock_EndAssignment_3 extends AssignmentToken  {
 /************ begin Rule Attribute ****************
  *
  * // Attributes
- * 
  * Attribute:
- * 
  * 	"-" (ModuleAttribute | EncodingAttribute | AbstractDefineAttribute | AbstractIncludeAttribute | FileAttribute |
- * 
  * 	RecordAttribute | AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute);
  *
  **/
 
 // "-" (ModuleAttribute | EncodingAttribute | AbstractDefineAttribute | AbstractIncludeAttribute | FileAttribute |
-// 
 // RecordAttribute | AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute)
 protected class Attribute_Group extends GroupToken {
 	
@@ -1069,7 +1060,6 @@ protected class Attribute_HyphenMinusKeyword_0 extends KeywordToken  {
 }
 
 // ModuleAttribute | EncodingAttribute | AbstractDefineAttribute | AbstractIncludeAttribute | FileAttribute |
-// 
 // RecordAttribute | AbstractTypeAttribute | ExportAttribute | ImportAttribute | CompileAttribute | CustomAttribute
 protected class Attribute_Alternatives_1 extends AlternativesToken {
 
@@ -1520,7 +1510,6 @@ protected class Attribute_CustomAttributeParserRuleCall_1_10 extends RuleCallTok
 /************ begin Rule ConditionalAttribute ****************
  *
  * ConditionalAttribute:
- * 
  * 	IfdefAttribute | ElseAttribute | EndifAttribute;
  *
  **/
@@ -1673,7 +1662,6 @@ protected class ConditionalAttribute_EndifAttributeParserRuleCall_2 extends Rule
 /************ begin Rule AbstractDefineAttribute ****************
  *
  * AbstractDefineAttribute:
- * 
  * 	DefineAttribute | UndefAttribute;
  *
  **/
@@ -1788,15 +1776,12 @@ protected class AbstractDefineAttribute_UndefAttributeParserRuleCall_1 extends R
 /************ begin Rule DefineAttribute ****************
  *
  * DefineAttribute:
- * 
  * 	=> tag="define" "(" macroName= // can't have feature 'name' because multiple defines with the same macro can exist 
- * 
  * 	NAMEVAR ("(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")")? ("," value=Guard?)? ")" ".";
  *
  **/
 
 // => tag="define" "(" macroName= // can't have feature 'name' because multiple defines with the same macro can exist 
-// 
 // NAMEVAR ("(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")")? ("," value=Guard?)? ")" "."
 protected class DefineAttribute_Group extends GroupToken {
 	
@@ -1882,7 +1867,6 @@ protected class DefineAttribute_LeftParenthesisKeyword_1 extends KeywordToken  {
 }
 
 // macroName= // can't have feature 'name' because multiple defines with the same macro can exist 
-// 
 // NAMEVAR
 protected class DefineAttribute_MacroNameAssignment_2 extends AssignmentToken  {
 	
@@ -2291,7 +2275,6 @@ protected class DefineAttribute_FullStopKeyword_6 extends KeywordToken  {
 /************ begin Rule UndefAttribute ****************
  *
  * UndefAttribute:
- * 
  * 	=> tag="undef" "(" ref=MacroRef ")" ".";
  *
  **/
@@ -2477,7 +2460,6 @@ protected class UndefAttribute_FullStopKeyword_4 extends KeywordToken  {
 /************ begin Rule IfdefAttribute ****************
  *
  * IfdefAttribute:
- * 
  * 	"-" => tag=("ifdef" | "ifndef") "(" ref=MacroRef ")" ".";
  *
  **/
@@ -2690,7 +2672,6 @@ protected class IfdefAttribute_FullStopKeyword_5 extends KeywordToken  {
 /************ begin Rule ElseAttribute ****************
  *
  * ElseAttribute:
- * 
  * 	"-" => tag="else" ".";
  *
  **/
@@ -2808,7 +2789,6 @@ protected class ElseAttribute_FullStopKeyword_2 extends KeywordToken  {
 /************ begin Rule EndifAttribute ****************
  *
  * EndifAttribute:
- * 
  * 	"-" => tag="endif" ".";
  *
  **/
@@ -2926,7 +2906,6 @@ protected class EndifAttribute_FullStopKeyword_2 extends KeywordToken  {
 /************ begin Rule AbstractIncludeAttribute ****************
  *
  * AbstractIncludeAttribute:
- * 
  * 	IncludeAttribute | IncludeLibAttribute;
  *
  **/
@@ -3041,7 +3020,6 @@ protected class AbstractIncludeAttribute_IncludeLibAttributeParserRuleCall_1 ext
 /************ begin Rule IncludeAttribute ****************
  *
  * IncludeAttribute:
- * 
  * 	=> tag="include" "(" importURI=STRING ")" ".";
  *
  **/
@@ -3215,7 +3193,6 @@ protected class IncludeAttribute_FullStopKeyword_4 extends KeywordToken  {
 /************ begin Rule IncludeLibAttribute ****************
  *
  * IncludeLibAttribute:
- * 
  * 	=> tag="include_lib" "(" importURI=STRING ")" ".";
  *
  **/
@@ -3389,7 +3366,6 @@ protected class IncludeLibAttribute_FullStopKeyword_4 extends KeywordToken  {
 /************ begin Rule FileAttribute ****************
  *
  * FileAttribute:
- * 
  * 	=> tag="file" "(" file=STRING "," line=INTEGER ")" ".";
  *
  **/
@@ -3619,7 +3595,6 @@ protected class FileAttribute_FullStopKeyword_6 extends KeywordToken  {
 /************ begin Rule ModuleAttribute ****************
  *
  * ModuleAttribute:
- * 
  * 	=> tag="module" "(" moduleName=NAME ")" ".";
  *
  **/
@@ -3793,7 +3768,6 @@ protected class ModuleAttribute_FullStopKeyword_4 extends KeywordToken  {
 /************ begin Rule EncodingAttribute ****************
  *
  * EncodingAttribute:
- * 
  * 	=> tag="encoding" ("(" charset=NAME ")" | charset=NAME) ".";
  *
  **/
@@ -4048,15 +4022,12 @@ protected class EncodingAttribute_FullStopKeyword_2 extends KeywordToken  {
 /************ begin Rule RecordAttribute ****************
  *
  * RecordAttribute:
- * 
  * 	=> tag="record" "(" name=NAMEVAR "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
- * 
  * 	recordMacro=MacroCall) ")" ".";
  *
  **/
 
 // => tag="record" "(" name=NAMEVAR "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
-// 
 // recordMacro=MacroCall) ")" "."
 protected class RecordAttribute_Group extends GroupToken {
 	
@@ -4548,7 +4519,6 @@ protected class RecordAttribute_FullStopKeyword_6 extends KeywordToken  {
 /************ begin Rule RecordFieldDef ****************
  *
  * RecordFieldDef:
- * 
  * 	name=NAMEVAR ("=" value=Expression)? ("::" type=TopType)?;
  *
  **/
@@ -4807,7 +4777,6 @@ protected class RecordFieldDef_TypeAssignment_2_1 extends AssignmentToken  {
 /************ begin Rule ExportAttribute ****************
  *
  * ExportAttribute:
- * 
  * 	=> tag="export" "(" "[" (funs+=FunRef ("," funs+=FunRef)*)? "]" ")" ".";
  *
  **/
@@ -5154,7 +5123,6 @@ protected class ExportAttribute_FullStopKeyword_6 extends KeywordToken  {
 /************ begin Rule ImportAttribute ****************
  *
  * ImportAttribute:
- * 
  * 	=> tag="import" "(" module=AtomVarMacro "," "[" (funs+=FunRef ("," funs+=FunRef)*)? "]" ")" ".";
  *
  **/
@@ -5569,7 +5537,6 @@ protected class ImportAttribute_FullStopKeyword_8 extends KeywordToken  {
 /************ begin Rule CompileAttribute ****************
  *
  * CompileAttribute:
- * 
  * 	=> tag="compile" "(" options=Expression ")" ".";
  *
  **/
@@ -5755,7 +5722,6 @@ protected class CompileAttribute_FullStopKeyword_4 extends KeywordToken  {
 /************ begin Rule AbstractTypeAttribute ****************
  *
  * AbstractTypeAttribute:
- * 
  * 	SpecAttribute | TypeAttribute;
  *
  **/
@@ -5870,15 +5836,12 @@ protected class AbstractTypeAttribute_TypeAttributeParserRuleCall_1 extends Rule
 /************ begin Rule SpecAttribute ****************
  *
  * SpecAttribute:
- * 
  * 	=> tag=("spec" | "callback") (ref=SpecFun signatures+=TypeSig (";" signatures+=TypeSig)* | "(" ref=SpecFun
- * 
  * 	signatures+=TypeSig (";" signatures+=TypeSig)* ")") ".";
  *
  **/
 
 // => tag=("spec" | "callback") (ref=SpecFun signatures+=TypeSig (";" signatures+=TypeSig)* | "(" ref=SpecFun
-// 
 // signatures+=TypeSig (";" signatures+=TypeSig)* ")") "."
 protected class SpecAttribute_Group extends GroupToken {
 	
@@ -5947,7 +5910,6 @@ protected class SpecAttribute_TagAssignment_0 extends AssignmentToken  {
 }
 
 // ref=SpecFun signatures+=TypeSig (";" signatures+=TypeSig)* | "(" ref=SpecFun signatures+=TypeSig (";"
-// 
 // signatures+=TypeSig)* ")"
 protected class SpecAttribute_Alternatives_1 extends AlternativesToken {
 
@@ -6461,19 +6423,14 @@ protected class SpecAttribute_FullStopKeyword_2 extends KeywordToken  {
 /************ begin Rule TypeAttribute ****************
  *
  * TypeAttribute:
- * 
  * 	=> tag=("type" | "opaque") (name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::"
- * 
  * 	type=TopType | "(" name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::" type=TopType
- * 
  * 	")") ".";
  *
  **/
 
 // => tag=("type" | "opaque") (name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::"
-// 
 // type=TopType | "(" name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::" type=TopType
-// 
 // ")") "."
 protected class TypeAttribute_Group extends GroupToken {
 	
@@ -6542,7 +6499,6 @@ protected class TypeAttribute_TagAssignment_0 extends AssignmentToken  {
 }
 
 // name=NAMEVAR "(" (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::" type=TopType | "(" name=NAMEVAR "("
-// 
 // (args+=PatternExpression ("," args+=PatternExpression)*)? ")" "::" type=TopType ")"
 protected class TypeAttribute_Alternatives_1 extends AlternativesToken {
 
@@ -7304,7 +7260,6 @@ protected class TypeAttribute_FullStopKeyword_2 extends KeywordToken  {
 /************ begin Rule CustomAttribute ****************
  *
  * CustomAttribute:
- * 
  * 	tag=ATOM "(" (value+=Expression ("," value+=Expression)*)? ")" ".";
  *
  **/
@@ -7607,9 +7562,7 @@ protected class CustomAttribute_FullStopKeyword_4 extends KeywordToken  {
 /************ begin Rule Function ****************
  *
  * // Functions
- * 
  * Function:
- * 
  * 	name=NAME clauses+=FunctionClause (";" clauses+=FunctionClause)* ".";
  *
  **/
@@ -7844,17 +7797,13 @@ protected class Function_FullStopKeyword_3 extends KeywordToken  {
 /************ begin Rule FunctionClause ****************
  *
  * // validate that all names for a function are identical
- * 
  * FunctionClause:
- * 
  * 	ref=NAME? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
- * 
  * 	"->" body=Expressions;
  *
  **/
 
 // ref=NAME? "(" params=Expressions? ")" ("when"? guard=Guard)? // no 'when' if guard is a macro
-// 
 // "->" body=Expressions
 protected class FunctionClause_Group extends GroupToken {
 	
@@ -8153,7 +8102,6 @@ protected class FunctionClause_BodyAssignment_6 extends AssignmentToken  {
 /************ begin Rule Guard ****************
  *
  * Guard:
- * 
  * 	guards+=Expressions (";" guards+=Expressions)*;
  *
  **/
@@ -8332,7 +8280,6 @@ protected class Guard_GuardsAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule Expressions ****************
  *
  * Expressions:
- * 
  * 	exprs+=LExpression ("," exprs+=LExpression)*;
  *
  **/
@@ -8511,7 +8458,6 @@ protected class Expressions_ExprsAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule LExpression ****************
  *
  * LExpression returns Expression:
- * 
  * 	=> line?=LineExpr expr=Expression | Expression;
  *
  **/
@@ -8727,7 +8673,6 @@ protected class LExpression_ExpressionParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule Expression ****************
  *
  * Expression:
- * 
  * 	{CatchExpr} "catch" expr=Expression | Expr100;
  *
  **/
@@ -8957,9 +8902,7 @@ protected class Expression_Expr100ParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule Expr100 ****************
  *
  * // right-associative
- * 
  * Expr100 returns Expression:
- * 
  * 	Expr150 ({MatchExpr.opLeft=current} op="=" opRight=Expr100 | {BinOp.opLeft=current} op=SENDOP opRight=Expr100)?;
  *
  **/
@@ -9375,7 +9318,6 @@ protected class Expr100_OpRightAssignment_1_1_2 extends AssignmentToken  {
 /************ begin Rule Expr150 ****************
  *
  * Expr150 returns Expression:
- * 
  * 	Expr160 ({BinOp.opLeft=current} op="orelse" opRight=Expr160)*;
  *
  **/
@@ -9621,7 +9563,6 @@ protected class Expr150_OpRightAssignment_1_2 extends AssignmentToken  {
 /************ begin Rule Expr160 ****************
  *
  * Expr160 returns Expression:
- * 
  * 	Expr200 ({BinOp.opLeft=current} op="andalso" opRight2=Expr200)*;
  *
  **/
@@ -9867,9 +9808,7 @@ protected class Expr160_OpRight2Assignment_1_2 extends AssignmentToken  {
 /************ begin Rule Expr200 ****************
  *
  * // non-associative
- * 
  * Expr200 returns Expression:
- * 
  * 	Expr300 ({BinOp.opLeft=current} op=COMPOP opRight=Expr300)?;
  *
  **/
@@ -10114,7 +10053,6 @@ protected class Expr200_OpRightAssignment_1_2 extends AssignmentToken  {
 /************ begin Rule Expr300 ****************
  *
  * Expr300 returns Expression:
- * 
  * 	Expr400 ({BinOp.opLeft=current} op=LISTOP opRight=Expr400)*;
  *
  **/
@@ -10360,7 +10298,6 @@ protected class Expr300_OpRightAssignment_1_2 extends AssignmentToken  {
 /************ begin Rule Expr400 ****************
  *
  * Expr400 returns Expression:
- * 
  * 	Expr500 ({AddOp.opLeft=current} op=ADDOP opRight=Expr500)*;
  *
  **/
@@ -10606,7 +10543,6 @@ protected class Expr400_OpRightAssignment_1_2 extends AssignmentToken  {
 /************ begin Rule Expr500 ****************
  *
  * Expr500 returns Expression:
- * 
  * 	UnaryExpr ({MultOp.opLeft=current} op=MULTOP opRight=UnaryExpr)*;
  *
  **/
@@ -10852,7 +10788,6 @@ protected class Expr500_OpRightAssignment_1_2 extends AssignmentToken  {
 /************ begin Rule UnaryExpr ****************
  *
  * UnaryExpr returns Expression:
- * 
  * 	{UnaryExpr} op=PREFIXOP operand=Expr700 | Expr700;
  *
  **/
@@ -11094,23 +11029,16 @@ protected class UnaryExpr_Expr700ParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule Expr700 ****************
  *
  * Expr700 returns Expression:
- * 
  * 	Expr800 // TODO can this be expressed better? 
- * 
  * 	// we can have ?MACRO(args)(args2)
- * 
  * 	("(" {FunCall.target=current} args=Expressions? ")" ("(" args2=Expressions? ")")? | ("#" {RecordExpr.ref=current}
- * 
  * 	record=RecordExpr)+)?;
  *
  **/
 
 // Expr800 // TODO can this be expressed better? 
-// 
 // // we can have ?MACRO(args)(args2)
-// 
 // ("(" {FunCall.target=current} args=Expressions? ")" ("(" args2=Expressions? ")")? | ("#" {RecordExpr.ref=current}
-// 
 // record=RecordExpr)+)?
 protected class Expr700_Group extends GroupToken {
 	
@@ -11206,11 +11134,8 @@ protected class Expr700_Expr800ParserRuleCall_0 extends RuleCallToken {
 }
 
 // // TODO can this be expressed better? 
-// 
 // // we can have ?MACRO(args)(args2)
-// 
 // ("(" {FunCall.target=current} args=Expressions? ")" ("(" args2=Expressions? ")")? | ("#" {RecordExpr.ref=current}
-// 
 // record=RecordExpr)+)?
 protected class Expr700_Alternatives_1 extends AlternativesToken {
 
@@ -11243,9 +11168,7 @@ protected class Expr700_Alternatives_1 extends AlternativesToken {
 }
 
 // // TODO can this be expressed better? 
-// 
 // // we can have ?MACRO(args)(args2)
-// 
 // "(" {FunCall.target=current} args=Expressions? ")" ("(" args2=Expressions? ")")?
 protected class Expr700_Group_1_0 extends GroupToken {
 	
@@ -11277,9 +11200,7 @@ protected class Expr700_Group_1_0 extends GroupToken {
 }
 
 // // TODO can this be expressed better? 
-// 
 // // we can have ?MACRO(args)(args2)
-// 
 // "("
 protected class Expr700_LeftParenthesisKeyword_1_0_0 extends KeywordToken  {
 	
@@ -11650,9 +11571,7 @@ protected class Expr700_RecordAssignment_1_1_2 extends AssignmentToken  {
 /************ begin Rule Expr800 ****************
  *
  * // non-associative
- * 
  * Expr800 returns Expression:
- * 
  * 	ExprMax ({RemoteTarget.module=current} ":" function=ExprMax)?;
  *
  **/
@@ -11885,15 +11804,12 @@ protected class Expr800_FunctionAssignment_1_2 extends AssignmentToken  {
 /************ begin Rule ExprMax ****************
  *
  * ExprMax returns Expression:
- * 
  * 	TermExpression | "(" Expression ")" | {BlockExpr} "begin" body=Expressions "end" | IfExpr | CaseExpr | ReceiveExpr |
- * 
  * 	FunExpr | TryExpr | CondExpr | QueryExpr | LetExpr;
  *
  **/
 
 // TermExpression | "(" Expression ")" | {BlockExpr} "begin" body=Expressions "end" | IfExpr | CaseExpr | ReceiveExpr |
-// 
 // FunExpr | TryExpr | CondExpr | QueryExpr | LetExpr
 protected class ExprMax_Alternatives extends AlternativesToken {
 
@@ -12554,7 +12470,6 @@ protected class ExprMax_LetExprParserRuleCall_10 extends RuleCallToken {
 /************ begin Rule TermExpression ****************
  *
  * TermExpression returns Expression:
- * 
  * 	Tuple | => ListComprehension | List | => BinaryComprehension | Binary | "#" RecordExpr | LiteralExpression;
  *
  **/
@@ -12921,7 +12836,6 @@ protected class TermExpression_LiteralExpressionParserRuleCall_6 extends RuleCal
 /************ begin Rule MacroCall ****************
  *
  * MacroCall:
- * 
  * 	macroName=MacroLiteral ("(" args=Expressions? ")")?;
  *
  **/
@@ -13121,7 +13035,6 @@ protected class MacroCall_RightParenthesisKeyword_1_2 extends KeywordToken  {
 /************ begin Rule RecordExpr ****************
  *
  * RecordExpr:
- * 
  * 	rec=AtomVarMacro ("." field=AtomVarMacro | tuple=RecordTuple);
  *
  **/
@@ -13368,9 +13281,7 @@ protected class RecordExpr_TupleAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule QueryExpr ****************
  *
  * // NYI
- * 
  * QueryExpr:
- * 
  * 	{QueryExpr} "query";
  *
  **/
@@ -13459,9 +13370,7 @@ protected class QueryExpr_QueryKeyword_1 extends KeywordToken  {
 /************ begin Rule CondExpr ****************
  *
  * // NYI
- * 
  * CondExpr:
- * 
  * 	{CondExpr} "cond";
  *
  **/
@@ -13550,9 +13459,7 @@ protected class CondExpr_CondKeyword_1 extends KeywordToken  {
 /************ begin Rule LetExpr ****************
  *
  * // NYI
- * 
  * LetExpr:
- * 
  * 	{LetExpr} "let";
  *
  **/
@@ -13641,7 +13548,6 @@ protected class LetExpr_LetKeyword_1 extends KeywordToken  {
 /************ begin Rule RecordTuple ****************
  *
  * RecordTuple:
- * 
  * 	{RecordTuple} "{" (fields+=RecordFieldExpr ("," fields+=RecordFieldExpr)*)? "}";
  *
  **/
@@ -13915,7 +13821,6 @@ protected class RecordTuple_RightCurlyBracketKeyword_3 extends KeywordToken  {
 /************ begin Rule RecordFieldExpr ****************
  *
  * RecordFieldExpr:
- * 
  * 	ref=AtomVarMacro ("=" value=Expression)? ("::" type=TopType)?;
  *
  **/
@@ -14186,7 +14091,6 @@ protected class RecordFieldExpr_TypeAssignment_2_1 extends AssignmentToken  {
 /************ begin Rule LiteralExpressionNoNumber ****************
  *
  * LiteralExpressionNoNumber returns Expression:
- * 
  * 	AtomRefLiteral | VariableLiteral | {ErlChar} value=CHAR | MacroLiteral | StringLiteral;
  *
  **/
@@ -14469,7 +14373,6 @@ protected class LiteralExpressionNoNumber_StringLiteralParserRuleCall_4 extends 
 /************ begin Rule AtomRefLiteral ****************
  *
  * AtomRefLiteral returns Expression:
- * 
  * 	{Atom} value=[AtomRefTarget|NAME];
  *
  **/
@@ -14573,7 +14476,6 @@ protected class AtomRefLiteral_ValueAssignment_1 extends AssignmentToken  {
 /************ begin Rule MacroLiteral ****************
  *
  * MacroLiteral returns Expression:
- * 
  * 	{Macro} value=[DefineAttribute|MACRO];
  *
  **/
@@ -14677,7 +14579,6 @@ protected class MacroLiteral_ValueAssignment_1 extends AssignmentToken  {
 /************ begin Rule MacroRef ****************
  *
  * MacroRef returns Expression:
- * 
  * 	{Macro} value=[DefineAttribute|NAMEVAR];
  *
  **/
@@ -14781,7 +14682,6 @@ protected class MacroRef_ValueAssignment_1 extends AssignmentToken  {
 /************ begin Rule VariableLiteral ****************
  *
  * VariableLiteral returns Expression:
- * 
  * 	{Variable} value=[Expression|VARIABLE];
  *
  **/
@@ -14885,7 +14785,6 @@ protected class VariableLiteral_ValueAssignment_1 extends AssignmentToken  {
 /************ begin Rule StringLiteral ****************
  *
  * StringLiteral returns Expression:
- * 
  * 	string=STRING more+=StringLiteralPart*;
  *
  **/
@@ -15007,7 +14906,6 @@ protected class StringLiteral_MoreAssignment_1 extends AssignmentToken  {
 /************ begin Rule StringLiteralPart ****************
  *
  * StringLiteralPart:
- * 
  * 	string=STRING | macro=MacroCall;
  *
  **/
@@ -15127,7 +15025,6 @@ protected class StringLiteralPart_MacroAssignment_1 extends AssignmentToken  {
 /************ begin Rule LiteralExpression ****************
  *
  * LiteralExpression returns Expression:
- * 
  * 	LiteralExpressionNoNumber | IntegerLiteral | {ErlFloat} value=FLOAT;
  *
  **/
@@ -15342,7 +15239,6 @@ protected class LiteralExpression_ValueAssignment_2_1 extends AssignmentToken  {
 /************ begin Rule IntegerLiteral ****************
  *
  * IntegerLiteral returns Expression:
- * 
  * 	{ErlInteger} value=INTEGER;
  *
  **/
@@ -15443,15 +15339,12 @@ protected class IntegerLiteral_ValueAssignment_1 extends AssignmentToken  {
 /************ begin Rule PatternExpression ****************
  *
  * PatternExpression returns Expression:
- * 
  * 	TermExpression (({MatchExpr.opLeft=current} op="=" opRight=TermExpression)+ | {FunCall.target=current} "("
- * 
  * 	args=Expressions? ")")?;
  *
  **/
 
 // TermExpression (({MatchExpr.opLeft=current} op="=" opRight=TermExpression)+ | {FunCall.target=current} "("
-// 
 // args=Expressions? ")")?
 protected class PatternExpression_Group extends GroupToken {
 	
@@ -15873,7 +15766,6 @@ protected class PatternExpression_RightParenthesisKeyword_1_1_3 extends KeywordT
 /************ begin Rule IfExpr ****************
  *
  * IfExpr:
- * 
  * 	"if" clauses+=IfClause (";" clauses+=IfClause)* "end";
  *
  **/
@@ -16096,7 +15988,6 @@ protected class IfExpr_EndKeyword_3 extends KeywordToken  {
 /************ begin Rule IfClause ****************
  *
  * IfClause:
- * 
  * 	guard=Guard "->" body=Expressions;
  *
  **/
@@ -16250,7 +16141,6 @@ protected class IfClause_BodyAssignment_2 extends AssignmentToken  {
 /************ begin Rule CaseExpr ****************
  *
  * CaseExpr:
- * 
  * 	"case" expr=Expression "of" clauses+=CrClause (";" clauses+=CrClause)* "end";
  *
  **/
@@ -16541,7 +16431,6 @@ protected class CaseExpr_EndKeyword_5 extends KeywordToken  {
 /************ begin Rule CrClause ****************
  *
  * CrClause:
- * 
  * 	expr=Expression ("when" guard=Guard)? "->" body=Expressions;
  *
  **/
@@ -16787,15 +16676,12 @@ protected class CrClause_BodyAssignment_3 extends AssignmentToken  {
 /************ begin Rule ReceiveExpr ****************
  *
  * ReceiveExpr:
- * 
  * 	"receive" (clauses+=CrClause (";" clauses+=CrClause)* ("after" after_expr=Expression "->" after_body=Expressions)? |
- * 
  * 	"after" after_expr=Expression "->" after_body=Expressions) "end";
  *
  **/
 
 // "receive" (clauses+=CrClause (";" clauses+=CrClause)* ("after" after_expr=Expression "->" after_body=Expressions)? |
-// 
 // "after" after_expr=Expression "->" after_body=Expressions) "end"
 protected class ReceiveExpr_Group extends GroupToken {
 	
@@ -16847,7 +16733,6 @@ protected class ReceiveExpr_ReceiveKeyword_0 extends KeywordToken  {
 }
 
 // clauses+=CrClause (";" clauses+=CrClause)* ("after" after_expr=Expression "->" after_body=Expressions)? | "after"
-// 
 // after_expr=Expression "->" after_body=Expressions
 protected class ReceiveExpr_Alternatives_1 extends AlternativesToken {
 
@@ -17383,7 +17268,6 @@ protected class ReceiveExpr_EndKeyword_2 extends KeywordToken  {
 /************ begin Rule FunExpr ****************
  *
  * FunExpr:
- * 
  * 	"fun" (FunRef | InlineFun);
  *
  **/
@@ -17544,7 +17428,6 @@ protected class FunExpr_InlineFunParserRuleCall_1_1 extends RuleCallToken {
 /************ begin Rule FunRef ****************
  *
  * FunRef:
- * 
  * 	(module=AtomVarMacro ":")? function=AtomVarMacro "/" arity=IntVarMacro;
  *
  **/
@@ -17789,7 +17672,6 @@ protected class FunRef_ArityAssignment_3 extends AssignmentToken  {
 /************ begin Rule InlineFun ****************
  *
  * InlineFun returns FunExpr:
- * 
  * 	clauses+=FunctionClause (";" clauses+=FunctionClause)* "end";
  *
  **/
@@ -17990,15 +17872,12 @@ protected class InlineFun_EndKeyword_2 extends KeywordToken  {
 /************ begin Rule TryExpr ****************
  *
  * TryExpr:
- * 
  * 	"try" body=Expressions ("of" of_clauses+=CrClause (";" of_clauses+=CrClause)*)? ("catch" catch+=TryClause (";"
- * 
  * 	catch+=TryClause)* ("after" after_body=Expressions)? | "after" after_body=Expressions) "end";
  *
  **/
 
 // "try" body=Expressions ("of" of_clauses+=CrClause (";" of_clauses+=CrClause)*)? ("catch" catch+=TryClause (";"
-// 
 // catch+=TryClause)* ("after" after_body=Expressions)? | "after" after_body=Expressions) "end"
 protected class TryExpr_Group extends GroupToken {
 	
@@ -18702,7 +18581,6 @@ protected class TryExpr_EndKeyword_4 extends KeywordToken  {
 /************ begin Rule TryClause ****************
  *
  * TryClause:
- * 
  * 	=> (hdr=NAMEVAR ":")? cond=PatternExpression ("when" guard=Guard)? "->" body=Expressions;
  *
  **/
@@ -19050,7 +18928,6 @@ protected class TryClause_BodyAssignment_4 extends AssignmentToken  {
 /************ begin Rule List ****************
  *
  * List returns ErlList:
- * 
  * 	"[" ({ErlList} | elements+=Expression ("," elements+=Expression)* ("|" tail=Expression)?) "]";
  *
  **/
@@ -19440,7 +19317,6 @@ protected class List_RightSquareBracketKeyword_2 extends KeywordToken  {
 /************ begin Rule ListComprehension ****************
  *
  * ListComprehension:
- * 
  * 	"[" element=Expression "||" generators+=LCExpr ("," generators+=LCExpr)* "]";
  *
  **/
@@ -19731,7 +19607,6 @@ protected class ListComprehension_RightSquareBracketKeyword_5 extends KeywordTok
 /************ begin Rule Tuple ****************
  *
  * Tuple returns ErlTuple:
- * 
  * 	"{" ({ErlTuple} | elements+=Expression ("," elements+=Expression)*) "}";
  *
  **/
@@ -20028,7 +19903,6 @@ protected class Tuple_RightCurlyBracketKeyword_2 extends KeywordToken  {
 /************ begin Rule BinaryComprehension ****************
  *
  * BinaryComprehension:
- * 
  * 	"<<" expr=TermExpression "||" generators+=LCExpr ("," generators+=LCExpr)* ">>";
  *
  **/
@@ -20319,7 +20193,6 @@ protected class BinaryComprehension_GreaterThanSignGreaterThanSignKeyword_5 exte
 /************ begin Rule Binary ****************
  *
  * Binary returns ErlBinary:
- * 
  * 	"<<" ({ErlBinary} | elements+=BinaryItem ("," elements+=BinaryItem)*) ">>";
  *
  **/
@@ -20616,7 +20489,6 @@ protected class Binary_GreaterThanSignGreaterThanSignKeyword_2 extends KeywordTo
 /************ begin Rule BinaryItem ****************
  *
  * BinaryItem:
- * 
  * 	expr=UnaryExprMax (":" size=ExprMax)? ("/" types+=BitType ("-" type+=BitType)*)?;
  *
  **/
@@ -20980,7 +20852,6 @@ protected class BinaryItem_TypeAssignment_2_2_1 extends AssignmentToken  {
 /************ begin Rule BitType ****************
  *
  * BitType:
- * 
  * 	typeName=NAME (":" size=INT)?;
  *
  **/
@@ -21134,7 +21005,6 @@ protected class BitType_SizeAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule UnaryExprMax ****************
  *
  * UnaryExprMax returns Expression:
- * 
  * 	{UnaryExpr} op=PREFIXOP operand=ExprMax | ExprMax;
  *
  **/
@@ -21376,7 +21246,6 @@ protected class UnaryExprMax_ExprMaxParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule LCExpr ****************
  *
  * LCExpr:
- * 
  * 	o1=Expression (op=("<-" | "<=") o2=Expression)?;
  *
  **/
@@ -21577,9 +21446,7 @@ protected class LCExpr_O2Assignment_1_1 extends AssignmentToken  {
 /************ begin Rule AtomVarMacro ****************
  *
  * // Literal combinations
- * 
  * AtomVarMacro returns Expression:
- * 
  * 	AtomRefLiteral | VariableLiteral | MacroLiteral;
  *
  **/
@@ -21732,7 +21599,6 @@ protected class AtomVarMacro_MacroLiteralParserRuleCall_2 extends RuleCallToken 
 /************ begin Rule IntVarMacro ****************
  *
  * IntVarMacro returns Expression:
- * 
  * 	IntegerLiteral | VariableLiteral | MacroLiteral;
  *
  **/
@@ -21893,9 +21759,7 @@ protected class IntVarMacro_MacroLiteralParserRuleCall_2 extends RuleCallToken {
 /************ begin Rule SpecFun ****************
  *
  * // Type language
- * 
  * SpecFun returns FunRef:
- * 
  * 	(module=AtomVarMacro ":")? function=AtomVarMacro ("/" arity=IntVarMacro "::")?;
  *
  **/
@@ -22186,7 +22050,6 @@ protected class SpecFun_ColonColonKeyword_2_2 extends KeywordToken  {
 /************ begin Rule TypeSig ****************
  *
  * TypeSig:
- * 
  * 	decl=FunType ("when" guards=TypeGuards)?;
  *
  **/
@@ -22364,7 +22227,6 @@ protected class TypeSig_GuardsAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule FunType ****************
  *
  * FunType:
- * 
  * 	"(" (args+=TopType ("," args+=TopType)*)? ")" "->" return=TopType;
  *
  **/
@@ -22679,7 +22541,6 @@ protected class FunType_ReturnAssignment_4 extends AssignmentToken  {
 /************ begin Rule TypeGuards ****************
  *
  * TypeGuards:
- * 
  * 	items+=TypeGuard ("," items+=TypeGuard)*;
  *
  **/
@@ -22858,7 +22719,6 @@ protected class TypeGuards_ItemsAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule TypeGuard ****************
  *
  * TypeGuard:
- * 
  * 	typeName=NAME "(" types+=TopType ("," types+=TopType)* ")" | typeName=VARIABLE "::" type=TopType;
  *
  **/
@@ -23263,7 +23123,6 @@ protected class TypeGuard_TypeAssignment_1_2 extends AssignmentToken  {
 /************ begin Rule TopType ****************
  *
  * TopType:
- * 
  * 	(var=VARIABLE "::")? type=Type100;
  *
  **/
@@ -23428,7 +23287,6 @@ protected class TopType_TypeAssignment_1 extends AssignmentToken  {
 /************ begin Rule Type100 ****************
  *
  * Type100:
- * 
  * 	Type200 (=> ({TopType.leftOperand=current} op="|") rightOperand=Type200)*;
  *
  **/
@@ -23698,7 +23556,6 @@ protected class Type100_RightOperandAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule Type200 ****************
  *
  * Type200:
- * 
  * 	Type300 (=> ({TopType.leftOperand=current} op="..") rightOperand=Type300)*;
  *
  **/
@@ -23968,7 +23825,6 @@ protected class Type200_RightOperandAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule Type300 ****************
  *
  * Type300:
- * 
  * 	Type400 (=> ({TopType.leftOperand=current} op=ADDOP) rightOperand=Type400)*;
  *
  **/
@@ -24238,7 +24094,6 @@ protected class Type300_RightOperandAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule Type400 ****************
  *
  * Type400:
- * 
  * 	Type500 (=> ({TopType.leftOperand=current} op=MULTOP) rightOperand=Type500)*;
  *
  **/
@@ -24508,7 +24363,6 @@ protected class Type400_RightOperandAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule Type500 ****************
  *
  * Type500:
- * 
  * 	{UnaryType} op=PREFIXOP operand=Type | Type;
  *
  **/
@@ -24737,23 +24591,16 @@ protected class Type500_TypeParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule Type ****************
  *
  * Type:
- * 
  * 	"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")? |
- * 
  * 	typeName=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType
- * 
  * 	("," types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" |
- * 
  * 	BinaryType | "fun" {FunType} "(" type=FunType100? ")";
  *
  **/
 
 // "(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")? |
-// 
 // typeName=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType
-// 
 // ("," types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" |
-// 
 // BinaryType | "fun" {FunType} "(" type=FunType100? ")"
 protected class Type_Alternatives extends AlternativesToken {
 
@@ -26352,7 +26199,6 @@ protected class Type_RightParenthesisKeyword_8_4 extends KeywordToken  {
 /************ begin Rule FieldType ****************
  *
  * FieldType:
- * 
  * 	typeName=NAME "::" type=TopType;
  *
  **/
@@ -26494,7 +26340,6 @@ protected class FieldType_TypeAssignment_2 extends AssignmentToken  {
 /************ begin Rule BinaryType ****************
  *
  * BinaryType:
- * 
  * 	"<<" {BinaryType} (type+=BinBaseType ("," type+=BinUnitType)? | type+=BinUnitType)? ">>";
  *
  **/
@@ -26837,7 +26682,6 @@ protected class BinaryType_GreaterThanSignGreaterThanSignKeyword_3 extends Keywo
 /************ begin Rule BinBaseType ****************
  *
  * BinBaseType:
- * 
  * 	typeName=VARIABLE ":" type=Type;
  *
  **/
@@ -26979,7 +26823,6 @@ protected class BinBaseType_TypeAssignment_2 extends AssignmentToken  {
 /************ begin Rule BinUnitType ****************
  *
  * BinUnitType:
- * 
  * 	typeName=VARIABLE ":" m=VARIABLE "*" type=Type;
  *
  **/
@@ -27177,7 +27020,6 @@ protected class BinUnitType_TypeAssignment_4 extends AssignmentToken  {
 /************ begin Rule FunType100 ****************
  *
  * FunType100:
- * 
  * 	{FunTypeList} "(" ("..." | items+=TopType ("," items+=TopType)*)? ")" "->" return=TopType;
  *
  **/
