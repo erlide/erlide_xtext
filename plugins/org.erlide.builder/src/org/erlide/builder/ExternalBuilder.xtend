@@ -54,26 +54,19 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 	}
 	
 	override fullBuild(IProgressMonitor monitor) throws CoreException {
-		var progress = SubMonitor::convert(monitor, 100)
+		var progress = SubMonitor::convert(monitor, 1)
 		val work = estimateWork(fullCmdLine)
-		progress.worked(10)
-		progress = SubMonitor::convert(progress.newChild(90), work)
-		
-		for (i: 0..work) {
-			Thread::sleep(10)
-			progress.newChild(1)
-		}
-		Thread::sleep(1000)
+		progress = SubMonitor::convert(progress.newChild(1), work)
 		 
-//		execute(fullCmdLine, progress) [ 
-//			val fPath = project.getPathInProject(new Path(fileName))
-//			val file = project.findMember(fPath)
-//			switch file {
-//				IFile: {
-//					addMarker(file, it)
-//				}
-//			}
-//		]
+		execute(fullCmdLine, progress) [ 
+			val fPath = project.getPathInProject(new Path(fileName))
+			val file = project.findMember(fPath)
+			switch file {
+				IFile: {
+					addMarker(file, it)
+				}
+			}
+		]
 	}
 	
 	override incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) throws CoreException {

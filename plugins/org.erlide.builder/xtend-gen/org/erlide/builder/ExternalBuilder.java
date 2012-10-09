@@ -15,13 +15,13 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
-import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.AbstractErlangBuilder;
@@ -118,25 +118,32 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
   }
   
   public void fullBuild(final IProgressMonitor monitor) throws CoreException {
-    try {
-      SubMonitor progress = SubMonitor.convert(monitor, 100);
-      List<String> _fullCmdLine = this.getFullCmdLine();
-      final int work = this.estimateWork(_fullCmdLine);
-      progress.worked(10);
-      SubMonitor _newChild = progress.newChild(90);
-      SubMonitor _convert = SubMonitor.convert(_newChild, work);
-      progress = _convert;
-      IntegerRange _upTo = new IntegerRange(0, work);
-      for (final Integer i : _upTo) {
-        {
-          Thread.sleep(10);
-          progress.newChild(1);
+    SubMonitor progress = SubMonitor.convert(monitor, 1);
+    List<String> _fullCmdLine = this.getFullCmdLine();
+    final int work = this.estimateWork(_fullCmdLine);
+    SubMonitor _newChild = progress.newChild(1);
+    SubMonitor _convert = SubMonitor.convert(_newChild, work);
+    progress = _convert;
+    List<String> _fullCmdLine_1 = this.getFullCmdLine();
+    final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
+        public void apply(final CompilerProblem it) {
+          IProject _project = ExternalBuilder.this.getProject();
+          String _fileName = it.getFileName();
+          Path _path = new Path(_fileName);
+          final IPath fPath = ProjectBuilderExtensions.getPathInProject(_project, _path);
+          IProject _project_1 = ExternalBuilder.this.getProject();
+          final IResource file = _project_1.findMember(fPath);
+          boolean _matched = false;
+          if (!_matched) {
+            if (file instanceof IFile) {
+              final IFile _iFile = (IFile)file;
+              _matched=true;
+              ExternalBuilder.this.addMarker(_iFile, it);
+            }
+          }
         }
-      }
-      Thread.sleep(1000);
-    } catch (Exception _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+      };
+    this.execute(_fullCmdLine_1, progress, _function);
   }
   
   public void incrementalBuild(final IResourceDelta delta, final IProgressMonitor monitor) throws CoreException {
