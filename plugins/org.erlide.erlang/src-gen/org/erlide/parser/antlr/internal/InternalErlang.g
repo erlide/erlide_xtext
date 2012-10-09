@@ -1434,9 +1434,9 @@ ruleRecordAttribute returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getRecordAttributeAccess().getNameNAMEVARParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getRecordAttributeAccess().getNameNAMEMACROParserRuleCall_2_0()); 
 	    }
-		lv_name_2_0=ruleNAMEVAR		{
+		lv_name_2_0=ruleNAMEMACRO		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getRecordAttributeRule());
 	        }
@@ -1444,7 +1444,7 @@ ruleRecordAttribute returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_2_0, 
-        		"NAMEVAR");
+        		"NAMEMACRO");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -7285,6 +7285,60 @@ ruleMACRO returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
     newLeafNode(this_VARIABLE_4, grammarAccess.getMACROAccess().getVARIABLETerminalRuleCall_1_2()); 
     }
 ))
+    ;
+
+
+
+
+
+
+
+// Entry rule entryRuleNAMEMACRO
+entryRuleNAMEMACRO returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getNAMEMACRORule()); } 
+	 iv_ruleNAMEMACRO=ruleNAMEMACRO 
+	 { $current=$iv_ruleNAMEMACRO.current.getText(); }  
+	 EOF 
+;
+
+// Rule NAMEMACRO
+ruleNAMEMACRO returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(    this_ATOM_0=RULE_ATOM    {
+		$current.merge(this_ATOM_0);
+    }
+
+    { 
+    newLeafNode(this_ATOM_0, grammarAccess.getNAMEMACROAccess().getATOMTerminalRuleCall_0()); 
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getNAMEMACROAccess().getKWParserRuleCall_1()); 
+    }
+    this_KW_1=ruleKW    {
+		$current.merge(this_KW_1);
+    }
+
+    { 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getNAMEMACROAccess().getMACROParserRuleCall_2()); 
+    }
+    this_MACRO_2=ruleMACRO    {
+		$current.merge(this_MACRO_2);
+    }
+
+    { 
+        afterParserOrEnumRuleCall();
+    }
+)
     ;
 
 

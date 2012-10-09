@@ -778,7 +778,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTagRecordKeyword_0_0 = (Keyword)cTagAssignment_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameNAMEVARParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final RuleCall cNameNAMEMACROParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
 		private final Group cGroup_4_0 = (Group)cAlternatives_4.eContents().get(0);
@@ -797,11 +797,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFullStopKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//RecordAttribute:
-		//	=> tag="record" "(" name=NAMEVAR "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
+		//	=> tag="record" "(" name=NAMEMACRO "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
 		//	recordMacro=MacroCall) ")" ".";
 		public ParserRule getRule() { return rule; }
 
-		//=> tag="record" "(" name=NAMEVAR "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
+		//=> tag="record" "(" name=NAMEMACRO "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
 		//recordMacro=MacroCall) ")" "."
 		public Group getGroup() { return cGroup; }
 
@@ -814,11 +814,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
-		//name=NAMEVAR
+		//name=NAMEMACRO
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
-		//NAMEVAR
-		public RuleCall getNameNAMEVARParserRuleCall_2_0() { return cNameNAMEVARParserRuleCall_2_0; }
+		//NAMEMACRO
+		public RuleCall getNameNAMEMACROParserRuleCall_2_0() { return cNameNAMEMACROParserRuleCall_2_0; }
 
 		//","
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
@@ -4392,6 +4392,58 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getVARIABLETerminalRuleCall_1_2() { return cVARIABLETerminalRuleCall_1_2; }
 	}
 
+	public class NAMEVARMACROElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NAMEVARMACRO");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cATOMTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cKWParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cVARIABLETerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cMACROParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		
+		//NAMEVARMACRO:
+		//	ATOM | KW | VARIABLE | MACRO;
+		public ParserRule getRule() { return rule; }
+
+		//ATOM | KW | VARIABLE | MACRO
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ATOM
+		public RuleCall getATOMTerminalRuleCall_0() { return cATOMTerminalRuleCall_0; }
+
+		//KW
+		public RuleCall getKWParserRuleCall_1() { return cKWParserRuleCall_1; }
+
+		//VARIABLE
+		public RuleCall getVARIABLETerminalRuleCall_2() { return cVARIABLETerminalRuleCall_2; }
+
+		//MACRO
+		public RuleCall getMACROParserRuleCall_3() { return cMACROParserRuleCall_3; }
+	}
+
+	public class NAMEMACROElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NAMEMACRO");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cATOMTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cKWParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cMACROParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//NAMEMACRO:
+		//	ATOM | KW | MACRO;
+		public ParserRule getRule() { return rule; }
+
+		//ATOM | KW | MACRO
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ATOM
+		public RuleCall getATOMTerminalRuleCall_0() { return cATOMTerminalRuleCall_0; }
+
+		//KW
+		public RuleCall getKWParserRuleCall_1() { return cKWParserRuleCall_1; }
+
+		//MACRO
+		public RuleCall getMACROParserRuleCall_2() { return cMACROParserRuleCall_2; }
+	}
+
 	public class KWElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "KW");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -5851,6 +5903,8 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	private NAMEElements pNAME;
 	private NAMEVARElements pNAMEVAR;
 	private MACROElements pMACRO;
+	private NAMEVARMACROElements pNAMEVARMACRO;
+	private NAMEMACROElements pNAMEMACRO;
 	private KWElements pKW;
 	private KW1Elements pKW1;
 	private RealKwElements pRealKw;
@@ -6103,7 +6157,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RecordAttribute:
-	//	=> tag="record" "(" name=NAMEVAR "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
+	//	=> tag="record" "(" name=NAMEMACRO "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
 	//	recordMacro=MacroCall) ")" ".";
 	public RecordAttributeElements getRecordAttributeAccess() {
 		return (pRecordAttribute != null) ? pRecordAttribute : (pRecordAttribute = new RecordAttributeElements());
@@ -6873,6 +6927,26 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getMACRORule() {
 		return getMACROAccess().getRule();
+	}
+
+	//NAMEVARMACRO:
+	//	ATOM | KW | VARIABLE | MACRO;
+	public NAMEVARMACROElements getNAMEVARMACROAccess() {
+		return (pNAMEVARMACRO != null) ? pNAMEVARMACRO : (pNAMEVARMACRO = new NAMEVARMACROElements());
+	}
+	
+	public ParserRule getNAMEVARMACRORule() {
+		return getNAMEVARMACROAccess().getRule();
+	}
+
+	//NAMEMACRO:
+	//	ATOM | KW | MACRO;
+	public NAMEMACROElements getNAMEMACROAccess() {
+		return (pNAMEMACRO != null) ? pNAMEMACRO : (pNAMEMACRO = new NAMEMACROElements());
+	}
+	
+	public ParserRule getNAMEMACRORule() {
+		return getNAMEMACROAccess().getRule();
 	}
 
 	//KW:

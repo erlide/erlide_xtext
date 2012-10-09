@@ -116,7 +116,7 @@ EncodingAttribute:
 ;
 
 RecordAttribute:
-	=> tag='record' '(' name=NAMEVAR ',' 
+	=> tag='record' '(' name=NAMEMACRO ',' 
 		(     '{' (fields+=RecordFieldDef (',' fields+=RecordFieldDef)*)? '}' 
 			| recordMacro=MacroCall
 		) 
@@ -495,6 +495,14 @@ NAMEVAR:
 
 MACRO:
     ('?'|'??') (ATOM | KW1 | VARIABLE)
+;
+
+NAMEVARMACRO:
+    ATOM | KW | VARIABLE | MACRO
+;
+
+NAMEMACRO:
+    ATOM | KW | MACRO
 ;
 
 KW:

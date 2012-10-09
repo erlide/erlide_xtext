@@ -4022,12 +4022,12 @@ protected class EncodingAttribute_FullStopKeyword_2 extends KeywordToken  {
 /************ begin Rule RecordAttribute ****************
  *
  * RecordAttribute:
- * 	=> tag="record" "(" name=NAMEVAR "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
+ * 	=> tag="record" "(" name=NAMEMACRO "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
  * 	recordMacro=MacroCall) ")" ".";
  *
  **/
 
-// => tag="record" "(" name=NAMEVAR "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
+// => tag="record" "(" name=NAMEMACRO "," ("{" (fields+=RecordFieldDef ("," fields+=RecordFieldDef)*)? "}" |
 // recordMacro=MacroCall) ")" "."
 protected class RecordAttribute_Group extends GroupToken {
 	
@@ -4112,7 +4112,7 @@ protected class RecordAttribute_LeftParenthesisKeyword_1 extends KeywordToken  {
 
 }
 
-// name=NAMEVAR
+// name=NAMEMACRO
 protected class RecordAttribute_NameAssignment_2 extends AssignmentToken  {
 	
 	public RecordAttribute_NameAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4136,9 +4136,9 @@ protected class RecordAttribute_NameAssignment_2 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRecordAttributeAccess().getNameNAMEVARParserRuleCall_2_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getRecordAttributeAccess().getNameNAMEMACROParserRuleCall_2_0(), value, null)) {
 			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getRecordAttributeAccess().getNameNAMEVARParserRuleCall_2_0();
+			element = grammarAccess.getRecordAttributeAccess().getNameNAMEMACROParserRuleCall_2_0();
 			return obj;
 		}
 		return null;
@@ -21749,6 +21749,8 @@ protected class IntVarMacro_MacroLiteralParserRuleCall_2 extends RuleCallToken {
 
 
 /************ end Rule IntVarMacro ****************/
+
+
 
 
 

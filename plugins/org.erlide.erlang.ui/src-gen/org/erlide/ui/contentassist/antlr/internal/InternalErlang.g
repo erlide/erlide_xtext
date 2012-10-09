@@ -2611,6 +2611,36 @@ finally {
 
 
 
+
+
+// Entry rule entryRuleNAMEMACRO
+entryRuleNAMEMACRO 
+:
+{ before(grammarAccess.getNAMEMACRORule()); }
+	 ruleNAMEMACRO
+{ after(grammarAccess.getNAMEMACRORule()); } 
+	 EOF 
+;
+
+// Rule NAMEMACRO
+ruleNAMEMACRO
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getNAMEMACROAccess().getAlternatives()); }
+(rule__NAMEMACRO__Alternatives)
+{ after(grammarAccess.getNAMEMACROAccess().getAlternatives()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleKW
 entryRuleKW 
 :
@@ -4553,6 +4583,35 @@ rule__MACRO__Alternatives_1
 { before(grammarAccess.getMACROAccess().getVARIABLETerminalRuleCall_1_2()); }
 	RULE_VARIABLE
 { after(grammarAccess.getMACROAccess().getVARIABLETerminalRuleCall_1_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__NAMEMACRO__Alternatives
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNAMEMACROAccess().getATOMTerminalRuleCall_0()); }
+	RULE_ATOM
+{ after(grammarAccess.getNAMEMACROAccess().getATOMTerminalRuleCall_0()); }
+)
+
+    |(
+{ before(grammarAccess.getNAMEMACROAccess().getKWParserRuleCall_1()); }
+	ruleKW
+{ after(grammarAccess.getNAMEMACROAccess().getKWParserRuleCall_1()); }
+)
+
+    |(
+{ before(grammarAccess.getNAMEMACROAccess().getMACROParserRuleCall_2()); }
+	ruleMACRO
+{ after(grammarAccess.getNAMEMACROAccess().getMACROParserRuleCall_2()); }
 )
 
 ;
@@ -24956,8 +25015,8 @@ rule__RecordAttribute__NameAssignment_2
     }
 :
 (
-{ before(grammarAccess.getRecordAttributeAccess().getNameNAMEVARParserRuleCall_2_0()); }
-	ruleNAMEVAR{ after(grammarAccess.getRecordAttributeAccess().getNameNAMEVARParserRuleCall_2_0()); }
+{ before(grammarAccess.getRecordAttributeAccess().getNameNAMEMACROParserRuleCall_2_0()); }
+	ruleNAMEMACRO{ after(grammarAccess.getRecordAttributeAccess().getNameNAMEMACROParserRuleCall_2_0()); }
 )
 
 ;

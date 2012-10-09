@@ -82,6 +82,8 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getNAMEVARAccess().getAlternatives(), "rule__NAMEVAR__Alternatives");
 					put(grammarAccess.getMACROAccess().getAlternatives_0(), "rule__MACRO__Alternatives_0");
 					put(grammarAccess.getMACROAccess().getAlternatives_1(), "rule__MACRO__Alternatives_1");
+					put(grammarAccess.getNAMEVARMACROAccess().getAlternatives(), "rule__NAMEVARMACRO__Alternatives");
+					put(grammarAccess.getNAMEMACROAccess().getAlternatives(), "rule__NAMEMACRO__Alternatives");
 					put(grammarAccess.getKWAccess().getAlternatives(), "rule__KW__Alternatives");
 					put(grammarAccess.getKW1Access().getAlternatives(), "rule__KW1__Alternatives");
 					put(grammarAccess.getRealKwAccess().getAlternatives(), "rule__RealKw__Alternatives");

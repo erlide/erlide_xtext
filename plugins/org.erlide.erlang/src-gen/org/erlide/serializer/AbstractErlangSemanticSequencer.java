@@ -2292,7 +2292,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (tag='record' name=NAMEVAR ((fields+=RecordFieldDef fields+=RecordFieldDef*)? | recordMacro=MacroCall))
+	 *     (tag='record' name=NAMEMACRO ((fields+=RecordFieldDef fields+=RecordFieldDef*)? | recordMacro=MacroCall))
 	 */
 	protected void sequence_RecordAttribute(EObject context, RecordAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
