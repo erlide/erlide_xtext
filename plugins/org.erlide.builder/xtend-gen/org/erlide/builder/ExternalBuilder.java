@@ -232,7 +232,7 @@ public abstract class ExternalBuilder extends AbstractErlangBuilder {
           final Procedure1<BuilderExecutor> _function = new Procedure1<BuilderExecutor>() {
               public void apply(final BuilderExecutor it) {
                 IPath _workingDir = ExternalBuilder.this.getWorkingDir();
-                String _oSString = _workingDir.toOSString();
+                String _oSString = _workingDir==null?(String)null:_workingDir.toOSString();
                 it.executeProcess(cmds, _oSString, monitor);
               }
             };

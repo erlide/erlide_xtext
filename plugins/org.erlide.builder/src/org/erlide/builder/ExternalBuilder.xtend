@@ -113,7 +113,7 @@ abstract class ExternalBuilder extends AbstractErlangBuilder {
 		log.debug("EXEC '"+cmds+"' in "+workingDir)
 		executor.withHandler(new ProgressLineParser(), [ monitor.worked(1) ]) [
 			withHandler(new DefaultLineParser(), callback) [
-        		executeProcess(cmds, workingDir.toOSString, monitor)
+        		executeProcess(cmds, workingDir?.toOSString, monitor)
     		]
         ]
 	}
