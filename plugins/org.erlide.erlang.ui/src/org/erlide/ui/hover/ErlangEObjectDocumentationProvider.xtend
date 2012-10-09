@@ -21,6 +21,8 @@ class ErlangEObjectDocumentationProvider implements IEObjectDocumentationProvide
 	override getDocumentation(EObject obj) {
 		val result = new StringBuilder
 
+		// TODO check if external docs exist
+
 		if(obj instanceof Function) {
 			// TODO extract header if no spec? 
 
@@ -41,12 +43,11 @@ class ErlangEObjectDocumentationProvider implements IEObjectDocumentationProvide
 	String ruleName = "SL_COMMENT"
 	String startTag = "%%"
 	
+	// TODO see gepetto.DocumentationAssociator
 	override getDocumentationNodes(EObject object) {
 		val ICompositeNode node = NodeModelUtils::getNode(object)
 		var List<INode> result = newArrayList();
 		if (node != null) {
-			// get the last multi line comment before a non hidden leaf node
-			
 			for (ILeafNode leafNode : node.getLeafNodes()) {
 				if (leafNode.isHidden()) {
 					if (leafNode.grammarElement instanceof TerminalRule) {
