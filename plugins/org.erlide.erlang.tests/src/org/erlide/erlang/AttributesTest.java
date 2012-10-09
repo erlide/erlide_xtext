@@ -35,11 +35,12 @@ public class AttributesTest extends XtextTest {
 
     @Test
     public void recordAttributes() {
-        testParserRule("-record(X, { }). ", "Attribute");
-        testParserRule("-record(X, { a, b }). ", "Attribute");
-        testParserRule("-record(X, { a=3, b }). ", "Attribute");
-        testParserRule("-record(X, { a }). ", "Attribute");
-        testParserRule("-record(X, { a::integer() }). ", "Attribute");
-        testParserRule("-record(X, { a=3::integer()} ). ", "Attribute");
+        testParserRule("-record(x, { }). ", "Attribute");
+        testParserRule("-record(?x, { }). ", "Attribute");
+        testParserRule("-record(x, { a, b }). ", "Attribute");
+        testParserRule("-record(x, { a=3, b }). ", "Attribute");
+        testParserRule("-record(x, { a }). ", "Attribute");
+        testParserRule("-record(x, { a::integer() }). ", "Attribute");
+        testParserRule("-record(x, { a=3::integer()} ). ", "Attribute");
     }
 }
