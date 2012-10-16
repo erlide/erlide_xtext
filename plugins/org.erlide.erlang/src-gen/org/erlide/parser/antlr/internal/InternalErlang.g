@@ -7951,9 +7951,9 @@ ruleTypeGuard returns [EObject current=null]
 (((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getTypeGuardAccess().getTypeNameNAMEParserRuleCall_0_0_0()); 
+	        newCompositeNode(grammarAccess.getTypeGuardAccess().getTypeNameAtomRefLiteralParserRuleCall_0_0_0()); 
 	    }
-		lv_typeName_0_0=ruleNAME		{
+		lv_typeName_0_0=ruleAtomRefLiteral		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getTypeGuardRule());
 	        }
@@ -7961,7 +7961,7 @@ ruleTypeGuard returns [EObject current=null]
        			$current, 
        			"typeName",
         		lv_typeName_0_0, 
-        		"NAME");
+        		"AtomRefLiteral");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -8017,19 +8017,19 @@ ruleTypeGuard returns [EObject current=null]
 )
     |((
 (
-		lv_typeName_6_0=RULE_VARIABLE
-		{
-			newLeafNode(lv_typeName_6_0, grammarAccess.getTypeGuardAccess().getTypeNameVARIABLETerminalRuleCall_1_0_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getTypeGuardAccess().getTypeNameVariableLiteralParserRuleCall_1_0_0()); 
+	    }
+		lv_typeName_6_0=ruleVariableLiteral		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getTypeGuardRule());
+	            $current = createModelElementForParent(grammarAccess.getTypeGuardRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"typeName",
         		lv_typeName_6_0, 
-        		"VARIABLE");
+        		"VariableLiteral");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -8565,9 +8565,9 @@ ruleType returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getTypeAccess().getTypeNameNAMEParserRuleCall_1_2_0()); 
+	        newCompositeNode(grammarAccess.getTypeAccess().getTypeNameAtomRefLiteralParserRuleCall_1_2_0()); 
 	    }
-		lv_typeName_6_0=ruleNAME		{
+		lv_typeName_6_0=ruleAtomRefLiteral		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getTypeRule());
 	        }
@@ -8575,7 +8575,7 @@ ruleType returns [EObject current=null]
        			$current, 
        			"typeName",
         		lv_typeName_6_0, 
-        		"NAME");
+        		"AtomRefLiteral");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -8631,19 +8631,19 @@ ruleType returns [EObject current=null]
 )?)
     |(
 (
-		lv_typeName_12_0=RULE_VARIABLE
-		{
-			newLeafNode(lv_typeName_12_0, grammarAccess.getTypeAccess().getTypeNameVARIABLETerminalRuleCall_2_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getTypeAccess().getTypeNameVariableLiteralParserRuleCall_2_0()); 
+	    }
+		lv_typeName_12_0=ruleVariableLiteral		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getTypeRule());
+	            $current = createModelElementForParent(grammarAccess.getTypeRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"typeName",
         		lv_typeName_12_0, 
-        		"VARIABLE");
+        		"VariableLiteral");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -8776,9 +8776,9 @@ ruleType returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getTypeAccess().getRecNAMEParserRuleCall_6_2_0()); 
+	        newCompositeNode(grammarAccess.getTypeAccess().getRecAtomRefLiteralParserRuleCall_6_2_0()); 
 	    }
-		lv_rec_28_0=ruleNAME		{
+		lv_rec_28_0=ruleAtomRefLiteral		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getTypeRule());
 	        }
@@ -8786,7 +8786,7 @@ ruleType returns [EObject current=null]
        			$current, 
        			"rec",
         		lv_rec_28_0, 
-        		"NAME");
+        		"AtomRefLiteral");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -8910,9 +8910,9 @@ ruleFieldType returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFieldTypeAccess().getTypeNameNAMEParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getFieldTypeAccess().getTypeNameAtomRefLiteralParserRuleCall_0_0()); 
 	    }
-		lv_typeName_0_0=ruleNAME		{
+		lv_typeName_0_0=ruleAtomRefLiteral		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFieldTypeRule());
 	        }
@@ -8920,7 +8920,7 @@ ruleFieldType returns [EObject current=null]
        			$current, 
        			"typeName",
         		lv_typeName_0_0, 
-        		"NAME");
+        		"AtomRefLiteral");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -9064,19 +9064,19 @@ ruleBinBaseType returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_typeName_0_0=RULE_VARIABLE
-		{
-			newLeafNode(lv_typeName_0_0, grammarAccess.getBinBaseTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getBinBaseTypeAccess().getTypeNameVariableLiteralParserRuleCall_0_0()); 
+	    }
+		lv_typeName_0_0=ruleVariableLiteral		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getBinBaseTypeRule());
+	            $current = createModelElementForParent(grammarAccess.getBinBaseTypeRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"typeName",
         		lv_typeName_0_0, 
-        		"VARIABLE");
+        		"VariableLiteral");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -9125,19 +9125,19 @@ ruleBinUnitType returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_typeName_0_0=RULE_VARIABLE
-		{
-			newLeafNode(lv_typeName_0_0, grammarAccess.getBinUnitTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getBinUnitTypeAccess().getTypeNameVariableLiteralParserRuleCall_0_0()); 
+	    }
+		lv_typeName_0_0=ruleVariableLiteral		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getBinUnitTypeRule());
+	            $current = createModelElementForParent(grammarAccess.getBinUnitTypeRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"typeName",
         		lv_typeName_0_0, 
-        		"VARIABLE");
+        		"VariableLiteral");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )

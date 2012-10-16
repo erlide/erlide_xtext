@@ -197,11 +197,11 @@ protected class Module_FormsAssignment extends AssignmentToken  {
  *
  * // AtomRefTargets are the elements that an atom can refer to
  * AtomRefTarget:
- * 	Module | Function | RecordAttribute | RecordFieldDef;
+ * 	Module | Function | RecordAttribute | RecordFieldDef | TypeAttribute;
  *
  **/
 
-// Module | Function | RecordAttribute | RecordFieldDef
+// Module | Function | RecordAttribute | RecordFieldDef | TypeAttribute
 protected class AtomRefTarget_Alternatives extends AlternativesToken {
 
 	public AtomRefTarget_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -220,6 +220,7 @@ protected class AtomRefTarget_Alternatives extends AlternativesToken {
 			case 1: return new AtomRefTarget_FunctionParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
 			case 2: return new AtomRefTarget_RecordAttributeParserRuleCall_2(lastRuleCallOrigin, this, 2, inst);
 			case 3: return new AtomRefTarget_RecordFieldDefParserRuleCall_3(lastRuleCallOrigin, this, 3, inst);
+			case 4: return new AtomRefTarget_TypeAttributeParserRuleCall_4(lastRuleCallOrigin, this, 4, inst);
 			default: return null;
 		}	
 	}
@@ -229,7 +230,8 @@ protected class AtomRefTarget_Alternatives extends AlternativesToken {
 		if(getEObject().eClass() != grammarAccess.getFunctionRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getModuleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getRecordAttributeRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getRecordFieldDefRule().getType().getClassifier())
+		   getEObject().eClass() != grammarAccess.getRecordFieldDefRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getTypeAttributeRule().getType().getClassifier())
 			return null;
 		return eObjectConsumer;
 	}
@@ -369,6 +371,42 @@ protected class AtomRefTarget_RecordFieldDefParserRuleCall_3 extends RuleCallTok
 		if(getEObject().eClass() != grammarAccess.getRecordFieldDefRule().getType().getClassifier())
 			return null;
 		if(checkForRecursion(RecordFieldDef_Group.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
+	}
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
+}
+
+// TypeAttribute
+protected class AtomRefTarget_TypeAttributeParserRuleCall_4 extends RuleCallToken {
+	
+	public AtomRefTarget_TypeAttributeParserRuleCall_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getAtomRefTargetAccess().getTypeAttributeParserRuleCall_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new TypeAttribute_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getTypeAttributeRule().getType().getClassifier())
+			return null;
+		if(checkForRecursion(TypeAttribute_Group.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
 	}
 	
@@ -22724,11 +22762,11 @@ protected class TypeGuards_ItemsAssignment_1_1 extends AssignmentToken  {
 /************ begin Rule TypeGuard ****************
  *
  * TypeGuard:
- * 	typeName=NAME "(" types+=TopType ("," types+=TopType)* ")" | typeName=VARIABLE "::" type=TopType;
+ * 	typeName=AtomRefLiteral "(" types+=TopType ("," types+=TopType)* ")" | typeName=VariableLiteral "::" type=TopType;
  *
  **/
 
-// typeName=NAME "(" types+=TopType ("," types+=TopType)* ")" | typeName=VARIABLE "::" type=TopType
+// typeName=AtomRefLiteral "(" types+=TopType ("," types+=TopType)* ")" | typeName=VariableLiteral "::" type=TopType
 protected class TypeGuard_Alternatives extends AlternativesToken {
 
 	public TypeGuard_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -22758,7 +22796,7 @@ protected class TypeGuard_Alternatives extends AlternativesToken {
 
 }
 
-// typeName=NAME "(" types+=TopType ("," types+=TopType)* ")"
+// typeName=AtomRefLiteral "(" types+=TopType ("," types+=TopType)* ")"
 protected class TypeGuard_Group_0 extends GroupToken {
 	
 	public TypeGuard_Group_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -22780,7 +22818,7 @@ protected class TypeGuard_Group_0 extends GroupToken {
 
 }
 
-// typeName=NAME
+// typeName=AtomRefLiteral
 protected class TypeGuard_TypeNameAssignment_0_0 extends AssignmentToken  {
 	
 	public TypeGuard_TypeNameAssignment_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -22795,7 +22833,8 @@ protected class TypeGuard_TypeNameAssignment_0_0 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+			case 0: return new AtomRefLiteral_Group(this, this, 0, inst);
+			default: return null;
 		}	
 	}
 
@@ -22803,14 +22842,25 @@ protected class TypeGuard_TypeNameAssignment_0_0 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("typeName",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("typeName");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getTypeGuardAccess().getTypeNameNAMEParserRuleCall_0_0_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getTypeGuardAccess().getTypeNameNAMEParserRuleCall_0_0_0();
-			return obj;
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getAtomRefLiteralRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getTypeGuardAccess().getTypeNameAtomRefLiteralParserRuleCall_0_0_0(); 
+				consumed = obj;
+				return param;
+			}
 		}
 		return null;
 	}
 
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, consumed);
+		}	
+	}	
 }
 
 // "("
@@ -22997,7 +23047,7 @@ protected class TypeGuard_RightParenthesisKeyword_0_4 extends KeywordToken  {
 }
 
 
-// typeName=VARIABLE "::" type=TopType
+// typeName=VariableLiteral "::" type=TopType
 protected class TypeGuard_Group_1 extends GroupToken {
 	
 	public TypeGuard_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -23019,7 +23069,7 @@ protected class TypeGuard_Group_1 extends GroupToken {
 
 }
 
-// typeName=VARIABLE
+// typeName=VariableLiteral
 protected class TypeGuard_TypeNameAssignment_1_0 extends AssignmentToken  {
 	
 	public TypeGuard_TypeNameAssignment_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -23034,7 +23084,8 @@ protected class TypeGuard_TypeNameAssignment_1_0 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+			case 0: return new VariableLiteral_Group(this, this, 0, inst);
+			default: return null;
 		}	
 	}
 
@@ -23042,14 +23093,25 @@ protected class TypeGuard_TypeNameAssignment_1_0 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("typeName",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("typeName");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getTypeGuardAccess().getTypeNameVARIABLETerminalRuleCall_1_0_0(), value, null)) {
-			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getTypeGuardAccess().getTypeNameVARIABLETerminalRuleCall_1_0_0();
-			return obj;
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getVariableLiteralRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getTypeGuardAccess().getTypeNameVariableLiteralParserRuleCall_1_0_0(); 
+				consumed = obj;
+				return param;
+			}
 		}
 		return null;
 	}
 
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, consumed);
+		}	
+	}	
 }
 
 // "::"
@@ -24596,17 +24658,17 @@ protected class Type500_TypeParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule Type ****************
  *
  * Type:
- * 	"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")? |
- * 	typeName=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType
- * 	("," types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" |
- * 	BinaryType | "fun" {FunType} "(" type=FunType100? ")";
+ * 	"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=AtomRefLiteral ("(" (args+=TopType (","
+ * 	args+=TopType)*)? ")")? | typeName=VariableLiteral | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" |
+ * 	"{" {TupleType} (types+=TopType ("," types+=TopType)*)? "}" | "#" {RecordType} rec=AtomRefLiteral "{"
+ * 	(fields+=FieldType ("," fields+=FieldType)*)? "}" | BinaryType | "fun" {FunType} "(" type=FunType100? ")";
  *
  **/
 
-// "(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")? |
-// typeName=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType
-// ("," types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" |
-// BinaryType | "fun" {FunType} "(" type=FunType100? ")"
+// "(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=AtomRefLiteral ("(" (args+=TopType ("," args+=TopType)*)?
+// ")")? | typeName=VariableLiteral | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType}
+// (types+=TopType ("," types+=TopType)*)? "}" | "#" {RecordType} rec=AtomRefLiteral "{" (fields+=FieldType (","
+// fields+=FieldType)*)? "}" | BinaryType | "fun" {FunType} "(" type=FunType100? ")"
 protected class Type_Alternatives extends AlternativesToken {
 
 	public Type_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -24758,7 +24820,7 @@ protected class Type_RightParenthesisKeyword_0_2 extends KeywordToken  {
 }
 
 
-// {RemoteType} (m=AtomVarMacro ":")? typeName=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")?
+// {RemoteType} (m=AtomVarMacro ":")? typeName=AtomRefLiteral ("(" (args+=TopType ("," args+=TopType)*)? ")")?
 protected class Type_Group_1 extends GroupToken {
 	
 	public Type_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -24905,7 +24967,7 @@ protected class Type_ColonKeyword_1_1_1 extends KeywordToken  {
 }
 
 
-// typeName=NAME
+// typeName=AtomRefLiteral
 protected class Type_TypeNameAssignment_1_2 extends AssignmentToken  {
 	
 	public Type_TypeNameAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -24920,8 +24982,7 @@ protected class Type_TypeNameAssignment_1_2 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Type_Group_1_1(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new Type_RemoteTypeAction_1_0(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new AtomRefLiteral_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -24930,14 +24991,27 @@ protected class Type_TypeNameAssignment_1_2 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("typeName",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("typeName");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getTypeAccess().getTypeNameNAMEParserRuleCall_1_2_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getTypeAccess().getTypeNameNAMEParserRuleCall_1_2_0();
-			return obj;
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getAtomRefLiteralRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getTypeAccess().getTypeNameAtomRefLiteralParserRuleCall_1_2_0(); 
+				consumed = obj;
+				return param;
+			}
 		}
 		return null;
 	}
 
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Type_Group_1_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new Type_RemoteTypeAction_1_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
 }
 
 // ("(" (args+=TopType ("," args+=TopType)*)? ")")?
@@ -25170,7 +25244,7 @@ protected class Type_RightParenthesisKeyword_1_3_2 extends KeywordToken  {
 
 
 
-// typeName=VARIABLE
+// typeName=VariableLiteral
 protected class Type_TypeNameAssignment_2 extends AssignmentToken  {
 	
 	public Type_TypeNameAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -25185,7 +25259,8 @@ protected class Type_TypeNameAssignment_2 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+			case 0: return new VariableLiteral_Group(this, this, 0, inst);
+			default: return null;
 		}	
 	}
 
@@ -25195,14 +25270,25 @@ protected class Type_TypeNameAssignment_2 extends AssignmentToken  {
 			return null;
 		if((value = eObjectConsumer.getConsumable("typeName",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("typeName");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getTypeAccess().getTypeNameVARIABLETerminalRuleCall_2_0(), value, null)) {
-			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getTypeAccess().getTypeNameVARIABLETerminalRuleCall_2_0();
-			return obj;
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getVariableLiteralRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getTypeAccess().getTypeNameVariableLiteralParserRuleCall_2_0(); 
+				consumed = obj;
+				return param;
+			}
 		}
 		return null;
 	}
 
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, consumed);
+		}	
+	}	
 }
 
 // value=INTEGER
@@ -25673,7 +25759,7 @@ protected class Type_RightCurlyBracketKeyword_5_3 extends KeywordToken  {
 }
 
 
-// "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}"
+// "#" {RecordType} rec=AtomRefLiteral "{" (fields+=FieldType ("," fields+=FieldType)*)? "}"
 protected class Type_Group_6 extends GroupToken {
 	
 	public Type_Group_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -25750,7 +25836,7 @@ protected class Type_RecordTypeAction_6_1 extends ActionToken  {
 	}
 }
 
-// rec=NAME
+// rec=AtomRefLiteral
 protected class Type_RecAssignment_6_2 extends AssignmentToken  {
 	
 	public Type_RecAssignment_6_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -25765,7 +25851,7 @@ protected class Type_RecAssignment_6_2 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new Type_RecordTypeAction_6_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new AtomRefLiteral_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -25774,14 +25860,26 @@ protected class Type_RecAssignment_6_2 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("rec",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("rec");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getTypeAccess().getRecNAMEParserRuleCall_6_2_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getTypeAccess().getRecNAMEParserRuleCall_6_2_0();
-			return obj;
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getAtomRefLiteralRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getTypeAccess().getRecAtomRefLiteralParserRuleCall_6_2_0(); 
+				consumed = obj;
+				return param;
+			}
 		}
 		return null;
 	}
 
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Type_RecordTypeAction_6_1(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
 }
 
 // "{"
@@ -26204,11 +26302,11 @@ protected class Type_RightParenthesisKeyword_8_4 extends KeywordToken  {
 /************ begin Rule FieldType ****************
  *
  * FieldType:
- * 	typeName=NAME "::" type=TopType;
+ * 	typeName=AtomRefLiteral "::" type=TopType;
  *
  **/
 
-// typeName=NAME "::" type=TopType
+// typeName=AtomRefLiteral "::" type=TopType
 protected class FieldType_Group extends GroupToken {
 	
 	public FieldType_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -26237,7 +26335,7 @@ protected class FieldType_Group extends GroupToken {
 
 }
 
-// typeName=NAME
+// typeName=AtomRefLiteral
 protected class FieldType_TypeNameAssignment_0 extends AssignmentToken  {
 	
 	public FieldType_TypeNameAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -26252,7 +26350,8 @@ protected class FieldType_TypeNameAssignment_0 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+			case 0: return new AtomRefLiteral_Group(this, this, 0, inst);
+			default: return null;
 		}	
 	}
 
@@ -26260,14 +26359,25 @@ protected class FieldType_TypeNameAssignment_0 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("typeName",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("typeName");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getFieldTypeAccess().getTypeNameNAMEParserRuleCall_0_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getFieldTypeAccess().getTypeNameNAMEParserRuleCall_0_0();
-			return obj;
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getAtomRefLiteralRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getFieldTypeAccess().getTypeNameAtomRefLiteralParserRuleCall_0_0(); 
+				consumed = obj;
+				return param;
+			}
 		}
 		return null;
 	}
 
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, consumed);
+		}	
+	}	
 }
 
 // "::"
@@ -26687,11 +26797,11 @@ protected class BinaryType_GreaterThanSignGreaterThanSignKeyword_3 extends Keywo
 /************ begin Rule BinBaseType ****************
  *
  * BinBaseType:
- * 	typeName=VARIABLE ":" type=Type;
+ * 	typeName=VariableLiteral ":" type=Type;
  *
  **/
 
-// typeName=VARIABLE ":" type=Type
+// typeName=VariableLiteral ":" type=Type
 protected class BinBaseType_Group extends GroupToken {
 	
 	public BinBaseType_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -26720,7 +26830,7 @@ protected class BinBaseType_Group extends GroupToken {
 
 }
 
-// typeName=VARIABLE
+// typeName=VariableLiteral
 protected class BinBaseType_TypeNameAssignment_0 extends AssignmentToken  {
 	
 	public BinBaseType_TypeNameAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -26735,7 +26845,8 @@ protected class BinBaseType_TypeNameAssignment_0 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+			case 0: return new VariableLiteral_Group(this, this, 0, inst);
+			default: return null;
 		}	
 	}
 
@@ -26743,14 +26854,25 @@ protected class BinBaseType_TypeNameAssignment_0 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("typeName",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("typeName");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getBinBaseTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0(), value, null)) {
-			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getBinBaseTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0();
-			return obj;
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getVariableLiteralRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getBinBaseTypeAccess().getTypeNameVariableLiteralParserRuleCall_0_0(); 
+				consumed = obj;
+				return param;
+			}
 		}
 		return null;
 	}
 
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, consumed);
+		}	
+	}	
 }
 
 // ":"
@@ -26828,11 +26950,11 @@ protected class BinBaseType_TypeAssignment_2 extends AssignmentToken  {
 /************ begin Rule BinUnitType ****************
  *
  * BinUnitType:
- * 	typeName=VARIABLE ":" m=VARIABLE "*" type=Type;
+ * 	typeName=VariableLiteral ":" m=VARIABLE "*" type=Type;
  *
  **/
 
-// typeName=VARIABLE ":" m=VARIABLE "*" type=Type
+// typeName=VariableLiteral ":" m=VARIABLE "*" type=Type
 protected class BinUnitType_Group extends GroupToken {
 	
 	public BinUnitType_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -26861,7 +26983,7 @@ protected class BinUnitType_Group extends GroupToken {
 
 }
 
-// typeName=VARIABLE
+// typeName=VariableLiteral
 protected class BinUnitType_TypeNameAssignment_0 extends AssignmentToken  {
 	
 	public BinUnitType_TypeNameAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -26876,7 +26998,8 @@ protected class BinUnitType_TypeNameAssignment_0 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+			case 0: return new VariableLiteral_Group(this, this, 0, inst);
+			default: return null;
 		}	
 	}
 
@@ -26884,14 +27007,25 @@ protected class BinUnitType_TypeNameAssignment_0 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("typeName",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("typeName");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getBinUnitTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0(), value, null)) {
-			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getBinUnitTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0();
-			return obj;
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getVariableLiteralRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getBinUnitTypeAccess().getTypeNameVariableLiteralParserRuleCall_0_0(); 
+				consumed = obj;
+				return param;
+			}
 		}
 		return null;
 	}
 
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, consumed);
+		}	
+	}	
 }
 
 // ":"

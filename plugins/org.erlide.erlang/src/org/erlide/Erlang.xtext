@@ -13,6 +13,7 @@ AtomRefTarget:
 	| Function
 	| RecordAttribute
 	| RecordFieldDef
+	| TypeAttribute
 ;
 
 Form:
@@ -606,8 +607,8 @@ TypeGuards:
 	items+=TypeGuard (',' items+=TypeGuard)*;
 
 TypeGuard:
-	  typeName=NAME '(' types+=TopType (',' types+=TopType)* ')' 
-	| typeName=VARIABLE '::' type=TopType
+	  typeName=AtomRefLiteral '(' types+=TopType (',' types+=TopType)* ')' 
+	| typeName=VariableLiteral '::' type=TopType
 ;
 
 TopType:
@@ -632,18 +633,18 @@ Type500:
 
 Type:
 	'(' TopType ')' 
-	| {RemoteType} (m=AtomVarMacro ':')? typeName=NAME ('(' (args+=TopType (',' args+=TopType)*)? ')')? 
-	| typeName=VARIABLE 
+	| {RemoteType} (m=AtomVarMacro ':')? typeName=AtomRefLiteral ('(' (args+=TopType (',' args+=TopType)*)? ')')? 
+	| typeName=VariableLiteral 
 	| value=INTEGER 
 	| '[' {ListType} (type=TopType	(',' '...')?)? ']' 
 	| '{' {TupleType} (types+=TopType (',' types+=TopType)*)? '}' 
-	| '#' {RecordType} rec=NAME '{' (fields+=FieldType (',' fields+=FieldType)*)? '}' 
+	| '#' {RecordType} rec=AtomRefLiteral '{' (fields+=FieldType (',' fields+=FieldType)*)? '}' 
 	| BinaryType
 	| 'fun' {FunType} '(' type=FunType100? ')' 
 ;
 
 FieldType:
-	typeName=NAME '::' type=TopType;
+	typeName=AtomRefLiteral '::' type=TopType;
 
 BinaryType:
 	'<<' {BinaryType}
@@ -652,10 +653,10 @@ BinaryType:
 ;
 
 BinBaseType:
-	typeName=VARIABLE ':' type=Type;
+	typeName=VariableLiteral ':' type=Type;
 
 BinUnitType:
-	typeName=VARIABLE ':' m=VARIABLE '*' type=Type;
+	typeName=VariableLiteral ':' m=VARIABLE '*' type=Type;
 
 FunType100:
 	{FunTypeList} '(' ('...' | (items+=TopType (',' items+=TopType)*))? ')' '->' return=TopType;

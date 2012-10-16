@@ -297,6 +297,7 @@ public class ErlangSwitch<T> extends Switch<T>
       {
         TypeAttribute typeAttribute = (TypeAttribute)theEObject;
         T result = caseTypeAttribute(typeAttribute);
+        if (result == null) result = caseAtomRefTarget(typeAttribute);
         if (result == null) result = caseAbstractTypeAttribute(typeAttribute);
         if (result == null) result = caseAttribute(typeAttribute);
         if (result == null) result = caseForm(typeAttribute);

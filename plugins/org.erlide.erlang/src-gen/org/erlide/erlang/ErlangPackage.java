@@ -1001,7 +1001,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_ATTRIBUTE__TAG = ABSTRACT_TYPE_ATTRIBUTE__TAG;
+  int TYPE_ATTRIBUTE__TAG = ATOM_REF_TARGET_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1010,7 +1010,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_ATTRIBUTE__NAME = ABSTRACT_TYPE_ATTRIBUTE_FEATURE_COUNT + 0;
+  int TYPE_ATTRIBUTE__NAME = ATOM_REF_TARGET_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -1019,7 +1019,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_ATTRIBUTE__ARGS = ABSTRACT_TYPE_ATTRIBUTE_FEATURE_COUNT + 1;
+  int TYPE_ATTRIBUTE__ARGS = ATOM_REF_TARGET_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -1028,7 +1028,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_ATTRIBUTE__TYPE = ABSTRACT_TYPE_ATTRIBUTE_FEATURE_COUNT + 2;
+  int TYPE_ATTRIBUTE__TYPE = ATOM_REF_TARGET_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Type Attribute</em>' class.
@@ -1037,7 +1037,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_ATTRIBUTE_FEATURE_COUNT = ABSTRACT_TYPE_ATTRIBUTE_FEATURE_COUNT + 3;
+  int TYPE_ATTRIBUTE_FEATURE_COUNT = ATOM_REF_TARGET_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.CustomAttributeImpl <em>Custom Attribute</em>}' class.
@@ -2905,7 +2905,7 @@ public interface ErlangPackage extends EPackage
   int TYPE = 67;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2942,7 +2942,7 @@ public interface ErlangPackage extends EPackage
   int FUN_TYPE = 58;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -3034,7 +3034,7 @@ public interface ErlangPackage extends EPackage
   int TYPE_GUARD = 60;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -3080,7 +3080,7 @@ public interface ErlangPackage extends EPackage
   int TOP_TYPE = 61;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -3162,7 +3162,7 @@ public interface ErlangPackage extends EPackage
   int FIELD_TYPE = 68;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -3199,7 +3199,7 @@ public interface ErlangPackage extends EPackage
   int BINARY_TYPE = 69;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -3245,7 +3245,7 @@ public interface ErlangPackage extends EPackage
   int BIN_BASE_TYPE = 70;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -3282,7 +3282,7 @@ public interface ErlangPackage extends EPackage
   int BIN_UNIT_TYPE = 71;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -4480,7 +4480,7 @@ public interface ErlangPackage extends EPackage
   int REMOTE_TYPE = 90;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -4535,7 +4535,7 @@ public interface ErlangPackage extends EPackage
   int LIST_TYPE = 91;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -4581,7 +4581,7 @@ public interface ErlangPackage extends EPackage
   int TUPLE_TYPE = 92;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -4627,7 +4627,7 @@ public interface ErlangPackage extends EPackage
   int RECORD_TYPE = 93;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -4645,7 +4645,7 @@ public interface ErlangPackage extends EPackage
   int RECORD_TYPE__VALUE = TYPE__VALUE;
 
   /**
-   * The feature id for the '<em><b>Rec</b></em>' attribute.
+   * The feature id for the '<em><b>Rec</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -6453,15 +6453,15 @@ public interface ErlangPackage extends EPackage
   EClass getTypeGuard();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.TypeGuard#getTypeName <em>Type Name</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.TypeGuard#getTypeName <em>Type Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type Name</em>'.
+   * @return the meta object for the containment reference '<em>Type Name</em>'.
    * @see org.erlide.erlang.TypeGuard#getTypeName()
    * @see #getTypeGuard()
    * @generated
    */
-  EAttribute getTypeGuard_TypeName();
+  EReference getTypeGuard_TypeName();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.erlide.erlang.TypeGuard#getTypes <em>Types</em>}'.
@@ -6611,15 +6611,15 @@ public interface ErlangPackage extends EPackage
   EClass getType();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.Type#getTypeName <em>Type Name</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.Type#getTypeName <em>Type Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type Name</em>'.
+   * @return the meta object for the containment reference '<em>Type Name</em>'.
    * @see org.erlide.erlang.Type#getTypeName()
    * @see #getType()
    * @generated
    */
-  EAttribute getType_TypeName();
+  EReference getType_TypeName();
 
   /**
    * Returns the meta object for the attribute '{@link org.erlide.erlang.Type#getValue <em>Value</em>}'.
@@ -6643,15 +6643,15 @@ public interface ErlangPackage extends EPackage
   EClass getFieldType();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.FieldType#getTypeName <em>Type Name</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.FieldType#getTypeName <em>Type Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type Name</em>'.
+   * @return the meta object for the containment reference '<em>Type Name</em>'.
    * @see org.erlide.erlang.FieldType#getTypeName()
    * @see #getFieldType()
    * @generated
    */
-  EAttribute getFieldType_TypeName();
+  EReference getFieldType_TypeName();
 
   /**
    * Returns the meta object for the containment reference '{@link org.erlide.erlang.FieldType#getType <em>Type</em>}'.
@@ -6696,15 +6696,15 @@ public interface ErlangPackage extends EPackage
   EClass getBinBaseType();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.BinBaseType#getTypeName <em>Type Name</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.BinBaseType#getTypeName <em>Type Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type Name</em>'.
+   * @return the meta object for the containment reference '<em>Type Name</em>'.
    * @see org.erlide.erlang.BinBaseType#getTypeName()
    * @see #getBinBaseType()
    * @generated
    */
-  EAttribute getBinBaseType_TypeName();
+  EReference getBinBaseType_TypeName();
 
   /**
    * Returns the meta object for the containment reference '{@link org.erlide.erlang.BinBaseType#getType <em>Type</em>}'.
@@ -6728,15 +6728,15 @@ public interface ErlangPackage extends EPackage
   EClass getBinUnitType();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.BinUnitType#getTypeName <em>Type Name</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.BinUnitType#getTypeName <em>Type Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type Name</em>'.
+   * @return the meta object for the containment reference '<em>Type Name</em>'.
    * @see org.erlide.erlang.BinUnitType#getTypeName()
    * @see #getBinUnitType()
    * @generated
    */
-  EAttribute getBinUnitType_TypeName();
+  EReference getBinUnitType_TypeName();
 
   /**
    * Returns the meta object for the attribute '{@link org.erlide.erlang.BinUnitType#getM <em>M</em>}'.
@@ -7355,15 +7355,15 @@ public interface ErlangPackage extends EPackage
   EClass getRecordType();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.RecordType#getRec <em>Rec</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.RecordType#getRec <em>Rec</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Rec</em>'.
+   * @return the meta object for the containment reference '<em>Rec</em>'.
    * @see org.erlide.erlang.RecordType#getRec()
    * @see #getRecordType()
    * @generated
    */
-  EAttribute getRecordType_Rec();
+  EReference getRecordType_Rec();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.erlide.erlang.RecordType#getFields <em>Fields</em>}'.
@@ -8866,12 +8866,12 @@ public interface ErlangPackage extends EPackage
     EClass TYPE_GUARD = eINSTANCE.getTypeGuard();
 
     /**
-     * The meta object literal for the '<em><b>Type Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type Name</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TYPE_GUARD__TYPE_NAME = eINSTANCE.getTypeGuard_TypeName();
+    EReference TYPE_GUARD__TYPE_NAME = eINSTANCE.getTypeGuard_TypeName();
 
     /**
      * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
@@ -9000,12 +9000,12 @@ public interface ErlangPackage extends EPackage
     EClass TYPE = eINSTANCE.getType();
 
     /**
-     * The meta object literal for the '<em><b>Type Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type Name</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TYPE__TYPE_NAME = eINSTANCE.getType_TypeName();
+    EReference TYPE__TYPE_NAME = eINSTANCE.getType_TypeName();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -9026,12 +9026,12 @@ public interface ErlangPackage extends EPackage
     EClass FIELD_TYPE = eINSTANCE.getFieldType();
 
     /**
-     * The meta object literal for the '<em><b>Type Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type Name</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FIELD_TYPE__TYPE_NAME = eINSTANCE.getFieldType_TypeName();
+    EReference FIELD_TYPE__TYPE_NAME = eINSTANCE.getFieldType_TypeName();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -9070,12 +9070,12 @@ public interface ErlangPackage extends EPackage
     EClass BIN_BASE_TYPE = eINSTANCE.getBinBaseType();
 
     /**
-     * The meta object literal for the '<em><b>Type Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type Name</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute BIN_BASE_TYPE__TYPE_NAME = eINSTANCE.getBinBaseType_TypeName();
+    EReference BIN_BASE_TYPE__TYPE_NAME = eINSTANCE.getBinBaseType_TypeName();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -9096,12 +9096,12 @@ public interface ErlangPackage extends EPackage
     EClass BIN_UNIT_TYPE = eINSTANCE.getBinUnitType();
 
     /**
-     * The meta object literal for the '<em><b>Type Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type Name</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute BIN_UNIT_TYPE__TYPE_NAME = eINSTANCE.getBinUnitType_TypeName();
+    EReference BIN_UNIT_TYPE__TYPE_NAME = eINSTANCE.getBinUnitType_TypeName();
 
     /**
      * The meta object literal for the '<em><b>M</b></em>' attribute feature.
@@ -9612,12 +9612,12 @@ public interface ErlangPackage extends EPackage
     EClass RECORD_TYPE = eINSTANCE.getRecordType();
 
     /**
-     * The meta object literal for the '<em><b>Rec</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Rec</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RECORD_TYPE__REC = eINSTANCE.getRecordType_Rec();
+    EReference RECORD_TYPE__REC = eINSTANCE.getRecordType_Rec();
 
     /**
      * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.

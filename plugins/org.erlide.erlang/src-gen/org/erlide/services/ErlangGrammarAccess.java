@@ -41,13 +41,14 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFunctionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cRecordAttributeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cRecordFieldDefParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cTypeAttributeParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//// AtomRefTargets are the elements that an atom can refer to
 		//AtomRefTarget:
-		//	Module | Function | RecordAttribute | RecordFieldDef;
+		//	Module | Function | RecordAttribute | RecordFieldDef | TypeAttribute;
 		public ParserRule getRule() { return rule; }
 
-		//Module | Function | RecordAttribute | RecordFieldDef
+		//Module | Function | RecordAttribute | RecordFieldDef | TypeAttribute
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Module
@@ -61,6 +62,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//RecordFieldDef
 		public RuleCall getRecordFieldDefParserRuleCall_3() { return cRecordFieldDefParserRuleCall_3; }
+
+		//TypeAttribute
+		public RuleCall getTypeAttributeParserRuleCall_4() { return cTypeAttributeParserRuleCall_4; }
 	}
 
 	public class FormElements extends AbstractParserRuleElementFinder {
@@ -4928,7 +4932,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Assignment cTypeNameAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cTypeNameNAMEParserRuleCall_0_0_0 = (RuleCall)cTypeNameAssignment_0_0.eContents().get(0);
+		private final RuleCall cTypeNameAtomRefLiteralParserRuleCall_0_0_0 = (RuleCall)cTypeNameAssignment_0_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Assignment cTypesAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
 		private final RuleCall cTypesTopTypeParserRuleCall_0_2_0 = (RuleCall)cTypesAssignment_0_2.eContents().get(0);
@@ -4939,26 +4943,26 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Assignment cTypeNameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cTypeNameVARIABLETerminalRuleCall_1_0_0 = (RuleCall)cTypeNameAssignment_1_0.eContents().get(0);
+		private final RuleCall cTypeNameVariableLiteralParserRuleCall_1_0_0 = (RuleCall)cTypeNameAssignment_1_0.eContents().get(0);
 		private final Keyword cColonColonKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		private final Assignment cTypeAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cTypeTopTypeParserRuleCall_1_2_0 = (RuleCall)cTypeAssignment_1_2.eContents().get(0);
 		
 		//TypeGuard:
-		//	typeName=NAME "(" types+=TopType ("," types+=TopType)* ")" | typeName=VARIABLE "::" type=TopType;
+		//	typeName=AtomRefLiteral "(" types+=TopType ("," types+=TopType)* ")" | typeName=VariableLiteral "::" type=TopType;
 		public ParserRule getRule() { return rule; }
 
-		//typeName=NAME "(" types+=TopType ("," types+=TopType)* ")" | typeName=VARIABLE "::" type=TopType
+		//typeName=AtomRefLiteral "(" types+=TopType ("," types+=TopType)* ")" | typeName=VariableLiteral "::" type=TopType
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//typeName=NAME "(" types+=TopType ("," types+=TopType)* ")"
+		//typeName=AtomRefLiteral "(" types+=TopType ("," types+=TopType)* ")"
 		public Group getGroup_0() { return cGroup_0; }
 
-		//typeName=NAME
+		//typeName=AtomRefLiteral
 		public Assignment getTypeNameAssignment_0_0() { return cTypeNameAssignment_0_0; }
 
-		//NAME
-		public RuleCall getTypeNameNAMEParserRuleCall_0_0_0() { return cTypeNameNAMEParserRuleCall_0_0_0; }
+		//AtomRefLiteral
+		public RuleCall getTypeNameAtomRefLiteralParserRuleCall_0_0_0() { return cTypeNameAtomRefLiteralParserRuleCall_0_0_0; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_0_1() { return cLeftParenthesisKeyword_0_1; }
@@ -4984,14 +4988,14 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		//")"
 		public Keyword getRightParenthesisKeyword_0_4() { return cRightParenthesisKeyword_0_4; }
 
-		//typeName=VARIABLE "::" type=TopType
+		//typeName=VariableLiteral "::" type=TopType
 		public Group getGroup_1() { return cGroup_1; }
 
-		//typeName=VARIABLE
+		//typeName=VariableLiteral
 		public Assignment getTypeNameAssignment_1_0() { return cTypeNameAssignment_1_0; }
 
-		//VARIABLE
-		public RuleCall getTypeNameVARIABLETerminalRuleCall_1_0_0() { return cTypeNameVARIABLETerminalRuleCall_1_0_0; }
+		//VariableLiteral
+		public RuleCall getTypeNameVariableLiteralParserRuleCall_1_0_0() { return cTypeNameVariableLiteralParserRuleCall_1_0_0; }
 
 		//"::"
 		public Keyword getColonColonKeyword_1_1() { return cColonColonKeyword_1_1; }
@@ -5285,7 +5289,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMAtomVarMacroParserRuleCall_1_1_0_0 = (RuleCall)cMAssignment_1_1_0.eContents().get(0);
 		private final Keyword cColonKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
 		private final Assignment cTypeNameAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cTypeNameNAMEParserRuleCall_1_2_0 = (RuleCall)cTypeNameAssignment_1_2.eContents().get(0);
+		private final RuleCall cTypeNameAtomRefLiteralParserRuleCall_1_2_0 = (RuleCall)cTypeNameAssignment_1_2.eContents().get(0);
 		private final Group cGroup_1_3 = (Group)cGroup_1.eContents().get(3);
 		private final Keyword cLeftParenthesisKeyword_1_3_0 = (Keyword)cGroup_1_3.eContents().get(0);
 		private final Group cGroup_1_3_1 = (Group)cGroup_1_3.eContents().get(1);
@@ -5297,7 +5301,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cArgsTopTypeParserRuleCall_1_3_1_1_1_0 = (RuleCall)cArgsAssignment_1_3_1_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_3_2 = (Keyword)cGroup_1_3.eContents().get(2);
 		private final Assignment cTypeNameAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final RuleCall cTypeNameVARIABLETerminalRuleCall_2_0 = (RuleCall)cTypeNameAssignment_2.eContents().get(0);
+		private final RuleCall cTypeNameVariableLiteralParserRuleCall_2_0 = (RuleCall)cTypeNameAssignment_2.eContents().get(0);
 		private final Assignment cValueAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
 		private final RuleCall cValueINTEGERParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
@@ -5325,7 +5329,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNumberSignKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
 		private final Action cRecordTypeAction_6_1 = (Action)cGroup_6.eContents().get(1);
 		private final Assignment cRecAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
-		private final RuleCall cRecNAMEParserRuleCall_6_2_0 = (RuleCall)cRecAssignment_6_2.eContents().get(0);
+		private final RuleCall cRecAtomRefLiteralParserRuleCall_6_2_0 = (RuleCall)cRecAssignment_6_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_6_3 = (Keyword)cGroup_6.eContents().get(3);
 		private final Group cGroup_6_4 = (Group)cGroup_6.eContents().get(4);
 		private final Assignment cFieldsAssignment_6_4_0 = (Assignment)cGroup_6_4.eContents().get(0);
@@ -5345,16 +5349,16 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_8_4 = (Keyword)cGroup_8.eContents().get(4);
 		
 		//Type:
-		//	"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")? |
-		//	typeName=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType
-		//	("," types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" |
-		//	BinaryType | "fun" {FunType} "(" type=FunType100? ")";
+		//	"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=AtomRefLiteral ("(" (args+=TopType (","
+		//	args+=TopType)*)? ")")? | typeName=VariableLiteral | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" |
+		//	"{" {TupleType} (types+=TopType ("," types+=TopType)*)? "}" | "#" {RecordType} rec=AtomRefLiteral "{"
+		//	(fields+=FieldType ("," fields+=FieldType)*)? "}" | BinaryType | "fun" {FunType} "(" type=FunType100? ")";
 		public ParserRule getRule() { return rule; }
 
-		//"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")? |
-		//typeName=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType
-		//("," types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" |
-		//BinaryType | "fun" {FunType} "(" type=FunType100? ")"
+		//"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=AtomRefLiteral ("(" (args+=TopType ("," args+=TopType)*)?
+		//")")? | typeName=VariableLiteral | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType}
+		//(types+=TopType ("," types+=TopType)*)? "}" | "#" {RecordType} rec=AtomRefLiteral "{" (fields+=FieldType (","
+		//fields+=FieldType)*)? "}" | BinaryType | "fun" {FunType} "(" type=FunType100? ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"(" TopType ")"
@@ -5369,7 +5373,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		//")"
 		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
 
-		//{RemoteType} (m=AtomVarMacro ":")? typeName=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")?
+		//{RemoteType} (m=AtomVarMacro ":")? typeName=AtomRefLiteral ("(" (args+=TopType ("," args+=TopType)*)? ")")?
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{RemoteType}
@@ -5387,11 +5391,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		//":"
 		public Keyword getColonKeyword_1_1_1() { return cColonKeyword_1_1_1; }
 
-		//typeName=NAME
+		//typeName=AtomRefLiteral
 		public Assignment getTypeNameAssignment_1_2() { return cTypeNameAssignment_1_2; }
 
-		//NAME
-		public RuleCall getTypeNameNAMEParserRuleCall_1_2_0() { return cTypeNameNAMEParserRuleCall_1_2_0; }
+		//AtomRefLiteral
+		public RuleCall getTypeNameAtomRefLiteralParserRuleCall_1_2_0() { return cTypeNameAtomRefLiteralParserRuleCall_1_2_0; }
 
 		//("(" (args+=TopType ("," args+=TopType)*)? ")")?
 		public Group getGroup_1_3() { return cGroup_1_3; }
@@ -5423,11 +5427,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		//")"
 		public Keyword getRightParenthesisKeyword_1_3_2() { return cRightParenthesisKeyword_1_3_2; }
 
-		//typeName=VARIABLE
+		//typeName=VariableLiteral
 		public Assignment getTypeNameAssignment_2() { return cTypeNameAssignment_2; }
 
-		//VARIABLE
-		public RuleCall getTypeNameVARIABLETerminalRuleCall_2_0() { return cTypeNameVARIABLETerminalRuleCall_2_0; }
+		//VariableLiteral
+		public RuleCall getTypeNameVariableLiteralParserRuleCall_2_0() { return cTypeNameVariableLiteralParserRuleCall_2_0; }
 
 		//value=INTEGER
 		public Assignment getValueAssignment_3() { return cValueAssignment_3; }
@@ -5498,7 +5502,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5_3() { return cRightCurlyBracketKeyword_5_3; }
 
-		//"#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}"
+		//"#" {RecordType} rec=AtomRefLiteral "{" (fields+=FieldType ("," fields+=FieldType)*)? "}"
 		public Group getGroup_6() { return cGroup_6; }
 
 		//"#"
@@ -5507,11 +5511,11 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		//{RecordType}
 		public Action getRecordTypeAction_6_1() { return cRecordTypeAction_6_1; }
 
-		//rec=NAME
+		//rec=AtomRefLiteral
 		public Assignment getRecAssignment_6_2() { return cRecAssignment_6_2; }
 
-		//NAME
-		public RuleCall getRecNAMEParserRuleCall_6_2_0() { return cRecNAMEParserRuleCall_6_2_0; }
+		//AtomRefLiteral
+		public RuleCall getRecAtomRefLiteralParserRuleCall_6_2_0() { return cRecAtomRefLiteralParserRuleCall_6_2_0; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_6_3() { return cLeftCurlyBracketKeyword_6_3; }
@@ -5569,23 +5573,23 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FieldType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cTypeNameNAMEParserRuleCall_0_0 = (RuleCall)cTypeNameAssignment_0.eContents().get(0);
+		private final RuleCall cTypeNameAtomRefLiteralParserRuleCall_0_0 = (RuleCall)cTypeNameAssignment_0.eContents().get(0);
 		private final Keyword cColonColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cTypeTopTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//FieldType:
-		//	typeName=NAME "::" type=TopType;
+		//	typeName=AtomRefLiteral "::" type=TopType;
 		public ParserRule getRule() { return rule; }
 
-		//typeName=NAME "::" type=TopType
+		//typeName=AtomRefLiteral "::" type=TopType
 		public Group getGroup() { return cGroup; }
 
-		//typeName=NAME
+		//typeName=AtomRefLiteral
 		public Assignment getTypeNameAssignment_0() { return cTypeNameAssignment_0; }
 
-		//NAME
-		public RuleCall getTypeNameNAMEParserRuleCall_0_0() { return cTypeNameNAMEParserRuleCall_0_0; }
+		//AtomRefLiteral
+		public RuleCall getTypeNameAtomRefLiteralParserRuleCall_0_0() { return cTypeNameAtomRefLiteralParserRuleCall_0_0; }
 
 		//"::"
 		public Keyword getColonColonKeyword_1() { return cColonColonKeyword_1; }
@@ -5665,23 +5669,23 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BinBaseType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cTypeNameVARIABLETerminalRuleCall_0_0 = (RuleCall)cTypeNameAssignment_0.eContents().get(0);
+		private final RuleCall cTypeNameVariableLiteralParserRuleCall_0_0 = (RuleCall)cTypeNameAssignment_0.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//BinBaseType:
-		//	typeName=VARIABLE ":" type=Type;
+		//	typeName=VariableLiteral ":" type=Type;
 		public ParserRule getRule() { return rule; }
 
-		//typeName=VARIABLE ":" type=Type
+		//typeName=VariableLiteral ":" type=Type
 		public Group getGroup() { return cGroup; }
 
-		//typeName=VARIABLE
+		//typeName=VariableLiteral
 		public Assignment getTypeNameAssignment_0() { return cTypeNameAssignment_0; }
 
-		//VARIABLE
-		public RuleCall getTypeNameVARIABLETerminalRuleCall_0_0() { return cTypeNameVARIABLETerminalRuleCall_0_0; }
+		//VariableLiteral
+		public RuleCall getTypeNameVariableLiteralParserRuleCall_0_0() { return cTypeNameVariableLiteralParserRuleCall_0_0; }
 
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -5697,7 +5701,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BinUnitType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cTypeNameVARIABLETerminalRuleCall_0_0 = (RuleCall)cTypeNameAssignment_0.eContents().get(0);
+		private final RuleCall cTypeNameVariableLiteralParserRuleCall_0_0 = (RuleCall)cTypeNameAssignment_0.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cMAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cMVARIABLETerminalRuleCall_2_0 = (RuleCall)cMAssignment_2.eContents().get(0);
@@ -5706,17 +5710,17 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeTypeParserRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
 		
 		//BinUnitType:
-		//	typeName=VARIABLE ":" m=VARIABLE "*" type=Type;
+		//	typeName=VariableLiteral ":" m=VARIABLE "*" type=Type;
 		public ParserRule getRule() { return rule; }
 
-		//typeName=VARIABLE ":" m=VARIABLE "*" type=Type
+		//typeName=VariableLiteral ":" m=VARIABLE "*" type=Type
 		public Group getGroup() { return cGroup; }
 
-		//typeName=VARIABLE
+		//typeName=VariableLiteral
 		public Assignment getTypeNameAssignment_0() { return cTypeNameAssignment_0; }
 
-		//VARIABLE
-		public RuleCall getTypeNameVARIABLETerminalRuleCall_0_0() { return cTypeNameVARIABLETerminalRuleCall_0_0; }
+		//VariableLiteral
+		public RuleCall getTypeNameVariableLiteralParserRuleCall_0_0() { return cTypeNameVariableLiteralParserRuleCall_0_0; }
 
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -5984,7 +5988,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// AtomRefTargets are the elements that an atom can refer to
 	//AtomRefTarget:
-	//	Module | Function | RecordAttribute | RecordFieldDef;
+	//	Module | Function | RecordAttribute | RecordFieldDef | TypeAttribute;
 	public AtomRefTargetElements getAtomRefTargetAccess() {
 		return (pAtomRefTarget != null) ? pAtomRefTarget : (pAtomRefTarget = new AtomRefTargetElements());
 	}
@@ -7130,7 +7134,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TypeGuard:
-	//	typeName=NAME "(" types+=TopType ("," types+=TopType)* ")" | typeName=VARIABLE "::" type=TopType;
+	//	typeName=AtomRefLiteral "(" types+=TopType ("," types+=TopType)* ")" | typeName=VariableLiteral "::" type=TopType;
 	public TypeGuardElements getTypeGuardAccess() {
 		return (pTypeGuard != null) ? pTypeGuard : (pTypeGuard = new TypeGuardElements());
 	}
@@ -7200,10 +7204,10 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Type:
-	//	"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=NAME ("(" (args+=TopType ("," args+=TopType)*)? ")")? |
-	//	typeName=VARIABLE | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" | "{" {TupleType} (types+=TopType
-	//	("," types+=TopType)*)? "}" | "#" {RecordType} rec=NAME "{" (fields+=FieldType ("," fields+=FieldType)*)? "}" |
-	//	BinaryType | "fun" {FunType} "(" type=FunType100? ")";
+	//	"(" TopType ")" | {RemoteType} (m=AtomVarMacro ":")? typeName=AtomRefLiteral ("(" (args+=TopType (","
+	//	args+=TopType)*)? ")")? | typeName=VariableLiteral | value=INTEGER | "[" {ListType} (type=TopType ("," "...")?)? "]" |
+	//	"{" {TupleType} (types+=TopType ("," types+=TopType)*)? "}" | "#" {RecordType} rec=AtomRefLiteral "{"
+	//	(fields+=FieldType ("," fields+=FieldType)*)? "}" | BinaryType | "fun" {FunType} "(" type=FunType100? ")";
 	public TypeElements getTypeAccess() {
 		return (pType != null) ? pType : (pType = new TypeElements());
 	}
@@ -7213,7 +7217,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FieldType:
-	//	typeName=NAME "::" type=TopType;
+	//	typeName=AtomRefLiteral "::" type=TopType;
 	public FieldTypeElements getFieldTypeAccess() {
 		return (pFieldType != null) ? pFieldType : (pFieldType = new FieldTypeElements());
 	}
@@ -7233,7 +7237,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BinBaseType:
-	//	typeName=VARIABLE ":" type=Type;
+	//	typeName=VariableLiteral ":" type=Type;
 	public BinBaseTypeElements getBinBaseTypeAccess() {
 		return (pBinBaseType != null) ? pBinBaseType : (pBinBaseType = new BinBaseTypeElements());
 	}
@@ -7243,7 +7247,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BinUnitType:
-	//	typeName=VARIABLE ":" m=VARIABLE "*" type=Type;
+	//	typeName=VariableLiteral ":" m=VARIABLE "*" type=Type;
 	public BinUnitTypeElements getBinUnitTypeAccess() {
 		return (pBinUnitType != null) ? pBinUnitType : (pBinUnitType = new BinUnitTypeElements());
 	}

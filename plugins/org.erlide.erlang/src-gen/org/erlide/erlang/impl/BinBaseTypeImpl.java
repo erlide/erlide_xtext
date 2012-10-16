@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.erlide.erlang.BinBaseType;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.Type;
 
 /**
@@ -35,24 +36,14 @@ import org.erlide.erlang.Type;
 public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements BinBaseType
 {
   /**
-   * The default value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
+   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected static final String TYPE_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTypeName()
-   * @generated
-   * @ordered
-   */
-  protected String typeName = TYPE_NAME_EDEFAULT;
+  protected Expression typeName;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -90,7 +81,7 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTypeName()
+  public Expression getTypeName()
   {
     return typeName;
   }
@@ -100,12 +91,37 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTypeName(String newTypeName)
+  public NotificationChain basicSetTypeName(Expression newTypeName, NotificationChain msgs)
   {
-    String oldTypeName = typeName;
+    Expression oldTypeName = typeName;
     typeName = newTypeName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.BIN_BASE_TYPE__TYPE_NAME, oldTypeName, typeName));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.BIN_BASE_TYPE__TYPE_NAME, oldTypeName, newTypeName);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTypeName(Expression newTypeName)
+  {
+    if (newTypeName != typeName)
+    {
+      NotificationChain msgs = null;
+      if (typeName != null)
+        msgs = ((InternalEObject)typeName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.BIN_BASE_TYPE__TYPE_NAME, null, msgs);
+      if (newTypeName != null)
+        msgs = ((InternalEObject)newTypeName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.BIN_BASE_TYPE__TYPE_NAME, null, msgs);
+      msgs = basicSetTypeName(newTypeName, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.BIN_BASE_TYPE__TYPE_NAME, newTypeName, newTypeName));
   }
 
   /**
@@ -166,6 +182,8 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
   {
     switch (featureID)
     {
+      case ErlangPackage.BIN_BASE_TYPE__TYPE_NAME:
+        return basicSetTypeName(null, msgs);
       case ErlangPackage.BIN_BASE_TYPE__TYPE:
         return basicSetType(null, msgs);
     }
@@ -201,7 +219,7 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
     switch (featureID)
     {
       case ErlangPackage.BIN_BASE_TYPE__TYPE_NAME:
-        setTypeName((String)newValue);
+        setTypeName((Expression)newValue);
         return;
       case ErlangPackage.BIN_BASE_TYPE__TYPE:
         setType((Type)newValue);
@@ -221,7 +239,7 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
     switch (featureID)
     {
       case ErlangPackage.BIN_BASE_TYPE__TYPE_NAME:
-        setTypeName(TYPE_NAME_EDEFAULT);
+        setTypeName((Expression)null);
         return;
       case ErlangPackage.BIN_BASE_TYPE__TYPE:
         setType((Type)null);
@@ -241,28 +259,11 @@ public class BinBaseTypeImpl extends MinimalEObjectImpl.Container implements Bin
     switch (featureID)
     {
       case ErlangPackage.BIN_BASE_TYPE__TYPE_NAME:
-        return TYPE_NAME_EDEFAULT == null ? typeName != null : !TYPE_NAME_EDEFAULT.equals(typeName);
+        return typeName != null;
       case ErlangPackage.BIN_BASE_TYPE__TYPE:
         return type != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (typeName: ");
-    result.append(typeName);
-    result.append(')');
-    return result.toString();
   }
 
 } //BinBaseTypeImpl

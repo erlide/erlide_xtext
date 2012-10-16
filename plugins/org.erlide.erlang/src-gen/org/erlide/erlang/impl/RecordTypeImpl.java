@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.FieldType;
 import org.erlide.erlang.RecordType;
 
@@ -41,24 +42,14 @@ import org.erlide.erlang.RecordType;
 public class RecordTypeImpl extends TypeImpl implements RecordType
 {
   /**
-   * The default value of the '{@link #getRec() <em>Rec</em>}' attribute.
+   * The cached value of the '{@link #getRec() <em>Rec</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRec()
    * @generated
    * @ordered
    */
-  protected static final String REC_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getRec() <em>Rec</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRec()
-   * @generated
-   * @ordered
-   */
-  protected String rec = REC_EDEFAULT;
+  protected Expression rec;
 
   /**
    * The cached value of the '{@link #getFields() <em>Fields</em>}' containment reference list.
@@ -96,7 +87,7 @@ public class RecordTypeImpl extends TypeImpl implements RecordType
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getRec()
+  public Expression getRec()
   {
     return rec;
   }
@@ -106,12 +97,37 @@ public class RecordTypeImpl extends TypeImpl implements RecordType
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRec(String newRec)
+  public NotificationChain basicSetRec(Expression newRec, NotificationChain msgs)
   {
-    String oldRec = rec;
+    Expression oldRec = rec;
     rec = newRec;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_TYPE__REC, oldRec, rec));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_TYPE__REC, oldRec, newRec);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRec(Expression newRec)
+  {
+    if (newRec != rec)
+    {
+      NotificationChain msgs = null;
+      if (rec != null)
+        msgs = ((InternalEObject)rec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_TYPE__REC, null, msgs);
+      if (newRec != null)
+        msgs = ((InternalEObject)newRec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.RECORD_TYPE__REC, null, msgs);
+      msgs = basicSetRec(newRec, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.RECORD_TYPE__REC, newRec, newRec));
   }
 
   /**
@@ -138,6 +154,8 @@ public class RecordTypeImpl extends TypeImpl implements RecordType
   {
     switch (featureID)
     {
+      case ErlangPackage.RECORD_TYPE__REC:
+        return basicSetRec(null, msgs);
       case ErlangPackage.RECORD_TYPE__FIELDS:
         return ((InternalEList<?>)getFields()).basicRemove(otherEnd, msgs);
     }
@@ -174,7 +192,7 @@ public class RecordTypeImpl extends TypeImpl implements RecordType
     switch (featureID)
     {
       case ErlangPackage.RECORD_TYPE__REC:
-        setRec((String)newValue);
+        setRec((Expression)newValue);
         return;
       case ErlangPackage.RECORD_TYPE__FIELDS:
         getFields().clear();
@@ -195,7 +213,7 @@ public class RecordTypeImpl extends TypeImpl implements RecordType
     switch (featureID)
     {
       case ErlangPackage.RECORD_TYPE__REC:
-        setRec(REC_EDEFAULT);
+        setRec((Expression)null);
         return;
       case ErlangPackage.RECORD_TYPE__FIELDS:
         getFields().clear();
@@ -215,28 +233,11 @@ public class RecordTypeImpl extends TypeImpl implements RecordType
     switch (featureID)
     {
       case ErlangPackage.RECORD_TYPE__REC:
-        return REC_EDEFAULT == null ? rec != null : !REC_EDEFAULT.equals(rec);
+        return rec != null;
       case ErlangPackage.RECORD_TYPE__FIELDS:
         return fields != null && !fields.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (rec: ");
-    result.append(rec);
-    result.append(')');
-    return result.toString();
   }
 
 } //RecordTypeImpl

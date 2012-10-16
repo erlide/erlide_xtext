@@ -6,12 +6,15 @@
 package org.erlide.erlang.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Expression;
 import org.erlide.erlang.Type;
 
 /**
@@ -31,24 +34,14 @@ import org.erlide.erlang.Type;
 public class TypeImpl extends Type500Impl implements Type
 {
   /**
-   * The default value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
+   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected static final String TYPE_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTypeName()
-   * @generated
-   * @ordered
-   */
-  protected String typeName = TYPE_NAME_EDEFAULT;
+  protected Expression typeName;
 
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -96,7 +89,7 @@ public class TypeImpl extends Type500Impl implements Type
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTypeName()
+  public Expression getTypeName()
   {
     return typeName;
   }
@@ -106,12 +99,37 @@ public class TypeImpl extends Type500Impl implements Type
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTypeName(String newTypeName)
+  public NotificationChain basicSetTypeName(Expression newTypeName, NotificationChain msgs)
   {
-    String oldTypeName = typeName;
+    Expression oldTypeName = typeName;
     typeName = newTypeName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE__TYPE_NAME, oldTypeName, typeName));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE__TYPE_NAME, oldTypeName, newTypeName);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTypeName(Expression newTypeName)
+  {
+    if (newTypeName != typeName)
+    {
+      NotificationChain msgs = null;
+      if (typeName != null)
+        msgs = ((InternalEObject)typeName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TYPE__TYPE_NAME, null, msgs);
+      if (newTypeName != null)
+        msgs = ((InternalEObject)newTypeName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TYPE__TYPE_NAME, null, msgs);
+      msgs = basicSetTypeName(newTypeName, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE__TYPE_NAME, newTypeName, newTypeName));
   }
 
   /**
@@ -143,6 +161,22 @@ public class TypeImpl extends Type500Impl implements Type
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ErlangPackage.TYPE__TYPE_NAME:
+        return basicSetTypeName(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -166,7 +200,7 @@ public class TypeImpl extends Type500Impl implements Type
     switch (featureID)
     {
       case ErlangPackage.TYPE__TYPE_NAME:
-        setTypeName((String)newValue);
+        setTypeName((Expression)newValue);
         return;
       case ErlangPackage.TYPE__VALUE:
         setValue((String)newValue);
@@ -186,7 +220,7 @@ public class TypeImpl extends Type500Impl implements Type
     switch (featureID)
     {
       case ErlangPackage.TYPE__TYPE_NAME:
-        setTypeName(TYPE_NAME_EDEFAULT);
+        setTypeName((Expression)null);
         return;
       case ErlangPackage.TYPE__VALUE:
         setValue(VALUE_EDEFAULT);
@@ -206,7 +240,7 @@ public class TypeImpl extends Type500Impl implements Type
     switch (featureID)
     {
       case ErlangPackage.TYPE__TYPE_NAME:
-        return TYPE_NAME_EDEFAULT == null ? typeName != null : !TYPE_NAME_EDEFAULT.equals(typeName);
+        return typeName != null;
       case ErlangPackage.TYPE__VALUE:
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
@@ -224,9 +258,7 @@ public class TypeImpl extends Type500Impl implements Type
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (typeName: ");
-    result.append(typeName);
-    result.append(", value: ");
+    result.append(" (value: ");
     result.append(value);
     result.append(')');
     return result.toString();

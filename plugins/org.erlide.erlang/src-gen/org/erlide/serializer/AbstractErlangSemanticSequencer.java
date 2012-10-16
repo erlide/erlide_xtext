@@ -1481,6 +1481,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				else break;
 			case ErlangPackage.TYPE_ATTRIBUTE:
 				if(context == grammarAccess.getAbstractTypeAttributeRule() ||
+				   context == grammarAccess.getAtomRefTargetRule() ||
 				   context == grammarAccess.getAttributeRule() ||
 				   context == grammarAccess.getFormRule() ||
 				   context == grammarAccess.getTypeAttributeRule()) {
@@ -1616,7 +1617,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (typeName=VARIABLE type=Type)
+	 *     (typeName=VariableLiteral type=Type)
 	 */
 	protected void sequence_BinBaseType(EObject context, BinBaseType semanticObject) {
 		if(errorAcceptor != null) {
@@ -1627,7 +1628,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBinBaseTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0(), semanticObject.getTypeName());
+		feeder.accept(grammarAccess.getBinBaseTypeAccess().getTypeNameVariableLiteralParserRuleCall_0_0(), semanticObject.getTypeName());
 		feeder.accept(grammarAccess.getBinBaseTypeAccess().getTypeTypeParserRuleCall_2_0(), semanticObject.getType());
 		feeder.finish();
 	}
@@ -1635,7 +1636,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (typeName=VARIABLE m=VARIABLE type=Type)
+	 *     (typeName=VariableLiteral m=VARIABLE type=Type)
 	 */
 	protected void sequence_BinUnitType(EObject context, BinUnitType semanticObject) {
 		if(errorAcceptor != null) {
@@ -1648,7 +1649,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBinUnitTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0(), semanticObject.getTypeName());
+		feeder.accept(grammarAccess.getBinUnitTypeAccess().getTypeNameVariableLiteralParserRuleCall_0_0(), semanticObject.getTypeName());
 		feeder.accept(grammarAccess.getBinUnitTypeAccess().getMVARIABLETerminalRuleCall_2_0(), semanticObject.getM());
 		feeder.accept(grammarAccess.getBinUnitTypeAccess().getTypeTypeParserRuleCall_4_0(), semanticObject.getType());
 		feeder.finish();
@@ -1934,7 +1935,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (typeName=NAME type=TopType)
+	 *     (typeName=AtomRefLiteral type=TopType)
 	 */
 	protected void sequence_FieldType(EObject context, FieldType semanticObject) {
 		if(errorAcceptor != null) {
@@ -1945,7 +1946,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFieldTypeAccess().getTypeNameNAMEParserRuleCall_0_0(), semanticObject.getTypeName());
+		feeder.accept(grammarAccess.getFieldTypeAccess().getTypeNameAtomRefLiteralParserRuleCall_0_0(), semanticObject.getTypeName());
 		feeder.accept(grammarAccess.getFieldTypeAccess().getTypeTopTypeParserRuleCall_2_0(), semanticObject.getType());
 		feeder.finish();
 	}
@@ -2501,7 +2502,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     ((typeName=NAME types+=TopType types+=TopType*) | (typeName=VARIABLE type=TopType))
+	 *     ((typeName=AtomRefLiteral types+=TopType types+=TopType*) | (typeName=VariableLiteral type=TopType))
 	 */
 	protected void sequence_TypeGuard(EObject context, TypeGuard semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2546,7 +2547,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (rec=NAME (fields+=FieldType fields+=FieldType*)?)
+	 *     (rec=AtomRefLiteral (fields+=FieldType fields+=FieldType*)?)
 	 */
 	protected void sequence_Type(EObject context, RecordType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2555,7 +2556,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (m=AtomVarMacro? typeName=NAME (args+=TopType args+=TopType*)?)
+	 *     (m=AtomVarMacro? typeName=AtomRefLiteral (args+=TopType args+=TopType*)?)
 	 */
 	protected void sequence_Type(EObject context, RemoteType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2573,7 +2574,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (typeName=VARIABLE | value=INTEGER)
+	 *     (typeName=VariableLiteral | value=INTEGER)
 	 */
 	protected void sequence_Type(EObject context, Type semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -22451,20 +22451,21 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTypeGuard"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7947:1: ruleTypeGuard returns [EObject current=null] : ( ( ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' ) | ( ( (lv_typeName_6_0= RULE_VARIABLE ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) ) ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7947:1: ruleTypeGuard returns [EObject current=null] : ( ( ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' ) | ( ( (lv_typeName_6_0= ruleVariableLiteral ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) ) ) ;
     public final EObject ruleTypeGuard() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token otherlv_3=null;
         Token otherlv_5=null;
-        Token lv_typeName_6_0=null;
         Token otherlv_7=null;
-        AntlrDatatypeRuleToken lv_typeName_0_0 = null;
+        EObject lv_typeName_0_0 = null;
 
         EObject lv_types_2_0 = null;
 
         EObject lv_types_4_0 = null;
+
+        EObject lv_typeName_6_0 = null;
 
         EObject lv_type_8_0 = null;
 
@@ -22472,10 +22473,10 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7950:28: ( ( ( ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' ) | ( ( (lv_typeName_6_0= RULE_VARIABLE ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:1: ( ( ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' ) | ( ( (lv_typeName_6_0= RULE_VARIABLE ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7950:28: ( ( ( ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' ) | ( ( (lv_typeName_6_0= ruleVariableLiteral ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:1: ( ( ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' ) | ( ( (lv_typeName_6_0= ruleVariableLiteral ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:1: ( ( ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' ) | ( ( (lv_typeName_6_0= RULE_VARIABLE ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:1: ( ( ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' ) | ( ( (lv_typeName_6_0= ruleVariableLiteral ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) ) )
             int alt132=2;
             int LA132_0 = input.LA(1);
 
@@ -22494,24 +22495,24 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             }
             switch (alt132) {
                 case 1 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:2: ( ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:2: ( ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:2: ( ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:3: ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:2: ( ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')' )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:3: ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '(' ( (lv_types_2_0= ruleTopType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleTopType ) ) )* otherlv_5= ')'
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:3: ( (lv_typeName_0_0= ruleNAME ) )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7952:1: (lv_typeName_0_0= ruleNAME )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7951:3: ( (lv_typeName_0_0= ruleAtomRefLiteral ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7952:1: (lv_typeName_0_0= ruleAtomRefLiteral )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7952:1: (lv_typeName_0_0= ruleNAME )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7953:3: lv_typeName_0_0= ruleNAME
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7952:1: (lv_typeName_0_0= ruleAtomRefLiteral )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:7953:3: lv_typeName_0_0= ruleAtomRefLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getTypeGuardAccess().getTypeNameNAMEParserRuleCall_0_0_0()); 
+                      	        newCompositeNode(grammarAccess.getTypeGuardAccess().getTypeNameAtomRefLiteralParserRuleCall_0_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleNAME_in_ruleTypeGuard18297);
-                    lv_typeName_0_0=ruleNAME();
+                    pushFollow(FOLLOW_ruleAtomRefLiteral_in_ruleTypeGuard18297);
+                    lv_typeName_0_0=ruleAtomRefLiteral();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -22524,7 +22525,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"typeName",
                               		lv_typeName_0_0, 
-                              		"NAME");
+                              		"AtomRefLiteral");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -22653,33 +22654,38 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8018:6: ( ( (lv_typeName_6_0= RULE_VARIABLE ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8018:6: ( ( (lv_typeName_6_0= ruleVariableLiteral ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8018:6: ( ( (lv_typeName_6_0= RULE_VARIABLE ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8018:7: ( (lv_typeName_6_0= RULE_VARIABLE ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8018:6: ( ( (lv_typeName_6_0= ruleVariableLiteral ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8018:7: ( (lv_typeName_6_0= ruleVariableLiteral ) ) otherlv_7= '::' ( (lv_type_8_0= ruleTopType ) )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8018:7: ( (lv_typeName_6_0= RULE_VARIABLE ) )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8019:1: (lv_typeName_6_0= RULE_VARIABLE )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8018:7: ( (lv_typeName_6_0= ruleVariableLiteral ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8019:1: (lv_typeName_6_0= ruleVariableLiteral )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8019:1: (lv_typeName_6_0= RULE_VARIABLE )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8020:3: lv_typeName_6_0= RULE_VARIABLE
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8019:1: (lv_typeName_6_0= ruleVariableLiteral )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8020:3: lv_typeName_6_0= ruleVariableLiteral
                     {
-                    lv_typeName_6_0=(Token)match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_ruleTypeGuard18403); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-
-                      			newLeafNode(lv_typeName_6_0, grammarAccess.getTypeGuardAccess().getTypeNameVARIABLETerminalRuleCall_1_0_0()); 
-                      		
+                       
+                      	        newCompositeNode(grammarAccess.getTypeGuardAccess().getTypeNameVariableLiteralParserRuleCall_1_0_0()); 
+                      	    
                     }
+                    pushFollow(FOLLOW_ruleVariableLiteral_in_ruleTypeGuard18407);
+                    lv_typeName_6_0=ruleVariableLiteral();
+
+                    state._fsp--;
+                    if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       	        if (current==null) {
-                      	            current = createModelElement(grammarAccess.getTypeGuardRule());
+                      	            current = createModelElementForParent(grammarAccess.getTypeGuardRule());
                       	        }
-                             		setWithLastConsumed(
+                             		set(
                              			current, 
                              			"typeName",
                               		lv_typeName_6_0, 
-                              		"VARIABLE");
+                              		"VariableLiteral");
+                      	        afterParserOrEnumRuleCall();
                       	    
                     }
 
@@ -22688,7 +22694,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,38,FOLLOW_38_in_ruleTypeGuard18420); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,38,FOLLOW_38_in_ruleTypeGuard18419); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_7, grammarAccess.getTypeGuardAccess().getColonColonKeyword_1_1());
@@ -22705,7 +22711,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getTypeGuardAccess().getTypeTopTypeParserRuleCall_1_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTopType_in_ruleTypeGuard18441);
+                    pushFollow(FOLLOW_ruleTopType_in_ruleTypeGuard18440);
                     lv_type_8_0=ruleTopType();
 
                     state._fsp--;
@@ -22772,7 +22778,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTopTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_entryRuleTopType18478);
+            pushFollow(FOLLOW_ruleTopType_in_entryRuleTopType18477);
             iv_ruleTopType=ruleTopType();
 
             state._fsp--;
@@ -22780,7 +22786,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleTopType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTopType18488); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTopType18487); if (state.failed) return current;
 
             }
 
@@ -22837,7 +22843,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8080:1: (lv_var_0_0= RULE_VARIABLE )
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8081:3: lv_var_0_0= RULE_VARIABLE
                     {
-                    lv_var_0_0=(Token)match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_ruleTopType18531); if (state.failed) return current;
+                    lv_var_0_0=(Token)match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_ruleTopType18530); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_var_0_0, grammarAccess.getTopTypeAccess().getVarVARIABLETerminalRuleCall_0_0_0()); 
@@ -22861,7 +22867,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,38,FOLLOW_38_in_ruleTopType18548); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,38,FOLLOW_38_in_ruleTopType18547); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getTopTypeAccess().getColonColonKeyword_0_1());
@@ -22884,7 +22890,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getTopTypeAccess().getTypeType100ParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType100_in_ruleTopType18571);
+            pushFollow(FOLLOW_ruleType100_in_ruleTopType18570);
             lv_type_2_0=ruleType100();
 
             state._fsp--;
@@ -22945,7 +22951,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getType100Rule()); 
             }
-            pushFollow(FOLLOW_ruleType100_in_entryRuleType10018607);
+            pushFollow(FOLLOW_ruleType100_in_entryRuleType10018606);
             iv_ruleType100=ruleType100();
 
             state._fsp--;
@@ -22953,7 +22959,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleType100; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType10018617); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType10018616); if (state.failed) return current;
 
             }
 
@@ -22995,7 +23001,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getType100Access().getType200ParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleType200_in_ruleType10018664);
+            pushFollow(FOLLOW_ruleType200_in_ruleType10018663);
             this_Type200_0=ruleType200();
 
             state._fsp--;
@@ -23046,7 +23052,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8163:1: (lv_op_2_0= '|' )
             	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8164:3: lv_op_2_0= '|'
             	    {
-            	    lv_op_2_0=(Token)match(input,71,FOLLOW_71_in_ruleType10018715); if (state.failed) return current;
+            	    lv_op_2_0=(Token)match(input,71,FOLLOW_71_in_ruleType10018714); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	              newLeafNode(lv_op_2_0, grammarAccess.getType100Access().getOpVerticalLineKeyword_1_0_0_1_0());
@@ -23083,7 +23089,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getType100Access().getRightOperandType200ParserRuleCall_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleType200_in_ruleType10018751);
+            	    pushFollow(FOLLOW_ruleType200_in_ruleType10018750);
             	    lv_rightOperand_3_0=ruleType200();
 
             	    state._fsp--;
@@ -23153,7 +23159,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getType200Rule()); 
             }
-            pushFollow(FOLLOW_ruleType200_in_entryRuleType20018789);
+            pushFollow(FOLLOW_ruleType200_in_entryRuleType20018788);
             iv_ruleType200=ruleType200();
 
             state._fsp--;
@@ -23161,7 +23167,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleType200; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType20018799); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType20018798); if (state.failed) return current;
 
             }
 
@@ -23203,7 +23209,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getType200Access().getType300ParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleType300_in_ruleType20018846);
+            pushFollow(FOLLOW_ruleType300_in_ruleType20018845);
             this_Type300_0=ruleType300();
 
             state._fsp--;
@@ -23254,7 +23260,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8239:1: (lv_op_2_0= '..' )
             	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8240:3: lv_op_2_0= '..'
             	    {
-            	    lv_op_2_0=(Token)match(input,103,FOLLOW_103_in_ruleType20018897); if (state.failed) return current;
+            	    lv_op_2_0=(Token)match(input,103,FOLLOW_103_in_ruleType20018896); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	              newLeafNode(lv_op_2_0, grammarAccess.getType200Access().getOpFullStopFullStopKeyword_1_0_0_1_0());
@@ -23291,7 +23297,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getType200Access().getRightOperandType300ParserRuleCall_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleType300_in_ruleType20018933);
+            	    pushFollow(FOLLOW_ruleType300_in_ruleType20018932);
             	    lv_rightOperand_3_0=ruleType300();
 
             	    state._fsp--;
@@ -23361,7 +23367,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getType300Rule()); 
             }
-            pushFollow(FOLLOW_ruleType300_in_entryRuleType30018971);
+            pushFollow(FOLLOW_ruleType300_in_entryRuleType30018970);
             iv_ruleType300=ruleType300();
 
             state._fsp--;
@@ -23369,7 +23375,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleType300; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType30018981); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType30018980); if (state.failed) return current;
 
             }
 
@@ -23412,7 +23418,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getType300Access().getType400ParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleType400_in_ruleType30019028);
+            pushFollow(FOLLOW_ruleType400_in_ruleType30019027);
             this_Type400_0=ruleType400();
 
             state._fsp--;
@@ -23462,7 +23468,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getType300Access().getOpADDOPParserRuleCall_1_0_0_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleADDOP_in_ruleType30019077);
+            	    pushFollow(FOLLOW_ruleADDOP_in_ruleType30019076);
             	    lv_op_2_0=ruleADDOP();
 
             	    state._fsp--;
@@ -23503,7 +23509,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getType300Access().getRightOperandType400ParserRuleCall_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleType400_in_ruleType30019100);
+            	    pushFollow(FOLLOW_ruleType400_in_ruleType30019099);
             	    lv_rightOperand_3_0=ruleType400();
 
             	    state._fsp--;
@@ -23573,7 +23579,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getType400Rule()); 
             }
-            pushFollow(FOLLOW_ruleType400_in_entryRuleType40019138);
+            pushFollow(FOLLOW_ruleType400_in_entryRuleType40019137);
             iv_ruleType400=ruleType400();
 
             state._fsp--;
@@ -23581,7 +23587,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleType400; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType40019148); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType40019147); if (state.failed) return current;
 
             }
 
@@ -23624,7 +23630,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       newCompositeNode(grammarAccess.getType400Access().getType500ParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleType500_in_ruleType40019195);
+            pushFollow(FOLLOW_ruleType500_in_ruleType40019194);
             this_Type500_0=ruleType500();
 
             state._fsp--;
@@ -23695,7 +23701,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getType400Access().getOpMULTOPParserRuleCall_1_0_0_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleMULTOP_in_ruleType40019244);
+            	    pushFollow(FOLLOW_ruleMULTOP_in_ruleType40019243);
             	    lv_op_2_0=ruleMULTOP();
 
             	    state._fsp--;
@@ -23736,7 +23742,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getType400Access().getRightOperandType500ParserRuleCall_1_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleType500_in_ruleType40019267);
+            	    pushFollow(FOLLOW_ruleType500_in_ruleType40019266);
             	    lv_rightOperand_3_0=ruleType500();
 
             	    state._fsp--;
@@ -23806,7 +23812,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getType500Rule()); 
             }
-            pushFollow(FOLLOW_ruleType500_in_entryRuleType50019305);
+            pushFollow(FOLLOW_ruleType500_in_entryRuleType50019304);
             iv_ruleType500=ruleType500();
 
             state._fsp--;
@@ -23814,7 +23820,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleType500; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType50019315); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType50019314); if (state.failed) return current;
 
             }
 
@@ -23897,7 +23903,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getType500Access().getOpPREFIXOPParserRuleCall_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_rulePREFIXOP_in_ruleType50019371);
+                    pushFollow(FOLLOW_rulePREFIXOP_in_ruleType50019370);
                     lv_op_1_0=rulePREFIXOP();
 
                     state._fsp--;
@@ -23932,7 +23938,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getType500Access().getOperandTypeParserRuleCall_0_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleType_in_ruleType50019392);
+                    pushFollow(FOLLOW_ruleType_in_ruleType50019391);
                     lv_operand_2_0=ruleType();
 
                     state._fsp--;
@@ -23970,7 +23976,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getType500Access().getTypeParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleType_in_ruleType50019421);
+                    pushFollow(FOLLOW_ruleType_in_ruleType50019420);
                     this_Type_3=ruleType();
 
                     state._fsp--;
@@ -24021,7 +24027,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleType_in_entryRuleType19456);
+            pushFollow(FOLLOW_ruleType_in_entryRuleType19455);
             iv_ruleType=ruleType();
 
             state._fsp--;
@@ -24029,7 +24035,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType19466); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType19465); if (state.failed) return current;
 
             }
 
@@ -24047,7 +24053,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleType"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8515:1: ruleType returns [EObject current=null] : ( (otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')' ) | ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleNAME ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? ) | ( (lv_typeName_12_0= RULE_VARIABLE ) ) | ( (lv_value_13_0= ruleINTEGER ) ) | (otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']' ) | (otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}' ) | (otherlv_26= '#' () ( (lv_rec_28_0= ruleNAME ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' ) | this_BinaryType_34= ruleBinaryType | (otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')' ) ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8515:1: ruleType returns [EObject current=null] : ( (otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')' ) | ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleAtomRefLiteral ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? ) | ( (lv_typeName_12_0= ruleVariableLiteral ) ) | ( (lv_value_13_0= ruleINTEGER ) ) | (otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']' ) | (otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}' ) | (otherlv_26= '#' () ( (lv_rec_28_0= ruleAtomRefLiteral ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' ) | this_BinaryType_34= ruleBinaryType | (otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')' ) ) ;
     public final EObject ruleType() throws RecognitionException {
         EObject current = null;
 
@@ -24057,7 +24063,6 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
         Token otherlv_7=null;
         Token otherlv_9=null;
         Token otherlv_11=null;
-        Token lv_typeName_12_0=null;
         Token otherlv_14=null;
         Token otherlv_17=null;
         Token otherlv_18=null;
@@ -24076,11 +24081,13 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
         EObject lv_m_4_0 = null;
 
-        AntlrDatatypeRuleToken lv_typeName_6_0 = null;
+        EObject lv_typeName_6_0 = null;
 
         EObject lv_args_8_0 = null;
 
         EObject lv_args_10_0 = null;
+
+        EObject lv_typeName_12_0 = null;
 
         AntlrDatatypeRuleToken lv_value_13_0 = null;
 
@@ -24090,7 +24097,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
         EObject lv_types_24_0 = null;
 
-        AntlrDatatypeRuleToken lv_rec_28_0 = null;
+        EObject lv_rec_28_0 = null;
 
         EObject lv_fields_30_0 = null;
 
@@ -24104,10 +24111,10 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8518:28: ( ( (otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')' ) | ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleNAME ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? ) | ( (lv_typeName_12_0= RULE_VARIABLE ) ) | ( (lv_value_13_0= ruleINTEGER ) ) | (otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']' ) | (otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}' ) | (otherlv_26= '#' () ( (lv_rec_28_0= ruleNAME ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' ) | this_BinaryType_34= ruleBinaryType | (otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')' ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8519:1: ( (otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')' ) | ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleNAME ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? ) | ( (lv_typeName_12_0= RULE_VARIABLE ) ) | ( (lv_value_13_0= ruleINTEGER ) ) | (otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']' ) | (otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}' ) | (otherlv_26= '#' () ( (lv_rec_28_0= ruleNAME ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' ) | this_BinaryType_34= ruleBinaryType | (otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')' ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8518:28: ( ( (otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')' ) | ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleAtomRefLiteral ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? ) | ( (lv_typeName_12_0= ruleVariableLiteral ) ) | ( (lv_value_13_0= ruleINTEGER ) ) | (otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']' ) | (otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}' ) | (otherlv_26= '#' () ( (lv_rec_28_0= ruleAtomRefLiteral ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' ) | this_BinaryType_34= ruleBinaryType | (otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')' ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8519:1: ( (otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')' ) | ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleAtomRefLiteral ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? ) | ( (lv_typeName_12_0= ruleVariableLiteral ) ) | ( (lv_value_13_0= ruleINTEGER ) ) | (otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']' ) | (otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}' ) | (otherlv_26= '#' () ( (lv_rec_28_0= ruleAtomRefLiteral ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' ) | this_BinaryType_34= ruleBinaryType | (otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')' ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8519:1: ( (otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')' ) | ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleNAME ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? ) | ( (lv_typeName_12_0= RULE_VARIABLE ) ) | ( (lv_value_13_0= ruleINTEGER ) ) | (otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']' ) | (otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}' ) | (otherlv_26= '#' () ( (lv_rec_28_0= ruleNAME ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' ) | this_BinaryType_34= ruleBinaryType | (otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')' ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8519:1: ( (otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')' ) | ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleAtomRefLiteral ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? ) | ( (lv_typeName_12_0= ruleVariableLiteral ) ) | ( (lv_value_13_0= ruleINTEGER ) ) | (otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']' ) | (otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}' ) | (otherlv_26= '#' () ( (lv_rec_28_0= ruleAtomRefLiteral ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' ) | this_BinaryType_34= ruleBinaryType | (otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')' ) )
             int alt150=9;
             alt150 = dfa150.predict(input);
             switch (alt150) {
@@ -24117,7 +24124,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8519:2: (otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')' )
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8519:4: otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')'
                     {
-                    otherlv_0=(Token)match(input,21,FOLLOW_21_in_ruleType19504); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,21,FOLLOW_21_in_ruleType19503); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_0, grammarAccess.getTypeAccess().getLeftParenthesisKeyword_0_0());
@@ -24128,7 +24135,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getTypeAccess().getTopTypeParserRuleCall_0_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleTopType_in_ruleType19526);
+                    pushFollow(FOLLOW_ruleTopType_in_ruleType19525);
                     this_TopType_1=ruleTopType();
 
                     state._fsp--;
@@ -24139,7 +24146,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                               afterParserOrEnumRuleCall();
                           
                     }
-                    otherlv_2=(Token)match(input,23,FOLLOW_23_in_ruleType19537); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,23,FOLLOW_23_in_ruleType19536); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getTypeAccess().getRightParenthesisKeyword_0_2());
@@ -24152,10 +24159,10 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8537:6: ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleNAME ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8537:6: ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleAtomRefLiteral ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8537:6: ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleNAME ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8537:7: () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleNAME ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )?
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8537:6: ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleAtomRefLiteral ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8537:7: () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleAtomRefLiteral ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )?
                     {
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8537:7: ()
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8538:5: 
@@ -24188,7 +24195,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getTypeAccess().getMAtomVarMacroParserRuleCall_1_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleAtomVarMacro_in_ruleType19576);
+                            pushFollow(FOLLOW_ruleAtomVarMacro_in_ruleType19575);
                             lv_m_4_0=ruleAtomVarMacro();
 
                             state._fsp--;
@@ -24212,7 +24219,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_5=(Token)match(input,57,FOLLOW_57_in_ruleType19588); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,57,FOLLOW_57_in_ruleType19587); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_5, grammarAccess.getTypeAccess().getColonKeyword_1_1_1());
@@ -24224,19 +24231,19 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8565:3: ( (lv_typeName_6_0= ruleNAME ) )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8566:1: (lv_typeName_6_0= ruleNAME )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8565:3: ( (lv_typeName_6_0= ruleAtomRefLiteral ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8566:1: (lv_typeName_6_0= ruleAtomRefLiteral )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8566:1: (lv_typeName_6_0= ruleNAME )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8567:3: lv_typeName_6_0= ruleNAME
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8566:1: (lv_typeName_6_0= ruleAtomRefLiteral )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8567:3: lv_typeName_6_0= ruleAtomRefLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getTypeAccess().getTypeNameNAMEParserRuleCall_1_2_0()); 
+                      	        newCompositeNode(grammarAccess.getTypeAccess().getTypeNameAtomRefLiteralParserRuleCall_1_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleNAME_in_ruleType19611);
-                    lv_typeName_6_0=ruleNAME();
+                    pushFollow(FOLLOW_ruleAtomRefLiteral_in_ruleType19610);
+                    lv_typeName_6_0=ruleAtomRefLiteral();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -24249,7 +24256,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"typeName",
                               		lv_typeName_6_0, 
-                              		"NAME");
+                              		"AtomRefLiteral");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -24270,7 +24277,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8583:4: otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')'
                             {
-                            otherlv_7=(Token)match(input,21,FOLLOW_21_in_ruleType19624); if (state.failed) return current;
+                            otherlv_7=(Token)match(input,21,FOLLOW_21_in_ruleType19623); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_7, grammarAccess.getTypeAccess().getLeftParenthesisKeyword_1_3_0());
@@ -24298,7 +24305,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                                       	        newCompositeNode(grammarAccess.getTypeAccess().getArgsTopTypeParserRuleCall_1_3_1_0_0()); 
                                       	    
                                     }
-                                    pushFollow(FOLLOW_ruleTopType_in_ruleType19646);
+                                    pushFollow(FOLLOW_ruleTopType_in_ruleType19645);
                                     lv_args_8_0=ruleTopType();
 
                                     state._fsp--;
@@ -24337,7 +24344,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                                     	case 1 :
                                     	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8605:4: otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) )
                                     	    {
-                                    	    otherlv_9=(Token)match(input,22,FOLLOW_22_in_ruleType19659); if (state.failed) return current;
+                                    	    otherlv_9=(Token)match(input,22,FOLLOW_22_in_ruleType19658); if (state.failed) return current;
                                     	    if ( state.backtracking==0 ) {
 
                                     	          	newLeafNode(otherlv_9, grammarAccess.getTypeAccess().getCommaKeyword_1_3_1_1_0());
@@ -24354,7 +24361,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                                     	      	        newCompositeNode(grammarAccess.getTypeAccess().getArgsTopTypeParserRuleCall_1_3_1_1_1_0()); 
                                     	      	    
                                     	    }
-                                    	    pushFollow(FOLLOW_ruleTopType_in_ruleType19680);
+                                    	    pushFollow(FOLLOW_ruleTopType_in_ruleType19679);
                                     	    lv_args_10_0=ruleTopType();
 
                                     	    state._fsp--;
@@ -24393,7 +24400,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_11=(Token)match(input,23,FOLLOW_23_in_ruleType19696); if (state.failed) return current;
+                            otherlv_11=(Token)match(input,23,FOLLOW_23_in_ruleType19695); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_11, grammarAccess.getTypeAccess().getRightParenthesisKeyword_1_3_2());
@@ -24412,30 +24419,35 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8632:6: ( (lv_typeName_12_0= RULE_VARIABLE ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8632:6: ( (lv_typeName_12_0= ruleVariableLiteral ) )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8632:6: ( (lv_typeName_12_0= RULE_VARIABLE ) )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8633:1: (lv_typeName_12_0= RULE_VARIABLE )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8632:6: ( (lv_typeName_12_0= ruleVariableLiteral ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8633:1: (lv_typeName_12_0= ruleVariableLiteral )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8633:1: (lv_typeName_12_0= RULE_VARIABLE )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8634:3: lv_typeName_12_0= RULE_VARIABLE
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8633:1: (lv_typeName_12_0= ruleVariableLiteral )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8634:3: lv_typeName_12_0= ruleVariableLiteral
                     {
-                    lv_typeName_12_0=(Token)match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_ruleType19722); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-
-                      			newLeafNode(lv_typeName_12_0, grammarAccess.getTypeAccess().getTypeNameVARIABLETerminalRuleCall_2_0()); 
-                      		
+                       
+                      	        newCompositeNode(grammarAccess.getTypeAccess().getTypeNameVariableLiteralParserRuleCall_2_0()); 
+                      	    
                     }
+                    pushFollow(FOLLOW_ruleVariableLiteral_in_ruleType19725);
+                    lv_typeName_12_0=ruleVariableLiteral();
+
+                    state._fsp--;
+                    if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       	        if (current==null) {
-                      	            current = createModelElement(grammarAccess.getTypeRule());
+                      	            current = createModelElementForParent(grammarAccess.getTypeRule());
                       	        }
-                             		setWithLastConsumed(
+                             		set(
                              			current, 
                              			"typeName",
                               		lv_typeName_12_0, 
-                              		"VARIABLE");
+                              		"VariableLiteral");
+                      	        afterParserOrEnumRuleCall();
                       	    
                     }
 
@@ -24461,7 +24473,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getTypeAccess().getValueINTEGERParserRuleCall_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleINTEGER_in_ruleType19754);
+                    pushFollow(FOLLOW_ruleINTEGER_in_ruleType19752);
                     lv_value_13_0=ruleINTEGER();
 
                     state._fsp--;
@@ -24494,7 +24506,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8670:6: (otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']' )
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8670:8: otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']'
                     {
-                    otherlv_14=(Token)match(input,40,FOLLOW_40_in_ruleType19773); if (state.failed) return current;
+                    otherlv_14=(Token)match(input,40,FOLLOW_40_in_ruleType19771); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_14, grammarAccess.getTypeAccess().getLeftSquareBracketKeyword_4_0());
@@ -24535,7 +24547,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getTypeAccess().getTypeTopTypeParserRuleCall_4_2_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleTopType_in_ruleType19804);
+                            pushFollow(FOLLOW_ruleTopType_in_ruleType19802);
                             lv_type_16_0=ruleTopType();
 
                             state._fsp--;
@@ -24570,13 +24582,13 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                                 case 1 :
                                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8698:4: otherlv_17= ',' otherlv_18= '...'
                                     {
-                                    otherlv_17=(Token)match(input,22,FOLLOW_22_in_ruleType19817); if (state.failed) return current;
+                                    otherlv_17=(Token)match(input,22,FOLLOW_22_in_ruleType19815); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                           	newLeafNode(otherlv_17, grammarAccess.getTypeAccess().getCommaKeyword_4_2_1_0());
                                           
                                     }
-                                    otherlv_18=(Token)match(input,104,FOLLOW_104_in_ruleType19829); if (state.failed) return current;
+                                    otherlv_18=(Token)match(input,104,FOLLOW_104_in_ruleType19827); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                           	newLeafNode(otherlv_18, grammarAccess.getTypeAccess().getFullStopFullStopFullStopKeyword_4_2_1_1());
@@ -24594,7 +24606,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_19=(Token)match(input,41,FOLLOW_41_in_ruleType19845); if (state.failed) return current;
+                    otherlv_19=(Token)match(input,41,FOLLOW_41_in_ruleType19843); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_19, grammarAccess.getTypeAccess().getRightSquareBracketKeyword_4_3());
@@ -24612,7 +24624,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8711:6: (otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}' )
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8711:8: otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}'
                     {
-                    otherlv_20=(Token)match(input,35,FOLLOW_35_in_ruleType19865); if (state.failed) return current;
+                    otherlv_20=(Token)match(input,35,FOLLOW_35_in_ruleType19863); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_20, grammarAccess.getTypeAccess().getLeftCurlyBracketKeyword_5_0());
@@ -24653,7 +24665,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getTypeAccess().getTypesTopTypeParserRuleCall_5_2_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleTopType_in_ruleType19896);
+                            pushFollow(FOLLOW_ruleTopType_in_ruleType19894);
                             lv_types_22_0=ruleTopType();
 
                             state._fsp--;
@@ -24692,7 +24704,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                             	case 1 :
                             	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8739:4: otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) )
                             	    {
-                            	    otherlv_23=(Token)match(input,22,FOLLOW_22_in_ruleType19909); if (state.failed) return current;
+                            	    otherlv_23=(Token)match(input,22,FOLLOW_22_in_ruleType19907); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_23, grammarAccess.getTypeAccess().getCommaKeyword_5_2_1_0());
@@ -24709,7 +24721,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getTypeAccess().getTypesTopTypeParserRuleCall_5_2_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleTopType_in_ruleType19930);
+                            	    pushFollow(FOLLOW_ruleTopType_in_ruleType19928);
                             	    lv_types_24_0=ruleTopType();
 
                             	    state._fsp--;
@@ -24748,7 +24760,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_25=(Token)match(input,36,FOLLOW_36_in_ruleType19946); if (state.failed) return current;
+                    otherlv_25=(Token)match(input,36,FOLLOW_36_in_ruleType19944); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_25, grammarAccess.getTypeAccess().getRightCurlyBracketKeyword_5_3());
@@ -24761,12 +24773,12 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8766:6: (otherlv_26= '#' () ( (lv_rec_28_0= ruleNAME ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8766:6: (otherlv_26= '#' () ( (lv_rec_28_0= ruleAtomRefLiteral ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8766:6: (otherlv_26= '#' () ( (lv_rec_28_0= ruleNAME ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8766:8: otherlv_26= '#' () ( (lv_rec_28_0= ruleNAME ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}'
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8766:6: (otherlv_26= '#' () ( (lv_rec_28_0= ruleAtomRefLiteral ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8766:8: otherlv_26= '#' () ( (lv_rec_28_0= ruleAtomRefLiteral ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}'
                     {
-                    otherlv_26=(Token)match(input,56,FOLLOW_56_in_ruleType19966); if (state.failed) return current;
+                    otherlv_26=(Token)match(input,56,FOLLOW_56_in_ruleType19964); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_26, grammarAccess.getTypeAccess().getNumberSignKeyword_6_0());
@@ -24785,19 +24797,19 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8776:2: ( (lv_rec_28_0= ruleNAME ) )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8777:1: (lv_rec_28_0= ruleNAME )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8776:2: ( (lv_rec_28_0= ruleAtomRefLiteral ) )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8777:1: (lv_rec_28_0= ruleAtomRefLiteral )
                     {
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8777:1: (lv_rec_28_0= ruleNAME )
-                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8778:3: lv_rec_28_0= ruleNAME
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8777:1: (lv_rec_28_0= ruleAtomRefLiteral )
+                    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8778:3: lv_rec_28_0= ruleAtomRefLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getTypeAccess().getRecNAMEParserRuleCall_6_2_0()); 
+                      	        newCompositeNode(grammarAccess.getTypeAccess().getRecAtomRefLiteralParserRuleCall_6_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleNAME_in_ruleType19996);
-                    lv_rec_28_0=ruleNAME();
+                    pushFollow(FOLLOW_ruleAtomRefLiteral_in_ruleType19994);
+                    lv_rec_28_0=ruleAtomRefLiteral();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -24810,7 +24822,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"rec",
                               		lv_rec_28_0, 
-                              		"NAME");
+                              		"AtomRefLiteral");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -24820,7 +24832,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_29=(Token)match(input,35,FOLLOW_35_in_ruleType20008); if (state.failed) return current;
+                    otherlv_29=(Token)match(input,35,FOLLOW_35_in_ruleType20006); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_29, grammarAccess.getTypeAccess().getLeftCurlyBracketKeyword_6_3());
@@ -24848,7 +24860,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getTypeAccess().getFieldsFieldTypeParserRuleCall_6_4_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleFieldType_in_ruleType20030);
+                            pushFollow(FOLLOW_ruleFieldType_in_ruleType20028);
                             lv_fields_30_0=ruleFieldType();
 
                             state._fsp--;
@@ -24887,7 +24899,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                             	case 1 :
                             	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8816:4: otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) )
                             	    {
-                            	    otherlv_31=(Token)match(input,22,FOLLOW_22_in_ruleType20043); if (state.failed) return current;
+                            	    otherlv_31=(Token)match(input,22,FOLLOW_22_in_ruleType20041); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_31, grammarAccess.getTypeAccess().getCommaKeyword_6_4_1_0());
@@ -24904,7 +24916,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getTypeAccess().getFieldsFieldTypeParserRuleCall_6_4_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleFieldType_in_ruleType20064);
+                            	    pushFollow(FOLLOW_ruleFieldType_in_ruleType20062);
                             	    lv_fields_32_0=ruleFieldType();
 
                             	    state._fsp--;
@@ -24943,7 +24955,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_33=(Token)match(input,36,FOLLOW_36_in_ruleType20080); if (state.failed) return current;
+                    otherlv_33=(Token)match(input,36,FOLLOW_36_in_ruleType20078); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_33, grammarAccess.getTypeAccess().getRightCurlyBracketKeyword_6_5());
@@ -24963,7 +24975,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getTypeAccess().getBinaryTypeParserRuleCall_7()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleBinaryType_in_ruleType20109);
+                    pushFollow(FOLLOW_ruleBinaryType_in_ruleType20107);
                     this_BinaryType_34=ruleBinaryType();
 
                     state._fsp--;
@@ -24983,7 +24995,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8853:6: (otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')' )
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8853:8: otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')'
                     {
-                    otherlv_35=(Token)match(input,68,FOLLOW_68_in_ruleType20127); if (state.failed) return current;
+                    otherlv_35=(Token)match(input,68,FOLLOW_68_in_ruleType20125); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_35, grammarAccess.getTypeAccess().getFunKeyword_8_0());
@@ -25002,7 +25014,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_37=(Token)match(input,21,FOLLOW_21_in_ruleType20148); if (state.failed) return current;
+                    otherlv_37=(Token)match(input,21,FOLLOW_21_in_ruleType20146); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_37, grammarAccess.getTypeAccess().getLeftParenthesisKeyword_8_2());
@@ -25027,7 +25039,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getTypeAccess().getTypeFunType100ParserRuleCall_8_3_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleFunType100_in_ruleType20169);
+                            pushFollow(FOLLOW_ruleFunType100_in_ruleType20167);
                             lv_type_38_0=ruleFunType100();
 
                             state._fsp--;
@@ -25054,7 +25066,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_39=(Token)match(input,23,FOLLOW_23_in_ruleType20182); if (state.failed) return current;
+                    otherlv_39=(Token)match(input,23,FOLLOW_23_in_ruleType20180); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_39, grammarAccess.getTypeAccess().getRightParenthesisKeyword_8_4());
@@ -25103,7 +25115,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFieldTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleFieldType_in_entryRuleFieldType20219);
+            pushFollow(FOLLOW_ruleFieldType_in_entryRuleFieldType20217);
             iv_ruleFieldType=ruleFieldType();
 
             state._fsp--;
@@ -25111,7 +25123,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFieldType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldType20229); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFieldType20227); if (state.failed) return current;
 
             }
 
@@ -25129,12 +25141,12 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFieldType"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8906:1: ruleFieldType returns [EObject current=null] : ( ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '::' ( (lv_type_2_0= ruleTopType ) ) ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8906:1: ruleFieldType returns [EObject current=null] : ( ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '::' ( (lv_type_2_0= ruleTopType ) ) ) ;
     public final EObject ruleFieldType() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
-        AntlrDatatypeRuleToken lv_typeName_0_0 = null;
+        EObject lv_typeName_0_0 = null;
 
         EObject lv_type_2_0 = null;
 
@@ -25142,25 +25154,25 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8909:28: ( ( ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '::' ( (lv_type_2_0= ruleTopType ) ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8910:1: ( ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '::' ( (lv_type_2_0= ruleTopType ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8909:28: ( ( ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '::' ( (lv_type_2_0= ruleTopType ) ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8910:1: ( ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '::' ( (lv_type_2_0= ruleTopType ) ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8910:1: ( ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '::' ( (lv_type_2_0= ruleTopType ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8910:2: ( (lv_typeName_0_0= ruleNAME ) ) otherlv_1= '::' ( (lv_type_2_0= ruleTopType ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8910:1: ( ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '::' ( (lv_type_2_0= ruleTopType ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8910:2: ( (lv_typeName_0_0= ruleAtomRefLiteral ) ) otherlv_1= '::' ( (lv_type_2_0= ruleTopType ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8910:2: ( (lv_typeName_0_0= ruleNAME ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8911:1: (lv_typeName_0_0= ruleNAME )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8910:2: ( (lv_typeName_0_0= ruleAtomRefLiteral ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8911:1: (lv_typeName_0_0= ruleAtomRefLiteral )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8911:1: (lv_typeName_0_0= ruleNAME )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8912:3: lv_typeName_0_0= ruleNAME
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8911:1: (lv_typeName_0_0= ruleAtomRefLiteral )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8912:3: lv_typeName_0_0= ruleAtomRefLiteral
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getFieldTypeAccess().getTypeNameNAMEParserRuleCall_0_0()); 
+              	        newCompositeNode(grammarAccess.getFieldTypeAccess().getTypeNameAtomRefLiteralParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleNAME_in_ruleFieldType20275);
-            lv_typeName_0_0=ruleNAME();
+            pushFollow(FOLLOW_ruleAtomRefLiteral_in_ruleFieldType20273);
+            lv_typeName_0_0=ruleAtomRefLiteral();
 
             state._fsp--;
             if (state.failed) return current;
@@ -25173,7 +25185,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"typeName",
                       		lv_typeName_0_0, 
-                      		"NAME");
+                      		"AtomRefLiteral");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -25183,7 +25195,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,38,FOLLOW_38_in_ruleFieldType20287); if (state.failed) return current;
+            otherlv_1=(Token)match(input,38,FOLLOW_38_in_ruleFieldType20285); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getFieldTypeAccess().getColonColonKeyword_1());
@@ -25200,7 +25212,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getFieldTypeAccess().getTypeTopTypeParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTopType_in_ruleFieldType20308);
+            pushFollow(FOLLOW_ruleTopType_in_ruleFieldType20306);
             lv_type_2_0=ruleTopType();
 
             state._fsp--;
@@ -25261,7 +25273,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBinaryTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleBinaryType_in_entryRuleBinaryType20344);
+            pushFollow(FOLLOW_ruleBinaryType_in_entryRuleBinaryType20342);
             iv_ruleBinaryType=ruleBinaryType();
 
             state._fsp--;
@@ -25269,7 +25281,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleBinaryType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBinaryType20354); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBinaryType20352); if (state.failed) return current;
 
             }
 
@@ -25310,7 +25322,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8971:1: (otherlv_0= '<<' () ( ( ( (lv_type_2_0= ruleBinBaseType ) ) (otherlv_3= ',' ( (lv_type_4_0= ruleBinUnitType ) ) )? ) | ( (lv_type_5_0= ruleBinUnitType ) ) )? otherlv_6= '>>' )
             // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8971:3: otherlv_0= '<<' () ( ( ( (lv_type_2_0= ruleBinBaseType ) ) (otherlv_3= ',' ( (lv_type_4_0= ruleBinUnitType ) ) )? ) | ( (lv_type_5_0= ruleBinUnitType ) ) )? otherlv_6= '>>'
             {
-            otherlv_0=(Token)match(input,73,FOLLOW_73_in_ruleBinaryType20391); if (state.failed) return current;
+            otherlv_0=(Token)match(input,73,FOLLOW_73_in_ruleBinaryType20389); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getBinaryTypeAccess().getLessThanSignLessThanSignKeyword_0());
@@ -25339,18 +25351,18 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                 if ( (LA152_1==57) ) {
                     int LA152_3 = input.LA(3);
 
-                    if ( (LA152_3==RULE_VARIABLE) ) {
-                        int LA152_4 = input.LA(4);
+                    if ( (LA152_3==RULE_ATOM||(LA152_3>=RULE_INT && LA152_3<=RULE_BASED_INT)||(LA152_3>=20 && LA152_3<=21)||(LA152_3>=24 && LA152_3<=35)||(LA152_3>=39 && LA152_3<=40)||(LA152_3>=42 && LA152_3<=45)||(LA152_3>=47 && LA152_3<=48)||(LA152_3>=51 && LA152_3<=52)||LA152_3==56||LA152_3==68||LA152_3==73||LA152_3==102) ) {
+                        alt152=1;
+                    }
+                    else if ( (LA152_3==RULE_VARIABLE) ) {
+                        int LA152_5 = input.LA(4);
 
-                        if ( (LA152_4==84) ) {
-                            alt152=2;
-                        }
-                        else if ( (LA152_4==22||LA152_4==57||LA152_4==74) ) {
+                        if ( (LA152_5==22||LA152_5==57||LA152_5==74) ) {
                             alt152=1;
                         }
-                    }
-                    else if ( (LA152_3==RULE_ATOM||(LA152_3>=RULE_INT && LA152_3<=RULE_BASED_INT)||(LA152_3>=20 && LA152_3<=21)||(LA152_3>=24 && LA152_3<=35)||(LA152_3>=39 && LA152_3<=40)||(LA152_3>=42 && LA152_3<=45)||(LA152_3>=47 && LA152_3<=48)||(LA152_3>=51 && LA152_3<=52)||LA152_3==56||LA152_3==68||LA152_3==73||LA152_3==102) ) {
-                        alt152=1;
+                        else if ( (LA152_5==84) ) {
+                            alt152=2;
+                        }
                     }
                 }
             }
@@ -25372,7 +25384,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getBinaryTypeAccess().getTypeBinBaseTypeParserRuleCall_2_0_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleBinBaseType_in_ruleBinaryType20423);
+                    pushFollow(FOLLOW_ruleBinBaseType_in_ruleBinaryType20421);
                     lv_type_2_0=ruleBinBaseType();
 
                     state._fsp--;
@@ -25407,7 +25419,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8999:4: otherlv_3= ',' ( (lv_type_4_0= ruleBinUnitType ) )
                             {
-                            otherlv_3=(Token)match(input,22,FOLLOW_22_in_ruleBinaryType20436); if (state.failed) return current;
+                            otherlv_3=(Token)match(input,22,FOLLOW_22_in_ruleBinaryType20434); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_3, grammarAccess.getBinaryTypeAccess().getCommaKeyword_2_0_1_0());
@@ -25424,7 +25436,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getBinaryTypeAccess().getTypeBinUnitTypeParserRuleCall_2_0_1_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleBinUnitType_in_ruleBinaryType20457);
+                            pushFollow(FOLLOW_ruleBinUnitType_in_ruleBinaryType20455);
                             lv_type_4_0=ruleBinUnitType();
 
                             state._fsp--;
@@ -25474,7 +25486,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getBinaryTypeAccess().getTypeBinUnitTypeParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleBinUnitType_in_ruleBinaryType20487);
+                    pushFollow(FOLLOW_ruleBinUnitType_in_ruleBinaryType20485);
                     lv_type_5_0=ruleBinUnitType();
 
                     state._fsp--;
@@ -25504,7 +25516,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,74,FOLLOW_74_in_ruleBinaryType20501); if (state.failed) return current;
+            otherlv_6=(Token)match(input,74,FOLLOW_74_in_ruleBinaryType20499); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getBinaryTypeAccess().getGreaterThanSignGreaterThanSignKeyword_3());
@@ -25547,7 +25559,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBinBaseTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleBinBaseType_in_entryRuleBinBaseType20537);
+            pushFollow(FOLLOW_ruleBinBaseType_in_entryRuleBinBaseType20535);
             iv_ruleBinBaseType=ruleBinBaseType();
 
             state._fsp--;
@@ -25555,7 +25567,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleBinBaseType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBinBaseType20547); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBinBaseType20545); if (state.failed) return current;
 
             }
 
@@ -25573,46 +25585,52 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBinBaseType"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9061:1: ruleBinBaseType returns [EObject current=null] : ( ( (lv_typeName_0_0= RULE_VARIABLE ) ) otherlv_1= ':' ( (lv_type_2_0= ruleType ) ) ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9061:1: ruleBinBaseType returns [EObject current=null] : ( ( (lv_typeName_0_0= ruleVariableLiteral ) ) otherlv_1= ':' ( (lv_type_2_0= ruleType ) ) ) ;
     public final EObject ruleBinBaseType() throws RecognitionException {
         EObject current = null;
 
-        Token lv_typeName_0_0=null;
         Token otherlv_1=null;
+        EObject lv_typeName_0_0 = null;
+
         EObject lv_type_2_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9064:28: ( ( ( (lv_typeName_0_0= RULE_VARIABLE ) ) otherlv_1= ':' ( (lv_type_2_0= ruleType ) ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9065:1: ( ( (lv_typeName_0_0= RULE_VARIABLE ) ) otherlv_1= ':' ( (lv_type_2_0= ruleType ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9064:28: ( ( ( (lv_typeName_0_0= ruleVariableLiteral ) ) otherlv_1= ':' ( (lv_type_2_0= ruleType ) ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9065:1: ( ( (lv_typeName_0_0= ruleVariableLiteral ) ) otherlv_1= ':' ( (lv_type_2_0= ruleType ) ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9065:1: ( ( (lv_typeName_0_0= RULE_VARIABLE ) ) otherlv_1= ':' ( (lv_type_2_0= ruleType ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9065:2: ( (lv_typeName_0_0= RULE_VARIABLE ) ) otherlv_1= ':' ( (lv_type_2_0= ruleType ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9065:1: ( ( (lv_typeName_0_0= ruleVariableLiteral ) ) otherlv_1= ':' ( (lv_type_2_0= ruleType ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9065:2: ( (lv_typeName_0_0= ruleVariableLiteral ) ) otherlv_1= ':' ( (lv_type_2_0= ruleType ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9065:2: ( (lv_typeName_0_0= RULE_VARIABLE ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9066:1: (lv_typeName_0_0= RULE_VARIABLE )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9065:2: ( (lv_typeName_0_0= ruleVariableLiteral ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9066:1: (lv_typeName_0_0= ruleVariableLiteral )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9066:1: (lv_typeName_0_0= RULE_VARIABLE )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9067:3: lv_typeName_0_0= RULE_VARIABLE
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9066:1: (lv_typeName_0_0= ruleVariableLiteral )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9067:3: lv_typeName_0_0= ruleVariableLiteral
             {
-            lv_typeName_0_0=(Token)match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_ruleBinBaseType20589); if (state.failed) return current;
             if ( state.backtracking==0 ) {
-
-              			newLeafNode(lv_typeName_0_0, grammarAccess.getBinBaseTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0()); 
-              		
+               
+              	        newCompositeNode(grammarAccess.getBinBaseTypeAccess().getTypeNameVariableLiteralParserRuleCall_0_0()); 
+              	    
             }
+            pushFollow(FOLLOW_ruleVariableLiteral_in_ruleBinBaseType20591);
+            lv_typeName_0_0=ruleVariableLiteral();
+
+            state._fsp--;
+            if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getBinBaseTypeRule());
+              	            current = createModelElementForParent(grammarAccess.getBinBaseTypeRule());
               	        }
-                     		setWithLastConsumed(
+                     		set(
                      			current, 
                      			"typeName",
                       		lv_typeName_0_0, 
-                      		"VARIABLE");
+                      		"VariableLiteral");
+              	        afterParserOrEnumRuleCall();
               	    
             }
 
@@ -25621,7 +25639,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,57,FOLLOW_57_in_ruleBinBaseType20606); if (state.failed) return current;
+            otherlv_1=(Token)match(input,57,FOLLOW_57_in_ruleBinBaseType20603); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getBinBaseTypeAccess().getColonKeyword_1());
@@ -25638,7 +25656,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getBinBaseTypeAccess().getTypeTypeParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleBinBaseType20627);
+            pushFollow(FOLLOW_ruleType_in_ruleBinBaseType20624);
             lv_type_2_0=ruleType();
 
             state._fsp--;
@@ -25699,7 +25717,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBinUnitTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleBinUnitType_in_entryRuleBinUnitType20663);
+            pushFollow(FOLLOW_ruleBinUnitType_in_entryRuleBinUnitType20660);
             iv_ruleBinUnitType=ruleBinUnitType();
 
             state._fsp--;
@@ -25707,7 +25725,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleBinUnitType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBinUnitType20673); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBinUnitType20670); if (state.failed) return current;
 
             }
 
@@ -25725,48 +25743,54 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBinUnitType"
-    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9122:1: ruleBinUnitType returns [EObject current=null] : ( ( (lv_typeName_0_0= RULE_VARIABLE ) ) otherlv_1= ':' ( (lv_m_2_0= RULE_VARIABLE ) ) otherlv_3= '*' ( (lv_type_4_0= ruleType ) ) ) ;
+    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9122:1: ruleBinUnitType returns [EObject current=null] : ( ( (lv_typeName_0_0= ruleVariableLiteral ) ) otherlv_1= ':' ( (lv_m_2_0= RULE_VARIABLE ) ) otherlv_3= '*' ( (lv_type_4_0= ruleType ) ) ) ;
     public final EObject ruleBinUnitType() throws RecognitionException {
         EObject current = null;
 
-        Token lv_typeName_0_0=null;
         Token otherlv_1=null;
         Token lv_m_2_0=null;
         Token otherlv_3=null;
+        EObject lv_typeName_0_0 = null;
+
         EObject lv_type_4_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9125:28: ( ( ( (lv_typeName_0_0= RULE_VARIABLE ) ) otherlv_1= ':' ( (lv_m_2_0= RULE_VARIABLE ) ) otherlv_3= '*' ( (lv_type_4_0= ruleType ) ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9126:1: ( ( (lv_typeName_0_0= RULE_VARIABLE ) ) otherlv_1= ':' ( (lv_m_2_0= RULE_VARIABLE ) ) otherlv_3= '*' ( (lv_type_4_0= ruleType ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9125:28: ( ( ( (lv_typeName_0_0= ruleVariableLiteral ) ) otherlv_1= ':' ( (lv_m_2_0= RULE_VARIABLE ) ) otherlv_3= '*' ( (lv_type_4_0= ruleType ) ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9126:1: ( ( (lv_typeName_0_0= ruleVariableLiteral ) ) otherlv_1= ':' ( (lv_m_2_0= RULE_VARIABLE ) ) otherlv_3= '*' ( (lv_type_4_0= ruleType ) ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9126:1: ( ( (lv_typeName_0_0= RULE_VARIABLE ) ) otherlv_1= ':' ( (lv_m_2_0= RULE_VARIABLE ) ) otherlv_3= '*' ( (lv_type_4_0= ruleType ) ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9126:2: ( (lv_typeName_0_0= RULE_VARIABLE ) ) otherlv_1= ':' ( (lv_m_2_0= RULE_VARIABLE ) ) otherlv_3= '*' ( (lv_type_4_0= ruleType ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9126:1: ( ( (lv_typeName_0_0= ruleVariableLiteral ) ) otherlv_1= ':' ( (lv_m_2_0= RULE_VARIABLE ) ) otherlv_3= '*' ( (lv_type_4_0= ruleType ) ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9126:2: ( (lv_typeName_0_0= ruleVariableLiteral ) ) otherlv_1= ':' ( (lv_m_2_0= RULE_VARIABLE ) ) otherlv_3= '*' ( (lv_type_4_0= ruleType ) )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9126:2: ( (lv_typeName_0_0= RULE_VARIABLE ) )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9127:1: (lv_typeName_0_0= RULE_VARIABLE )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9126:2: ( (lv_typeName_0_0= ruleVariableLiteral ) )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9127:1: (lv_typeName_0_0= ruleVariableLiteral )
             {
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9127:1: (lv_typeName_0_0= RULE_VARIABLE )
-            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9128:3: lv_typeName_0_0= RULE_VARIABLE
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9127:1: (lv_typeName_0_0= ruleVariableLiteral )
+            // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9128:3: lv_typeName_0_0= ruleVariableLiteral
             {
-            lv_typeName_0_0=(Token)match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_ruleBinUnitType20715); if (state.failed) return current;
             if ( state.backtracking==0 ) {
-
-              			newLeafNode(lv_typeName_0_0, grammarAccess.getBinUnitTypeAccess().getTypeNameVARIABLETerminalRuleCall_0_0()); 
-              		
+               
+              	        newCompositeNode(grammarAccess.getBinUnitTypeAccess().getTypeNameVariableLiteralParserRuleCall_0_0()); 
+              	    
             }
+            pushFollow(FOLLOW_ruleVariableLiteral_in_ruleBinUnitType20716);
+            lv_typeName_0_0=ruleVariableLiteral();
+
+            state._fsp--;
+            if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getBinUnitTypeRule());
+              	            current = createModelElementForParent(grammarAccess.getBinUnitTypeRule());
               	        }
-                     		setWithLastConsumed(
+                     		set(
                      			current, 
                      			"typeName",
                       		lv_typeName_0_0, 
-                      		"VARIABLE");
+                      		"VariableLiteral");
+              	        afterParserOrEnumRuleCall();
               	    
             }
 
@@ -25775,7 +25799,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,57,FOLLOW_57_in_ruleBinUnitType20732); if (state.failed) return current;
+            otherlv_1=(Token)match(input,57,FOLLOW_57_in_ruleBinUnitType20728); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getBinUnitTypeAccess().getColonKeyword_1());
@@ -25787,7 +25811,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9149:1: (lv_m_2_0= RULE_VARIABLE )
             // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9150:3: lv_m_2_0= RULE_VARIABLE
             {
-            lv_m_2_0=(Token)match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_ruleBinUnitType20749); if (state.failed) return current;
+            lv_m_2_0=(Token)match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_ruleBinUnitType20745); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_m_2_0, grammarAccess.getBinUnitTypeAccess().getMVARIABLETerminalRuleCall_2_0()); 
@@ -25811,7 +25835,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,84,FOLLOW_84_in_ruleBinUnitType20766); if (state.failed) return current;
+            otherlv_3=(Token)match(input,84,FOLLOW_84_in_ruleBinUnitType20762); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_3, grammarAccess.getBinUnitTypeAccess().getAsteriskKeyword_3());
@@ -25828,7 +25852,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getBinUnitTypeAccess().getTypeTypeParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleBinUnitType20787);
+            pushFollow(FOLLOW_ruleType_in_ruleBinUnitType20783);
             lv_type_4_0=ruleType();
 
             state._fsp--;
@@ -25889,7 +25913,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFunType100Rule()); 
             }
-            pushFollow(FOLLOW_ruleFunType100_in_entryRuleFunType10020823);
+            pushFollow(FOLLOW_ruleFunType100_in_entryRuleFunType10020819);
             iv_ruleFunType100=ruleFunType100();
 
             state._fsp--;
@@ -25897,7 +25921,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFunType100; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFunType10020833); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFunType10020829); if (state.failed) return current;
 
             }
 
@@ -25953,7 +25977,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,21,FOLLOW_21_in_ruleFunType10020879); if (state.failed) return current;
+            otherlv_1=(Token)match(input,21,FOLLOW_21_in_ruleFunType10020875); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getFunType100Access().getLeftParenthesisKeyword_1());
@@ -25973,7 +25997,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9219:3: otherlv_2= '...'
                     {
-                    otherlv_2=(Token)match(input,104,FOLLOW_104_in_ruleFunType10020892); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,104,FOLLOW_104_in_ruleFunType10020888); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getFunType100Access().getFullStopFullStopFullStopKeyword_2_0());
@@ -25999,7 +26023,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getFunType100Access().getItemsTopTypeParserRuleCall_2_1_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTopType_in_ruleFunType10020920);
+                    pushFollow(FOLLOW_ruleTopType_in_ruleFunType10020916);
                     lv_items_3_0=ruleTopType();
 
                     state._fsp--;
@@ -26038,7 +26062,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     	case 1 :
                     	    // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:9242:4: otherlv_4= ',' ( (lv_items_5_0= ruleTopType ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,22,FOLLOW_22_in_ruleFunType10020933); if (state.failed) return current;
+                    	    otherlv_4=(Token)match(input,22,FOLLOW_22_in_ruleFunType10020929); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_4, grammarAccess.getFunType100Access().getCommaKeyword_2_1_1_0());
@@ -26055,7 +26079,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getFunType100Access().getItemsTopTypeParserRuleCall_2_1_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleTopType_in_ruleFunType10020954);
+                    	    pushFollow(FOLLOW_ruleTopType_in_ruleFunType10020950);
                     	    lv_items_5_0=ruleTopType();
 
                     	    state._fsp--;
@@ -26097,13 +26121,13 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,23,FOLLOW_23_in_ruleFunType10020971); if (state.failed) return current;
+            otherlv_6=(Token)match(input,23,FOLLOW_23_in_ruleFunType10020967); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getFunType100Access().getRightParenthesisKeyword_3());
                   
             }
-            otherlv_7=(Token)match(input,50,FOLLOW_50_in_ruleFunType10020983); if (state.failed) return current;
+            otherlv_7=(Token)match(input,50,FOLLOW_50_in_ruleFunType10020979); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_7, grammarAccess.getFunType100Access().getHyphenMinusGreaterThanSignKeyword_4());
@@ -26120,7 +26144,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getFunType100Access().getReturnTopTypeParserRuleCall_5_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTopType_in_ruleFunType10021004);
+            pushFollow(FOLLOW_ruleTopType_in_ruleFunType10021000);
             lv_return_8_0=ruleTopType();
 
             state._fsp--;
@@ -26562,7 +26586,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
         // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8151:1: ( '|' )
         // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8152:2: '|'
         {
-        match(input,71,FOLLOW_71_in_synpred40_InternalErlang18684); if (state.failed) return ;
+        match(input,71,FOLLOW_71_in_synpred40_InternalErlang18683); if (state.failed) return ;
 
         }
 
@@ -26596,7 +26620,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
         // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8227:1: ( '..' )
         // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8228:2: '..'
         {
-        match(input,103,FOLLOW_103_in_synpred41_InternalErlang18866); if (state.failed) return ;
+        match(input,103,FOLLOW_103_in_synpred41_InternalErlang18865); if (state.failed) return ;
 
         }
 
@@ -26630,7 +26654,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
         // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8303:1: ( ruleADDOP )
         // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8304:1: ruleADDOP
         {
-        pushFollow(FOLLOW_ruleADDOP_in_synpred42_InternalErlang19047);
+        pushFollow(FOLLOW_ruleADDOP_in_synpred42_InternalErlang19046);
         ruleADDOP();
 
         state._fsp--;
@@ -26668,7 +26692,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
         // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8380:1: ( ruleMULTOP )
         // ../org.erlide.erlang/src-gen/org/erlide/parser/antlr/internal/InternalErlang.g:8381:1: ruleMULTOP
         {
-        pushFollow(FOLLOW_ruleMULTOP_in_synpred43_InternalErlang19214);
+        pushFollow(FOLLOW_ruleMULTOP_in_synpred43_InternalErlang19213);
         ruleMULTOP();
 
         state._fsp--;
@@ -28336,7 +28360,7 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
             this.transition = DFA150_transition;
         }
         public String getDescription() {
-            return "8519:1: ( (otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')' ) | ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleNAME ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? ) | ( (lv_typeName_12_0= RULE_VARIABLE ) ) | ( (lv_value_13_0= ruleINTEGER ) ) | (otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']' ) | (otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}' ) | (otherlv_26= '#' () ( (lv_rec_28_0= ruleNAME ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' ) | this_BinaryType_34= ruleBinaryType | (otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')' ) )";
+            return "8519:1: ( (otherlv_0= '(' this_TopType_1= ruleTopType otherlv_2= ')' ) | ( () ( ( (lv_m_4_0= ruleAtomVarMacro ) ) otherlv_5= ':' )? ( (lv_typeName_6_0= ruleAtomRefLiteral ) ) (otherlv_7= '(' ( ( (lv_args_8_0= ruleTopType ) ) (otherlv_9= ',' ( (lv_args_10_0= ruleTopType ) ) )* )? otherlv_11= ')' )? ) | ( (lv_typeName_12_0= ruleVariableLiteral ) ) | ( (lv_value_13_0= ruleINTEGER ) ) | (otherlv_14= '[' () ( ( (lv_type_16_0= ruleTopType ) ) (otherlv_17= ',' otherlv_18= '...' )? )? otherlv_19= ']' ) | (otherlv_20= '{' () ( ( (lv_types_22_0= ruleTopType ) ) (otherlv_23= ',' ( (lv_types_24_0= ruleTopType ) ) )* )? otherlv_25= '}' ) | (otherlv_26= '#' () ( (lv_rec_28_0= ruleAtomRefLiteral ) ) otherlv_29= '{' ( ( (lv_fields_30_0= ruleFieldType ) ) (otherlv_31= ',' ( (lv_fields_32_0= ruleFieldType ) ) )* )? otherlv_33= '}' ) | this_BinaryType_34= ruleBinaryType | (otherlv_35= 'fun' () otherlv_37= '(' ( (lv_type_38_0= ruleFunType100 ) )? otherlv_39= ')' ) )";
         }
     }
     static final String DFA139_eotS =
@@ -29170,117 +29194,117 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleTypeGuard_in_ruleTypeGuards18202 = new BitSet(new long[]{0x0000000000400002L});
     public static final BitSet FOLLOW_ruleTypeGuard_in_entryRuleTypeGuard18240 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleTypeGuard18250 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNAME_in_ruleTypeGuard18297 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_ruleTypeGuard18297 = new BitSet(new long[]{0x0000000000200000L});
     public static final BitSet FOLLOW_21_in_ruleTypeGuard18309 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
     public static final BitSet FOLLOW_ruleTopType_in_ruleTypeGuard18330 = new BitSet(new long[]{0x0000000000C00000L});
     public static final BitSet FOLLOW_22_in_ruleTypeGuard18343 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
     public static final BitSet FOLLOW_ruleTopType_in_ruleTypeGuard18364 = new BitSet(new long[]{0x0000000000C00000L});
     public static final BitSet FOLLOW_23_in_ruleTypeGuard18378 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_VARIABLE_in_ruleTypeGuard18403 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_ruleTypeGuard18420 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleTopType_in_ruleTypeGuard18441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_entryRuleTopType18478 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTopType18488 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_VARIABLE_in_ruleTopType18531 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_ruleTopType18548 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleType100_in_ruleTopType18571 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType100_in_entryRuleType10018607 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType10018617 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType200_in_ruleType10018664 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
-    public static final BitSet FOLLOW_71_in_ruleType10018715 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleType200_in_ruleType10018751 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
-    public static final BitSet FOLLOW_ruleType200_in_entryRuleType20018789 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType20018799 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType300_in_ruleType20018846 = new BitSet(new long[]{0x0000000000000002L,0x0000008000000000L});
-    public static final BitSet FOLLOW_103_in_ruleType20018897 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleType300_in_ruleType20018933 = new BitSet(new long[]{0x0000000000000002L,0x0000008000000000L});
-    public static final BitSet FOLLOW_ruleType300_in_entryRuleType30018971 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType30018981 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType400_in_ruleType30019028 = new BitSet(new long[]{0x0000000000080002L,0x00000000000FE000L});
-    public static final BitSet FOLLOW_ruleADDOP_in_ruleType30019077 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleType400_in_ruleType30019100 = new BitSet(new long[]{0x0000000000080002L,0x00000000000FE000L});
-    public static final BitSet FOLLOW_ruleType400_in_entryRuleType40019138 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType40019148 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType500_in_ruleType40019195 = new BitSet(new long[]{0x0000000000000002L,0x0000000001F00020L});
-    public static final BitSet FOLLOW_ruleMULTOP_in_ruleType40019244 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleType500_in_ruleType40019267 = new BitSet(new long[]{0x0000000000000002L,0x0000000001F00020L});
-    public static final BitSet FOLLOW_ruleType500_in_entryRuleType50019305 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType50019315 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePREFIXOP_in_ruleType50019371 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleType_in_ruleType50019392 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_ruleType50019421 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_entryRuleType19456 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType19466 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_ruleType19504 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleTopType_in_ruleType19526 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_23_in_ruleType19537 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomVarMacro_in_ruleType19576 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_57_in_ruleType19588 = new BitSet(new long[]{0x0011BC87FF100020L});
-    public static final BitSet FOLLOW_ruleNAME_in_ruleType19611 = new BitSet(new long[]{0x0000000000200002L});
-    public static final BitSet FOLLOW_21_in_ruleType19624 = new BitSet(new long[]{0x0119BD8FFFB803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleTopType_in_ruleType19646 = new BitSet(new long[]{0x0000000000C00000L});
-    public static final BitSet FOLLOW_22_in_ruleType19659 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleTopType_in_ruleType19680 = new BitSet(new long[]{0x0000000000C00000L});
-    public static final BitSet FOLLOW_23_in_ruleType19696 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_VARIABLE_in_ruleType19722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleINTEGER_in_ruleType19754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_ruleType19773 = new BitSet(new long[]{0x0119BF8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleTopType_in_ruleType19804 = new BitSet(new long[]{0x0000020000400000L});
-    public static final BitSet FOLLOW_22_in_ruleType19817 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
-    public static final BitSet FOLLOW_104_in_ruleType19829 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleType19845 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_ruleType19865 = new BitSet(new long[]{0x0119BD9FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleTopType_in_ruleType19896 = new BitSet(new long[]{0x0000001000400000L});
-    public static final BitSet FOLLOW_22_in_ruleType19909 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleTopType_in_ruleType19930 = new BitSet(new long[]{0x0000001000400000L});
-    public static final BitSet FOLLOW_36_in_ruleType19946 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_56_in_ruleType19966 = new BitSet(new long[]{0x0011BC87FF100020L});
-    public static final BitSet FOLLOW_ruleNAME_in_ruleType19996 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_35_in_ruleType20008 = new BitSet(new long[]{0x0011BC97FF100020L});
-    public static final BitSet FOLLOW_ruleFieldType_in_ruleType20030 = new BitSet(new long[]{0x0000001000400000L});
-    public static final BitSet FOLLOW_22_in_ruleType20043 = new BitSet(new long[]{0x0011BC87FF100020L});
-    public static final BitSet FOLLOW_ruleFieldType_in_ruleType20064 = new BitSet(new long[]{0x0000001000400000L});
-    public static final BitSet FOLLOW_36_in_ruleType20080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBinaryType_in_ruleType20109 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_68_in_ruleType20127 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_21_in_ruleType20148 = new BitSet(new long[]{0x0000000000A00000L});
-    public static final BitSet FOLLOW_ruleFunType100_in_ruleType20169 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_23_in_ruleType20182 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFieldType_in_entryRuleFieldType20219 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFieldType20229 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNAME_in_ruleFieldType20275 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_ruleFieldType20287 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleTopType_in_ruleFieldType20308 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBinaryType_in_entryRuleBinaryType20344 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBinaryType20354 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_ruleBinaryType20391 = new BitSet(new long[]{0x0000000000000080L,0x0000000000000400L});
-    public static final BitSet FOLLOW_ruleBinBaseType_in_ruleBinaryType20423 = new BitSet(new long[]{0x0000000000400000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_22_in_ruleBinaryType20436 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ruleBinUnitType_in_ruleBinaryType20457 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_ruleBinUnitType_in_ruleBinaryType20487 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_74_in_ruleBinaryType20501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBinBaseType_in_entryRuleBinBaseType20537 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBinBaseType20547 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_VARIABLE_in_ruleBinBaseType20589 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_57_in_ruleBinBaseType20606 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleType_in_ruleBinBaseType20627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBinUnitType_in_entryRuleBinUnitType20663 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBinUnitType20673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_VARIABLE_in_ruleBinUnitType20715 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_57_in_ruleBinUnitType20732 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_RULE_VARIABLE_in_ruleBinUnitType20749 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-    public static final BitSet FOLLOW_84_in_ruleBinUnitType20766 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleType_in_ruleBinUnitType20787 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunType100_in_entryRuleFunType10020823 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFunType10020833 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_ruleFunType10020879 = new BitSet(new long[]{0x0119BD8FFFB803A0L,0x0000014006002210L});
-    public static final BitSet FOLLOW_104_in_ruleFunType10020892 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_ruleTopType_in_ruleFunType10020920 = new BitSet(new long[]{0x0000000000C00000L});
-    public static final BitSet FOLLOW_22_in_ruleFunType10020933 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleTopType_in_ruleFunType10020954 = new BitSet(new long[]{0x0000000000C00000L});
-    public static final BitSet FOLLOW_23_in_ruleFunType10020971 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_50_in_ruleFunType10020983 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
-    public static final BitSet FOLLOW_ruleTopType_in_ruleFunType10021004 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableLiteral_in_ruleTypeGuard18407 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_ruleTypeGuard18419 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleTopType_in_ruleTypeGuard18440 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_entryRuleTopType18477 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTopType18487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_VARIABLE_in_ruleTopType18530 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_ruleTopType18547 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleType100_in_ruleTopType18570 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType100_in_entryRuleType10018606 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType10018616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType200_in_ruleType10018663 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
+    public static final BitSet FOLLOW_71_in_ruleType10018714 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleType200_in_ruleType10018750 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
+    public static final BitSet FOLLOW_ruleType200_in_entryRuleType20018788 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType20018798 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType300_in_ruleType20018845 = new BitSet(new long[]{0x0000000000000002L,0x0000008000000000L});
+    public static final BitSet FOLLOW_103_in_ruleType20018896 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleType300_in_ruleType20018932 = new BitSet(new long[]{0x0000000000000002L,0x0000008000000000L});
+    public static final BitSet FOLLOW_ruleType300_in_entryRuleType30018970 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType30018980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType400_in_ruleType30019027 = new BitSet(new long[]{0x0000000000080002L,0x00000000000FE000L});
+    public static final BitSet FOLLOW_ruleADDOP_in_ruleType30019076 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleType400_in_ruleType30019099 = new BitSet(new long[]{0x0000000000080002L,0x00000000000FE000L});
+    public static final BitSet FOLLOW_ruleType400_in_entryRuleType40019137 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType40019147 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType500_in_ruleType40019194 = new BitSet(new long[]{0x0000000000000002L,0x0000000001F00020L});
+    public static final BitSet FOLLOW_ruleMULTOP_in_ruleType40019243 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleType500_in_ruleType40019266 = new BitSet(new long[]{0x0000000000000002L,0x0000000001F00020L});
+    public static final BitSet FOLLOW_ruleType500_in_entryRuleType50019304 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType50019314 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePREFIXOP_in_ruleType50019370 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleType_in_ruleType50019391 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_ruleType50019420 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_entryRuleType19455 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType19465 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_ruleType19503 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleTopType_in_ruleType19525 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_ruleType19536 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVarMacro_in_ruleType19575 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_57_in_ruleType19587 = new BitSet(new long[]{0x0011BC87FF100020L});
+    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_ruleType19610 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_21_in_ruleType19623 = new BitSet(new long[]{0x0119BD8FFFB803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleTopType_in_ruleType19645 = new BitSet(new long[]{0x0000000000C00000L});
+    public static final BitSet FOLLOW_22_in_ruleType19658 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleTopType_in_ruleType19679 = new BitSet(new long[]{0x0000000000C00000L});
+    public static final BitSet FOLLOW_23_in_ruleType19695 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableLiteral_in_ruleType19725 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleINTEGER_in_ruleType19752 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_ruleType19771 = new BitSet(new long[]{0x0119BF8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleTopType_in_ruleType19802 = new BitSet(new long[]{0x0000020000400000L});
+    public static final BitSet FOLLOW_22_in_ruleType19815 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
+    public static final BitSet FOLLOW_104_in_ruleType19827 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_41_in_ruleType19843 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_ruleType19863 = new BitSet(new long[]{0x0119BD9FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleTopType_in_ruleType19894 = new BitSet(new long[]{0x0000001000400000L});
+    public static final BitSet FOLLOW_22_in_ruleType19907 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleTopType_in_ruleType19928 = new BitSet(new long[]{0x0000001000400000L});
+    public static final BitSet FOLLOW_36_in_ruleType19944 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_56_in_ruleType19964 = new BitSet(new long[]{0x0011BC87FF100020L});
+    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_ruleType19994 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_35_in_ruleType20006 = new BitSet(new long[]{0x0011BC97FF100020L});
+    public static final BitSet FOLLOW_ruleFieldType_in_ruleType20028 = new BitSet(new long[]{0x0000001000400000L});
+    public static final BitSet FOLLOW_22_in_ruleType20041 = new BitSet(new long[]{0x0011BC87FF100020L});
+    public static final BitSet FOLLOW_ruleFieldType_in_ruleType20062 = new BitSet(new long[]{0x0000001000400000L});
+    public static final BitSet FOLLOW_36_in_ruleType20078 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBinaryType_in_ruleType20107 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_68_in_ruleType20125 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_21_in_ruleType20146 = new BitSet(new long[]{0x0000000000A00000L});
+    public static final BitSet FOLLOW_ruleFunType100_in_ruleType20167 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_ruleType20180 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFieldType_in_entryRuleFieldType20217 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFieldType20227 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_ruleFieldType20273 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_ruleFieldType20285 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleTopType_in_ruleFieldType20306 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBinaryType_in_entryRuleBinaryType20342 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBinaryType20352 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_73_in_ruleBinaryType20389 = new BitSet(new long[]{0x0000000000000080L,0x0000000000000400L});
+    public static final BitSet FOLLOW_ruleBinBaseType_in_ruleBinaryType20421 = new BitSet(new long[]{0x0000000000400000L,0x0000000000000400L});
+    public static final BitSet FOLLOW_22_in_ruleBinaryType20434 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ruleBinUnitType_in_ruleBinaryType20455 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
+    public static final BitSet FOLLOW_ruleBinUnitType_in_ruleBinaryType20485 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
+    public static final BitSet FOLLOW_74_in_ruleBinaryType20499 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBinBaseType_in_entryRuleBinBaseType20535 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBinBaseType20545 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableLiteral_in_ruleBinBaseType20591 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_57_in_ruleBinBaseType20603 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleType_in_ruleBinBaseType20624 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBinUnitType_in_entryRuleBinUnitType20660 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBinUnitType20670 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableLiteral_in_ruleBinUnitType20716 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_57_in_ruleBinUnitType20728 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_RULE_VARIABLE_in_ruleBinUnitType20745 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
+    public static final BitSet FOLLOW_84_in_ruleBinUnitType20762 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleType_in_ruleBinUnitType20783 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFunType100_in_entryRuleFunType10020819 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFunType10020829 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_ruleFunType10020875 = new BitSet(new long[]{0x0119BD8FFFB803A0L,0x0000014006002210L});
+    public static final BitSet FOLLOW_104_in_ruleFunType10020888 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_ruleTopType_in_ruleFunType10020916 = new BitSet(new long[]{0x0000000000C00000L});
+    public static final BitSet FOLLOW_22_in_ruleFunType10020929 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleTopType_in_ruleFunType10020950 = new BitSet(new long[]{0x0000000000C00000L});
+    public static final BitSet FOLLOW_23_in_ruleFunType10020967 = new BitSet(new long[]{0x0004000000000000L});
+    public static final BitSet FOLLOW_50_in_ruleFunType10020979 = new BitSet(new long[]{0x0119BD8FFF3803A0L,0x0000004006002210L});
+    public static final BitSet FOLLOW_ruleTopType_in_ruleFunType10021000 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleElseAttribute_in_synpred1_InternalErlang457 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_32_in_synpred2_InternalErlang618 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_33_in_synpred3_InternalErlang662 = new BitSet(new long[]{0x0000000000000002L});
@@ -29303,9 +29327,9 @@ public class InternalErlangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_57_in_synpred37_InternalErlang13100 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_57_in_synpred38_InternalErlang14248 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_69_in_synpred39_InternalErlang14293 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_71_in_synpred40_InternalErlang18684 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_103_in_synpred41_InternalErlang18866 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleADDOP_in_synpred42_InternalErlang19047 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMULTOP_in_synpred43_InternalErlang19214 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_71_in_synpred40_InternalErlang18683 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_103_in_synpred41_InternalErlang18865 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleADDOP_in_synpred42_InternalErlang19046 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMULTOP_in_synpred43_InternalErlang19213 = new BitSet(new long[]{0x0000000000000002L});
 
 }
