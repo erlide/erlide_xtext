@@ -2,6 +2,7 @@ package org.erlide.scoping;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -40,11 +41,15 @@ public class ErlangLinkingService extends DefaultLinkingService {
   }
   
   private List<EObject> wrap(final EObject aref) {
+    ArrayList<EObject> _xifexpression = null;
     boolean _equals = Objects.equal(aref, null);
     if (_equals) {
-      return CollectionLiterals.<EObject>newArrayList();
+      ArrayList<EObject> _newArrayList = CollectionLiterals.<EObject>newArrayList();
+      _xifexpression = _newArrayList;
     } else {
-      return CollectionLiterals.<EObject>newArrayList(aref);
+      ArrayList<EObject> _newArrayList_1 = CollectionLiterals.<EObject>newArrayList(aref);
+      _xifexpression = _newArrayList_1;
     }
+    return _xifexpression;
   }
 }

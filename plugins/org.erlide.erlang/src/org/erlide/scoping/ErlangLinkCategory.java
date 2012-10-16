@@ -63,6 +63,13 @@ public enum ErlangLinkCategory {
                 final Atom atom, final ResourceSet rset) {
             return helper.getRecordFieldRef(index, atom, rset);
         }
+    },
+    TYPE_DEF {
+        @Override
+        public AtomRefTarget getRef(final IResourceDescriptions index,
+                final Atom atom, final ResourceSet rset) {
+            return helper.getTypeRef(index, atom, rset);
+        }
     };
 
     @Inject

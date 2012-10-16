@@ -36,6 +36,7 @@ import org.erlide.erlang.RecordFieldDef;
 import org.erlide.erlang.RecordFieldExpr;
 import org.erlide.erlang.RecordTuple;
 import org.erlide.erlang.RemoteTarget;
+import org.erlide.erlang.RemoteType;
 import org.erlide.erlang.SpecAttribute;
 import org.erlide.erlang.TopType;
 import org.erlide.erlang.TypeSig;
@@ -191,6 +192,10 @@ public class ErlangLinkingHelper {
       _xblockexpression = (ErlangLinkCategory.NONE);
     }
     return _xblockexpression;
+  }
+  
+  private ErlangLinkCategory _classifyAtom(final Atom atom, final RemoteType context) {
+    return ErlangLinkCategory.TYPE_DEF;
   }
   
   public boolean isLinkableAtom(final Atom atom) {
@@ -456,6 +461,32 @@ public class ErlangLinkingHelper {
     return _xblockexpression;
   }
   
+  public AtomRefTarget getTypeRef(final IResourceDescriptions index, final Atom atom, final ResourceSet rset) {
+    AtomRefTarget _xblockexpression = null;
+    {
+      Module _owningModule = this._modelExtensions.getOwningModule(atom);
+      final String moduleName = this._modelExtensions.getName(_owningModule);
+      boolean _equals = Objects.equal(moduleName, null);
+      if (_equals) {
+        return null;
+      }
+      String _sourceText = this._modelExtensions.getSourceText(atom);
+      final QualifiedName qname = QualifiedName.create(moduleName, _sourceText);
+      final Iterable<IEObjectDescription> rtyp = index.getExportedObjects(Literals.TYPE_ATTRIBUTE, qname, false);
+      AtomRefTarget _xifexpression = null;
+      boolean _isEmpty = IterableExtensions.isEmpty(rtyp);
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        IEObjectDescription _head = IterableExtensions.<IEObjectDescription>head(rtyp);
+        URI _eObjectURI = _head.getEObjectURI();
+        EObject _eObject = rset.getEObject(_eObjectURI, true);
+        _xifexpression = ((AtomRefTarget) _eObject);
+      }
+      _xblockexpression = (_xifexpression);
+    }
+    return _xblockexpression;
+  }
+  
   public DefineAttribute getMacroReference(final Macro macro) {
     Module _owningModule = this._modelExtensions.getOwningModule(macro);
     Collection<DefineAttribute> _allItemsOfType = this._modelExtensions.<DefineAttribute>getAllItemsOfType(_owningModule, DefineAttribute.class);
@@ -489,7 +520,9 @@ public class ErlangLinkingHelper {
   }
   
   private ErlangLinkCategory classifyAtom(final Atom atom, final EObject context) {
-    if (context instanceof FunRef) {
+    if (context instanceof RemoteType) {
+      return _classifyAtom(atom, (RemoteType)context);
+    } else if (context instanceof FunRef) {
       return _classifyAtom(atom, (FunRef)context);
     } else if (context instanceof FunCall) {
       return _classifyAtom(atom, (FunCall)context);

@@ -20,6 +20,7 @@ import org.erlide.erlang.RecordFieldExpr
 import org.erlide.erlang.RecordTuple
 import org.erlide.erlang.RemoteTarget
 import org.erlide.erlang.SpecAttribute
+import org.erlide.erlang.RemoteType
 
 class ErlangLinkingHelper {
 	@Inject
@@ -32,6 +33,9 @@ class ErlangLinkingHelper {
 	} 
 
 	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, EObject context) {
+//		val parent = context.eContainer
+//		println("ctx="+context)
+//		println("parent="+parent)
 		ErlangLinkCategory::NONE
 	}
 	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, RemoteTarget context) {
@@ -101,6 +105,9 @@ class ErlangLinkingHelper {
 			}
 		}
 		ErlangLinkCategory::NONE
+	}
+	def private dispatch ErlangLinkCategory classifyAtom(Atom atom, RemoteType context) {
+		ErlangLinkCategory::TYPE_DEF
 	}
 
 	def boolean isLinkableAtom(Atom atom) {
@@ -199,6 +206,15 @@ class ErlangLinkingHelper {
 		record.fields.findFirst[it.name==atom.sourceText]
 	}
 	
+	def AtomRefTarget getTypeRef(IResourceDescriptions index, Atom atom, ResourceSet rset) {
+		val moduleName = atom.owningModule.name
+		if(moduleName==null) return null
+		val qname = QualifiedName::create(moduleName, atom.sourceText)
+		val rtyp = index.getExportedObjects(ErlangPackage$Literals::TYPE_ATTRIBUTE, qname, false)
+		if(!rtyp.empty) 
+			rset.getEObject(rtyp.head.EObjectURI, true) as AtomRefTarget
+	}
+	
 	def DefineAttribute getMacroReference(Macro macro) {
 		macro.owningModule.getAllItemsOfType(typeof(DefineAttribute)).findFirst[macroName==macro.macroName]
 	}
@@ -210,5 +226,5 @@ class ErlangLinkingHelper {
 		else 
 			txt
 	}
-	
+
 }

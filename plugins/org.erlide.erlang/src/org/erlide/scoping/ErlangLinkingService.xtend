@@ -30,9 +30,9 @@ class ErlangLinkingService extends DefaultLinkingService {
 
 	def private List<EObject> wrap(EObject aref) {
 		if(aref==null) 
-			return newArrayList() 
+			newArrayList() 
 		else {
-			return newArrayList(aref)
+			newArrayList(aref)
 		}
 	}
 }
