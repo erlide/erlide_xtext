@@ -7,6 +7,7 @@ import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.erlide.common.util.DebugStream;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -14,6 +15,8 @@ public class LibsActivator implements BundleActivator {
 
     @Override
     public void start(final BundleContext context) throws Exception {
+        DebugStream.activate();
+
         final Properties props = new Properties();
         final InputStream fis = context.getBundle()
                 .getEntry("/log4j.properties").openStream();
