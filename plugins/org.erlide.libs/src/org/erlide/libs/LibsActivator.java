@@ -16,6 +16,7 @@ public class LibsActivator implements BundleActivator {
     @Override
     public void start(final BundleContext context) throws Exception {
         DebugStream.activate();
+        System.out.println("START ERLIDE " + context.getBundle().getVersion());
 
         final Properties props = new Properties();
         final InputStream fis = context.getBundle()
