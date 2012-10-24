@@ -1,25 +1,26 @@
 package org.erlide.scoping
 
 import com.google.inject.Inject
+import com.google.inject.Provider
+import org.eclipse.xtext.junit4.AbstractXtextTests
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.resource.XtextResourceSet
 import org.erlide.ErlangInjectorProvider
 import org.erlide.erlang.Atom
 import org.erlide.erlang.ErlangTestExtensions
+import org.erlide.erlang.Macro
 import org.erlide.erlang.ModelExtensions
 import org.erlide.erlang.util.ErlangTestingHelper
 import org.junit.Test
 import org.junit.runner.RunWith
-import com.google.inject.Provider
-import org.eclipse.xtext.resource.XtextResourceSet
 
 import static org.hamcrest.MatcherAssert.*
 import static org.hamcrest.Matchers.*
-import org.erlide.erlang.Macro
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))
-class ErlangLinkingTest {
+class ErlangLinkingTest extends AbstractXtextTests {
 
     @Inject
     ErlangTestingHelper parser

@@ -17,4 +17,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-Name: Erlide Acceptance Tests
 Bundle-Vendor: erlide.org
 Export-Package: org.erlide.acceptance.tests,
- org.erlide.ui
+ org.erlide.tests.ui.projects

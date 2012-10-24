@@ -5,6 +5,7 @@ import com.google.inject.Provider;
 import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.junit4.AbstractXtextTests;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.resource.XtextResourceSet;
@@ -28,7 +29,7 @@ import org.junit.runner.RunWith;
 @RunWith(value = XtextRunner.class)
 @InjectWith(value = ErlangInjectorProvider.class)
 @SuppressWarnings("all")
-public class ErlangLinkingTest {
+public class ErlangLinkingTest extends AbstractXtextTests {
   @Inject
   private ErlangTestingHelper parser;
   
