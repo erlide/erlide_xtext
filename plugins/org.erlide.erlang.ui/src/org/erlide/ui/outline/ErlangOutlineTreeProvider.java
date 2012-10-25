@@ -9,8 +9,6 @@ import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.AbstractOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
-import org.eclipse.xtext.ui.editor.outline.impl.EStructuralFeatureNode;
-import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.ExportAttribute;
 import org.erlide.erlang.Form;
 import org.erlide.erlang.FunRef;
@@ -37,12 +35,12 @@ public class ErlangOutlineTreeProvider extends DefaultOutlineTreeProvider {
             final Module module) {
         System.out.println(parent + " === " + module);
 
-        // TODO use custom node here!
-        final EStructuralFeatureNode recordsNode = createEStructuralFeatureNode(
-                parent, module, ErlangPackage.Literals.MODULE__FORMS, null,
-                "records:", false);
-        final AbstractOutlineNode exportsNode = new ExportsNode(parent, null,
-                "exports:", false);
+        final AbstractOutlineNode recordsNode = new ErlangOutlineNode(parent,
+                null, "Records:", false);
+        final AbstractOutlineNode exportsNode = new ErlangOutlineNode(parent,
+                null, "Exports:", false);
+        final AbstractOutlineNode macrosNodeNode = new ErlangOutlineNode(
+                parent, null, "Macros:", false);
         for (final Form element : module.getForms()) {
             if (!(element instanceof ModuleAttribute)) {
                 if (element instanceof RecordAttribute) {
@@ -58,20 +56,18 @@ public class ErlangOutlineTreeProvider extends DefaultOutlineTreeProvider {
         }
     }
 
-    protected void _createChildren(final ExportsNode parent,
+    protected void _createChildren(final ErlangOutlineNode parent,
             final ExportAttribute attr) {
         for (final EObject element : attr.eContents()) {
             createNode(parent, element);
         }
     }
 
-    public class ExportsNode extends AbstractOutlineNode {
-
-        protected ExportsNode(final IOutlineNode parent, final Image image,
-                final Object text, final boolean isLeaf) {
+    public class ErlangOutlineNode extends AbstractOutlineNode {
+        protected ErlangOutlineNode(final IOutlineNode parent,
+                final Image image, final Object text, final boolean isLeaf) {
             super(parent, image, text, isLeaf);
         }
-
     }
 
 }
