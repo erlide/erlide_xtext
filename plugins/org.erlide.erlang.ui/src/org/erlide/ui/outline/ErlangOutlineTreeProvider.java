@@ -3,21 +3,75 @@
  */
 package org.erlide.ui.outline;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
+import org.eclipse.xtext.ui.editor.outline.impl.AbstractOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
+import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
+import org.eclipse.xtext.ui.editor.outline.impl.EStructuralFeatureNode;
+import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.ExportAttribute;
+import org.erlide.erlang.Form;
+import org.erlide.erlang.FunRef;
+import org.erlide.erlang.FunctionClause;
+import org.erlide.erlang.Module;
+import org.erlide.erlang.ModuleAttribute;
+import org.erlide.erlang.RecordAttribute;
 
 /**
- * customization of the default outline structure
+ * outline structure -- group same type of forms under common parent
  * 
  */
 public class ErlangOutlineTreeProvider extends DefaultOutlineTreeProvider {
 
-    // protected boolean _isLeaf(FunctionClause c) {
-    // return true;
-    // }
-
-    @Override
-    protected void _createChildren(final Object parent, final Object element) {
-        // TODO Auto-generated method stub
-        super._createChildren(parent, element);
+    protected boolean _isLeaf(final FunctionClause c) {
+        return true;
     }
+
+    protected boolean _isLeaf(final FunRef c) {
+        return true;
+    }
+
+    protected void _createChildren(final DocumentRootNode parent,
+            final Module module) {
+        System.out.println(parent + " === " + module);
+
+        // TODO use custom node here!
+        final EStructuralFeatureNode recordsNode = createEStructuralFeatureNode(
+                parent, module, ErlangPackage.Literals.MODULE__FORMS, null,
+                "records:", false);
+        final AbstractOutlineNode exportsNode = new ExportsNode(parent, null,
+                "exports:", false);
+        for (final Form element : module.getForms()) {
+            if (!(element instanceof ModuleAttribute)) {
+                if (element instanceof RecordAttribute) {
+                    createNode(recordsNode, element);
+                } else {
+                    if (element instanceof ExportAttribute) {
+                        _createChildren(exportsNode, element);
+                    } else {
+                        createNode(parent, element);
+                    }
+                }
+            }
+        }
+    }
+
+    protected void _createChildren(final ExportsNode parent,
+            final ExportAttribute attr) {
+        for (final EObject element : attr.eContents()) {
+            createNode(parent, element);
+        }
+    }
+
+    public class ExportsNode extends AbstractOutlineNode {
+
+        protected ExportsNode(final IOutlineNode parent, final Image image,
+                final Object text, final boolean isLeaf) {
+            super(parent, image, text, isLeaf);
+        }
+
+    }
+
 }

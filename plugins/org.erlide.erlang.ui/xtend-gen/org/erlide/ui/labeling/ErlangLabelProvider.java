@@ -3,10 +3,10 @@ package org.erlide.ui.labeling;
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.util.List;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -14,12 +14,12 @@ import org.erlide.erlang.Attribute;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.Expressions;
 import org.erlide.erlang.Form;
+import org.erlide.erlang.FunRef;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.FunctionClause;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.ModuleAttribute;
-import org.erlide.ui.labeling.ErlangLabelProvider;
 
 /**
  * Provides labels for a EObjects.
@@ -28,12 +28,12 @@ import org.erlide.ui.labeling.ErlangLabelProvider;
  * http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
 @SuppressWarnings("all")
-public class DefaultErlangLabelProvider extends ErlangLabelProvider {
+public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
   @Inject
   private ModelExtensions _modelExtensions;
   
   @Inject
-  public DefaultErlangLabelProvider(final AdapterFactoryLabelProvider delegate) {
+  public ErlangLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
   
@@ -51,6 +51,12 @@ public class DefaultErlangLabelProvider extends ErlangLabelProvider {
     }
     final String name = _xifexpression;
     return ("module " + name);
+  }
+  
+  public String text(final Attribute ele) {
+    final String tag = ele.getTag();
+    String _plus = ("-" + tag);
+    return (_plus + " -- ");
   }
   
   public String text(final Function ele) {
@@ -93,17 +99,17 @@ public class DefaultErlangLabelProvider extends ErlangLabelProvider {
     return (_plus + ")");
   }
   
-  public String text(final EObject ele) {
-    Class<? extends Object> _class = ele.getClass();
-    String _simpleName = _class.getSimpleName();
-    Path _path = new Path(_simpleName);
-    String _lastSegment = _path.lastSegment();
-    String _replace = _lastSegment.replace(
-      "Impl", "");
-    String _plus = (_replace + " ");
-    EList<EObject> _eCrossReferences = ele.eCrossReferences();
-    int _size = _eCrossReferences.size();
-    return (_plus + Integer.valueOf(_size));
+  public String text(final FunRef c) {
+    return this._modelExtensions.getSourceText(c);
+  }
+  
+  public String text(final EObject element) {
+    String _sourceText = this._modelExtensions.getSourceText(element);
+    String _plus = ("\u00A7 " + _sourceText);
+    String _plus_1 = (_plus + " -- ");
+    Class<? extends Object> _class = element.getClass();
+    String _name = _class.getName();
+    return (_plus_1 + _name);
   }
   
   public String image(final Attribute ele) {
@@ -113,7 +119,7 @@ public class DefaultErlangLabelProvider extends ErlangLabelProvider {
   public String getListText(final EList<Expression> list) {
     final Function1<Expression,String> _function = new Function1<Expression,String>() {
         public String apply(final Expression it) {
-          String _sourceText = DefaultErlangLabelProvider.this._modelExtensions.getSourceText(it);
+          String _sourceText = ErlangLabelProvider.this._modelExtensions.getSourceText(it);
           return _sourceText;
         }
       };

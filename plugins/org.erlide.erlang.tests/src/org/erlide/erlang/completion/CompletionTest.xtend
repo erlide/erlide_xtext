@@ -1,11 +1,11 @@
 package org.erlide.erlang.completion
 
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.InjectWith
-import org.erlide.ErlangInjectorProvider
-import org.junit.runner.RunWith
 import org.eclipse.xtext.junit4.AbstractXtextTests
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
+import org.erlide.ErlangInjectorProvider
 import org.junit.Test
+import org.junit.runner.RunWith
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(ErlangInjectorProvider))

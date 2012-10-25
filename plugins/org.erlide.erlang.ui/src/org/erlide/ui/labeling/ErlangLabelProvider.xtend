@@ -13,6 +13,8 @@ import org.erlide.erlang.FunctionClause
 import org.erlide.erlang.ModelExtensions
 import org.erlide.erlang.Module
 import org.erlide.erlang.ModuleAttribute
+import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
+import org.erlide.erlang.FunRef
 
 /**
  * Provides labels for a EObjects.
@@ -20,7 +22,7 @@ import org.erlide.erlang.ModuleAttribute
  * see
  * http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
-public class DefaultErlangLabelProvider extends ErlangLabelProvider {
+public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
 
 	@Inject
 	extension ModelExtensions
@@ -30,18 +32,18 @@ public class DefaultErlangLabelProvider extends ErlangLabelProvider {
 		super(delegate)
 	}
 
-	def String text( Module ele) {
+	def String text(Module ele) {
 		val Form first = ele.getForms().get(0)
 		val String name = if(first instanceof ModuleAttribute)  (first as ModuleAttribute).getModuleName() else first.toString() + "?"
 		return "module " + name
 	}
 
-	// def String text( Attribute ele) {
-	//  String tag = ele.getTag()
-	// return "-" + tag + " -- " + ele.getVal()
-	// }
+	 def String text(Attribute ele) {
+	 	val tag = ele.tag
+	 	return "-" + tag + " -- "
+	 }
 
-	def String text( Function ele) {
+	def String text(Function ele) {
 		if (ele.getClauses() == null || ele.getClauses().size() == 0) {
 			return "???"
 		}
@@ -49,16 +51,20 @@ public class DefaultErlangLabelProvider extends ErlangLabelProvider {
 		return ele.getName() + "/" + (if(params == null) "0" else params.size())
 	}
 
-	def String text( FunctionClause ele) {
+	def String text(FunctionClause ele) {
 		return "(" + getListText(ele.params.exprs) + ")"
 	}
 
-	def String text( EObject ele) {
-		return (new Path(ele.getClass().getSimpleName()).lastSegment().replace(
-				"Impl", "")) + " " + ele.eCrossReferences().size()
+	def String text(FunRef c) {
+        return c.sourceText
+    }
+
+	def String text(EObject element) {
+		// just a way to see unwanted elements
+		return "§ " + element.sourceText + " -- "+element.^class.name
 	}
 
-	def String image( Attribute ele) {
+	def String image(Attribute ele) {
 		return "MyModel.gif"
 	}
 
