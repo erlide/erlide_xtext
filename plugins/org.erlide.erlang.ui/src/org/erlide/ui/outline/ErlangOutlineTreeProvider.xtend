@@ -14,6 +14,7 @@ import org.erlide.erlang.Module
 import org.erlide.erlang.ModuleAttribute
 import org.erlide.erlang.RecordAttribute
 import org.erlide.erlang.DefineAttribute
+import org.erlide.erlang.ErlangPackage
 
 /**
  * outline structure -- group same type of forms under common parent
@@ -21,24 +22,18 @@ import org.erlide.erlang.DefineAttribute
  */
 public class ErlangOutlineTreeProvider extends DefaultOutlineTreeProvider {
 
-    def protected boolean _isLeaf(FunctionClause c) {
+    def dispatch boolean isLeaf(FunctionClause c) {
         true
     }
 
-    def protected boolean _isLeaf(FunRef c) {
+    def dispatch boolean isLeaf(FunRef c) {
         true
     }
 
-    def protected void _createChildren(DocumentRootNode parent,
-            Module module) {
-        println(parent + " === " + module)
-
-        val AbstractOutlineNode recordsNode = new ErlangOutlineNode(parent,
-                null, "Records:", false)
-        val AbstractOutlineNode exportsNode = new ErlangOutlineNode(parent,
-                null, "Exports:", false)
-        val AbstractOutlineNode macrosNode = new ErlangOutlineNode(
-                parent, null, "Macros:", false)
+    def dispatch void createChildren(DocumentRootNode parent, Module module) {
+        val recordsNode = new ErlangOutlineNode(parent, null, "Records:", false)
+        val exportsNode = new ErlangOutlineNode(parent, null, "Exports:", false)
+        val macrosNode = new ErlangOutlineNode(parent, null, "Macros:", false)
                 
         for (Form element : module.getForms()) {
         	val theParent = switch element {
@@ -48,18 +43,29 @@ public class ErlangOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	            DefineAttribute: macrosNode
 	            default: parent
             }
-            if(theParent!=null)
+            if(theParent!=null) {
             	createChildren(theParent, element)
+           	}
         }
     }
 
-    def protected void _createChildren(ErlangOutlineNode parent,
-            ExportAttribute attr) {
+    def dispatch void createChildren(ErlangOutlineNode parent, ExportAttribute attr) {
         for (EObject element : attr.eContents()) {
             createNode(parent, element)
         }
     }
-
+    def dispatch void createChildren(ErlangOutlineNode parent, DefineAttribute attr) {
+    	val name = createEStructuralFeatureNode(parent, attr, ErlangPackage$Literals::DEFINE_ATTRIBUTE__MACRO_NAME, null, attr.macroName, true)
+        for (EObject element : attr.eContents()) {
+            createNode(name, element)
+        }
+    }
+    def dispatch void createChildren(ErlangOutlineNode parent, RecordAttribute attr) {
+    	val name = createEStructuralFeatureNode(parent, attr, ErlangPackage$Literals::RECORD_ATTRIBUTE__NAME, null, attr.name, true)
+        for (EObject element : attr.eContents()) {
+            createNode(name, element)
+        }
+    }
 }
 
 class ErlangOutlineNode extends AbstractOutlineNode {
