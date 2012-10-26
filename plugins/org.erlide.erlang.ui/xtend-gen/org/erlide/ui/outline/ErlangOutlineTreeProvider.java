@@ -1,9 +1,14 @@
 package org.erlide.ui.outline;
 
 import com.google.common.base.Objects;
+import com.google.inject.Inject;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtext.resource.IResourceDescriptions;
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.AbstractOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
@@ -18,6 +23,7 @@ import org.erlide.erlang.FunctionClause;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.ModuleAttribute;
 import org.erlide.erlang.RecordAttribute;
+import org.erlide.erlang.ScopeExtensions;
 import org.erlide.ui.outline.ErlangOutlineNode;
 
 /**
@@ -25,12 +31,24 @@ import org.erlide.ui.outline.ErlangOutlineNode;
  */
 @SuppressWarnings("all")
 public class ErlangOutlineTreeProvider extends DefaultOutlineTreeProvider {
+  @Inject
+  private ScopeExtensions _scopeExtensions;
+  
   protected boolean _isLeaf(final FunctionClause c) {
     return true;
   }
   
   protected boolean _isLeaf(final FunRef c) {
     return true;
+  }
+  
+  @Inject
+  private ResourceDescriptionsProvider provider;
+  
+  public void debug_test(final Module module) {
+    final Resource resource = module.eResource();
+    IResourceDescriptions descriptions = this.provider.getResourceDescriptions(resource);
+    ResourceSet resourceSet = resource.getResourceSet();
   }
   
   protected void _createChildren(final DocumentRootNode parent, final Module module) {

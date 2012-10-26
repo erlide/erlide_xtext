@@ -2,9 +2,7 @@ package org.erlide.scoping;
 
 import com.google.inject.Inject;
 import java.util.Collection;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -12,16 +10,12 @@ import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.resource.IResourceDescription;
-import org.eclipse.xtext.resource.IResourceDescription.Manager;
-import org.eclipse.xtext.resource.IResourceServiceProvider;
-import org.eclipse.xtext.resource.IResourceServiceProvider.Registry;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.ErlangInjectorProvider;
-import org.erlide.erlang.ErlangPackage.Literals;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
+import org.erlide.erlang.ScopeExtensions;
 import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -36,13 +30,13 @@ public class ErlangGlobalScopingTest {
   private ParseHelper<Module> parser;
   
   @Inject
-  private Registry resourceProviderRegistry;
-  
-  @Inject
   private IQualifiedNameConverter cvtr;
   
   @Inject
   private ModelExtensions _modelExtensions;
+  
+  @Inject
+  private ScopeExtensions _scopeExtensions;
   
   @Test
   public void allContents() {
@@ -87,7 +81,7 @@ public class ErlangGlobalScopingTest {
       _builder.append("g(X) -> X.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Iterable<IEObjectDescription> eFuns = this.getExportedFunctions(module);
+      final Iterable<IEObjectDescription> eFuns = this._scopeExtensions.getExportedFunctions(module);
       int _size = IterableExtensions.size(eFuns);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(0));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -109,7 +103,7 @@ public class ErlangGlobalScopingTest {
       _builder.append("f() -> ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Iterable<IEObjectDescription> eFuns = this.getExportedFunctions(module);
+      final Iterable<IEObjectDescription> eFuns = this._scopeExtensions.getExportedFunctions(module);
       int _size = IterableExtensions.size(eFuns);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(1));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -138,7 +132,7 @@ public class ErlangGlobalScopingTest {
       _builder.append("f() -> ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Iterable<IEObjectDescription> eFuns = this.getExportedFunctions(module);
+      final Iterable<IEObjectDescription> eFuns = this._scopeExtensions.getExportedFunctions(module);
       int _size = IterableExtensions.size(eFuns);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -171,7 +165,7 @@ public class ErlangGlobalScopingTest {
       _builder.append("f() -> ok.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Iterable<IEObjectDescription> eFuns = this.getExportedFunctions(module);
+      final Iterable<IEObjectDescription> eFuns = this._scopeExtensions.getExportedFunctions(module);
       int _size = IterableExtensions.size(eFuns);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -210,7 +204,7 @@ public class ErlangGlobalScopingTest {
       _builder.append("-endif.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Iterable<IEObjectDescription> eFuns = this.getExportedFunctions(module);
+      final Iterable<IEObjectDescription> eFuns = this._scopeExtensions.getExportedFunctions(module);
       int _size = IterableExtensions.size(eFuns);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -251,7 +245,7 @@ public class ErlangGlobalScopingTest {
       _builder.append("-endif.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Iterable<IEObjectDescription> eFuns = this.getExportedFunctions(module);
+      final Iterable<IEObjectDescription> eFuns = this._scopeExtensions.getExportedFunctions(module);
       int _size = IterableExtensions.size(eFuns);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -320,7 +314,7 @@ public class ErlangGlobalScopingTest {
       _builder.append("-endif.");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Iterable<IEObjectDescription> eFuns = this.getExportedFunctions(module);
+      final Iterable<IEObjectDescription> eFuns = this._scopeExtensions.getExportedFunctions(module);
       int _size = IterableExtensions.size(eFuns);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(6));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -348,7 +342,7 @@ public class ErlangGlobalScopingTest {
       _builder.append("-define(XX, xx).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Iterable<IEObjectDescription> macros = this.getExportedMacros(module);
+      final Iterable<IEObjectDescription> macros = this._scopeExtensions.getExportedMacros(module);
       int _size = IterableExtensions.size(macros);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(1));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -369,7 +363,7 @@ public class ErlangGlobalScopingTest {
       _builder.append("-define(XX, xx).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Iterable<IEObjectDescription> macros = this.getExportedMacros(module);
+      final Iterable<IEObjectDescription> macros = this._scopeExtensions.getExportedMacros(module);
       int _size = IterableExtensions.size(macros);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(1));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -392,7 +386,7 @@ public class ErlangGlobalScopingTest {
       _builder.append("-record(rec, {}).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Iterable<IEObjectDescription> recs = this.getExportedRecords(module);
+      final Iterable<IEObjectDescription> recs = this._scopeExtensions.getExportedRecords(module);
       int _size = IterableExtensions.size(recs);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(1));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -413,7 +407,7 @@ public class ErlangGlobalScopingTest {
       _builder.append("-record(rec, {}).");
       _builder.newLine();
       final Module module = this.parser.parse(_builder);
-      final Iterable<IEObjectDescription> recs = this.getExportedRecords(module);
+      final Iterable<IEObjectDescription> recs = this._scopeExtensions.getExportedRecords(module);
       int _size = IterableExtensions.size(recs);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(1));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
@@ -425,47 +419,5 @@ public class ErlangGlobalScopingTest {
     } catch (Exception _e) {
       throw Exceptions.sneakyThrow(_e);
     }
-  }
-  
-  public Manager getIndexProvider(final Resource res) {
-    URI _uRI = res.getURI();
-    IResourceServiceProvider _resourceServiceProvider = this.resourceProviderRegistry.getResourceServiceProvider(_uRI);
-    Manager _resourceDescriptionManager = _resourceServiceProvider.getResourceDescriptionManager();
-    return _resourceDescriptionManager;
-  }
-  
-  public IResourceDescription getDescription(final Module module) {
-    IResourceDescription _xblockexpression = null;
-    {
-      final Resource res = module.eResource();
-      Manager _indexProvider = this.getIndexProvider(res);
-      IResourceDescription _resourceDescription = _indexProvider.getResourceDescription(res);
-      _xblockexpression = (_resourceDescription);
-    }
-    return _xblockexpression;
-  }
-  
-  public Iterable<IEObjectDescription> getExportedDescriptions(final Module module) {
-    IResourceDescription _description = this.getDescription(module);
-    Iterable<IEObjectDescription> _exportedObjects = _description.getExportedObjects();
-    return _exportedObjects;
-  }
-  
-  public Iterable<IEObjectDescription> getExportedFunctions(final Module module) {
-    IResourceDescription _description = this.getDescription(module);
-    Iterable<IEObjectDescription> _exportedObjectsByType = _description.getExportedObjectsByType(Literals.FUNCTION);
-    return _exportedObjectsByType;
-  }
-  
-  public Iterable<IEObjectDescription> getExportedMacros(final Module module) {
-    IResourceDescription _description = this.getDescription(module);
-    Iterable<IEObjectDescription> _exportedObjectsByType = _description.getExportedObjectsByType(Literals.DEFINE_ATTRIBUTE);
-    return _exportedObjectsByType;
-  }
-  
-  public Iterable<IEObjectDescription> getExportedRecords(final Module module) {
-    IResourceDescription _description = this.getDescription(module);
-    Iterable<IEObjectDescription> _exportedObjectsByType = _description.getExportedObjectsByType(Literals.RECORD_ATTRIBUTE);
-    return _exportedObjectsByType;
   }
 }

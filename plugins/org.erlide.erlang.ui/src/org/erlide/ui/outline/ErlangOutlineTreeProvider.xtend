@@ -15,12 +15,18 @@ import org.erlide.erlang.ModuleAttribute
 import org.erlide.erlang.RecordAttribute
 import org.erlide.erlang.DefineAttribute
 import org.erlide.erlang.ErlangPackage
+import com.google.inject.Inject
+import org.erlide.erlang.ScopeExtensions
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 
 /**
  * outline structure -- group same type of forms under common parent
  * 
  */
 public class ErlangOutlineTreeProvider extends DefaultOutlineTreeProvider {
+
+	@Inject
+	extension ScopeExtensions
 
     def dispatch boolean isLeaf(FunctionClause c) {
         true
@@ -30,7 +36,25 @@ public class ErlangOutlineTreeProvider extends DefaultOutlineTreeProvider {
         true
     }
 
+@Inject ResourceDescriptionsProvider provider
+	
+	def void debug_test(Module module) {
+		val resource = module.eResource
+
+   var descriptions = provider.getResourceDescriptions(resource)
+   var resourceSet = resource.resourceSet
+//   for (resourceDescription : descriptions.allResourceDescriptions) {
+//      var uri = resourceDescription.URI
+//      var newResource = resourceSet.getResource(uri, true)
+//      println(">> "+newResource.URI)
+//      //Do something with newResource
+//   }
+//   println("----"+descriptions.allResourceDescriptions.size)
+	}
+
     def dispatch void createChildren(DocumentRootNode parent, Module module) {
+    	//debug_test(module)
+    	
         val recordsNode = new ErlangOutlineNode(parent, null, "Records:", false)
         val exportsNode = new ErlangOutlineNode(parent, null, "Exports:", false)
         val macrosNode = new ErlangOutlineNode(parent, null, "Macros:", false)

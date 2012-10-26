@@ -1,16 +1,14 @@
 package org.erlide.scoping
 
 import com.google.inject.Inject
-import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.naming.IQualifiedNameConverter
-import org.eclipse.xtext.resource.IResourceServiceProvider$Registry
 import org.erlide.ErlangInjectorProvider
-import org.erlide.erlang.ErlangPackage$Literals
 import org.erlide.erlang.ModelExtensions
 import org.erlide.erlang.Module
+import org.erlide.erlang.ScopeExtensions
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -24,11 +22,11 @@ class ErlangGlobalScopingTest {
     @Inject
     ParseHelper<Module> parser
     @Inject
-    IResourceServiceProvider$Registry resourceProviderRegistry
-    @Inject
-    IQualifiedNameConverter cvtr;
+    IQualifiedNameConverter cvtr
     @Inject
     extension ModelExtensions 
+    @Inject
+    extension ScopeExtensions 
 	
 	@Test
 	def void allContents() {
@@ -209,29 +207,5 @@ class ErlangGlobalScopingTest {
         assertThat(cvtr.toString(recs.head.qualifiedName), is("__synthetic0_erl:rec"))
     }
  
- 	def getIndexProvider(Resource res) {
- 		resourceProviderRegistry.getResourceServiceProvider(res.URI).resourceDescriptionManager
- 	}
-    
-	def getDescription(Module module) {
-		val res = module.eResource
- 		getIndexProvider(res).getResourceDescription(res)
-	}
-
-	def getExportedDescriptions(Module module) {
-        module.description.exportedObjects
-	}
-
-	def getExportedFunctions(Module module) {
-        module.description.getExportedObjectsByType(ErlangPackage$Literals::FUNCTION)
-	}
-
-	def getExportedMacros(Module module) {
-        module.description.getExportedObjectsByType(ErlangPackage$Literals::DEFINE_ATTRIBUTE)
-	}
-
-	def getExportedRecords(Module module) {
-        module.description.getExportedObjectsByType(ErlangPackage$Literals::RECORD_ATTRIBUTE)
-	}
 
 }
