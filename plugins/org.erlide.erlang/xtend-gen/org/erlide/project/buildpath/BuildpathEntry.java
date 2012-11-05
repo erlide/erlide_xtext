@@ -1,5 +1,6 @@
 package org.erlide.project.buildpath;
 
+import org.eclipse.core.resources.IResource;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.erlide.project.buildpath.BuildpathAttributes;
 
@@ -37,5 +38,9 @@ public abstract class BuildpathEntry {
         return _buildpathAttributes;
       }
     }.apply());
+  }
+  
+  public boolean hasResource(final IResource resource) {
+    return true;
   }
 }
