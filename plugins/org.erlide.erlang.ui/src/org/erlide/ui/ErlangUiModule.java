@@ -6,6 +6,7 @@ package org.erlide.ui;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
+import org.eclipse.xtext.ui.IImageHelper;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
 import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
@@ -17,6 +18,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.eclipse.xtext.ui.resource.SimpleResourceSetProvider;
+import org.erlide.common.ui.ErlideImageHelper;
 import org.erlide.ui.autoedit.ErlangAutoEditStrategyProvider;
 import org.erlide.ui.folding.MyFoldingRegionProvider;
 import org.erlide.ui.hover.ErlangEObjectDocumentationProvider;
@@ -94,6 +96,11 @@ public class ErlangUiModule extends org.erlide.ui.AbstractErlangUiModule {
     @Override
     public Class<? extends AbstractEditStrategyProvider> bindAbstractEditStrategyProvider() {
         return ErlangAutoEditStrategyProvider.class;
+    }
+
+    @Override
+    public Class<? extends IImageHelper> bindIImageHelper() {
+        return ErlideImageHelper.class;
     }
 
 }

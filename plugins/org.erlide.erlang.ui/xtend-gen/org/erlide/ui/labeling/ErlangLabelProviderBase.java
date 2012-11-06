@@ -144,7 +144,7 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
     EObject _eContainer = clause.eContainer();
     String _name = ((Function) _eContainer).getName();
     s.append(_name, this.grayStyler);
-    s.append("(");
+    s.append(" (");
     s.append(args);
     s.append(")");
     return s;

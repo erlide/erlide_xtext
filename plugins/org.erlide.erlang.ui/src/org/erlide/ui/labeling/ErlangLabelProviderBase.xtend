@@ -88,7 +88,7 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
         val StyledString s = new StyledString
         val args = clause.params.sourceText
         s.append((clause.eContainer as Function).name, grayStyler)
-        s.append("(")
+        s.append(" (")
         s.append(args) 
         s.append(")")
         return s

@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.shared.SharedStateModule;
 import org.eclipse.xtext.util.Modules2;
-import org.erlide.common.ui.CommonUiModule;
 import org.osgi.framework.BundleContext;
 
 import com.google.common.collect.Maps;
@@ -20,38 +19,35 @@ import com.google.inject.Module;
 
 /**
  * This class was generated. Customizations should only happen in a newly
- * introduced subclass.
+ * introduced subclass. 
  */
 public class ErlangActivator extends AbstractUIPlugin {
-
+	
 	public static final String ORG_ERLIDE_ERLANG = "org.erlide.Erlang";
-
-	private static final Logger logger = Logger
-			.getLogger(ErlangActivator.class);
-
+	
+	private static final Logger logger = Logger.getLogger(ErlangActivator.class);
+	
 	private static ErlangActivator INSTANCE;
-
-	private final Map<String, Injector> injectors = Collections
-			.synchronizedMap(Maps
-					.<String, Injector> newHashMapWithExpectedSize(1));
-
+	
+	private Map<String, Injector> injectors = Collections.synchronizedMap(Maps.<String, Injector> newHashMapWithExpectedSize(1));
+	
 	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		INSTANCE = this;
 	}
-
+	
 	@Override
 	public void stop(BundleContext context) throws Exception {
 		injectors.clear();
 		INSTANCE = null;
 		super.stop(context);
 	}
-
+	
 	public static ErlangActivator getInstance() {
 		return INSTANCE;
 	}
-
+	
 	public Injector getInjector(String language) {
 		synchronized (injectors) {
 			Injector injector = injectors.get(language);
@@ -61,21 +57,18 @@ public class ErlangActivator extends AbstractUIPlugin {
 			return injector;
 		}
 	}
-
+	
 	protected Injector createInjector(String language) {
 		try {
 			Module runtimeModule = getRuntimeModule(language);
 			Module sharedStateModule = getSharedStateModule();
 			Module uiModule = getUiModule(language);
-			Module commonUi = getCommonUiModule();
-			Module mergedModule = Modules2.mixin(runtimeModule,
-					sharedStateModule, uiModule, commonUi);
+			Module mergedModule = Modules2.mixin(runtimeModule, sharedStateModule, uiModule);
 			return Guice.createInjector(mergedModule);
 		} catch (Exception e) {
 			logger.error("Failed to create injector for " + language);
 			logger.error(e.getMessage(), e);
-			throw new RuntimeException("Failed to create injector for "
-					+ language, e);
+			throw new RuntimeException("Failed to create injector for " + language, e);
 		}
 	}
 
@@ -83,24 +76,20 @@ public class ErlangActivator extends AbstractUIPlugin {
 		if (ORG_ERLIDE_ERLANG.equals(grammar)) {
 			return new org.erlide.ErlangRuntimeModule();
 		}
-
+		
 		throw new IllegalArgumentException(grammar);
 	}
-
+	
 	protected Module getUiModule(String grammar) {
 		if (ORG_ERLIDE_ERLANG.equals(grammar)) {
 			return new org.erlide.ui.ErlangUiModule(this);
 		}
-
+		
 		throw new IllegalArgumentException(grammar);
 	}
-
+	
 	protected Module getSharedStateModule() {
 		return new SharedStateModule();
 	}
-
-	protected Module getCommonUiModule() {
-		return new CommonUiModule();
-	}
-
+	
 }
