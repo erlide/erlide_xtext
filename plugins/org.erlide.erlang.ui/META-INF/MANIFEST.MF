@@ -38,8 +38,10 @@ Import-Package: com.google.common.annotations,
  org.eclipse.xtend2.lib,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.erlide.erlang.ui.views,
+Export-Package: org.erlide.erlang.ui.ide,
+ org.erlide.erlang.ui.views,
  org.erlide.ui,
+ org.erlide.ui.autoedit,
  org.erlide.ui.contentassist,
  org.erlide.ui.contentassist.antlr,
  org.erlide.ui.contentassist.antlr.internal,

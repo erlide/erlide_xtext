@@ -3,10 +3,16 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Common UI
 Bundle-SymbolicName: org.erlide.common.ui
 Bundle-Version: 0.101.0.qualifier
-Bundle-Activator: org.erlide.common.ui.Activator
+Bundle-Activator: org.erlide.common.ui.CommonUiPlugin
 Bundle-Vendor: erlide.org
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Import-Package: com.google.common.collect,
+ com.google.inject,
+ com.google.inject.name,
+ org.eclipse.xtext.service,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared
 Export-Package: org.erlide.common.ui

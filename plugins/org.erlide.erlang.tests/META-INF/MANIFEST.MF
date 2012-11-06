@@ -40,10 +40,12 @@ Import-Package: com.google.common.annotations,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.erlide,
  org.erlide.erlang,
+ org.erlide.erlang.completion,
+ org.erlide.erlang.edoc,
  org.erlide.erlang.util,
  org.erlide.formatting,
  org.erlide.naming,
  org.erlide.project.buildpath.convert,
  org.erlide.project.model.impl,
  org.erlide.scoping,
- reference
+ reference;x-internal:=true
