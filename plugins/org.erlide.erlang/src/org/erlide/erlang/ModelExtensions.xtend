@@ -77,7 +77,7 @@ class ModelExtensions {
 //	}
 	
     def boolean exportsFunction(Module module, Function function) {
-        module.declaredExportNames.contains(namer.getFullyQualifiedName(function).lastSegment) || module.exportsAll
+        module.declaredExportNames.contains(function.funRef) || module.exportsAll
     } 
 
 	def Collection<Function> getDeclaredExports(Module module) {
@@ -247,6 +247,10 @@ class ModelExtensions {
 		if(c.isAssignableFrom(obj.^class)) return true
 		if(obj instanceof Module) return false
 		return hasParentOfClass(obj.eContainer, c)
+	}
+
+	def String funRef(Function f) {
+		f.name+"/"+f.arity
 	}
 
 }

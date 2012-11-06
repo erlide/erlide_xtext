@@ -156,9 +156,8 @@ public class ModelExtensions {
   public boolean exportsFunction(final Module module, final Function function) {
     boolean _or = false;
     Collection<String> _declaredExportNames = this.getDeclaredExportNames(module);
-    QualifiedName _fullyQualifiedName = this.namer.getFullyQualifiedName(function);
-    String _lastSegment = _fullyQualifiedName.getLastSegment();
-    boolean _contains = _declaredExportNames.contains(_lastSegment);
+    String _funRef = this.funRef(function);
+    boolean _contains = _declaredExportNames.contains(_funRef);
     if (_contains) {
       _or = true;
     } else {
@@ -684,6 +683,14 @@ public class ModelExtensions {
     }
     EObject _eContainer = obj.eContainer();
     return this.hasParentOfClass(_eContainer, c);
+  }
+  
+  public String funRef(final Function f) {
+    String _name = f.getName();
+    String _plus = (_name + "/");
+    int _arity = this.getArity(f);
+    String _plus_1 = (_plus + Integer.valueOf(_arity));
+    return _plus_1;
   }
   
   public Module getOwningModule(final EObject element) {
