@@ -30,7 +30,7 @@ import org.erlide.ui.outline.ErlangOutlineNode;
  * outline structure -- group same type of forms under common parent
  */
 @SuppressWarnings("all")
-public class ErlangOutlineTreeProvider extends DefaultOutlineTreeProvider {
+public class ErlangOutlineTreeProviderBase extends DefaultOutlineTreeProvider {
   @Inject
   private ScopeExtensions _scopeExtensions;
   

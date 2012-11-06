@@ -37,12 +37,12 @@ import org.erlide.ui.labeling.ErlideStyler;
  * http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
 @SuppressWarnings("all")
-public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
+public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
   private final Styler grayStyler = new Function0<Styler>() {
     public Styler apply() {
       Display _current = Display.getCurrent();
       Color _systemColor = _current.getSystemColor(SWT.COLOR_GRAY);
-      Styler _createStyler = ErlangLabelProvider.createStyler(null, _systemColor);
+      Styler _createStyler = ErlangLabelProviderBase.createStyler(null, _systemColor);
       return _createStyler;
     }
   }.apply();
@@ -51,7 +51,7 @@ public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
   private ModelExtensions _modelExtensions;
   
   @Inject
-  public ErlangLabelProvider(final AdapterFactoryLabelProvider delegate) {
+  public ErlangLabelProviderBase(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
   
@@ -140,8 +140,13 @@ public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
     StyledString _styledString = new StyledString();
     final StyledString s = _styledString;
     Expressions _params = clause.getParams();
-    final String args = _params.toString();
+    final String args = this._modelExtensions.getSourceText(_params);
+    EObject _eContainer = clause.eContainer();
+    String _name = ((Function) _eContainer).getName();
+    s.append(_name, this.grayStyler);
+    s.append("(");
     s.append(args);
+    s.append(")");
     return s;
   }
   
@@ -167,7 +172,7 @@ public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
   public String getListText(final EList<Expression> list) {
     final Function1<Expression,String> _function = new Function1<Expression,String>() {
         public String apply(final Expression it) {
-          String _sourceText = ErlangLabelProvider.this._modelExtensions.getSourceText(it);
+          String _sourceText = ErlangLabelProviderBase.this._modelExtensions.getSourceText(it);
           return _sourceText;
         }
       };

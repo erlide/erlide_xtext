@@ -28,7 +28,7 @@ import org.erlide.erlang.RecordAttribute
  * see
  * http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
-public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
+public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
 
     val Styler grayStyler = createStyler(null, Display::current.getSystemColor(SWT::COLOR_GRAY))
 
@@ -86,8 +86,11 @@ public class ErlangLabelProvider extends DefaultEObjectLabelProvider {
     
     def Object text(FunctionClause clause) {
         val StyledString s = new StyledString
-        val args = clause.params.toString
-        s.append(args) //.substring(1, args.length-1))
+        val args = clause.params.sourceText
+        s.append((clause.eContainer as Function).name, grayStyler)
+        s.append("(")
+        s.append(args) 
+        s.append(")")
         return s
     }
     

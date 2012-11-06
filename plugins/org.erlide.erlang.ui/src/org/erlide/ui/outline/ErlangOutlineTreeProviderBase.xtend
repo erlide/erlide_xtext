@@ -23,7 +23,7 @@ import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
  * outline structure -- group same type of forms under common parent
  * 
  */
-public class ErlangOutlineTreeProvider extends DefaultOutlineTreeProvider {
+public class ErlangOutlineTreeProviderBase extends DefaultOutlineTreeProvider {
 
 	@Inject
 	extension ScopeExtensions
