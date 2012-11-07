@@ -109,7 +109,7 @@ public class ErlideImageHelper implements IImageHelper,
                                 imgUrl.toExternalForm(), result);
                     }
                 }
-                System.out.println(result);
+                // System.out.println(result);
                 return result;
             }
             if (!imgname.equals(notFound)) {
