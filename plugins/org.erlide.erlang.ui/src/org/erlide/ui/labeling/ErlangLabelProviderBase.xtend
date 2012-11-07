@@ -30,7 +30,7 @@ import org.erlide.erlang.RecordAttribute
  */
 public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
 
-    val Styler grayStyler = createStyler(null, Display::current.getSystemColor(SWT::COLOR_GRAY))
+    val Styler grayStyler
 
 	@Inject
 	extension ModelExtensions
@@ -38,6 +38,7 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
 	@Inject
 	new(AdapterFactoryLabelProvider delegate) {
 		super(delegate)
+		grayStyler = createStyler(null, Display::current?.getSystemColor(SWT::COLOR_GRAY))
 	}
 
     def Object text(Module module) {

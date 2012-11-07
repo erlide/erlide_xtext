@@ -13,7 +13,6 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -38,14 +37,7 @@ import org.erlide.ui.labeling.ErlideStyler;
  */
 @SuppressWarnings("all")
 public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
-  private final Styler grayStyler = new Function0<Styler>() {
-    public Styler apply() {
-      Display _current = Display.getCurrent();
-      Color _systemColor = _current.getSystemColor(SWT.COLOR_GRAY);
-      Styler _createStyler = ErlangLabelProviderBase.createStyler(null, _systemColor);
-      return _createStyler;
-    }
-  }.apply();
+  private final Styler grayStyler;
   
   @Inject
   private ModelExtensions _modelExtensions;
@@ -53,6 +45,10 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
   @Inject
   public ErlangLabelProviderBase(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current==null?(Color)null:_current.getSystemColor(SWT.COLOR_GRAY);
+    Styler _createStyler = ErlangLabelProviderBase.createStyler(null, _systemColor);
+    this.grayStyler = _createStyler;
   }
   
   public Object text(final Module module) {
