@@ -17,6 +17,7 @@ import org.erlide.erlang.AbstractIncludeAttribute;
 import org.erlide.erlang.AbstractTypeAttribute;
 import org.erlide.erlang.AddOp;
 import org.erlide.erlang.Atom;
+import org.erlide.erlang.AtomRef;
 import org.erlide.erlang.AtomRefTarget;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.BinBaseType;
@@ -690,6 +691,13 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass atomEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass erlCharEClass = null;
 
   /**
@@ -697,7 +705,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass atomEClass = null;
+  private EClass atomRefEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -3051,6 +3059,26 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getAtom()
+  {
+    return atomEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAtom_Value()
+  {
+    return (EAttribute)atomEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getErlChar()
   {
     return erlCharEClass;
@@ -3071,9 +3099,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAtom()
+  public EClass getAtomRef()
   {
-    return atomEClass;
+    return atomRefEClass;
   }
 
   /**
@@ -3081,9 +3109,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAtom_Value()
+  public EReference getAtomRef_Value()
   {
-    return (EReference)atomEClass.getEStructuralFeatures().get(0);
+    return (EReference)atomRefEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3717,11 +3745,14 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     blockExprEClass = createEClass(BLOCK_EXPR);
     createEReference(blockExprEClass, BLOCK_EXPR__BODY);
 
+    atomEClass = createEClass(ATOM);
+    createEAttribute(atomEClass, ATOM__VALUE);
+
     erlCharEClass = createEClass(ERL_CHAR);
     createEAttribute(erlCharEClass, ERL_CHAR__VALUE);
 
-    atomEClass = createEClass(ATOM);
-    createEReference(atomEClass, ATOM__VALUE);
+    atomRefEClass = createEClass(ATOM_REF);
+    createEReference(atomRefEClass, ATOM_REF__VALUE);
 
     macroEClass = createEClass(MACRO);
     createEReference(macroEClass, MACRO__VALUE);
@@ -3858,8 +3889,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     funCallEClass.getESuperTypes().add(this.getExpression());
     remoteTargetEClass.getESuperTypes().add(this.getExpression());
     blockExprEClass.getESuperTypes().add(this.getExpression());
-    erlCharEClass.getESuperTypes().add(this.getExpression());
     atomEClass.getESuperTypes().add(this.getExpression());
+    erlCharEClass.getESuperTypes().add(this.getExpression());
+    atomRefEClass.getESuperTypes().add(this.getExpression());
     macroEClass.getESuperTypes().add(this.getExpression());
     variableEClass.getESuperTypes().add(this.getExpression());
     erlFloatEClass.getESuperTypes().add(this.getExpression());
@@ -4116,7 +4148,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEAttribute(getType_Value(), ecorePackage.getEString(), "value", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldTypeEClass, FieldType.class, "FieldType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFieldType_TypeName(), this.getExpression(), null, "typeName", null, 0, 1, FieldType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFieldType_TypeName(), this.getTypeAttribute(), null, "typeName", null, 0, 1, FieldType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFieldType_Type(), this.getTopType(), null, "type", null, 0, 1, FieldType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(binaryTypeEClass, BinaryType.class, "BinaryType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4175,11 +4207,14 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEClass(blockExprEClass, BlockExpr.class, "BlockExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBlockExpr_Body(), this.getExpressions(), null, "body", null, 0, 1, BlockExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(atomEClass, Atom.class, "Atom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAtom_Value(), ecorePackage.getEString(), "value", null, 0, 1, Atom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(erlCharEClass, ErlChar.class, "ErlChar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getErlChar_Value(), ecorePackage.getEString(), "value", null, 0, 1, ErlChar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(atomEClass, Atom.class, "Atom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAtom_Value(), this.getAtomRefTarget(), null, "value", null, 0, 1, Atom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(atomRefEClass, AtomRef.class, "AtomRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAtomRef_Value(), this.getAtomRefTarget(), null, "value", null, 0, 1, AtomRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(macroEClass, Macro.class, "Macro", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMacro_Value(), this.getDefineAttribute(), null, "value", null, 0, 1, Macro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

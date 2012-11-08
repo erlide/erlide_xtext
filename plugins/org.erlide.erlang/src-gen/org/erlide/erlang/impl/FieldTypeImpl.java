@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.Expression;
 import org.erlide.erlang.FieldType;
 import org.erlide.erlang.TopType;
+import org.erlide.erlang.TypeAttribute;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,14 +36,14 @@ import org.erlide.erlang.TopType;
 public class FieldTypeImpl extends MinimalEObjectImpl.Container implements FieldType
 {
   /**
-   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' containment reference.
+   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected Expression typeName;
+  protected TypeAttribute typeName;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -81,7 +81,27 @@ public class FieldTypeImpl extends MinimalEObjectImpl.Container implements Field
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expression getTypeName()
+  public TypeAttribute getTypeName()
+  {
+    if (typeName != null && typeName.eIsProxy())
+    {
+      InternalEObject oldTypeName = (InternalEObject)typeName;
+      typeName = (TypeAttribute)eResolveProxy(oldTypeName);
+      if (typeName != oldTypeName)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.FIELD_TYPE__TYPE_NAME, oldTypeName, typeName));
+      }
+    }
+    return typeName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TypeAttribute basicGetTypeName()
   {
     return typeName;
   }
@@ -91,37 +111,12 @@ public class FieldTypeImpl extends MinimalEObjectImpl.Container implements Field
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTypeName(Expression newTypeName, NotificationChain msgs)
+  public void setTypeName(TypeAttribute newTypeName)
   {
-    Expression oldTypeName = typeName;
+    TypeAttribute oldTypeName = typeName;
     typeName = newTypeName;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.FIELD_TYPE__TYPE_NAME, oldTypeName, newTypeName);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTypeName(Expression newTypeName)
-  {
-    if (newTypeName != typeName)
-    {
-      NotificationChain msgs = null;
-      if (typeName != null)
-        msgs = ((InternalEObject)typeName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FIELD_TYPE__TYPE_NAME, null, msgs);
-      if (newTypeName != null)
-        msgs = ((InternalEObject)newTypeName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.FIELD_TYPE__TYPE_NAME, null, msgs);
-      msgs = basicSetTypeName(newTypeName, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FIELD_TYPE__TYPE_NAME, newTypeName, newTypeName));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.FIELD_TYPE__TYPE_NAME, oldTypeName, typeName));
   }
 
   /**
@@ -182,8 +177,6 @@ public class FieldTypeImpl extends MinimalEObjectImpl.Container implements Field
   {
     switch (featureID)
     {
-      case ErlangPackage.FIELD_TYPE__TYPE_NAME:
-        return basicSetTypeName(null, msgs);
       case ErlangPackage.FIELD_TYPE__TYPE:
         return basicSetType(null, msgs);
     }
@@ -201,7 +194,8 @@ public class FieldTypeImpl extends MinimalEObjectImpl.Container implements Field
     switch (featureID)
     {
       case ErlangPackage.FIELD_TYPE__TYPE_NAME:
-        return getTypeName();
+        if (resolve) return getTypeName();
+        return basicGetTypeName();
       case ErlangPackage.FIELD_TYPE__TYPE:
         return getType();
     }
@@ -219,7 +213,7 @@ public class FieldTypeImpl extends MinimalEObjectImpl.Container implements Field
     switch (featureID)
     {
       case ErlangPackage.FIELD_TYPE__TYPE_NAME:
-        setTypeName((Expression)newValue);
+        setTypeName((TypeAttribute)newValue);
         return;
       case ErlangPackage.FIELD_TYPE__TYPE:
         setType((TopType)newValue);
@@ -239,7 +233,7 @@ public class FieldTypeImpl extends MinimalEObjectImpl.Container implements Field
     switch (featureID)
     {
       case ErlangPackage.FIELD_TYPE__TYPE_NAME:
-        setTypeName((Expression)null);
+        setTypeName((TypeAttribute)null);
         return;
       case ErlangPackage.FIELD_TYPE__TYPE:
         setType((TopType)null);

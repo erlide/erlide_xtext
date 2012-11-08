@@ -25,12 +25,16 @@ public class ErlangResourceDescriptionStrategy extends
         }
         // System.out.println("??? " + eObject);
         try {
-            final QualifiedName qualifiedName = getQualifiedNameProvider()
-                    .getFullyQualifiedName(eObject);
             if (eObject instanceof Module) {
-                // System.out.println("=== " + qualifiedName);
-                acceptor.accept(EObjectDescription.create(qualifiedName,
-                        eObject));
+                final QualifiedName qualifiedName = getQualifiedNameProvider()
+                        .getFullyQualifiedName(eObject);
+                if (qualifiedName == null) {
+                    System.out.println("ERR> null qname for " + eObject);
+                } else {
+                    // System.out.println("=== " + qualifiedName);
+                    acceptor.accept(EObjectDescription.create(qualifiedName,
+                            eObject));
+                }
             }
         } catch (final Exception exc) {
             exc.printStackTrace();

@@ -755,6 +755,15 @@ public interface ErlangFactory extends EFactory
   BlockExpr createBlockExpr();
 
   /**
+   * Returns a new object of class '<em>Atom</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Atom</em>'.
+   * @generated
+   */
+  Atom createAtom();
+
+  /**
    * Returns a new object of class '<em>Erl Char</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -764,13 +773,13 @@ public interface ErlangFactory extends EFactory
   ErlChar createErlChar();
 
   /**
-   * Returns a new object of class '<em>Atom</em>'.
+   * Returns a new object of class '<em>Atom Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Atom</em>'.
+   * @return a new object of class '<em>Atom Ref</em>'.
    * @generated
    */
-  Atom createAtom();
+  AtomRef createAtomRef();
 
   /**
    * Returns a new object of class '<em>Macro</em>'.

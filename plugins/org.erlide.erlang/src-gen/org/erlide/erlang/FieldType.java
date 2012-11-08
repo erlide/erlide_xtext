@@ -27,30 +27,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface FieldType extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Type Name</b></em>' containment reference.
+   * Returns the value of the '<em><b>Type Name</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type Name</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Type Name</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type Name</em>' containment reference.
-   * @see #setTypeName(Expression)
+   * @return the value of the '<em>Type Name</em>' reference.
+   * @see #setTypeName(TypeAttribute)
    * @see org.erlide.erlang.ErlangPackage#getFieldType_TypeName()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  Expression getTypeName();
+  TypeAttribute getTypeName();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.FieldType#getTypeName <em>Type Name</em>}' containment reference.
+   * Sets the value of the '{@link org.erlide.erlang.FieldType#getTypeName <em>Type Name</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type Name</em>' containment reference.
+   * @param value the new value of the '<em>Type Name</em>' reference.
    * @see #getTypeName()
    * @generated
    */
-  void setTypeName(Expression value);
+  void setTypeName(TypeAttribute value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.

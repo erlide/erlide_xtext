@@ -136,7 +136,7 @@ ExportAttribute:
 
 ImportAttribute:
 	=> tag='import' 
-		'(' module=AtomVarMacro ',' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
+		'(' module=ModuleVarMacro ',' '[' (funs+=FunRef (',' funs+=FunRef)*)? ']' ')' 
 	'.'
 ;
 
@@ -277,7 +277,7 @@ MacroCall:
 ;
 
 RecordExpr:
-	rec=AtomVarMacro (('.' field=AtomVarMacro) | tuple=RecordTuple)
+	rec=RecordVarMacro (('.' field=RecordFieldVarMacro) | tuple=RecordTuple)
 ;
 
 // NYI
@@ -299,19 +299,35 @@ RecordTuple:
 	{RecordTuple} '{' (fields+=RecordFieldExpr (',' fields+=RecordFieldExpr)*)? '}';
 
 RecordFieldExpr:
-	ref=AtomVarMacro ('=' value=Expression)? ('::' type=TopType)?
+	ref=RecordFieldVarMacro ('=' value=Expression)? ('::' type=TopType)?
 ;
 
 LiteralExpressionNoNumber returns Expression:
-	  AtomRefLiteral
+	  {Atom} value=NAME
 	| VariableLiteral 
 	| {ErlChar} value=CHAR 
 	| MacroLiteral 
 	| StringLiteral  
 ;
 
-AtomRefLiteral returns Expression: 
-	{Atom} value=[AtomRefTarget|NAME]
+ModuleRef returns Expression: 
+	{AtomRef} value=[Module|NAME]
+;
+
+FunctionRef returns Expression: 
+	{AtomRef} value=[Function|NAME]
+;
+
+RecordRef returns Expression: 
+	{AtomRef} value=[RecordAttribute|NAME]
+;
+
+RecordFieldRef returns Expression: 
+	{AtomRef} value=[RecordFieldDef|NAME]
+;
+
+TypeRef returns Expression: 
+	{AtomRef} value=[TypeAttribute|NAME]
 ;
 
 MacroLiteral returns Expression:
@@ -386,7 +402,7 @@ FunExpr:
 ;
 
 FunRef:
-	(module=AtomVarMacro ':')? function=AtomVarMacro '/' arity=IntVarMacro
+	(module=ModuleVarMacro ':')? function=FunctionVarMacro '/' arity=IntVarMacro
 ;
 
 InlineFun returns FunExpr:
@@ -471,8 +487,24 @@ SENDOP:
 
 // Literal combinations
 
-AtomVarMacro returns Expression:
-	AtomRefLiteral	| VariableLiteral | MacroLiteral
+ModuleVarMacro returns Expression:
+	ModuleRef | VariableLiteral | MacroLiteral
+;
+
+FunctionVarMacro returns Expression:
+	FunctionRef	| VariableLiteral | MacroLiteral
+;
+
+RecordVarMacro returns Expression:
+	RecordRef	| VariableLiteral | MacroLiteral
+;
+
+RecordFieldVarMacro returns Expression:
+	RecordFieldRef	| VariableLiteral | MacroLiteral
+;
+
+TypeVarMacro returns Expression:
+	TypeRef	| VariableLiteral | MacroLiteral
 ;
 
 IntVarMacro returns Expression: 
@@ -589,7 +621,7 @@ terminal fragment HEX_DIGIT:
 // Type language
 
 SpecFun returns FunRef:
-	(module=AtomVarMacro ':')? function=AtomVarMacro ('/' arity=IntVarMacro '::')?
+	(module=ModuleVarMacro ':')? function=FunctionVarMacro ('/' arity=IntVarMacro '::')?
 ;
 
 TypeSig:
@@ -602,7 +634,7 @@ TypeGuards:
 	items+=TypeGuard (',' items+=TypeGuard)*;
 
 TypeGuard:
-	  typeName=AtomRefLiteral '(' types+=TopType (',' types+=TopType)* ')' 
+	  typeName=TypeRef '(' types+=TopType (',' types+=TopType)* ')' 
 	| typeName=VariableLiteral '::' type=TopType
 ;
 
@@ -628,18 +660,18 @@ Type500:
 
 Type:
 	'(' TopType ')' 
-	| {RemoteType} (m=AtomVarMacro ':')? typeName=AtomRefLiteral ('(' (args+=TopType (',' args+=TopType)*)? ')')? 
+	| {RemoteType} (m=ModuleVarMacro ':')? typeName=TypeRef ('(' (args+=TopType (',' args+=TopType)*)? ')')? 
 	| typeName=VariableLiteral 
 	| value=INTEGER 
 	| '[' {ListType} (type=TopType	(',' '...')?)? ']' 
 	| '{' {TupleType} (types+=TopType (',' types+=TopType)*)? '}' 
-	| '#' {RecordType} rec=AtomRefLiteral '{' (fields+=FieldType (',' fields+=FieldType)*)? '}' 
+	| '#' {RecordType} rec=RecordRef '{' (fields+=FieldType (',' fields+=FieldType)*)? '}' 
 	| BinaryType
 	| 'fun' {FunType} '(' type=FunType100? ')' 
 ;
 
 FieldType:
-	typeName=AtomRefLiteral '::' type=TopType;
+	typeName=[TypeAttribute|ATOM] '::' type=TopType;
 
 BinaryType:
 	'<<' {BinaryType}

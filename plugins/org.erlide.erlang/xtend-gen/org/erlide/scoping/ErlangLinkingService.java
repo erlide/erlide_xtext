@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.linking.impl.DefaultLinkingService;
@@ -33,7 +34,7 @@ public class ErlangLinkingService extends DefaultLinkingService {
   
   public List<EObject> getLinkedObjects(final EObject context, final EReference ref, final INode node) {
     EObject aref = null;
-    EReference _atom_Value = ErlangPackage.eINSTANCE.getAtom_Value();
+    EAttribute _atom_Value = ErlangPackage.eINSTANCE.getAtom_Value();
     boolean _equals = Objects.equal(ref, _atom_Value);
     if (_equals) {
       AtomRefTarget _atomReference = this.linkHelper.getAtomReference(((Atom) context));

@@ -483,14 +483,19 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createBlockExprAdapter();
       }
       @Override
+      public Adapter caseAtom(Atom object)
+      {
+        return createAtomAdapter();
+      }
+      @Override
       public Adapter caseErlChar(ErlChar object)
       {
         return createErlCharAdapter();
       }
       @Override
-      public Adapter caseAtom(Atom object)
+      public Adapter caseAtomRef(AtomRef object)
       {
-        return createAtomAdapter();
+        return createAtomRefAdapter();
       }
       @Override
       public Adapter caseMacro(Macro object)
@@ -1790,6 +1795,21 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.Atom <em>Atom</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.Atom
+   * @generated
+   */
+  public Adapter createAtomAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.erlide.erlang.ErlChar <em>Erl Char</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1805,16 +1825,16 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.Atom <em>Atom</em>}'.
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.AtomRef <em>Atom Ref</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.erlide.erlang.Atom
+   * @see org.erlide.erlang.AtomRef
    * @generated
    */
-  public Adapter createAtomAdapter()
+  public Adapter createAtomRefAdapter()
   {
     return null;
   }

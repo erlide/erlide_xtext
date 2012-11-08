@@ -25,29 +25,29 @@ package org.erlide.erlang;
 public interface Atom extends Expression
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' reference.
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value</em>' reference isn't clear,
+   * If the meaning of the '<em>Value</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' reference.
-   * @see #setValue(AtomRefTarget)
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(String)
    * @see org.erlide.erlang.ErlangPackage#getAtom_Value()
    * @model
    * @generated
    */
-  AtomRefTarget getValue();
+  String getValue();
 
   /**
-   * Sets the value of the '{@link org.erlide.erlang.Atom#getValue <em>Value</em>}' reference.
+   * Sets the value of the '{@link org.erlide.erlang.Atom#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' reference.
+   * @param value the new value of the '<em>Value</em>' attribute.
    * @see #getValue()
    * @generated
    */
-  void setValue(AtomRefTarget value);
+  void setValue(String value);
 
 } // Atom

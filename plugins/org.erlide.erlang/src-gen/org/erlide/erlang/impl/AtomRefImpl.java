@@ -8,53 +8,45 @@ package org.erlide.erlang.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.erlide.erlang.Atom;
+import org.erlide.erlang.AtomRef;
+import org.erlide.erlang.AtomRefTarget;
 import org.erlide.erlang.ErlangPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Atom</b></em>'.
+ * An implementation of the model object '<em><b>Atom Ref</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.AtomImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.AtomRefImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class AtomImpl extends ExpressionImpl implements Atom
+public class AtomRefImpl extends ExpressionImpl implements AtomRef
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
+  protected AtomRefTarget value;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AtomImpl()
+  protected AtomRefImpl()
   {
     super();
   }
@@ -67,7 +59,7 @@ public class AtomImpl extends ExpressionImpl implements Atom
   @Override
   protected EClass eStaticClass()
   {
-    return ErlangPackage.Literals.ATOM;
+    return ErlangPackage.Literals.ATOM_REF;
   }
 
   /**
@@ -75,7 +67,27 @@ public class AtomImpl extends ExpressionImpl implements Atom
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public AtomRefTarget getValue()
+  {
+    if (value != null && value.eIsProxy())
+    {
+      InternalEObject oldValue = (InternalEObject)value;
+      value = (AtomRefTarget)eResolveProxy(oldValue);
+      if (value != oldValue)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.ATOM_REF__VALUE, oldValue, value));
+      }
+    }
+    return value;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AtomRefTarget basicGetValue()
   {
     return value;
   }
@@ -85,12 +97,12 @@ public class AtomImpl extends ExpressionImpl implements Atom
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(String newValue)
+  public void setValue(AtomRefTarget newValue)
   {
-    String oldValue = value;
+    AtomRefTarget oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ATOM__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.ATOM_REF__VALUE, oldValue, value));
   }
 
   /**
@@ -103,8 +115,9 @@ public class AtomImpl extends ExpressionImpl implements Atom
   {
     switch (featureID)
     {
-      case ErlangPackage.ATOM__VALUE:
-        return getValue();
+      case ErlangPackage.ATOM_REF__VALUE:
+        if (resolve) return getValue();
+        return basicGetValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +132,8 @@ public class AtomImpl extends ExpressionImpl implements Atom
   {
     switch (featureID)
     {
-      case ErlangPackage.ATOM__VALUE:
-        setValue((String)newValue);
+      case ErlangPackage.ATOM_REF__VALUE:
+        setValue((AtomRefTarget)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +149,8 @@ public class AtomImpl extends ExpressionImpl implements Atom
   {
     switch (featureID)
     {
-      case ErlangPackage.ATOM__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case ErlangPackage.ATOM_REF__VALUE:
+        setValue((AtomRefTarget)null);
         return;
     }
     super.eUnset(featureID);
@@ -153,27 +166,10 @@ public class AtomImpl extends ExpressionImpl implements Atom
   {
     switch (featureID)
     {
-      case ErlangPackage.ATOM__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case ErlangPackage.ATOM_REF__VALUE:
+        return value != null;
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(value);
-    result.append(')');
-    return result.toString();
-  }
-
-} //AtomImpl
+} //AtomRefImpl

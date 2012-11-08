@@ -235,7 +235,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Type/value"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//FieldType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FieldType/typeName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//FieldType/typeName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//FieldType/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BinaryType">
@@ -292,11 +292,14 @@
     <genClasses ecoreClass="Erlang.ecore#//BlockExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BlockExpr/body"/>
     </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//Atom">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Atom/value"/>
+    </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ErlChar">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ErlChar/value"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//Atom">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//Atom/value"/>
+    <genClasses ecoreClass="Erlang.ecore#//AtomRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//AtomRef/value"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//Macro">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//Macro/value"/>

@@ -750,6 +750,14 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ErlangPackage.ATOM:
+      {
+        Atom atom = (Atom)theEObject;
+        T result = caseAtom(atom);
+        if (result == null) result = caseExpression(atom);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ErlangPackage.ERL_CHAR:
       {
         ErlChar erlChar = (ErlChar)theEObject;
@@ -758,11 +766,11 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.ATOM:
+      case ErlangPackage.ATOM_REF:
       {
-        Atom atom = (Atom)theEObject;
-        T result = caseAtom(atom);
-        if (result == null) result = caseExpression(atom);
+        AtomRef atomRef = (AtomRef)theEObject;
+        T result = caseAtomRef(atomRef);
+        if (result == null) result = caseExpression(atomRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -2189,6 +2197,22 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Atom</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Atom</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAtom(Atom object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Erl Char</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -2205,17 +2229,17 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Atom</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Atom Ref</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Atom</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Atom Ref</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAtom(Atom object)
+  public T caseAtomRef(AtomRef object)
   {
     return null;
   }

@@ -316,8 +316,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FieldType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="typeName" eType="#//Expression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeName" eType="#//TypeAttribute"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//TopType"
         containment="true"/>
   </eClassifiers>
@@ -395,10 +394,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Expressions"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Atom" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ErlChar" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Atom" eSuperTypes="#//Expression">
+  <eClassifiers xsi:type="ecore:EClass" name="AtomRef" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//AtomRefTarget"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Macro" eSuperTypes="#//Expression">

@@ -15,6 +15,7 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.erlide.erlang.AddOp;
 import org.erlide.erlang.Atom;
+import org.erlide.erlang.AtomRef;
 import org.erlide.erlang.BinBaseType;
 import org.erlide.erlang.BinOp;
 import org.erlide.erlang.BinUnitType;
@@ -137,9 +138,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				}
 				else break;
 			case ErlangPackage.ATOM:
-				if(context == grammarAccess.getAtomRefLiteralRule() ||
-				   context == grammarAccess.getAtomVarMacroRule() ||
-				   context == grammarAccess.getExpr100Rule() ||
+				if(context == grammarAccess.getExpr100Rule() ||
 				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
 				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
 				   context == grammarAccess.getExpr150Rule() ||
@@ -170,7 +169,34 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				   context == grammarAccess.getTermExpressionRule() ||
 				   context == grammarAccess.getUnaryExprRule() ||
 				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_AtomRefLiteral(context, (Atom) semanticObject); 
+					sequence_LiteralExpressionNoNumber(context, (Atom) semanticObject); 
+					return; 
+				}
+				else break;
+			case ErlangPackage.ATOM_REF:
+				if(context == grammarAccess.getFunctionRefRule() ||
+				   context == grammarAccess.getFunctionVarMacroRule()) {
+					sequence_FunctionRef(context, (AtomRef) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getModuleRefRule() ||
+				   context == grammarAccess.getModuleVarMacroRule()) {
+					sequence_ModuleRef(context, (AtomRef) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getRecordFieldRefRule() ||
+				   context == grammarAccess.getRecordFieldVarMacroRule()) {
+					sequence_RecordFieldRef(context, (AtomRef) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getRecordRefRule() ||
+				   context == grammarAccess.getRecordVarMacroRule()) {
+					sequence_RecordRef(context, (AtomRef) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getTypeRefRule() ||
+				   context == grammarAccess.getTypeVarMacroRule()) {
+					sequence_TypeRef(context, (AtomRef) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1049,8 +1075,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				}
 				else break;
 			case ErlangPackage.MACRO:
-				if(context == grammarAccess.getAtomVarMacroRule() ||
-				   context == grammarAccess.getExpr100Rule() ||
+				if(context == grammarAccess.getExpr100Rule() ||
 				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
 				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
 				   context == grammarAccess.getExpr150Rule() ||
@@ -1072,15 +1097,20 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
 				   context == grammarAccess.getExprMaxRule() ||
 				   context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getFunctionVarMacroRule() ||
 				   context == grammarAccess.getIntVarMacroRule() ||
 				   context == grammarAccess.getLExpressionRule() ||
 				   context == grammarAccess.getLiteralExpressionRule() ||
 				   context == grammarAccess.getLiteralExpressionNoNumberRule() ||
 				   context == grammarAccess.getMacroLiteralRule() ||
+				   context == grammarAccess.getModuleVarMacroRule() ||
 				   context == grammarAccess.getPatternExpressionRule() ||
 				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
 				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
+				   context == grammarAccess.getRecordFieldVarMacroRule() ||
+				   context == grammarAccess.getRecordVarMacroRule() ||
 				   context == grammarAccess.getTermExpressionRule() ||
+				   context == grammarAccess.getTypeVarMacroRule() ||
 				   context == grammarAccess.getUnaryExprRule() ||
 				   context == grammarAccess.getUnaryExprMaxRule()) {
 					sequence_MacroLiteral(context, (Macro) semanticObject); 
@@ -1570,8 +1600,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				}
 				else break;
 			case ErlangPackage.VARIABLE:
-				if(context == grammarAccess.getAtomVarMacroRule() ||
-				   context == grammarAccess.getExpr100Rule() ||
+				if(context == grammarAccess.getExpr100Rule() ||
 				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
 				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
 				   context == grammarAccess.getExpr150Rule() ||
@@ -1593,14 +1622,19 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				   context == grammarAccess.getExpr800Access().getRemoteTargetModuleAction_1_0() ||
 				   context == grammarAccess.getExprMaxRule() ||
 				   context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getFunctionVarMacroRule() ||
 				   context == grammarAccess.getIntVarMacroRule() ||
 				   context == grammarAccess.getLExpressionRule() ||
 				   context == grammarAccess.getLiteralExpressionRule() ||
 				   context == grammarAccess.getLiteralExpressionNoNumberRule() ||
+				   context == grammarAccess.getModuleVarMacroRule() ||
 				   context == grammarAccess.getPatternExpressionRule() ||
 				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
 				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
+				   context == grammarAccess.getRecordFieldVarMacroRule() ||
+				   context == grammarAccess.getRecordVarMacroRule() ||
 				   context == grammarAccess.getTermExpressionRule() ||
+				   context == grammarAccess.getTypeVarMacroRule() ||
 				   context == grammarAccess.getUnaryExprRule() ||
 				   context == grammarAccess.getUnaryExprMaxRule() ||
 				   context == grammarAccess.getVariableLiteralRule()) {
@@ -1611,15 +1645,6 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
-	
-	/**
-	 * Constraint:
-	 *     value=[AtomRefTarget|NAME]
-	 */
-	protected void sequence_AtomRefLiteral(EObject context, Atom semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
 	
 	/**
 	 * Constraint:
@@ -1874,7 +1899,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     ((rec=AtomVarMacro (field=AtomVarMacro | tuple=RecordTuple)) | (ref=Expr700_RecordExpr_1_1_1 record=RecordExpr))
+	 *     ((rec=RecordVarMacro (field=RecordFieldVarMacro | tuple=RecordTuple)) | (ref=Expr700_RecordExpr_1_1_1 record=RecordExpr))
 	 */
 	protected void sequence_Expr700_ExprMax_RecordExpr(EObject context, RecordExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1896,7 +1921,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     ((ref=Expr700_RecordExpr_1_1_1 record=RecordExpr) | (rec=AtomVarMacro (field=AtomVarMacro | tuple=RecordTuple)))
+	 *     ((ref=Expr700_RecordExpr_1_1_1 record=RecordExpr) | (rec=RecordVarMacro (field=RecordFieldVarMacro | tuple=RecordTuple)))
 	 */
 	protected void sequence_Expr700_RecordExpr(EObject context, RecordExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1941,7 +1966,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (typeName=AtomRefLiteral type=TopType)
+	 *     (typeName=[TypeAttribute|ATOM] type=TopType)
 	 */
 	protected void sequence_FieldType(EObject context, FieldType semanticObject) {
 		if(errorAcceptor != null) {
@@ -1952,7 +1977,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFieldTypeAccess().getTypeNameAtomRefLiteralParserRuleCall_0_0(), semanticObject.getTypeName());
+		feeder.accept(grammarAccess.getFieldTypeAccess().getTypeNameTypeAttributeATOMTerminalRuleCall_0_0_1(), semanticObject.getTypeName());
 		feeder.accept(grammarAccess.getFieldTypeAccess().getTypeTopTypeParserRuleCall_2_0(), semanticObject.getType());
 		feeder.finish();
 	}
@@ -1998,7 +2023,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (module=AtomVarMacro? function=AtomVarMacro arity=IntVarMacro)
+	 *     (module=ModuleVarMacro? function=FunctionVarMacro arity=IntVarMacro)
 	 */
 	protected void sequence_FunRef(EObject context, FunRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2028,6 +2053,15 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	 *     (ref=[Function|NAME]? params=Expressions? guard=Guard? body=Expressions)
 	 */
 	protected void sequence_FunctionClause(EObject context, FunctionClause semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     value=[Function|NAME]
+	 */
+	protected void sequence_FunctionRef(EObject context, AtomRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2089,7 +2123,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (tag='import' module=AtomVarMacro (funs+=FunRef funs+=FunRef*)?)
+	 *     (tag='import' module=ModuleVarMacro (funs+=FunRef funs+=FunRef*)?)
 	 */
 	protected void sequence_ImportAttribute(EObject context, ImportAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2199,6 +2233,15 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
+	 *     value=NAME
+	 */
+	protected void sequence_LiteralExpressionNoNumber(EObject context, Atom semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     value=CHAR
 	 */
 	protected void sequence_LiteralExpressionNoNumber(EObject context, ErlChar semanticObject) {
@@ -2263,6 +2306,15 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
+	 *     value=[Module|NAME]
+	 */
+	protected void sequence_ModuleRef(EObject context, AtomRef semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     forms+=Form*
 	 */
 	protected void sequence_Module(EObject context, Module semanticObject) {
@@ -2317,7 +2369,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (rec=AtomVarMacro (field=AtomVarMacro | tuple=RecordTuple))
+	 *     (rec=RecordVarMacro (field=RecordFieldVarMacro | tuple=RecordTuple))
 	 */
 	protected void sequence_RecordExpr(EObject context, RecordExpr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2335,9 +2387,27 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (ref=AtomVarMacro value=Expression? type=TopType?)
+	 *     (ref=RecordFieldVarMacro value=Expression? type=TopType?)
 	 */
 	protected void sequence_RecordFieldExpr(EObject context, RecordFieldExpr semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     value=[RecordFieldDef|NAME]
+	 */
+	protected void sequence_RecordFieldRef(EObject context, AtomRef semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     value=[RecordAttribute|NAME]
+	 */
+	protected void sequence_RecordRef(EObject context, AtomRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2365,7 +2435,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (module=AtomVarMacro? function=AtomVarMacro arity=IntVarMacro?)
+	 *     (module=ModuleVarMacro? function=FunctionVarMacro arity=IntVarMacro?)
 	 */
 	protected void sequence_SpecFun(EObject context, FunRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2517,7 +2587,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     ((typeName=AtomRefLiteral types+=TopType types+=TopType*) | (typeName=VariableLiteral type=TopType))
+	 *     ((typeName=TypeRef types+=TopType types+=TopType*) | (typeName=VariableLiteral type=TopType))
 	 */
 	protected void sequence_TypeGuard(EObject context, TypeGuard semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2529,6 +2599,15 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	 *     (items+=TypeGuard items+=TypeGuard*)
 	 */
 	protected void sequence_TypeGuards(EObject context, TypeGuards semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     value=[TypeAttribute|NAME]
+	 */
+	protected void sequence_TypeRef(EObject context, AtomRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2562,7 +2641,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (rec=AtomRefLiteral (fields+=FieldType fields+=FieldType*)?)
+	 *     (rec=RecordRef (fields+=FieldType fields+=FieldType*)?)
 	 */
 	protected void sequence_Type(EObject context, RecordType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2571,7 +2650,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (m=AtomVarMacro? typeName=AtomRefLiteral (args+=TopType args+=TopType*)?)
+	 *     (m=ModuleVarMacro? typeName=TypeRef (args+=TopType args+=TopType*)?)
 	 */
 	protected void sequence_Type(EObject context, RemoteType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -148,8 +148,9 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.FUN_CALL: return createFunCall();
       case ErlangPackage.REMOTE_TARGET: return createRemoteTarget();
       case ErlangPackage.BLOCK_EXPR: return createBlockExpr();
-      case ErlangPackage.ERL_CHAR: return createErlChar();
       case ErlangPackage.ATOM: return createAtom();
+      case ErlangPackage.ERL_CHAR: return createErlChar();
+      case ErlangPackage.ATOM_REF: return createAtomRef();
       case ErlangPackage.MACRO: return createMacro();
       case ErlangPackage.VARIABLE: return createVariable();
       case ErlangPackage.ERL_FLOAT: return createErlFloat();
@@ -1063,6 +1064,17 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Atom createAtom()
+  {
+    AtomImpl atom = new AtomImpl();
+    return atom;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ErlChar createErlChar()
   {
     ErlCharImpl erlChar = new ErlCharImpl();
@@ -1074,10 +1086,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Atom createAtom()
+  public AtomRef createAtomRef()
   {
-    AtomImpl atom = new AtomImpl();
-    return atom;
+    AtomRefImpl atomRef = new AtomRefImpl();
+    return atomRef;
   }
 
   /**
