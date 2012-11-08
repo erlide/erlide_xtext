@@ -6,8 +6,8 @@ import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.impl.DefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.util.IAcceptor;
-import org.erlide.erlang.Function;
 import org.erlide.erlang.ModelExtensions;
+import org.erlide.erlang.Module;
 
 import com.google.inject.Inject;
 
@@ -25,15 +25,9 @@ public class ErlangResourceDescriptionStrategy extends
         }
         // System.out.println("??? " + eObject);
         try {
-            QualifiedName qualifiedName = getQualifiedNameProvider()
+            final QualifiedName qualifiedName = getQualifiedNameProvider()
                     .getFullyQualifiedName(eObject);
-            if (eObject instanceof Function) {
-                final Function f = (Function) eObject;
-                if (!modelExtensions.isExported(f)) {
-                    qualifiedName = null;
-                }
-            }
-            if (qualifiedName != null) {
+            if (eObject instanceof Module) {
                 // System.out.println("=== " + qualifiedName);
                 acceptor.accept(EObjectDescription.create(qualifiedName,
                         eObject));
