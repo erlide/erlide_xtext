@@ -27268,8 +27268,12 @@ rule__BitType__TypeNameAssignment_0
     }
 :
 (
-{ before(grammarAccess.getBitTypeAccess().getTypeNameNAMEParserRuleCall_0_0()); }
-	ruleNAME{ after(grammarAccess.getBitTypeAccess().getTypeNameNAMEParserRuleCall_0_0()); }
+{ before(grammarAccess.getBitTypeAccess().getTypeNameAtomRefTargetCrossReference_0_0()); }
+(
+{ before(grammarAccess.getBitTypeAccess().getTypeNameAtomRefTargetNAMEMACROParserRuleCall_0_0_1()); }
+	ruleNAMEMACRO{ after(grammarAccess.getBitTypeAccess().getTypeNameAtomRefTargetNAMEMACROParserRuleCall_0_0_1()); }
+)
+{ after(grammarAccess.getBitTypeAccess().getTypeNameAtomRefTargetCrossReference_0_0()); }
 )
 
 ;
@@ -27283,8 +27287,8 @@ rule__BitType__SizeAssignment_1_1
     }
 :
 (
-{ before(grammarAccess.getBitTypeAccess().getSizeINTTerminalRuleCall_1_1_0()); }
-	RULE_INT{ after(grammarAccess.getBitTypeAccess().getSizeINTTerminalRuleCall_1_1_0()); }
+{ before(grammarAccess.getBitTypeAccess().getSizeIntVarMacroParserRuleCall_1_1_0()); }
+	ruleIntVarMacro{ after(grammarAccess.getBitTypeAccess().getSizeIntVarMacroParserRuleCall_1_1_0()); }
 )
 
 ;

@@ -20893,11 +20893,11 @@ protected class BinaryItem_TypeAssignment_2_2_1 extends AssignmentToken  {
 /************ begin Rule BitType ****************
  *
  * BitType:
- * 	typeName=NAME (":" size=INT)?;
+ * 	typeName=[AtomRefTarget|NAMEMACRO] (":" size=IntVarMacro)?;
  *
  **/
 
-// typeName=NAME (":" size=INT)?
+// typeName=[AtomRefTarget|NAMEMACRO] (":" size=IntVarMacro)?
 protected class BitType_Group extends GroupToken {
 	
 	public BitType_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -20927,7 +20927,7 @@ protected class BitType_Group extends GroupToken {
 
 }
 
-// typeName=NAME
+// typeName=[AtomRefTarget|NAMEMACRO]
 protected class BitType_TypeNameAssignment_0 extends AssignmentToken  {
 	
 	public BitType_TypeNameAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -20950,17 +20950,20 @@ protected class BitType_TypeNameAssignment_0 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("typeName",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("typeName");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getBitTypeAccess().getTypeNameNAMEParserRuleCall_0_0(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getBitTypeAccess().getTypeNameNAMEParserRuleCall_0_0();
-			return obj;
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getBitTypeAccess().getTypeNameAtomRefTargetCrossReference_0_0().getType().getClassifier())) {
+				type = AssignmentType.CROSS_REFERENCE;
+				element = grammarAccess.getBitTypeAccess().getTypeNameAtomRefTargetCrossReference_0_0(); 
+				return obj;
+			}
 		}
 		return null;
 	}
 
 }
 
-// (":" size=INT)?
+// (":" size=IntVarMacro)?
 protected class BitType_Group_1 extends GroupToken {
 	
 	public BitType_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -21004,7 +21007,7 @@ protected class BitType_ColonKeyword_1_0 extends KeywordToken  {
 
 }
 
-// size=INT
+// size=IntVarMacro
 protected class BitType_SizeAssignment_1_1 extends AssignmentToken  {
 	
 	public BitType_SizeAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -21019,7 +21022,7 @@ protected class BitType_SizeAssignment_1_1 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new BitType_ColonKeyword_1_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new IntVarMacro_Alternatives(this, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -21028,14 +21031,26 @@ protected class BitType_SizeAssignment_1_1 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("size",false)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("size");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getBitTypeAccess().getSizeINTTerminalRuleCall_1_1_0(), value, null)) {
-			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getBitTypeAccess().getSizeINTTerminalRuleCall_1_1_0();
-			return obj;
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getIntVarMacroRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getBitTypeAccess().getSizeIntVarMacroParserRuleCall_1_1_0(); 
+				consumed = obj;
+				return param;
+			}
 		}
 		return null;
 	}
 
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new BitType_ColonKeyword_1_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
 }
 
 

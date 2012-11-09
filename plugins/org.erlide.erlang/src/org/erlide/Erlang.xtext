@@ -442,7 +442,7 @@ BinaryItem:
 ;
 
 BitType:
-	typeName=NAME (':' size=INT)?
+	typeName=[AtomRefTarget|NAMEMACRO] (':' size=IntVarMacro)?
 ;
 
 UnaryExprMax returns Expression:

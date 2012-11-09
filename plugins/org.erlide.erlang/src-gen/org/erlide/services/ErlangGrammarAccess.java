@@ -3957,36 +3957,40 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BitType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cTypeNameNAMEParserRuleCall_0_0 = (RuleCall)cTypeNameAssignment_0.eContents().get(0);
+		private final CrossReference cTypeNameAtomRefTargetCrossReference_0_0 = (CrossReference)cTypeNameAssignment_0.eContents().get(0);
+		private final RuleCall cTypeNameAtomRefTargetNAMEMACROParserRuleCall_0_0_1 = (RuleCall)cTypeNameAtomRefTargetCrossReference_0_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cColonKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cSizeAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cSizeINTTerminalRuleCall_1_1_0 = (RuleCall)cSizeAssignment_1_1.eContents().get(0);
+		private final RuleCall cSizeIntVarMacroParserRuleCall_1_1_0 = (RuleCall)cSizeAssignment_1_1.eContents().get(0);
 		
 		//BitType:
-		//	typeName=NAME (":" size=INT)?;
+		//	typeName=[AtomRefTarget|NAMEMACRO] (":" size=IntVarMacro)?;
 		public ParserRule getRule() { return rule; }
 
-		//typeName=NAME (":" size=INT)?
+		//typeName=[AtomRefTarget|NAMEMACRO] (":" size=IntVarMacro)?
 		public Group getGroup() { return cGroup; }
 
-		//typeName=NAME
+		//typeName=[AtomRefTarget|NAMEMACRO]
 		public Assignment getTypeNameAssignment_0() { return cTypeNameAssignment_0; }
 
-		//NAME
-		public RuleCall getTypeNameNAMEParserRuleCall_0_0() { return cTypeNameNAMEParserRuleCall_0_0; }
+		//[AtomRefTarget|NAMEMACRO]
+		public CrossReference getTypeNameAtomRefTargetCrossReference_0_0() { return cTypeNameAtomRefTargetCrossReference_0_0; }
 
-		//(":" size=INT)?
+		//NAMEMACRO
+		public RuleCall getTypeNameAtomRefTargetNAMEMACROParserRuleCall_0_0_1() { return cTypeNameAtomRefTargetNAMEMACROParserRuleCall_0_0_1; }
+
+		//(":" size=IntVarMacro)?
 		public Group getGroup_1() { return cGroup_1; }
 
 		//":"
 		public Keyword getColonKeyword_1_0() { return cColonKeyword_1_0; }
 
-		//size=INT
+		//size=IntVarMacro
 		public Assignment getSizeAssignment_1_1() { return cSizeAssignment_1_1; }
 
-		//INT
-		public RuleCall getSizeINTTerminalRuleCall_1_1_0() { return cSizeINTTerminalRuleCall_1_1_0; }
+		//IntVarMacro
+		public RuleCall getSizeIntVarMacroParserRuleCall_1_1_0() { return cSizeIntVarMacroParserRuleCall_1_1_0; }
 	}
 
 	public class UnaryExprMaxElements extends AbstractParserRuleElementFinder {
@@ -6791,7 +6795,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BitType:
-	//	typeName=NAME (":" size=INT)?;
+	//	typeName=[AtomRefTarget|NAMEMACRO] (":" size=IntVarMacro)?;
 	public BitTypeElements getBitTypeAccess() {
 		return (pBitType != null) ? pBitType : (pBitType = new BitTypeElements());
 	}

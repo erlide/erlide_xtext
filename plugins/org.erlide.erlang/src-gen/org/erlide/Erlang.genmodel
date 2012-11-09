@@ -201,8 +201,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinaryItem/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//BitType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BitType/typeName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//BitType/size"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Erlang.ecore#//BitType/typeName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BitType/size"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//LCExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//LCExpr/o1"/>

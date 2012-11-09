@@ -1694,7 +1694,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (typeName=NAME size=INT?)
+	 *     (typeName=[AtomRefTarget|NAMEMACRO] size=IntVarMacro?)
 	 */
 	protected void sequence_BitType(EObject context, BitType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

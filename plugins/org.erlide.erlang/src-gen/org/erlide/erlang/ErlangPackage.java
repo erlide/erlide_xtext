@@ -2690,7 +2690,7 @@ public interface ErlangPackage extends EPackage
   int BIT_TYPE = 55;
 
   /**
-   * The feature id for the '<em><b>Type Name</b></em>' attribute.
+   * The feature id for the '<em><b>Type Name</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2699,7 +2699,7 @@ public interface ErlangPackage extends EPackage
   int BIT_TYPE__TYPE_NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Size</b></em>' attribute.
+   * The feature id for the '<em><b>Size</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -6282,26 +6282,26 @@ public interface ErlangPackage extends EPackage
   EClass getBitType();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.BitType#getTypeName <em>Type Name</em>}'.
+   * Returns the meta object for the reference '{@link org.erlide.erlang.BitType#getTypeName <em>Type Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type Name</em>'.
+   * @return the meta object for the reference '<em>Type Name</em>'.
    * @see org.erlide.erlang.BitType#getTypeName()
    * @see #getBitType()
    * @generated
    */
-  EAttribute getBitType_TypeName();
+  EReference getBitType_TypeName();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.BitType#getSize <em>Size</em>}'.
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.BitType#getSize <em>Size</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Size</em>'.
+   * @return the meta object for the containment reference '<em>Size</em>'.
    * @see org.erlide.erlang.BitType#getSize()
    * @see #getBitType()
    * @generated
    */
-  EAttribute getBitType_Size();
+  EReference getBitType_Size();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.LCExpr <em>LC Expr</em>}'.
@@ -8728,20 +8728,20 @@ public interface ErlangPackage extends EPackage
     EClass BIT_TYPE = eINSTANCE.getBitType();
 
     /**
-     * The meta object literal for the '<em><b>Type Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type Name</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute BIT_TYPE__TYPE_NAME = eINSTANCE.getBitType_TypeName();
+    EReference BIT_TYPE__TYPE_NAME = eINSTANCE.getBitType_TypeName();
 
     /**
-     * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Size</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute BIT_TYPE__SIZE = eINSTANCE.getBitType_Size();
+    EReference BIT_TYPE__SIZE = eINSTANCE.getBitType_Size();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.LCExprImpl <em>LC Expr</em>}' class.

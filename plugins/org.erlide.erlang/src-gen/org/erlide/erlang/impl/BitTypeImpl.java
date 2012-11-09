@@ -6,14 +6,18 @@
 package org.erlide.erlang.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.erlide.erlang.AtomRefTarget;
 import org.erlide.erlang.BitType;
 import org.erlide.erlang.ErlangPackage;
+import org.erlide.erlang.Expression;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,44 +36,24 @@ import org.erlide.erlang.ErlangPackage;
 public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
 {
   /**
-   * The default value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
+   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTypeName()
    * @generated
    * @ordered
    */
-  protected static final String TYPE_NAME_EDEFAULT = null;
+  protected AtomRefTarget typeName;
 
   /**
-   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTypeName()
-   * @generated
-   * @ordered
-   */
-  protected String typeName = TYPE_NAME_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
+   * The cached value of the '{@link #getSize() <em>Size</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getSize()
    * @generated
    * @ordered
    */
-  protected static final String SIZE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSize()
-   * @generated
-   * @ordered
-   */
-  protected String size = SIZE_EDEFAULT;
+  protected Expression size;
 
   /**
    * <!-- begin-user-doc -->
@@ -97,7 +81,27 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTypeName()
+  public AtomRefTarget getTypeName()
+  {
+    if (typeName != null && typeName.eIsProxy())
+    {
+      InternalEObject oldTypeName = (InternalEObject)typeName;
+      typeName = (AtomRefTarget)eResolveProxy(oldTypeName);
+      if (typeName != oldTypeName)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ErlangPackage.BIT_TYPE__TYPE_NAME, oldTypeName, typeName));
+      }
+    }
+    return typeName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AtomRefTarget basicGetTypeName()
   {
     return typeName;
   }
@@ -107,9 +111,9 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTypeName(String newTypeName)
+  public void setTypeName(AtomRefTarget newTypeName)
   {
-    String oldTypeName = typeName;
+    AtomRefTarget oldTypeName = typeName;
     typeName = newTypeName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.BIT_TYPE__TYPE_NAME, oldTypeName, typeName));
@@ -120,7 +124,7 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getSize()
+  public Expression getSize()
   {
     return size;
   }
@@ -130,12 +134,53 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSize(String newSize)
+  public NotificationChain basicSetSize(Expression newSize, NotificationChain msgs)
   {
-    String oldSize = size;
+    Expression oldSize = size;
     size = newSize;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.BIT_TYPE__SIZE, oldSize, size));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.BIT_TYPE__SIZE, oldSize, newSize);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSize(Expression newSize)
+  {
+    if (newSize != size)
+    {
+      NotificationChain msgs = null;
+      if (size != null)
+        msgs = ((InternalEObject)size).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.BIT_TYPE__SIZE, null, msgs);
+      if (newSize != null)
+        msgs = ((InternalEObject)newSize).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.BIT_TYPE__SIZE, null, msgs);
+      msgs = basicSetSize(newSize, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.BIT_TYPE__SIZE, newSize, newSize));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ErlangPackage.BIT_TYPE__SIZE:
+        return basicSetSize(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -149,7 +194,8 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
     switch (featureID)
     {
       case ErlangPackage.BIT_TYPE__TYPE_NAME:
-        return getTypeName();
+        if (resolve) return getTypeName();
+        return basicGetTypeName();
       case ErlangPackage.BIT_TYPE__SIZE:
         return getSize();
     }
@@ -167,10 +213,10 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
     switch (featureID)
     {
       case ErlangPackage.BIT_TYPE__TYPE_NAME:
-        setTypeName((String)newValue);
+        setTypeName((AtomRefTarget)newValue);
         return;
       case ErlangPackage.BIT_TYPE__SIZE:
-        setSize((String)newValue);
+        setSize((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -187,10 +233,10 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
     switch (featureID)
     {
       case ErlangPackage.BIT_TYPE__TYPE_NAME:
-        setTypeName(TYPE_NAME_EDEFAULT);
+        setTypeName((AtomRefTarget)null);
         return;
       case ErlangPackage.BIT_TYPE__SIZE:
-        setSize(SIZE_EDEFAULT);
+        setSize((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -207,30 +253,11 @@ public class BitTypeImpl extends MinimalEObjectImpl.Container implements BitType
     switch (featureID)
     {
       case ErlangPackage.BIT_TYPE__TYPE_NAME:
-        return TYPE_NAME_EDEFAULT == null ? typeName != null : !TYPE_NAME_EDEFAULT.equals(typeName);
+        return typeName != null;
       case ErlangPackage.BIT_TYPE__SIZE:
-        return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
+        return size != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (typeName: ");
-    result.append(typeName);
-    result.append(", size: ");
-    result.append(size);
-    result.append(')');
-    return result.toString();
   }
 
 } //BitTypeImpl

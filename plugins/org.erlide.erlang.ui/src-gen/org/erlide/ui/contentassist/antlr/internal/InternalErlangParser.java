@@ -16799,25 +16799,25 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                 if ( (LA55_1==85) ) {
                     int LA55_2 = input.LA(3);
 
-                    if ( (LA55_2==RULE_VARIABLE) ) {
-                        int LA55_3 = input.LA(4);
+                    if ( (LA55_2==RULE_ATOM||(LA55_2>=RULE_INT && LA55_2<=RULE_BASED_INT)||(LA55_2>=19 && LA55_2<=24)||(LA55_2>=53 && LA55_2<=68)||LA55_2==71||LA55_2==74||LA55_2==78||LA55_2==84||LA55_2==96||LA55_2==100) ) {
+                        alt55=1;
+                    }
+                    else if ( (LA55_2==RULE_VARIABLE) ) {
+                        int LA55_4 = input.LA(4);
 
-                        if ( (LA55_3==EOF||LA55_3==73||LA55_3==85||LA55_3==101) ) {
-                            alt55=1;
-                        }
-                        else if ( (LA55_3==35) ) {
+                        if ( (LA55_4==35) ) {
                             alt55=2;
+                        }
+                        else if ( (LA55_4==EOF||LA55_4==73||LA55_4==85||LA55_4==101) ) {
+                            alt55=1;
                         }
                         else {
                             if (state.backtracking>0) {state.failed=true; return ;}
                             NoViableAltException nvae =
-                                new NoViableAltException("", 55, 3, input);
+                                new NoViableAltException("", 55, 4, input);
 
                             throw nvae;
                         }
-                    }
-                    else if ( (LA55_2==RULE_ATOM||(LA55_2>=RULE_INT && LA55_2<=RULE_BASED_INT)||(LA55_2>=19 && LA55_2<=24)||(LA55_2>=53 && LA55_2<=68)||LA55_2==71||LA55_2==74||LA55_2==78||LA55_2==84||LA55_2==96||LA55_2==100) ) {
-                        alt55=1;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return ;}
@@ -77802,28 +77802,40 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BitType__TypeNameAssignment_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27265:1: rule__BitType__TypeNameAssignment_0 : ( ruleNAME ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27265:1: rule__BitType__TypeNameAssignment_0 : ( ( ruleNAMEMACRO ) ) ;
     public final void rule__BitType__TypeNameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27269:1: ( ( ruleNAME ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27270:1: ( ruleNAME )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27269:1: ( ( ( ruleNAMEMACRO ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27270:1: ( ( ruleNAMEMACRO ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27270:1: ( ruleNAME )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27271:1: ruleNAME
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27270:1: ( ( ruleNAMEMACRO ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27271:1: ( ruleNAMEMACRO )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBitTypeAccess().getTypeNameNAMEParserRuleCall_0_0()); 
+               before(grammarAccess.getBitTypeAccess().getTypeNameAtomRefTargetCrossReference_0_0()); 
             }
-            pushFollow(FOLLOW_ruleNAME_in_rule__BitType__TypeNameAssignment_055021);
-            ruleNAME();
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27272:1: ( ruleNAMEMACRO )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27273:1: ruleNAMEMACRO
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getBitTypeAccess().getTypeNameAtomRefTargetNAMEMACROParserRuleCall_0_0_1()); 
+            }
+            pushFollow(FOLLOW_ruleNAMEMACRO_in_rule__BitType__TypeNameAssignment_055025);
+            ruleNAMEMACRO();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBitTypeAccess().getTypeNameNAMEParserRuleCall_0_0()); 
+               after(grammarAccess.getBitTypeAccess().getTypeNameAtomRefTargetNAMEMACROParserRuleCall_0_0_1()); 
+            }
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getBitTypeAccess().getTypeNameAtomRefTargetCrossReference_0_0()); 
             }
 
             }
@@ -77847,24 +77859,28 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BitType__SizeAssignment_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27280:1: rule__BitType__SizeAssignment_1_1 : ( RULE_INT ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27284:1: rule__BitType__SizeAssignment_1_1 : ( ruleIntVarMacro ) ;
     public final void rule__BitType__SizeAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27284:1: ( ( RULE_INT ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27285:1: ( RULE_INT )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27288:1: ( ( ruleIntVarMacro ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27289:1: ( ruleIntVarMacro )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27285:1: ( RULE_INT )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27286:1: RULE_INT
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27289:1: ( ruleIntVarMacro )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27290:1: ruleIntVarMacro
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getBitTypeAccess().getSizeINTTerminalRuleCall_1_1_0()); 
+               before(grammarAccess.getBitTypeAccess().getSizeIntVarMacroParserRuleCall_1_1_0()); 
             }
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__BitType__SizeAssignment_1_155052); if (state.failed) return ;
+            pushFollow(FOLLOW_ruleIntVarMacro_in_rule__BitType__SizeAssignment_1_155060);
+            ruleIntVarMacro();
+
+            state._fsp--;
+            if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getBitTypeAccess().getSizeINTTerminalRuleCall_1_1_0()); 
+               after(grammarAccess.getBitTypeAccess().getSizeIntVarMacroParserRuleCall_1_1_0()); 
             }
 
             }
@@ -77888,22 +77904,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnaryExprMax__OpAssignment_0_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27295:1: rule__UnaryExprMax__OpAssignment_0_1 : ( rulePREFIXOP ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27299:1: rule__UnaryExprMax__OpAssignment_0_1 : ( rulePREFIXOP ) ;
     public final void rule__UnaryExprMax__OpAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27299:1: ( ( rulePREFIXOP ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27300:1: ( rulePREFIXOP )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27303:1: ( ( rulePREFIXOP ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27304:1: ( rulePREFIXOP )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27300:1: ( rulePREFIXOP )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27301:1: rulePREFIXOP
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27304:1: ( rulePREFIXOP )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27305:1: rulePREFIXOP
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnaryExprMaxAccess().getOpPREFIXOPParserRuleCall_0_1_0()); 
             }
-            pushFollow(FOLLOW_rulePREFIXOP_in_rule__UnaryExprMax__OpAssignment_0_155083);
+            pushFollow(FOLLOW_rulePREFIXOP_in_rule__UnaryExprMax__OpAssignment_0_155091);
             rulePREFIXOP();
 
             state._fsp--;
@@ -77933,22 +77949,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__UnaryExprMax__OperandAssignment_0_2"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27310:1: rule__UnaryExprMax__OperandAssignment_0_2 : ( ruleExprMax ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27314:1: rule__UnaryExprMax__OperandAssignment_0_2 : ( ruleExprMax ) ;
     public final void rule__UnaryExprMax__OperandAssignment_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27314:1: ( ( ruleExprMax ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27315:1: ( ruleExprMax )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27318:1: ( ( ruleExprMax ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27319:1: ( ruleExprMax )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27315:1: ( ruleExprMax )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27316:1: ruleExprMax
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27319:1: ( ruleExprMax )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27320:1: ruleExprMax
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUnaryExprMaxAccess().getOperandExprMaxParserRuleCall_0_2_0()); 
             }
-            pushFollow(FOLLOW_ruleExprMax_in_rule__UnaryExprMax__OperandAssignment_0_255114);
+            pushFollow(FOLLOW_ruleExprMax_in_rule__UnaryExprMax__OperandAssignment_0_255122);
             ruleExprMax();
 
             state._fsp--;
@@ -77978,22 +77994,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LCExpr__O1Assignment_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27325:1: rule__LCExpr__O1Assignment_0 : ( ruleExpression ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27329:1: rule__LCExpr__O1Assignment_0 : ( ruleExpression ) ;
     public final void rule__LCExpr__O1Assignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27329:1: ( ( ruleExpression ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27330:1: ( ruleExpression )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27333:1: ( ( ruleExpression ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27334:1: ( ruleExpression )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27330:1: ( ruleExpression )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27331:1: ruleExpression
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27334:1: ( ruleExpression )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27335:1: ruleExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLCExprAccess().getO1ExpressionParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleExpression_in_rule__LCExpr__O1Assignment_055145);
+            pushFollow(FOLLOW_ruleExpression_in_rule__LCExpr__O1Assignment_055153);
             ruleExpression();
 
             state._fsp--;
@@ -78023,25 +78039,25 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LCExpr__OpAssignment_1_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27340:1: rule__LCExpr__OpAssignment_1_0 : ( ( rule__LCExpr__OpAlternatives_1_0_0 ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27344:1: rule__LCExpr__OpAssignment_1_0 : ( ( rule__LCExpr__OpAlternatives_1_0_0 ) ) ;
     public final void rule__LCExpr__OpAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27344:1: ( ( ( rule__LCExpr__OpAlternatives_1_0_0 ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27345:1: ( ( rule__LCExpr__OpAlternatives_1_0_0 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27348:1: ( ( ( rule__LCExpr__OpAlternatives_1_0_0 ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27349:1: ( ( rule__LCExpr__OpAlternatives_1_0_0 ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27345:1: ( ( rule__LCExpr__OpAlternatives_1_0_0 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27346:1: ( rule__LCExpr__OpAlternatives_1_0_0 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27349:1: ( ( rule__LCExpr__OpAlternatives_1_0_0 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27350:1: ( rule__LCExpr__OpAlternatives_1_0_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLCExprAccess().getOpAlternatives_1_0_0()); 
             }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27347:1: ( rule__LCExpr__OpAlternatives_1_0_0 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27347:2: rule__LCExpr__OpAlternatives_1_0_0
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27351:1: ( rule__LCExpr__OpAlternatives_1_0_0 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27351:2: rule__LCExpr__OpAlternatives_1_0_0
             {
-            pushFollow(FOLLOW_rule__LCExpr__OpAlternatives_1_0_0_in_rule__LCExpr__OpAssignment_1_055176);
+            pushFollow(FOLLOW_rule__LCExpr__OpAlternatives_1_0_0_in_rule__LCExpr__OpAssignment_1_055184);
             rule__LCExpr__OpAlternatives_1_0_0();
 
             state._fsp--;
@@ -78074,22 +78090,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LCExpr__O2Assignment_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27356:1: rule__LCExpr__O2Assignment_1_1 : ( ruleExpression ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27360:1: rule__LCExpr__O2Assignment_1_1 : ( ruleExpression ) ;
     public final void rule__LCExpr__O2Assignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27360:1: ( ( ruleExpression ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27361:1: ( ruleExpression )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27364:1: ( ( ruleExpression ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27365:1: ( ruleExpression )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27361:1: ( ruleExpression )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27362:1: ruleExpression
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27365:1: ( ruleExpression )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27366:1: ruleExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLCExprAccess().getO2ExpressionParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleExpression_in_rule__LCExpr__O2Assignment_1_155209);
+            pushFollow(FOLLOW_ruleExpression_in_rule__LCExpr__O2Assignment_1_155217);
             ruleExpression();
 
             state._fsp--;
@@ -78119,22 +78135,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__SpecFun__ModuleAssignment_0_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27371:1: rule__SpecFun__ModuleAssignment_0_0 : ( ruleAtomVarMacro ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27375:1: rule__SpecFun__ModuleAssignment_0_0 : ( ruleAtomVarMacro ) ;
     public final void rule__SpecFun__ModuleAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27375:1: ( ( ruleAtomVarMacro ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27376:1: ( ruleAtomVarMacro )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27379:1: ( ( ruleAtomVarMacro ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27380:1: ( ruleAtomVarMacro )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27376:1: ( ruleAtomVarMacro )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27377:1: ruleAtomVarMacro
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27380:1: ( ruleAtomVarMacro )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27381:1: ruleAtomVarMacro
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSpecFunAccess().getModuleAtomVarMacroParserRuleCall_0_0_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__ModuleAssignment_0_055240);
+            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__ModuleAssignment_0_055248);
             ruleAtomVarMacro();
 
             state._fsp--;
@@ -78164,22 +78180,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__SpecFun__FunctionAssignment_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27386:1: rule__SpecFun__FunctionAssignment_1 : ( ruleAtomVarMacro ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27390:1: rule__SpecFun__FunctionAssignment_1 : ( ruleAtomVarMacro ) ;
     public final void rule__SpecFun__FunctionAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27390:1: ( ( ruleAtomVarMacro ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27391:1: ( ruleAtomVarMacro )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27394:1: ( ( ruleAtomVarMacro ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27395:1: ( ruleAtomVarMacro )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27391:1: ( ruleAtomVarMacro )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27392:1: ruleAtomVarMacro
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27395:1: ( ruleAtomVarMacro )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27396:1: ruleAtomVarMacro
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSpecFunAccess().getFunctionAtomVarMacroParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__FunctionAssignment_155271);
+            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__FunctionAssignment_155279);
             ruleAtomVarMacro();
 
             state._fsp--;
@@ -78209,22 +78225,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__SpecFun__ArityAssignment_2_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27401:1: rule__SpecFun__ArityAssignment_2_1 : ( ruleIntVarMacro ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27405:1: rule__SpecFun__ArityAssignment_2_1 : ( ruleIntVarMacro ) ;
     public final void rule__SpecFun__ArityAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27405:1: ( ( ruleIntVarMacro ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27406:1: ( ruleIntVarMacro )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27409:1: ( ( ruleIntVarMacro ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27410:1: ( ruleIntVarMacro )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27406:1: ( ruleIntVarMacro )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27407:1: ruleIntVarMacro
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27410:1: ( ruleIntVarMacro )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27411:1: ruleIntVarMacro
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSpecFunAccess().getArityIntVarMacroParserRuleCall_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleIntVarMacro_in_rule__SpecFun__ArityAssignment_2_155302);
+            pushFollow(FOLLOW_ruleIntVarMacro_in_rule__SpecFun__ArityAssignment_2_155310);
             ruleIntVarMacro();
 
             state._fsp--;
@@ -78254,22 +78270,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TypeSig__DeclAssignment_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27416:1: rule__TypeSig__DeclAssignment_0 : ( ruleFunType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27420:1: rule__TypeSig__DeclAssignment_0 : ( ruleFunType ) ;
     public final void rule__TypeSig__DeclAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27420:1: ( ( ruleFunType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27421:1: ( ruleFunType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27424:1: ( ( ruleFunType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27425:1: ( ruleFunType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27421:1: ( ruleFunType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27422:1: ruleFunType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27425:1: ( ruleFunType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27426:1: ruleFunType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeSigAccess().getDeclFunTypeParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleFunType_in_rule__TypeSig__DeclAssignment_055333);
+            pushFollow(FOLLOW_ruleFunType_in_rule__TypeSig__DeclAssignment_055341);
             ruleFunType();
 
             state._fsp--;
@@ -78299,22 +78315,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TypeSig__GuardsAssignment_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27431:1: rule__TypeSig__GuardsAssignment_1_1 : ( ruleTypeGuards ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27435:1: rule__TypeSig__GuardsAssignment_1_1 : ( ruleTypeGuards ) ;
     public final void rule__TypeSig__GuardsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27435:1: ( ( ruleTypeGuards ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27436:1: ( ruleTypeGuards )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27439:1: ( ( ruleTypeGuards ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27440:1: ( ruleTypeGuards )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27436:1: ( ruleTypeGuards )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27437:1: ruleTypeGuards
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27440:1: ( ruleTypeGuards )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27441:1: ruleTypeGuards
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeSigAccess().getGuardsTypeGuardsParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleTypeGuards_in_rule__TypeSig__GuardsAssignment_1_155364);
+            pushFollow(FOLLOW_ruleTypeGuards_in_rule__TypeSig__GuardsAssignment_1_155372);
             ruleTypeGuards();
 
             state._fsp--;
@@ -78344,22 +78360,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunType__ArgsAssignment_1_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27446:1: rule__FunType__ArgsAssignment_1_0 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27450:1: rule__FunType__ArgsAssignment_1_0 : ( ruleTopType ) ;
     public final void rule__FunType__ArgsAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27450:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27451:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27454:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27455:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27451:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27452:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27455:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27456:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFunTypeAccess().getArgsTopTypeParserRuleCall_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__FunType__ArgsAssignment_1_055395);
+            pushFollow(FOLLOW_ruleTopType_in_rule__FunType__ArgsAssignment_1_055403);
             ruleTopType();
 
             state._fsp--;
@@ -78389,22 +78405,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunType__ArgsAssignment_1_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27461:1: rule__FunType__ArgsAssignment_1_1_1 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27465:1: rule__FunType__ArgsAssignment_1_1_1 : ( ruleTopType ) ;
     public final void rule__FunType__ArgsAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27465:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27466:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27469:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27470:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27466:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27467:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27470:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27471:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFunTypeAccess().getArgsTopTypeParserRuleCall_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__FunType__ArgsAssignment_1_1_155426);
+            pushFollow(FOLLOW_ruleTopType_in_rule__FunType__ArgsAssignment_1_1_155434);
             ruleTopType();
 
             state._fsp--;
@@ -78434,22 +78450,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunType__ReturnAssignment_4"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27476:1: rule__FunType__ReturnAssignment_4 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27480:1: rule__FunType__ReturnAssignment_4 : ( ruleTopType ) ;
     public final void rule__FunType__ReturnAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27480:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27481:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27484:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27485:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27481:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27482:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27485:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27486:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFunTypeAccess().getReturnTopTypeParserRuleCall_4_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__FunType__ReturnAssignment_455457);
+            pushFollow(FOLLOW_ruleTopType_in_rule__FunType__ReturnAssignment_455465);
             ruleTopType();
 
             state._fsp--;
@@ -78479,22 +78495,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TypeGuards__ItemsAssignment_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27491:1: rule__TypeGuards__ItemsAssignment_0 : ( ruleTypeGuard ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27495:1: rule__TypeGuards__ItemsAssignment_0 : ( ruleTypeGuard ) ;
     public final void rule__TypeGuards__ItemsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27495:1: ( ( ruleTypeGuard ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27496:1: ( ruleTypeGuard )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27499:1: ( ( ruleTypeGuard ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27500:1: ( ruleTypeGuard )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27496:1: ( ruleTypeGuard )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27497:1: ruleTypeGuard
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27500:1: ( ruleTypeGuard )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27501:1: ruleTypeGuard
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeGuardsAccess().getItemsTypeGuardParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleTypeGuard_in_rule__TypeGuards__ItemsAssignment_055488);
+            pushFollow(FOLLOW_ruleTypeGuard_in_rule__TypeGuards__ItemsAssignment_055496);
             ruleTypeGuard();
 
             state._fsp--;
@@ -78524,22 +78540,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TypeGuards__ItemsAssignment_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27506:1: rule__TypeGuards__ItemsAssignment_1_1 : ( ruleTypeGuard ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27510:1: rule__TypeGuards__ItemsAssignment_1_1 : ( ruleTypeGuard ) ;
     public final void rule__TypeGuards__ItemsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27510:1: ( ( ruleTypeGuard ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27511:1: ( ruleTypeGuard )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27514:1: ( ( ruleTypeGuard ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27515:1: ( ruleTypeGuard )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27511:1: ( ruleTypeGuard )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27512:1: ruleTypeGuard
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27515:1: ( ruleTypeGuard )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27516:1: ruleTypeGuard
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeGuardsAccess().getItemsTypeGuardParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleTypeGuard_in_rule__TypeGuards__ItemsAssignment_1_155519);
+            pushFollow(FOLLOW_ruleTypeGuard_in_rule__TypeGuards__ItemsAssignment_1_155527);
             ruleTypeGuard();
 
             state._fsp--;
@@ -78569,22 +78585,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TypeGuard__TypeNameAssignment_0_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27521:1: rule__TypeGuard__TypeNameAssignment_0_0 : ( ruleAtomRefLiteral ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27525:1: rule__TypeGuard__TypeNameAssignment_0_0 : ( ruleAtomRefLiteral ) ;
     public final void rule__TypeGuard__TypeNameAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27525:1: ( ( ruleAtomRefLiteral ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27526:1: ( ruleAtomRefLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27529:1: ( ( ruleAtomRefLiteral ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27530:1: ( ruleAtomRefLiteral )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27526:1: ( ruleAtomRefLiteral )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27527:1: ruleAtomRefLiteral
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27530:1: ( ruleAtomRefLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27531:1: ruleAtomRefLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeGuardAccess().getTypeNameAtomRefLiteralParserRuleCall_0_0_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomRefLiteral_in_rule__TypeGuard__TypeNameAssignment_0_055550);
+            pushFollow(FOLLOW_ruleAtomRefLiteral_in_rule__TypeGuard__TypeNameAssignment_0_055558);
             ruleAtomRefLiteral();
 
             state._fsp--;
@@ -78614,22 +78630,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TypeGuard__TypesAssignment_0_2"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27536:1: rule__TypeGuard__TypesAssignment_0_2 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27540:1: rule__TypeGuard__TypesAssignment_0_2 : ( ruleTopType ) ;
     public final void rule__TypeGuard__TypesAssignment_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27540:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27541:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27544:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27545:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27541:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27542:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27545:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27546:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeGuardAccess().getTypesTopTypeParserRuleCall_0_2_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__TypeGuard__TypesAssignment_0_255581);
+            pushFollow(FOLLOW_ruleTopType_in_rule__TypeGuard__TypesAssignment_0_255589);
             ruleTopType();
 
             state._fsp--;
@@ -78659,22 +78675,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TypeGuard__TypesAssignment_0_3_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27551:1: rule__TypeGuard__TypesAssignment_0_3_1 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27555:1: rule__TypeGuard__TypesAssignment_0_3_1 : ( ruleTopType ) ;
     public final void rule__TypeGuard__TypesAssignment_0_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27555:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27556:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27559:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27560:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27556:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27557:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27560:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27561:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeGuardAccess().getTypesTopTypeParserRuleCall_0_3_1_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__TypeGuard__TypesAssignment_0_3_155612);
+            pushFollow(FOLLOW_ruleTopType_in_rule__TypeGuard__TypesAssignment_0_3_155620);
             ruleTopType();
 
             state._fsp--;
@@ -78704,22 +78720,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TypeGuard__TypeNameAssignment_1_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27566:1: rule__TypeGuard__TypeNameAssignment_1_0 : ( ruleVariableLiteral ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27570:1: rule__TypeGuard__TypeNameAssignment_1_0 : ( ruleVariableLiteral ) ;
     public final void rule__TypeGuard__TypeNameAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27570:1: ( ( ruleVariableLiteral ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27571:1: ( ruleVariableLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27574:1: ( ( ruleVariableLiteral ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27575:1: ( ruleVariableLiteral )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27571:1: ( ruleVariableLiteral )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27572:1: ruleVariableLiteral
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27575:1: ( ruleVariableLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27576:1: ruleVariableLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeGuardAccess().getTypeNameVariableLiteralParserRuleCall_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleVariableLiteral_in_rule__TypeGuard__TypeNameAssignment_1_055643);
+            pushFollow(FOLLOW_ruleVariableLiteral_in_rule__TypeGuard__TypeNameAssignment_1_055651);
             ruleVariableLiteral();
 
             state._fsp--;
@@ -78749,22 +78765,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TypeGuard__TypeAssignment_1_2"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27581:1: rule__TypeGuard__TypeAssignment_1_2 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27585:1: rule__TypeGuard__TypeAssignment_1_2 : ( ruleTopType ) ;
     public final void rule__TypeGuard__TypeAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27585:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27586:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27589:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27590:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27586:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27587:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27590:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27591:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeGuardAccess().getTypeTopTypeParserRuleCall_1_2_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__TypeGuard__TypeAssignment_1_255674);
+            pushFollow(FOLLOW_ruleTopType_in_rule__TypeGuard__TypeAssignment_1_255682);
             ruleTopType();
 
             state._fsp--;
@@ -78794,22 +78810,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TopType__VarAssignment_0_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27596:1: rule__TopType__VarAssignment_0_0 : ( RULE_VARIABLE ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27600:1: rule__TopType__VarAssignment_0_0 : ( RULE_VARIABLE ) ;
     public final void rule__TopType__VarAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27600:1: ( ( RULE_VARIABLE ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27601:1: ( RULE_VARIABLE )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27604:1: ( ( RULE_VARIABLE ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27605:1: ( RULE_VARIABLE )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27601:1: ( RULE_VARIABLE )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27602:1: RULE_VARIABLE
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27605:1: ( RULE_VARIABLE )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27606:1: RULE_VARIABLE
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTopTypeAccess().getVarVARIABLETerminalRuleCall_0_0_0()); 
             }
-            match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_rule__TopType__VarAssignment_0_055705); if (state.failed) return ;
+            match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_rule__TopType__VarAssignment_0_055713); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTopTypeAccess().getVarVARIABLETerminalRuleCall_0_0_0()); 
             }
@@ -78835,22 +78851,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TopType__TypeAssignment_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27611:1: rule__TopType__TypeAssignment_1 : ( ruleType100 ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27615:1: rule__TopType__TypeAssignment_1 : ( ruleType100 ) ;
     public final void rule__TopType__TypeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27615:1: ( ( ruleType100 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27616:1: ( ruleType100 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27619:1: ( ( ruleType100 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27620:1: ( ruleType100 )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27616:1: ( ruleType100 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27617:1: ruleType100
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27620:1: ( ruleType100 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27621:1: ruleType100
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTopTypeAccess().getTypeType100ParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleType100_in_rule__TopType__TypeAssignment_155736);
+            pushFollow(FOLLOW_ruleType100_in_rule__TopType__TypeAssignment_155744);
             ruleType100();
 
             state._fsp--;
@@ -78880,28 +78896,28 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type100__OpAssignment_1_0_0_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27626:1: rule__Type100__OpAssignment_1_0_0_1 : ( ( '|' ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27630:1: rule__Type100__OpAssignment_1_0_0_1 : ( ( '|' ) ) ;
     public final void rule__Type100__OpAssignment_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27630:1: ( ( ( '|' ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27631:1: ( ( '|' ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27634:1: ( ( ( '|' ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27635:1: ( ( '|' ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27631:1: ( ( '|' ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27632:1: ( '|' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getType100Access().getOpVerticalLineKeyword_1_0_0_1_0()); 
-            }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27633:1: ( '|' )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27634:1: '|'
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27635:1: ( ( '|' ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27636:1: ( '|' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getType100Access().getOpVerticalLineKeyword_1_0_0_1_0()); 
             }
-            match(input,98,FOLLOW_98_in_rule__Type100__OpAssignment_1_0_0_155772); if (state.failed) return ;
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27637:1: ( '|' )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27638:1: '|'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getType100Access().getOpVerticalLineKeyword_1_0_0_1_0()); 
+            }
+            match(input,98,FOLLOW_98_in_rule__Type100__OpAssignment_1_0_0_155780); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getType100Access().getOpVerticalLineKeyword_1_0_0_1_0()); 
             }
@@ -78933,22 +78949,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type100__RightOperandAssignment_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27649:1: rule__Type100__RightOperandAssignment_1_1 : ( ruleType200 ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27653:1: rule__Type100__RightOperandAssignment_1_1 : ( ruleType200 ) ;
     public final void rule__Type100__RightOperandAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27653:1: ( ( ruleType200 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27654:1: ( ruleType200 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27657:1: ( ( ruleType200 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27658:1: ( ruleType200 )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27654:1: ( ruleType200 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27655:1: ruleType200
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27658:1: ( ruleType200 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27659:1: ruleType200
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getType100Access().getRightOperandType200ParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleType200_in_rule__Type100__RightOperandAssignment_1_155811);
+            pushFollow(FOLLOW_ruleType200_in_rule__Type100__RightOperandAssignment_1_155819);
             ruleType200();
 
             state._fsp--;
@@ -78978,28 +78994,28 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type200__OpAssignment_1_0_0_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27664:1: rule__Type200__OpAssignment_1_0_0_1 : ( ( '..' ) ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27668:1: rule__Type200__OpAssignment_1_0_0_1 : ( ( '..' ) ) ;
     public final void rule__Type200__OpAssignment_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27668:1: ( ( ( '..' ) ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27669:1: ( ( '..' ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27672:1: ( ( ( '..' ) ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27673:1: ( ( '..' ) )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27669:1: ( ( '..' ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27670:1: ( '..' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getType200Access().getOpFullStopFullStopKeyword_1_0_0_1_0()); 
-            }
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27671:1: ( '..' )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27672:1: '..'
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27673:1: ( ( '..' ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27674:1: ( '..' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getType200Access().getOpFullStopFullStopKeyword_1_0_0_1_0()); 
             }
-            match(input,104,FOLLOW_104_in_rule__Type200__OpAssignment_1_0_0_155847); if (state.failed) return ;
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27675:1: ( '..' )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27676:1: '..'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getType200Access().getOpFullStopFullStopKeyword_1_0_0_1_0()); 
+            }
+            match(input,104,FOLLOW_104_in_rule__Type200__OpAssignment_1_0_0_155855); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getType200Access().getOpFullStopFullStopKeyword_1_0_0_1_0()); 
             }
@@ -79031,22 +79047,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type200__RightOperandAssignment_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27687:1: rule__Type200__RightOperandAssignment_1_1 : ( ruleType300 ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27691:1: rule__Type200__RightOperandAssignment_1_1 : ( ruleType300 ) ;
     public final void rule__Type200__RightOperandAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27691:1: ( ( ruleType300 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27692:1: ( ruleType300 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27695:1: ( ( ruleType300 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27696:1: ( ruleType300 )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27692:1: ( ruleType300 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27693:1: ruleType300
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27696:1: ( ruleType300 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27697:1: ruleType300
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getType200Access().getRightOperandType300ParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleType300_in_rule__Type200__RightOperandAssignment_1_155886);
+            pushFollow(FOLLOW_ruleType300_in_rule__Type200__RightOperandAssignment_1_155894);
             ruleType300();
 
             state._fsp--;
@@ -79076,22 +79092,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type300__OpAssignment_1_0_0_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27702:1: rule__Type300__OpAssignment_1_0_0_1 : ( ruleADDOP ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27706:1: rule__Type300__OpAssignment_1_0_0_1 : ( ruleADDOP ) ;
     public final void rule__Type300__OpAssignment_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27706:1: ( ( ruleADDOP ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27707:1: ( ruleADDOP )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27710:1: ( ( ruleADDOP ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27711:1: ( ruleADDOP )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27707:1: ( ruleADDOP )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27708:1: ruleADDOP
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27711:1: ( ruleADDOP )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27712:1: ruleADDOP
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getType300Access().getOpADDOPParserRuleCall_1_0_0_1_0()); 
             }
-            pushFollow(FOLLOW_ruleADDOP_in_rule__Type300__OpAssignment_1_0_0_155917);
+            pushFollow(FOLLOW_ruleADDOP_in_rule__Type300__OpAssignment_1_0_0_155925);
             ruleADDOP();
 
             state._fsp--;
@@ -79121,22 +79137,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type300__RightOperandAssignment_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27717:1: rule__Type300__RightOperandAssignment_1_1 : ( ruleType400 ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27721:1: rule__Type300__RightOperandAssignment_1_1 : ( ruleType400 ) ;
     public final void rule__Type300__RightOperandAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27721:1: ( ( ruleType400 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27722:1: ( ruleType400 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27725:1: ( ( ruleType400 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27726:1: ( ruleType400 )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27722:1: ( ruleType400 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27723:1: ruleType400
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27726:1: ( ruleType400 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27727:1: ruleType400
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getType300Access().getRightOperandType400ParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleType400_in_rule__Type300__RightOperandAssignment_1_155948);
+            pushFollow(FOLLOW_ruleType400_in_rule__Type300__RightOperandAssignment_1_155956);
             ruleType400();
 
             state._fsp--;
@@ -79166,22 +79182,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type400__OpAssignment_1_0_0_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27732:1: rule__Type400__OpAssignment_1_0_0_1 : ( ruleMULTOP ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27736:1: rule__Type400__OpAssignment_1_0_0_1 : ( ruleMULTOP ) ;
     public final void rule__Type400__OpAssignment_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27736:1: ( ( ruleMULTOP ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27737:1: ( ruleMULTOP )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27740:1: ( ( ruleMULTOP ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27741:1: ( ruleMULTOP )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27737:1: ( ruleMULTOP )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27738:1: ruleMULTOP
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27741:1: ( ruleMULTOP )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27742:1: ruleMULTOP
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getType400Access().getOpMULTOPParserRuleCall_1_0_0_1_0()); 
             }
-            pushFollow(FOLLOW_ruleMULTOP_in_rule__Type400__OpAssignment_1_0_0_155979);
+            pushFollow(FOLLOW_ruleMULTOP_in_rule__Type400__OpAssignment_1_0_0_155987);
             ruleMULTOP();
 
             state._fsp--;
@@ -79211,22 +79227,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type400__RightOperandAssignment_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27747:1: rule__Type400__RightOperandAssignment_1_1 : ( ruleType500 ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27751:1: rule__Type400__RightOperandAssignment_1_1 : ( ruleType500 ) ;
     public final void rule__Type400__RightOperandAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27751:1: ( ( ruleType500 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27752:1: ( ruleType500 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27755:1: ( ( ruleType500 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27756:1: ( ruleType500 )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27752:1: ( ruleType500 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27753:1: ruleType500
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27756:1: ( ruleType500 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27757:1: ruleType500
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getType400Access().getRightOperandType500ParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleType500_in_rule__Type400__RightOperandAssignment_1_156010);
+            pushFollow(FOLLOW_ruleType500_in_rule__Type400__RightOperandAssignment_1_156018);
             ruleType500();
 
             state._fsp--;
@@ -79256,22 +79272,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type500__OpAssignment_0_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27762:1: rule__Type500__OpAssignment_0_1 : ( rulePREFIXOP ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27766:1: rule__Type500__OpAssignment_0_1 : ( rulePREFIXOP ) ;
     public final void rule__Type500__OpAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27766:1: ( ( rulePREFIXOP ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27767:1: ( rulePREFIXOP )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27770:1: ( ( rulePREFIXOP ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27771:1: ( rulePREFIXOP )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27767:1: ( rulePREFIXOP )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27768:1: rulePREFIXOP
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27771:1: ( rulePREFIXOP )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27772:1: rulePREFIXOP
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getType500Access().getOpPREFIXOPParserRuleCall_0_1_0()); 
             }
-            pushFollow(FOLLOW_rulePREFIXOP_in_rule__Type500__OpAssignment_0_156041);
+            pushFollow(FOLLOW_rulePREFIXOP_in_rule__Type500__OpAssignment_0_156049);
             rulePREFIXOP();
 
             state._fsp--;
@@ -79301,22 +79317,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type500__OperandAssignment_0_2"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27777:1: rule__Type500__OperandAssignment_0_2 : ( ruleType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27781:1: rule__Type500__OperandAssignment_0_2 : ( ruleType ) ;
     public final void rule__Type500__OperandAssignment_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27781:1: ( ( ruleType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27782:1: ( ruleType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27785:1: ( ( ruleType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27786:1: ( ruleType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27782:1: ( ruleType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27783:1: ruleType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27786:1: ( ruleType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27787:1: ruleType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getType500Access().getOperandTypeParserRuleCall_0_2_0()); 
             }
-            pushFollow(FOLLOW_ruleType_in_rule__Type500__OperandAssignment_0_256072);
+            pushFollow(FOLLOW_ruleType_in_rule__Type500__OperandAssignment_0_256080);
             ruleType();
 
             state._fsp--;
@@ -79346,22 +79362,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__MAssignment_1_1_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27792:1: rule__Type__MAssignment_1_1_0 : ( ruleAtomVarMacro ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27796:1: rule__Type__MAssignment_1_1_0 : ( ruleAtomVarMacro ) ;
     public final void rule__Type__MAssignment_1_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27796:1: ( ( ruleAtomVarMacro ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27797:1: ( ruleAtomVarMacro )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27800:1: ( ( ruleAtomVarMacro ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27801:1: ( ruleAtomVarMacro )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27797:1: ( ruleAtomVarMacro )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27798:1: ruleAtomVarMacro
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27801:1: ( ruleAtomVarMacro )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27802:1: ruleAtomVarMacro
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getMAtomVarMacroParserRuleCall_1_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__Type__MAssignment_1_1_056103);
+            pushFollow(FOLLOW_ruleAtomVarMacro_in_rule__Type__MAssignment_1_1_056111);
             ruleAtomVarMacro();
 
             state._fsp--;
@@ -79391,22 +79407,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__TypeNameAssignment_1_2"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27807:1: rule__Type__TypeNameAssignment_1_2 : ( ruleAtomRefLiteral ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27811:1: rule__Type__TypeNameAssignment_1_2 : ( ruleAtomRefLiteral ) ;
     public final void rule__Type__TypeNameAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27811:1: ( ( ruleAtomRefLiteral ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27812:1: ( ruleAtomRefLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27815:1: ( ( ruleAtomRefLiteral ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27816:1: ( ruleAtomRefLiteral )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27812:1: ( ruleAtomRefLiteral )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27813:1: ruleAtomRefLiteral
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27816:1: ( ruleAtomRefLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27817:1: ruleAtomRefLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getTypeNameAtomRefLiteralParserRuleCall_1_2_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomRefLiteral_in_rule__Type__TypeNameAssignment_1_256134);
+            pushFollow(FOLLOW_ruleAtomRefLiteral_in_rule__Type__TypeNameAssignment_1_256142);
             ruleAtomRefLiteral();
 
             state._fsp--;
@@ -79436,22 +79452,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__ArgsAssignment_1_3_1_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27822:1: rule__Type__ArgsAssignment_1_3_1_0 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27826:1: rule__Type__ArgsAssignment_1_3_1_0 : ( ruleTopType ) ;
     public final void rule__Type__ArgsAssignment_1_3_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27826:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27827:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27830:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27831:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27827:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27828:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27831:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27832:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getArgsTopTypeParserRuleCall_1_3_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__Type__ArgsAssignment_1_3_1_056165);
+            pushFollow(FOLLOW_ruleTopType_in_rule__Type__ArgsAssignment_1_3_1_056173);
             ruleTopType();
 
             state._fsp--;
@@ -79481,22 +79497,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__ArgsAssignment_1_3_1_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27837:1: rule__Type__ArgsAssignment_1_3_1_1_1 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27841:1: rule__Type__ArgsAssignment_1_3_1_1_1 : ( ruleTopType ) ;
     public final void rule__Type__ArgsAssignment_1_3_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27841:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27842:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27845:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27846:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27842:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27843:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27846:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27847:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getArgsTopTypeParserRuleCall_1_3_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__Type__ArgsAssignment_1_3_1_1_156196);
+            pushFollow(FOLLOW_ruleTopType_in_rule__Type__ArgsAssignment_1_3_1_1_156204);
             ruleTopType();
 
             state._fsp--;
@@ -79526,22 +79542,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__TypeNameAssignment_2"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27852:1: rule__Type__TypeNameAssignment_2 : ( ruleVariableLiteral ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27856:1: rule__Type__TypeNameAssignment_2 : ( ruleVariableLiteral ) ;
     public final void rule__Type__TypeNameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27856:1: ( ( ruleVariableLiteral ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27857:1: ( ruleVariableLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27860:1: ( ( ruleVariableLiteral ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27861:1: ( ruleVariableLiteral )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27857:1: ( ruleVariableLiteral )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27858:1: ruleVariableLiteral
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27861:1: ( ruleVariableLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27862:1: ruleVariableLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getTypeNameVariableLiteralParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleVariableLiteral_in_rule__Type__TypeNameAssignment_256227);
+            pushFollow(FOLLOW_ruleVariableLiteral_in_rule__Type__TypeNameAssignment_256235);
             ruleVariableLiteral();
 
             state._fsp--;
@@ -79571,22 +79587,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__ValueAssignment_3"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27867:1: rule__Type__ValueAssignment_3 : ( ruleINTEGER ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27871:1: rule__Type__ValueAssignment_3 : ( ruleINTEGER ) ;
     public final void rule__Type__ValueAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27871:1: ( ( ruleINTEGER ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27872:1: ( ruleINTEGER )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27875:1: ( ( ruleINTEGER ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27876:1: ( ruleINTEGER )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27872:1: ( ruleINTEGER )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27873:1: ruleINTEGER
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27876:1: ( ruleINTEGER )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27877:1: ruleINTEGER
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getValueINTEGERParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleINTEGER_in_rule__Type__ValueAssignment_356258);
+            pushFollow(FOLLOW_ruleINTEGER_in_rule__Type__ValueAssignment_356266);
             ruleINTEGER();
 
             state._fsp--;
@@ -79616,22 +79632,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__TypeAssignment_4_2_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27882:1: rule__Type__TypeAssignment_4_2_0 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27886:1: rule__Type__TypeAssignment_4_2_0 : ( ruleTopType ) ;
     public final void rule__Type__TypeAssignment_4_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27886:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27887:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27890:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27891:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27887:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27888:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27891:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27892:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getTypeTopTypeParserRuleCall_4_2_0_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__Type__TypeAssignment_4_2_056289);
+            pushFollow(FOLLOW_ruleTopType_in_rule__Type__TypeAssignment_4_2_056297);
             ruleTopType();
 
             state._fsp--;
@@ -79661,22 +79677,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__TypesAssignment_5_2_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27897:1: rule__Type__TypesAssignment_5_2_0 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27901:1: rule__Type__TypesAssignment_5_2_0 : ( ruleTopType ) ;
     public final void rule__Type__TypesAssignment_5_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27901:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27902:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27905:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27906:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27902:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27903:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27906:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27907:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getTypesTopTypeParserRuleCall_5_2_0_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__Type__TypesAssignment_5_2_056320);
+            pushFollow(FOLLOW_ruleTopType_in_rule__Type__TypesAssignment_5_2_056328);
             ruleTopType();
 
             state._fsp--;
@@ -79706,22 +79722,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__TypesAssignment_5_2_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27912:1: rule__Type__TypesAssignment_5_2_1_1 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27916:1: rule__Type__TypesAssignment_5_2_1_1 : ( ruleTopType ) ;
     public final void rule__Type__TypesAssignment_5_2_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27916:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27917:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27920:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27921:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27917:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27918:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27921:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27922:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getTypesTopTypeParserRuleCall_5_2_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__Type__TypesAssignment_5_2_1_156351);
+            pushFollow(FOLLOW_ruleTopType_in_rule__Type__TypesAssignment_5_2_1_156359);
             ruleTopType();
 
             state._fsp--;
@@ -79751,22 +79767,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__RecAssignment_6_2"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27927:1: rule__Type__RecAssignment_6_2 : ( ruleAtomRefLiteral ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27931:1: rule__Type__RecAssignment_6_2 : ( ruleAtomRefLiteral ) ;
     public final void rule__Type__RecAssignment_6_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27931:1: ( ( ruleAtomRefLiteral ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27932:1: ( ruleAtomRefLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27935:1: ( ( ruleAtomRefLiteral ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27936:1: ( ruleAtomRefLiteral )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27932:1: ( ruleAtomRefLiteral )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27933:1: ruleAtomRefLiteral
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27936:1: ( ruleAtomRefLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27937:1: ruleAtomRefLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getRecAtomRefLiteralParserRuleCall_6_2_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomRefLiteral_in_rule__Type__RecAssignment_6_256382);
+            pushFollow(FOLLOW_ruleAtomRefLiteral_in_rule__Type__RecAssignment_6_256390);
             ruleAtomRefLiteral();
 
             state._fsp--;
@@ -79796,22 +79812,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__FieldsAssignment_6_4_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27942:1: rule__Type__FieldsAssignment_6_4_0 : ( ruleFieldType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27946:1: rule__Type__FieldsAssignment_6_4_0 : ( ruleFieldType ) ;
     public final void rule__Type__FieldsAssignment_6_4_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27946:1: ( ( ruleFieldType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27947:1: ( ruleFieldType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27950:1: ( ( ruleFieldType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27951:1: ( ruleFieldType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27947:1: ( ruleFieldType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27948:1: ruleFieldType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27951:1: ( ruleFieldType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27952:1: ruleFieldType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getFieldsFieldTypeParserRuleCall_6_4_0_0()); 
             }
-            pushFollow(FOLLOW_ruleFieldType_in_rule__Type__FieldsAssignment_6_4_056413);
+            pushFollow(FOLLOW_ruleFieldType_in_rule__Type__FieldsAssignment_6_4_056421);
             ruleFieldType();
 
             state._fsp--;
@@ -79841,22 +79857,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__FieldsAssignment_6_4_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27957:1: rule__Type__FieldsAssignment_6_4_1_1 : ( ruleFieldType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27961:1: rule__Type__FieldsAssignment_6_4_1_1 : ( ruleFieldType ) ;
     public final void rule__Type__FieldsAssignment_6_4_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27961:1: ( ( ruleFieldType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27962:1: ( ruleFieldType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27965:1: ( ( ruleFieldType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27966:1: ( ruleFieldType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27962:1: ( ruleFieldType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27963:1: ruleFieldType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27966:1: ( ruleFieldType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27967:1: ruleFieldType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getFieldsFieldTypeParserRuleCall_6_4_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleFieldType_in_rule__Type__FieldsAssignment_6_4_1_156444);
+            pushFollow(FOLLOW_ruleFieldType_in_rule__Type__FieldsAssignment_6_4_1_156452);
             ruleFieldType();
 
             state._fsp--;
@@ -79886,22 +79902,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Type__TypeAssignment_8_3"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27972:1: rule__Type__TypeAssignment_8_3 : ( ruleFunType100 ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27976:1: rule__Type__TypeAssignment_8_3 : ( ruleFunType100 ) ;
     public final void rule__Type__TypeAssignment_8_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27976:1: ( ( ruleFunType100 ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27977:1: ( ruleFunType100 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27980:1: ( ( ruleFunType100 ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27981:1: ( ruleFunType100 )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27977:1: ( ruleFunType100 )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27978:1: ruleFunType100
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27981:1: ( ruleFunType100 )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27982:1: ruleFunType100
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeAccess().getTypeFunType100ParserRuleCall_8_3_0()); 
             }
-            pushFollow(FOLLOW_ruleFunType100_in_rule__Type__TypeAssignment_8_356475);
+            pushFollow(FOLLOW_ruleFunType100_in_rule__Type__TypeAssignment_8_356483);
             ruleFunType100();
 
             state._fsp--;
@@ -79931,22 +79947,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FieldType__TypeNameAssignment_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27987:1: rule__FieldType__TypeNameAssignment_0 : ( ruleAtomRefLiteral ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27991:1: rule__FieldType__TypeNameAssignment_0 : ( ruleAtomRefLiteral ) ;
     public final void rule__FieldType__TypeNameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27991:1: ( ( ruleAtomRefLiteral ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27992:1: ( ruleAtomRefLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27995:1: ( ( ruleAtomRefLiteral ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27996:1: ( ruleAtomRefLiteral )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27992:1: ( ruleAtomRefLiteral )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27993:1: ruleAtomRefLiteral
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27996:1: ( ruleAtomRefLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:27997:1: ruleAtomRefLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFieldTypeAccess().getTypeNameAtomRefLiteralParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleAtomRefLiteral_in_rule__FieldType__TypeNameAssignment_056506);
+            pushFollow(FOLLOW_ruleAtomRefLiteral_in_rule__FieldType__TypeNameAssignment_056514);
             ruleAtomRefLiteral();
 
             state._fsp--;
@@ -79976,22 +79992,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FieldType__TypeAssignment_2"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28002:1: rule__FieldType__TypeAssignment_2 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28006:1: rule__FieldType__TypeAssignment_2 : ( ruleTopType ) ;
     public final void rule__FieldType__TypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28006:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28007:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28010:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28011:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28007:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28008:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28011:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28012:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFieldTypeAccess().getTypeTopTypeParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__FieldType__TypeAssignment_256537);
+            pushFollow(FOLLOW_ruleTopType_in_rule__FieldType__TypeAssignment_256545);
             ruleTopType();
 
             state._fsp--;
@@ -80021,22 +80037,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BinaryType__TypeAssignment_2_0_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28017:1: rule__BinaryType__TypeAssignment_2_0_0 : ( ruleBinBaseType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28021:1: rule__BinaryType__TypeAssignment_2_0_0 : ( ruleBinBaseType ) ;
     public final void rule__BinaryType__TypeAssignment_2_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28021:1: ( ( ruleBinBaseType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28022:1: ( ruleBinBaseType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28025:1: ( ( ruleBinBaseType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28026:1: ( ruleBinBaseType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28022:1: ( ruleBinBaseType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28023:1: ruleBinBaseType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28026:1: ( ruleBinBaseType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28027:1: ruleBinBaseType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBinaryTypeAccess().getTypeBinBaseTypeParserRuleCall_2_0_0_0()); 
             }
-            pushFollow(FOLLOW_ruleBinBaseType_in_rule__BinaryType__TypeAssignment_2_0_056568);
+            pushFollow(FOLLOW_ruleBinBaseType_in_rule__BinaryType__TypeAssignment_2_0_056576);
             ruleBinBaseType();
 
             state._fsp--;
@@ -80066,22 +80082,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BinaryType__TypeAssignment_2_0_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28032:1: rule__BinaryType__TypeAssignment_2_0_1_1 : ( ruleBinUnitType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28036:1: rule__BinaryType__TypeAssignment_2_0_1_1 : ( ruleBinUnitType ) ;
     public final void rule__BinaryType__TypeAssignment_2_0_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28036:1: ( ( ruleBinUnitType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28037:1: ( ruleBinUnitType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28040:1: ( ( ruleBinUnitType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28041:1: ( ruleBinUnitType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28037:1: ( ruleBinUnitType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28038:1: ruleBinUnitType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28041:1: ( ruleBinUnitType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28042:1: ruleBinUnitType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBinaryTypeAccess().getTypeBinUnitTypeParserRuleCall_2_0_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleBinUnitType_in_rule__BinaryType__TypeAssignment_2_0_1_156599);
+            pushFollow(FOLLOW_ruleBinUnitType_in_rule__BinaryType__TypeAssignment_2_0_1_156607);
             ruleBinUnitType();
 
             state._fsp--;
@@ -80111,22 +80127,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BinaryType__TypeAssignment_2_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28047:1: rule__BinaryType__TypeAssignment_2_1 : ( ruleBinUnitType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28051:1: rule__BinaryType__TypeAssignment_2_1 : ( ruleBinUnitType ) ;
     public final void rule__BinaryType__TypeAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28051:1: ( ( ruleBinUnitType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28052:1: ( ruleBinUnitType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28055:1: ( ( ruleBinUnitType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28056:1: ( ruleBinUnitType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28052:1: ( ruleBinUnitType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28053:1: ruleBinUnitType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28056:1: ( ruleBinUnitType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28057:1: ruleBinUnitType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBinaryTypeAccess().getTypeBinUnitTypeParserRuleCall_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleBinUnitType_in_rule__BinaryType__TypeAssignment_2_156630);
+            pushFollow(FOLLOW_ruleBinUnitType_in_rule__BinaryType__TypeAssignment_2_156638);
             ruleBinUnitType();
 
             state._fsp--;
@@ -80156,22 +80172,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BinBaseType__TypeNameAssignment_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28062:1: rule__BinBaseType__TypeNameAssignment_0 : ( ruleVariableLiteral ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28066:1: rule__BinBaseType__TypeNameAssignment_0 : ( ruleVariableLiteral ) ;
     public final void rule__BinBaseType__TypeNameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28066:1: ( ( ruleVariableLiteral ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28067:1: ( ruleVariableLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28070:1: ( ( ruleVariableLiteral ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28071:1: ( ruleVariableLiteral )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28067:1: ( ruleVariableLiteral )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28068:1: ruleVariableLiteral
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28071:1: ( ruleVariableLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28072:1: ruleVariableLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBinBaseTypeAccess().getTypeNameVariableLiteralParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleVariableLiteral_in_rule__BinBaseType__TypeNameAssignment_056661);
+            pushFollow(FOLLOW_ruleVariableLiteral_in_rule__BinBaseType__TypeNameAssignment_056669);
             ruleVariableLiteral();
 
             state._fsp--;
@@ -80201,22 +80217,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BinBaseType__TypeAssignment_2"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28077:1: rule__BinBaseType__TypeAssignment_2 : ( ruleType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28081:1: rule__BinBaseType__TypeAssignment_2 : ( ruleType ) ;
     public final void rule__BinBaseType__TypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28081:1: ( ( ruleType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28082:1: ( ruleType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28085:1: ( ( ruleType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28086:1: ( ruleType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28082:1: ( ruleType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28083:1: ruleType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28086:1: ( ruleType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28087:1: ruleType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBinBaseTypeAccess().getTypeTypeParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleType_in_rule__BinBaseType__TypeAssignment_256692);
+            pushFollow(FOLLOW_ruleType_in_rule__BinBaseType__TypeAssignment_256700);
             ruleType();
 
             state._fsp--;
@@ -80246,22 +80262,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BinUnitType__TypeNameAssignment_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28092:1: rule__BinUnitType__TypeNameAssignment_0 : ( ruleVariableLiteral ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28096:1: rule__BinUnitType__TypeNameAssignment_0 : ( ruleVariableLiteral ) ;
     public final void rule__BinUnitType__TypeNameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28096:1: ( ( ruleVariableLiteral ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28097:1: ( ruleVariableLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28100:1: ( ( ruleVariableLiteral ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28101:1: ( ruleVariableLiteral )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28097:1: ( ruleVariableLiteral )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28098:1: ruleVariableLiteral
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28101:1: ( ruleVariableLiteral )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28102:1: ruleVariableLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBinUnitTypeAccess().getTypeNameVariableLiteralParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleVariableLiteral_in_rule__BinUnitType__TypeNameAssignment_056723);
+            pushFollow(FOLLOW_ruleVariableLiteral_in_rule__BinUnitType__TypeNameAssignment_056731);
             ruleVariableLiteral();
 
             state._fsp--;
@@ -80291,22 +80307,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BinUnitType__MAssignment_2"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28107:1: rule__BinUnitType__MAssignment_2 : ( RULE_VARIABLE ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28111:1: rule__BinUnitType__MAssignment_2 : ( RULE_VARIABLE ) ;
     public final void rule__BinUnitType__MAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28111:1: ( ( RULE_VARIABLE ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28112:1: ( RULE_VARIABLE )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28115:1: ( ( RULE_VARIABLE ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28116:1: ( RULE_VARIABLE )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28112:1: ( RULE_VARIABLE )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28113:1: RULE_VARIABLE
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28116:1: ( RULE_VARIABLE )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28117:1: RULE_VARIABLE
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBinUnitTypeAccess().getMVARIABLETerminalRuleCall_2_0()); 
             }
-            match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_rule__BinUnitType__MAssignment_256754); if (state.failed) return ;
+            match(input,RULE_VARIABLE,FOLLOW_RULE_VARIABLE_in_rule__BinUnitType__MAssignment_256762); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getBinUnitTypeAccess().getMVARIABLETerminalRuleCall_2_0()); 
             }
@@ -80332,22 +80348,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BinUnitType__TypeAssignment_4"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28122:1: rule__BinUnitType__TypeAssignment_4 : ( ruleType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28126:1: rule__BinUnitType__TypeAssignment_4 : ( ruleType ) ;
     public final void rule__BinUnitType__TypeAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28126:1: ( ( ruleType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28127:1: ( ruleType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28130:1: ( ( ruleType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28131:1: ( ruleType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28127:1: ( ruleType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28128:1: ruleType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28131:1: ( ruleType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28132:1: ruleType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBinUnitTypeAccess().getTypeTypeParserRuleCall_4_0()); 
             }
-            pushFollow(FOLLOW_ruleType_in_rule__BinUnitType__TypeAssignment_456785);
+            pushFollow(FOLLOW_ruleType_in_rule__BinUnitType__TypeAssignment_456793);
             ruleType();
 
             state._fsp--;
@@ -80377,22 +80393,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunType100__ItemsAssignment_2_1_0"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28137:1: rule__FunType100__ItemsAssignment_2_1_0 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28141:1: rule__FunType100__ItemsAssignment_2_1_0 : ( ruleTopType ) ;
     public final void rule__FunType100__ItemsAssignment_2_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28141:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28142:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28145:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28146:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28142:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28143:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28146:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28147:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFunType100Access().getItemsTopTypeParserRuleCall_2_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__FunType100__ItemsAssignment_2_1_056816);
+            pushFollow(FOLLOW_ruleTopType_in_rule__FunType100__ItemsAssignment_2_1_056824);
             ruleTopType();
 
             state._fsp--;
@@ -80422,22 +80438,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunType100__ItemsAssignment_2_1_1_1"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28152:1: rule__FunType100__ItemsAssignment_2_1_1_1 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28156:1: rule__FunType100__ItemsAssignment_2_1_1_1 : ( ruleTopType ) ;
     public final void rule__FunType100__ItemsAssignment_2_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28156:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28157:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28160:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28161:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28157:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28158:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28161:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28162:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFunType100Access().getItemsTopTypeParserRuleCall_2_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__FunType100__ItemsAssignment_2_1_1_156847);
+            pushFollow(FOLLOW_ruleTopType_in_rule__FunType100__ItemsAssignment_2_1_1_156855);
             ruleTopType();
 
             state._fsp--;
@@ -80467,22 +80483,22 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunType100__ReturnAssignment_5"
-    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28167:1: rule__FunType100__ReturnAssignment_5 : ( ruleTopType ) ;
+    // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28171:1: rule__FunType100__ReturnAssignment_5 : ( ruleTopType ) ;
     public final void rule__FunType100__ReturnAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28171:1: ( ( ruleTopType ) )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28172:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28175:1: ( ( ruleTopType ) )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28176:1: ( ruleTopType )
             {
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28172:1: ( ruleTopType )
-            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28173:1: ruleTopType
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28176:1: ( ruleTopType )
+            // ../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g:28177:1: ruleTopType
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFunType100Access().getReturnTopTypeParserRuleCall_5_0()); 
             }
-            pushFollow(FOLLOW_ruleTopType_in_rule__FunType100__ReturnAssignment_556878);
+            pushFollow(FOLLOW_ruleTopType_in_rule__FunType100__ReturnAssignment_556886);
             ruleTopType();
 
             state._fsp--;
@@ -81290,41 +81306,41 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     static final String DFA133_eotS =
         "\60\uffff";
     static final String DFA133_eofS =
-        "\1\uffff\26\32\4\uffff\25\32";
+        "\1\uffff\26\31\4\uffff\25\31";
     static final String DFA133_minS =
         "\1\4\26\44\2\4\2\uffff\25\44";
     static final String DFA133_maxS =
         "\1\104\26\125\2\104\2\uffff\25\125";
     static final String DFA133_acceptS =
-        "\31\uffff\1\1\1\2\25\uffff";
+        "\31\uffff\1\2\1\1\25\uffff";
     static final String DFA133_specialS =
         "\60\uffff}>";
     static final String[] DFA133_transitionS = {
             "\1\1\1\26\15\uffff\1\4\1\5\1\2\1\17\1\6\1\7\34\uffff\1\27\1"+
             "\30\1\25\1\3\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\20\1\21\1"+
             "\22\1\23\1\24",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
             "\1\33\1\57\15\uffff\1\36\1\37\1\34\1\51\1\40\1\41\37\uffff"+
             "\1\35\1\42\1\43\1\44\1\45\1\46\1\47\1\50\1\52\1\53\1\54\1\55"+
             "\1\56",
@@ -81333,27 +81349,27 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             "\1\56",
             "",
             "",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31"
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32"
     };
 
     static final short[] DFA133_eot = DFA.unpackEncodedString(DFA133_eotS);
@@ -83179,7 +83195,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_85_in_rule__BinaryItem__Group_1__0__Impl38907 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_1__1__Impl_in_rule__BinaryItem__Group_1__138939 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__SizeAssignment_1_1_in_rule__BinaryItem__Group_1__1__Impl38966 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BinaryItem__Group_2__0__Impl_in_rule__BinaryItem__Group_2__039000 = new BitSet(new long[]{0xFF80000001F80010L,0x000000000000001FL});
+    public static final BitSet FOLLOW_rule__BinaryItem__Group_2__0__Impl_in_rule__BinaryItem__Group_2__039000 = new BitSet(new long[]{0xFFE0000011F80010L,0x000000000000001FL});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2__1_in_rule__BinaryItem__Group_2__039003 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_36_in_rule__BinaryItem__Group_2__0__Impl39032 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2__1__Impl_in_rule__BinaryItem__Group_2__139064 = new BitSet(new long[]{0x0000000010000000L});
@@ -83187,7 +83203,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__BinaryItem__TypesAssignment_2_1_in_rule__BinaryItem__Group_2__1__Impl39094 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2__2__Impl_in_rule__BinaryItem__Group_2__239124 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2_2__0_in_rule__BinaryItem__Group_2__2__Impl39151 = new BitSet(new long[]{0x0000000010000002L});
-    public static final BitSet FOLLOW_rule__BinaryItem__Group_2_2__0__Impl_in_rule__BinaryItem__Group_2_2__039188 = new BitSet(new long[]{0xFF80000001F80010L,0x000000000000001FL});
+    public static final BitSet FOLLOW_rule__BinaryItem__Group_2_2__0__Impl_in_rule__BinaryItem__Group_2_2__039188 = new BitSet(new long[]{0xFFE0000011F80010L,0x000000000000001FL});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2_2__1_in_rule__BinaryItem__Group_2_2__039191 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_28_in_rule__BinaryItem__Group_2_2__0__Impl39219 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BinaryItem__Group_2_2__1__Impl_in_rule__BinaryItem__Group_2_2__139250 = new BitSet(new long[]{0x0000000000000002L});
@@ -83197,7 +83213,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__BitType__TypeNameAssignment_0_in_rule__BitType__Group__0__Impl39341 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BitType__Group__1__Impl_in_rule__BitType__Group__139371 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BitType__Group_1__0_in_rule__BitType__Group__1__Impl39398 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BitType__Group_1__0__Impl_in_rule__BitType__Group_1__039433 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_rule__BitType__Group_1__0__Impl_in_rule__BitType__Group_1__039433 = new BitSet(new long[]{0xFFE0000011F800F0L,0x000000000000001FL});
     public static final BitSet FOLLOW_rule__BitType__Group_1__1_in_rule__BitType__Group_1__039436 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_85_in_rule__BitType__Group_1__0__Impl39464 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BitType__Group_1__1__Impl_in_rule__BitType__Group_1__139495 = new BitSet(new long[]{0x0000000000000002L});
@@ -83777,66 +83793,66 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleExprMax_in_rule__BinaryItem__SizeAssignment_1_154928 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBitType_in_rule__BinaryItem__TypesAssignment_2_154959 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBitType_in_rule__BinaryItem__TypeAssignment_2_2_154990 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNAME_in_rule__BitType__TypeNameAssignment_055021 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__BitType__SizeAssignment_1_155052 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePREFIXOP_in_rule__UnaryExprMax__OpAssignment_0_155083 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExprMax_in_rule__UnaryExprMax__OperandAssignment_0_255114 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExpression_in_rule__LCExpr__O1Assignment_055145 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__LCExpr__OpAlternatives_1_0_0_in_rule__LCExpr__OpAssignment_1_055176 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExpression_in_rule__LCExpr__O2Assignment_1_155209 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__ModuleAssignment_0_055240 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__FunctionAssignment_155271 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntVarMacro_in_rule__SpecFun__ArityAssignment_2_155302 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunType_in_rule__TypeSig__DeclAssignment_055333 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTypeGuards_in_rule__TypeSig__GuardsAssignment_1_155364 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType__ArgsAssignment_1_055395 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType__ArgsAssignment_1_1_155426 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType__ReturnAssignment_455457 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTypeGuard_in_rule__TypeGuards__ItemsAssignment_055488 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTypeGuard_in_rule__TypeGuards__ItemsAssignment_1_155519 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_rule__TypeGuard__TypeNameAssignment_0_055550 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__TypeGuard__TypesAssignment_0_255581 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__TypeGuard__TypesAssignment_0_3_155612 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableLiteral_in_rule__TypeGuard__TypeNameAssignment_1_055643 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__TypeGuard__TypeAssignment_1_255674 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_VARIABLE_in_rule__TopType__VarAssignment_0_055705 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType100_in_rule__TopType__TypeAssignment_155736 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_98_in_rule__Type100__OpAssignment_1_0_0_155772 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType200_in_rule__Type100__RightOperandAssignment_1_155811 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_104_in_rule__Type200__OpAssignment_1_0_0_155847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType300_in_rule__Type200__RightOperandAssignment_1_155886 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleADDOP_in_rule__Type300__OpAssignment_1_0_0_155917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType400_in_rule__Type300__RightOperandAssignment_1_155948 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMULTOP_in_rule__Type400__OpAssignment_1_0_0_155979 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType500_in_rule__Type400__RightOperandAssignment_1_156010 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePREFIXOP_in_rule__Type500__OpAssignment_0_156041 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_rule__Type500__OperandAssignment_0_256072 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__Type__MAssignment_1_1_056103 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_rule__Type__TypeNameAssignment_1_256134 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__Type__ArgsAssignment_1_3_1_056165 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__Type__ArgsAssignment_1_3_1_1_156196 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableLiteral_in_rule__Type__TypeNameAssignment_256227 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleINTEGER_in_rule__Type__ValueAssignment_356258 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__Type__TypeAssignment_4_2_056289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__Type__TypesAssignment_5_2_056320 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__Type__TypesAssignment_5_2_1_156351 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_rule__Type__RecAssignment_6_256382 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFieldType_in_rule__Type__FieldsAssignment_6_4_056413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFieldType_in_rule__Type__FieldsAssignment_6_4_1_156444 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunType100_in_rule__Type__TypeAssignment_8_356475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_rule__FieldType__TypeNameAssignment_056506 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__FieldType__TypeAssignment_256537 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBinBaseType_in_rule__BinaryType__TypeAssignment_2_0_056568 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBinUnitType_in_rule__BinaryType__TypeAssignment_2_0_1_156599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBinUnitType_in_rule__BinaryType__TypeAssignment_2_156630 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableLiteral_in_rule__BinBaseType__TypeNameAssignment_056661 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_rule__BinBaseType__TypeAssignment_256692 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableLiteral_in_rule__BinUnitType__TypeNameAssignment_056723 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_VARIABLE_in_rule__BinUnitType__MAssignment_256754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_rule__BinUnitType__TypeAssignment_456785 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType100__ItemsAssignment_2_1_056816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType100__ItemsAssignment_2_1_1_156847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType100__ReturnAssignment_556878 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNAMEMACRO_in_rule__BitType__TypeNameAssignment_055025 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntVarMacro_in_rule__BitType__SizeAssignment_1_155060 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePREFIXOP_in_rule__UnaryExprMax__OpAssignment_0_155091 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExprMax_in_rule__UnaryExprMax__OperandAssignment_0_255122 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExpression_in_rule__LCExpr__O1Assignment_055153 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__LCExpr__OpAlternatives_1_0_0_in_rule__LCExpr__OpAssignment_1_055184 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExpression_in_rule__LCExpr__O2Assignment_1_155217 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__ModuleAssignment_0_055248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__SpecFun__FunctionAssignment_155279 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntVarMacro_in_rule__SpecFun__ArityAssignment_2_155310 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFunType_in_rule__TypeSig__DeclAssignment_055341 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypeGuards_in_rule__TypeSig__GuardsAssignment_1_155372 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType__ArgsAssignment_1_055403 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType__ArgsAssignment_1_1_155434 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType__ReturnAssignment_455465 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypeGuard_in_rule__TypeGuards__ItemsAssignment_055496 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypeGuard_in_rule__TypeGuards__ItemsAssignment_1_155527 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_rule__TypeGuard__TypeNameAssignment_0_055558 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__TypeGuard__TypesAssignment_0_255589 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__TypeGuard__TypesAssignment_0_3_155620 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableLiteral_in_rule__TypeGuard__TypeNameAssignment_1_055651 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__TypeGuard__TypeAssignment_1_255682 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_VARIABLE_in_rule__TopType__VarAssignment_0_055713 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType100_in_rule__TopType__TypeAssignment_155744 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_98_in_rule__Type100__OpAssignment_1_0_0_155780 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType200_in_rule__Type100__RightOperandAssignment_1_155819 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_104_in_rule__Type200__OpAssignment_1_0_0_155855 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType300_in_rule__Type200__RightOperandAssignment_1_155894 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleADDOP_in_rule__Type300__OpAssignment_1_0_0_155925 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType400_in_rule__Type300__RightOperandAssignment_1_155956 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMULTOP_in_rule__Type400__OpAssignment_1_0_0_155987 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType500_in_rule__Type400__RightOperandAssignment_1_156018 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePREFIXOP_in_rule__Type500__OpAssignment_0_156049 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_rule__Type500__OperandAssignment_0_256080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomVarMacro_in_rule__Type__MAssignment_1_1_056111 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_rule__Type__TypeNameAssignment_1_256142 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__Type__ArgsAssignment_1_3_1_056173 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__Type__ArgsAssignment_1_3_1_1_156204 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableLiteral_in_rule__Type__TypeNameAssignment_256235 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleINTEGER_in_rule__Type__ValueAssignment_356266 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__Type__TypeAssignment_4_2_056297 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__Type__TypesAssignment_5_2_056328 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__Type__TypesAssignment_5_2_1_156359 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_rule__Type__RecAssignment_6_256390 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFieldType_in_rule__Type__FieldsAssignment_6_4_056421 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFieldType_in_rule__Type__FieldsAssignment_6_4_1_156452 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFunType100_in_rule__Type__TypeAssignment_8_356483 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomRefLiteral_in_rule__FieldType__TypeNameAssignment_056514 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__FieldType__TypeAssignment_256545 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBinBaseType_in_rule__BinaryType__TypeAssignment_2_0_056576 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBinUnitType_in_rule__BinaryType__TypeAssignment_2_0_1_156607 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBinUnitType_in_rule__BinaryType__TypeAssignment_2_156638 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableLiteral_in_rule__BinBaseType__TypeNameAssignment_056669 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_rule__BinBaseType__TypeAssignment_256700 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableLiteral_in_rule__BinUnitType__TypeNameAssignment_056731 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_VARIABLE_in_rule__BinUnitType__MAssignment_256762 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_rule__BinUnitType__TypeAssignment_456793 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType100__ItemsAssignment_2_1_056824 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType100__ItemsAssignment_2_1_1_156855 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTopType_in_rule__FunType100__ReturnAssignment_556886 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleListComprehension_in_synpred42_InternalErlang8197 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleList_in_synpred43_InternalErlang8215 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBinaryComprehension_in_synpred44_InternalErlang8233 = new BitSet(new long[]{0x0000000000000002L});

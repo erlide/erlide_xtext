@@ -2331,9 +2331,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBitType_TypeName()
+  public EReference getBitType_TypeName()
   {
-    return (EAttribute)bitTypeEClass.getEStructuralFeatures().get(0);
+    return (EReference)bitTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2341,9 +2341,9 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBitType_Size()
+  public EReference getBitType_Size()
   {
-    return (EAttribute)bitTypeEClass.getEStructuralFeatures().get(1);
+    return (EReference)bitTypeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3619,8 +3619,8 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(binaryItemEClass, BINARY_ITEM__TYPE);
 
     bitTypeEClass = createEClass(BIT_TYPE);
-    createEAttribute(bitTypeEClass, BIT_TYPE__TYPE_NAME);
-    createEAttribute(bitTypeEClass, BIT_TYPE__SIZE);
+    createEReference(bitTypeEClass, BIT_TYPE__TYPE_NAME);
+    createEReference(bitTypeEClass, BIT_TYPE__SIZE);
 
     lcExprEClass = createEClass(LC_EXPR);
     createEReference(lcExprEClass, LC_EXPR__O1);
@@ -4077,8 +4077,8 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getBinaryItem_Type(), this.getBitType(), null, "type", null, 0, -1, BinaryItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(bitTypeEClass, BitType.class, "BitType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBitType_TypeName(), ecorePackage.getEString(), "typeName", null, 0, 1, BitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getBitType_Size(), ecorePackage.getEString(), "size", null, 0, 1, BitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBitType_TypeName(), this.getAtomRefTarget(), null, "typeName", null, 0, 1, BitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBitType_Size(), this.getExpression(), null, "size", null, 0, 1, BitType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lcExprEClass, LCExpr.class, "LCExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLCExpr_O1(), this.getExpression(), null, "o1", null, 0, 1, LCExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

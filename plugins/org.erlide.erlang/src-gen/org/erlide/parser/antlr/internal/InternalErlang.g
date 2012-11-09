@@ -6514,18 +6514,15 @@ ruleBitType returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		{ 
-	        newCompositeNode(grammarAccess.getBitTypeAccess().getTypeNameNAMEParserRuleCall_0_0()); 
-	    }
-		lv_typeName_0_0=ruleNAME		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getBitTypeRule());
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getBitTypeRule());
 	        }
-       		set(
-       			$current, 
-       			"typeName",
-        		lv_typeName_0_0, 
-        		"NAME");
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getBitTypeAccess().getTypeNameAtomRefTargetCrossReference_0_0()); 
+	    }
+		ruleNAMEMACRO		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -6536,19 +6533,19 @@ ruleBitType returns [EObject current=null]
     }
 (
 (
-		lv_size_2_0=RULE_INT
-		{
-			newLeafNode(lv_size_2_0, grammarAccess.getBitTypeAccess().getSizeINTTerminalRuleCall_1_1_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getBitTypeAccess().getSizeIntVarMacroParserRuleCall_1_1_0()); 
+	    }
+		lv_size_2_0=ruleIntVarMacro		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getBitTypeRule());
+	            $current = createModelElementForParent(grammarAccess.getBitTypeRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"size",
         		lv_size_2_0, 
-        		"INT");
+        		"IntVarMacro");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
