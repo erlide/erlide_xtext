@@ -4694,35 +4694,35 @@ ruleStringLiteral returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_string_0_0=RULE_STRING
-		{
-			newLeafNode(lv_string_0_0, grammarAccess.getStringLiteralAccess().getStringSTRINGTerminalRuleCall_0_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getStringLiteralAccess().getPartsStringLiteralLiteralParserRuleCall_0_0()); 
+	    }
+		lv_parts_0_0=ruleStringLiteralLiteral		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getStringLiteralRule());
+	            $current = createModelElementForParent(grammarAccess.getStringLiteralRule());
 	        }
-       		setWithLastConsumed(
+       		add(
        			$current, 
-       			"string",
-        		lv_string_0_0, 
-        		"STRING");
+       			"parts",
+        		lv_parts_0_0, 
+        		"StringLiteralLiteral");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStringLiteralAccess().getMoreStringLiteralPartParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getStringLiteralAccess().getPartsStringLiteralPartParserRuleCall_1_0()); 
 	    }
-		lv_more_1_0=ruleStringLiteralPart		{
+		lv_parts_1_0=ruleStringLiteralPart		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStringLiteralRule());
 	        }
        		add(
        			$current, 
-       			"more",
-        		lv_more_1_0, 
+       			"parts",
+        		lv_parts_1_0, 
         		"StringLiteralPart");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -4749,25 +4749,16 @@ ruleStringLiteralPart returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
 (
-		lv_string_0_0=RULE_STRING
-		{
-			newLeafNode(lv_string_0_0, grammarAccess.getStringLiteralPartAccess().getStringSTRINGTerminalRuleCall_0_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getStringLiteralPartRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"string",
-        		lv_string_0_0, 
-        		"STRING");
-	    }
+    { 
+        newCompositeNode(grammarAccess.getStringLiteralPartAccess().getStringLiteralLiteralParserRuleCall_0()); 
+    }
+    this_StringLiteralLiteral_0=ruleStringLiteralLiteral
+    { 
+        $current = $this_StringLiteralLiteral_0.current; 
+        afterParserOrEnumRuleCall();
+    }
 
-)
-)
     |(
 (
 		{ 
@@ -4787,6 +4778,45 @@ ruleStringLiteralPart returns [EObject current=null]
 
 )
 ))
+;
+
+
+
+
+
+// Entry rule entryRuleStringLiteralLiteral
+entryRuleStringLiteralLiteral returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getStringLiteralLiteralRule()); }
+	 iv_ruleStringLiteralLiteral=ruleStringLiteralLiteral 
+	 { $current=$iv_ruleStringLiteralLiteral.current; } 
+	 EOF 
+;
+
+// Rule StringLiteralLiteral
+ruleStringLiteralLiteral returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+(
+		lv_string_0_0=RULE_STRING
+		{
+			newLeafNode(lv_string_0_0, grammarAccess.getStringLiteralLiteralAccess().getStringSTRINGTerminalRuleCall_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStringLiteralLiteralRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"string",
+        		lv_string_0_0, 
+        		"STRING");
+	    }
+
+)
+)
 ;
 
 

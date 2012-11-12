@@ -1253,22 +1253,13 @@ public interface ErlangPackage extends EPackage
   int EXPRESSION__EXPR = 1;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION__STRING = 2;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__MORE = 3;
+  int EXPRESSION__PARTS = 2;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -1277,7 +1268,7 @@ public interface ErlangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = 4;
+  int EXPRESSION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.MacroCallImpl <em>Macro Call</em>}' class.
@@ -1345,22 +1336,13 @@ public interface ErlangPackage extends EPackage
   int RECORD_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RECORD_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RECORD_EXPR__MORE = EXPRESSION__MORE;
+  int RECORD_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -1445,22 +1427,13 @@ public interface ErlangPackage extends EPackage
   int QUERY_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int QUERY_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int QUERY_EXPR__MORE = EXPRESSION__MORE;
+  int QUERY_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The number of structural features of the '<em>Query Expr</em>' class.
@@ -1500,22 +1473,13 @@ public interface ErlangPackage extends EPackage
   int COND_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COND_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COND_EXPR__MORE = EXPRESSION__MORE;
+  int COND_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The number of structural features of the '<em>Cond Expr</em>' class.
@@ -1555,22 +1519,13 @@ public interface ErlangPackage extends EPackage
   int LET_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LET_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LET_EXPR__MORE = EXPRESSION__MORE;
+  int LET_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The number of structural features of the '<em>Let Expr</em>' class.
@@ -1666,22 +1621,22 @@ public interface ErlangPackage extends EPackage
   int STRING_LITERAL_PART = 39;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_LITERAL_PART__STRING = 0;
-
-  /**
    * The feature id for the '<em><b>Macro</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRING_LITERAL_PART__MACRO = 1;
+  int STRING_LITERAL_PART__MACRO = 0;
+
+  /**
+   * The feature id for the '<em><b>String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL_PART__STRING = 1;
 
   /**
    * The number of structural features of the '<em>String Literal Part</em>' class.
@@ -1721,22 +1676,13 @@ public interface ErlangPackage extends EPackage
   int IF_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int IF_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IF_EXPR__MORE = EXPRESSION__MORE;
+  int IF_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Clauses</b></em>' containment reference list.
@@ -1822,22 +1768,13 @@ public interface ErlangPackage extends EPackage
   int CASE_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CASE_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CASE_EXPR__MORE = EXPRESSION__MORE;
+  int CASE_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Clauses</b></em>' containment reference list.
@@ -1932,22 +1869,13 @@ public interface ErlangPackage extends EPackage
   int RECEIVE_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RECEIVE_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RECEIVE_EXPR__MORE = EXPRESSION__MORE;
+  int RECEIVE_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Clauses</b></em>' containment reference list.
@@ -2014,22 +1942,13 @@ public interface ErlangPackage extends EPackage
   int FUN_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUN_EXPR__MORE = EXPRESSION__MORE;
+  int FUN_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Clauses</b></em>' containment reference list.
@@ -2078,22 +1997,13 @@ public interface ErlangPackage extends EPackage
   int FUN_REF__EXPR = FUN_EXPR__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN_REF__STRING = FUN_EXPR__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUN_REF__MORE = FUN_EXPR__MORE;
+  int FUN_REF__PARTS = FUN_EXPR__PARTS;
 
   /**
    * The feature id for the '<em><b>Clauses</b></em>' containment reference list.
@@ -2169,22 +2079,13 @@ public interface ErlangPackage extends EPackage
   int TRY_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRY_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRY_EXPR__MORE = EXPRESSION__MORE;
+  int TRY_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -2315,22 +2216,13 @@ public interface ErlangPackage extends EPackage
   int ERL_LIST__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ERL_LIST__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERL_LIST__MORE = EXPRESSION__MORE;
+  int ERL_LIST__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2388,22 +2280,13 @@ public interface ErlangPackage extends EPackage
   int LIST_COMPREHENSION__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LIST_COMPREHENSION__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIST_COMPREHENSION__MORE = EXPRESSION__MORE;
+  int LIST_COMPREHENSION__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -2461,22 +2344,13 @@ public interface ErlangPackage extends EPackage
   int ERL_TUPLE__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ERL_TUPLE__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERL_TUPLE__MORE = EXPRESSION__MORE;
+  int ERL_TUPLE__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2525,22 +2399,13 @@ public interface ErlangPackage extends EPackage
   int BINARY_COMPREHENSION__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BINARY_COMPREHENSION__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BINARY_COMPREHENSION__MORE = EXPRESSION__MORE;
+  int BINARY_COMPREHENSION__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Generators</b></em>' containment reference list.
@@ -2589,22 +2454,13 @@ public interface ErlangPackage extends EPackage
   int ERL_BINARY__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ERL_BINARY__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERL_BINARY__MORE = EXPRESSION__MORE;
+  int ERL_BINARY__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -3393,22 +3249,13 @@ public interface ErlangPackage extends EPackage
   int CATCH_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CATCH_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CATCH_EXPR__MORE = EXPRESSION__MORE;
+  int CATCH_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The number of structural features of the '<em>Catch Expr</em>' class.
@@ -3448,22 +3295,13 @@ public interface ErlangPackage extends EPackage
   int MATCH_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MATCH_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MATCH_EXPR__MORE = EXPRESSION__MORE;
+  int MATCH_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Op Left</b></em>' containment reference.
@@ -3530,22 +3368,13 @@ public interface ErlangPackage extends EPackage
   int BIN_OP__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BIN_OP__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BIN_OP__MORE = EXPRESSION__MORE;
+  int BIN_OP__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Op Left</b></em>' containment reference.
@@ -3621,22 +3450,13 @@ public interface ErlangPackage extends EPackage
   int ADD_OP__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADD_OP__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADD_OP__MORE = EXPRESSION__MORE;
+  int ADD_OP__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Op Left</b></em>' containment reference.
@@ -3703,22 +3523,13 @@ public interface ErlangPackage extends EPackage
   int MULT_OP__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MULT_OP__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MULT_OP__MORE = EXPRESSION__MORE;
+  int MULT_OP__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Op Left</b></em>' containment reference.
@@ -3785,22 +3596,13 @@ public interface ErlangPackage extends EPackage
   int UNARY_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int UNARY_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int UNARY_EXPR__MORE = EXPRESSION__MORE;
+  int UNARY_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -3858,22 +3660,13 @@ public interface ErlangPackage extends EPackage
   int FUN_CALL__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN_CALL__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUN_CALL__MORE = EXPRESSION__MORE;
+  int FUN_CALL__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -3940,22 +3733,13 @@ public interface ErlangPackage extends EPackage
   int REMOTE_TARGET__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REMOTE_TARGET__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REMOTE_TARGET__MORE = EXPRESSION__MORE;
+  int REMOTE_TARGET__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Module</b></em>' containment reference.
@@ -4013,22 +3797,13 @@ public interface ErlangPackage extends EPackage
   int BLOCK_EXPR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BLOCK_EXPR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BLOCK_EXPR__MORE = EXPRESSION__MORE;
+  int BLOCK_EXPR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -4077,22 +3852,13 @@ public interface ErlangPackage extends EPackage
   int ERL_CHAR__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ERL_CHAR__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERL_CHAR__MORE = EXPRESSION__MORE;
+  int ERL_CHAR__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -4141,22 +3907,13 @@ public interface ErlangPackage extends EPackage
   int ATOM__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATOM__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATOM__MORE = EXPRESSION__MORE;
+  int ATOM__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -4205,22 +3962,13 @@ public interface ErlangPackage extends EPackage
   int MACRO__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MACRO__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MACRO__MORE = EXPRESSION__MORE;
+  int MACRO__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -4269,22 +4017,13 @@ public interface ErlangPackage extends EPackage
   int VARIABLE__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VARIABLE__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE__MORE = EXPRESSION__MORE;
+  int VARIABLE__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -4333,22 +4072,13 @@ public interface ErlangPackage extends EPackage
   int ERL_FLOAT__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ERL_FLOAT__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERL_FLOAT__MORE = EXPRESSION__MORE;
+  int ERL_FLOAT__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -4397,22 +4127,13 @@ public interface ErlangPackage extends EPackage
   int ERL_INTEGER__EXPR = EXPRESSION__EXPR;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ERL_INTEGER__STRING = EXPRESSION__STRING;
-
-  /**
-   * The feature id for the '<em><b>More</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ERL_INTEGER__MORE = EXPRESSION__MORE;
+  int ERL_INTEGER__PARTS = EXPRESSION__PARTS;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -5514,26 +5235,15 @@ public interface ErlangPackage extends EPackage
   EReference getExpression_Expr();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.Expression#getString <em>String</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.Expression#getParts <em>Parts</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>String</em>'.
-   * @see org.erlide.erlang.Expression#getString()
+   * @return the meta object for the containment reference list '<em>Parts</em>'.
+   * @see org.erlide.erlang.Expression#getParts()
    * @see #getExpression()
    * @generated
    */
-  EAttribute getExpression_String();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.Expression#getMore <em>More</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>More</em>'.
-   * @see org.erlide.erlang.Expression#getMore()
-   * @see #getExpression()
-   * @generated
-   */
-  EReference getExpression_More();
+  EReference getExpression_Parts();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.MacroCall <em>Macro Call</em>}'.
@@ -5737,17 +5447,6 @@ public interface ErlangPackage extends EPackage
   EClass getStringLiteralPart();
 
   /**
-   * Returns the meta object for the attribute '{@link org.erlide.erlang.StringLiteralPart#getString <em>String</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>String</em>'.
-   * @see org.erlide.erlang.StringLiteralPart#getString()
-   * @see #getStringLiteralPart()
-   * @generated
-   */
-  EAttribute getStringLiteralPart_String();
-
-  /**
    * Returns the meta object for the containment reference '{@link org.erlide.erlang.StringLiteralPart#getMacro <em>Macro</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5757,6 +5456,17 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EReference getStringLiteralPart_Macro();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.erlide.erlang.StringLiteralPart#getString <em>String</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>String</em>'.
+   * @see org.erlide.erlang.StringLiteralPart#getString()
+   * @see #getStringLiteralPart()
+   * @generated
+   */
+  EAttribute getStringLiteralPart_String();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.IfExpr <em>If Expr</em>}'.
@@ -8104,20 +7814,12 @@ public interface ErlangPackage extends EPackage
     EReference EXPRESSION__EXPR = eINSTANCE.getExpression_Expr();
 
     /**
-     * The meta object literal for the '<em><b>String</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Parts</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EXPRESSION__STRING = eINSTANCE.getExpression_String();
-
-    /**
-     * The meta object literal for the '<em><b>More</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXPRESSION__MORE = eINSTANCE.getExpression_More();
+    EReference EXPRESSION__PARTS = eINSTANCE.getExpression_Parts();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.MacroCallImpl <em>Macro Call</em>}' class.
@@ -8288,20 +7990,20 @@ public interface ErlangPackage extends EPackage
     EClass STRING_LITERAL_PART = eINSTANCE.getStringLiteralPart();
 
     /**
-     * The meta object literal for the '<em><b>String</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute STRING_LITERAL_PART__STRING = eINSTANCE.getStringLiteralPart_String();
-
-    /**
      * The meta object literal for the '<em><b>Macro</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference STRING_LITERAL_PART__MACRO = eINSTANCE.getStringLiteralPart_Macro();
+
+    /**
+     * The meta object literal for the '<em><b>String</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_LITERAL_PART__STRING = eINSTANCE.getStringLiteralPart_String();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.IfExprImpl <em>If Expr</em>}' class.

@@ -108,8 +108,7 @@
     <genClasses ecoreClass="Erlang.ecore#//Expression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Expression/line"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Expression/expr"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//Expression/string"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Expression/more"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//Expression/parts"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//MacroCall">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//MacroCall/macroName"/>
@@ -134,8 +133,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//RecordFieldExpr/type"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//StringLiteralPart">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//StringLiteralPart/string"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//StringLiteralPart/macro"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//StringLiteralPart/string"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//IfExpr">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//IfExpr/clauses"/>

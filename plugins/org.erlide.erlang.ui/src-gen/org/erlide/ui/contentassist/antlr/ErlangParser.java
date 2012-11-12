@@ -430,10 +430,10 @@ public class ErlangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMacroLiteralAccess().getValueAssignment_1(), "rule__MacroLiteral__ValueAssignment_1");
 					put(grammarAccess.getMacroRefAccess().getValueAssignment_1(), "rule__MacroRef__ValueAssignment_1");
 					put(grammarAccess.getVariableLiteralAccess().getValueAssignment_1(), "rule__VariableLiteral__ValueAssignment_1");
-					put(grammarAccess.getStringLiteralAccess().getStringAssignment_0(), "rule__StringLiteral__StringAssignment_0");
-					put(grammarAccess.getStringLiteralAccess().getMoreAssignment_1(), "rule__StringLiteral__MoreAssignment_1");
-					put(grammarAccess.getStringLiteralPartAccess().getStringAssignment_0(), "rule__StringLiteralPart__StringAssignment_0");
+					put(grammarAccess.getStringLiteralAccess().getPartsAssignment_0(), "rule__StringLiteral__PartsAssignment_0");
+					put(grammarAccess.getStringLiteralAccess().getPartsAssignment_1(), "rule__StringLiteral__PartsAssignment_1");
 					put(grammarAccess.getStringLiteralPartAccess().getMacroAssignment_1(), "rule__StringLiteralPart__MacroAssignment_1");
+					put(grammarAccess.getStringLiteralLiteralAccess().getStringAssignment(), "rule__StringLiteralLiteral__StringAssignment");
 					put(grammarAccess.getLiteralExpressionAccess().getValueAssignment_2_1(), "rule__LiteralExpression__ValueAssignment_2_1");
 					put(grammarAccess.getIntegerLiteralAccess().getValueAssignment_1(), "rule__IntegerLiteral__ValueAssignment_1");
 					put(grammarAccess.getPatternExpressionAccess().getOpAssignment_1_0_1(), "rule__PatternExpression__OpAssignment_1_0_1");

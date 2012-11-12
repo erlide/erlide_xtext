@@ -25,8 +25,8 @@ import org.erlide.erlang.StringLiteralPart;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.StringLiteralPartImpl#getString <em>String</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.StringLiteralPartImpl#getMacro <em>Macro</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.StringLiteralPartImpl#getString <em>String</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,6 +34,16 @@ import org.erlide.erlang.StringLiteralPart;
  */
 public class StringLiteralPartImpl extends MinimalEObjectImpl.Container implements StringLiteralPart
 {
+  /**
+   * The cached value of the '{@link #getMacro() <em>Macro</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMacro()
+   * @generated
+   * @ordered
+   */
+  protected MacroCall macro;
+
   /**
    * The default value of the '{@link #getString() <em>String</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -55,16 +65,6 @@ public class StringLiteralPartImpl extends MinimalEObjectImpl.Container implemen
   protected String string = STRING_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getMacro() <em>Macro</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMacro()
-   * @generated
-   * @ordered
-   */
-  protected MacroCall macro;
-
-  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -83,29 +83,6 @@ public class StringLiteralPartImpl extends MinimalEObjectImpl.Container implemen
   protected EClass eStaticClass()
   {
     return ErlangPackage.Literals.STRING_LITERAL_PART;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getString()
-  {
-    return string;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setString(String newString)
-  {
-    String oldString = string;
-    string = newString;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.STRING_LITERAL_PART__STRING, oldString, string));
   }
 
   /**
@@ -161,6 +138,29 @@ public class StringLiteralPartImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getString()
+  {
+    return string;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setString(String newString)
+  {
+    String oldString = string;
+    string = newString;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.STRING_LITERAL_PART__STRING, oldString, string));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -182,10 +182,10 @@ public class StringLiteralPartImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case ErlangPackage.STRING_LITERAL_PART__STRING:
-        return getString();
       case ErlangPackage.STRING_LITERAL_PART__MACRO:
         return getMacro();
+      case ErlangPackage.STRING_LITERAL_PART__STRING:
+        return getString();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -200,11 +200,11 @@ public class StringLiteralPartImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case ErlangPackage.STRING_LITERAL_PART__STRING:
-        setString((String)newValue);
-        return;
       case ErlangPackage.STRING_LITERAL_PART__MACRO:
         setMacro((MacroCall)newValue);
+        return;
+      case ErlangPackage.STRING_LITERAL_PART__STRING:
+        setString((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -220,11 +220,11 @@ public class StringLiteralPartImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case ErlangPackage.STRING_LITERAL_PART__STRING:
-        setString(STRING_EDEFAULT);
-        return;
       case ErlangPackage.STRING_LITERAL_PART__MACRO:
         setMacro((MacroCall)null);
+        return;
+      case ErlangPackage.STRING_LITERAL_PART__STRING:
+        setString(STRING_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -240,10 +240,10 @@ public class StringLiteralPartImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case ErlangPackage.STRING_LITERAL_PART__STRING:
-        return STRING_EDEFAULT == null ? string != null : !STRING_EDEFAULT.equals(string);
       case ErlangPackage.STRING_LITERAL_PART__MACRO:
         return macro != null;
+      case ErlangPackage.STRING_LITERAL_PART__STRING:
+        return STRING_EDEFAULT == null ? string != null : !STRING_EDEFAULT.equals(string);
     }
     return super.eIsSet(featureID);
   }

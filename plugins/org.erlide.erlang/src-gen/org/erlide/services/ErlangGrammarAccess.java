@@ -2801,57 +2801,69 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	public class StringLiteralElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cStringAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cStringSTRINGTerminalRuleCall_0_0 = (RuleCall)cStringAssignment_0.eContents().get(0);
-		private final Assignment cMoreAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cMoreStringLiteralPartParserRuleCall_1_0 = (RuleCall)cMoreAssignment_1.eContents().get(0);
+		private final Assignment cPartsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cPartsStringLiteralLiteralParserRuleCall_0_0 = (RuleCall)cPartsAssignment_0.eContents().get(0);
+		private final Assignment cPartsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cPartsStringLiteralPartParserRuleCall_1_0 = (RuleCall)cPartsAssignment_1.eContents().get(0);
 		
 		//StringLiteral returns Expression:
-		//	string=STRING more+=StringLiteralPart*;
+		//	parts+=StringLiteralLiteral parts+=StringLiteralPart*;
 		public ParserRule getRule() { return rule; }
 
-		//string=STRING more+=StringLiteralPart*
+		//parts+=StringLiteralLiteral parts+=StringLiteralPart*
 		public Group getGroup() { return cGroup; }
 
-		//string=STRING
-		public Assignment getStringAssignment_0() { return cStringAssignment_0; }
+		//parts+=StringLiteralLiteral
+		public Assignment getPartsAssignment_0() { return cPartsAssignment_0; }
 
-		//STRING
-		public RuleCall getStringSTRINGTerminalRuleCall_0_0() { return cStringSTRINGTerminalRuleCall_0_0; }
+		//StringLiteralLiteral
+		public RuleCall getPartsStringLiteralLiteralParserRuleCall_0_0() { return cPartsStringLiteralLiteralParserRuleCall_0_0; }
 
-		//more+=StringLiteralPart*
-		public Assignment getMoreAssignment_1() { return cMoreAssignment_1; }
+		//parts+=StringLiteralPart*
+		public Assignment getPartsAssignment_1() { return cPartsAssignment_1; }
 
 		//StringLiteralPart
-		public RuleCall getMoreStringLiteralPartParserRuleCall_1_0() { return cMoreStringLiteralPartParserRuleCall_1_0; }
+		public RuleCall getPartsStringLiteralPartParserRuleCall_1_0() { return cPartsStringLiteralPartParserRuleCall_1_0; }
 	}
 
 	public class StringLiteralPartElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringLiteralPart");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cStringAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cStringSTRINGTerminalRuleCall_0_0 = (RuleCall)cStringAssignment_0.eContents().get(0);
+		private final RuleCall cStringLiteralLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final Assignment cMacroAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cMacroMacroCallParserRuleCall_1_0 = (RuleCall)cMacroAssignment_1.eContents().get(0);
 		
 		//StringLiteralPart:
-		//	string=STRING | macro=MacroCall;
+		//	StringLiteralLiteral | macro=MacroCall;
 		public ParserRule getRule() { return rule; }
 
-		//string=STRING | macro=MacroCall
+		//StringLiteralLiteral | macro=MacroCall
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//string=STRING
-		public Assignment getStringAssignment_0() { return cStringAssignment_0; }
-
-		//STRING
-		public RuleCall getStringSTRINGTerminalRuleCall_0_0() { return cStringSTRINGTerminalRuleCall_0_0; }
+		//StringLiteralLiteral
+		public RuleCall getStringLiteralLiteralParserRuleCall_0() { return cStringLiteralLiteralParserRuleCall_0; }
 
 		//macro=MacroCall
 		public Assignment getMacroAssignment_1() { return cMacroAssignment_1; }
 
 		//MacroCall
 		public RuleCall getMacroMacroCallParserRuleCall_1_0() { return cMacroMacroCallParserRuleCall_1_0; }
+	}
+
+	public class StringLiteralLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringLiteralLiteral");
+		private final Assignment cStringAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cStringSTRINGTerminalRuleCall_0 = (RuleCall)cStringAssignment.eContents().get(0);
+		
+		//StringLiteralLiteral returns StringLiteralPart:
+		//	string=STRING;
+		public ParserRule getRule() { return rule; }
+
+		//string=STRING
+		public Assignment getStringAssignment() { return cStringAssignment; }
+
+		//STRING
+		public RuleCall getStringSTRINGTerminalRuleCall_0() { return cStringSTRINGTerminalRuleCall_0; }
 	}
 
 	public class LiteralExpressionElements extends AbstractParserRuleElementFinder {
@@ -5878,6 +5890,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	private VariableLiteralElements pVariableLiteral;
 	private StringLiteralElements pStringLiteral;
 	private StringLiteralPartElements pStringLiteralPart;
+	private StringLiteralLiteralElements pStringLiteralLiteral;
 	private LiteralExpressionElements pLiteralExpression;
 	private IntegerLiteralElements pIntegerLiteral;
 	private PatternExpressionElements pPatternExpression;
@@ -6582,7 +6595,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StringLiteral returns Expression:
-	//	string=STRING more+=StringLiteralPart*;
+	//	parts+=StringLiteralLiteral parts+=StringLiteralPart*;
 	public StringLiteralElements getStringLiteralAccess() {
 		return (pStringLiteral != null) ? pStringLiteral : (pStringLiteral = new StringLiteralElements());
 	}
@@ -6592,13 +6605,23 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StringLiteralPart:
-	//	string=STRING | macro=MacroCall;
+	//	StringLiteralLiteral | macro=MacroCall;
 	public StringLiteralPartElements getStringLiteralPartAccess() {
 		return (pStringLiteralPart != null) ? pStringLiteralPart : (pStringLiteralPart = new StringLiteralPartElements());
 	}
 	
 	public ParserRule getStringLiteralPartRule() {
 		return getStringLiteralPartAccess().getRule();
+	}
+
+	//StringLiteralLiteral returns StringLiteralPart:
+	//	string=STRING;
+	public StringLiteralLiteralElements getStringLiteralLiteralAccess() {
+		return (pStringLiteralLiteral != null) ? pStringLiteralLiteral : (pStringLiteralLiteral = new StringLiteralLiteralElements());
+	}
+	
+	public ParserRule getStringLiteralLiteralRule() {
+		return getStringLiteralLiteralAccess().getRule();
 	}
 
 	//LiteralExpression returns Expression:

@@ -1379,8 +1379,9 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				}
 				else break;
 			case ErlangPackage.STRING_LITERAL_PART:
-				if(context == grammarAccess.getStringLiteralPartRule()) {
-					sequence_StringLiteralPart(context, (StringLiteralPart) semanticObject); 
+				if(context == grammarAccess.getStringLiteralLiteralRule() ||
+				   context == grammarAccess.getStringLiteralPartRule()) {
+					sequence_StringLiteralLiteral(context, (StringLiteralPart) semanticObject); 
 					return; 
 				}
 				else break;
@@ -2359,16 +2360,16 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (string=STRING | macro=MacroCall)
+	 *     string=STRING
 	 */
-	protected void sequence_StringLiteralPart(EObject context, StringLiteralPart semanticObject) {
+	protected void sequence_StringLiteralLiteral(EObject context, StringLiteralPart semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (string=STRING more+=StringLiteralPart*)
+	 *     (parts+=StringLiteralLiteral parts+=StringLiteralPart*)
 	 */
 	protected void sequence_StringLiteral(EObject context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

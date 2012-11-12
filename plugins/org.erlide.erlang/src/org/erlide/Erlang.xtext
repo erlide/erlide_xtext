@@ -330,12 +330,16 @@ VariableLiteral returns Expression:
 ;
 
 StringLiteral returns Expression:
-	string=STRING more+=StringLiteralPart*
+	parts+=StringLiteralLiteral parts+=StringLiteralPart*
 ;
 
 StringLiteralPart:
-	  string=STRING 
+	  StringLiteralLiteral 
 	| macro=MacroCall 
+;
+
+StringLiteralLiteral returns StringLiteralPart:
+	  string=STRING 
 ;
 
 LiteralExpression returns Expression:

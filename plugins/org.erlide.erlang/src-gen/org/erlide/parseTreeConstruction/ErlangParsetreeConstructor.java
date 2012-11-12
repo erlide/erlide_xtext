@@ -90,47 +90,48 @@ protected class ThisRootNode extends RootToken {
 			case 56: return new VariableLiteral_Group(this, this, 56, inst);
 			case 57: return new StringLiteral_Group(this, this, 57, inst);
 			case 58: return new StringLiteralPart_Alternatives(this, this, 58, inst);
-			case 59: return new LiteralExpression_Alternatives(this, this, 59, inst);
-			case 60: return new IntegerLiteral_Group(this, this, 60, inst);
-			case 61: return new PatternExpression_Group(this, this, 61, inst);
-			case 62: return new IfExpr_Group(this, this, 62, inst);
-			case 63: return new IfClause_Group(this, this, 63, inst);
-			case 64: return new CaseExpr_Group(this, this, 64, inst);
-			case 65: return new CrClause_Group(this, this, 65, inst);
-			case 66: return new ReceiveExpr_Group(this, this, 66, inst);
-			case 67: return new FunExpr_Group(this, this, 67, inst);
-			case 68: return new FunRef_Group(this, this, 68, inst);
-			case 69: return new InlineFun_Group(this, this, 69, inst);
-			case 70: return new TryExpr_Group(this, this, 70, inst);
-			case 71: return new TryClause_Group(this, this, 71, inst);
-			case 72: return new List_Group(this, this, 72, inst);
-			case 73: return new ListComprehension_Group(this, this, 73, inst);
-			case 74: return new Tuple_Group(this, this, 74, inst);
-			case 75: return new BinaryComprehension_Group(this, this, 75, inst);
-			case 76: return new Binary_Group(this, this, 76, inst);
-			case 77: return new BinaryItem_Group(this, this, 77, inst);
-			case 78: return new BitType_Group(this, this, 78, inst);
-			case 79: return new UnaryExprMax_Alternatives(this, this, 79, inst);
-			case 80: return new LCExpr_Group(this, this, 80, inst);
-			case 81: return new AtomVarMacro_Alternatives(this, this, 81, inst);
-			case 82: return new IntVarMacro_Alternatives(this, this, 82, inst);
-			case 83: return new SpecFun_Group(this, this, 83, inst);
-			case 84: return new TypeSig_Group(this, this, 84, inst);
-			case 85: return new FunType_Group(this, this, 85, inst);
-			case 86: return new TypeGuards_Group(this, this, 86, inst);
-			case 87: return new TypeGuard_Alternatives(this, this, 87, inst);
-			case 88: return new TopType_Group(this, this, 88, inst);
-			case 89: return new Type100_Group(this, this, 89, inst);
-			case 90: return new Type200_Group(this, this, 90, inst);
-			case 91: return new Type300_Group(this, this, 91, inst);
-			case 92: return new Type400_Group(this, this, 92, inst);
-			case 93: return new Type500_Alternatives(this, this, 93, inst);
-			case 94: return new Type_Alternatives(this, this, 94, inst);
-			case 95: return new FieldType_Group(this, this, 95, inst);
-			case 96: return new BinaryType_Group(this, this, 96, inst);
-			case 97: return new BinBaseType_Group(this, this, 97, inst);
-			case 98: return new BinUnitType_Group(this, this, 98, inst);
-			case 99: return new FunType100_Group(this, this, 99, inst);
+			case 59: return new StringLiteralLiteral_StringAssignment(this, this, 59, inst);
+			case 60: return new LiteralExpression_Alternatives(this, this, 60, inst);
+			case 61: return new IntegerLiteral_Group(this, this, 61, inst);
+			case 62: return new PatternExpression_Group(this, this, 62, inst);
+			case 63: return new IfExpr_Group(this, this, 63, inst);
+			case 64: return new IfClause_Group(this, this, 64, inst);
+			case 65: return new CaseExpr_Group(this, this, 65, inst);
+			case 66: return new CrClause_Group(this, this, 66, inst);
+			case 67: return new ReceiveExpr_Group(this, this, 67, inst);
+			case 68: return new FunExpr_Group(this, this, 68, inst);
+			case 69: return new FunRef_Group(this, this, 69, inst);
+			case 70: return new InlineFun_Group(this, this, 70, inst);
+			case 71: return new TryExpr_Group(this, this, 71, inst);
+			case 72: return new TryClause_Group(this, this, 72, inst);
+			case 73: return new List_Group(this, this, 73, inst);
+			case 74: return new ListComprehension_Group(this, this, 74, inst);
+			case 75: return new Tuple_Group(this, this, 75, inst);
+			case 76: return new BinaryComprehension_Group(this, this, 76, inst);
+			case 77: return new Binary_Group(this, this, 77, inst);
+			case 78: return new BinaryItem_Group(this, this, 78, inst);
+			case 79: return new BitType_Group(this, this, 79, inst);
+			case 80: return new UnaryExprMax_Alternatives(this, this, 80, inst);
+			case 81: return new LCExpr_Group(this, this, 81, inst);
+			case 82: return new AtomVarMacro_Alternatives(this, this, 82, inst);
+			case 83: return new IntVarMacro_Alternatives(this, this, 83, inst);
+			case 84: return new SpecFun_Group(this, this, 84, inst);
+			case 85: return new TypeSig_Group(this, this, 85, inst);
+			case 86: return new FunType_Group(this, this, 86, inst);
+			case 87: return new TypeGuards_Group(this, this, 87, inst);
+			case 88: return new TypeGuard_Alternatives(this, this, 88, inst);
+			case 89: return new TopType_Group(this, this, 89, inst);
+			case 90: return new Type100_Group(this, this, 90, inst);
+			case 91: return new Type200_Group(this, this, 91, inst);
+			case 92: return new Type300_Group(this, this, 92, inst);
+			case 93: return new Type400_Group(this, this, 93, inst);
+			case 94: return new Type500_Alternatives(this, this, 94, inst);
+			case 95: return new Type_Alternatives(this, this, 95, inst);
+			case 96: return new FieldType_Group(this, this, 96, inst);
+			case 97: return new BinaryType_Group(this, this, 97, inst);
+			case 98: return new BinBaseType_Group(this, this, 98, inst);
+			case 99: return new BinUnitType_Group(this, this, 99, inst);
+			case 100: return new FunType100_Group(this, this, 100, inst);
 			default: return null;
 		}	
 	}	
@@ -14826,11 +14827,11 @@ protected class VariableLiteral_ValueAssignment_1 extends AssignmentToken  {
 /************ begin Rule StringLiteral ****************
  *
  * StringLiteral returns Expression:
- * 	string=STRING more+=StringLiteralPart*;
+ * 	parts+=StringLiteralLiteral parts+=StringLiteralPart*;
  *
  **/
 
-// string=STRING more+=StringLiteralPart*
+// parts+=StringLiteralLiteral parts+=StringLiteralPart*
 protected class StringLiteral_Group extends GroupToken {
 	
 	public StringLiteral_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14845,8 +14846,8 @@ protected class StringLiteral_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new StringLiteral_MoreAssignment_1(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new StringLiteral_StringAssignment_0(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new StringLiteral_PartsAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new StringLiteral_PartsAssignment_0(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -14860,49 +14861,61 @@ protected class StringLiteral_Group extends GroupToken {
 
 }
 
-// string=STRING
-protected class StringLiteral_StringAssignment_0 extends AssignmentToken  {
+// parts+=StringLiteralLiteral
+protected class StringLiteral_PartsAssignment_0 extends AssignmentToken  {
 	
-	public StringLiteral_StringAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public StringLiteral_PartsAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getStringLiteralAccess().getStringAssignment_0();
+		return grammarAccess.getStringLiteralAccess().getPartsAssignment_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+			case 0: return new StringLiteralLiteral_StringAssignment(this, this, 0, inst);
+			default: return null;
 		}	
 	}
 
     @Override	
 	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("string",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("string");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getStringLiteralAccess().getStringSTRINGTerminalRuleCall_0_0(), value, null)) {
-			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getStringLiteralAccess().getStringSTRINGTerminalRuleCall_0_0();
-			return obj;
+		if((value = eObjectConsumer.getConsumable("parts",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("parts");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getStringLiteralLiteralRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getStringLiteralAccess().getPartsStringLiteralLiteralParserRuleCall_0_0(); 
+				consumed = obj;
+				return param;
+			}
 		}
 		return null;
 	}
 
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, consumed);
+		}	
+	}	
 }
 
-// more+=StringLiteralPart*
-protected class StringLiteral_MoreAssignment_1 extends AssignmentToken  {
+// parts+=StringLiteralPart*
+protected class StringLiteral_PartsAssignment_1 extends AssignmentToken  {
 	
-	public StringLiteral_MoreAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public StringLiteral_PartsAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getStringLiteralAccess().getMoreAssignment_1();
+		return grammarAccess.getStringLiteralAccess().getPartsAssignment_1();
 	}
 
     @Override
@@ -14915,13 +14928,13 @@ protected class StringLiteral_MoreAssignment_1 extends AssignmentToken  {
 
     @Override	
 	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("more",false)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("more");
+		if((value = eObjectConsumer.getConsumable("parts",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("parts");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getStringLiteralPartRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getStringLiteralAccess().getMoreStringLiteralPartParserRuleCall_1_0(); 
+				element = grammarAccess.getStringLiteralAccess().getPartsStringLiteralPartParserRuleCall_1_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -14933,8 +14946,8 @@ protected class StringLiteral_MoreAssignment_1 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new StringLiteral_MoreAssignment_1(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new StringLiteral_StringAssignment_0(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new StringLiteral_PartsAssignment_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new StringLiteral_PartsAssignment_0(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
@@ -14947,11 +14960,11 @@ protected class StringLiteral_MoreAssignment_1 extends AssignmentToken  {
 /************ begin Rule StringLiteralPart ****************
  *
  * StringLiteralPart:
- * 	string=STRING | macro=MacroCall;
+ * 	StringLiteralLiteral | macro=MacroCall;
  *
  **/
 
-// string=STRING | macro=MacroCall
+// StringLiteralLiteral | macro=MacroCall
 protected class StringLiteralPart_Alternatives extends AlternativesToken {
 
 	public StringLiteralPart_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14966,7 +14979,7 @@ protected class StringLiteralPart_Alternatives extends AlternativesToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new StringLiteralPart_StringAssignment_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new StringLiteralPart_StringLiteralLiteralParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
 			case 1: return new StringLiteralPart_MacroAssignment_1(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
@@ -14981,37 +14994,38 @@ protected class StringLiteralPart_Alternatives extends AlternativesToken {
 
 }
 
-// string=STRING
-protected class StringLiteralPart_StringAssignment_0 extends AssignmentToken  {
+// StringLiteralLiteral
+protected class StringLiteralPart_StringLiteralLiteralParserRuleCall_0 extends RuleCallToken {
 	
-	public StringLiteralPart_StringAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public StringLiteralPart_StringLiteralLiteralParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getStringLiteralPartAccess().getStringAssignment_0();
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getStringLiteralPartAccess().getStringLiteralLiteralParserRuleCall_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+			case 0: return new StringLiteralLiteral_StringAssignment(this, this, 0, inst);
+			default: return null;
 		}	
 	}
 
-    @Override	
+    @Override
 	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("string",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("string");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getStringLiteralPartAccess().getStringSTRINGTerminalRuleCall_0_0(), value, null)) {
-			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getStringLiteralPartAccess().getStringSTRINGTerminalRuleCall_0_0();
-			return obj;
-		}
-		return null;
+		if(checkForRecursion(StringLiteralLiteral_StringAssignment.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
 	}
-
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
 }
 
 // macro=MacroCall
@@ -15061,6 +15075,51 @@ protected class StringLiteralPart_MacroAssignment_1 extends AssignmentToken  {
 
 
 /************ end Rule StringLiteralPart ****************/
+
+
+/************ begin Rule StringLiteralLiteral ****************
+ *
+ * StringLiteralLiteral returns StringLiteralPart:
+ * 	string=STRING;
+ *
+ **/
+
+// string=STRING
+protected class StringLiteralLiteral_StringAssignment extends AssignmentToken  {
+	
+	public StringLiteralLiteral_StringAssignment(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getStringLiteralLiteralAccess().getStringAssignment();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getStringLiteralLiteralRule().getType().getClassifier())
+			return null;
+		if((value = eObjectConsumer.getConsumable("string",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("string");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getStringLiteralLiteralAccess().getStringSTRINGTerminalRuleCall_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getStringLiteralLiteralAccess().getStringSTRINGTerminalRuleCall_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+/************ end Rule StringLiteralLiteral ****************/
 
 
 /************ begin Rule LiteralExpression ****************
