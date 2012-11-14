@@ -13,6 +13,7 @@ import org.eclipse.xtext.resource.IResourceDescriptions
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 import static extension org.erlide.erlang.ModelExtensions.*
+import org.eclipse.xtext.util.OnChangeEvictingCache
 
 class ModelExtensions {
     
@@ -139,7 +140,13 @@ class ModelExtensions {
     }
     
     def boolean isExported(Function function) {
-    	function.owningModule.exportsFunction(function)
+    	val cache = moduleCache.getOrCreate(function.eResource)
+    	var Boolean value = cache.get(function)
+    	if(value==null) {
+    		value = function.owningModule.exportsFunction(function)
+    		cache.set(function, value)
+    	}
+    	return value
     }
  
  	def SpecAttribute getSpec(Function function) {
@@ -152,10 +159,16 @@ class ModelExtensions {
 
     // Other
     
-    def dispatch Module getOwningModule(Module element) {
+    OnChangeEvictingCache moduleCache = new OnChangeEvictingCache()
+    
+    def Module getOwningModule(EObject element) {
+        findOwningModule(element)
+    }
+
+    def dispatch Module findOwningModule(Module element) {
         element
     }
-    def dispatch Module getOwningModule(EObject element) {
+    def dispatch Module findOwningModule(EObject element) {
         element.eContainer.owningModule
     }
  
@@ -164,7 +177,9 @@ class ModelExtensions {
     	if(node==null){
     		return null
     	}
-        node.leafNodes.filter[!isHidden].map[text].join(" ")
+        val texts = node.leafNodes.filter[!isHidden].map[text]
+        if (texts.size==1) return texts.head
+        else return texts.join(" ")
     }
  
   	def int getSpecArity(SpecAttribute spec) {
@@ -202,8 +217,10 @@ class ModelExtensions {
     }
     
   	def Collection<Expression> getCompileOptions(Module module) {
- 		val Set<Expression> seed = newTreeSet[a, b | a.sourceText.compareTo(b.sourceText)]
-		module.rawCompileOptions.fold(seed)[acc, item | merge(acc, item)]
+  		module.rawCompileOptions
+  		// FIXME this is very expensive to compute
+ 		//val Set<Expression> seed = newTreeSet[a, b | a.sourceText.compareTo(b.sourceText)]
+		//module.rawCompileOptions.fold(seed)[acc, item | merge(acc, item)]
  	}
     
     def private dispatch boolean hasAtom(Atom atom, String s){

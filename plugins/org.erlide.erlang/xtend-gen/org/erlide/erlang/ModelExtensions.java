@@ -6,12 +6,12 @@ import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -20,9 +20,11 @@ import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescriptions;
+import org.eclipse.xtext.util.OnChangeEvictingCache;
+import org.eclipse.xtext.util.OnChangeEvictingCache.CacheAdapter;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.erlide.erlang.Atom;
@@ -382,9 +384,17 @@ public class ModelExtensions {
   }
   
   public boolean isExported(final Function function) {
-    Module _owningModule = this.getOwningModule(function);
-    boolean _exportsFunction = this.exportsFunction(_owningModule, function);
-    return _exportsFunction;
+    Resource _eResource = function.eResource();
+    final CacheAdapter cache = this.moduleCache.getOrCreate(_eResource);
+    Boolean value = cache.<Boolean>get(function);
+    boolean _equals = Objects.equal(value, null);
+    if (_equals) {
+      Module _owningModule = this.getOwningModule(function);
+      boolean _exportsFunction = this.exportsFunction(_owningModule, function);
+      value = Boolean.valueOf(_exportsFunction);
+      cache.set(function, value);
+    }
+    return (value).booleanValue();
   }
   
   public SpecAttribute getSpec(final Function function) {
@@ -417,44 +427,57 @@ public class ModelExtensions {
     return _xblockexpression;
   }
   
-  protected Module _getOwningModule(final Module element) {
+  private OnChangeEvictingCache moduleCache = new Function0<OnChangeEvictingCache>() {
+    public OnChangeEvictingCache apply() {
+      OnChangeEvictingCache _onChangeEvictingCache = new OnChangeEvictingCache();
+      return _onChangeEvictingCache;
+    }
+  }.apply();
+  
+  public Module getOwningModule(final EObject element) {
+    Module _findOwningModule = this.findOwningModule(element);
+    return _findOwningModule;
+  }
+  
+  protected Module _findOwningModule(final Module element) {
     return element;
   }
   
-  protected Module _getOwningModule(final EObject element) {
+  protected Module _findOwningModule(final EObject element) {
     EObject _eContainer = element.eContainer();
     Module _owningModule = this.getOwningModule(_eContainer);
     return _owningModule;
   }
   
   public String getSourceText(final EObject obj) {
-    String _xblockexpression = null;
-    {
-      final ICompositeNode node = NodeModelUtils.getNode(obj);
-      boolean _equals = Objects.equal(node, null);
-      if (_equals) {
-        return null;
-      }
-      Iterable<ILeafNode> _leafNodes = node.getLeafNodes();
-      final Function1<ILeafNode,Boolean> _function = new Function1<ILeafNode,Boolean>() {
-          public Boolean apply(final ILeafNode it) {
-            boolean _isHidden = it.isHidden();
-            boolean _not = (!_isHidden);
-            return Boolean.valueOf(_not);
-          }
-        };
-      Iterable<ILeafNode> _filter = IterableExtensions.<ILeafNode>filter(_leafNodes, _function);
-      final Function1<ILeafNode,String> _function_1 = new Function1<ILeafNode,String>() {
-          public String apply(final ILeafNode it) {
-            String _text = it.getText();
-            return _text;
-          }
-        };
-      Iterable<String> _map = IterableExtensions.<ILeafNode, String>map(_filter, _function_1);
-      String _join = IterableExtensions.join(_map, " ");
-      _xblockexpression = (_join);
+    final ICompositeNode node = NodeModelUtils.getNode(obj);
+    boolean _equals = Objects.equal(node, null);
+    if (_equals) {
+      return null;
     }
-    return _xblockexpression;
+    Iterable<ILeafNode> _leafNodes = node.getLeafNodes();
+    final Function1<ILeafNode,Boolean> _function = new Function1<ILeafNode,Boolean>() {
+        public Boolean apply(final ILeafNode it) {
+          boolean _isHidden = it.isHidden();
+          boolean _not = (!_isHidden);
+          return Boolean.valueOf(_not);
+        }
+      };
+    Iterable<ILeafNode> _filter = IterableExtensions.<ILeafNode>filter(_leafNodes, _function);
+    final Function1<ILeafNode,String> _function_1 = new Function1<ILeafNode,String>() {
+        public String apply(final ILeafNode it) {
+          String _text = it.getText();
+          return _text;
+        }
+      };
+    final Iterable<String> texts = IterableExtensions.<ILeafNode, String>map(_filter, _function_1);
+    int _size = IterableExtensions.size(texts);
+    boolean _equals_1 = (_size == 1);
+    if (_equals_1) {
+      return IterableExtensions.<String>head(texts);
+    } else {
+      return IterableExtensions.join(texts, " ");
+    }
   }
   
   public int getSpecArity(final SpecAttribute spec) {
@@ -540,32 +563,8 @@ public class ModelExtensions {
   }
   
   public Collection<Expression> getCompileOptions(final Module module) {
-    Set<Expression> _xblockexpression = null;
-    {
-      final Function2<Expression,Expression,Integer> _function = new Function2<Expression,Expression,Integer>() {
-          public Integer apply(final Expression a, final Expression b) {
-            String _sourceText = ModelExtensions.this.getSourceText(a);
-            String _sourceText_1 = ModelExtensions.this.getSourceText(b);
-            int _compareTo = _sourceText.compareTo(_sourceText_1);
-            return _compareTo;
-          }
-        };
-      final Set<Expression> seed = CollectionLiterals.<Expression>newTreeSet(new Comparator<Expression>() {
-          public int compare(Expression o1,Expression o2) {
-            return _function.apply(o1,o2);
-          }
-      });
-      Collection<Expression> _rawCompileOptions = this.getRawCompileOptions(module);
-      final Function2<Set<Expression>,Expression,Set<Expression>> _function_1 = new Function2<Set<Expression>,Expression,Set<Expression>>() {
-          public Set<Expression> apply(final Set<Expression> acc, final Expression item) {
-            Set<Expression> _merge = ModelExtensions.this.merge(acc, item);
-            return _merge;
-          }
-        };
-      Set<Expression> _fold = IterableExtensions.<Expression, Set<Expression>>fold(_rawCompileOptions, seed, _function_1);
-      _xblockexpression = (_fold);
-    }
-    return _xblockexpression;
+    Collection<Expression> _rawCompileOptions = this.getRawCompileOptions(module);
+    return _rawCompileOptions;
   }
   
   private boolean _hasAtom(final Atom atom, final String s) {
@@ -693,11 +692,11 @@ public class ModelExtensions {
     return _plus_1;
   }
   
-  public Module getOwningModule(final EObject element) {
+  public Module findOwningModule(final EObject element) {
     if (element instanceof Module) {
-      return _getOwningModule((Module)element);
+      return _findOwningModule((Module)element);
     } else if (element != null) {
-      return _getOwningModule(element);
+      return _findOwningModule(element);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(element).toString());

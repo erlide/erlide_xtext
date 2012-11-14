@@ -15,6 +15,7 @@ import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.erlide.erlang.Atom;
@@ -284,41 +285,60 @@ public class ErlangLinkingHelper {
     {
       EObject _eContainer = atom.eContainer();
       final RemoteTarget parent = ((RemoteTarget) _eContainer);
+      AtomRefTarget _xifexpression = null;
       EObject _eContainer_1 = parent.eContainer();
-      final FunCall call = ((FunCall) _eContainer_1);
-      Expressions _args = call.getArgs();
-      EList<Expression> _exprs = _args==null?(EList<Expression>)null:_args.getExprs();
-      int _size = _exprs==null?0:_exprs.size();
-      final Integer arity = ObjectExtensions.<Integer>operator_elvis(Integer.valueOf(_size), Integer.valueOf(0));
-      String _xifexpression = null;
-      Expression _module = parent.getModule();
-      boolean _isModuleMacro = this._modelExtensions.isModuleMacro(_module);
-      if (_isModuleMacro) {
-        Module _owningModule = this._modelExtensions.getOwningModule(atom);
-        String _name = this._modelExtensions.getName(_owningModule);
-        _xifexpression = _name;
+      if ((_eContainer_1 instanceof FunCall)) {
+        AtomRefTarget _xblockexpression_1 = null;
+        {
+          EObject _eContainer_2 = parent.eContainer();
+          final FunCall call = ((FunCall) _eContainer_2);
+          Expressions _args = call.getArgs();
+          EList<Expression> _exprs = _args==null?(EList<Expression>)null:_args.getExprs();
+          int _size = _exprs==null?0:_exprs.size();
+          final Integer arity = ObjectExtensions.<Integer>operator_elvis(Integer.valueOf(_size), Integer.valueOf(0));
+          String _xifexpression_1 = null;
+          Expression _module = parent.getModule();
+          boolean _isModuleMacro = this._modelExtensions.isModuleMacro(_module);
+          if (_isModuleMacro) {
+            Module _owningModule = this._modelExtensions.getOwningModule(atom);
+            String _name = this._modelExtensions.getName(_owningModule);
+            _xifexpression_1 = _name;
+          } else {
+            Expression _module_1 = parent.getModule();
+            String _sourceText = this._modelExtensions.getSourceText(_module_1);
+            _xifexpression_1 = _sourceText;
+          }
+          final String moduleName = _xifexpression_1;
+          Expression _function = parent.getFunction();
+          String _sourceText_1 = this._modelExtensions.getSourceText(_function);
+          String _plus = (_sourceText_1 + "/");
+          String _plus_1 = (_plus + arity);
+          final QualifiedName qname = QualifiedName.create(moduleName, _plus_1);
+          final Iterable<IEObjectDescription> rfun = index.getExportedObjects(Literals.FUNCTION, qname, false);
+          AtomRefTarget _xifexpression_2 = null;
+          boolean _isEmpty = IterableExtensions.isEmpty(rfun);
+          boolean _not = (!_isEmpty);
+          if (_not) {
+            IEObjectDescription _head = IterableExtensions.<IEObjectDescription>head(rfun);
+            URI _eObjectURI = _head.getEObjectURI();
+            EObject _eObject = rset.getEObject(_eObjectURI, true);
+            _xifexpression_2 = ((AtomRefTarget) _eObject);
+          }
+          _xblockexpression_1 = (_xifexpression_2);
+        }
+        _xifexpression = _xblockexpression_1;
       } else {
-        Expression _module_1 = parent.getModule();
-        String _sourceText = this._modelExtensions.getSourceText(_module_1);
-        _xifexpression = _sourceText;
+        AtomRefTarget _xblockexpression_2 = null;
+        {
+          EObject _eContainer_2 = parent.eContainer();
+          String _sourceText = this._modelExtensions.getSourceText(_eContainer_2);
+          String _plus = ("remotecallref : parent.container=" + _sourceText);
+          InputOutput.<String>println(_plus);
+          _xblockexpression_2 = (null);
+        }
+        _xifexpression = _xblockexpression_2;
       }
-      final String moduleName = _xifexpression;
-      Expression _function = parent.getFunction();
-      String _sourceText_1 = this._modelExtensions.getSourceText(_function);
-      String _plus = (_sourceText_1 + "/");
-      String _plus_1 = (_plus + arity);
-      final QualifiedName qname = QualifiedName.create(moduleName, _plus_1);
-      final Iterable<IEObjectDescription> rfun = index.getExportedObjects(Literals.FUNCTION, qname, false);
-      AtomRefTarget _xifexpression_1 = null;
-      boolean _isEmpty = IterableExtensions.isEmpty(rfun);
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        IEObjectDescription _head = IterableExtensions.<IEObjectDescription>head(rfun);
-        URI _eObjectURI = _head.getEObjectURI();
-        EObject _eObject = rset.getEObject(_eObjectURI, true);
-        _xifexpression_1 = ((AtomRefTarget) _eObject);
-      }
-      _xblockexpression = (_xifexpression_1);
+      _xblockexpression = (_xifexpression);
     }
     return _xblockexpression;
   }

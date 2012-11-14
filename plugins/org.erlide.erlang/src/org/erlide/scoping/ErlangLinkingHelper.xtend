@@ -143,16 +143,21 @@ class ErlangLinkingHelper {
 		
 	def AtomRefTarget getRemoteCallRef(IResourceDescriptions index, Atom atom, ResourceSet rset) { 
 		val parent = atom.eContainer as RemoteTarget
-		val call = parent.eContainer as FunCall
-		val arity = call.args?.exprs?.size?:0
-		val moduleName = if(parent.module.isModuleMacro) 
-				atom.owningModule.name 
-			else 
-				parent.module.sourceText 
-		val qname = QualifiedName::create(moduleName, parent.function.sourceText+"/"+arity)
-		val rfun = index.getExportedObjects(ErlangPackage$Literals::FUNCTION, qname, false)
-		if(!rfun.empty) 
-			rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
+		if(parent.eContainer instanceof FunCall)  {
+			val call = parent.eContainer as FunCall
+			val arity = call.args?.exprs?.size?:0
+			val moduleName = if(parent.module.isModuleMacro) 
+					atom.owningModule.name 
+				else 
+					parent.module.sourceText 
+			val qname = QualifiedName::create(moduleName, parent.function.sourceText+"/"+arity)
+			val rfun = index.getExportedObjects(ErlangPackage$Literals::FUNCTION, qname, false)
+			if(!rfun.empty) 
+				rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
+		} else {
+			println("remotecallref : parent.container="+parent.eContainer.sourceText)
+			null
+		}
 	}
 	
 	def AtomRefTarget getRemoteFunRefRef(IResourceDescriptions index, Atom atom, ResourceSet rset) {
