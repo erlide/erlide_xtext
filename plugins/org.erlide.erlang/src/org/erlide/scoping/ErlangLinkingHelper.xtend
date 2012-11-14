@@ -153,9 +153,9 @@ class ErlangLinkingHelper {
 			val qname = QualifiedName::create(moduleName, parent.function.sourceText+"/"+arity)
 			val rfun = index.getExportedObjects(ErlangPackage$Literals::FUNCTION, qname, false)
 			if(!rfun.empty) 
-				rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
+				rset.getEObject(rfun.head.EObjectURI, false) as AtomRefTarget
 		} else {
-			println("remotecallref : parent.container="+parent.eContainer.sourceText)
+			println("remotecallref : parent.container="+parent.eContainer+"   -- "+parent.eContainer.sourceText)
 			null
 		}
 	}
@@ -170,7 +170,7 @@ class ErlangLinkingHelper {
 		val qname = QualifiedName::create(moduleName, parent.function.sourceText+"/"+arity)
 		val rfun = index.getExportedObjects(ErlangPackage$Literals::FUNCTION, qname, false)
 		if(!rfun.empty) 
-			rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
+			rset.getEObject(rfun.head.EObjectURI, false) as AtomRefTarget
 
 	}
 	
@@ -190,7 +190,7 @@ class ErlangLinkingHelper {
 		val qname = QualifiedName::create(moduleName, atom.sourceText)
 		val rfun = index.getExportedObjects(ErlangPackage$Literals::RECORD_ATTRIBUTE, qname, false)
 		if(!rfun.empty) 
-			rset.getEObject(rfun.head.EObjectURI, true) as AtomRefTarget
+			rset.getEObject(rfun.head.EObjectURI, false) as AtomRefTarget
 	}
 
 	def private RecordExpr getRecordExprForField(EObject field) {
@@ -217,7 +217,7 @@ class ErlangLinkingHelper {
 		val qname = QualifiedName::create(moduleName, atom.sourceText)
 		val rtyp = index.getExportedObjects(ErlangPackage$Literals::TYPE_ATTRIBUTE, qname, false)
 		if(!rtyp.empty) 
-			rset.getEObject(rtyp.head.EObjectURI, true) as AtomRefTarget
+			rset.getEObject(rtyp.head.EObjectURI, false) as AtomRefTarget
 	}
 	
 	def DefineAttribute getMacroReference(Macro macro) {

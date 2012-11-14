@@ -27,7 +27,7 @@ class ModelExtensions {
 		val descr = index.getExportedObjects(ErlangPackage$Literals::MODULE, qname, false)
 		if(descr.empty)
 			return null
-		rset.getEObject(descr.head.EObjectURI, true) as Module
+		rset.getEObject(descr.head.EObjectURI, false) as Module
 	}
     
     def String getName(Module module) {

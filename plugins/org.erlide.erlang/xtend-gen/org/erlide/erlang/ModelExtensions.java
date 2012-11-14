@@ -69,7 +69,7 @@ public class ModelExtensions {
       }
       IEObjectDescription _head = IterableExtensions.<IEObjectDescription>head(descr);
       URI _eObjectURI = _head.getEObjectURI();
-      EObject _eObject = rset.getEObject(_eObjectURI, true);
+      EObject _eObject = rset.getEObject(_eObjectURI, false);
       _xblockexpression = (((Module) _eObject));
     }
     return _xblockexpression;

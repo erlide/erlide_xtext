@@ -321,7 +321,7 @@ public class ErlangLinkingHelper {
           if (_not) {
             IEObjectDescription _head = IterableExtensions.<IEObjectDescription>head(rfun);
             URI _eObjectURI = _head.getEObjectURI();
-            EObject _eObject = rset.getEObject(_eObjectURI, true);
+            EObject _eObject = rset.getEObject(_eObjectURI, false);
             _xifexpression_2 = ((AtomRefTarget) _eObject);
           }
           _xblockexpression_1 = (_xifexpression_2);
@@ -331,9 +331,12 @@ public class ErlangLinkingHelper {
         AtomRefTarget _xblockexpression_2 = null;
         {
           EObject _eContainer_2 = parent.eContainer();
-          String _sourceText = this._modelExtensions.getSourceText(_eContainer_2);
-          String _plus = ("remotecallref : parent.container=" + _sourceText);
-          InputOutput.<String>println(_plus);
+          String _plus = ("remotecallref : parent.container=" + _eContainer_2);
+          String _plus_1 = (_plus + "   -- ");
+          EObject _eContainer_3 = parent.eContainer();
+          String _sourceText = this._modelExtensions.getSourceText(_eContainer_3);
+          String _plus_2 = (_plus_1 + _sourceText);
+          InputOutput.<String>println(_plus_2);
           _xblockexpression_2 = (null);
         }
         _xifexpression = _xblockexpression_2;
@@ -375,7 +378,7 @@ public class ErlangLinkingHelper {
       if (_not) {
         IEObjectDescription _head = IterableExtensions.<IEObjectDescription>head(rfun);
         URI _eObjectURI = _head.getEObjectURI();
-        EObject _eObject = rset.getEObject(_eObjectURI, true);
+        EObject _eObject = rset.getEObject(_eObjectURI, false);
         _xifexpression_1 = ((AtomRefTarget) _eObject);
       }
       _xblockexpression = (_xifexpression_1);
@@ -429,7 +432,7 @@ public class ErlangLinkingHelper {
       if (_not) {
         IEObjectDescription _head = IterableExtensions.<IEObjectDescription>head(rfun);
         URI _eObjectURI = _head.getEObjectURI();
-        EObject _eObject = rset.getEObject(_eObjectURI, true);
+        EObject _eObject = rset.getEObject(_eObjectURI, false);
         _xifexpression = ((AtomRefTarget) _eObject);
       }
       _xblockexpression = (_xifexpression);
@@ -499,7 +502,7 @@ public class ErlangLinkingHelper {
       if (_not) {
         IEObjectDescription _head = IterableExtensions.<IEObjectDescription>head(rtyp);
         URI _eObjectURI = _head.getEObjectURI();
-        EObject _eObject = rset.getEObject(_eObjectURI, true);
+        EObject _eObject = rset.getEObject(_eObjectURI, false);
         _xifexpression = ((AtomRefTarget) _eObject);
       }
       _xblockexpression = (_xifexpression);
