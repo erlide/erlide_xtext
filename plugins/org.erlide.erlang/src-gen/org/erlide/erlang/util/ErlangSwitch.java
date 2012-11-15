@@ -488,27 +488,11 @@ public class ErlangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ErlangPackage.LIST_COMPREHENSION:
-      {
-        ListComprehension listComprehension = (ListComprehension)theEObject;
-        T result = caseListComprehension(listComprehension);
-        if (result == null) result = caseExpression(listComprehension);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ErlangPackage.ERL_TUPLE:
       {
         ErlTuple erlTuple = (ErlTuple)theEObject;
         T result = caseErlTuple(erlTuple);
         if (result == null) result = caseExpression(erlTuple);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ErlangPackage.BINARY_COMPREHENSION:
-      {
-        BinaryComprehension binaryComprehension = (BinaryComprehension)theEObject;
-        T result = caseBinaryComprehension(binaryComprehension);
-        if (result == null) result = caseExpression(binaryComprehension);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -811,6 +795,24 @@ public class ErlangSwitch<T> extends Switch<T>
         ErlInteger erlInteger = (ErlInteger)theEObject;
         T result = caseErlInteger(erlInteger);
         if (result == null) result = caseExpression(erlInteger);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ErlangPackage.LIST_COMPREHENSION:
+      {
+        ListComprehension listComprehension = (ListComprehension)theEObject;
+        T result = caseListComprehension(listComprehension);
+        if (result == null) result = caseErlList(listComprehension);
+        if (result == null) result = caseExpression(listComprehension);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ErlangPackage.BINARY_COMPREHENSION:
+      {
+        BinaryComprehension binaryComprehension = (BinaryComprehension)theEObject;
+        T result = caseBinaryComprehension(binaryComprehension);
+        if (result == null) result = caseErlBinary(binaryComprehension);
+        if (result == null) result = caseExpression(binaryComprehension);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1691,22 +1693,6 @@ public class ErlangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>List Comprehension</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>List Comprehension</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseListComprehension(ListComprehension object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Erl Tuple</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1718,22 +1704,6 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseErlTuple(ErlTuple object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Binary Comprehension</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Binary Comprehension</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseBinaryComprehension(BinaryComprehension object)
   {
     return null;
   }
@@ -2310,6 +2280,38 @@ public class ErlangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseErlInteger(ErlInteger object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>List Comprehension</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>List Comprehension</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseListComprehension(ListComprehension object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Binary Comprehension</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Binary Comprehension</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBinaryComprehension(BinaryComprehension object)
   {
     return null;
   }

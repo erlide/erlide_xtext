@@ -117,9 +117,7 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.TRY_EXPR: return createTryExpr();
       case ErlangPackage.TRY_CLAUSE: return createTryClause();
       case ErlangPackage.ERL_LIST: return createErlList();
-      case ErlangPackage.LIST_COMPREHENSION: return createListComprehension();
       case ErlangPackage.ERL_TUPLE: return createErlTuple();
-      case ErlangPackage.BINARY_COMPREHENSION: return createBinaryComprehension();
       case ErlangPackage.ERL_BINARY: return createErlBinary();
       case ErlangPackage.BINARY_ITEM: return createBinaryItem();
       case ErlangPackage.BIT_TYPE: return createBitType();
@@ -156,6 +154,8 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
       case ErlangPackage.VARIABLE: return createVariable();
       case ErlangPackage.ERL_FLOAT: return createErlFloat();
       case ErlangPackage.ERL_INTEGER: return createErlInteger();
+      case ErlangPackage.LIST_COMPREHENSION: return createListComprehension();
+      case ErlangPackage.BINARY_COMPREHENSION: return createBinaryComprehension();
       case ErlangPackage.UNARY_TYPE: return createUnaryType();
       case ErlangPackage.REMOTE_TYPE: return createRemoteType();
       case ErlangPackage.LIST_TYPE: return createListType();
@@ -722,32 +722,10 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ListComprehension createListComprehension()
-  {
-    ListComprehensionImpl listComprehension = new ListComprehensionImpl();
-    return listComprehension;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public ErlTuple createErlTuple()
   {
     ErlTupleImpl erlTuple = new ErlTupleImpl();
     return erlTuple;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public BinaryComprehension createBinaryComprehension()
-  {
-    BinaryComprehensionImpl binaryComprehension = new BinaryComprehensionImpl();
-    return binaryComprehension;
   }
 
   /**
@@ -1144,6 +1122,28 @@ public class ErlangFactoryImpl extends EFactoryImpl implements ErlangFactory
   {
     ErlIntegerImpl erlInteger = new ErlIntegerImpl();
     return erlInteger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ListComprehension createListComprehension()
+  {
+    ListComprehensionImpl listComprehension = new ListComprehensionImpl();
+    return listComprehension;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BinaryComprehension createBinaryComprehension()
+  {
+    BinaryComprehensionImpl binaryComprehension = new BinaryComprehensionImpl();
+    return binaryComprehension;
   }
 
   /**

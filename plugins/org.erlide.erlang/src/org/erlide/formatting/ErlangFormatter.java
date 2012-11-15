@@ -79,11 +79,18 @@ public class ErlangFormatter extends AbstractDeclarativeFormatter {
                 g.getFunctionClauseAccess()
                         .getHyphenMinusGreaterThanSignKeyword_5());
 
-        c.setLinewrap().after(g.getListAccess().getCommaKeyword_1_1_1_0());
+        c.setLinewrap().after(
+                g.getListOrComprehensionAccess().getCommaKeyword_1_1_1_0());
         c.setLinewrap().after(g.getExpressionsAccess().getCommaKeyword_1_0());
         c.setNoLinewrap().after(
                 g.getLExpressionAccess().getExprAssignment_0_1());
 
+        c.setLinewrap().after(
+                g.getListOrComprehensionAccess()
+                        .getVerticalLineVerticalLineKeyword_1_1_2_1_1());
+        c.setLinewrap().after(
+                g.getBinaryOrComprehensionAccess()
+                        .getVerticalLineVerticalLineKeyword_1_1_2_1());
     }
 
     @Override

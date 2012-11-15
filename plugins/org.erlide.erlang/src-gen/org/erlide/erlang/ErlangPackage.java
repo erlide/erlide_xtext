@@ -2252,70 +2252,6 @@ public interface ErlangPackage extends EPackage
   int ERL_LIST_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.ListComprehensionImpl <em>List Comprehension</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.ListComprehensionImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getListComprehension()
-   * @generated
-   */
-  int LIST_COMPREHENSION = 50;
-
-  /**
-   * The feature id for the '<em><b>Line</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIST_COMPREHENSION__LINE = EXPRESSION__LINE;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIST_COMPREHENSION__EXPR = EXPRESSION__EXPR;
-
-  /**
-   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIST_COMPREHENSION__PARTS = EXPRESSION__PARTS;
-
-  /**
-   * The feature id for the '<em><b>Element</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIST_COMPREHENSION__ELEMENT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Generators</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIST_COMPREHENSION__GENERATORS = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>List Comprehension</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LIST_COMPREHENSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ErlTupleImpl <em>Erl Tuple</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2323,7 +2259,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlTuple()
    * @generated
    */
-  int ERL_TUPLE = 51;
+  int ERL_TUPLE = 50;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2371,61 +2307,6 @@ public interface ErlangPackage extends EPackage
   int ERL_TUPLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.erlide.erlang.impl.BinaryComprehensionImpl <em>Binary Comprehension</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.erlide.erlang.impl.BinaryComprehensionImpl
-   * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryComprehension()
-   * @generated
-   */
-  int BINARY_COMPREHENSION = 52;
-
-  /**
-   * The feature id for the '<em><b>Line</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BINARY_COMPREHENSION__LINE = EXPRESSION__LINE;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BINARY_COMPREHENSION__EXPR = EXPRESSION__EXPR;
-
-  /**
-   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BINARY_COMPREHENSION__PARTS = EXPRESSION__PARTS;
-
-  /**
-   * The feature id for the '<em><b>Generators</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BINARY_COMPREHENSION__GENERATORS = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Binary Comprehension</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BINARY_COMPREHENSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link org.erlide.erlang.impl.ErlBinaryImpl <em>Erl Binary</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2433,7 +2314,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlBinary()
    * @generated
    */
-  int ERL_BINARY = 53;
+  int ERL_BINARY = 51;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -2488,7 +2369,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryItem()
    * @generated
    */
-  int BINARY_ITEM = 54;
+  int BINARY_ITEM = 52;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -2543,7 +2424,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBitType()
    * @generated
    */
-  int BIT_TYPE = 55;
+  int BIT_TYPE = 53;
 
   /**
    * The feature id for the '<em><b>Type Name</b></em>' reference.
@@ -2580,7 +2461,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getLCExpr()
    * @generated
    */
-  int LC_EXPR = 56;
+  int LC_EXPR = 54;
 
   /**
    * The feature id for the '<em><b>O1</b></em>' containment reference.
@@ -2626,7 +2507,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTypeSig()
    * @generated
    */
-  int TYPE_SIG = 57;
+  int TYPE_SIG = 55;
 
   /**
    * The feature id for the '<em><b>Decl</b></em>' containment reference.
@@ -2663,7 +2544,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType100()
    * @generated
    */
-  int TYPE100 = 62;
+  int TYPE100 = 60;
 
   /**
    * The number of structural features of the '<em>Type100</em>' class.
@@ -2682,7 +2563,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType200()
    * @generated
    */
-  int TYPE200 = 63;
+  int TYPE200 = 61;
 
   /**
    * The number of structural features of the '<em>Type200</em>' class.
@@ -2701,7 +2582,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType300()
    * @generated
    */
-  int TYPE300 = 64;
+  int TYPE300 = 62;
 
   /**
    * The number of structural features of the '<em>Type300</em>' class.
@@ -2720,7 +2601,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType400()
    * @generated
    */
-  int TYPE400 = 65;
+  int TYPE400 = 63;
 
   /**
    * The number of structural features of the '<em>Type400</em>' class.
@@ -2739,7 +2620,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType500()
    * @generated
    */
-  int TYPE500 = 66;
+  int TYPE500 = 64;
 
   /**
    * The number of structural features of the '<em>Type500</em>' class.
@@ -2758,7 +2639,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getType()
    * @generated
    */
-  int TYPE = 67;
+  int TYPE = 65;
 
   /**
    * The feature id for the '<em><b>Type Name</b></em>' containment reference.
@@ -2795,7 +2676,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunType()
    * @generated
    */
-  int FUN_TYPE = 58;
+  int FUN_TYPE = 56;
 
   /**
    * The feature id for the '<em><b>Type Name</b></em>' containment reference.
@@ -2859,7 +2740,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTypeGuards()
    * @generated
    */
-  int TYPE_GUARDS = 59;
+  int TYPE_GUARDS = 57;
 
   /**
    * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -2887,7 +2768,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTypeGuard()
    * @generated
    */
-  int TYPE_GUARD = 60;
+  int TYPE_GUARD = 58;
 
   /**
    * The feature id for the '<em><b>Type Name</b></em>' containment reference.
@@ -2933,7 +2814,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getTopType()
    * @generated
    */
-  int TOP_TYPE = 61;
+  int TOP_TYPE = 59;
 
   /**
    * The feature id for the '<em><b>Type Name</b></em>' containment reference.
@@ -3015,7 +2896,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFieldType()
    * @generated
    */
-  int FIELD_TYPE = 68;
+  int FIELD_TYPE = 66;
 
   /**
    * The feature id for the '<em><b>Type Name</b></em>' containment reference.
@@ -3052,7 +2933,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryType()
    * @generated
    */
-  int BINARY_TYPE = 69;
+  int BINARY_TYPE = 67;
 
   /**
    * The feature id for the '<em><b>Type Name</b></em>' containment reference.
@@ -3098,7 +2979,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinBaseType()
    * @generated
    */
-  int BIN_BASE_TYPE = 70;
+  int BIN_BASE_TYPE = 68;
 
   /**
    * The feature id for the '<em><b>Type Name</b></em>' containment reference.
@@ -3135,7 +3016,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinUnitType()
    * @generated
    */
-  int BIN_UNIT_TYPE = 71;
+  int BIN_UNIT_TYPE = 69;
 
   /**
    * The feature id for the '<em><b>Type Name</b></em>' containment reference.
@@ -3181,7 +3062,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunType100()
    * @generated
    */
-  int FUN_TYPE100 = 72;
+  int FUN_TYPE100 = 70;
 
   /**
    * The number of structural features of the '<em>Fun Type100</em>' class.
@@ -3200,7 +3081,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMacroForm()
    * @generated
    */
-  int MACRO_FORM = 73;
+  int MACRO_FORM = 71;
 
   /**
    * The feature id for the '<em><b>Call</b></em>' containment reference.
@@ -3228,7 +3109,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getCatchExpr()
    * @generated
    */
-  int CATCH_EXPR = 74;
+  int CATCH_EXPR = 72;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3274,7 +3155,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMatchExpr()
    * @generated
    */
-  int MATCH_EXPR = 75;
+  int MATCH_EXPR = 73;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3347,7 +3228,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinOp()
    * @generated
    */
-  int BIN_OP = 76;
+  int BIN_OP = 74;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3429,7 +3310,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getAddOp()
    * @generated
    */
-  int ADD_OP = 77;
+  int ADD_OP = 75;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3502,7 +3383,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMultOp()
    * @generated
    */
-  int MULT_OP = 78;
+  int MULT_OP = 76;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3575,7 +3456,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getUnaryExpr()
    * @generated
    */
-  int UNARY_EXPR = 79;
+  int UNARY_EXPR = 77;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3639,7 +3520,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getFunCall()
    * @generated
    */
-  int FUN_CALL = 80;
+  int FUN_CALL = 78;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3712,7 +3593,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getRemoteTarget()
    * @generated
    */
-  int REMOTE_TARGET = 81;
+  int REMOTE_TARGET = 79;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3776,7 +3657,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getBlockExpr()
    * @generated
    */
-  int BLOCK_EXPR = 82;
+  int BLOCK_EXPR = 80;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3831,7 +3712,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlChar()
    * @generated
    */
-  int ERL_CHAR = 83;
+  int ERL_CHAR = 81;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3886,7 +3767,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getAtom()
    * @generated
    */
-  int ATOM = 84;
+  int ATOM = 82;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3941,7 +3822,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getMacro()
    * @generated
    */
-  int MACRO = 85;
+  int MACRO = 83;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -3996,7 +3877,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getVariable()
    * @generated
    */
-  int VARIABLE = 86;
+  int VARIABLE = 84;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4051,7 +3932,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlFloat()
    * @generated
    */
-  int ERL_FLOAT = 87;
+  int ERL_FLOAT = 85;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4106,7 +3987,7 @@ public interface ErlangPackage extends EPackage
    * @see org.erlide.erlang.impl.ErlangPackageImpl#getErlInteger()
    * @generated
    */
-  int ERL_INTEGER = 88;
+  int ERL_INTEGER = 86;
 
   /**
    * The feature id for the '<em><b>Line</b></em>' attribute.
@@ -4152,6 +4033,161 @@ public interface ErlangPackage extends EPackage
    * @ordered
    */
   int ERL_INTEGER_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.erlide.erlang.impl.ListComprehensionImpl <em>List Comprehension</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.erlide.erlang.impl.ListComprehensionImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getListComprehension()
+   * @generated
+   */
+  int LIST_COMPREHENSION = 87;
+
+  /**
+   * The feature id for the '<em><b>Line</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_COMPREHENSION__LINE = ERL_LIST__LINE;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_COMPREHENSION__EXPR = ERL_LIST__EXPR;
+
+  /**
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_COMPREHENSION__PARTS = ERL_LIST__PARTS;
+
+  /**
+   * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_COMPREHENSION__ELEMENTS = ERL_LIST__ELEMENTS;
+
+  /**
+   * The feature id for the '<em><b>Tail</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_COMPREHENSION__TAIL = ERL_LIST__TAIL;
+
+  /**
+   * The feature id for the '<em><b>Root</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_COMPREHENSION__ROOT = ERL_LIST_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Generators</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_COMPREHENSION__GENERATORS = ERL_LIST_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>List Comprehension</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LIST_COMPREHENSION_FEATURE_COUNT = ERL_LIST_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.erlide.erlang.impl.BinaryComprehensionImpl <em>Binary Comprehension</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.erlide.erlang.impl.BinaryComprehensionImpl
+   * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryComprehension()
+   * @generated
+   */
+  int BINARY_COMPREHENSION = 88;
+
+  /**
+   * The feature id for the '<em><b>Line</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_COMPREHENSION__LINE = ERL_BINARY__LINE;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_COMPREHENSION__EXPR = ERL_BINARY__EXPR;
+
+  /**
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_COMPREHENSION__PARTS = ERL_BINARY__PARTS;
+
+  /**
+   * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_COMPREHENSION__ELEMENTS = ERL_BINARY__ELEMENTS;
+
+  /**
+   * The feature id for the '<em><b>Root</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_COMPREHENSION__ROOT = ERL_BINARY_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Generators</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_COMPREHENSION__GENERATORS = ERL_BINARY_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Binary Comprehension</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_COMPREHENSION_FEATURE_COUNT = ERL_BINARY_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.erlide.erlang.impl.UnaryTypeImpl <em>Unary Type</em>}' class.
@@ -5833,38 +5869,6 @@ public interface ErlangPackage extends EPackage
   EReference getErlList_Tail();
 
   /**
-   * Returns the meta object for class '{@link org.erlide.erlang.ListComprehension <em>List Comprehension</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>List Comprehension</em>'.
-   * @see org.erlide.erlang.ListComprehension
-   * @generated
-   */
-  EClass getListComprehension();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.erlide.erlang.ListComprehension#getElement <em>Element</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Element</em>'.
-   * @see org.erlide.erlang.ListComprehension#getElement()
-   * @see #getListComprehension()
-   * @generated
-   */
-  EReference getListComprehension_Element();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.ListComprehension#getGenerators <em>Generators</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Generators</em>'.
-   * @see org.erlide.erlang.ListComprehension#getGenerators()
-   * @see #getListComprehension()
-   * @generated
-   */
-  EReference getListComprehension_Generators();
-
-  /**
    * Returns the meta object for class '{@link org.erlide.erlang.ErlTuple <em>Erl Tuple</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5884,27 +5888,6 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EReference getErlTuple_Elements();
-
-  /**
-   * Returns the meta object for class '{@link org.erlide.erlang.BinaryComprehension <em>Binary Comprehension</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Binary Comprehension</em>'.
-   * @see org.erlide.erlang.BinaryComprehension
-   * @generated
-   */
-  EClass getBinaryComprehension();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.BinaryComprehension#getGenerators <em>Generators</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Generators</em>'.
-   * @see org.erlide.erlang.BinaryComprehension#getGenerators()
-   * @see #getBinaryComprehension()
-   * @generated
-   */
-  EReference getBinaryComprehension_Generators();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.ErlBinary <em>Erl Binary</em>}'.
@@ -6947,6 +6930,70 @@ public interface ErlangPackage extends EPackage
    * @generated
    */
   EAttribute getErlInteger_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.erlide.erlang.ListComprehension <em>List Comprehension</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>List Comprehension</em>'.
+   * @see org.erlide.erlang.ListComprehension
+   * @generated
+   */
+  EClass getListComprehension();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.ListComprehension#getRoot <em>Root</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Root</em>'.
+   * @see org.erlide.erlang.ListComprehension#getRoot()
+   * @see #getListComprehension()
+   * @generated
+   */
+  EReference getListComprehension_Root();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.ListComprehension#getGenerators <em>Generators</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Generators</em>'.
+   * @see org.erlide.erlang.ListComprehension#getGenerators()
+   * @see #getListComprehension()
+   * @generated
+   */
+  EReference getListComprehension_Generators();
+
+  /**
+   * Returns the meta object for class '{@link org.erlide.erlang.BinaryComprehension <em>Binary Comprehension</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Binary Comprehension</em>'.
+   * @see org.erlide.erlang.BinaryComprehension
+   * @generated
+   */
+  EClass getBinaryComprehension();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.erlide.erlang.BinaryComprehension#getRoot <em>Root</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Root</em>'.
+   * @see org.erlide.erlang.BinaryComprehension#getRoot()
+   * @see #getBinaryComprehension()
+   * @generated
+   */
+  EReference getBinaryComprehension_Root();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.erlide.erlang.BinaryComprehension#getGenerators <em>Generators</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Generators</em>'.
+   * @see org.erlide.erlang.BinaryComprehension#getGenerators()
+   * @see #getBinaryComprehension()
+   * @generated
+   */
+  EReference getBinaryComprehension_Generators();
 
   /**
    * Returns the meta object for class '{@link org.erlide.erlang.UnaryType <em>Unary Type</em>}'.
@@ -8298,32 +8345,6 @@ public interface ErlangPackage extends EPackage
     EReference ERL_LIST__TAIL = eINSTANCE.getErlList_Tail();
 
     /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.ListComprehensionImpl <em>List Comprehension</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.ListComprehensionImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getListComprehension()
-     * @generated
-     */
-    EClass LIST_COMPREHENSION = eINSTANCE.getListComprehension();
-
-    /**
-     * The meta object literal for the '<em><b>Element</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LIST_COMPREHENSION__ELEMENT = eINSTANCE.getListComprehension_Element();
-
-    /**
-     * The meta object literal for the '<em><b>Generators</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LIST_COMPREHENSION__GENERATORS = eINSTANCE.getListComprehension_Generators();
-
-    /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.ErlTupleImpl <em>Erl Tuple</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8340,24 +8361,6 @@ public interface ErlangPackage extends EPackage
      * @generated
      */
     EReference ERL_TUPLE__ELEMENTS = eINSTANCE.getErlTuple_Elements();
-
-    /**
-     * The meta object literal for the '{@link org.erlide.erlang.impl.BinaryComprehensionImpl <em>Binary Comprehension</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.erlide.erlang.impl.BinaryComprehensionImpl
-     * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryComprehension()
-     * @generated
-     */
-    EClass BINARY_COMPREHENSION = eINSTANCE.getBinaryComprehension();
-
-    /**
-     * The meta object literal for the '<em><b>Generators</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference BINARY_COMPREHENSION__GENERATORS = eINSTANCE.getBinaryComprehension_Generators();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.ErlBinaryImpl <em>Erl Binary</em>}' class.
@@ -9214,6 +9217,58 @@ public interface ErlangPackage extends EPackage
      * @generated
      */
     EAttribute ERL_INTEGER__VALUE = eINSTANCE.getErlInteger_Value();
+
+    /**
+     * The meta object literal for the '{@link org.erlide.erlang.impl.ListComprehensionImpl <em>List Comprehension</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.erlide.erlang.impl.ListComprehensionImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getListComprehension()
+     * @generated
+     */
+    EClass LIST_COMPREHENSION = eINSTANCE.getListComprehension();
+
+    /**
+     * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LIST_COMPREHENSION__ROOT = eINSTANCE.getListComprehension_Root();
+
+    /**
+     * The meta object literal for the '<em><b>Generators</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LIST_COMPREHENSION__GENERATORS = eINSTANCE.getListComprehension_Generators();
+
+    /**
+     * The meta object literal for the '{@link org.erlide.erlang.impl.BinaryComprehensionImpl <em>Binary Comprehension</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.erlide.erlang.impl.BinaryComprehensionImpl
+     * @see org.erlide.erlang.impl.ErlangPackageImpl#getBinaryComprehension()
+     * @generated
+     */
+    EClass BINARY_COMPREHENSION = eINSTANCE.getBinaryComprehension();
+
+    /**
+     * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BINARY_COMPREHENSION__ROOT = eINSTANCE.getBinaryComprehension_Root();
+
+    /**
+     * The meta object literal for the '<em><b>Generators</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BINARY_COMPREHENSION__GENERATORS = eINSTANCE.getBinaryComprehension_Generators();
 
     /**
      * The meta object literal for the '{@link org.erlide.erlang.impl.UnaryTypeImpl <em>Unary Type</em>}' class.

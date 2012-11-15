@@ -328,19 +328,9 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
         return createErlListAdapter();
       }
       @Override
-      public Adapter caseListComprehension(ListComprehension object)
-      {
-        return createListComprehensionAdapter();
-      }
-      @Override
       public Adapter caseErlTuple(ErlTuple object)
       {
         return createErlTupleAdapter();
-      }
-      @Override
-      public Adapter caseBinaryComprehension(BinaryComprehension object)
-      {
-        return createBinaryComprehensionAdapter();
       }
       @Override
       public Adapter caseErlBinary(ErlBinary object)
@@ -521,6 +511,16 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseErlInteger(ErlInteger object)
       {
         return createErlIntegerAdapter();
+      }
+      @Override
+      public Adapter caseListComprehension(ListComprehension object)
+      {
+        return createListComprehensionAdapter();
+      }
+      @Override
+      public Adapter caseBinaryComprehension(BinaryComprehension object)
+      {
+        return createBinaryComprehensionAdapter();
       }
       @Override
       public Adapter caseUnaryType(UnaryType object)
@@ -1325,21 +1325,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ListComprehension <em>List Comprehension</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.ListComprehension
-   * @generated
-   */
-  public Adapter createListComprehensionAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.erlide.erlang.ErlTuple <em>Erl Tuple</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1350,21 +1335,6 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createErlTupleAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.erlide.erlang.BinaryComprehension <em>Binary Comprehension</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.erlide.erlang.BinaryComprehension
-   * @generated
-   */
-  public Adapter createBinaryComprehensionAdapter()
   {
     return null;
   }
@@ -1905,6 +1875,36 @@ public class ErlangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createErlIntegerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.ListComprehension <em>List Comprehension</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.ListComprehension
+   * @generated
+   */
+  public Adapter createListComprehensionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.erlide.erlang.BinaryComprehension <em>Binary Comprehension</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.erlide.erlang.BinaryComprehension
+   * @generated
+   */
+  public Adapter createBinaryComprehensionAdapter()
   {
     return null;
   }

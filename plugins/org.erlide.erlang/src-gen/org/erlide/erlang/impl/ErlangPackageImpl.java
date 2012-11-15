@@ -473,21 +473,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass listComprehensionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass erlTupleEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass binaryComprehensionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -740,6 +726,20 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * @generated
    */
   private EClass erlIntegerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass listComprehensionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass binaryComprehensionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -2171,36 +2171,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getListComprehension()
-  {
-    return listComprehensionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getListComprehension_Element()
-  {
-    return (EReference)listComprehensionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getListComprehension_Generators()
-  {
-    return (EReference)listComprehensionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getErlTuple()
   {
     return erlTupleEClass;
@@ -2214,26 +2184,6 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
   public EReference getErlTuple_Elements()
   {
     return (EReference)erlTupleEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getBinaryComprehension()
-  {
-    return binaryComprehensionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getBinaryComprehension_Generators()
-  {
-    return (EReference)binaryComprehensionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3221,6 +3171,66 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getListComprehension()
+  {
+    return listComprehensionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getListComprehension_Root()
+  {
+    return (EReference)listComprehensionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getListComprehension_Generators()
+  {
+    return (EReference)listComprehensionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getBinaryComprehension()
+  {
+    return binaryComprehensionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getBinaryComprehension_Root()
+  {
+    return (EReference)binaryComprehensionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getBinaryComprehension_Generators()
+  {
+    return (EReference)binaryComprehensionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getUnaryType()
   {
     return unaryTypeEClass;
@@ -3588,15 +3598,8 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     createEReference(erlListEClass, ERL_LIST__ELEMENTS);
     createEReference(erlListEClass, ERL_LIST__TAIL);
 
-    listComprehensionEClass = createEClass(LIST_COMPREHENSION);
-    createEReference(listComprehensionEClass, LIST_COMPREHENSION__ELEMENT);
-    createEReference(listComprehensionEClass, LIST_COMPREHENSION__GENERATORS);
-
     erlTupleEClass = createEClass(ERL_TUPLE);
     createEReference(erlTupleEClass, ERL_TUPLE__ELEMENTS);
-
-    binaryComprehensionEClass = createEClass(BINARY_COMPREHENSION);
-    createEReference(binaryComprehensionEClass, BINARY_COMPREHENSION__GENERATORS);
 
     erlBinaryEClass = createEClass(ERL_BINARY);
     createEReference(erlBinaryEClass, ERL_BINARY__ELEMENTS);
@@ -3732,6 +3735,14 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     erlIntegerEClass = createEClass(ERL_INTEGER);
     createEAttribute(erlIntegerEClass, ERL_INTEGER__VALUE);
 
+    listComprehensionEClass = createEClass(LIST_COMPREHENSION);
+    createEReference(listComprehensionEClass, LIST_COMPREHENSION__ROOT);
+    createEReference(listComprehensionEClass, LIST_COMPREHENSION__GENERATORS);
+
+    binaryComprehensionEClass = createEClass(BINARY_COMPREHENSION);
+    createEReference(binaryComprehensionEClass, BINARY_COMPREHENSION__ROOT);
+    createEReference(binaryComprehensionEClass, BINARY_COMPREHENSION__GENERATORS);
+
     unaryTypeEClass = createEClass(UNARY_TYPE);
     createEAttribute(unaryTypeEClass, UNARY_TYPE__OP);
     createEReference(unaryTypeEClass, UNARY_TYPE__OPERAND);
@@ -3823,9 +3834,7 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     funRefEClass.getESuperTypes().add(this.getFunExpr());
     tryExprEClass.getESuperTypes().add(this.getExpression());
     erlListEClass.getESuperTypes().add(this.getExpression());
-    listComprehensionEClass.getESuperTypes().add(this.getExpression());
     erlTupleEClass.getESuperTypes().add(this.getExpression());
-    binaryComprehensionEClass.getESuperTypes().add(this.getExpression());
     erlBinaryEClass.getESuperTypes().add(this.getExpression());
     funTypeEClass.getESuperTypes().add(this.getType());
     topTypeEClass.getESuperTypes().add(this.getType100());
@@ -3855,6 +3864,8 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     variableEClass.getESuperTypes().add(this.getExpression());
     erlFloatEClass.getESuperTypes().add(this.getExpression());
     erlIntegerEClass.getESuperTypes().add(this.getExpression());
+    listComprehensionEClass.getESuperTypes().add(this.getErlList());
+    binaryComprehensionEClass.getESuperTypes().add(this.getErlBinary());
     unaryTypeEClass.getESuperTypes().add(this.getType500());
     remoteTypeEClass.getESuperTypes().add(this.getType());
     listTypeEClass.getESuperTypes().add(this.getType());
@@ -4045,15 +4056,8 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
     initEReference(getErlList_Elements(), this.getExpression(), null, "elements", null, 0, -1, ErlList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getErlList_Tail(), this.getExpression(), null, "tail", null, 0, 1, ErlList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(listComprehensionEClass, ListComprehension.class, "ListComprehension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getListComprehension_Element(), this.getExpression(), null, "element", null, 0, 1, ListComprehension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getListComprehension_Generators(), this.getLCExpr(), null, "generators", null, 0, -1, ListComprehension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(erlTupleEClass, ErlTuple.class, "ErlTuple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getErlTuple_Elements(), this.getExpression(), null, "elements", null, 0, -1, ErlTuple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(binaryComprehensionEClass, BinaryComprehension.class, "BinaryComprehension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBinaryComprehension_Generators(), this.getLCExpr(), null, "generators", null, 0, -1, BinaryComprehension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(erlBinaryEClass, ErlBinary.class, "ErlBinary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getErlBinary_Elements(), this.getBinaryItem(), null, "elements", null, 0, -1, ErlBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4188,6 +4192,14 @@ public class ErlangPackageImpl extends EPackageImpl implements ErlangPackage
 
     initEClass(erlIntegerEClass, ErlInteger.class, "ErlInteger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getErlInteger_Value(), ecorePackage.getEString(), "value", null, 0, 1, ErlInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(listComprehensionEClass, ListComprehension.class, "ListComprehension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getListComprehension_Root(), this.getErlList(), null, "root", null, 0, 1, ListComprehension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getListComprehension_Generators(), this.getLCExpr(), null, "generators", null, 0, -1, ListComprehension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(binaryComprehensionEClass, BinaryComprehension.class, "BinaryComprehension", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBinaryComprehension_Root(), this.getErlBinary(), null, "root", null, 0, 1, BinaryComprehension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBinaryComprehension_Generators(), this.getLCExpr(), null, "generators", null, 0, -1, BinaryComprehension.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(unaryTypeEClass, UnaryType.class, "UnaryType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUnaryType_Op(), ecorePackage.getEString(), "op", null, 0, 1, UnaryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

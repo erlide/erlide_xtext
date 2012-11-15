@@ -180,15 +180,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ErlList/elements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ErlList/tail"/>
     </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//ListComprehension">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ListComprehension/element"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ListComprehension/generators"/>
-    </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ErlTuple">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ErlTuple/elements"/>
-    </genClasses>
-    <genClasses ecoreClass="Erlang.ecore#//BinaryComprehension">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinaryComprehension/generators"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ErlBinary">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ErlBinary/elements"/>
@@ -316,6 +309,14 @@
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//ErlInteger">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//ErlInteger/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//ListComprehension">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ListComprehension/root"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//ListComprehension/generators"/>
+    </genClasses>
+    <genClasses ecoreClass="Erlang.ecore#//BinaryComprehension">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinaryComprehension/root"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Erlang.ecore#//BinaryComprehension/generators"/>
     </genClasses>
     <genClasses ecoreClass="Erlang.ecore#//UnaryType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Erlang.ecore#//UnaryType/op"/>

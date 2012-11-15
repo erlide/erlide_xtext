@@ -2343,48 +2343,40 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TermExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cTupleParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cListComprehensionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cListParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cBinaryComprehensionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cBinaryParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
-		private final Keyword cNumberSignKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final RuleCall cRecordExprParserRuleCall_5_1 = (RuleCall)cGroup_5.eContents().get(1);
-		private final RuleCall cLiteralExpressionParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cListOrComprehensionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cBinaryOrComprehensionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Keyword cNumberSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final RuleCall cRecordExprParserRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
+		private final RuleCall cLiteralExpressionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//TermExpression returns Expression:
-		//	Tuple | => ListComprehension | List | => BinaryComprehension | Binary | "#" RecordExpr | LiteralExpression;
+		//	Tuple | ListOrComprehension | BinaryOrComprehension | "#" RecordExpr | LiteralExpression;
 		public ParserRule getRule() { return rule; }
 
-		//Tuple | => ListComprehension | List | => BinaryComprehension | Binary | "#" RecordExpr | LiteralExpression
+		//Tuple | ListOrComprehension | BinaryOrComprehension | "#" RecordExpr | LiteralExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Tuple
 		public RuleCall getTupleParserRuleCall_0() { return cTupleParserRuleCall_0; }
 
-		//=> ListComprehension
-		public RuleCall getListComprehensionParserRuleCall_1() { return cListComprehensionParserRuleCall_1; }
+		//ListOrComprehension
+		public RuleCall getListOrComprehensionParserRuleCall_1() { return cListOrComprehensionParserRuleCall_1; }
 
-		//List
-		public RuleCall getListParserRuleCall_2() { return cListParserRuleCall_2; }
-
-		//=> BinaryComprehension
-		public RuleCall getBinaryComprehensionParserRuleCall_3() { return cBinaryComprehensionParserRuleCall_3; }
-
-		//Binary
-		public RuleCall getBinaryParserRuleCall_4() { return cBinaryParserRuleCall_4; }
+		//BinaryOrComprehension
+		public RuleCall getBinaryOrComprehensionParserRuleCall_2() { return cBinaryOrComprehensionParserRuleCall_2; }
 
 		//"#" RecordExpr
-		public Group getGroup_5() { return cGroup_5; }
+		public Group getGroup_3() { return cGroup_3; }
 
 		//"#"
-		public Keyword getNumberSignKeyword_5_0() { return cNumberSignKeyword_5_0; }
+		public Keyword getNumberSignKeyword_3_0() { return cNumberSignKeyword_3_0; }
 
 		//RecordExpr
-		public RuleCall getRecordExprParserRuleCall_5_1() { return cRecordExprParserRuleCall_5_1; }
+		public RuleCall getRecordExprParserRuleCall_3_1() { return cRecordExprParserRuleCall_3_1; }
 
 		//LiteralExpression
-		public RuleCall getLiteralExpressionParserRuleCall_6() { return cLiteralExpressionParserRuleCall_6; }
+		public RuleCall getLiteralExpressionParserRuleCall_4() { return cLiteralExpressionParserRuleCall_4; }
 	}
 
 	public class MacroCallElements extends AbstractParserRuleElementFinder {
@@ -3601,8 +3593,8 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getBodyExpressionsParserRuleCall_4_0() { return cBodyExpressionsParserRuleCall_4_0; }
 	}
 
-	public class ListElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "List");
+	public class ListOrComprehensionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ListOrComprehension");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
@@ -3614,29 +3606,43 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCommaKeyword_1_1_1_0 = (Keyword)cGroup_1_1_1.eContents().get(0);
 		private final Assignment cElementsAssignment_1_1_1_1 = (Assignment)cGroup_1_1_1.eContents().get(1);
 		private final RuleCall cElementsExpressionParserRuleCall_1_1_1_1_0 = (RuleCall)cElementsAssignment_1_1_1_1.eContents().get(0);
-		private final Group cGroup_1_1_2 = (Group)cGroup_1_1.eContents().get(2);
-		private final Keyword cVerticalLineKeyword_1_1_2_0 = (Keyword)cGroup_1_1_2.eContents().get(0);
-		private final Assignment cTailAssignment_1_1_2_1 = (Assignment)cGroup_1_1_2.eContents().get(1);
-		private final RuleCall cTailExpressionParserRuleCall_1_1_2_1_0 = (RuleCall)cTailAssignment_1_1_2_1.eContents().get(0);
+		private final Alternatives cAlternatives_1_1_2 = (Alternatives)cGroup_1_1.eContents().get(2);
+		private final Group cGroup_1_1_2_0 = (Group)cAlternatives_1_1_2.eContents().get(0);
+		private final Keyword cVerticalLineKeyword_1_1_2_0_0 = (Keyword)cGroup_1_1_2_0.eContents().get(0);
+		private final Assignment cTailAssignment_1_1_2_0_1 = (Assignment)cGroup_1_1_2_0.eContents().get(1);
+		private final RuleCall cTailExpressionParserRuleCall_1_1_2_0_1_0 = (RuleCall)cTailAssignment_1_1_2_0_1.eContents().get(0);
+		private final Group cGroup_1_1_2_1 = (Group)cAlternatives_1_1_2.eContents().get(1);
+		private final Action cListComprehensionRootAction_1_1_2_1_0 = (Action)cGroup_1_1_2_1.eContents().get(0);
+		private final Keyword cVerticalLineVerticalLineKeyword_1_1_2_1_1 = (Keyword)cGroup_1_1_2_1.eContents().get(1);
+		private final Assignment cGeneratorsAssignment_1_1_2_1_2 = (Assignment)cGroup_1_1_2_1.eContents().get(2);
+		private final RuleCall cGeneratorsLCExprParserRuleCall_1_1_2_1_2_0 = (RuleCall)cGeneratorsAssignment_1_1_2_1_2.eContents().get(0);
+		private final Group cGroup_1_1_2_1_3 = (Group)cGroup_1_1_2_1.eContents().get(3);
+		private final Keyword cCommaKeyword_1_1_2_1_3_0 = (Keyword)cGroup_1_1_2_1_3.eContents().get(0);
+		private final Assignment cGeneratorsAssignment_1_1_2_1_3_1 = (Assignment)cGroup_1_1_2_1_3.eContents().get(1);
+		private final RuleCall cGeneratorsLCExprParserRuleCall_1_1_2_1_3_1_0 = (RuleCall)cGeneratorsAssignment_1_1_2_1_3_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//List returns ErlList:
-		//	"[" ({ErlList} | elements+=Expression ("," elements+=Expression)* ("|" tail=Expression)?) "]";
+		//ListOrComprehension returns ErlList:
+		//	"[" ({ErlList} | elements+=Expression ("," elements+=Expression)* ("|" tail=Expression |
+		//	{ListComprehension.root=current} "||" generators+=LCExpr ("," generators+=LCExpr)*)?) "]";
 		public ParserRule getRule() { return rule; }
 
-		//"[" ({ErlList} | elements+=Expression ("," elements+=Expression)* ("|" tail=Expression)?) "]"
+		//"[" ({ErlList} | elements+=Expression ("," elements+=Expression)* ("|" tail=Expression |
+		//{ListComprehension.root=current} "||" generators+=LCExpr ("," generators+=LCExpr)*)?) "]"
 		public Group getGroup() { return cGroup; }
 
 		//"["
 		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
 
-		//{ErlList} | elements+=Expression ("," elements+=Expression)* ("|" tail=Expression)?
+		//{ErlList} | elements+=Expression ("," elements+=Expression)* ("|" tail=Expression | {ListComprehension.root=current}
+		//"||" generators+=LCExpr ("," generators+=LCExpr)*)?
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
 		//{ErlList}
 		public Action getErlListAction_1_0() { return cErlListAction_1_0; }
 
-		//elements+=Expression ("," elements+=Expression)* ("|" tail=Expression)?
+		//elements+=Expression ("," elements+=Expression)* ("|" tail=Expression | {ListComprehension.root=current} "||"
+		//generators+=LCExpr ("," generators+=LCExpr)*)?
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
 		//elements+=Expression
@@ -3657,76 +3663,50 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		//Expression
 		public RuleCall getElementsExpressionParserRuleCall_1_1_1_1_0() { return cElementsExpressionParserRuleCall_1_1_1_1_0; }
 
-		//("|" tail=Expression)?
-		public Group getGroup_1_1_2() { return cGroup_1_1_2; }
+		//("|" tail=Expression | {ListComprehension.root=current} "||" generators+=LCExpr ("," generators+=LCExpr)*)?
+		public Alternatives getAlternatives_1_1_2() { return cAlternatives_1_1_2; }
+
+		//"|" tail=Expression
+		public Group getGroup_1_1_2_0() { return cGroup_1_1_2_0; }
 
 		//"|"
-		public Keyword getVerticalLineKeyword_1_1_2_0() { return cVerticalLineKeyword_1_1_2_0; }
+		public Keyword getVerticalLineKeyword_1_1_2_0_0() { return cVerticalLineKeyword_1_1_2_0_0; }
 
 		//tail=Expression
-		public Assignment getTailAssignment_1_1_2_1() { return cTailAssignment_1_1_2_1; }
+		public Assignment getTailAssignment_1_1_2_0_1() { return cTailAssignment_1_1_2_0_1; }
 
 		//Expression
-		public RuleCall getTailExpressionParserRuleCall_1_1_2_1_0() { return cTailExpressionParserRuleCall_1_1_2_1_0; }
+		public RuleCall getTailExpressionParserRuleCall_1_1_2_0_1_0() { return cTailExpressionParserRuleCall_1_1_2_0_1_0; }
+
+		//{ListComprehension.root=current} "||" generators+=LCExpr ("," generators+=LCExpr)*
+		public Group getGroup_1_1_2_1() { return cGroup_1_1_2_1; }
+
+		//{ListComprehension.root=current}
+		public Action getListComprehensionRootAction_1_1_2_1_0() { return cListComprehensionRootAction_1_1_2_1_0; }
+
+		//"||"
+		public Keyword getVerticalLineVerticalLineKeyword_1_1_2_1_1() { return cVerticalLineVerticalLineKeyword_1_1_2_1_1; }
+
+		//generators+=LCExpr
+		public Assignment getGeneratorsAssignment_1_1_2_1_2() { return cGeneratorsAssignment_1_1_2_1_2; }
+
+		//LCExpr
+		public RuleCall getGeneratorsLCExprParserRuleCall_1_1_2_1_2_0() { return cGeneratorsLCExprParserRuleCall_1_1_2_1_2_0; }
+
+		//("," generators+=LCExpr)*
+		public Group getGroup_1_1_2_1_3() { return cGroup_1_1_2_1_3; }
+
+		//","
+		public Keyword getCommaKeyword_1_1_2_1_3_0() { return cCommaKeyword_1_1_2_1_3_0; }
+
+		//generators+=LCExpr
+		public Assignment getGeneratorsAssignment_1_1_2_1_3_1() { return cGeneratorsAssignment_1_1_2_1_3_1; }
+
+		//LCExpr
+		public RuleCall getGeneratorsLCExprParserRuleCall_1_1_2_1_3_1_0() { return cGeneratorsLCExprParserRuleCall_1_1_2_1_3_1_0; }
 
 		//"]"
 		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
-	}
-
-	public class ListComprehensionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ListComprehension");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cElementAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cElementExpressionParserRuleCall_1_0 = (RuleCall)cElementAssignment_1.eContents().get(0);
-		private final Keyword cVerticalLineVerticalLineKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cGeneratorsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cGeneratorsLCExprParserRuleCall_3_0 = (RuleCall)cGeneratorsAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cGeneratorsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cGeneratorsLCExprParserRuleCall_4_1_0 = (RuleCall)cGeneratorsAssignment_4_1.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//ListComprehension:
-		//	"[" element=Expression "||" generators+=LCExpr ("," generators+=LCExpr)* "]";
-		public ParserRule getRule() { return rule; }
-
-		//"[" element=Expression "||" generators+=LCExpr ("," generators+=LCExpr)* "]"
-		public Group getGroup() { return cGroup; }
-
-		//"["
-		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
-
-		//element=Expression
-		public Assignment getElementAssignment_1() { return cElementAssignment_1; }
-
-		//Expression
-		public RuleCall getElementExpressionParserRuleCall_1_0() { return cElementExpressionParserRuleCall_1_0; }
-
-		//"||"
-		public Keyword getVerticalLineVerticalLineKeyword_2() { return cVerticalLineVerticalLineKeyword_2; }
-
-		//generators+=LCExpr
-		public Assignment getGeneratorsAssignment_3() { return cGeneratorsAssignment_3; }
-
-		//LCExpr
-		public RuleCall getGeneratorsLCExprParserRuleCall_3_0() { return cGeneratorsLCExprParserRuleCall_3_0; }
-
-		//("," generators+=LCExpr)*
-		public Group getGroup_4() { return cGroup_4; }
-
-		//","
-		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
-
-		//generators+=LCExpr
-		public Assignment getGeneratorsAssignment_4_1() { return cGeneratorsAssignment_4_1; }
-
-		//LCExpr
-		public RuleCall getGeneratorsLCExprParserRuleCall_4_1_0() { return cGeneratorsLCExprParserRuleCall_4_1_0; }
-
-		//"]"
-		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
 	}
 
 	public class TupleElements extends AbstractParserRuleElementFinder {
@@ -3785,64 +3765,8 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
 	}
 
-	public class BinaryComprehensionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BinaryComprehension");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLessThanSignLessThanSignKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cExprAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cExprTermExpressionParserRuleCall_1_0 = (RuleCall)cExprAssignment_1.eContents().get(0);
-		private final Keyword cVerticalLineVerticalLineKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cGeneratorsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cGeneratorsLCExprParserRuleCall_3_0 = (RuleCall)cGeneratorsAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cGeneratorsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cGeneratorsLCExprParserRuleCall_4_1_0 = (RuleCall)cGeneratorsAssignment_4_1.eContents().get(0);
-		private final Keyword cGreaterThanSignGreaterThanSignKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//BinaryComprehension:
-		//	"<<" expr=TermExpression "||" generators+=LCExpr ("," generators+=LCExpr)* ">>";
-		public ParserRule getRule() { return rule; }
-
-		//"<<" expr=TermExpression "||" generators+=LCExpr ("," generators+=LCExpr)* ">>"
-		public Group getGroup() { return cGroup; }
-
-		//"<<"
-		public Keyword getLessThanSignLessThanSignKeyword_0() { return cLessThanSignLessThanSignKeyword_0; }
-
-		//expr=TermExpression
-		public Assignment getExprAssignment_1() { return cExprAssignment_1; }
-
-		//TermExpression
-		public RuleCall getExprTermExpressionParserRuleCall_1_0() { return cExprTermExpressionParserRuleCall_1_0; }
-
-		//"||"
-		public Keyword getVerticalLineVerticalLineKeyword_2() { return cVerticalLineVerticalLineKeyword_2; }
-
-		//generators+=LCExpr
-		public Assignment getGeneratorsAssignment_3() { return cGeneratorsAssignment_3; }
-
-		//LCExpr
-		public RuleCall getGeneratorsLCExprParserRuleCall_3_0() { return cGeneratorsLCExprParserRuleCall_3_0; }
-
-		//("," generators+=LCExpr)*
-		public Group getGroup_4() { return cGroup_4; }
-
-		//","
-		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
-
-		//generators+=LCExpr
-		public Assignment getGeneratorsAssignment_4_1() { return cGeneratorsAssignment_4_1; }
-
-		//LCExpr
-		public RuleCall getGeneratorsLCExprParserRuleCall_4_1_0() { return cGeneratorsLCExprParserRuleCall_4_1_0; }
-
-		//">>"
-		public Keyword getGreaterThanSignGreaterThanSignKeyword_5() { return cGreaterThanSignGreaterThanSignKeyword_5; }
-	}
-
-	public class BinaryElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Binary");
+	public class BinaryOrComprehensionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BinaryOrComprehension");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLessThanSignLessThanSignKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
@@ -3854,25 +3778,38 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCommaKeyword_1_1_1_0 = (Keyword)cGroup_1_1_1.eContents().get(0);
 		private final Assignment cElementsAssignment_1_1_1_1 = (Assignment)cGroup_1_1_1.eContents().get(1);
 		private final RuleCall cElementsBinaryItemParserRuleCall_1_1_1_1_0 = (RuleCall)cElementsAssignment_1_1_1_1.eContents().get(0);
+		private final Group cGroup_1_1_2 = (Group)cGroup_1_1.eContents().get(2);
+		private final Action cBinaryComprehensionRootAction_1_1_2_0 = (Action)cGroup_1_1_2.eContents().get(0);
+		private final Keyword cVerticalLineVerticalLineKeyword_1_1_2_1 = (Keyword)cGroup_1_1_2.eContents().get(1);
+		private final Assignment cGeneratorsAssignment_1_1_2_2 = (Assignment)cGroup_1_1_2.eContents().get(2);
+		private final RuleCall cGeneratorsLCExprParserRuleCall_1_1_2_2_0 = (RuleCall)cGeneratorsAssignment_1_1_2_2.eContents().get(0);
+		private final Group cGroup_1_1_2_3 = (Group)cGroup_1_1_2.eContents().get(3);
+		private final Keyword cCommaKeyword_1_1_2_3_0 = (Keyword)cGroup_1_1_2_3.eContents().get(0);
+		private final Assignment cGeneratorsAssignment_1_1_2_3_1 = (Assignment)cGroup_1_1_2_3.eContents().get(1);
+		private final RuleCall cGeneratorsLCExprParserRuleCall_1_1_2_3_1_0 = (RuleCall)cGeneratorsAssignment_1_1_2_3_1.eContents().get(0);
 		private final Keyword cGreaterThanSignGreaterThanSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//Binary returns ErlBinary:
-		//	"<<" ({ErlBinary} | elements+=BinaryItem ("," elements+=BinaryItem)*) ">>";
+		//BinaryOrComprehension returns ErlBinary:
+		//	"<<" ({ErlBinary} | elements+=BinaryItem ("," elements+=BinaryItem)* ({BinaryComprehension.root=current} "||"
+		//	generators+=LCExpr ("," generators+=LCExpr)*)?) ">>";
 		public ParserRule getRule() { return rule; }
 
-		//"<<" ({ErlBinary} | elements+=BinaryItem ("," elements+=BinaryItem)*) ">>"
+		//"<<" ({ErlBinary} | elements+=BinaryItem ("," elements+=BinaryItem)* ({BinaryComprehension.root=current} "||"
+		//generators+=LCExpr ("," generators+=LCExpr)*)?) ">>"
 		public Group getGroup() { return cGroup; }
 
 		//"<<"
 		public Keyword getLessThanSignLessThanSignKeyword_0() { return cLessThanSignLessThanSignKeyword_0; }
 
-		//{ErlBinary} | elements+=BinaryItem ("," elements+=BinaryItem)*
+		//{ErlBinary} | elements+=BinaryItem ("," elements+=BinaryItem)* ({BinaryComprehension.root=current} "||"
+		//generators+=LCExpr ("," generators+=LCExpr)*)?
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
 		//{ErlBinary}
 		public Action getErlBinaryAction_1_0() { return cErlBinaryAction_1_0; }
 
-		//elements+=BinaryItem ("," elements+=BinaryItem)*
+		//elements+=BinaryItem ("," elements+=BinaryItem)* ({BinaryComprehension.root=current} "||" generators+=LCExpr (","
+		//generators+=LCExpr)*)?
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
 		//elements+=BinaryItem
@@ -3892,6 +3829,33 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//BinaryItem
 		public RuleCall getElementsBinaryItemParserRuleCall_1_1_1_1_0() { return cElementsBinaryItemParserRuleCall_1_1_1_1_0; }
+
+		//({BinaryComprehension.root=current} "||" generators+=LCExpr ("," generators+=LCExpr)*)?
+		public Group getGroup_1_1_2() { return cGroup_1_1_2; }
+
+		//{BinaryComprehension.root=current}
+		public Action getBinaryComprehensionRootAction_1_1_2_0() { return cBinaryComprehensionRootAction_1_1_2_0; }
+
+		//"||"
+		public Keyword getVerticalLineVerticalLineKeyword_1_1_2_1() { return cVerticalLineVerticalLineKeyword_1_1_2_1; }
+
+		//generators+=LCExpr
+		public Assignment getGeneratorsAssignment_1_1_2_2() { return cGeneratorsAssignment_1_1_2_2; }
+
+		//LCExpr
+		public RuleCall getGeneratorsLCExprParserRuleCall_1_1_2_2_0() { return cGeneratorsLCExprParserRuleCall_1_1_2_2_0; }
+
+		//("," generators+=LCExpr)*
+		public Group getGroup_1_1_2_3() { return cGroup_1_1_2_3; }
+
+		//","
+		public Keyword getCommaKeyword_1_1_2_3_0() { return cCommaKeyword_1_1_2_3_0; }
+
+		//generators+=LCExpr
+		public Assignment getGeneratorsAssignment_1_1_2_3_1() { return cGeneratorsAssignment_1_1_2_3_1; }
+
+		//LCExpr
+		public RuleCall getGeneratorsLCExprParserRuleCall_1_1_2_3_1_0() { return cGeneratorsLCExprParserRuleCall_1_1_2_3_1_0; }
 
 		//">>"
 		public Keyword getGreaterThanSignGreaterThanSignKeyword_2() { return cGreaterThanSignGreaterThanSignKeyword_2; }
@@ -5904,11 +5868,9 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	private InlineFunElements pInlineFun;
 	private TryExprElements pTryExpr;
 	private TryClauseElements pTryClause;
-	private ListElements pList;
-	private ListComprehensionElements pListComprehension;
+	private ListOrComprehensionElements pListOrComprehension;
 	private TupleElements pTuple;
-	private BinaryComprehensionElements pBinaryComprehension;
-	private BinaryElements pBinary;
+	private BinaryOrComprehensionElements pBinaryOrComprehension;
 	private BinaryItemElements pBinaryItem;
 	private BitTypeElements pBitType;
 	private UnaryExprMaxElements pUnaryExprMax;
@@ -6462,7 +6424,7 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TermExpression returns Expression:
-	//	Tuple | => ListComprehension | List | => BinaryComprehension | Binary | "#" RecordExpr | LiteralExpression;
+	//	Tuple | ListOrComprehension | BinaryOrComprehension | "#" RecordExpr | LiteralExpression;
 	public TermExpressionElements getTermExpressionAccess() {
 		return (pTermExpression != null) ? pTermExpression : (pTermExpression = new TermExpressionElements());
 	}
@@ -6757,24 +6719,15 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		return getTryClauseAccess().getRule();
 	}
 
-	//List returns ErlList:
-	//	"[" ({ErlList} | elements+=Expression ("," elements+=Expression)* ("|" tail=Expression)?) "]";
-	public ListElements getListAccess() {
-		return (pList != null) ? pList : (pList = new ListElements());
+	//ListOrComprehension returns ErlList:
+	//	"[" ({ErlList} | elements+=Expression ("," elements+=Expression)* ("|" tail=Expression |
+	//	{ListComprehension.root=current} "||" generators+=LCExpr ("," generators+=LCExpr)*)?) "]";
+	public ListOrComprehensionElements getListOrComprehensionAccess() {
+		return (pListOrComprehension != null) ? pListOrComprehension : (pListOrComprehension = new ListOrComprehensionElements());
 	}
 	
-	public ParserRule getListRule() {
-		return getListAccess().getRule();
-	}
-
-	//ListComprehension:
-	//	"[" element=Expression "||" generators+=LCExpr ("," generators+=LCExpr)* "]";
-	public ListComprehensionElements getListComprehensionAccess() {
-		return (pListComprehension != null) ? pListComprehension : (pListComprehension = new ListComprehensionElements());
-	}
-	
-	public ParserRule getListComprehensionRule() {
-		return getListComprehensionAccess().getRule();
+	public ParserRule getListOrComprehensionRule() {
+		return getListOrComprehensionAccess().getRule();
 	}
 
 	//Tuple returns ErlTuple:
@@ -6787,24 +6740,15 @@ public class ErlangGrammarAccess extends AbstractGrammarElementFinder {
 		return getTupleAccess().getRule();
 	}
 
-	//BinaryComprehension:
-	//	"<<" expr=TermExpression "||" generators+=LCExpr ("," generators+=LCExpr)* ">>";
-	public BinaryComprehensionElements getBinaryComprehensionAccess() {
-		return (pBinaryComprehension != null) ? pBinaryComprehension : (pBinaryComprehension = new BinaryComprehensionElements());
+	//BinaryOrComprehension returns ErlBinary:
+	//	"<<" ({ErlBinary} | elements+=BinaryItem ("," elements+=BinaryItem)* ({BinaryComprehension.root=current} "||"
+	//	generators+=LCExpr ("," generators+=LCExpr)*)?) ">>";
+	public BinaryOrComprehensionElements getBinaryOrComprehensionAccess() {
+		return (pBinaryOrComprehension != null) ? pBinaryOrComprehension : (pBinaryOrComprehension = new BinaryOrComprehensionElements());
 	}
 	
-	public ParserRule getBinaryComprehensionRule() {
-		return getBinaryComprehensionAccess().getRule();
-	}
-
-	//Binary returns ErlBinary:
-	//	"<<" ({ErlBinary} | elements+=BinaryItem ("," elements+=BinaryItem)*) ">>";
-	public BinaryElements getBinaryAccess() {
-		return (pBinary != null) ? pBinary : (pBinary = new BinaryElements());
-	}
-	
-	public ParserRule getBinaryRule() {
-		return getBinaryAccess().getRule();
+	public ParserRule getBinaryOrComprehensionRule() {
+		return getBinaryOrComprehensionAccess().getRule();
 	}
 
 	//BinaryItem:

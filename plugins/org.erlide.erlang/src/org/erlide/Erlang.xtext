@@ -23,7 +23,6 @@ Form:
 	| {MacroForm} call=MacroCall '.' 
 ;
 
-
 ConditionalFormBlock:
 	condition=IfdefAttribute 
 		ifForms+=Form* 
@@ -93,11 +92,11 @@ AbstractIncludeAttribute:
 ;
 	
 IncludeAttribute:
-	=> tag=('include') '(' importURI=STRING ')' '.'
+	=> tag='include' '(' importURI=STRING ')' '.'
 ;
 
 IncludeLibAttribute:
-	=> tag=('include_lib') '(' importURI=STRING ')' '.'
+	=> tag='include_lib' '(' importURI=STRING ')' '.'
 ;
 
 FileAttribute:
@@ -267,10 +266,8 @@ ExprMax returns Expression:
 
 TermExpression returns Expression:	  
 	  Tuple
-	| => ListComprehension 
-	| List 
-	| => BinaryComprehension 
-	| Binary 
+	| ListOrComprehension 
+	| BinaryOrComprehension 
 	| '#' RecordExpr
 	| LiteralExpression
 ;
@@ -410,17 +407,14 @@ TryClause:
 	('when' guard=Guard)? '->' body=Expressions
 ;
 
-List returns ErlList:
+ListOrComprehension returns ErlList:
 	'[' 
 	(
 	  {ErlList} 
-	  | elements+=Expression (',' elements+=Expression)* ('|' tail=Expression)? 
+	  | elements+=Expression (',' elements+=Expression)* 
+	  	(('|' tail=Expression) | ( {ListComprehension.root=current} '||' generators+=LCExpr (',' generators+=LCExpr)*))? 
 	)
 	']'
-;
-
-ListComprehension:
-	'[' element=Expression '||' generators+=LCExpr (',' generators+=LCExpr)* ']'
 ;
 
 Tuple returns ErlTuple:
@@ -430,14 +424,11 @@ Tuple returns ErlTuple:
 	)
 	'}';
 
-BinaryComprehension:
-	'<<' expr=TermExpression '||' generators+=LCExpr (',' generators+=LCExpr)* '>>'
-;
-
-Binary returns ErlBinary:
+BinaryOrComprehension returns ErlBinary:
 	'<<' (     
 		  {ErlBinary}
-		| elements+=BinaryItem (',' elements+=BinaryItem)*
+		| elements+=BinaryItem (',' elements+=BinaryItem)* 
+			({BinaryComprehension.root=current} '||' generators+=LCExpr (',' generators+=LCExpr)*)?
 	) '>>'
 ;
 

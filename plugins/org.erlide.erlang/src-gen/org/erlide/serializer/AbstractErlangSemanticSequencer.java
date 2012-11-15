@@ -217,7 +217,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				}
 				else break;
 			case ErlangPackage.BINARY_COMPREHENSION:
-				if(context == grammarAccess.getBinaryComprehensionRule() ||
+				if(context == grammarAccess.getBinaryOrComprehensionRule() ||
 				   context == grammarAccess.getExpr100Rule() ||
 				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
 				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
@@ -247,7 +247,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				   context == grammarAccess.getTermExpressionRule() ||
 				   context == grammarAccess.getUnaryExprRule() ||
 				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_BinaryComprehension(context, (BinaryComprehension) semanticObject); 
+					sequence_BinaryOrComprehension(context, (BinaryComprehension) semanticObject); 
 					return; 
 				}
 				else break;
@@ -462,7 +462,8 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				}
 				else break;
 			case ErlangPackage.ERL_BINARY:
-				if(context == grammarAccess.getBinaryRule() ||
+				if(context == grammarAccess.getBinaryOrComprehensionRule() ||
+				   context == grammarAccess.getBinaryOrComprehensionAccess().getBinaryComprehensionRootAction_1_1_2_0() ||
 				   context == grammarAccess.getExpr100Rule() ||
 				   context == grammarAccess.getExpr100Access().getBinOpOpLeftAction_1_1_0() ||
 				   context == grammarAccess.getExpr100Access().getMatchExprOpLeftAction_1_0_0() ||
@@ -492,7 +493,7 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				   context == grammarAccess.getTermExpressionRule() ||
 				   context == grammarAccess.getUnaryExprRule() ||
 				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_Binary(context, (ErlBinary) semanticObject); 
+					sequence_BinaryOrComprehension(context, (ErlBinary) semanticObject); 
 					return; 
 				}
 				else break;
@@ -628,14 +629,18 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				   context == grammarAccess.getExprMaxRule() ||
 				   context == grammarAccess.getExpressionRule() ||
 				   context == grammarAccess.getLExpressionRule() ||
-				   context == grammarAccess.getListRule() ||
+				   context == grammarAccess.getListOrComprehensionRule() ||
 				   context == grammarAccess.getPatternExpressionRule() ||
 				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
 				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
 				   context == grammarAccess.getTermExpressionRule() ||
 				   context == grammarAccess.getUnaryExprRule() ||
 				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_List(context, (ErlList) semanticObject); 
+					sequence_ListOrComprehension(context, (ErlList) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getListOrComprehensionAccess().getListComprehensionRootAction_1_1_2_1_0()) {
+					sequence_ListOrComprehension_ListComprehension_1_1_2_1_0(context, (ErlList) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1017,14 +1022,14 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 				   context == grammarAccess.getExprMaxRule() ||
 				   context == grammarAccess.getExpressionRule() ||
 				   context == grammarAccess.getLExpressionRule() ||
-				   context == grammarAccess.getListComprehensionRule() ||
+				   context == grammarAccess.getListOrComprehensionRule() ||
 				   context == grammarAccess.getPatternExpressionRule() ||
 				   context == grammarAccess.getPatternExpressionAccess().getFunCallTargetAction_1_1_0() ||
 				   context == grammarAccess.getPatternExpressionAccess().getMatchExprOpLeftAction_1_0_0() ||
 				   context == grammarAccess.getTermExpressionRule() ||
 				   context == grammarAccess.getUnaryExprRule() ||
 				   context == grammarAccess.getUnaryExprMaxRule()) {
-					sequence_ListComprehension(context, (ListComprehension) semanticObject); 
+					sequence_ListOrComprehension(context, (ListComprehension) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1659,15 +1664,6 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (expr=TermExpression generators+=LCExpr generators+=LCExpr*)
-	 */
-	protected void sequence_BinaryComprehension(EObject context, BinaryComprehension semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (expr=UnaryExprMax size=ExprMax? (types+=BitType type+=BitType*)?)
 	 */
 	protected void sequence_BinaryItem(EObject context, BinaryItem semanticObject) {
@@ -1677,18 +1673,27 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (((type+=BinBaseType type+=BinUnitType?) | type+=BinUnitType)?)
+	 *     (root=BinaryOrComprehension_BinaryComprehension_1_1_2_0 generators+=LCExpr generators+=LCExpr*)
 	 */
-	protected void sequence_BinaryType(EObject context, BinaryType semanticObject) {
+	protected void sequence_BinaryOrComprehension(EObject context, BinaryComprehension semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     {ErlBinary}
+	 *     (elements+=BinaryItem elements+=BinaryItem*)
 	 */
-	protected void sequence_Binary(EObject context, ErlBinary semanticObject) {
+	protected void sequence_BinaryOrComprehension(EObject context, ErlBinary semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (((type+=BinBaseType type+=BinUnitType?) | type+=BinUnitType)?)
+	 */
+	protected void sequence_BinaryType(EObject context, BinaryType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2167,18 +2172,27 @@ public abstract class AbstractErlangSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (element=Expression generators+=LCExpr generators+=LCExpr*)
+	 *     (elements+=Expression elements+=Expression* tail=Expression)
 	 */
-	protected void sequence_ListComprehension(EObject context, ListComprehension semanticObject) {
+	protected void sequence_ListOrComprehension(EObject context, ErlList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     {ErlList}
+	 *     (root=ListOrComprehension_ListComprehension_1_1_2_1_0 generators+=LCExpr generators+=LCExpr*)
 	 */
-	protected void sequence_List(EObject context, ErlList semanticObject) {
+	protected void sequence_ListOrComprehension(EObject context, ListComprehension semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (elements+=Expression elements+=Expression*)
+	 */
+	protected void sequence_ListOrComprehension_ListComprehension_1_1_2_1_0(EObject context, ErlList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

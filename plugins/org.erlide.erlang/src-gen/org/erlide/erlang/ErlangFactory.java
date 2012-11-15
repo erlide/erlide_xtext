@@ -476,15 +476,6 @@ public interface ErlangFactory extends EFactory
   ErlList createErlList();
 
   /**
-   * Returns a new object of class '<em>List Comprehension</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>List Comprehension</em>'.
-   * @generated
-   */
-  ListComprehension createListComprehension();
-
-  /**
    * Returns a new object of class '<em>Erl Tuple</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -492,15 +483,6 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   ErlTuple createErlTuple();
-
-  /**
-   * Returns a new object of class '<em>Binary Comprehension</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Binary Comprehension</em>'.
-   * @generated
-   */
-  BinaryComprehension createBinaryComprehension();
 
   /**
    * Returns a new object of class '<em>Erl Binary</em>'.
@@ -825,6 +807,24 @@ public interface ErlangFactory extends EFactory
    * @generated
    */
   ErlInteger createErlInteger();
+
+  /**
+   * Returns a new object of class '<em>List Comprehension</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>List Comprehension</em>'.
+   * @generated
+   */
+  ListComprehension createListComprehension();
+
+  /**
+   * Returns a new object of class '<em>Binary Comprehension</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Binary Comprehension</em>'.
+   * @generated
+   */
+  BinaryComprehension createBinaryComprehension();
 
   /**
    * Returns a new object of class '<em>Unary Type</em>'.

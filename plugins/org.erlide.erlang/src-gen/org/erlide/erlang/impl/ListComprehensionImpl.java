@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.erlide.erlang.ErlList;
 import org.erlide.erlang.ErlangPackage;
-import org.erlide.erlang.Expression;
 import org.erlide.erlang.LCExpr;
 import org.erlide.erlang.ListComprehension;
 
@@ -32,24 +32,24 @@ import org.erlide.erlang.ListComprehension;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.erlide.erlang.impl.ListComprehensionImpl#getElement <em>Element</em>}</li>
+ *   <li>{@link org.erlide.erlang.impl.ListComprehensionImpl#getRoot <em>Root</em>}</li>
  *   <li>{@link org.erlide.erlang.impl.ListComprehensionImpl#getGenerators <em>Generators</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ListComprehensionImpl extends ExpressionImpl implements ListComprehension
+public class ListComprehensionImpl extends ErlListImpl implements ListComprehension
 {
   /**
-   * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference.
+   * The cached value of the '{@link #getRoot() <em>Root</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getElement()
+   * @see #getRoot()
    * @generated
    * @ordered
    */
-  protected Expression element;
+  protected ErlList root;
 
   /**
    * The cached value of the '{@link #getGenerators() <em>Generators</em>}' containment reference list.
@@ -87,9 +87,9 @@ public class ListComprehensionImpl extends ExpressionImpl implements ListCompreh
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expression getElement()
+  public ErlList getRoot()
   {
-    return element;
+    return root;
   }
 
   /**
@@ -97,13 +97,13 @@ public class ListComprehensionImpl extends ExpressionImpl implements ListCompreh
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetElement(Expression newElement, NotificationChain msgs)
+  public NotificationChain basicSetRoot(ErlList newRoot, NotificationChain msgs)
   {
-    Expression oldElement = element;
-    element = newElement;
+    ErlList oldRoot = root;
+    root = newRoot;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.LIST_COMPREHENSION__ELEMENT, oldElement, newElement);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.LIST_COMPREHENSION__ROOT, oldRoot, newRoot);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -114,20 +114,20 @@ public class ListComprehensionImpl extends ExpressionImpl implements ListCompreh
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setElement(Expression newElement)
+  public void setRoot(ErlList newRoot)
   {
-    if (newElement != element)
+    if (newRoot != root)
     {
       NotificationChain msgs = null;
-      if (element != null)
-        msgs = ((InternalEObject)element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.LIST_COMPREHENSION__ELEMENT, null, msgs);
-      if (newElement != null)
-        msgs = ((InternalEObject)newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.LIST_COMPREHENSION__ELEMENT, null, msgs);
-      msgs = basicSetElement(newElement, msgs);
+      if (root != null)
+        msgs = ((InternalEObject)root).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.LIST_COMPREHENSION__ROOT, null, msgs);
+      if (newRoot != null)
+        msgs = ((InternalEObject)newRoot).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.LIST_COMPREHENSION__ROOT, null, msgs);
+      msgs = basicSetRoot(newRoot, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.LIST_COMPREHENSION__ELEMENT, newElement, newElement));
+      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.LIST_COMPREHENSION__ROOT, newRoot, newRoot));
   }
 
   /**
@@ -154,8 +154,8 @@ public class ListComprehensionImpl extends ExpressionImpl implements ListCompreh
   {
     switch (featureID)
     {
-      case ErlangPackage.LIST_COMPREHENSION__ELEMENT:
-        return basicSetElement(null, msgs);
+      case ErlangPackage.LIST_COMPREHENSION__ROOT:
+        return basicSetRoot(null, msgs);
       case ErlangPackage.LIST_COMPREHENSION__GENERATORS:
         return ((InternalEList<?>)getGenerators()).basicRemove(otherEnd, msgs);
     }
@@ -172,8 +172,8 @@ public class ListComprehensionImpl extends ExpressionImpl implements ListCompreh
   {
     switch (featureID)
     {
-      case ErlangPackage.LIST_COMPREHENSION__ELEMENT:
-        return getElement();
+      case ErlangPackage.LIST_COMPREHENSION__ROOT:
+        return getRoot();
       case ErlangPackage.LIST_COMPREHENSION__GENERATORS:
         return getGenerators();
     }
@@ -191,8 +191,8 @@ public class ListComprehensionImpl extends ExpressionImpl implements ListCompreh
   {
     switch (featureID)
     {
-      case ErlangPackage.LIST_COMPREHENSION__ELEMENT:
-        setElement((Expression)newValue);
+      case ErlangPackage.LIST_COMPREHENSION__ROOT:
+        setRoot((ErlList)newValue);
         return;
       case ErlangPackage.LIST_COMPREHENSION__GENERATORS:
         getGenerators().clear();
@@ -212,8 +212,8 @@ public class ListComprehensionImpl extends ExpressionImpl implements ListCompreh
   {
     switch (featureID)
     {
-      case ErlangPackage.LIST_COMPREHENSION__ELEMENT:
-        setElement((Expression)null);
+      case ErlangPackage.LIST_COMPREHENSION__ROOT:
+        setRoot((ErlList)null);
         return;
       case ErlangPackage.LIST_COMPREHENSION__GENERATORS:
         getGenerators().clear();
@@ -232,8 +232,8 @@ public class ListComprehensionImpl extends ExpressionImpl implements ListCompreh
   {
     switch (featureID)
     {
-      case ErlangPackage.LIST_COMPREHENSION__ELEMENT:
-        return element != null;
+      case ErlangPackage.LIST_COMPREHENSION__ROOT:
+        return root != null;
       case ErlangPackage.LIST_COMPREHENSION__GENERATORS:
         return generators != null && !generators.isEmpty();
     }
