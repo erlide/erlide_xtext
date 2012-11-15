@@ -15,6 +15,8 @@ class ErlangLinkingService extends DefaultLinkingService {
     @Inject
     ErlangLinkingHelper linkHelper
 
+	static List<EObject> NONE = newArrayList.immutableCopy 
+
 	override List<EObject> getLinkedObjects(EObject context, EReference ref, INode node) {
 		var EObject aref
 		if(ref==ErlangPackage::eINSTANCE.atom_Value) {
@@ -30,7 +32,7 @@ class ErlangLinkingService extends DefaultLinkingService {
 
 	def private List<EObject> wrap(EObject aref) {
 		if(aref==null) 
-			newArrayList() 
+			NONE
 		else {
 			newArrayList(aref)
 		}
