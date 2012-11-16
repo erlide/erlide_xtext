@@ -9,12 +9,39 @@
             nameFilter="*"
             id="org.erlide.project.ui.addNature">
          <action
-               label="Add Erlang Nature"
+               label="Add Erlang support"
                class="org.erlide.builder.ui.ToggleNatureAction"
                menubarPath="org.eclipse.ui.projectConfigure/additions"
                enablesFor="+"
-               id="org.erlide.project.ui.addAddNatureAction">
+               id="org.erlide.project.ui.ToggleNatureAction">
          </action>
+         <visibility>
+         	<not>
+	            <objectState
+    	              name="nature"
+        	          value="org.erlide.builder.erlangNature">
+            	</objectState>
+            </not>
+         </visibility>
+      </objectContribution>
+      <objectContribution
+            adaptable="true"
+            id="org.erlide.project.ui.removeNature"
+            nameFilter="*"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               class="org.erlide.builder.ui.ToggleNatureAction"
+               enablesFor="+"
+               id="org.erlide.project.ui.ToggleNatureAction"
+               label="Remove Erlang support"
+               menubarPath="org.eclipse.ui.projectConfigure/additions">
+         </action>
+         <visibility>
+            <objectState
+	              name="nature"
+    	          value="org.erlide.builder.erlangNature">
+        	</objectState>
+         </visibility>
       </objectContribution>
    </extension>
 
