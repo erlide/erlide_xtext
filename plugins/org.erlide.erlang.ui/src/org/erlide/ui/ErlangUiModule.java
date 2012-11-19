@@ -17,8 +17,10 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeI
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
+import org.eclipse.xtext.ui.resource.IResourceUIServiceProvider;
 import org.eclipse.xtext.ui.resource.SimpleResourceSetProvider;
 import org.erlide.common.ui.ErlideImageHelper;
+import org.erlide.erlang.ui.ide.ErlangResourceUiServiceProvider;
 import org.erlide.ui.autoedit.ErlangAutoEditStrategyProvider;
 import org.erlide.ui.folding.MyFoldingRegionProvider;
 import org.erlide.ui.hover.ErlangEObjectDocumentationProvider;
@@ -103,4 +105,12 @@ public class ErlangUiModule extends org.erlide.ui.AbstractErlangUiModule {
         return ErlideImageHelper.class;
     }
 
+    // @Override
+    // public Provider<IAllContainersState> provideIAllContainersState() {
+    // return new WorkspaceProjectsStateProvider();
+    // }
+
+    public Class<? extends IResourceUIServiceProvider> bindIResourceUIServiceProvider() {
+        return ErlangResourceUiServiceProvider.class;
+    }
 }

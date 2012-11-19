@@ -6,8 +6,6 @@ import org.eclipse.core.resources.IStorage;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.ui.resource.DefaultResourceUIServiceProvider;
-import org.erlide.project.ErlangCore;
-import org.erlide.project.model.IErlangProject;
 
 import com.google.inject.Inject;
 
@@ -31,13 +29,26 @@ public class ErlangResourceUiServiceProvider extends
         if (canHandle && (storage instanceof IResource)) {
             final IResource resource = (IResource) storage;
             final IProject project = resource.getProject();
-            final IErlangProject erlangProject = ErlangCore.getModel()
-                    .getErlangProject(project);
-            if (erlangProject != null) {
-                return erlangProject.getBuildpath().hasResource(resource);
+            if (isInTestDir(resource)) {
+                return false;
             }
+            // final IErlangProject erlangProject = ErlangCore.getModel()
+            // .getErlangProject(project);
+            // if (erlangProject != null) {
+            // return erlangProject.getBuildpath().hasResource(resource);
+            // }
         }
         return canHandle;
+    }
+
+    private boolean isInTestDir(final IResource resource) {
+        // TODO should be handled by project buildpath...
+        for (final String seg : resource.getProjectRelativePath().segments()) {
+            if (seg.equals("test")) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
