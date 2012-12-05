@@ -56,5 +56,11 @@
             id="org.erlide.builder.sgsnbuilder">
       </builder>
    </extension>
+   <extension
+         point="org.eclipse.xtext.ui.shared.overridingGuiceModule">
+      <module
+            class="org.erlide.builder.ErlangBuilderModule">
+      </module>
+   </extension>
 
 </plugin>
