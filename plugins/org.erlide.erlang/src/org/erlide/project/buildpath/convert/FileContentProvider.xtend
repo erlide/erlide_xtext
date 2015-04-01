@@ -1,9 +1,9 @@
 package org.erlide.project.buildpath.convert
 
-import org.eclipse.core.runtime.IPath
+import com.google.common.base.Charsets
 import com.google.common.io.Files
 import java.io.File
-import com.google.common.base.Charsets
+import org.eclipse.core.runtime.IPath
 
 class FileContentProvider extends AbstractContentProvider {
 	

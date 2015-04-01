@@ -8,6 +8,7 @@ import com.google.inject.Injector;
 import com.google.inject.name.Named;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.function.Consumer;
 import javax.inject.Inject;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -21,8 +22,6 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.BuilderPlugin;
 import org.erlide.builder.BuildersProvider;
 import org.erlide.builder.IErlangBuilder;
@@ -50,7 +49,7 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
   private ErlLogger log;
   
   @Inject
-  @Named(value = "erlangBuilder")
+  @Named("erlangBuilder")
   private EventBus builderEventBus;
   
   public ErlangBuilder() {
@@ -67,7 +66,8 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
     this.builderEventBus.register(this);
   }
   
-  protected IProject[] build(final int kind, final Map<String,String> args, final IProgressMonitor monitor) throws CoreException {
+  @Override
+  protected IProject[] build(final int kind, final Map<String, String> args, final IProgressMonitor monitor) throws CoreException {
     final long startTime = System.currentTimeMillis();
     IProject _project = this.getProject();
     this.cleanXtextMarkers(_project);
@@ -83,19 +83,17 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
         String _plus_1 = (_plus + " has no Erlang builder");
         this.log.warn(_plus_1);
       } else {
-        boolean _matched = false;
-        if (!_matched) {
-          if (Objects.equal(kind,IncrementalProjectBuilder.FULL_BUILD)) {
-            _matched=true;
+        switch (kind) {
+          case IncrementalProjectBuilder.FULL_BUILD:
             SubMonitor _newChild = progress.newChild(100);
             builder.fullBuild(_newChild);
-          }
-        }
-        if (!_matched) {
-          IProject _project_3 = this.getProject();
-          IResourceDelta _delta = this.getDelta(_project_3);
-          SubMonitor _newChild_1 = progress.newChild(100);
-          builder.incrementalBuild(_delta, _newChild_1);
+            break;
+          default:
+            IProject _project_3 = this.getProject();
+            IResourceDelta _delta = this.getDelta(_project_3);
+            SubMonitor _newChild_1 = progress.newChild(100);
+            builder.incrementalBuild(_delta, _newChild_1);
+            break;
         }
       }
     } catch (final Throwable _t) {
@@ -114,9 +112,11 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
         throw Exceptions.sneakyThrow(_t);
       }
     } finally {
-      if (monitor!=null) monitor.done();
-      IProject _project_4 = this.getProject();
-      String _name = _project_4.getName();
+      if (monitor!=null) {
+        monitor.done();
+      }
+      IProject _project_3 = this.getProject();
+      String _name = _project_3.getName();
       String _plus_2 = ("Build " + _name);
       String _plus_3 = (_plus_2 + " in ");
       long _currentTimeMillis = System.currentTimeMillis();
@@ -125,10 +125,11 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
       String _plus_5 = (_plus_4 + " ms");
       this.log.info(_plus_5);
     }
-    IProject _project_5 = this.getProject();
-    return _project_5.getReferencedProjects();
+    IProject _project_4 = this.getProject();
+    return _project_4.getReferencedProjects();
   }
   
+  @Override
   protected void clean(final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
     this.cleanXtextMarkers(_project);
@@ -149,7 +150,9 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
       RemoveMarkersEvent _removeMarkersEvent = new RemoveMarkersEvent(_project_3, ErlangBuilder.MARKER_TYPE);
       this.builderEventBus.post(_removeMarkersEvent);
     } finally {
-      if (monitor!=null) monitor.done();
+      if (monitor!=null) {
+        monitor.done();
+      }
     }
   }
   
@@ -160,7 +163,7 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
       final IErlangBuilder builder = this.builderProvider.get(bId);
       builder.setProject(project);
       builder.loadConfiguration();
-      _xblockexpression = (builder);
+      _xblockexpression = builder;
     }
     return _xblockexpression;
   }
@@ -172,19 +175,19 @@ public class ErlangBuilder extends IncrementalProjectBuilder {
         ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("erlang.check.fast", 
           "erlang.check.normal", 
           "erlang.check.expensive");
-        final Procedure1<String> _function = new Procedure1<String>() {
-            public void apply(final String it) {
-              try {
-                String _plus = ("org.erlide.erlang.ui." + it);
-                project.deleteMarkers(_plus, true, IResource.DEPTH_INFINITE);
-              } catch (Exception _e) {
-                throw Exceptions.sneakyThrow(_e);
-              }
+        final Consumer<String> _function = new Consumer<String>() {
+          @Override
+          public void accept(final String it) {
+            try {
+              project.deleteMarkers(("org.erlide.erlang.ui." + it), true, IResource.DEPTH_INFINITE);
+            } catch (Throwable _e) {
+              throw Exceptions.sneakyThrow(_e);
             }
-          };
-        IterableExtensions.<String>forEach(_newArrayList, _function);
+          }
+        };
+        _newArrayList.forEach(_function);
       }
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

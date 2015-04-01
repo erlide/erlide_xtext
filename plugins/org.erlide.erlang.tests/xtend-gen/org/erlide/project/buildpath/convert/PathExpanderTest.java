@@ -20,18 +20,17 @@ import org.junit.Test;
 public class PathExpanderTest {
   @Test
   public void expandPaths() {
-    final Map<String,String> pathVars = CollectionLiterals.<String, String>newHashMap();
+    final Map<String, String> pathVars = CollectionLiterals.<String, String>newHashMap();
     PeTestContentProvider _peTestContentProvider = new PeTestContentProvider();
-    PathExpander _pathExpander = new PathExpander(_peTestContentProvider);
-    final PathExpander expander = _pathExpander;
+    final PathExpander expander = new PathExpander(_peTestContentProvider);
     Path _path = new Path("demo.erlidex");
     final Collection<IPath> result = expander.expandFile(_path, pathVars);
-    final Function1<IPath,String> _function = new Function1<IPath,String>() {
-        public String apply(final IPath it) {
-          String _portableString = it.toPortableString();
-          return _portableString;
-        }
-      };
+    final Function1<IPath, String> _function = new Function1<IPath, String>() {
+      @Override
+      public String apply(final IPath it) {
+        return it.toPortableString();
+      }
+    };
     Iterable<String> _map = IterableExtensions.<IPath, String>map(result, _function);
     List<String> _list = IterableExtensions.<String>toList(_map);
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("AAA", "aaa", "bbb", "BBB");

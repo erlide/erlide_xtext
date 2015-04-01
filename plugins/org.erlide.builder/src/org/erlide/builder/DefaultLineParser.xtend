@@ -2,7 +2,6 @@ package org.erlide.builder
 
 import java.util.List
 import org.eclipse.core.resources.IMarker
-import org.erlide.common.util.ErlLogger
 
 class DefaultLineParser implements ILineParser<CompilerProblem> {
 	

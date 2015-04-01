@@ -14,7 +14,6 @@ import org.erlide.project.buildpath.BuildpathApp;
 import org.erlide.project.buildpath.BuildpathEntry;
 import org.erlide.project.buildpath.BuildpathFolder;
 import org.erlide.project.buildpath.BuildpathLibrary;
-import org.erlide.project.buildpath.FolderKind;
 import org.erlide.project.buildpath.convert.OldErlangProjectProperties;
 import org.erlide.project.buildpath.convert.OldProjectBuildpathConverter;
 import org.erlide.project.buildpath.convert.OpbTestContentProvider;
@@ -34,17 +33,15 @@ public class OldProjectBuildpathConverterTest {
     PathExpander _pathExpander = new PathExpander(_opbTestContentProvider);
     this.expander = _pathExpander;
     Path _path = new Path("foo");
-    HashMap<String,String> _newHashMap = CollectionLiterals.<String, String>newHashMap();
+    HashMap<String, String> _newHashMap = CollectionLiterals.<String, String>newHashMap();
     Collection<IPath> _expandFile = this.expander.expandFile(_path, _newHashMap);
     this.externals = _expandFile;
   }
   
   @Test
   public void emptyProperties() {
-    OldErlangProjectProperties _oldErlangProjectProperties = new OldErlangProjectProperties();
-    final OldErlangProjectProperties props = _oldErlangProjectProperties;
-    OldProjectBuildpathConverter _oldProjectBuildpathConverter = new OldProjectBuildpathConverter();
-    final OldProjectBuildpathConverter converter = _oldProjectBuildpathConverter;
+    final OldErlangProjectProperties props = new OldErlangProjectProperties();
+    final OldProjectBuildpathConverter converter = new OldProjectBuildpathConverter();
     ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("foo", "bar");
     final BuildpathEntry entry = converter.convert(props, "projname", _newArrayList, this.externals);
     String _debugPrint = this.debugPrint(entry);
@@ -53,19 +50,17 @@ public class OldProjectBuildpathConverterTest {
   
   @Test
   public void demoProperties() {
-    OldErlangProjectProperties _oldErlangProjectProperties = new OldErlangProjectProperties();
-    final OldErlangProjectProperties props = _oldErlangProjectProperties;
+    final OldErlangProjectProperties props = new OldErlangProjectProperties();
     Path _path = new Path("s1");
     Path _path_1 = new Path("s2");
-    IPath[] paths = ((IPath[])Conversions.unwrapArray(CollectionLiterals.<Path>newArrayList(_path, _path_1), IPath.class));
+    IPath[] paths = ((IPath[])Conversions.unwrapArray(CollectionLiterals.<IPath>newArrayList(_path, _path_1), IPath.class));
     final IPath[] _converted_paths = (IPath[])paths;
     props.setSourceDirs(((Collection<IPath>)Conversions.doWrapArray(_converted_paths)));
     Path _path_2 = new Path("i1/i1");
     Path _path_3 = new Path("i2");
-    ArrayList<Path> _newArrayList = CollectionLiterals.<Path>newArrayList(_path_2, _path_3);
+    ArrayList<IPath> _newArrayList = CollectionLiterals.<IPath>newArrayList(_path_2, _path_3);
     paths = ((IPath[])Conversions.unwrapArray(_newArrayList, IPath.class));
-    OldProjectBuildpathConverter _oldProjectBuildpathConverter = new OldProjectBuildpathConverter();
-    final OldProjectBuildpathConverter converter = _oldProjectBuildpathConverter;
+    final OldProjectBuildpathConverter converter = new OldProjectBuildpathConverter();
     final IPath[] _converted_paths_1 = (IPath[])paths;
     props.setIncludeDirs(((Collection<IPath>)Conversions.doWrapArray(_converted_paths_1)));
     ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("bar");
@@ -76,29 +71,26 @@ public class OldProjectBuildpathConverterTest {
   
   private String _debugPrint(final BuildpathLibrary container) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("LIB \'");
-    String _name = container.getName();
-    _builder.append(_name, "");
-    _builder.append("\' {");
-    _builder.newLineIfNotEmpty();
-    {
-      Collection<BuildpathApp> _apps = container.getApps();
-      for(final BuildpathApp e : _apps) {
-        _builder.append("\t");
-        String _debugPrint = this.debugPrint(e);
-        _builder.append(_debugPrint, "	");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      Collection<BuildpathLibrary> _libraries = container.getLibraries();
-      for(final BuildpathLibrary e_1 : _libraries) {
-        _builder.append("\t");
-        String _debugPrint_1 = this.debugPrint(e_1);
-        _builder.append(_debugPrint_1, "	");
-        _builder.newLineIfNotEmpty();
-      }
-    }
+    _builder.append("LIB \'�container.name�\' {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("�FOR e: container.apps�");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("�e.debugPrint�");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("�ENDFOR�");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("�FOR e: container.libraries�");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("�e.debugPrint�");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("�ENDFOR�");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder.toString();
@@ -108,15 +100,15 @@ public class OldProjectBuildpathConverterTest {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("APP {");
     _builder.newLine();
-    {
-      Collection<BuildpathFolder> _folders = container.getFolders();
-      for(final BuildpathFolder e : _folders) {
-        _builder.append("\t");
-        String _debugPrint = this.debugPrint(e);
-        _builder.append(_debugPrint, "	");
-        _builder.newLineIfNotEmpty();
-      }
-    }
+    _builder.append("\t");
+    _builder.append("�FOR e: container.folders�");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("�e.debugPrint�");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("�ENDFOR�");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder.toString();
@@ -124,18 +116,8 @@ public class OldProjectBuildpathConverterTest {
   
   private String _debugPrint(final BuildpathFolder folder) {
     StringConcatenation _builder = new StringConcatenation();
-    FolderKind _kind = folder.getKind();
-    _builder.append(_kind, "");
-    _builder.append(" path=\'");
-    IPath _path = folder.getPath();
-    _builder.append(_path, "");
-    _builder.append("\' inc=");
-    Collection<IPath> _inclusionPatterns = folder.getInclusionPatterns();
-    _builder.append(_inclusionPatterns, "");
-    _builder.append(" exc=");
-    Collection<IPath> _exclusionPatterns = folder.getExclusionPatterns();
-    _builder.append(_exclusionPatterns, "");
-    _builder.newLineIfNotEmpty();
+    _builder.append("�folder.kind� path=\'�folder.path�\' inc=�folder.inclusionPatterns� exc=�folder.exclusionPatterns�");
+    _builder.newLine();
     return _builder.toString();
   }
   

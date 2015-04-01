@@ -19,7 +19,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
@@ -37,21 +36,15 @@ import org.osgi.service.prefs.BackingStoreException;
 
 @SuppressWarnings("all")
 public class CompilerOptions {
-  private final static String QUALIFIER = new Function0<String>() {
-    public String apply() {
-      String _plus = ("org.erlide.erlang" + "/compiler");
-      return _plus;
-    }
-  }.apply();
+  private final static String QUALIFIER = ("org.erlide.erlang" + "/compiler");
   
-  private final Map<CompilerOption,Object> options;
+  private final Map<CompilerOption, Object> options;
   
   private PreferencesHelper helper;
   
   public static OtpErlangList get(final IProject project) {
     try {
-      CompilerOptions _compilerOptions = new CompilerOptions(project);
-      final CompilerOptions prefs = _compilerOptions;
+      final CompilerOptions prefs = new CompilerOptions(project);
       try {
         prefs.load();
       } catch (final Throwable _t) {
@@ -60,14 +53,13 @@ public class CompilerOptions {
           e1.printStackTrace();
           Status _status = new Status(IStatus.ERROR, "org.erlide.erlang", 
             "could not retrieve compiler options");
-          CoreException _coreException = new CoreException(_status);
-          throw _coreException;
+          throw new CoreException(_status);
         } else {
           throw Exceptions.sneakyThrow(_t);
         }
       }
       return prefs.export();
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -75,7 +67,7 @@ public class CompilerOptions {
   public CompilerOptions() {
     PreferencesHelper _helper = PreferencesHelper.getHelper(CompilerOptions.QUALIFIER);
     this.helper = _helper;
-    HashMap<CompilerOption,Object> _newHashMap = CollectionLiterals.<CompilerOption, Object>newHashMap();
+    HashMap<CompilerOption, Object> _newHashMap = CollectionLiterals.<CompilerOption, Object>newHashMap();
     this.options = _newHashMap;
     for (final CompilerOption option : CompilerOption.ALL_OPTIONS) {
       {
@@ -84,7 +76,7 @@ public class CompilerOptions {
           this.options.put(option, Boolean.valueOf(_defaultValue));
         }
         if ((option instanceof DefineOption)) {
-          ArrayList<Tuple<String,String>> _arrayList = new ArrayList<Tuple<String,String>>();
+          ArrayList<Tuple<String, String>> _arrayList = new ArrayList<Tuple<String, String>>();
           this.options.put(option, _arrayList);
         }
       }
@@ -98,8 +90,7 @@ public class CompilerOptions {
   }
   
   public boolean hasOptionsAtLowestScope() {
-    boolean _hasAnyAtLowestScope = this.helper.hasAnyAtLowestScope();
-    return _hasAnyAtLowestScope;
+    return this.helper.hasAnyAtLowestScope();
   }
   
   public void store() throws BackingStoreException {
@@ -109,35 +100,35 @@ public class CompilerOptions {
         if ((option instanceof BooleanOption)) {
           final Boolean val1 = ((Boolean) value);
           String _string = val1.toString();
-          this.helper.putString(option.name, _string);
+          this.helper.putString(((BooleanOption)option).name, _string);
         } else {
           if ((option instanceof PathsOption)) {
             boolean _notEquals = (!Objects.equal(value, null));
             if (_notEquals) {
               final Iterable<String> avalue = ((Iterable<String>) value);
               String _string_1 = PathsOption.toString(avalue);
-              this.helper.putString(option.name, _string_1);
+              this.helper.putString(((PathsOption)option).name, _string_1);
             } else {
-              this.helper.remove(option.name);
+              this.helper.remove(((PathsOption)option).name);
             }
           } else {
             if ((option instanceof ModuleOption)) {
               boolean _notEquals_1 = (!Objects.equal(value, null));
               if (_notEquals_1) {
                 final String avalue_1 = ((String) value);
-                this.helper.putString(option.name, avalue_1);
+                this.helper.putString(((ModuleOption)option).name, avalue_1);
               } else {
-                this.helper.remove(option.name);
+                this.helper.remove(((ModuleOption)option).name);
               }
             } else {
               if ((option instanceof DefineOption)) {
                 boolean _notEquals_2 = (!Objects.equal(value, null));
                 if (_notEquals_2) {
-                  final Collection<Tuple<String,String>> val1_1 = ((Collection<Tuple<String,String>>) value);
+                  final Collection<Tuple<String, String>> val1_1 = ((Collection<Tuple<String, String>>) value);
                   String _string_2 = val1_1.toString();
-                  this.helper.putString(option.name, _string_2);
+                  this.helper.putString(((DefineOption)option).name, _string_2);
                 } else {
-                  this.helper.remove(option.name);
+                  this.helper.remove(((DefineOption)option).name);
                 }
               }
             }
@@ -157,11 +148,9 @@ public class CompilerOptions {
           boolean _xifexpression = false;
           boolean _notEquals = (!Objects.equal(value, null));
           if (_notEquals) {
-            boolean _parseBoolean = Boolean.parseBoolean(value);
-            _xifexpression = _parseBoolean;
+            _xifexpression = Boolean.parseBoolean(value);
           } else {
-            boolean _defaultValue = ((BooleanOption) option).getDefaultValue();
-            _xifexpression = _defaultValue;
+            _xifexpression = ((BooleanOption) option).getDefaultValue();
           }
           final boolean avalue = _xifexpression;
           this.options.put(option, Boolean.valueOf(avalue));
@@ -188,7 +177,7 @@ public class CompilerOptions {
                   String _head = IterableExtensions.<String>head(((Iterable<String>)Conversions.doWrapArray(str)));
                   Iterable<String> _tail = IterableExtensions.<String>tail(((Iterable<String>)Conversions.doWrapArray(str)));
                   String _head_1 = IterableExtensions.<String>head(_tail);
-                  Tuple<String,String> _tuple = new Tuple<String,String>(_head, _head_1);
+                  Tuple<String, String> _tuple = new Tuple<String, String>(_head, _head_1);
                   this.options.put(option, _tuple);
                 }
               }
@@ -227,11 +216,11 @@ public class CompilerOptions {
               } else {
                 if ((option instanceof DefineOption)) {
                   try {
-                    final OtpErlangList val1_3 = ((DefineOption) option).toTerm(((List<Pair<String,String>>) optionValue));
+                    final OtpErlangList val1_3 = ((DefineOption) option).toTerm(((List<Pair<String, String>>) optionValue));
                     boolean _notEquals_2 = (!Objects.equal(val1_3, null));
                     if (_notEquals_2) {
                       OtpErlangObject[] _elements = val1_3.elements();
-                      ArrayList<OtpErlangObject> _newArrayList = Lists.<OtpErlangObject>newArrayList(((Iterable<? extends OtpErlangObject>)Conversions.doWrapArray(_elements)));
+                      ArrayList<OtpErlangObject> _newArrayList = Lists.<OtpErlangObject>newArrayList(_elements);
                       result.addAll(_newArrayList);
                     }
                   } catch (final Throwable _t) {
@@ -253,10 +242,10 @@ public class CompilerOptions {
     return OtpErlang.mkList(result);
   }
   
+  @Override
   public String toString() {
     OtpErlangList _export = this.export();
-    String _string = _export.toString();
-    return _string;
+    return _export.toString();
   }
   
   public void removeAllProjectSpecificSettings() {
@@ -281,7 +270,7 @@ public class CompilerOptions {
       Iterator<String> _iterator = value.iterator();
       boolean _hasNext = _iterator.hasNext();
       boolean _not = (!_hasNext);
-      _or = (_equals || _not);
+      _or = _not;
     }
     if (_or) {
       this.removeOption(opt);
@@ -300,7 +289,7 @@ public class CompilerOptions {
     }
   }
   
-  public void setOption(final CompilerOption opt, final List<Pair<String,String>> value) {
+  public void setOption(final CompilerOption opt, final List<Pair<String, String>> value) {
     boolean _or = false;
     boolean _equals = Objects.equal(value, null);
     if (_equals) {
@@ -308,7 +297,7 @@ public class CompilerOptions {
     } else {
       int _size = value.size();
       boolean _equals_1 = (_size == 0);
-      _or = (_equals || _equals_1);
+      _or = _equals_1;
     }
     if (_or) {
       this.removeOption(opt);
@@ -317,20 +306,20 @@ public class CompilerOptions {
     }
   }
   
-  public void setOption(final CompilerOption opt, final Pair<String,String>... values) {
+  public void setOption(final CompilerOption opt, final Pair<String, String>... values) {
     boolean _or = false;
     boolean _equals = Objects.equal(values, null);
     if (_equals) {
       _or = true;
     } else {
-      int _size = ((List<Pair<String,String>>)Conversions.doWrapArray(values)).size();
+      int _size = ((List<Pair<String, String>>)Conversions.doWrapArray(values)).size();
       boolean _equals_1 = (_size == 0);
-      _or = (_equals || _equals_1);
+      _or = _equals_1;
     }
     if (_or) {
       this.removeOption(opt);
     } else {
-      final List<Pair<String,String>> list = CollectionLiterals.<Pair<String,String>>newArrayList(values);
+      final List<Pair<String, String>> list = CollectionLiterals.<Pair<String, String>>newArrayList(values);
       this.setOption(opt, list);
     }
   }
@@ -358,8 +347,8 @@ public class CompilerOptions {
     return ((String) _get);
   }
   
-  public List<Pair<String,String>> getListOption(final DefineOption option) {
+  public List<Pair<String, String>> getListOption(final DefineOption option) {
     Object _get = this.options.get(option);
-    return ((List<Pair<String,String>>) _get);
+    return ((List<Pair<String, String>>) _get);
   }
 }

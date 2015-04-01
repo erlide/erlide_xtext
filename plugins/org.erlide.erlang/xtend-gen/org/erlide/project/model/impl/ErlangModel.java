@@ -8,7 +8,6 @@ import java.util.List;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -33,11 +32,13 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
     this.projects = _newArrayList;
   }
   
+  @Override
   public Collection<IErlangProject> getProjects() {
     return Collections.<IErlangProject>unmodifiableCollection(this.projects);
   }
   
   @Nullable
+  @Override
   public IErlangProject getErlangProject(final IProject project) {
     boolean _exists = project.exists();
     boolean _not = (!_exists);
@@ -62,21 +63,24 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
     return erlPrj;
   }
   
+  @Override
   public IWorkspace getWorkspace() {
     return this.workspace;
   }
   
+  @Override
   public String getName() {
     return "Erlang model";
   }
   
+  @Override
   public IErlangModelElement getParent() {
     return null;
   }
   
+  @Override
   public IResource getResource() {
-    IWorkspaceRoot _root = this.workspace.getRoot();
-    return _root;
+    return this.workspace.getRoot();
   }
   
   public boolean isErlangProject(final IProject project) {
@@ -87,10 +91,10 @@ public class ErlangModel extends ErlangModelElement implements IErlangModel {
         _or = true;
       } else {
         boolean _hasNature_1 = project.hasNature(NatureConstants.OLD_NATURE_ID);
-        _or = (_hasNature || _hasNature_1);
+        _or = _hasNature_1;
       }
       return _or;
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

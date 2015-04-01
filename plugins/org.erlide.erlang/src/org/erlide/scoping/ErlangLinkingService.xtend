@@ -6,8 +6,8 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.linking.impl.DefaultLinkingService
 import org.eclipse.xtext.nodemodel.INode
-import org.erlide.erlang.ErlangPackage
 import org.erlide.erlang.Atom
+import org.erlide.erlang.ErlangPackage
 import org.erlide.erlang.Macro
 
 class ErlangLinkingService extends DefaultLinkingService {

@@ -1,6 +1,6 @@
 package org.erlide.builder
 
-import org.eclipse.xtend.lib.Data
+import org.eclipse.xtend.lib.annotations.Data
 
 @Data
 class CompilerProblem {

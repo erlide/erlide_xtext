@@ -8,13 +8,13 @@ import org.erlide.builder.resourcecompiler.AbstractCompiler;
 
 @SuppressWarnings("all")
 public class InternalCompiler extends AbstractCompiler {
+  @Override
   public String getId() {
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
-    throw _unsupportedOperationException;
+    throw new UnsupportedOperationException("Auto-generated function stub");
   }
   
+  @Override
   public Collection<CompilerProblem> compileResource(final IFile file, final CompilerOptions options) {
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("Auto-generated function stub");
-    throw _unsupportedOperationException;
+    throw new UnsupportedOperationException("Auto-generated function stub");
   }
 }

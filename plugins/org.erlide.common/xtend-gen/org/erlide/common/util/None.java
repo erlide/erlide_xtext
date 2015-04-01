@@ -7,21 +7,23 @@ import org.erlide.common.util.Option;
 
 @SuppressWarnings("all")
 public class None<T extends Object> extends Option<T> {
+  @Override
   public T get() {
-    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException();
-    throw _unsupportedOperationException;
+    throw new UnsupportedOperationException();
   }
   
+  @Override
   public boolean isEmpty() {
     return true;
   }
   
+  @Override
   public Iterator<T> iterator() {
     ArrayList<T> _arrayList = new ArrayList<T>();
-    Iterator<T> _iterator = _arrayList.iterator();
-    return _iterator;
+    return _arrayList.iterator();
   }
   
+  @Override
   public boolean equals(final Object o) {
     boolean _and = false;
     boolean _notEquals = (!Objects.equal(o, null));
@@ -32,7 +34,6 @@ public class None<T extends Object> extends Option<T> {
       boolean _matched = false;
       if (!_matched) {
         if (o instanceof None) {
-          final None<T> _none = (None<T>)o;
           _matched=true;
           _switchResult = true;
         }
@@ -40,15 +41,17 @@ public class None<T extends Object> extends Option<T> {
       if (!_matched) {
         _switchResult = false;
       }
-      _and = (_notEquals && _switchResult);
+      _and = _switchResult;
     }
     return _and;
   }
   
+  @Override
   public int hashCode() {
     return 0;
   }
   
+  @Override
   public String toString() {
     return "None";
   }

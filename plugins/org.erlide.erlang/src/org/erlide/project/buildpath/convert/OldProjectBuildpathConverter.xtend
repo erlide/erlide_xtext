@@ -21,20 +21,20 @@ class OldProjectBuildpathConverter {
      * <li>the OTP library</li>
      * <li>referenced projects</li>
      * </ul>
-     * 
+     *
      * If "external modules" has references to modules not in any referenced
      * project, they will be lost. We could scan and compare to the projects, in
      * order to extract the real external libraries, but at the moment it feels
      * too much work for too little benefit.
-     * 
+     *
      * Project must have an old Erlang nature.
      */
 	def BuildpathEntry convert(IProject project) {
 		val externals = new PathExpander().expandFile(new Path(".settings/modules.erlidex"), newHashMap())
 		convert(getOldProjectProperties(project), project.name, project.referencedProjects.map[name], externals)
 	}
-	
-	def BuildpathEntry convert(OldErlangProjectProperties properties, String name, 
+
+	def BuildpathEntry convert(OldErlangProjectProperties properties, String name,
 		Collection<String>refProjects, Collection<IPath> externals) {
 		println("CONVERTING "+properties.debugPrint)
 		val result = new BuildpathLibrary(null, "root")
@@ -48,43 +48,43 @@ class OldProjectBuildpathConverter {
 		properties.outputDirs.forEach [
 			newFolder(crt, it, FolderKind::EBIN)
 		]
-		
+
 		val otp = newLibrary(result, properties.runtimeVersion.toString)
 
 		refProjects.forEach [
 			newLibrary(result, it)
 		]
-		
+
 		try {
 			val roots = externals.map[segments.head].toSet
 			for(root: roots) {
 				newLibrary(result, root)
 			}
 		} catch (FileNotFoundException e) {
-			// ignore? 
+			// ignore?
 			println("? "+e)
 		}
-		
+
 		return result
 	}
-	
+
 	def OldErlangProjectProperties getOldProjectProperties(IProject project) {
 		new OldErlangProjectProperties(project)
 	}
-	
+
 	def String debugPrint(OldErlangProjectProperties props) {
 		'''
 			Properties {
-				src = «PathSerializer::packList(props.sourceDirs)»
-				inc = «PathSerializer::packList(props.includeDirs)»
-				out = «PathSerializer::packList(props.outputDirs)»
-				ver = «props.runtimeVersion»
-				xmd = «props.externalModulesFile»
-				xin = «props.externalIncludesFile»
+				src = ï¿½PathSerializer::packList(props.sourceDirs)ï¿½
+				inc = ï¿½PathSerializer::packList(props.includeDirs)ï¿½
+				out = ï¿½PathSerializer::packList(props.outputDirs)ï¿½
+				ver = ï¿½props.runtimeVersionï¿½
+				xmd = ï¿½props.externalModulesFileï¿½
+				xin = ï¿½props.externalIncludesFileï¿½
 			}
 		'''
 	}
-	
+
 	def BuildpathLibrary newLibrary(BuildpathLibrary parent, String name) {
 		val result = new BuildpathLibrary(parent, name)
 		parent.addChild(result)
@@ -102,7 +102,7 @@ class OldProjectBuildpathConverter {
 		parent.addFolder(result)
 		return result
 	}
-	
-	
-		
+
+
+
 }

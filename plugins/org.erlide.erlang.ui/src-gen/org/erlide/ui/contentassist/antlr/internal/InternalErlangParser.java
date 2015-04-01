@@ -1,94 +1,25 @@
 package org.erlide.ui.contentassist.antlr.internal; 
 
-import java.io.InputStream;
-import org.eclipse.xtext.*;
-import org.eclipse.xtext.parser.*;
-import org.eclipse.xtext.parser.impl.*;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.EObject;
+import org.antlr.runtime.BaseRecognizer;
+import org.antlr.runtime.BitSet;
+import org.antlr.runtime.IntStream;
+import org.antlr.runtime.NoViableAltException;
+import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.RecognizerSharedState;
+import org.antlr.runtime.TokenStream;
+import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.DFA;
 import org.erlide.services.ErlangGrammarAccess;
-
-
-
-import org.antlr.runtime.*;
-import java.util.Stack;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ATOM", "RULE_VARIABLE", "RULE_INT", "RULE_BASED_INT", "RULE_EXT_INT", "RULE_STRING", "RULE_CHAR", "RULE_ATOM_STARTER", "RULE_IN_WORD_CHAR", "RULE_ESCAPE", "RULE_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_HEX_DIGIT", "'!'", "'ifdef'", "'ifndef'", "'spec'", "'callback'", "'type'", "'opaque'", "'<-'", "'<='", "'+'", "'-'", "'bor'", "'bxor'", "'bsl'", "'bsr'", "'or'", "'xor'", "'*'", "'/'", "'div'", "'rem'", "'band'", "'and'", "'bnot'", "'not'", "'++'", "'--'", "'=='", "'/='", "'=<'", "'<'", "'>='", "'>'", "'=:='", "'=/='", "'?'", "'??'", "'line'", "'endif'", "'record'", "'undef'", "'module'", "'include'", "'include_lib'", "'define'", "'file'", "'else'", "'export'", "'import'", "'compile'", "'encoding'", "'...'", "'.'", "'('", "')'", "','", "'{'", "'}'", "'='", "'::'", "'['", "']'", "';'", "'->'", "'when'", "'catch'", "'#'", "':'", "'begin'", "'end'", "'query'", "'cond'", "'let'", "'if'", "'case'", "'of'", "'receive'", "'after'", "'fun'", "'try'", "'|'", "'||'", "'<<'", "'>>'", "'orelse'", "'andalso'", "'..'"
     };
-    public static final int RULE_ESCAPE=13;
-    public static final int T__29=29;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int T__21=21;
-    public static final int T__20=20;
-    public static final int RULE_ATOM_STARTER=11;
-    public static final int EOF=-1;
-    public static final int RULE_ATOM=4;
-    public static final int RULE_IN_WORD_CHAR=12;
-    public static final int T__93=93;
-    public static final int T__19=19;
-    public static final int T__94=94;
-    public static final int T__91=91;
-    public static final int RULE_BASED_INT=7;
-    public static final int T__92=92;
-    public static final int T__90=90;
-    public static final int T__18=18;
-    public static final int RULE_CHAR=10;
-    public static final int T__99=99;
-    public static final int T__98=98;
-    public static final int T__97=97;
-    public static final int T__96=96;
-    public static final int T__95=95;
-    public static final int T__80=80;
-    public static final int T__81=81;
-    public static final int T__82=82;
-    public static final int T__83=83;
-    public static final int RULE_HEX_DIGIT=17;
-    public static final int RULE_COMMENT=14;
-    public static final int T__85=85;
-    public static final int T__84=84;
-    public static final int T__87=87;
-    public static final int T__86=86;
-    public static final int T__89=89;
-    public static final int T__88=88;
-    public static final int RULE_STRING=9;
-    public static final int T__71=71;
-    public static final int T__72=72;
-    public static final int RULE_VARIABLE=5;
-    public static final int T__70=70;
-    public static final int T__76=76;
-    public static final int T__75=75;
-    public static final int T__74=74;
-    public static final int T__73=73;
-    public static final int T__79=79;
-    public static final int T__78=78;
-    public static final int T__77=77;
-    public static final int T__68=68;
-    public static final int T__69=69;
-    public static final int T__66=66;
-    public static final int RULE_EXT_INT=8;
-    public static final int T__67=67;
-    public static final int T__64=64;
-    public static final int T__65=65;
-    public static final int T__62=62;
-    public static final int T__63=63;
-    public static final int T__61=61;
-    public static final int T__60=60;
+    public static final int T__50=50;
+    public static final int T__59=59;
     public static final int T__55=55;
     public static final int T__56=56;
     public static final int T__57=57;
@@ -97,36 +28,98 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     public static final int T__52=52;
     public static final int T__53=53;
     public static final int T__54=54;
-    public static final int T__59=59;
-    public static final int T__103=103;
-    public static final int T__104=104;
+    public static final int T__60=60;
+    public static final int T__61=61;
     public static final int RULE_INT=6;
-    public static final int T__50=50;
-    public static final int T__42=42;
-    public static final int T__43=43;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__46=46;
-    public static final int T__47=47;
-    public static final int T__44=44;
-    public static final int T__45=45;
-    public static final int T__48=48;
-    public static final int T__49=49;
-    public static final int T__102=102;
-    public static final int T__101=101;
-    public static final int T__100=100;
-    public static final int RULE_SL_COMMENT=15;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__66=66;
+    public static final int T__67=67;
+    public static final int T__68=68;
+    public static final int T__69=69;
+    public static final int T__62=62;
+    public static final int T__63=63;
+    public static final int T__64=64;
+    public static final int T__65=65;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int RULE_VARIABLE=5;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int RULE_HEX_DIGIT=17;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__91=91;
+    public static final int T__100=100;
+    public static final int T__92=92;
+    public static final int T__93=93;
+    public static final int T__102=102;
+    public static final int T__94=94;
+    public static final int T__101=101;
+    public static final int T__90=90;
+    public static final int T__19=19;
+    public static final int RULE_ATOM=4;
+    public static final int T__18=18;
+    public static final int T__99=99;
+    public static final int RULE_CHAR=10;
+    public static final int T__95=95;
+    public static final int T__96=96;
+    public static final int T__97=97;
+    public static final int T__98=98;
+    public static final int RULE_ESCAPE=13;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
+    public static final int T__29=29;
+    public static final int T__22=22;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
+    public static final int T__70=70;
+    public static final int T__71=71;
+    public static final int T__72=72;
+    public static final int RULE_STRING=9;
+    public static final int RULE_SL_COMMENT=15;
+    public static final int T__77=77;
+    public static final int T__78=78;
+    public static final int T__79=79;
+    public static final int T__73=73;
+    public static final int EOF=-1;
+    public static final int T__74=74;
+    public static final int T__75=75;
+    public static final int T__76=76;
+    public static final int T__80=80;
+    public static final int T__81=81;
+    public static final int T__82=82;
+    public static final int T__83=83;
     public static final int RULE_WS=16;
+    public static final int RULE_EXT_INT=8;
+    public static final int RULE_ATOM_STARTER=11;
+    public static final int RULE_COMMENT=14;
+    public static final int RULE_BASED_INT=7;
+    public static final int RULE_IN_WORD_CHAR=12;
+    public static final int T__88=88;
+    public static final int T__89=89;
+    public static final int T__84=84;
+    public static final int T__104=104;
+    public static final int T__85=85;
+    public static final int T__103=103;
+    public static final int T__86=86;
+    public static final int T__87=87;
 
     // delegates
     // delegators
@@ -141,8 +134,10 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         }
         
 
-    public String[] getTokenNames() { return InternalErlangParser.tokenNames; }
-    public String getGrammarFileName() { return "../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g"; }
+    @Override
+	public String[] getTokenNames() { return InternalErlangParser.tokenNames; }
+    @Override
+	public String getGrammarFileName() { return "../org.erlide.erlang.ui/src-gen/org/erlide/ui/contentassist/antlr/internal/InternalErlang.g"; }
 
 
      
@@ -11825,11 +11820,11 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             if ( (LA14_0==53) ) {
                 int LA14_1 = input.LA(2);
 
-                if ( (LA14_1==55) ) {
-                    alt14=1;
-                }
-                else if ( ((LA14_1>=RULE_ATOM && LA14_1<=RULE_VARIABLE)||(LA14_1>=19 && LA14_1<=24)||(LA14_1>=56 && LA14_1<=68)) ) {
+                if ( ((LA14_1>=RULE_ATOM && LA14_1<=RULE_VARIABLE)||(LA14_1>=19 && LA14_1<=24)||(LA14_1>=56 && LA14_1<=68)) ) {
                     alt14=2;
+                }
+                else if ( (LA14_1==55) ) {
+                    alt14=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -17840,11 +17835,11 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
                     else if ( (LA59_2==RULE_VARIABLE) ) {
                         int LA59_4 = input.LA(4);
 
-                        if ( (LA59_4==35) ) {
-                            alt59=2;
-                        }
-                        else if ( (LA59_4==EOF||LA59_4==73||LA59_4==85||LA59_4==101) ) {
+                        if ( (LA59_4==EOF||LA59_4==73||LA59_4==85||LA59_4==101) ) {
                             alt59=1;
+                        }
+                        else if ( (LA59_4==35) ) {
+                            alt59=2;
                         }
                         else {
                             if (state.backtracking>0) {state.failed=true; return ;}
@@ -82428,7 +82423,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         int numStates = DFA29_transitionS.length;
         DFA29_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA29_transition[i] = DFA.unpackEncodedString(DFA29_transitionS[i]);
+            DFA29_transition[i] = org.antlr.runtime.DFA.unpackEncodedString(DFA29_transitionS[i]);
         }
     }
 
@@ -82445,7 +82440,8 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             this.special = DFA29_special;
             this.transition = DFA29_transition;
         }
-        public String getDescription() {
+        @Override
+		public String getDescription() {
             return "4153:1: rule__FunExpr__Alternatives_1 : ( ( ruleFunRef ) | ( ruleInlineFun ) );";
         }
     }
@@ -82490,7 +82486,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         int numStates = DFA58_transitionS.length;
         DFA58_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA58_transition[i] = DFA.unpackEncodedString(DFA58_transitionS[i]);
+            DFA58_transition[i] = org.antlr.runtime.DFA.unpackEncodedString(DFA58_transitionS[i]);
         }
     }
 
@@ -82507,7 +82503,8 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             this.special = DFA58_special;
             this.transition = DFA58_transition;
         }
-        public String getDescription() {
+        @Override
+		public String getDescription() {
             return "5162:1: rule__Type__Alternatives : ( ( ( rule__Type__Group_0__0 ) ) | ( ( rule__Type__Group_1__0 ) ) | ( ( rule__Type__TypeNameAssignment_2 ) ) | ( ( rule__Type__ValueAssignment_3 ) ) | ( ( rule__Type__Group_4__0 ) ) | ( ( rule__Type__Group_5__0 ) ) | ( ( rule__Type__Group_6__0 ) ) | ( ruleBinaryType ) | ( ( rule__Type__Group_8__0 ) ) );";
         }
     }
@@ -82524,8 +82521,8 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     static final String DFA104_specialS =
         "\1\uffff\1\0\65\uffff}>";
     static final String[] DFA104_transitionS = {
-            "\1\2\10\uffff\1\2\6\uffff\20\2\2\uffff\14\2\17\uffff\1\2\1\1"+
-            "\2\2\1\uffff\3\2\1\uffff\7\2\1\uffff\1\2\5\uffff\1\2\1\uffff"+
+            "\1\2\10\uffff\1\2\6\uffff\20\2\2\uffff\14\2\17\uffff\1\2\1"+
+            "\1\2\2\1\uffff\3\2\1\uffff\7\2\1\uffff\1\2\5\uffff\1\2\1\uffff"+
             "\1\2\2\uffff\2\2\1\uffff\3\2",
             "\1\uffff",
             "",
@@ -82595,7 +82592,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         int numStates = DFA104_transitionS.length;
         DFA104_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA104_transition[i] = DFA.unpackEncodedString(DFA104_transitionS[i]);
+            DFA104_transition[i] = org.antlr.runtime.DFA.unpackEncodedString(DFA104_transitionS[i]);
         }
     }
 
@@ -82612,10 +82609,12 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             this.special = DFA104_special;
             this.transition = DFA104_transition;
         }
-        public String getDescription() {
+        @Override
+		public String getDescription() {
             return "13812:1: ( rule__MacroCall__Group_1__0 )?";
         }
-        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+        @Override
+		public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
@@ -82651,35 +82650,35 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
     static final String DFA118_maxS =
         "\1\104\26\125\2\104\2\uffff\25\125";
     static final String DFA118_acceptS =
-        "\31\uffff\1\2\1\1\25\uffff";
+        "\31\uffff\1\1\1\2\25\uffff";
     static final String DFA118_specialS =
         "\60\uffff}>";
     static final String[] DFA118_transitionS = {
             "\1\1\1\26\15\uffff\1\4\1\5\1\2\1\17\1\6\1\7\34\uffff\1\27\1"+
             "\30\1\25\1\3\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\20\1\21\1"+
             "\22\1\23\1\24",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
             "\1\33\1\57\15\uffff\1\36\1\37\1\34\1\51\1\40\1\41\37\uffff"+
             "\1\35\1\42\1\43\1\44\1\45\1\46\1\47\1\50\1\52\1\53\1\54\1\55"+
             "\1\56",
@@ -82688,27 +82687,27 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             "\1\56",
             "",
             "",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32",
-            "\1\31\60\uffff\1\32"
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31",
+            "\1\32\60\uffff\1\31"
     };
 
     static final short[] DFA118_eot = DFA.unpackEncodedString(DFA118_eotS);
@@ -82723,7 +82722,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         int numStates = DFA118_transitionS.length;
         DFA118_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA118_transition[i] = DFA.unpackEncodedString(DFA118_transitionS[i]);
+            DFA118_transition[i] = org.antlr.runtime.DFA.unpackEncodedString(DFA118_transitionS[i]);
         }
     }
 
@@ -82740,7 +82739,8 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             this.special = DFA118_special;
             this.transition = DFA118_transition;
         }
-        public String getDescription() {
+        @Override
+		public String getDescription() {
             return "17126:1: ( rule__FunRef__Group_0__0 )?";
         }
     }
@@ -82799,7 +82799,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         int numStates = DFA124_transitionS.length;
         DFA124_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA124_transition[i] = DFA.unpackEncodedString(DFA124_transitionS[i]);
+            DFA124_transition[i] = org.antlr.runtime.DFA.unpackEncodedString(DFA124_transitionS[i]);
         }
     }
 
@@ -82816,48 +82816,49 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             this.special = DFA124_special;
             this.transition = DFA124_transition;
         }
-        public String getDescription() {
+        @Override
+		public String getDescription() {
             return "18100:1: ( rule__TryClause__Group_0__0 )?";
         }
     }
     static final String DFA138_eotS =
         "\60\uffff";
     static final String DFA138_eofS =
-        "\1\uffff\26\32\4\uffff\25\32";
+        "\1\uffff\26\31\4\uffff\25\31";
     static final String DFA138_minS =
         "\1\4\26\44\2\4\2\uffff\25\44";
     static final String DFA138_maxS =
         "\1\104\26\125\2\104\2\uffff\25\125";
     static final String DFA138_acceptS =
-        "\31\uffff\1\1\1\2\25\uffff";
+        "\31\uffff\1\2\1\1\25\uffff";
     static final String DFA138_specialS =
         "\60\uffff}>";
     static final String[] DFA138_transitionS = {
             "\1\1\1\26\15\uffff\1\4\1\5\1\2\1\17\1\6\1\7\34\uffff\1\27\1"+
             "\30\1\25\1\3\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\20\1\21\1"+
             "\22\1\23\1\24",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
             "\1\33\1\57\15\uffff\1\36\1\37\1\34\1\51\1\40\1\41\37\uffff"+
             "\1\35\1\42\1\43\1\44\1\45\1\46\1\47\1\50\1\52\1\53\1\54\1\55"+
             "\1\56",
@@ -82866,27 +82867,27 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             "\1\56",
             "",
             "",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31",
-            "\1\32\42\uffff\1\32\15\uffff\1\31"
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32",
+            "\1\31\42\uffff\1\31\15\uffff\1\32"
     };
 
     static final short[] DFA138_eot = DFA.unpackEncodedString(DFA138_eotS);
@@ -82901,7 +82902,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         int numStates = DFA138_transitionS.length;
         DFA138_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA138_transition[i] = DFA.unpackEncodedString(DFA138_transitionS[i]);
+            DFA138_transition[i] = org.antlr.runtime.DFA.unpackEncodedString(DFA138_transitionS[i]);
         }
     }
 
@@ -82918,7 +82919,8 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             this.special = DFA138_special;
             this.transition = DFA138_transition;
         }
-        public String getDescription() {
+        @Override
+		public String getDescription() {
             return "20384:1: ( rule__SpecFun__Group_0__0 )?";
         }
     }
@@ -82996,7 +82998,7 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
         int numStates = DFA150_transitionS.length;
         DFA150_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA150_transition[i] = DFA.unpackEncodedString(DFA150_transitionS[i]);
+            DFA150_transition[i] = org.antlr.runtime.DFA.unpackEncodedString(DFA150_transitionS[i]);
         }
     }
 
@@ -83013,7 +83015,8 @@ public class InternalErlangParser extends AbstractInternalContentAssistParser {
             this.special = DFA150_special;
             this.transition = DFA150_transition;
         }
-        public String getDescription() {
+        @Override
+		public String getDescription() {
             return "22687:1: ( rule__Type__Group_1_1__0 )?";
         }
     }

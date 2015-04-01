@@ -2,12 +2,11 @@ package org.erlide.project.model.impl;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.function.Consumer;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.project.model.ICodeUnit;
 import org.erlide.project.model.IErlangModel;
 import org.erlide.project.model.IErlangModelElement;
@@ -28,18 +27,20 @@ public class ModelResourceListener implements IResourceChangeListener {
     _workspace.removeResourceChangeListener(this);
   }
   
+  @Override
   public void resourceChanged(final IResourceChangeEvent event) {
     this.updateModel(this.model, event);
   }
   
   protected void _updateModel(final IErlangModel model, final IResourceChangeEvent event) {
     Collection<IErlangProject> _projects = model.getProjects();
-    final Procedure1<IErlangProject> _function = new Procedure1<IErlangProject>() {
-        public void apply(final IErlangProject it) {
-          ModelResourceListener.this.updateModel(it, event);
-        }
-      };
-    IterableExtensions.<IErlangProject>forEach(_projects, _function);
+    final Consumer<IErlangProject> _function = new Consumer<IErlangProject>() {
+      @Override
+      public void accept(final IErlangProject it) {
+        ModelResourceListener.this.updateModel(it, event);
+      }
+    };
+    _projects.forEach(_function);
   }
   
   protected void _updateModel(final IErlangProject project, final IResourceChangeEvent event) {

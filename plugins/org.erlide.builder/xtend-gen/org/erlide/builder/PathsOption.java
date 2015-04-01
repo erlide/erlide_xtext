@@ -28,23 +28,20 @@ public class PathsOption extends CompilerOption {
       }
       OtpErlangAtom _otpErlangAtom = new OtpErlangAtom(this.name);
       OtpErlangList _mkList = OtpErlang.mkList(result);
-      OtpErlangTuple _mkTuple = OtpErlang.mkTuple(_otpErlangAtom, _mkList);
-      _xblockexpression = (_mkTuple);
+      _xblockexpression = OtpErlang.mkTuple(_otpErlangAtom, _mkList);
     }
     return _xblockexpression;
   }
   
   public static String toString(final Iterable<String> value) {
     Joiner _on = Joiner.on(",");
-    String _join = _on.join(value);
-    return _join;
+    return _on.join(value);
   }
   
   public static Iterable<String> fromString(final String string) {
     Splitter _on = Splitter.on(",");
     Splitter _trimResults = _on.trimResults();
     Splitter _omitEmptyStrings = _trimResults.omitEmptyStrings();
-    Iterable<String> _split = _omitEmptyStrings.split(string);
-    return _split;
+    return _omitEmptyStrings.split(string);
   }
 }

@@ -1,7 +1,7 @@
 package org.erlide.project.buildpath
 
-import org.eclipse.xtend.lib.Property
 import org.eclipse.core.resources.IResource
+import org.eclipse.xtend.lib.Property
 
 abstract class BuildpathEntry {
 

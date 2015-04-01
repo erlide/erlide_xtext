@@ -22,6 +22,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.Expression;
@@ -39,15 +40,16 @@ public class ErlangSemanticHighlightingCalculator implements ISemanticHighlighti
   private ErlangGrammarAccess grammarAccess;
   
   @Inject
+  @Extension
   private ModelExtensions modelExtensions;
   
+  @Override
   public void provideHighlightingFor(final XtextResource resource, final IHighlightedPositionAcceptor acceptor) {
     boolean _equals = Objects.equal(resource, null);
     if (_equals) {
       return;
     }
-    SafeAcceptorWrapper _safeAcceptorWrapper = new SafeAcceptorWrapper(acceptor);
-    final SafeAcceptorWrapper myacceptor = _safeAcceptorWrapper;
+    final SafeAcceptorWrapper myacceptor = new SafeAcceptorWrapper(acceptor);
     this.provideNodeBasedHighlighting(resource, myacceptor);
     this.provideSemanticHighlighting(resource, myacceptor);
     this.provideTextualHighlighting(resource, myacceptor);
@@ -77,7 +79,7 @@ public class ErlangSemanticHighlightingCalculator implements ISemanticHighlighti
       AbstractRule _rule_3 = grammarElement.getRule();
       ParserRule _elseAttributeRule = this.grammarAccess.getElseAttributeRule();
       boolean _equals_3 = Objects.equal(_rule_3, _elseAttributeRule);
-      _or_1 = (_equals_2 || _equals_3);
+      _or_1 = _equals_3;
     }
     if (_or_1) {
       _or = true;
@@ -85,7 +87,7 @@ public class ErlangSemanticHighlightingCalculator implements ISemanticHighlighti
       AbstractRule _rule_4 = grammarElement.getRule();
       ParserRule _endifAttributeRule = this.grammarAccess.getEndifAttributeRule();
       boolean _equals_4 = Objects.equal(_rule_4, _endifAttributeRule);
-      _or = (_or_1 || _equals_4);
+      _or = _equals_4;
     }
     if (_or) {
       this.highlightNode(node, 
@@ -97,8 +99,7 @@ public class ErlangSemanticHighlightingCalculator implements ISemanticHighlighti
   }
   
   protected void _highlight(final EObject grammarElement, final INode node, final IHighlightedPositionAcceptor acceptor) {
-    String _plus = ("!!! highlight -- " + grammarElement);
-    InputOutput.<String>println(_plus);
+    InputOutput.<String>println(("!!! highlight -- " + grammarElement));
   }
   
   private void highlightNode(final INode node, final String id, final IHighlightedPositionAcceptor acceptor) {
@@ -110,8 +111,8 @@ public class ErlangSemanticHighlightingCalculator implements ISemanticHighlighti
     int _length = node.getLength();
     acceptor.addPosition(_offset, _length, id);
     if ((node instanceof ILeafNode)) {
-      int _offset_1 = node.getOffset();
-      int _length_1 = node.getLength();
+      int _offset_1 = ((ILeafNode)node).getOffset();
+      int _length_1 = ((ILeafNode)node).getLength();
       acceptor.addPosition(_offset_1, _length_1, id);
     } else {
       Iterable<ILeafNode> _leafNodes = node.getLeafNodes();
@@ -183,7 +184,7 @@ public class ErlangSemanticHighlightingCalculator implements ISemanticHighlighti
     } else {
       int _size = contents.size();
       boolean _equals_1 = (_size == 0);
-      _or = (_equals || _equals_1);
+      _or = _equals_1;
     }
     if (_or) {
       return;
@@ -198,13 +199,9 @@ public class ErlangSemanticHighlightingCalculator implements ISemanticHighlighti
   
   protected void _highlight(final Module model, final IHighlightedPositionAcceptor acceptor) {
     final TreeIterator<EObject> all = model.eAllContents();
-    boolean _hasNext = all.hasNext();
-    boolean _while = _hasNext;
-    while (_while) {
+    while (all.hasNext()) {
       EObject _next = all.next();
       this.highlight(_next, acceptor);
-      boolean _hasNext_1 = all.hasNext();
-      _while = _hasNext_1;
     }
   }
   
@@ -223,7 +220,7 @@ public class ErlangSemanticHighlightingCalculator implements ISemanticHighlighti
       EObject _eContainer_1 = model.eContainer();
       Expression _module = ((RemoteTarget) _eContainer_1).getModule();
       boolean _equals = Objects.equal(_module, model);
-      _and = ((_eContainer instanceof RemoteTarget) && _equals);
+      _and = _equals;
     }
     if (_and) {
       this.highlightNode(node, ErlangSemanticHighlightingConfiguration.STRING_ID, acceptor);
@@ -236,7 +233,7 @@ public class ErlangSemanticHighlightingCalculator implements ISemanticHighlighti
       EObject _eContainer_3 = model.eContainer();
       Expression _function = ((RemoteTarget) _eContainer_3).getFunction();
       boolean _equals_1 = Objects.equal(_function, model);
-      _and_1 = ((_eContainer_2 instanceof RemoteTarget) && _equals_1);
+      _and_1 = _equals_1;
     }
     if (_and_1) {
       this.highlightNode(node, ErlangSemanticHighlightingConfiguration.COMMENT_ID, acceptor);

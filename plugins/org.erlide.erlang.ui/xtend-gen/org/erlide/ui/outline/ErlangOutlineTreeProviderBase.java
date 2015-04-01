@@ -14,8 +14,9 @@ import org.eclipse.xtext.ui.editor.outline.impl.AbstractOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
 import org.eclipse.xtext.ui.editor.outline.impl.EStructuralFeatureNode;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.erlide.erlang.DefineAttribute;
-import org.erlide.erlang.ErlangPackage.Literals;
+import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.ExportAttribute;
 import org.erlide.erlang.Form;
 import org.erlide.erlang.FunRef;
@@ -32,6 +33,7 @@ import org.erlide.ui.outline.ErlangOutlineNode;
 @SuppressWarnings("all")
 public class ErlangOutlineTreeProviderBase extends DefaultOutlineTreeProvider {
   @Inject
+  @Extension
   private ScopeExtensions _scopeExtensions;
   
   protected boolean _isLeaf(final FunctionClause c) {
@@ -52,12 +54,9 @@ public class ErlangOutlineTreeProviderBase extends DefaultOutlineTreeProvider {
   }
   
   protected void _createChildren(final DocumentRootNode parent, final Module module) {
-    ErlangOutlineNode _erlangOutlineNode = new ErlangOutlineNode(parent, null, "Records:", false);
-    final ErlangOutlineNode recordsNode = _erlangOutlineNode;
-    ErlangOutlineNode _erlangOutlineNode_1 = new ErlangOutlineNode(parent, null, "Exports:", false);
-    final ErlangOutlineNode exportsNode = _erlangOutlineNode_1;
-    ErlangOutlineNode _erlangOutlineNode_2 = new ErlangOutlineNode(parent, null, "Macros:", false);
-    final ErlangOutlineNode macrosNode = _erlangOutlineNode_2;
+    final ErlangOutlineNode recordsNode = new ErlangOutlineNode(parent, null, "Records:", false);
+    final ErlangOutlineNode exportsNode = new ErlangOutlineNode(parent, null, "Exports:", false);
+    final ErlangOutlineNode macrosNode = new ErlangOutlineNode(parent, null, "Macros:", false);
     EList<Form> _forms = module.getForms();
     for (final Form element : _forms) {
       {
@@ -65,28 +64,24 @@ public class ErlangOutlineTreeProviderBase extends DefaultOutlineTreeProvider {
         boolean _matched = false;
         if (!_matched) {
           if (element instanceof ModuleAttribute) {
-            final ModuleAttribute _moduleAttribute = (ModuleAttribute)element;
             _matched=true;
             _switchResult = null;
           }
         }
         if (!_matched) {
           if (element instanceof RecordAttribute) {
-            final RecordAttribute _recordAttribute = (RecordAttribute)element;
             _matched=true;
             _switchResult = recordsNode;
           }
         }
         if (!_matched) {
           if (element instanceof ExportAttribute) {
-            final ExportAttribute _exportAttribute = (ExportAttribute)element;
             _matched=true;
             _switchResult = exportsNode;
           }
         }
         if (!_matched) {
           if (element instanceof DefineAttribute) {
-            final DefineAttribute _defineAttribute = (DefineAttribute)element;
             _matched=true;
             _switchResult = macrosNode;
           }
@@ -112,7 +107,7 @@ public class ErlangOutlineTreeProviderBase extends DefaultOutlineTreeProvider {
   
   protected void _createChildren(final ErlangOutlineNode parent, final DefineAttribute attr) {
     String _macroName = attr.getMacroName();
-    final EStructuralFeatureNode name = this.createEStructuralFeatureNode(parent, attr, Literals.DEFINE_ATTRIBUTE__MACRO_NAME, null, _macroName, true);
+    final EStructuralFeatureNode name = this.createEStructuralFeatureNode(parent, attr, ErlangPackage.Literals.DEFINE_ATTRIBUTE__MACRO_NAME, null, _macroName, true);
     EList<EObject> _eContents = attr.eContents();
     for (final EObject element : _eContents) {
       this.createNode(name, element);
@@ -121,7 +116,7 @@ public class ErlangOutlineTreeProviderBase extends DefaultOutlineTreeProvider {
   
   protected void _createChildren(final ErlangOutlineNode parent, final RecordAttribute attr) {
     String _name = attr.getName();
-    final EStructuralFeatureNode name = this.createEStructuralFeatureNode(parent, attr, Literals.RECORD_ATTRIBUTE__NAME, null, _name, true);
+    final EStructuralFeatureNode name = this.createEStructuralFeatureNode(parent, attr, ErlangPackage.Literals.RECORD_ATTRIBUTE__NAME, null, _name, true);
     EList<EObject> _eContents = attr.eContents();
     for (final EObject element : _eContents) {
       this.createNode(name, element);
@@ -143,24 +138,8 @@ public class ErlangOutlineTreeProviderBase extends DefaultOutlineTreeProvider {
     }
   }
   
-  public void createChildren(final Object parent, final Object module) {
-    if (parent instanceof DocumentRootNode
-         && module instanceof Module) {
-      _createChildren((DocumentRootNode)parent, (Module)module);
-      return;
-    } else if (parent instanceof DocumentRootNode
-         && module instanceof EObject) {
-      _createChildren((DocumentRootNode)parent, (EObject)module);
-      return;
-    } else if (parent instanceof EStructuralFeatureNode
-         && module instanceof EObject) {
-      _createChildren((EStructuralFeatureNode)parent, (EObject)module);
-      return;
-    } else if (parent instanceof IOutlineNode
-         && module instanceof EObject) {
-      _createChildren((IOutlineNode)parent, (EObject)module);
-      return;
-    } else if (parent instanceof ErlangOutlineNode
+  public void createChildren(final IOutlineNode parent, final EObject module) {
+    if (parent instanceof ErlangOutlineNode
          && module instanceof DefineAttribute) {
       _createChildren((ErlangOutlineNode)parent, (DefineAttribute)module);
       return;
@@ -171,6 +150,22 @@ public class ErlangOutlineTreeProviderBase extends DefaultOutlineTreeProvider {
     } else if (parent instanceof ErlangOutlineNode
          && module instanceof RecordAttribute) {
       _createChildren((ErlangOutlineNode)parent, (RecordAttribute)module);
+      return;
+    } else if (parent instanceof DocumentRootNode
+         && module instanceof Module) {
+      _createChildren((DocumentRootNode)parent, (Module)module);
+      return;
+    } else if (parent instanceof DocumentRootNode
+         && module != null) {
+      _createChildren((DocumentRootNode)parent, module);
+      return;
+    } else if (parent instanceof EStructuralFeatureNode
+         && module != null) {
+      _createChildren((EStructuralFeatureNode)parent, module);
+      return;
+    } else if (parent != null
+         && module != null) {
+      _createChildren(parent, module);
       return;
     } else if (parent != null
          && module != null) {

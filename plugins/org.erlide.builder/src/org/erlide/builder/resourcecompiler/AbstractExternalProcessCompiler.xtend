@@ -1,5 +1,6 @@
 package org.erlide.builder.resourcecompiler
 
+import org.eclipse.xtend.lib.Property
 import org.erlide.builder.BuilderExecutor
 
 abstract class AbstractExternalProcessCompiler extends AbstractCompiler {
@@ -11,7 +12,7 @@ abstract class AbstractExternalProcessCompiler extends AbstractCompiler {
 	}
 	
 	new () {
-		this(new org.erlide.builder.BuilderExecutor())
+		this(new BuilderExecutor())
 	}
 	
 }

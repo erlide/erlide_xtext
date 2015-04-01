@@ -12,6 +12,7 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -23,8 +24,8 @@ import org.erlide.erlang.ScopeExtensions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = ErlangInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(ErlangInjectorProvider.class)
 @SuppressWarnings("all")
 public class GlobalSearchTest {
   @Inject
@@ -37,6 +38,7 @@ public class GlobalSearchTest {
   private Provider<XtextResourceSet> resourceSetProvider;
   
   @Inject
+  @Extension
   private ScopeExtensions _scopeExtensions;
   
   @Test
@@ -66,18 +68,18 @@ public class GlobalSearchTest {
       final Iterable<IEObjectDescription> eFuns_x = this._scopeExtensions.getExportedFunctions(module_x);
       final Iterable<IEObjectDescription> eFuns_z = this._scopeExtensions.getExportedFunctions(module_z);
       EList<Form> _forms = module_x.getForms();
-      final Function1<Form,Boolean> _function = new Function1<Form,Boolean>() {
-          public Boolean apply(final Form it) {
-            Class<? extends Object> _class = it.getClass();
-            boolean _isAssignableFrom = Function.class.isAssignableFrom(_class);
-            return Boolean.valueOf(_isAssignableFrom);
-          }
-        };
+      final Function1<Form, Boolean> _function = new Function1<Form, Boolean>() {
+        @Override
+        public Boolean apply(final Form it) {
+          Class<? extends Form> _class = it.getClass();
+          return Boolean.valueOf(Function.class.isAssignableFrom(_class));
+        }
+      };
       Form _findFirst = IterableExtensions.<Form>findFirst(_forms, _function);
       final Function f1 = ((Function) _findFirst);
       InputOutput.<Function>println(f1);
       InputOutput.<ResourceSet>println(set);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

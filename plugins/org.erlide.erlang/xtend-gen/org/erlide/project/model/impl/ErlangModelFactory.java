@@ -28,23 +28,24 @@ public class ErlangModelFactory implements IErlangModelFactory {
     this.erlModel = _erlangModel;
   }
   
+  @Override
   public IErlangModel getModel() {
     return this.erlModel;
   }
   
+  @Override
   public IErlangProject createErlangProject(final IProject workspaceProject) {
-    ErlangProject _erlangProject = new ErlangProject(this.erlModel, workspaceProject);
-    return _erlangProject;
+    return new ErlangProject(this.erlModel, workspaceProject);
   }
   
+  @Override
   public ICodeUnit createCodeUnit(final IErlangProject folder, final String name) {
-    CodeUnit _codeUnit = new CodeUnit(folder, name);
-    return _codeUnit;
+    return new CodeUnit(folder, name);
   }
   
+  @Override
   public IBinaryCodeUnit createBinaryCodeUnit(final IErlangProject folder, final String name) {
-    BinaryCodeUnit _binaryCodeUnit = new BinaryCodeUnit(folder, name);
-    return _binaryCodeUnit;
+    return new BinaryCodeUnit(folder, name);
   }
   
   public static void createFolder(final IPath fullPath) {
@@ -54,8 +55,7 @@ public class ErlangModelFactory implements IErlangModelFactory {
     }
     try {
       String _string = fullPath.toString();
-      File _file = new File(_string);
-      File f = _file;
+      File f = new File(_string);
       f.mkdirs();
     } catch (final Throwable _t) {
       if (_t instanceof Exception) {
@@ -76,8 +76,7 @@ public class ErlangModelFactory implements IErlangModelFactory {
     }
     try {
       String _string = fullPath.toString();
-      File _file = new File(_string);
-      File f = _file;
+      File f = new File(_string);
       f.createNewFile();
     } catch (final Throwable _t) {
       if (_t instanceof Exception) {

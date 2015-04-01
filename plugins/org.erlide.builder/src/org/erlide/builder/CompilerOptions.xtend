@@ -14,12 +14,10 @@ import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.Status
 import org.erlide.common.util.ErlLogger
+import org.erlide.common.util.PreferencesHelper
 import org.erlide.common.util.TermParserException
 import org.erlide.common.util.Tuple
 import org.osgi.service.prefs.BackingStoreException
-
-import org.eclipse.xtext.xbase.lib.Pair
-import org.erlide.common.util.PreferencesHelper
 
 class CompilerOptions {
 

@@ -16,7 +16,7 @@ import com.google.common.base.Charsets;
 
 public class ErlangContentDescriber implements ITextContentDescriber {
     private static final QualifiedName[] SUPPORTED_OPTIONS = new QualifiedName[] {
-            IContentDescription.CHARSET, IContentDescription.BYTE_ORDER_MARK };
+        IContentDescription.CHARSET, IContentDescription.BYTE_ORDER_MARK };
     private static final String PREFIX = "-encoding"; //$NON-NLS-1$
     private static final String SUFFIX = "."; //$NON-NLS-1$
     private static final String BOM = "ErlangContentDescriber.bom"; //$NON-NLS-1$
@@ -95,7 +95,7 @@ public class ErlangContentDescriber implements ITextContentDescriber {
             final byte[] bom = (byte[]) properties.get(BOM);
             if (bom != null
                     && description
-                            .isRequested(IContentDescription.BYTE_ORDER_MARK)) {
+                    .isRequested(IContentDescription.BYTE_ORDER_MARK)) {
                 description.setProperty(IContentDescription.BYTE_ORDER_MARK,
                         bom);
             }
@@ -175,7 +175,7 @@ public class ErlangContentDescriber implements ITextContentDescriber {
                 decl = decl.substring(1, decl.length() - 1).trim();
             }
             return decl;
-        } else if (!((line.length() == 0) || line.startsWith("-module") || line
+        } else if (!(line.length() == 0 || line.startsWith("-module") || line
                 .startsWith("%"))) {
             // cancel search if we find non-attributes
             return null;
@@ -190,7 +190,7 @@ public class ErlangContentDescriber implements ITextContentDescriber {
 
     /**
      * Read a line of data from the underlying InputStream
-     * 
+     *
      * @return a line stripped of line terminators
      */
     public String readLine(final InputStream in) throws IOException {
@@ -207,6 +207,6 @@ public class ErlangContentDescriber implements ITextContentDescriber {
         if (_ch == -1) {
             return null;
         }
-        return (new String(sb));
+        return new String(sb);
     }
 }

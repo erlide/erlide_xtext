@@ -3,34 +3,19 @@ package org.erlide.builder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.erlide.builder.ILineParser;
 
 @SuppressWarnings("all")
 public class ToBuildLineParser implements ILineParser<String> {
-  private static Pattern patNewer = new Function0<Pattern>() {
-    public Pattern apply() {
-      Pattern _compile = Pattern.compile("^.*rl\' is newer.*$");
-      return _compile;
-    }
-  }.apply();
+  private static Pattern patNewer = Pattern.compile("^.*rl\' is newer.*$");
   
-  private static Pattern patRemake = new Function0<Pattern>() {
-    public Pattern apply() {
-      Pattern _compile = Pattern.compile("^.*Must remake target.*\\.beam.*$");
-      return _compile;
-    }
-  }.apply();
+  private static Pattern patRemake = Pattern.compile("^.*Must remake target.*\\.beam.*$");
   
-  private static Pattern patDo3 = new Function0<Pattern>() {
-    public Pattern apply() {
-      Pattern _compile = Pattern.compile("^.*do3/.*$");
-      return _compile;
-    }
-  }.apply();
+  private static Pattern patDo3 = Pattern.compile("^.*do3/.*$");
   
+  @Override
   public String parseLine(final String line) {
-    String _xtrycatchfinallyexpression = null;
+    Object _xtrycatchfinallyexpression = null;
     try {
       Matcher _matcher = ToBuildLineParser.patNewer.matcher(line);
       boolean _matches = _matcher.matches();
@@ -56,19 +41,16 @@ public class ToBuildLineParser implements ILineParser<String> {
         throw Exceptions.sneakyThrow(_t);
       }
     }
-    return _xtrycatchfinallyexpression;
+    return ((String)_xtrycatchfinallyexpression);
   }
   
   private String extractFile(final String str) {
     String _xblockexpression = null;
     {
       final int start = str.indexOf("`");
-      int _plus = (start + 1);
-      final int end = str.indexOf("\'", _plus);
-      int _plus_1 = (start + 1);
-      String _substring = str.substring(_plus_1, end);
-      String _string = new String(_substring);
-      _xblockexpression = (_string);
+      final int end = str.indexOf("\'", (start + 1));
+      String _substring = str.substring((start + 1), end);
+      _xblockexpression = new String(_substring);
     }
     return _xblockexpression;
   }

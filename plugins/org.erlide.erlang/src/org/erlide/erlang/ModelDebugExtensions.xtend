@@ -4,9 +4,9 @@ import java.io.IOException
 import java.io.StringWriter
 import java.util.Collections
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.ecore.xmi.XMIResource
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl
 
 class ModelDebugExtensions {
 	

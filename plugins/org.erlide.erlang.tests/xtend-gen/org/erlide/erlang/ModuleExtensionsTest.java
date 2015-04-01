@@ -7,6 +7,7 @@ import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.ErlangInjectorProvider;
@@ -24,14 +25,15 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = ErlangInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(ErlangInjectorProvider.class)
 @SuppressWarnings("all")
 public class ModuleExtensionsTest {
   @Inject
   private ParseHelper<Module> parser;
   
   @Inject
+  @Extension
   private ModelExtensions _modelExtensions;
   
   @Test
@@ -44,7 +46,7 @@ public class ModuleExtensionsTest {
       final String myname = this._modelExtensions.getName(module);
       Matcher<? super String> _is = Matchers.<String>is("x");
       MatcherAssert.<String>assertThat(myname, _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -61,7 +63,7 @@ public class ModuleExtensionsTest {
       final String myname = this._modelExtensions.getName(module);
       Matcher<? super String> _is = Matchers.<String>is("x");
       MatcherAssert.<String>assertThat(myname, _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -77,7 +79,7 @@ public class ModuleExtensionsTest {
       Matcher<String> _nullValue = Matchers.<String>nullValue();
       Matcher<String> _is = Matchers.<String>is(_nullValue);
       MatcherAssert.<String>assertThat(myname, _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -92,7 +94,7 @@ public class ModuleExtensionsTest {
       boolean _isHeader = this._modelExtensions.isHeader(module);
       Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(true));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(_isHeader), _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -107,7 +109,7 @@ public class ModuleExtensionsTest {
       boolean _isHeader = this._modelExtensions.isHeader(module);
       Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(false));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(_isHeader), _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -129,7 +131,7 @@ public class ModuleExtensionsTest {
       int _size = attrs.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(3));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -162,7 +164,7 @@ public class ModuleExtensionsTest {
       String _tag_1 = _head_1.getTag();
       Matcher<? super String> _is_2 = Matchers.<String>is("foo");
       MatcherAssert.<String>assertThat(_tag_1, _is_2);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -200,7 +202,7 @@ public class ModuleExtensionsTest {
       Function _head_2 = IterableExtensions.<Function>head(_tail_2);
       Matcher<Function> _isFunction_2 = IsFunRefMatcher.isFunction("foo", 0);
       MatcherAssert.<Function>assertThat(_head_2, _isFunction_2);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -224,7 +226,7 @@ public class ModuleExtensionsTest {
       MatcherAssert.<Function>assertThat(bar, _is);
       Matcher<Function> _isFunction = IsFunRefMatcher.isFunction("bar", 0);
       MatcherAssert.<Function>assertThat(bar, _isFunction);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -246,7 +248,7 @@ public class ModuleExtensionsTest {
       Matcher<Function> _nullValue = Matchers.<Function>nullValue();
       Matcher<Function> _is = Matchers.<Function>is(_nullValue);
       MatcherAssert.<Function>assertThat(bar1, _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -264,7 +266,7 @@ public class ModuleExtensionsTest {
       String _head = IterableExtensions.<String>head(bar1);
       Matcher<? super String> _is = Matchers.<String>is("\"bar.hrl\"");
       MatcherAssert.<String>assertThat(_head, _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -282,7 +284,7 @@ public class ModuleExtensionsTest {
       String _head = IterableExtensions.<String>head(bar1);
       Matcher<? super String> _is = Matchers.<String>is("\"foo.hrl\"");
       MatcherAssert.<String>assertThat(_head, _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -299,7 +301,7 @@ public class ModuleExtensionsTest {
       final boolean bar1 = this._modelExtensions.exportsAll(module);
       Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(true));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(bar1), _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -314,7 +316,7 @@ public class ModuleExtensionsTest {
       final boolean bar1 = this._modelExtensions.exportsAll(module);
       Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(false));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(bar1), _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -331,7 +333,7 @@ public class ModuleExtensionsTest {
       final boolean bar1 = this._modelExtensions.exportsAll(module);
       Matcher<? super Boolean> _is = Matchers.<Boolean>is(Boolean.valueOf(true));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(bar1), _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -350,7 +352,7 @@ public class ModuleExtensionsTest {
       String _sourceText = this._modelExtensions.getSourceText(_head);
       Matcher<? super String> _is = Matchers.<String>is("x");
       MatcherAssert.<String>assertThat(_sourceText, _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -372,7 +374,7 @@ public class ModuleExtensionsTest {
       String _sourceText = this._modelExtensions.getSourceText(_head);
       Matcher<? super String> _is_1 = Matchers.<String>is("x");
       MatcherAssert.<String>assertThat(_sourceText, _is_1);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -392,25 +394,25 @@ public class ModuleExtensionsTest {
       int _size = bar1.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
-      final Function1<Atom,String> _function = new Function1<Atom,String>() {
-          public String apply(final Atom it) {
-            String _sourceText = ModuleExtensionsTest.this._modelExtensions.getSourceText(it);
-            return _sourceText;
-          }
-        };
+      final Function1<Atom, String> _function = new Function1<Atom, String>() {
+        @Override
+        public String apply(final Atom it) {
+          return ModuleExtensionsTest.this._modelExtensions.getSourceText(it);
+        }
+      };
       Iterable<String> _map = IterableExtensions.<Atom, String>map(bar1, _function);
       Matcher<Iterable<? super String>> _hasItem = Matchers.<String>hasItem("x");
       MatcherAssert.<Iterable<String>>assertThat(_map, _hasItem);
-      final Function1<Atom,String> _function_1 = new Function1<Atom,String>() {
-          public String apply(final Atom it) {
-            String _sourceText = ModuleExtensionsTest.this._modelExtensions.getSourceText(it);
-            return _sourceText;
-          }
-        };
+      final Function1<Atom, String> _function_1 = new Function1<Atom, String>() {
+        @Override
+        public String apply(final Atom it) {
+          return ModuleExtensionsTest.this._modelExtensions.getSourceText(it);
+        }
+      };
       Iterable<String> _map_1 = IterableExtensions.<Atom, String>map(bar1, _function_1);
       Matcher<Iterable<? super String>> _hasItem_1 = Matchers.<String>hasItem("y");
       MatcherAssert.<Iterable<String>>assertThat(_map_1, _hasItem_1);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -430,7 +432,7 @@ public class ModuleExtensionsTest {
       int _size = opts.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(2));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

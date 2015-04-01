@@ -12,7 +12,8 @@ public class ErlangBuilderModule implements Module {
 
     @Override
     public void configure(final Binder binder) {
-        binder.bind(IncrementalProjectBuilder.class).to(ErlideXtextBuilder.class);
+        binder.bind(IncrementalProjectBuilder.class).to(
+                ErlideXtextBuilder.class);
     }
 
 }

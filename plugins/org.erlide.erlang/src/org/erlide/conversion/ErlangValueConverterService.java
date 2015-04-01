@@ -9,7 +9,7 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class ErlangValueConverterService extends
-        AbstractDeclarativeValueConverterService {
+AbstractDeclarativeValueConverterService {
 
     @Inject
     private AtomValueConverter atomValueConverter;

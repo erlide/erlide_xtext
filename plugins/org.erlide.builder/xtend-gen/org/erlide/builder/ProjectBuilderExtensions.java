@@ -15,12 +15,12 @@ public class ProjectBuilderExtensions {
   public static IResource getLinkedContent(final IProject project) {
     try {
       IResource[] _members = project.members();
-      final Function1<IResource,Boolean> _function = new Function1<IResource,Boolean>() {
-          public Boolean apply(final IResource it) {
-            boolean _isLinked = it.isLinked();
-            return Boolean.valueOf(_isLinked);
-          }
-        };
+      final Function1<IResource, Boolean> _function = new Function1<IResource, Boolean>() {
+        @Override
+        public Boolean apply(final IResource it) {
+          return Boolean.valueOf(it.isLinked());
+        }
+      };
       final Iterable<IResource> links = IterableExtensions.<IResource>filter(((Iterable<IResource>)Conversions.doWrapArray(_members)), _function);
       int _size = IterableExtensions.size(links);
       boolean _greaterThan = (_size > 1);
@@ -30,7 +30,7 @@ public class ProjectBuilderExtensions {
         _instance.warn("too many links in project %s...", _name);
       }
       return IterableExtensions.<IResource>head(links);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -41,8 +41,7 @@ public class ProjectBuilderExtensions {
       final IResource link = ProjectBuilderExtensions.getLinkedContent(project);
       String _name = link.getName();
       Path _path = new Path(_name);
-      IPath _append = _path.append(path);
-      _xblockexpression = (_append);
+      _xblockexpression = _path.append(path);
     }
     return _xblockexpression;
   }

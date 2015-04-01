@@ -1,55 +1,42 @@
 package org.erlide.builder;
 
-import org.eclipse.xtend.lib.Data;
-import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
+import org.eclipse.xtend.lib.annotations.Data;
+import org.eclipse.xtext.xbase.lib.Pure;
+import org.eclipse.xtext.xbase.lib.util.ToStringBuilder;
 
 @Data
 @SuppressWarnings("all")
 public class CompilerProblem {
-  private final String _fileName;
+  private final String fileName;
   
-  public String getFileName() {
-    return this._fileName;
-  }
+  private final String message;
   
-  private final String _message;
+  private final int line;
   
-  public String getMessage() {
-    return this._message;
-  }
-  
-  private final int _line;
-  
-  public int getLine() {
-    return this._line;
-  }
-  
-  private final int _severity;
-  
-  public int getSeverity() {
-    return this._severity;
-  }
+  private final int severity;
   
   public CompilerProblem(final String fileName, final String message, final int line, final int severity) {
     super();
-    this._fileName = fileName;
-    this._message = message;
-    this._line = line;
-    this._severity = severity;
+    this.fileName = fileName;
+    this.message = message;
+    this.line = line;
+    this.severity = severity;
   }
   
   @Override
+  @Pure
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((_fileName== null) ? 0 : _fileName.hashCode());
-    result = prime * result + ((_message== null) ? 0 : _message.hashCode());
-    result = prime * result + _line;
-    result = prime * result + _severity;
+    result = prime * result + ((this.fileName== null) ? 0 : this.fileName.hashCode());
+    result = prime * result + ((this.message== null) ? 0 : this.message.hashCode());
+    result = prime * result + this.line;
+    result = prime * result + this.severity;
     return result;
   }
   
   @Override
+  @Pure
   public boolean equals(final Object obj) {
     if (this == obj)
       return true;
@@ -58,26 +45,51 @@ public class CompilerProblem {
     if (getClass() != obj.getClass())
       return false;
     CompilerProblem other = (CompilerProblem) obj;
-    if (_fileName == null) {
-      if (other._fileName != null)
+    if (this.fileName == null) {
+      if (other.fileName != null)
         return false;
-    } else if (!_fileName.equals(other._fileName))
+    } else if (!this.fileName.equals(other.fileName))
       return false;
-    if (_message == null) {
-      if (other._message != null)
+    if (this.message == null) {
+      if (other.message != null)
         return false;
-    } else if (!_message.equals(other._message))
+    } else if (!this.message.equals(other.message))
       return false;
-    if (other._line != _line)
+    if (other.line != this.line)
       return false;
-    if (other._severity != _severity)
+    if (other.severity != this.severity)
       return false;
     return true;
   }
   
   @Override
+  @Pure
   public String toString() {
-    String result = new ToStringHelper().toString(this);
-    return result;
+    ToStringBuilder b = new ToStringBuilder(this);
+    b.add("fileName", this.fileName);
+    b.add("message", this.message);
+    b.add("line", this.line);
+    b.add("severity", this.severity);
+    return b.toString();
+  }
+  
+  @Pure
+  public String getFileName() {
+    return this.fileName;
+  }
+  
+  @Pure
+  public String getMessage() {
+    return this.message;
+  }
+  
+  @Pure
+  public int getLine() {
+    return this.line;
+  }
+  
+  @Pure
+  public int getSeverity() {
+    return this.severity;
   }
 }

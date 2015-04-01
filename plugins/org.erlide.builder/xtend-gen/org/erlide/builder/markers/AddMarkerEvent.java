@@ -1,49 +1,40 @@
 package org.erlide.builder.markers;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.xtend.lib.Data;
-import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
+import org.eclipse.xtend.lib.annotations.Data;
+import org.eclipse.xtext.xbase.lib.Pure;
+import org.eclipse.xtext.xbase.lib.util.ToStringBuilder;
 import org.erlide.builder.CompilerProblem;
 
 @Data
 @SuppressWarnings("all")
 public class AddMarkerEvent {
-  private final IFile _file;
+  private final IFile file;
   
-  public IFile getFile() {
-    return this._file;
-  }
+  private final String markerType;
   
-  private final String _markerType;
-  
-  public String getMarkerType() {
-    return this._markerType;
-  }
-  
-  private final CompilerProblem _problem;
-  
-  public CompilerProblem getProblem() {
-    return this._problem;
-  }
+  private final CompilerProblem problem;
   
   public AddMarkerEvent(final IFile file, final String markerType, final CompilerProblem problem) {
     super();
-    this._file = file;
-    this._markerType = markerType;
-    this._problem = problem;
+    this.file = file;
+    this.markerType = markerType;
+    this.problem = problem;
   }
   
   @Override
+  @Pure
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((_file== null) ? 0 : _file.hashCode());
-    result = prime * result + ((_markerType== null) ? 0 : _markerType.hashCode());
-    result = prime * result + ((_problem== null) ? 0 : _problem.hashCode());
+    result = prime * result + ((this.file== null) ? 0 : this.file.hashCode());
+    result = prime * result + ((this.markerType== null) ? 0 : this.markerType.hashCode());
+    result = prime * result + ((this.problem== null) ? 0 : this.problem.hashCode());
     return result;
   }
   
   @Override
+  @Pure
   public boolean equals(final Object obj) {
     if (this == obj)
       return true;
@@ -52,27 +43,46 @@ public class AddMarkerEvent {
     if (getClass() != obj.getClass())
       return false;
     AddMarkerEvent other = (AddMarkerEvent) obj;
-    if (_file == null) {
-      if (other._file != null)
+    if (this.file == null) {
+      if (other.file != null)
         return false;
-    } else if (!_file.equals(other._file))
+    } else if (!this.file.equals(other.file))
       return false;
-    if (_markerType == null) {
-      if (other._markerType != null)
+    if (this.markerType == null) {
+      if (other.markerType != null)
         return false;
-    } else if (!_markerType.equals(other._markerType))
+    } else if (!this.markerType.equals(other.markerType))
       return false;
-    if (_problem == null) {
-      if (other._problem != null)
+    if (this.problem == null) {
+      if (other.problem != null)
         return false;
-    } else if (!_problem.equals(other._problem))
+    } else if (!this.problem.equals(other.problem))
       return false;
     return true;
   }
   
   @Override
+  @Pure
   public String toString() {
-    String result = new ToStringHelper().toString(this);
-    return result;
+    ToStringBuilder b = new ToStringBuilder(this);
+    b.add("file", this.file);
+    b.add("markerType", this.markerType);
+    b.add("problem", this.problem);
+    return b.toString();
+  }
+  
+  @Pure
+  public IFile getFile() {
+    return this.file;
+  }
+  
+  @Pure
+  public String getMarkerType() {
+    return this.markerType;
+  }
+  
+  @Pure
+  public CompilerProblem getProblem() {
+    return this.problem;
   }
 }

@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package org.erlide.erlang.impl;
 
@@ -9,17 +6,12 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.erlide.erlang.AbstractTypeAttribute;
 import org.erlide.erlang.Attribute;
 import org.erlide.erlang.ErlangPackage;
@@ -29,411 +21,418 @@ import org.erlide.erlang.TopType;
 import org.erlide.erlang.TypeAttribute;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Type Attribute</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Type Attribute</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- *   <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getTag <em>Tag</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getArgs <em>Args</em>}</li>
- *   <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getType <em>Type</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getTag <em>Tag</em>}</li>
+ * <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getArgs <em>Args</em>}</li>
+ * <li>{@link org.erlide.erlang.impl.TypeAttributeImpl#getType <em>Type</em>}</li>
+ * </ul>
  *
  * @generated
  */
-public class TypeAttributeImpl extends AtomRefTargetImpl implements TypeAttribute
-{
-  /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected static final String TAG_EDEFAULT = null;
+public class TypeAttributeImpl extends AtomRefTargetImpl implements
+        TypeAttribute {
+    /**
+     * The default value of the '{@link #getTag() <em>Tag</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getTag()
+     * @generated
+     * @ordered
+     */
+    protected static final String TAG_EDEFAULT = null;
 
-  /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTag()
-   * @generated
-   * @ordered
-   */
-  protected String tag = TAG_EDEFAULT;
+    /**
+     * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getTag()
+     * @generated
+     * @ordered
+     */
+    protected String tag = TAG_EDEFAULT;
 
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
+    /**
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
+    protected static final String NAME_EDEFAULT = null;
 
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+    /**
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
+    protected String name = NAME_EDEFAULT;
 
-  /**
-   * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getArgs()
-   * @generated
-   * @ordered
-   */
-  protected EList<Expression> args;
+    /**
+     * The cached value of the '{@link #getArgs() <em>Args</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getArgs()
+     * @generated
+     * @ordered
+     */
+    protected EList<Expression> args;
 
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected TopType type;
+    /**
+     * The cached value of the '{@link #getType() <em>Type</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getType()
+     * @generated
+     * @ordered
+     */
+    protected TopType type;
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected TypeAttributeImpl()
-  {
-    super();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  protected EClass eStaticClass()
-  {
-    return ErlangPackage.Literals.TYPE_ATTRIBUTE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE_ATTRIBUTE__TAG, oldTag, tag));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE_ATTRIBUTE__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Expression> getArgs()
-  {
-    if (args == null)
-    {
-      args = new EObjectContainmentEList<Expression>(Expression.class, this, ErlangPackage.TYPE_ATTRIBUTE__ARGS);
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected TypeAttributeImpl() {
+        super();
     }
-    return args;
-  }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TopType getType()
-  {
-    return type;
-  }
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return ErlangPackage.Literals.TYPE_ATTRIBUTE;
+    }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetType(TopType newType, NotificationChain msgs)
-  {
-    TopType oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE_ATTRIBUTE__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public String getTag() {
+        return tag;
     }
-    return msgs;
-  }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(TopType newType)
-  {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TYPE_ATTRIBUTE__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ErlangPackage.TYPE_ATTRIBUTE__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setTag(final String newTag) {
+        final String oldTag = tag;
+        tag = newTag;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    ErlangPackage.TYPE_ATTRIBUTE__TAG, oldTag, tag));
+        }
     }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ErlangPackage.TYPE_ATTRIBUTE__TYPE, newType, newType));
-  }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
-        return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
-      case ErlangPackage.TYPE_ATTRIBUTE__TYPE:
-        return basicSetType(null, msgs);
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public String getName() {
+        return name;
     }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case ErlangPackage.TYPE_ATTRIBUTE__TAG:
-        return getTag();
-      case ErlangPackage.TYPE_ATTRIBUTE__NAME:
-        return getName();
-      case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
-        return getArgs();
-      case ErlangPackage.TYPE_ATTRIBUTE__TYPE:
-        return getType();
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setName(final String newName) {
+        final String oldName = name;
+        name = newName;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    ErlangPackage.TYPE_ATTRIBUTE__NAME, oldName, name));
+        }
     }
-    return super.eGet(featureID, resolve, coreType);
-  }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case ErlangPackage.TYPE_ATTRIBUTE__TAG:
-        setTag((String)newValue);
-        return;
-      case ErlangPackage.TYPE_ATTRIBUTE__NAME:
-        setName((String)newValue);
-        return;
-      case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
-        getArgs().clear();
-        getArgs().addAll((Collection<? extends Expression>)newValue);
-        return;
-      case ErlangPackage.TYPE_ATTRIBUTE__TYPE:
-        setType((TopType)newValue);
-        return;
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EList<Expression> getArgs() {
+        if (args == null) {
+            args = new EObjectContainmentEList<Expression>(Expression.class,
+                    this, ErlangPackage.TYPE_ATTRIBUTE__ARGS);
+        }
+        return args;
     }
-    super.eSet(featureID, newValue);
-  }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case ErlangPackage.TYPE_ATTRIBUTE__TAG:
-        setTag(TAG_EDEFAULT);
-        return;
-      case ErlangPackage.TYPE_ATTRIBUTE__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
-        getArgs().clear();
-        return;
-      case ErlangPackage.TYPE_ATTRIBUTE__TYPE:
-        setType((TopType)null);
-        return;
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public TopType getType() {
+        return type;
     }
-    super.eUnset(featureID);
-  }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case ErlangPackage.TYPE_ATTRIBUTE__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
-      case ErlangPackage.TYPE_ATTRIBUTE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
-        return args != null && !args.isEmpty();
-      case ErlangPackage.TYPE_ATTRIBUTE__TYPE:
-        return type != null;
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NotificationChain basicSetType(final TopType newType,
+            NotificationChain msgs) {
+        final TopType oldType = type;
+        type = newType;
+        if (eNotificationRequired()) {
+            final ENotificationImpl notification = new ENotificationImpl(this,
+                    Notification.SET, ErlangPackage.TYPE_ATTRIBUTE__TYPE,
+                    oldType, newType);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
     }
-    return super.eIsSet(featureID);
-  }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Form.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setType(final TopType newType) {
+        if (newType != type) {
+            NotificationChain msgs = null;
+            if (type != null) {
+                msgs = ((InternalEObject) type).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE
+                                - ErlangPackage.TYPE_ATTRIBUTE__TYPE, null,
+                        msgs);
+            }
+            if (newType != null) {
+                msgs = ((InternalEObject) newType).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE
+                                - ErlangPackage.TYPE_ATTRIBUTE__TYPE, null,
+                        msgs);
+            }
+            msgs = basicSetType(newType, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    ErlangPackage.TYPE_ATTRIBUTE__TYPE, newType, newType));
+        }
     }
-    if (baseClass == Attribute.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case ErlangPackage.TYPE_ATTRIBUTE__TAG: return ErlangPackage.ATTRIBUTE__TAG;
-        default: return -1;
-      }
-    }
-    if (baseClass == AbstractTypeAttribute.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Form.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public NotificationChain eInverseRemove(final InternalEObject otherEnd,
+            final int featureID, final NotificationChain msgs) {
+        switch (featureID) {
+        case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
+            return ((InternalEList<?>) getArgs()).basicRemove(otherEnd, msgs);
+        case ErlangPackage.TYPE_ATTRIBUTE__TYPE:
+            return basicSetType(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
     }
-    if (baseClass == Attribute.class)
-    {
-      switch (baseFeatureID)
-      {
-        case ErlangPackage.ATTRIBUTE__TAG: return ErlangPackage.TYPE_ATTRIBUTE__TAG;
-        default: return -1;
-      }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object eGet(final int featureID, final boolean resolve,
+            final boolean coreType) {
+        switch (featureID) {
+        case ErlangPackage.TYPE_ATTRIBUTE__TAG:
+            return getTag();
+        case ErlangPackage.TYPE_ATTRIBUTE__NAME:
+            return getName();
+        case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
+            return getArgs();
+        case ErlangPackage.TYPE_ATTRIBUTE__TYPE:
+            return getType();
+        }
+        return super.eGet(featureID, resolve, coreType);
     }
-    if (baseClass == AbstractTypeAttribute.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(final int featureID, final Object newValue) {
+        switch (featureID) {
+        case ErlangPackage.TYPE_ATTRIBUTE__TAG:
+            setTag((String) newValue);
+            return;
+        case ErlangPackage.TYPE_ATTRIBUTE__NAME:
+            setName((String) newValue);
+            return;
+        case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
+            getArgs().clear();
+            getArgs().addAll((Collection<? extends Expression>) newValue);
+            return;
+        case ErlangPackage.TYPE_ATTRIBUTE__TYPE:
+            setType((TopType) newValue);
+            return;
+        }
+        super.eSet(featureID, newValue);
     }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void eUnset(final int featureID) {
+        switch (featureID) {
+        case ErlangPackage.TYPE_ATTRIBUTE__TAG:
+            setTag(TAG_EDEFAULT);
+            return;
+        case ErlangPackage.TYPE_ATTRIBUTE__NAME:
+            setName(NAME_EDEFAULT);
+            return;
+        case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
+            getArgs().clear();
+            return;
+        case ErlangPackage.TYPE_ATTRIBUTE__TYPE:
+            setType((TopType) null);
+            return;
+        }
+        super.eUnset(featureID);
+    }
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
-    result.append(", name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
-  }
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public boolean eIsSet(final int featureID) {
+        switch (featureID) {
+        case ErlangPackage.TYPE_ATTRIBUTE__TAG:
+            return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT
+                    .equals(tag);
+        case ErlangPackage.TYPE_ATTRIBUTE__NAME:
+            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+                    .equals(name);
+        case ErlangPackage.TYPE_ATTRIBUTE__ARGS:
+            return args != null && !args.isEmpty();
+        case ErlangPackage.TYPE_ATTRIBUTE__TYPE:
+            return type != null;
+        }
+        return super.eIsSet(featureID);
+    }
 
-} //TypeAttributeImpl
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(final int derivedFeatureID,
+            final Class<?> baseClass) {
+        if (baseClass == Form.class) {
+            switch (derivedFeatureID) {
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == Attribute.class) {
+            switch (derivedFeatureID) {
+            case ErlangPackage.TYPE_ATTRIBUTE__TAG:
+                return ErlangPackage.ATTRIBUTE__TAG;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == AbstractTypeAttribute.class) {
+            switch (derivedFeatureID) {
+            default:
+                return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(final int baseFeatureID,
+            final Class<?> baseClass) {
+        if (baseClass == Form.class) {
+            switch (baseFeatureID) {
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == Attribute.class) {
+            switch (baseFeatureID) {
+            case ErlangPackage.ATTRIBUTE__TAG:
+                return ErlangPackage.TYPE_ATTRIBUTE__TAG;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == AbstractTypeAttribute.class) {
+            switch (baseFeatureID) {
+            default:
+                return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public String toString() {
+        if (eIsProxy()) {
+            return super.toString();
+        }
+
+        final StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (tag: ");
+        result.append(tag);
+        result.append(", name: ");
+        result.append(name);
+        result.append(')');
+        return result.toString();
+    }
+
+} // TypeAttributeImpl

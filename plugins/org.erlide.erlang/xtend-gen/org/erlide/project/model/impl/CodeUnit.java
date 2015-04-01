@@ -29,25 +29,29 @@ public class CodeUnit extends ErlangModelElement implements ICodeUnit {
     this.name = name;
   }
   
+  @Override
   public IPath getPath() {
     return null;
   }
   
+  @Override
   public String getName() {
     return this.name;
   }
   
+  @Override
   public IErlangModelElement getParent() {
     return this.folder;
   }
   
+  @Override
   public IResource getResource() {
     boolean _equals = Objects.equal(this.file, null);
     if (_equals) {
       IWorkspace _workspace = ResourcesPlugin.getWorkspace();
       IWorkspaceRoot _root = _workspace.getRoot();
       IPath _path = this.getPath();
-      final List<IFile> possibleFiles = ((List<IFile>)Conversions.doWrapArray(_root.findFilesForLocation(_path)));
+      final List<IFile> possibleFiles = (List<IFile>)Conversions.doWrapArray(_root.findFilesForLocation(_path));
       int _size = possibleFiles.size();
       boolean _equals_1 = (_size == 1);
       if (_equals_1) {

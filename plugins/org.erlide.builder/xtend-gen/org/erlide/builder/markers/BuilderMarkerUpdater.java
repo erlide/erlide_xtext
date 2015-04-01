@@ -24,7 +24,7 @@ public class BuilderMarkerUpdater {
   private ErlLogger log;
   
   @Inject
-  public BuilderMarkerUpdater(@Named(value = "erlangBuilder") final EventBus builderEventBus) {
+  public BuilderMarkerUpdater(@Named("erlangBuilder") final EventBus builderEventBus) {
     this.builderEventBus = builderEventBus;
     builderEventBus.register(this);
   }
@@ -44,11 +44,9 @@ public class BuilderMarkerUpdater {
     } catch (final Throwable _t) {
       if (_t instanceof CoreException) {
         final CoreException e = (CoreException)_t;
-        String _plus = ("Could not add marker for " + file);
-        String _plus_1 = (_plus + ": ");
         String _message_1 = e.getMessage();
-        String _plus_2 = (_plus_1 + _message_1);
-        this.log.warn(_plus_2);
+        String _plus = ((("Could not add marker for " + file) + ": ") + _message_1);
+        this.log.warn(_plus);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }
@@ -61,11 +59,9 @@ public class BuilderMarkerUpdater {
     } catch (final Throwable _t) {
       if (_t instanceof CoreException) {
         final CoreException e = (CoreException)_t;
-        String _plus = ("Could not delete markers for " + resource);
-        String _plus_1 = (_plus + ": ");
         String _message = e.getMessage();
-        String _plus_2 = (_plus_1 + _message);
-        this.log.warn(_plus_2);
+        String _plus = ((("Could not delete markers for " + resource) + ": ") + _message);
+        this.log.warn(_plus);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }

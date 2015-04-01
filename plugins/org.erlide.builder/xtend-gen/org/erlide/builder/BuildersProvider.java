@@ -18,10 +18,10 @@ import org.erlide.builder.IErlangBuilder;
 @Singleton
 @SuppressWarnings("all")
 public class BuildersProvider {
-  private Map<String,IErlangBuilder> builders;
+  private Map<String, IErlangBuilder> builders;
   
   public BuildersProvider() {
-    HashMap<String,IErlangBuilder> _newHashMap = CollectionLiterals.<String, IErlangBuilder>newHashMap();
+    HashMap<String, IErlangBuilder> _newHashMap = CollectionLiterals.<String, IErlangBuilder>newHashMap();
     this.builders = _newHashMap;
   }
   
@@ -33,8 +33,7 @@ public class BuildersProvider {
         this.loadBuilderExtensions();
       }
       Collection<IErlangBuilder> _values = this.builders.values();
-      Collection<IErlangBuilder> _unmodifiableCollection = Collections.<IErlangBuilder>unmodifiableCollection(_values);
-      _xblockexpression = (_unmodifiableCollection);
+      _xblockexpression = Collections.<IErlangBuilder>unmodifiableCollection(_values);
     }
     return _xblockexpression;
   }
@@ -46,8 +45,7 @@ public class BuildersProvider {
       if (_isEmpty) {
         this.loadBuilderExtensions();
       }
-      IErlangBuilder _get = this.builders.get(id);
-      _xblockexpression = (_get);
+      _xblockexpression = this.builders.get(id);
     }
     return _xblockexpression;
   }

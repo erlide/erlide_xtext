@@ -3,15 +3,16 @@ package org.erlide.builder
 import java.io.File
 import java.io.IOException
 import java.util.List
-import org.erlide.common.process.StreamListener
-import org.erlide.common.util.ErlLogger
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.OperationCanceledException
+import org.eclipse.xtend.lib.annotations.Data
+import org.erlide.common.process.StreamListener
+import org.erlide.common.util.ErlLogger
 
 class BuilderExecutor {
 
 	List<BuilderHandler<?>> handlers
-	
+
 	new() {
 		handlers = newArrayList()
 	}
@@ -20,7 +21,7 @@ class BuilderExecutor {
             String workingDirectory, IProgressMonitor monitor) {
 
         if (cmdLine==null || workingDirectory==null) return
-            	
+
         val ProcessBuilder builder = new ProcessBuilder(cmdLine)
         builder.directory(new File(workingDirectory))
         //builder.redirectErrorStream(true)
@@ -36,30 +37,30 @@ class BuilderExecutor {
            		}
             ]
             while(listener.alive) {
-            	try { 
-            		listener.join 
-            	} 
+            	try {
+            		listener.join
+            	}
             	catch (InterruptedException e) {
             	}
            	}
-            return 
+            return
         } catch (IOException e) {
         	ErlLogger::instance.error(e)
         }
     }
 
-	def private <T> registerHandler(ILineParser<T> lineParser, 
+	def private <T> registerHandler(ILineParser<T> lineParser,
             (T)=>void callback) {
         val handler = new BuilderHandler<T>(lineParser, callback)
-    	handlers.add(handler)        	
+    	handlers.add(handler)
     	return handler
     }
- 
+
 	def private <T> unregisterHandler(BuilderHandler<T> handler) {
-    	handlers.remove(handler)        	
+    	handlers.remove(handler)
     }
- 
- 	def <T> withHandler(ILineParser<T> lineParser, 
+
+ 	def <T> withHandler(ILineParser<T> lineParser,
             (T)=>void callback, (BuilderExecutor)=>void handlerCallback) {
  		val handler = registerHandler(lineParser, callback)
  		try {
@@ -68,14 +69,14 @@ class BuilderExecutor {
  			unregisterHandler(handler)
  		}
  	}
- 
+
  }
 
 @Data
 class BuilderHandler<T> {
-	ILineParser<T> lineParser 
+	ILineParser<T> lineParser
     (T)=>void callback
-    
+
     def eval(String line) {
  		val T item = lineParser.parseLine(line)
     	if(item!=null) {

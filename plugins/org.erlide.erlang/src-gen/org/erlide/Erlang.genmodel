@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.erlide.erlang/src-gen"
-    editDirectory="/org.erlide.erlang.edit/src" editorDirectory="/org.erlide.erlang.editor/src"
-    modelPluginID="org.erlide.erlang" forceOverwrite="true" modelName="Erlang" updateClasspath="false"
-    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" complianceLevel="5.0"
-    copyrightFields="false" editPluginID="org.erlide.erlang.edit" editorPluginID="org.erlide.erlang.editor"
-    runtimeVersion="2.7">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.erlide.erlang/src-gen" editDirectory="/org.erlide.erlang.edit/src"
+    editorDirectory="/org.erlide.erlang.editor/src" modelPluginID="org.erlide.erlang"
+    forceOverwrite="true" modelName="Erlang" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="6.0" copyrightFields="false" editPluginID="org.erlide.erlang.edit"
+    editorPluginID="org.erlide.erlang.editor" runtimeVersion="2.10">
   <genPackages prefix="Erlang" basePackage="org.erlide" disposableProviderFactory="true"
       ecorePackage="Erlang.ecore#/">
     <genClasses ecoreClass="Erlang.ecore#//Module">

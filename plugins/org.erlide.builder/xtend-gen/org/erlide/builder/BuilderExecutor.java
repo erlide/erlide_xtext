@@ -18,10 +18,10 @@ import org.erlide.common.util.ErlLogger;
 
 @SuppressWarnings("all")
 public class BuilderExecutor {
-  private List<BuilderHandler<? extends Object>> handlers;
+  private List<BuilderHandler<?>> handlers;
   
   public BuilderExecutor() {
-    ArrayList<BuilderHandler<? extends Object>> _newArrayList = CollectionLiterals.<BuilderHandler<? extends Object>>newArrayList();
+    ArrayList<BuilderHandler<?>> _newArrayList = CollectionLiterals.<BuilderHandler<?>>newArrayList();
     this.handlers = _newArrayList;
   }
   
@@ -32,36 +32,32 @@ public class BuilderExecutor {
       _or = true;
     } else {
       boolean _equals_1 = Objects.equal(workingDirectory, null);
-      _or = (_equals || _equals_1);
+      _or = _equals_1;
     }
     if (_or) {
       return;
     }
-    ProcessBuilder _processBuilder = new ProcessBuilder(cmdLine);
-    final ProcessBuilder builder = _processBuilder;
+    final ProcessBuilder builder = new ProcessBuilder(cmdLine);
     File _file = new File(workingDirectory);
     builder.directory(_file);
     try {
       final Process process = builder.start();
       InputStream _inputStream = process.getInputStream();
       final Procedure1<String> _function = new Procedure1<String>() {
-          public void apply(final String it) {
-            boolean _isCanceled = monitor.isCanceled();
-            if (_isCanceled) {
-              process.destroy();
-              OperationCanceledException _operationCanceledException = new OperationCanceledException();
-              throw _operationCanceledException;
-            }
-            for (final BuilderHandler<? extends Object> handler : BuilderExecutor.this.handlers) {
-              handler.eval(it);
-            }
+        @Override
+        public void apply(final String it) {
+          boolean _isCanceled = monitor.isCanceled();
+          if (_isCanceled) {
+            process.destroy();
+            throw new OperationCanceledException();
           }
-        };
-      StreamListener _streamListener = new StreamListener(_inputStream, _function);
-      final StreamListener listener = _streamListener;
-      boolean _isAlive = listener.isAlive();
-      boolean _while = _isAlive;
-      while (_while) {
+          for (final BuilderHandler<?> handler : BuilderExecutor.this.handlers) {
+            handler.eval(it);
+          }
+        }
+      };
+      final StreamListener listener = new StreamListener(_inputStream, _function);
+      while (listener.isAlive()) {
         try {
           listener.join();
         } catch (final Throwable _t) {
@@ -71,8 +67,6 @@ public class BuilderExecutor {
             throw Exceptions.sneakyThrow(_t);
           }
         }
-        boolean _isAlive_1 = listener.isAlive();
-        _while = _isAlive_1;
       }
       return;
     } catch (final Throwable _t) {
@@ -87,15 +81,13 @@ public class BuilderExecutor {
   }
   
   private <T extends Object> BuilderHandler<T> registerHandler(final ILineParser<T> lineParser, final Procedure1<? super T> callback) {
-    BuilderHandler<T> _builderHandler = new BuilderHandler<T>(lineParser, callback);
-    final BuilderHandler<T> handler = _builderHandler;
+    final BuilderHandler<T> handler = new BuilderHandler<T>(lineParser, callback);
     this.handlers.add(handler);
     return handler;
   }
   
   private <T extends Object> boolean unregisterHandler(final BuilderHandler<T> handler) {
-    boolean _remove = this.handlers.remove(handler);
-    return _remove;
+    return this.handlers.remove(handler);
   }
   
   public <T extends Object> void withHandler(final ILineParser<T> lineParser, final Procedure1<? super T> callback, final Procedure1<? super BuilderExecutor> handlerCallback) {

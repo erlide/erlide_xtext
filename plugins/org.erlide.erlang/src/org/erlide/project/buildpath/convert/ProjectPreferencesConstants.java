@@ -13,7 +13,7 @@ package org.erlide.project.buildpath.convert;
 
 /**
  * Constants used in project and plugin preferences
- * 
+ *
  * @author Eric Merritt [cyberlync at yahoo dot com]
  */
 public final class ProjectPreferencesConstants {

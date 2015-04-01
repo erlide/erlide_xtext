@@ -13,7 +13,7 @@ import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelElement
 import org.erlide.project.model.IErlangProject
 
-import static extension org.eclipse.xtext.xbase.lib.IntegerExtensions.*
+import static org.eclipse.xtext.xbase.lib.IntegerExtensions.*
 
 public class ErlangProject extends ErlangModelElement implements IErlangProject, IResourceChangeListener {
 

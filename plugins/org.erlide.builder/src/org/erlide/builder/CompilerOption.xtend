@@ -13,8 +13,6 @@ import java.util.List
 import org.eclipse.core.runtime.Assert
 import org.erlide.common.util.TermParser
 
-import org.eclipse.xtext.xbase.lib.Pair
-
 abstract class CompilerOption {
 
 	public static BooleanOption COMPRESSED = new BooleanOption(

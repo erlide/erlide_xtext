@@ -11,13 +11,13 @@ import org.eclipse.core.resources.IResource
 import org.eclipse.core.resources.IncrementalProjectBuilder
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.OperationCanceledException
 import org.eclipse.core.runtime.SubMonitor
-import org.erlide.common.NatureConstants
-import org.erlide.common.util.ErlLogger
 import org.erlide.builder.markers.BuilderMarkerUpdater
 import org.erlide.builder.markers.RemoveMarkersEvent
-import org.eclipse.core.runtime.NullProgressMonitor
+import org.erlide.common.NatureConstants
+import org.erlide.common.util.ErlLogger
 
 class ErlangBuilder extends IncrementalProjectBuilder {
 

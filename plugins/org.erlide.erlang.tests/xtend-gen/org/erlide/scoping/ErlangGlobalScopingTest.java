@@ -11,6 +11,7 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.ErlangInjectorProvider;
 import org.erlide.erlang.ModelExtensions;
@@ -22,8 +23,8 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = ErlangInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(ErlangInjectorProvider.class)
 @SuppressWarnings("all")
 public class ErlangGlobalScopingTest {
   @Inject
@@ -33,9 +34,11 @@ public class ErlangGlobalScopingTest {
   private IQualifiedNameConverter cvtr;
   
   @Inject
+  @Extension
   private ModelExtensions _modelExtensions;
   
   @Inject
+  @Extension
   private ScopeExtensions _scopeExtensions;
   
   @Test
@@ -65,7 +68,7 @@ public class ErlangGlobalScopingTest {
       int _size = eFuns.size();
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(4));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -85,7 +88,7 @@ public class ErlangGlobalScopingTest {
       int _size = IterableExtensions.size(eFuns);
       Matcher<? super Integer> _is = Matchers.<Integer>is(Integer.valueOf(0));
       MatcherAssert.<Integer>assertThat(Integer.valueOf(_size), _is);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -112,7 +115,7 @@ public class ErlangGlobalScopingTest {
       String _string = this.cvtr.toString(_qualifiedName);
       Matcher<? super String> _is_1 = Matchers.<String>is("x:f/0");
       MatcherAssert.<String>assertThat(_string, _is_1);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -147,7 +150,7 @@ public class ErlangGlobalScopingTest {
       String _string_1 = this.cvtr.toString(_qualifiedName_1);
       Matcher<? super String> _is_2 = Matchers.<String>is("x:f/0");
       MatcherAssert.<String>assertThat(_string_1, _is_2);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -180,7 +183,7 @@ public class ErlangGlobalScopingTest {
       String _string_1 = this.cvtr.toString(_qualifiedName_1);
       Matcher<? super String> _is_2 = Matchers.<String>is("x:f/0");
       MatcherAssert.<String>assertThat(_string_1, _is_2);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -219,7 +222,7 @@ public class ErlangGlobalScopingTest {
       String _string_1 = this.cvtr.toString(_qualifiedName_1);
       Matcher<? super String> _is_2 = Matchers.<String>is("x:f/1");
       MatcherAssert.<String>assertThat(_string_1, _is_2);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -260,7 +263,7 @@ public class ErlangGlobalScopingTest {
       String _string_1 = this.cvtr.toString(_qualifiedName_1);
       Matcher<? super String> _is_2 = Matchers.<String>is("x:g/1");
       MatcherAssert.<String>assertThat(_string_1, _is_2);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -328,7 +331,7 @@ public class ErlangGlobalScopingTest {
       String _string_1 = this.cvtr.toString(_qualifiedName_1);
       Matcher<? super String> _is_2 = Matchers.<String>is("x:gg/1");
       MatcherAssert.<String>assertThat(_string_1, _is_2);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -351,7 +354,7 @@ public class ErlangGlobalScopingTest {
       String _string = this.cvtr.toString(_qualifiedName);
       Matcher<? super String> _is_1 = Matchers.<String>is("x:XX");
       MatcherAssert.<String>assertThat(_string, _is_1);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -372,7 +375,7 @@ public class ErlangGlobalScopingTest {
       String _string = this.cvtr.toString(_qualifiedName);
       Matcher<? super String> _is_1 = Matchers.<String>is("__synthetic0_erl:XX");
       MatcherAssert.<String>assertThat(_string, _is_1);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -395,7 +398,7 @@ public class ErlangGlobalScopingTest {
       String _string = this.cvtr.toString(_qualifiedName);
       Matcher<? super String> _is_1 = Matchers.<String>is("x:rec");
       MatcherAssert.<String>assertThat(_string, _is_1);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -416,7 +419,7 @@ public class ErlangGlobalScopingTest {
       String _string = this.cvtr.toString(_qualifiedName);
       Matcher<? super String> _is_1 = Matchers.<String>is("__synthetic0_erl:rec");
       MatcherAssert.<String>assertThat(_string, _is_1);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

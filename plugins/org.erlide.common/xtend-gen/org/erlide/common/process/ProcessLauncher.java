@@ -13,17 +13,17 @@ import org.erlide.common.process.StreamListener;
 @SuppressWarnings("all")
 public class ProcessLauncher {
   public static Process launchProcess(final IFile file, final List<String> cmdLine, final File workingDirectory, final OutputParser parser) {
-    ProcessBuilder _processBuilder = new ProcessBuilder(cmdLine);
-    final ProcessBuilder builder = _processBuilder;
+    final ProcessBuilder builder = new ProcessBuilder(cmdLine);
     builder.directory(workingDirectory);
     try {
       final Process process = builder.start();
       InputStream _inputStream = process.getInputStream();
       final Procedure1<String> _function = new Procedure1<String>() {
-          public void apply(final String it) {
-            parser.parseLine(it);
-          }
-        };
+        @Override
+        public void apply(final String it) {
+          parser.parseLine(it);
+        }
+      };
       new StreamListener(_inputStream, _function);
       return process;
     } catch (final Throwable _t) {

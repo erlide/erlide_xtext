@@ -9,28 +9,25 @@ import org.erlide.project.buildpath.convert.AbstractContentProvider;
 
 @SuppressWarnings("all")
 public class PeTestContentProvider extends AbstractContentProvider {
+  @Override
   public Collection<String> get(final IPath path) {
     ArrayList<String> _switchResult = null;
     String _portableString = path.toPortableString();
-    final String _switchValue = _portableString;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_switchValue,"demo.erlidex")) {
+      if (Objects.equal(_portableString, "demo.erlidex")) {
         _matched=true;
-        ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("AAA", "inc1.erlidex", "BBB", "bbb");
-        _switchResult = _newArrayList;
+        _switchResult = CollectionLiterals.<String>newArrayList("AAA", "inc1.erlidex", "BBB", "bbb");
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"inc1.erlidex")) {
+      if (Objects.equal(_portableString, "inc1.erlidex")) {
         _matched=true;
-        ArrayList<String> _newArrayList_1 = CollectionLiterals.<String>newArrayList("aaa", "bbb");
-        _switchResult = _newArrayList_1;
+        _switchResult = CollectionLiterals.<String>newArrayList("aaa", "bbb");
       }
     }
     if (!_matched) {
-      ArrayList<String> _newArrayList_2 = CollectionLiterals.<String>newArrayList();
-      _switchResult = _newArrayList_2;
+      _switchResult = CollectionLiterals.<String>newArrayList();
     }
     return _switchResult;
   }

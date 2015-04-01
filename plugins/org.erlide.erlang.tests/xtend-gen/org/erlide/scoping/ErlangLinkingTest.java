@@ -9,37 +9,39 @@ import org.eclipse.xtext.junit4.AbstractXtextTests;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.erlide.ErlangInjectorProvider;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.AtomRefTarget;
-import org.erlide.erlang.DefineAttribute;
 import org.erlide.erlang.ErlangTestExtensions;
-import org.erlide.erlang.Macro;
 import org.erlide.erlang.ModelExtensions;
 import org.erlide.erlang.Module;
 import org.erlide.erlang.util.ErlangTestingHelper;
 import org.erlide.scoping.ErlangLinkingHelper;
 import org.hamcrest.Matcher;
-import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = ErlangInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(ErlangInjectorProvider.class)
 @SuppressWarnings("all")
 public class ErlangLinkingTest extends AbstractXtextTests {
   @Inject
   private ErlangTestingHelper parser;
   
   @Inject
+  @Extension
   private ModelExtensions _modelExtensions;
   
   @Inject
+  @Extension
   private ErlangLinkingHelper _erlangLinkingHelper;
   
   @Inject
+  @Extension
   private ErlangTestExtensions _erlangTestExtensions;
   
   @Inject
@@ -53,89 +55,33 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("[\u00A7ok, 0].");
+    _builder.append("[�ok, 0].");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<AtomRefTarget>assertThat(_atomReference, _is);
   }
   
   @Test
   public void resolve_localCall() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("\u00A7g(3),");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    _builder.append("\u00A7g(X) -> X.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
   public void resolve_localCall_spec() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("-spec \u00A7f() -> \'ok\'.");
-    _builder.newLine();
-    _builder.append("\u00A7f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("g(3),");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
   public void resolve_remoteCall() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("-export([g/1]).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("m:\u00A7g(3),");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    _builder.append("\u00A7g(X) -> ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
@@ -147,26 +93,26 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("w:\u00A7g(3),");
+    _builder.append("w:�g(3),");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString(), "m.erl", rset);
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString(), "m.erl", rset);
     StringConcatenation _builder_1 = new StringConcatenation();
     _builder_1.append("-module(w).");
     _builder_1.newLine();
     _builder_1.append("-export([g/1]).");
     _builder_1.newLine();
-    _builder_1.append("\u00A7g(X) -> ok.");
+    _builder_1.append("�g(X) -> ok.");
     _builder_1.newLine();
-    final Pair<Module,List<Integer>> module2 = this.parser.parse(_builder_1.toString(), "w.erl", rset);
+    final Pair<Module, List<Integer>> module2 = this.parser.parse(_builder_1.toString(), "w.erl", rset);
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module2);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<EObject>assertThat(_atomReference, _is);
   }
   
   @Test
@@ -177,46 +123,26 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("m:\u00A7g(3),");
+    _builder.append("m:�g(3),");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
     _builder.append("g(X) -> ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<AtomRefTarget>assertThat(_atomReference, _is);
   }
   
   @Test
   public void resolve_remoteCall_moduleMacro() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("-export([g/1]).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("?MODULE:\u00A7g(3),");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    _builder.append("\u00A7g(X) -> X.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
@@ -227,18 +153,18 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("W:\u00A7g(3),");
+    _builder.append("W:�g(3),");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<AtomRefTarget>assertThat(_atomReference, _is);
   }
   
   @Test
@@ -249,66 +175,32 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("?MODULE:\u00A7g(3),");
+    _builder.append("?MODULE:�g(3),");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    _builder.append("\u00A7g(X) -> X.");
+    _builder.append("�g(X) -> X.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<AtomRefTarget>assertThat(_atomReference, _is);
   }
   
   @Test
   public void resolve_moduleCall() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("\u00A7w:g(3),");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
-    Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
   public void resolve_moduleCall_1() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("\u00A7w:G(3),");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
-    Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
@@ -319,68 +211,30 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("fun \u00A7w:g/3,");
+    _builder.append("fun �w:g/3,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<AtomRefTarget>assertThat(_atomReference, _is);
   }
   
   @Test
   public void resolve_functionRef_local() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("fun \u00A7g/2,");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    _builder.append("\u00A7g(X,Y) -> ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
   public void resolve_functionRef_remote() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("-export([g/2]).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("fun m:\u00A7g/2,");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    _builder.append("\u00A7g(X,Y) -> ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
@@ -391,20 +245,20 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("fun m:\u00A7g/2,");
+    _builder.append("fun m:�g/2,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    _builder.append("\u00A7g(X,Y) -> ok.");
+    _builder.append("�g(X,Y) -> ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<AtomRefTarget>assertThat(_atomReference, _is);
   }
   
   @Test
@@ -416,26 +270,26 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("fun w:\u00A7g/2,");
+    _builder.append("fun w:�g/2,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString(), "m.erl", rset);
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString(), "m.erl", rset);
     StringConcatenation _builder_1 = new StringConcatenation();
     _builder_1.append("-module(w).");
     _builder_1.newLine();
     _builder_1.append("-export([g/2]).");
     _builder_1.newLine();
-    _builder_1.append("\u00A7g(X,Y) -> ok.");
+    _builder_1.append("�g(X,Y) -> ok.");
     _builder_1.newLine();
-    final Pair<Module,List<Integer>> module2 = this.parser.parse(_builder_1.toString(), "w.erl", rset);
+    final Pair<Module, List<Integer>> module2 = this.parser.parse(_builder_1.toString(), "w.erl", rset);
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module2);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<EObject>assertThat(_atomReference, _is);
   }
   
   @Test
@@ -446,50 +300,30 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("fun w:\u00A7g/2,");
+    _builder.append("fun w:�g/2,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     StringConcatenation _builder_1 = new StringConcatenation();
     _builder_1.append("-module(m).");
     _builder_1.newLine();
-    _builder_1.append("\u00A7g(X,Y) -> ok.");
+    _builder_1.append("�g(X,Y) -> ok.");
     _builder_1.newLine();
-    final Pair<Module,List<Integer>> module2 = this.parser.parse(_builder_1.toString());
+    final Pair<Module, List<Integer>> module2 = this.parser.parse(_builder_1.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<AtomRefTarget>assertThat(_atomReference, _is);
   }
   
   @Test
   public void resolve_functionRef_moduleMacro() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("-export([g/2]).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("fun ?MODULE:\u00A7g/2,");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    _builder.append("\u00A7g(X,Y) -> ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
@@ -500,112 +334,45 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("fun W:\u00A7g/2,");
+    _builder.append("fun W:�g/2,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<AtomRefTarget>assertThat(_atomReference, _is);
   }
   
   @Test
   public void resolve_record() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("\u00A7-record(myrec, {}).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("#\u00A7myrec{},");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
   public void resolve_record_bad() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("#\u00A7myrec{},");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 0);
-    final Atom atom = ((Atom) _objectAtMarker);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
-    Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
   public void resolve_record_1() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("\u00A7-record(myrec, {}).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("#\u00A7myrec.az,");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
   public void resolve_recordField() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("-record(myrec, {\u00A7ff}).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("#myrec.\u00A7ff,");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
@@ -616,18 +383,18 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("#Myrec.\u00A7ff,");
+    _builder.append("#Myrec.�ff,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<AtomRefTarget>assertThat(_atomReference, _is);
   }
   
   @Test
@@ -640,42 +407,25 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("#myrec.\u00A7ff,");
+    _builder.append("#myrec.�ff,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<AtomRefTarget>assertThat(_atomReference, _is);
   }
   
   @Test
   public void resolve_recordField_1() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("-record(myrec, {\u00A7ff}).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("#myrec{\u00A7ff=2},");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    final Atom atom = ((Atom) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
-    AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
@@ -688,105 +438,45 @@ public class ErlangLinkingTest extends AbstractXtextTests {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("#Myrec{\u00A7ff=2},");
+    _builder.append("#Myrec{�ff=2},");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     AtomRefTarget _atomReference = this._erlangLinkingHelper.getAtomReference(atom);
     Matcher<AtomRefTarget> _nullValue = Matchers.<AtomRefTarget>nullValue();
     Matcher<AtomRefTarget> _is = Matchers.<AtomRefTarget>is(_nullValue);
-    MatcherAssert.<AtomRefTarget>assertThat(_atomReference, _is);
+    Assert.<AtomRefTarget>assertThat(_atomReference, _is);
   }
   
   @Test
   public void resolve_macro() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("\u00A7-define(Z, zz).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("?\u00A7Z,");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    final Macro macro = ((Macro) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
-    DefineAttribute _macroReference = this._erlangLinkingHelper.getMacroReference(macro);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<DefineAttribute>assertThat(_macroReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
   public void resolve_macro_atom() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("\u00A7-define(z, zz).");
-    _builder.newLine();
-    _builder.append("f() ->");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("?\u00A7z,");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ok.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    final Macro macro = ((Macro) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
-    DefineAttribute _macroReference = this._erlangLinkingHelper.getMacroReference(macro);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<DefineAttribute>assertThat(_macroReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
   public void resolve_macro_1() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("\u00A7-define(Z, zz).");
-    _builder.newLine();
-    _builder.append("-ifdef(\u00A7Z).");
-    _builder.newLine();
-    _builder.append("-endif.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    final Macro macro = ((Macro) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
-    DefineAttribute _macroReference = this._erlangLinkingHelper.getMacroReference(macro);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<DefineAttribute>assertThat(_macroReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
   
   @Test
   public void resolve_macro_1_atom() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("-module(m).");
-    _builder.newLine();
-    _builder.append("\u00A7-define(z, zz).");
-    _builder.newLine();
-    _builder.append("-ifdef(\u00A7z).");
-    _builder.newLine();
-    _builder.append("-endif.");
-    _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
-    EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module, 1);
-    final Macro macro = ((Macro) _objectAtMarker);
-    final EObject tgt = this._erlangTestExtensions.getObjectAtMarker(module, 0);
-    DefineAttribute _macroReference = this._erlangLinkingHelper.getMacroReference(macro);
-    Matcher<? super EObject> _is = Matchers.<EObject>is(tgt);
-    MatcherAssert.<DefineAttribute>assertThat(_macroReference, _is);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>"
+      + "\nType mismatch: cannot convert from Pair<Module, List<Integer>> to Pair<Module, List<Integer>>");
   }
 }

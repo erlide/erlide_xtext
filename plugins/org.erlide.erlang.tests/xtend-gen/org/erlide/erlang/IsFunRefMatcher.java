@@ -2,7 +2,7 @@ package org.erlide.erlang;
 
 import com.google.common.base.Objects;
 import java.util.Arrays;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.FunRef;
 import org.erlide.erlang.Function;
@@ -18,34 +18,29 @@ public class IsFunRefMatcher extends BaseMatcher {
   
   private int arity;
   
-  private ModelExtensions _modelExtensions = new Function0<ModelExtensions>() {
-    public ModelExtensions apply() {
-      ModelExtensions _modelExtensions = new ModelExtensions();
-      return _modelExtensions;
-    }
-  }.apply();
+  @Extension
+  private ModelExtensions _modelExtensions = new ModelExtensions();
   
   public IsFunRefMatcher(final String name, final int arity) {
     this.name = name;
     this.arity = arity;
   }
   
+  @Override
   public void describeTo(final Description description) {
-    String _plus = (this.name + "/");
-    String _plus_1 = (_plus + Integer.valueOf(this.arity));
-    description.appendText(_plus_1);
+    description.appendText(((this.name + "/") + Integer.valueOf(this.arity)));
   }
   
   @Factory
   public static Matcher<Function> isFunction(final String name, final int arity) {
     IsFunRefMatcher _isFunRefMatcher = new IsFunRefMatcher(name, arity);
-    return _isFunRefMatcher;
+    return ((Matcher<Function>) _isFunRefMatcher);
   }
   
   @Factory
   public static Matcher<FunRef> isFunRef(final String name, final int arity) {
     IsFunRefMatcher _isFunRefMatcher = new IsFunRefMatcher(name, arity);
-    return _isFunRefMatcher;
+    return ((Matcher<FunRef>) _isFunRefMatcher);
   }
   
   protected boolean _matches(final Function item) {
@@ -57,7 +52,7 @@ public class IsFunRefMatcher extends BaseMatcher {
     } else {
       int _arity = this._modelExtensions.getArity(item);
       boolean _equals_1 = (_arity == this.arity);
-      _and = (_equals && _equals_1);
+      _and = _equals_1;
     }
     return _and;
   }
@@ -72,7 +67,7 @@ public class IsFunRefMatcher extends BaseMatcher {
       Expression _arity = item.getArity();
       String _string = Integer.toString(this.arity);
       boolean _equals_1 = Objects.equal(_arity, _string);
-      _and = (_equals && _equals_1);
+      _and = _equals_1;
     }
     return _and;
   }

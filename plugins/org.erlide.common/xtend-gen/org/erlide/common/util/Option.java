@@ -12,8 +12,7 @@ public abstract class Option<T extends Object> implements Iterable<T> {
     if (_isEmpty) {
       _xifexpression = _default;
     } else {
-      T _get = this.get();
-      _xifexpression = _get;
+      _xifexpression = this.get();
     }
     return _xifexpression;
   }

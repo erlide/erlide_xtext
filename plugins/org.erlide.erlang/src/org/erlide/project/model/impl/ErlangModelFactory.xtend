@@ -9,7 +9,6 @@ import org.erlide.project.model.ICodeUnit
 import org.erlide.project.model.IErlangModel
 import org.erlide.project.model.IErlangModelFactory
 import org.erlide.project.model.IErlangProject
-import org.erlide.common.NatureConstants
 
 public class ErlangModelFactory implements IErlangModelFactory {
 

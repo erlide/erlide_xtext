@@ -10,7 +10,7 @@ import org.eclipse.xtext.ui.resource.DefaultResourceUIServiceProvider;
 import com.google.inject.Inject;
 
 public class ErlangResourceUiServiceProvider extends
-        DefaultResourceUIServiceProvider {
+DefaultResourceUIServiceProvider {
 
     @Inject
     public ErlangResourceUiServiceProvider(
@@ -26,7 +26,7 @@ public class ErlangResourceUiServiceProvider extends
     @Override
     public boolean canHandle(final URI uri, final IStorage storage) {
         final boolean canHandle = super.canHandle(uri, storage);
-        if (canHandle && (storage instanceof IResource)) {
+        if (canHandle && storage instanceof IResource) {
             final IResource resource = (IResource) storage;
             final IProject project = resource.getProject();
             if (isInTestDir(resource)) {

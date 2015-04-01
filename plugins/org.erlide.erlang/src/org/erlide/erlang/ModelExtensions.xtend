@@ -9,11 +9,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.xtext.resource.IResourceDescriptions
+import org.eclipse.xtext.util.OnChangeEvictingCache
 
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
-
-import static extension org.erlide.erlang.ModelExtensions.*
-import org.eclipse.xtext.util.OnChangeEvictingCache
 
 class ModelExtensions {
     
@@ -24,7 +22,7 @@ class ModelExtensions {
 
 	def Module findModule(IResourceDescriptions index, String name, ResourceSet rset) {
 		val qname = QualifiedName::create(name)
-		val descr = index.getExportedObjects(ErlangPackage$Literals::MODULE, qname, false)
+		val descr = index.getExportedObjects(ErlangPackage.Literals::MODULE, qname, false)
 		if(descr.empty)
 			return null
 		rset.getEObject(descr.head.EObjectURI, false) as Module

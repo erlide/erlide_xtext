@@ -14,8 +14,8 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = ErlangInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(ErlangInjectorProvider.class)
 @SuppressWarnings("all")
 public class ErlangTestingHelperTest {
   @Inject
@@ -24,7 +24,7 @@ public class ErlangTestingHelperTest {
   @Test
   public void noMarkers() {
     final String input = "1234567890";
-    final Pair<String,List<Integer>> module = this.parser.extractMarkers(input);
+    final Pair<String, List<Integer>> module = this.parser.extractMarkers(input);
     String _key = module.getKey();
     Matcher<? super String> _is = Matchers.<String>is(input);
     MatcherAssert.<String>assertThat(_key, _is);
@@ -36,7 +36,7 @@ public class ErlangTestingHelperTest {
   
   @Test
   public void oneMarker() {
-    final Pair<String,List<Integer>> module = this.parser.extractMarkers("12345\u00A767890");
+    final Pair<String, List<Integer>> module = this.parser.extractMarkers("12345�67890");
     String _key = module.getKey();
     Matcher<? super String> _is = Matchers.<String>is("1234567890");
     MatcherAssert.<String>assertThat(_key, _is);
@@ -52,7 +52,7 @@ public class ErlangTestingHelperTest {
   
   @Test
   public void severalMarkers() {
-    final Pair<String,List<Integer>> module = this.parser.extractMarkers("12345\u00A7678\u00A790");
+    final Pair<String, List<Integer>> module = this.parser.extractMarkers("12345�678�90");
     String _key = module.getKey();
     Matcher<? super String> _is = Matchers.<String>is("1234567890");
     MatcherAssert.<String>assertThat(_key, _is);
@@ -73,7 +73,7 @@ public class ErlangTestingHelperTest {
   
   @Test
   public void firstMarker() {
-    final Pair<String,List<Integer>> module = this.parser.extractMarkers("\u00A71234567890");
+    final Pair<String, List<Integer>> module = this.parser.extractMarkers("�1234567890");
     String _key = module.getKey();
     Matcher<? super String> _is = Matchers.<String>is("1234567890");
     MatcherAssert.<String>assertThat(_key, _is);
@@ -89,7 +89,7 @@ public class ErlangTestingHelperTest {
   
   @Test
   public void lastMarker() {
-    final Pair<String,List<Integer>> module = this.parser.extractMarkers("1234567890\u00A7");
+    final Pair<String, List<Integer>> module = this.parser.extractMarkers("1234567890�");
     String _key = module.getKey();
     Matcher<? super String> _is = Matchers.<String>is("1234567890");
     MatcherAssert.<String>assertThat(_key, _is);
@@ -105,7 +105,7 @@ public class ErlangTestingHelperTest {
   
   @Test
   public void succesiveMarkers() {
-    final Pair<String,List<Integer>> module = this.parser.extractMarkers("123456\u00A7\u00A77890");
+    final Pair<String, List<Integer>> module = this.parser.extractMarkers("123456��7890");
     String _key = module.getKey();
     Matcher<? super String> _is = Matchers.<String>is("1234567890");
     MatcherAssert.<String>assertThat(_key, _is);

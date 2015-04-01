@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface,
  org.eclipse.swt,
  org.eclipse.emf.common;bundle-version="2.7.0",
- org.erlide.libs;bundle-version="1.108.1"
+ org.erlide.libs;bundle-version="1.108.1",
+ org.eclipse.core.resources
 Bundle-Version: 0.101.0.qualifier
 Bundle-SymbolicName: org.erlide.acceptance.tests
 Bundle-ActivationPolicy: lazy

@@ -4,15 +4,13 @@ import com.google.common.eventbus.EventBus
 import com.google.common.eventbus.Subscribe
 import com.google.inject.Inject
 import com.google.inject.name.Named
+import javax.inject.Singleton
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IMarker
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.runtime.CoreException
-import org.erlide.common.util.ErlLogger
-import javax.inject.Singleton
-import org.erlide.builder.markers.RemoveMarkersEvent
-import org.erlide.builder.markers.AddMarkerEvent
 import org.erlide.builder.CompilerProblem
+import org.erlide.common.util.ErlLogger
 
 @Singleton
 class BuilderMarkerUpdater {

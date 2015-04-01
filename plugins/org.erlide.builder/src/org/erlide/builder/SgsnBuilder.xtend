@@ -2,8 +2,6 @@ package org.erlide.builder
 
 import org.eclipse.core.resources.IProject
 
-import static extension org.erlide.builder.ProjectBuilderExtensions.*
-
 class SgsnBuilder extends ExternalBuilder {
 	
 	public static val String ID = "org.erlide.builder.sgsnbuilder"

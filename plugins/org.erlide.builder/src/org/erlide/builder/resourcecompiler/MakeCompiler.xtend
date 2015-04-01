@@ -2,13 +2,11 @@ package org.erlide.builder.resourcecompiler
 
 import java.util.List
 import org.eclipse.core.resources.IFile
+import org.eclipse.core.runtime.NullProgressMonitor
 import org.erlide.builder.BuilderPlugin
 import org.erlide.builder.CompilerOptions
 import org.erlide.builder.CompilerProblem
 import org.erlide.builder.DefaultLineParser
-
-import static org.erlide.builder.resourcecompiler.MakeCompiler.*
-import org.eclipse.core.runtime.NullProgressMonitor
 
 public class MakeCompiler extends AbstractExternalProcessCompiler {
 	

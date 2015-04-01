@@ -6,6 +6,7 @@ import com.google.inject.Inject;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -22,9 +23,6 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.erlide.builder.AbstractErlangBuilder;
 import org.erlide.builder.CompilerOptions;
 import org.erlide.builder.CompilerProblem;
@@ -36,34 +34,36 @@ import org.erlide.project.model.IErlangProject;
 
 @SuppressWarnings("all")
 public class ErlangResourceCompiler extends AbstractErlangBuilder {
-  private Map<String,IErlangCompiler> compilers;
+  private Map<String, IErlangCompiler> compilers;
   
   @Inject
   private ErlLogger log;
   
   public ErlangResourceCompiler(final IProject project, final EventBus eventBus) {
     super(project, eventBus);
-    HashMap<String,IErlangCompiler> _newHashMap = CollectionLiterals.<String, IErlangCompiler>newHashMap();
+    HashMap<String, IErlangCompiler> _newHashMap = CollectionLiterals.<String, IErlangCompiler>newHashMap();
     this.compilers = _newHashMap;
   }
   
   public ErlangResourceCompiler() {
     super();
-    HashMap<String,IErlangCompiler> _newHashMap = CollectionLiterals.<String, IErlangCompiler>newHashMap();
+    HashMap<String, IErlangCompiler> _newHashMap = CollectionLiterals.<String, IErlangCompiler>newHashMap();
     this.compilers = _newHashMap;
   }
   
+  @Override
   public void setProject(final IProject project) {
     this.setProject(project);
   }
   
+  @Override
   public String getId() {
-    Class<? extends Object> _class = this.getClass();
+    Class<? extends ErlangResourceCompiler> _class = this.getClass();
     String _name = _class.getName();
-    String _lowerCase = _name.toLowerCase();
-    return _lowerCase;
+    return _name.toLowerCase();
   }
   
+  @Override
   public void clean(final IProgressMonitor monitor) throws CoreException {
     IProject _project = this.getProject();
     this.removeMarkers(_project, ErlangBuilder.MARKER_TYPE);
@@ -82,21 +82,20 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
     boolean _equals = Objects.equal(compiler, null);
     if (_equals) {
     } else {
-      CompilerOptions _compilerOptions = new CompilerOptions();
-      final CompilerOptions options = _compilerOptions;
-      String _plus = ("compile " + erlFile);
-      this.log.debug(_plus);
+      final CompilerOptions options = new CompilerOptions();
+      this.log.debug(("compile " + erlFile));
       Collection<CompilerProblem> _compileResource = compiler.compileResource(erlFile, options);
-      final Procedure1<CompilerProblem> _function = new Procedure1<CompilerProblem>() {
-          public void apply(final CompilerProblem it) {
-            String _message = it.getMessage();
-            int _line = it.getLine();
-            int _severity = it.getSeverity();
-            CompilerProblem _compilerProblem = new CompilerProblem(ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
-            ErlangResourceCompiler.this.addMarker(erlFile, _compilerProblem);
-          }
-        };
-      IterableExtensions.<CompilerProblem>forEach(_compileResource, _function);
+      final Consumer<CompilerProblem> _function = new Consumer<CompilerProblem>() {
+        @Override
+        public void accept(final CompilerProblem it) {
+          String _message = it.getMessage();
+          int _line = it.getLine();
+          int _severity = it.getSeverity();
+          CompilerProblem _compilerProblem = new CompilerProblem(ErlangBuilder.MARKER_TYPE, _message, _line, _severity);
+          ErlangResourceCompiler.this.addMarker(erlFile, _compilerProblem);
+        }
+      };
+      _compileResource.forEach(_function);
     }
   }
   
@@ -104,7 +103,7 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
     final boolean isFile = (resource instanceof IFile);
     IAdapterManager _adapterManager = Platform.getAdapterManager();
     IProject _project = this.getProject();
-    final Object erlProject = _adapterManager.getAdapter(_project, IErlangProject.class);
+    final IErlangProject erlProject = _adapterManager.<IErlangProject>getAdapter(_project, IErlangProject.class);
     boolean _or = false;
     if (true) {
       _or = true;
@@ -114,26 +113,24 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
       if (!_notEquals) {
         _and = false;
       } else {
-        _and = (_notEquals && true);
+        _and = true;
       }
-      _or = (true || _and);
+      _or = _and;
     }
     final boolean onSourcePath = _or;
     boolean _or_1 = false;
     boolean _or_2 = false;
-    boolean _not = (!isFile);
-    if (_not) {
+    if ((!isFile)) {
       _or_2 = true;
     } else {
       boolean _isErlangResource = this.isErlangResource(resource);
-      boolean _not_1 = (!_isErlangResource);
-      _or_2 = (_not || _not_1);
+      boolean _not = (!_isErlangResource);
+      _or_2 = _not;
     }
     if (_or_2) {
       _or_1 = true;
     } else {
-      boolean _not_2 = (!onSourcePath);
-      _or_1 = (_or_2 || _not_2);
+      _or_1 = (!onSourcePath);
     }
     return _or_1;
   }
@@ -148,25 +145,22 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
     return Objects.equal(_fileExtension, "erl");
   }
   
+  @Override
   public void fullBuild(final IProgressMonitor monitor) throws CoreException {
     try {
       IProject _project = this.getProject();
-      final Function1<IResource,Boolean> _function = new Function1<IResource,Boolean>() {
-          public Boolean apply(final IResource it) {
-            boolean _isCanceled = monitor.isCanceled();
-            if (_isCanceled) {
-              OperationCanceledException _operationCanceledException = new OperationCanceledException();
-              throw _operationCanceledException;
-            }
-            ErlangResourceCompiler.this.compileResource(it);
-            return true;
+      final IResourceVisitor _function = new IResourceVisitor() {
+        @Override
+        public boolean visit(final IResource it) throws CoreException {
+          boolean _isCanceled = monitor.isCanceled();
+          if (_isCanceled) {
+            throw new OperationCanceledException();
           }
-        };
-      _project.accept(new IResourceVisitor() {
-          public boolean visit(IResource resource) {
-            return _function.apply(resource);
-          }
-      });
+          ErlangResourceCompiler.this.compileResource(it);
+          return true;
+        }
+      };
+      _project.accept(_function);
     } catch (final Throwable _t) {
       if (_t instanceof CoreException) {
         final CoreException e = (CoreException)_t;
@@ -176,39 +170,30 @@ public class ErlangResourceCompiler extends AbstractErlangBuilder {
     }
   }
   
+  @Override
   public void incrementalBuild(final IResourceDelta delta, final IProgressMonitor monitor) throws CoreException {
-    final Function1<IResourceDelta,Boolean> _function = new Function1<IResourceDelta,Boolean>() {
-        public Boolean apply(final IResourceDelta it) {
-          boolean _isCanceled = monitor.isCanceled();
-          if (_isCanceled) {
-            OperationCanceledException _operationCanceledException = new OperationCanceledException();
-            throw _operationCanceledException;
-          }
-          int _kind = it.getKind();
-          final int getKind = _kind;
-          boolean _matched = false;
-          if (!_matched) {
-            if (Objects.equal(getKind,IResourceDelta.ADDED)) {
-              _matched=true;
-              IResource _resource = it.getResource();
-              ErlangResourceCompiler.this.compileResource(_resource);
-            }
-          }
-          if (!_matched) {
-            if (Objects.equal(getKind,IResourceDelta.CHANGED)) {
-              _matched=true;
-              IResource _resource_1 = it.getResource();
-              ErlangResourceCompiler.this.compileResource(_resource_1);
-            }
-          }
-          return true;
+    final IResourceDeltaVisitor _function = new IResourceDeltaVisitor() {
+      @Override
+      public boolean visit(final IResourceDelta it) throws CoreException {
+        boolean _isCanceled = monitor.isCanceled();
+        if (_isCanceled) {
+          throw new OperationCanceledException();
         }
-      };
-    delta.accept(new IResourceDeltaVisitor() {
-        public boolean visit(IResourceDelta delta) {
-          return _function.apply(delta);
+        int _kind = it.getKind();
+        switch (_kind) {
+          case IResourceDelta.ADDED:
+            IResource _resource = it.getResource();
+            ErlangResourceCompiler.this.compileResource(_resource);
+            break;
+          case IResourceDelta.CHANGED:
+            IResource _resource_1 = it.getResource();
+            ErlangResourceCompiler.this.compileResource(_resource_1);
+            break;
         }
-    });
+        return true;
+      }
+    };
+    delta.accept(_function);
   }
   
   private void loadCompilers() {

@@ -20,7 +20,7 @@ import org.erlide.common.util.ErlLogger;
 
 /**
  * The erlang auto indent strategy
- * 
+ *
  * Not used yet!
  */
 public class ErlangAutoEditStrategy extends AbstractEditStrategy {
@@ -44,7 +44,7 @@ public class ErlangAutoEditStrategy extends AbstractEditStrategy {
 
         try {
             // find start of line
-            final int p = (c.offset == d.getLength() ? c.offset - 1 : c.offset);
+            final int p = c.offset == d.getLength() ? c.offset - 1 : c.offset;
             final IRegion info = d.getLineInformationOfOffset(p);
             final int start = info.getOffset();
 

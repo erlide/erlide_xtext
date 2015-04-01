@@ -11,10 +11,11 @@ import org.erlide.builder.ILineParser;
 
 @SuppressWarnings("all")
 public class DefaultLineParser implements ILineParser<CompilerProblem> {
+  @Override
   public CompilerProblem parseLine(final String line) {
-    CompilerProblem _xtrycatchfinallyexpression = null;
+    Object _xtrycatchfinallyexpression = null;
     try {
-      final List<String> parts = ((List<String>)Conversions.doWrapArray(line.split(":")));
+      final List<String> parts = (List<String>)Conversions.doWrapArray(line.split(":"));
       String _get = parts.get(2);
       final boolean warning = Objects.equal(_get, " Warning");
       String _xifexpression = null;
@@ -23,14 +24,12 @@ public class DefaultLineParser implements ILineParser<CompilerProblem> {
         Iterable<String> _tail_1 = IterableExtensions.<String>tail(_tail);
         Iterable<String> _tail_2 = IterableExtensions.<String>tail(_tail_1);
         String _join = IterableExtensions.join(_tail_2, ":");
-        String _trim = _join.trim();
-        _xifexpression = _trim;
+        _xifexpression = _join.trim();
       } else {
         Iterable<String> _tail_3 = IterableExtensions.<String>tail(parts);
         Iterable<String> _tail_4 = IterableExtensions.<String>tail(_tail_3);
         String _join_1 = IterableExtensions.join(_tail_4, ":");
-        String _trim_1 = _join_1.trim();
-        _xifexpression = _trim_1;
+        _xifexpression = _join_1.trim();
       }
       final String msg = _xifexpression;
       int _xifexpression_1 = (int) 0;
@@ -44,8 +43,7 @@ public class DefaultLineParser implements ILineParser<CompilerProblem> {
       String _head = IterableExtensions.<String>head(_tail_5);
       final int nline = this.getLine(_head);
       String _head_1 = IterableExtensions.<String>head(parts);
-      CompilerProblem _compilerProblem = new CompilerProblem(_head_1, msg, nline, severity);
-      final CompilerProblem result = _compilerProblem;
+      final CompilerProblem result = new CompilerProblem(_head_1, msg, nline, severity);
       return result;
     } catch (final Throwable _t) {
       if (_t instanceof Exception) {
@@ -55,14 +53,13 @@ public class DefaultLineParser implements ILineParser<CompilerProblem> {
         throw Exceptions.sneakyThrow(_t);
       }
     }
-    return _xtrycatchfinallyexpression;
+    return ((CompilerProblem)_xtrycatchfinallyexpression);
   }
   
   private int getLine(final String str) {
     int _xtrycatchfinallyexpression = (int) 0;
     try {
-      int _parseInt = Integer.parseInt(str);
-      _xtrycatchfinallyexpression = _parseInt;
+      _xtrycatchfinallyexpression = Integer.parseInt(str);
     } catch (final Throwable _t) {
       if (_t instanceof Exception) {
         final Exception e = (Exception)_t;

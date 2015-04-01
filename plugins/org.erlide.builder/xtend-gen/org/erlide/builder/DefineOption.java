@@ -32,17 +32,15 @@ public class DefineOption extends CompilerOption {
     return ((String[])Conversions.unwrapArray(this.fieldLabels, String.class));
   }
   
-  public OtpErlangList toTerm(final Collection<Pair<String,String>> values) {
+  public OtpErlangList toTerm(final Collection<Pair<String, String>> values) {
     try {
       final List<OtpErlangObject> defines = CollectionLiterals.<OtpErlangObject>newArrayList();
-      for (final Pair<String,String> value : values) {
+      for (final Pair<String, String> value : values) {
         {
           final String key = value.getKey();
           final String val1 = value.getValue();
-          OtpErlangAtom _otpErlangAtom = new OtpErlangAtom(this.name);
-          final OtpErlangAtom tag = _otpErlangAtom;
-          OtpErlangAtom _otpErlangAtom_1 = new OtpErlangAtom(key);
-          final OtpErlangAtom okey = _otpErlangAtom_1;
+          final OtpErlangAtom tag = new OtpErlangAtom(this.name);
+          final OtpErlangAtom okey = new OtpErlangAtom(key);
           boolean _isNullOrEmpty = Strings.isNullOrEmpty(val1);
           if (_isNullOrEmpty) {
             OtpErlangTuple _mkTuple = OtpErlang.mkTuple(tag, okey);
@@ -56,7 +54,7 @@ public class DefineOption extends CompilerOption {
         }
       }
       return OtpErlang.mkList(defines);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

@@ -12,6 +12,7 @@ import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -22,17 +23,19 @@ import org.erlide.scoping.ErlangLinkingHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = ErlangInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(ErlangInjectorProvider.class)
 @SuppressWarnings("all")
 public class ErlangLinkingContextTest {
   @Inject
   private ParseHelper<Module> parser;
   
   @Inject
+  @Extension
   private ModelExtensions _modelExtensions;
   
   @Inject
+  @Extension
   private ErlangLinkingHelper _erlangLinkingHelper;
   
   @Test
@@ -54,33 +57,33 @@ public class ErlangLinkingContextTest {
       final Module module = this.parser.parse(_builder);
       Resource _eResource = module.eResource();
       TreeIterator<EObject> _allContents = _eResource.getAllContents();
-      final Function1<EObject,Boolean> _function = new Function1<EObject,Boolean>() {
-          public Boolean apply(final EObject it) {
-            EList<EObject> _eCrossReferences = it.eCrossReferences();
-            boolean _isEmpty = _eCrossReferences.isEmpty();
-            boolean _not = (!_isEmpty);
-            return Boolean.valueOf(_not);
-          }
-        };
+      final Function1<EObject, Boolean> _function = new Function1<EObject, Boolean>() {
+        @Override
+        public Boolean apply(final EObject it) {
+          EList<EObject> _eCrossReferences = it.eCrossReferences();
+          boolean _isEmpty = _eCrossReferences.isEmpty();
+          return Boolean.valueOf((!_isEmpty));
+        }
+      };
       Iterator<EObject> _filter = IteratorExtensions.<EObject>filter(_allContents, _function);
-      final Function1<EObject,EObject> _function_1 = new Function1<EObject,EObject>() {
-          public EObject apply(final EObject it) {
-            EList<EObject> _eCrossReferences = it.eCrossReferences();
-            EObject _head = IterableExtensions.<EObject>head(_eCrossReferences);
-            return _head;
-          }
-        };
+      final Function1<EObject, EObject> _function_1 = new Function1<EObject, EObject>() {
+        @Override
+        public EObject apply(final EObject it) {
+          EList<EObject> _eCrossReferences = it.eCrossReferences();
+          return IterableExtensions.<EObject>head(_eCrossReferences);
+        }
+      };
       Iterator<EObject> _map = IteratorExtensions.<EObject, EObject>map(_filter, _function_1);
-      final Function1<EObject,Boolean> _function_2 = new Function1<EObject,Boolean>() {
-          public Boolean apply(final EObject it) {
-            boolean _eIsProxy = it.eIsProxy();
-            boolean _not = (!_eIsProxy);
-            return Boolean.valueOf(_not);
-          }
-        };
+      final Function1<EObject, Boolean> _function_2 = new Function1<EObject, Boolean>() {
+        @Override
+        public Boolean apply(final EObject it) {
+          boolean _eIsProxy = it.eIsProxy();
+          return Boolean.valueOf((!_eIsProxy));
+        }
+      };
       Iterator<EObject> _filter_1 = IteratorExtensions.<EObject>filter(_map, _function_2);
       final List<EObject> refs = IteratorExtensions.<EObject>toList(_filter_1);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

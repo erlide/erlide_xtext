@@ -38,7 +38,7 @@ public final class RpcHelper {
 
     /**
      * Convenience method to send a remote message.
-     * 
+     *
      * @param node
      * @param pid
      * @param msg
@@ -61,7 +61,7 @@ public final class RpcHelper {
 
     /**
      * Convenience method to send a remote message.
-     * 
+     *
      * @param node
      * @param peer
      * @param name
@@ -85,7 +85,7 @@ public final class RpcHelper {
 
     /**
      * Make a regular RPC to the given node, with the given arguments.
-     * 
+     *
      * @param node
      * @param peer
      * @param module
@@ -145,7 +145,7 @@ public final class RpcHelper {
     /**
      * Send a RPC request and return the mailbox that will receive the result
      * once it's delivered.
-     * 
+     *
      * @param node
      * @param peer
      * @param module
@@ -195,7 +195,7 @@ public final class RpcHelper {
 
     /**
      * Retrieve the result of a RPC.
-     * 
+     *
      * @param mbox
      * @return
      * @throws RpcException
@@ -207,7 +207,7 @@ public final class RpcHelper {
 
     /**
      * Retrieve the result of a RPC.
-     * 
+     *
      * @param mbox
      * @param timeout
      * @param env
@@ -267,7 +267,7 @@ public final class RpcHelper {
 
     /**
      * Make a RPC but don't wait for any result.
-     * 
+     *
      * @param node
      * @param peer
      * @param logCalls

@@ -44,9 +44,9 @@ public class ErlangUiModule extends org.erlide.ui.AbstractErlangUiModule {
     public void configure(final Binder binder) {
         super.configure(binder);
         binder.bind(String.class)
-                .annotatedWith(
-                        com.google.inject.name.Names
-                                .named((XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS)))
+        .annotatedWith(
+                com.google.inject.name.Names
+                .named(XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS))
                 .toInstance(":#");
     }
 

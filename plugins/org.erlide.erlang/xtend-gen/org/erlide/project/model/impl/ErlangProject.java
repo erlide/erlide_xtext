@@ -13,10 +13,10 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.erlide.project.buildpath.BuildpathEntry;
 import org.erlide.project.model.ICodeUnit;
@@ -50,41 +50,46 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
   }
   
   public List<IProject> getReferencedProjects() {
-    this.open();
     try {
-      return ((List<IProject>)Conversions.doWrapArray(this.workspaceProject.getReferencedProjects()));
-    } catch (Exception _e) {
+      this.open();
+      return (List<IProject>)Conversions.doWrapArray(this.workspaceProject.getReferencedProjects());
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
   
+  @Override
   public Collection<ICodeUnit> getUnits() {
     this.open();
     return Collections.<ICodeUnit>unmodifiableCollection(this.units);
   }
   
+  @Override
   public IProject getWorkspaceProject() {
     return this.workspaceProject;
   }
   
+  @Override
   public String toString() {
     String _string = super.toString();
-    StringBuffer _stringBuffer = new StringBuffer(_string);
-    final StringBuffer result = _stringBuffer;
+    final StringBuffer result = new StringBuffer(_string);
     result.append(" (workspaceProject: ");
     result.append(this.workspaceProject);
     result.append(")");
     return result.toString();
   }
   
+  @Override
   public String getName() {
     return this.workspaceProject.getName();
   }
   
+  @Override
   public IErlangModelElement getParent() {
     return this.model;
   }
   
+  @Override
   public IResource getResource() {
     return this.workspaceProject;
   }
@@ -92,10 +97,8 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
   private boolean open() {
     boolean _xblockexpression = false;
     {
-      String _plus = ("OPEN " + this);
-      InputOutput.<String>println(_plus);
-      boolean _closed = this.closed = false;
-      _xblockexpression = (_closed);
+      InputOutput.<String>println(("OPEN " + this));
+      _xblockexpression = this.closed = false;
     }
     return _xblockexpression;
   }
@@ -103,14 +106,13 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
   private boolean close() {
     boolean _xblockexpression = false;
     {
-      String _plus = ("CLOSE " + this);
-      InputOutput.<String>println(_plus);
-      boolean _closed = this.closed = true;
-      _xblockexpression = (_closed);
+      InputOutput.<String>println(("CLOSE " + this));
+      _xblockexpression = this.closed = true;
     }
     return _xblockexpression;
   }
   
+  @Override
   public void resourceChanged(final IResourceChangeEvent event) {
     try {
       int _type = event.getType();
@@ -119,69 +121,65 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
         return;
       }
       IResourceDelta _delta = event.getDelta();
-      final Function1<IResourceDelta,Boolean> _function = new Function1<IResourceDelta,Boolean>() {
-          public Boolean apply(final IResourceDelta delta) {
-            IResource _resource = delta.getResource();
-            IErlangProject _project = ErlangProject.this.getProject();
-            boolean _equals = Objects.equal(_resource, _project);
-            if (_equals) {
-              IErlangProject _project_1 = ErlangProject.this.getProject();
-              String _plus = ("CHANGE IN PROJECT " + _project_1);
-              String _plus_1 = (_plus + " ");
-              int _flags = delta.getFlags();
-              String _plus_2 = (_plus_1 + Integer.valueOf(_flags));
-              InputOutput.<String>println(_plus_2);
-              int _flags_1 = delta.getFlags();
-              final int _switchValue = _flags_1;
-              boolean _matched = false;
-              if (!_matched) {
-                int _flags_2 = delta.getFlags();
-                boolean _match = ErlangProject.this.match(_flags_2, IResourceDelta.OPEN);
-                if (_match) {
-                  _matched=true;
-                  if (ErlangProject.this.closed) {
-                    ErlangProject.this.open();
-                  } else {
-                    ErlangProject.this.close();
-                  }
-                }
-              }
-              if (!_matched) {
-                int _flags_3 = delta.getFlags();
-                boolean _match_1 = ErlangProject.this.match(_flags_3, IResourceDelta.DESCRIPTION);
-                if (_match_1) {
-                  _matched=true;
-                }
-              }
-              if (!_matched) {
-                int _flags_4 = delta.getFlags();
-                boolean _match_2 = ErlangProject.this.match(_flags_4, IResourceDelta.REMOVED);
-                if (_match_2) {
-                  _matched=true;
-                  IWorkspace _workspace = ResourcesPlugin.getWorkspace();
-                  _workspace.removeResourceChangeListener(ErlangProject.this);
+      final IResourceDeltaVisitor _function = new IResourceDeltaVisitor() {
+        @Override
+        public boolean visit(final IResourceDelta delta) throws CoreException {
+          IResource _resource = delta.getResource();
+          IErlangProject _project = ErlangProject.this.getProject();
+          boolean _equals = Objects.equal(_resource, _project);
+          if (_equals) {
+            IErlangProject _project_1 = ErlangProject.this.getProject();
+            String _plus = ("CHANGE IN PROJECT " + _project_1);
+            String _plus_1 = (_plus + " ");
+            int _flags = delta.getFlags();
+            String _plus_2 = (_plus_1 + Integer.valueOf(_flags));
+            InputOutput.<String>println(_plus_2);
+            int _flags_1 = delta.getFlags();
+            boolean _matched = false;
+            if (!_matched) {
+              int _flags_2 = delta.getFlags();
+              boolean _match = ErlangProject.this.match(_flags_2, IResourceDelta.OPEN);
+              if (_match) {
+                _matched=true;
+                if (ErlangProject.this.closed) {
+                  ErlangProject.this.open();
+                } else {
+                  ErlangProject.this.close();
                 }
               }
             }
-            return true;
+            if (!_matched) {
+              int _flags_3 = delta.getFlags();
+              boolean _match_1 = ErlangProject.this.match(_flags_3, IResourceDelta.DESCRIPTION);
+              if (_match_1) {
+                _matched=true;
+              }
+            }
+            if (!_matched) {
+              int _flags_4 = delta.getFlags();
+              boolean _match_2 = ErlangProject.this.match(_flags_4, IResourceDelta.REMOVED);
+              if (_match_2) {
+                _matched=true;
+                IWorkspace _workspace = ResourcesPlugin.getWorkspace();
+                _workspace.removeResourceChangeListener(ErlangProject.this);
+              }
+            }
           }
-        };
-      _delta.accept(new IResourceDeltaVisitor() {
-          public boolean visit(IResourceDelta delta) {
-            return _function.apply(delta);
-          }
-      });
-    } catch (Exception _e) {
+          return true;
+        }
+      };
+      _delta.accept(_function);
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
   
   private boolean match(final int v, final int flag) {
     int _bitwiseAnd = (v & flag);
-    boolean _notEquals = (_bitwiseAnd != 0);
-    return _notEquals;
+    return (_bitwiseAnd != 0);
   }
   
+  @Override
   public BuildpathEntry getBuildpath() {
     try {
       boolean _hasNature = this.workspaceProject.hasNature("org.erlide.core.erlnature");
@@ -189,7 +187,7 @@ public class ErlangProject extends ErlangModelElement implements IErlangProject,
         return null;
       }
       return null;
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

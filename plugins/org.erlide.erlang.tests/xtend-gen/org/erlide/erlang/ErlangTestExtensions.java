@@ -12,7 +12,7 @@ public class ErlangTestExtensions {
   @Inject
   private ModelExtensions modelHelper;
   
-  public EObject getObjectAtMarker(final Pair<Module,List<Integer>> src, final int index) {
+  public EObject getObjectAtMarker(final Pair<Module, List<Integer>> src, final int index) {
     EObject _xblockexpression = null;
     {
       List<Integer> _value = src.getValue();
@@ -24,14 +24,12 @@ public class ErlangTestExtensions {
       List<Integer> _value_1 = src.getValue();
       final Integer pos = _value_1.get(index);
       Module _key = src.getKey();
-      EObject _objectAtOffset = this.modelHelper.getObjectAtOffset(_key, (pos).intValue());
-      _xblockexpression = (_objectAtOffset);
+      _xblockexpression = this.modelHelper.getObjectAtOffset(_key, (pos).intValue());
     }
     return _xblockexpression;
   }
   
-  public EObject getObjectAtMarker(final Pair<Module,List<Integer>> src) {
-    EObject _objectAtMarker = this.getObjectAtMarker(src, 0);
-    return _objectAtMarker;
+  public EObject getObjectAtMarker(final Pair<Module, List<Integer>> src) {
+    return this.getObjectAtMarker(src, 0);
   }
 }

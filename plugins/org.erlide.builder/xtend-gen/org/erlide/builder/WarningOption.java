@@ -10,15 +10,13 @@ public class WarningOption extends BooleanOption {
     super(name, defaultValue, description, tooltip);
   }
   
+  @Override
   public OtpErlangObject toTerm(final boolean currentValue) {
     OtpErlangAtom _xifexpression = null;
     if (currentValue) {
-      OtpErlangAtom _otpErlangAtom = new OtpErlangAtom(this.name);
-      _xifexpression = _otpErlangAtom;
+      _xifexpression = new OtpErlangAtom(this.name);
     } else {
-      String _plus = ("no" + this.name);
-      OtpErlangAtom _otpErlangAtom_1 = new OtpErlangAtom(_plus);
-      _xifexpression = _otpErlangAtom_1;
+      _xifexpression = new OtpErlangAtom(("no" + this.name));
     }
     return _xifexpression;
   }

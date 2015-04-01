@@ -10,13 +10,12 @@ public class SafeAcceptorWrapper implements IHighlightedPositionAcceptor {
     this.wrapped = wrapped;
   }
   
+  @Override
   public void addPosition(final int offset, final int length, final String... id) {
-    boolean _equals = (length == 0);
-    if (_equals) {
+    if ((length == 0)) {
       return;
     }
-    boolean _lessThan = (length < 0);
-    if (_lessThan) {
+    if ((length < 0)) {
       return;
     }
     this.wrapped.addPosition(offset, length, id);

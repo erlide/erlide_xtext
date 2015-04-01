@@ -6,7 +6,7 @@ import org.eclipse.xtext.resource.IResourceServiceProvider
 
 class ScopeExtensions {
     @Inject
-    IResourceServiceProvider$Registry resourceProviderRegistry
+    IResourceServiceProvider.Registry resourceProviderRegistry
 
  	def getIndexProvider(Resource res) {
  		resourceProviderRegistry.getResourceServiceProvider(res.URI).resourceDescriptionManager
@@ -22,15 +22,15 @@ class ScopeExtensions {
 	}
 
 	def getExportedFunctions(Module module) {
-        module.description.getExportedObjectsByType(ErlangPackage$Literals::FUNCTION)
+        module.description.getExportedObjectsByType(ErlangPackage.Literals::FUNCTION)
 	}
 
 	def getExportedMacros(Module module) {
-        module.description.getExportedObjectsByType(ErlangPackage$Literals::DEFINE_ATTRIBUTE)
+        module.description.getExportedObjectsByType(ErlangPackage.Literals::DEFINE_ATTRIBUTE)
 	}
 
 	def getExportedRecords(Module module) {
-        module.description.getExportedObjectsByType(ErlangPackage$Literals::RECORD_ATTRIBUTE)
+        module.description.getExportedObjectsByType(ErlangPackage.Literals::RECORD_ATTRIBUTE)
 	}
 	
 }

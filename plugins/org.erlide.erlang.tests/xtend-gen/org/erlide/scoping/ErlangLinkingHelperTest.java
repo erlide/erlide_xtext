@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.erlide.ErlangInjectorProvider;
 import org.erlide.erlang.Atom;
@@ -21,20 +22,23 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = ErlangInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(ErlangInjectorProvider.class)
 @SuppressWarnings("all")
 public class ErlangLinkingHelperTest {
   @Inject
   private ErlangTestingHelper parser;
   
   @Inject
+  @Extension
   private ModelExtensions _modelExtensions;
   
   @Inject
+  @Extension
   private ErlangLinkingHelper _erlangLinkingHelper;
   
   @Inject
+  @Extension
   private ErlangTestExtensions _erlangTestExtensions;
   
   @Test
@@ -45,9 +49,9 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("[\u00A7ok, 0].");
+    _builder.append("[�ok, 0].");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -63,12 +67,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("\u00A7g(3),");
+    _builder.append("�g(3),");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -81,7 +85,7 @@ public class ErlangLinkingHelperTest {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("-module(m).");
     _builder.newLine();
-    _builder.append("-spec \u00A7f() -> \'ok\'.");
+    _builder.append("-spec �f() -> \'ok\'.");
     _builder.newLine();
     _builder.append("f() ->");
     _builder.newLine();
@@ -91,7 +95,7 @@ public class ErlangLinkingHelperTest {
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -107,12 +111,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("w:\u00A7g(3),");
+    _builder.append("w:�g(3),");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -128,12 +132,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("?MODULE:\u00A7g(3),");
+    _builder.append("?MODULE:�g(3),");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -149,12 +153,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("W:\u00A7g(3),");
+    _builder.append("W:�g(3),");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -170,12 +174,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("\u00A7w:g(3),");
+    _builder.append("�w:g(3),");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -191,12 +195,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("\u00A7w:G(3),");
+    _builder.append("�w:G(3),");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -212,12 +216,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("fun \u00A7w:g/3,");
+    _builder.append("fun �w:g/3,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -233,12 +237,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("fun \u00A7g/2,");
+    _builder.append("fun �g/2,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -254,12 +258,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("fun w:\u00A7g/2,");
+    _builder.append("fun w:�g/2,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -275,12 +279,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("fun ?MODULE:\u00A7g/2,");
+    _builder.append("fun ?MODULE:�g/2,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -296,12 +300,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("fun W:\u00A7g/2,");
+    _builder.append("fun W:�g/2,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -317,12 +321,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("#\u00A7myrec{},");
+    _builder.append("#�myrec{},");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -338,12 +342,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("#\u00A7myrec.az,");
+    _builder.append("#�myrec.az,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -359,12 +363,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("#myrec.\u00A7ff,");
+    _builder.append("#myrec.�ff,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -380,12 +384,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("#Myrec.\u00A7ff,");
+    _builder.append("#Myrec.�ff,");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -401,12 +405,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("#myrec{\u00A7ff=2},");
+    _builder.append("#myrec{�ff=2},");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);
@@ -422,12 +426,12 @@ public class ErlangLinkingHelperTest {
     _builder.append("f() ->");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("#Myrec{\u00A7ff=2},");
+    _builder.append("#Myrec{�ff=2},");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("ok.");
     _builder.newLine();
-    final Pair<Module,List<Integer>> module = this.parser.parse(_builder.toString());
+    final Pair<Module, List<Integer>> module = this.parser.parse(_builder.toString());
     EObject _objectAtMarker = this._erlangTestExtensions.getObjectAtMarker(module);
     final Atom atom = ((Atom) _objectAtMarker);
     ErlangLinkCategory _classifyAtom = this._erlangLinkingHelper.classifyAtom(atom);

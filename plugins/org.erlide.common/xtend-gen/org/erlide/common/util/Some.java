@@ -14,32 +14,35 @@ public class Some<T extends Object> extends Option<T> {
   public Some(final T obj) {
     boolean _equals = Objects.equal(obj, null);
     if (_equals) {
-      IllegalArgumentException _illegalArgumentException = new IllegalArgumentException("Some cannot contain null. Use None instead.");
-      throw _illegalArgumentException;
+      throw new IllegalArgumentException("Some cannot contain null. Use None instead.");
     }
     this.obj = obj;
   }
   
+  @Override
   public T get() {
     return this.obj;
   }
   
+  @Override
   public boolean isEmpty() {
     return false;
   }
   
+  @Override
   public Iterator<T> iterator() {
     ArrayList<T> _arrayList = new ArrayList<T>();
     final Procedure1<ArrayList<T>> _function = new Procedure1<ArrayList<T>>() {
-        public void apply(final ArrayList<T> it) {
-          it.add(Some.this.obj);
-        }
-      };
+      @Override
+      public void apply(final ArrayList<T> it) {
+        it.add(Some.this.obj);
+      }
+    };
     ArrayList<T> _doubleArrow = ObjectExtensions.<ArrayList<T>>operator_doubleArrow(_arrayList, _function);
-    Iterator<T> _iterator = _doubleArrow.iterator();
-    return _iterator;
+    return _doubleArrow.iterator();
   }
   
+  @Override
   public boolean equals(final Object o) {
     boolean _and = false;
     boolean _notEquals = (!Objects.equal(o, null));
@@ -50,29 +53,26 @@ public class Some<T extends Object> extends Option<T> {
       boolean _matched = false;
       if (!_matched) {
         if (o instanceof Some) {
-          final Some<T> _some = (Some<T>)o;
           _matched=true;
-          boolean _equals = _some.obj.equals(this.obj);
-          _switchResult = _equals;
+          _switchResult = ((Some<T>)o).obj.equals(this.obj);
         }
       }
       if (!_matched) {
         _switchResult = false;
       }
-      _and = (_notEquals && _switchResult);
+      _and = _switchResult;
     }
     return _and;
   }
   
+  @Override
   public int hashCode() {
     int _hashCode = this.obj.hashCode();
-    int _plus = (_hashCode + 31);
-    return _plus;
+    return (_hashCode + 31);
   }
   
+  @Override
   public String toString() {
-    String _plus = ("Some(" + this.obj);
-    String _plus_1 = (_plus + ")");
-    return _plus_1;
+    return (("Some(" + this.obj) + ")");
   }
 }

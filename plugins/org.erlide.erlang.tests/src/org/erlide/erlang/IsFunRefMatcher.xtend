@@ -15,25 +15,25 @@ class IsFunRefMatcher extends BaseMatcher {
 		this.name = name
 		this.arity = arity
 	}
-	
+
 	override describeTo(Description description) {
 		description.appendText(name+"/"+arity)
 	}
-	
+
 	@Factory
 	def static Matcher<Function> isFunction(String name, int arity) {
-		new org.erlide.erlang.IsFunRefMatcher(name, arity)
+		new IsFunRefMatcher(name, arity) as Matcher<Function>
 	}
 
 	@Factory
 	def static Matcher<FunRef> isFunRef(String name, int arity) {
-		new org.erlide.erlang.IsFunRefMatcher(name, arity)
+		new IsFunRefMatcher(name, arity) as Matcher<FunRef>
 	}
 
 	def dispatch matches(Function item) {
 		item.name==name && item.arity==arity
 	}
-	
+
 	def dispatch matches(FunRef item) {
 		item.function==name && item.arity==Integer::toString(arity)
 	}
@@ -41,5 +41,5 @@ class IsFunRefMatcher extends BaseMatcher {
 	def dispatch matches(Object item) {
 		false
 	}
-	
+
 }

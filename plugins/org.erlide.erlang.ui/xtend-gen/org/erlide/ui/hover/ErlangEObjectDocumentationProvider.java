@@ -14,6 +14,7 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -24,11 +25,12 @@ import org.erlide.erlang.ModelExtensions;
 @SuppressWarnings("all")
 public class ErlangEObjectDocumentationProvider implements IEObjectDocumentationProvider, IEObjectDocumentationProviderExtension {
   @Inject
+  @Extension
   private ModelExtensions modelExtensions;
   
+  @Override
   public String getDocumentation(final EObject obj) {
-    StringBuilder _stringBuilder = new StringBuilder();
-    final StringBuilder result = _stringBuilder;
+    final StringBuilder result = new StringBuilder();
     if ((obj instanceof Function)) {
       final EObject spec = this.findSpec(((Function) obj));
       boolean _notEquals = (!Objects.equal(spec, null));
@@ -37,11 +39,8 @@ public class ErlangEObjectDocumentationProvider implements IEObjectDocumentation
         result.append(specComment);
       }
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("<pre>");
-      String _sourceText = this.modelExtensions.getSourceText(spec);
-      _builder.append(_sourceText, "");
-      _builder.append("</pre>");
-      StringBuilder _append = result.append(_builder.toString());
+      _builder.append("<pre>�spec.sourceText�</pre>");
+      StringBuilder _append = result.append(_builder);
       _append.append("\n");
     }
     final String comment = this.findComment(obj);
@@ -53,6 +52,7 @@ public class ErlangEObjectDocumentationProvider implements IEObjectDocumentation
   
   private String startTag = "%%";
   
+  @Override
   public List<INode> getDocumentationNodes(final EObject object) {
     final ICompositeNode node = NodeModelUtils.getNode(object);
     List<INode> result = CollectionLiterals.<INode>newArrayList();
@@ -88,21 +88,21 @@ public class ErlangEObjectDocumentationProvider implements IEObjectDocumentation
     boolean _isEmpty = documentationNodes.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      final Function1<INode,String> _function = new Function1<INode,String>() {
-          public String apply(final INode it) {
-            String _text = it.getText();
-            String[] _split = _text.split("\n");
-            final Function1<String,String> _function = new Function1<String,String>() {
-                public String apply(final String it) {
-                  String _skipCommentTag = ErlangEObjectDocumentationProvider.this.skipCommentTag(it);
-                  return _skipCommentTag;
-                }
-              };
-            List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
-            String _join = IterableExtensions.join(_map);
-            return _join;
-          }
-        };
+      final Function1<INode, String> _function = new Function1<INode, String>() {
+        @Override
+        public String apply(final INode it) {
+          String _text = it.getText();
+          String[] _split = _text.split("\n");
+          final Function1<String, String> _function = new Function1<String, String>() {
+            @Override
+            public String apply(final String it) {
+              return ErlangEObjectDocumentationProvider.this.skipCommentTag(it);
+            }
+          };
+          List<String> _map = ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(_split)), _function);
+          return IterableExtensions.join(_map);
+        }
+      };
       List<String> _map = ListExtensions.<INode, String>map(documentationNodes, _function);
       return IterableExtensions.join(_map);
     }
@@ -111,13 +111,9 @@ public class ErlangEObjectDocumentationProvider implements IEObjectDocumentation
   
   public String skipCommentTag(final String str) {
     String result = str;
-    boolean _startsWith = result.startsWith("%");
-    boolean _while = _startsWith;
-    while (_while) {
+    while (result.startsWith("%")) {
       String _substring = result.substring(1);
       result = _substring;
-      boolean _startsWith_1 = result.startsWith("%");
-      _while = _startsWith_1;
     }
     return result;
   }

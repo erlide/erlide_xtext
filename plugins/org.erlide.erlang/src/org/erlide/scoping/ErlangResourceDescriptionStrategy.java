@@ -12,7 +12,7 @@ import org.erlide.erlang.Module;
 import com.google.inject.Inject;
 
 public class ErlangResourceDescriptionStrategy extends
-        DefaultResourceDescriptionStrategy {
+DefaultResourceDescriptionStrategy {
 
     @Inject
     private ModelExtensions modelExtensions;

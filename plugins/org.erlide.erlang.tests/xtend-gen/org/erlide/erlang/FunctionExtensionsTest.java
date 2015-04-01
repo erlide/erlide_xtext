@@ -6,6 +6,7 @@ import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.erlide.ErlangInjectorProvider;
 import org.erlide.erlang.Function;
 import org.erlide.erlang.ModelExtensions;
@@ -17,14 +18,15 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = ErlangInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(ErlangInjectorProvider.class)
 @SuppressWarnings("all")
 public class FunctionExtensionsTest {
   @Inject
   private ParseHelper<Module> parser;
   
   @Inject
+  @Extension
   private ModelExtensions _modelExtensions;
   
   @Test
@@ -48,7 +50,7 @@ public class FunctionExtensionsTest {
       boolean _isExported_1 = this._modelExtensions.isExported(gg);
       Matcher<? super Boolean> _is_1 = Matchers.<Boolean>is(Boolean.valueOf(false));
       MatcherAssert.<Boolean>assertThat(Boolean.valueOf(_isExported_1), _is_1);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -86,7 +88,7 @@ public class FunctionExtensionsTest {
       Matcher<SpecAttribute> _nullValue_1 = Matchers.<SpecAttribute>nullValue();
       Matcher<SpecAttribute> _is_3 = Matchers.<SpecAttribute>is(_nullValue_1);
       MatcherAssert.<SpecAttribute>assertThat(_spec_3, _is_3);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -124,7 +126,7 @@ public class FunctionExtensionsTest {
       Matcher<SpecAttribute> _nullValue_1 = Matchers.<SpecAttribute>nullValue();
       Matcher<SpecAttribute> _is_3 = Matchers.<SpecAttribute>is(_nullValue_1);
       MatcherAssert.<SpecAttribute>assertThat(_spec_4, _is_3);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

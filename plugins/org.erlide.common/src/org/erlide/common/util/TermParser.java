@@ -12,7 +12,6 @@ package org.erlide.common.util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import com.ericsson.otp.erlang.OtpErlangAtom;
@@ -49,11 +48,7 @@ public class TermParser {
     }
 
     public OtpErlangObject parse(final String s) throws TermParserException {
-        try {
-            return cache.get(s);
-        } catch (final ExecutionException e) {
-            throw (TermParserException) e.getCause();
-        }
+        return parse(scan(s));
     }
 
     private static OtpErlangObject parse(final List<Token> tokens)
@@ -99,7 +94,7 @@ public class TermParser {
 
     private static OtpErlangObject parseList(final List<Token> tokens,
             final Stack<OtpErlangObject> stack, final OtpErlangObject tail)
-            throws TermParserException {
+                    throws TermParserException {
         if (tokens.size() == 0) {
             return null;
         }

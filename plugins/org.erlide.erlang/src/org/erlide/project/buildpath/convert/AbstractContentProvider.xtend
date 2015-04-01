@@ -1,8 +1,8 @@
 package org.erlide.project.buildpath.convert
 
-import org.eclipse.core.runtime.IPath
 import java.util.Collection
 import java.util.Collections
+import org.eclipse.core.runtime.IPath
 
 class AbstractContentProvider {
 	

@@ -11,22 +11,18 @@ public abstract class OptionExtensions {
     Option<T> _xifexpression = null;
     boolean _equals = Objects.equal(obj, null);
     if (_equals) {
-      None<T> _None = OptionExtensions.<T>None();
-      _xifexpression = _None;
+      _xifexpression = OptionExtensions.<T>None();
     } else {
-      Some<T> _Some = OptionExtensions.<T>Some(obj);
-      _xifexpression = _Some;
+      _xifexpression = OptionExtensions.<T>Some(obj);
     }
     return _xifexpression;
   }
   
   public static <T extends Object> Some<T> Some(final T obj) {
-    Some<T> _some = new Some<T>(obj);
-    return _some;
+    return new Some<T>(obj);
   }
   
   public static <T extends Object> None<T> None() {
-    None<T> _none = new None<T>();
-    return _none;
+    return new None<T>();
   }
 }

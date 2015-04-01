@@ -9,6 +9,8 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExecutableExtension;
+import org.eclipse.xtend.lib.Property;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.erlide.builder.CompilerProblem;
 import org.erlide.builder.IErlangBuilder;
 import org.erlide.builder.markers.AddErlangMarkerEvent;
@@ -16,18 +18,11 @@ import org.erlide.builder.markers.RemoveMarkersEvent;
 
 @SuppressWarnings("all")
 public abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutableExtension {
+  @Property
   private IProject _project;
   
-  public IProject getProject() {
-    return this._project;
-  }
-  
-  public void setProject(final IProject project) {
-    this._project = project;
-  }
-  
   @Inject
-  @Named(value = "erlangBuilder")
+  @Named("erlangBuilder")
   private EventBus builderEventBus;
   
   private String id;
@@ -41,15 +36,18 @@ public abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutab
     this.builderEventBus = eventBus;
   }
   
+  @Override
   public void setInitializationData(final IConfigurationElement config, final String propertyName, final Object data) throws CoreException {
     String _attribute = config.getAttribute("id");
     this.id = _attribute;
   }
   
+  @Override
   public String getId() {
     return this.id;
   }
   
+  @Override
   public void loadConfiguration() {
   }
   
@@ -61,5 +59,14 @@ public abstract class AbstractErlangBuilder implements IErlangBuilder, IExecutab
   public void addMarker(final IFile file, final CompilerProblem problem) {
     AddErlangMarkerEvent _addErlangMarkerEvent = new AddErlangMarkerEvent(file, problem);
     this.builderEventBus.post(_addErlangMarkerEvent);
+  }
+  
+  @Pure
+  public IProject getProject() {
+    return this._project;
+  }
+  
+  public void setProject(final IProject project) {
+    this._project = project;
   }
 }

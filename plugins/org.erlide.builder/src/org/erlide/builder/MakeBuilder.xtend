@@ -2,8 +2,6 @@ package org.erlide.builder
 
 import org.eclipse.core.resources.IProject
 
-import static extension org.erlide.builder.ProjectBuilderExtensions.*
-
 class MakeBuilder extends ExternalBuilder {
 
 	new() {
@@ -16,11 +14,11 @@ class MakeBuilder extends ExternalBuilder {
 		setupCommands()
 		loadConfiguration
 	}
-	
+
 	def setupCommands() {
 		cleanCmdLine = newArrayList("make", "clean")
 		fullCmdLine = newArrayList("make", "beam")
 		singleCmdLine = newArrayList("make", "-W", "$file")
 	}
-	
+
 }

@@ -16,13 +16,12 @@ import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator
-import org.erlide.erlang.FunCall
+import org.erlide.erlang.Atom
 import org.erlide.erlang.Macro
 import org.erlide.erlang.ModelExtensions
 import org.erlide.erlang.Module
-import org.erlide.services.ErlangGrammarAccess
-import org.erlide.erlang.Atom
 import org.erlide.erlang.RemoteTarget
+import org.erlide.services.ErlangGrammarAccess
 
 public class ErlangSemanticHighlightingCalculator implements
         ISemanticHighlightingCalculator {
@@ -31,7 +30,7 @@ public class ErlangSemanticHighlightingCalculator implements
     ErlangGrammarAccess grammarAccess
     @Inject
     extension ModelExtensions modelExtensions
-    
+
 
     override void provideHighlightingFor(XtextResource resource,
             IHighlightedPositionAcceptor acceptor) {
@@ -71,10 +70,10 @@ public class ErlangSemanticHighlightingCalculator implements
         }
 	}
 	def dispatch void highlight(Keyword grammarElement, INode node, IHighlightedPositionAcceptor acceptor) {
-		// do nothing		
+		// do nothing
 	}
 	def dispatch void highlight(EObject grammarElement, INode node, IHighlightedPositionAcceptor acceptor) {
-		// do nothing		
+		// do nothing
 		println("!!! highlight -- "+grammarElement)
 	}
 
@@ -110,7 +109,7 @@ public class ErlangSemanticHighlightingCalculator implements
 
     /**
      * Iterate over parser nodes and provide highlighting based on rule calls.
-     * 
+     *
      * @param resource
      * @param acceptor
      */
@@ -136,7 +135,7 @@ public class ErlangSemanticHighlightingCalculator implements
 
     /**
      * Iterate over the generated model and provide highlighting
-     * 
+     *
      * @param resource
      * @param acceptor
      */
@@ -166,9 +165,9 @@ public class ErlangSemanticHighlightingCalculator implements
 	}
 	def dispatch void highlight(Atom model, IHighlightedPositionAcceptor acceptor) {
 		val INode node = NodeModelUtils::getNode(model)
-		
+
 		// FIXME add config colors, etc
-		
+
 		if (model.eContainer instanceof RemoteTarget && (model.eContainer as RemoteTarget).module==model)
 			highlightNode(node, ErlangSemanticHighlightingConfiguration::STRING_ID, acceptor)
 		if (model.eContainer instanceof RemoteTarget && (model.eContainer as RemoteTarget).function==model)

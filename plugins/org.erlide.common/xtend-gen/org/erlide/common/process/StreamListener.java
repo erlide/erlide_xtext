@@ -20,23 +20,15 @@ public class StreamListener extends Thread {
     this.start();
   }
   
+  @Override
   public void run() {
     try {
       InputStreamReader _inputStreamReader = new InputStreamReader(this.stream);
-      BufferedReader _bufferedReader = new BufferedReader(_inputStreamReader);
-      final BufferedReader reader = _bufferedReader;
+      final BufferedReader reader = new BufferedReader(_inputStreamReader);
       String line = null;
       try {
-        String _readLine = reader.readLine();
-        String _line = line = _readLine;
-        boolean _notEquals = (!Objects.equal(_line, null));
-        boolean _while = _notEquals;
-        while (_while) {
+        while ((!Objects.equal((line = reader.readLine()), null))) {
           this.callback.apply(line);
-          String _readLine_1 = reader.readLine();
-          String _line_1 = line = _readLine_1;
-          boolean _notEquals_1 = (!Objects.equal(_line_1, null));
-          _while = _notEquals_1;
         }
       } catch (final Throwable _t) {
         if (_t instanceof OperationCanceledException) {
@@ -45,7 +37,7 @@ public class StreamListener extends Thread {
           throw Exceptions.sneakyThrow(_t);
         }
       }
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

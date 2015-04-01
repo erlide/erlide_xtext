@@ -14,14 +14,14 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.erlide.erlang.Atom;
 import org.erlide.erlang.AtomRefTarget;
 import org.erlide.erlang.DefineAttribute;
-import org.erlide.erlang.ErlangPackage.Literals;
+import org.erlide.erlang.ErlangPackage;
 import org.erlide.erlang.Expression;
 import org.erlide.erlang.Expressions;
 import org.erlide.erlang.FunCall;
@@ -46,6 +46,7 @@ import org.erlide.scoping.ErlangLinkCategory;
 @SuppressWarnings("all")
 public class ErlangLinkingHelper {
   @Inject
+  @Extension
   private ModelExtensions _modelExtensions;
   
   @Inject
@@ -53,8 +54,7 @@ public class ErlangLinkingHelper {
   
   public ErlangLinkCategory classifyAtom(final Atom obj) {
     EObject _eContainer = obj.eContainer();
-    ErlangLinkCategory _classifyAtom = this.classifyAtom(obj, _eContainer);
-    return _classifyAtom;
+    return this.classifyAtom(obj, _eContainer);
   }
   
   private ErlangLinkCategory _classifyAtom(final Atom atom, final EObject context) {
@@ -76,7 +76,7 @@ public class ErlangLinkingHelper {
         _and = false;
       } else {
         Expression _function_1 = context.getFunction();
-        _and = ((_module_1 instanceof Atom) && (_function_1 instanceof Atom));
+        _and = (_function_1 instanceof Atom);
       }
       if (_and) {
         return ErlangLinkCategory.FUNCTION_CALL_REMOTE;
@@ -128,7 +128,7 @@ public class ErlangLinkingHelper {
           return ErlangLinkCategory.FUNCTION_REF_REMOTE;
         }
       }
-      _xblockexpression = (ErlangLinkCategory.NONE);
+      _xblockexpression = ErlangLinkCategory.NONE;
     }
     return _xblockexpression;
   }
@@ -148,12 +148,12 @@ public class ErlangLinkingHelper {
       } else {
         Expression _field = context.getField();
         boolean _equals_1 = Objects.equal(_field, atom);
-        _and = ((_rec_1 instanceof Atom) && _equals_1);
+        _and = _equals_1;
       }
       if (_and) {
         return ErlangLinkCategory.RECORD_FIELD;
       }
-      _xblockexpression = (ErlangLinkCategory.NONE);
+      _xblockexpression = ErlangLinkCategory.NONE;
     }
     return _xblockexpression;
   }
@@ -165,9 +165,8 @@ public class ErlangLinkingHelper {
       boolean _matched = false;
       if (!_matched) {
         if (parent instanceof RecordExpr) {
-          final RecordExpr _recordExpr = (RecordExpr)parent;
           _matched=true;
-          Expression _rec = _recordExpr.getRec();
+          Expression _rec = ((RecordExpr)parent).getRec();
           if ((_rec instanceof Atom)) {
             return ErlangLinkCategory.RECORD_FIELD;
           }
@@ -175,7 +174,6 @@ public class ErlangLinkingHelper {
       }
       if (!_matched) {
         if (parent instanceof RecordTuple) {
-          final RecordTuple _recordTuple = (RecordTuple)parent;
           _matched=true;
           EObject _eContainer = context.eContainer();
           EObject _eContainer_1 = _eContainer.eContainer();
@@ -190,7 +188,7 @@ public class ErlangLinkingHelper {
           }
         }
       }
-      _xblockexpression = (ErlangLinkCategory.NONE);
+      _xblockexpression = ErlangLinkCategory.NONE;
     }
     return _xblockexpression;
   }
@@ -201,8 +199,7 @@ public class ErlangLinkingHelper {
   
   public boolean isLinkableAtom(final Atom atom) {
     ErlangLinkCategory _classifyAtom = this.classifyAtom(atom);
-    boolean _notEquals = (!Objects.equal(_classifyAtom, ErlangLinkCategory.NONE));
-    return _notEquals;
+    return (!Objects.equal(_classifyAtom, ErlangLinkCategory.NONE));
   }
   
   public AtomRefTarget getAtomReference(final Atom atom) {
@@ -213,16 +210,14 @@ public class ErlangLinkingHelper {
       Resource _eResource_1 = atom.eResource();
       final ResourceSet rset = _eResource_1.getResourceSet();
       ErlangLinkCategory _classifyAtom = this.classifyAtom(atom);
-      AtomRefTarget _ref = _classifyAtom.getRef(index, atom, rset);
-      _xblockexpression = (_ref);
+      _xblockexpression = _classifyAtom.getRef(index, atom, rset);
     }
     return _xblockexpression;
   }
   
   public AtomRefTarget getModuleRef(final IResourceDescriptions index, final Atom atom, final ResourceSet rset) {
     String _sourceText = this._modelExtensions.getSourceText(atom);
-    Module _findModule = this._modelExtensions.findModule(index, _sourceText, rset);
-    return _findModule;
+    return this._modelExtensions.findModule(index, _sourceText, rset);
   }
   
   public AtomRefTarget getLocalCallRef(final IResourceDescriptions index, final Atom atom, final ResourceSet rset) {
@@ -233,41 +228,46 @@ public class ErlangLinkingHelper {
       boolean _matched = false;
       if (!_matched) {
         if (parent instanceof FunCall) {
-          final FunCall _funCall = (FunCall)parent;
           _matched=true;
           Function _xblockexpression_1 = null;
           {
-            Expressions _args = _funCall.getArgs();
-            EList<Expression> _exprs = _args==null?(EList<Expression>)null:_args.getExprs();
-            int _size = _exprs==null?0:_exprs.size();
-            final Integer arity = ObjectExtensions.<Integer>operator_elvis(Integer.valueOf(_size), Integer.valueOf(0));
-            Module _owningModule = this._modelExtensions.getOwningModule(_funCall);
-            Expression _target = _funCall.getTarget();
+            Expressions _args = ((FunCall)parent).getArgs();
+            EList<Expression> _exprs = null;
+            if (_args!=null) {
+              _exprs=_args.getExprs();
+            }
+            int _size = 0;
+            if (_exprs!=null) {
+              _size=_exprs.size();
+            }
+            final int arity = _size;
+            Module _owningModule = this._modelExtensions.getOwningModule(parent);
+            Expression _target = ((FunCall)parent).getTarget();
             String _sourceText = this._modelExtensions.getSourceText(_target);
-            Function _function = this._modelExtensions.getFunction(_owningModule, _sourceText, (arity).intValue());
-            _xblockexpression_1 = (_function);
+            _xblockexpression_1 = this._modelExtensions.getFunction(_owningModule, _sourceText, arity);
           }
           _switchResult = _xblockexpression_1;
         }
       }
       if (!_matched) {
         if (parent instanceof FunRef) {
-          final FunRef _funRef = (FunRef)parent;
           _matched=true;
           Function _xblockexpression_1 = null;
           {
-            EObject _eContainer = _funRef.eContainer();
+            EObject _eContainer = ((FunRef)parent).eContainer();
             final SpecAttribute xparent = ((SpecAttribute) _eContainer);
             EList<TypeSig> _signatures = xparent.getSignatures();
             TypeSig _head = IterableExtensions.<TypeSig>head(_signatures);
             FunType _decl = _head.getDecl();
             EList<TopType> _args = _decl.getArgs();
-            int _size = _args==null?0:_args.size();
-            final Integer arity = ObjectExtensions.<Integer>operator_elvis(Integer.valueOf(_size), Integer.valueOf(0));
-            Module _owningModule = this._modelExtensions.getOwningModule(_funRef);
+            int _size = 0;
+            if (_args!=null) {
+              _size=_args.size();
+            }
+            final int arity = _size;
+            Module _owningModule = this._modelExtensions.getOwningModule(parent);
             String _sourceText = this._modelExtensions.getSourceText(atom);
-            Function _function = this._modelExtensions.getFunction(_owningModule, _sourceText, (arity).intValue());
-            _xblockexpression_1 = (_function);
+            _xblockexpression_1 = this._modelExtensions.getFunction(_owningModule, _sourceText, arity);
           }
           _switchResult = _xblockexpression_1;
         }
@@ -275,7 +275,7 @@ public class ErlangLinkingHelper {
       if (!_matched) {
         _switchResult = null;
       }
-      _xblockexpression = (_switchResult);
+      _xblockexpression = _switchResult;
     }
     return _xblockexpression;
   }
@@ -293,28 +293,32 @@ public class ErlangLinkingHelper {
           EObject _eContainer_2 = parent.eContainer();
           final FunCall call = ((FunCall) _eContainer_2);
           Expressions _args = call.getArgs();
-          EList<Expression> _exprs = _args==null?(EList<Expression>)null:_args.getExprs();
-          int _size = _exprs==null?0:_exprs.size();
-          final Integer arity = ObjectExtensions.<Integer>operator_elvis(Integer.valueOf(_size), Integer.valueOf(0));
+          EList<Expression> _exprs = null;
+          if (_args!=null) {
+            _exprs=_args.getExprs();
+          }
+          int _size = 0;
+          if (_exprs!=null) {
+            _size=_exprs.size();
+          }
+          final int arity = _size;
           String _xifexpression_1 = null;
           Expression _module = parent.getModule();
           boolean _isModuleMacro = this._modelExtensions.isModuleMacro(_module);
           if (_isModuleMacro) {
             Module _owningModule = this._modelExtensions.getOwningModule(atom);
-            String _name = this._modelExtensions.getName(_owningModule);
-            _xifexpression_1 = _name;
+            _xifexpression_1 = this._modelExtensions.getName(_owningModule);
           } else {
             Expression _module_1 = parent.getModule();
-            String _sourceText = this._modelExtensions.getSourceText(_module_1);
-            _xifexpression_1 = _sourceText;
+            _xifexpression_1 = this._modelExtensions.getSourceText(_module_1);
           }
           final String moduleName = _xifexpression_1;
           Expression _function = parent.getFunction();
-          String _sourceText_1 = this._modelExtensions.getSourceText(_function);
-          String _plus = (_sourceText_1 + "/");
-          String _plus_1 = (_plus + arity);
+          String _sourceText = this._modelExtensions.getSourceText(_function);
+          String _plus = (_sourceText + "/");
+          String _plus_1 = (_plus + Integer.valueOf(arity));
           final QualifiedName qname = QualifiedName.create(moduleName, _plus_1);
-          final Iterable<IEObjectDescription> rfun = index.getExportedObjects(Literals.FUNCTION, qname, false);
+          final Iterable<IEObjectDescription> rfun = index.getExportedObjects(ErlangPackage.Literals.FUNCTION, qname, false);
           AtomRefTarget _xifexpression_2 = null;
           boolean _isEmpty = IterableExtensions.isEmpty(rfun);
           boolean _not = (!_isEmpty);
@@ -324,11 +328,11 @@ public class ErlangLinkingHelper {
             EObject _eObject = rset.getEObject(_eObjectURI, false);
             _xifexpression_2 = ((AtomRefTarget) _eObject);
           }
-          _xblockexpression_1 = (_xifexpression_2);
+          _xblockexpression_1 = _xifexpression_2;
         }
         _xifexpression = _xblockexpression_1;
       } else {
-        AtomRefTarget _xblockexpression_2 = null;
+        Object _xblockexpression_2 = null;
         {
           EObject _eContainer_2 = parent.eContainer();
           String _plus = ("remotecallref : parent.container=" + _eContainer_2);
@@ -337,11 +341,11 @@ public class ErlangLinkingHelper {
           String _sourceText = this._modelExtensions.getSourceText(_eContainer_3);
           String _plus_2 = (_plus_1 + _sourceText);
           InputOutput.<String>println(_plus_2);
-          _xblockexpression_2 = (null);
+          _xblockexpression_2 = null;
         }
-        _xifexpression = _xblockexpression_2;
+        _xifexpression = ((AtomRefTarget)_xblockexpression_2);
       }
-      _xblockexpression = (_xifexpression);
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }
@@ -358,20 +362,18 @@ public class ErlangLinkingHelper {
       boolean _isModuleMacro = this._modelExtensions.isModuleMacro(_module);
       if (_isModuleMacro) {
         Module _owningModule = this._modelExtensions.getOwningModule(atom);
-        String _name = this._modelExtensions.getName(_owningModule);
-        _xifexpression = _name;
+        _xifexpression = this._modelExtensions.getName(_owningModule);
       } else {
         Expression _module_1 = parent.getModule();
-        String _sourceText = this._modelExtensions.getSourceText(_module_1);
-        _xifexpression = _sourceText;
+        _xifexpression = this._modelExtensions.getSourceText(_module_1);
       }
       final String moduleName = _xifexpression;
       Expression _function = parent.getFunction();
-      String _sourceText_1 = this._modelExtensions.getSourceText(_function);
-      String _plus = (_sourceText_1 + "/");
+      String _sourceText = this._modelExtensions.getSourceText(_function);
+      String _plus = (_sourceText + "/");
       String _plus_1 = (_plus + arity);
       final QualifiedName qname = QualifiedName.create(moduleName, _plus_1);
-      final Iterable<IEObjectDescription> rfun = index.getExportedObjects(Literals.FUNCTION, qname, false);
+      final Iterable<IEObjectDescription> rfun = index.getExportedObjects(ErlangPackage.Literals.FUNCTION, qname, false);
       AtomRefTarget _xifexpression_1 = null;
       boolean _isEmpty = IterableExtensions.isEmpty(rfun);
       boolean _not = (!_isEmpty);
@@ -381,7 +383,7 @@ public class ErlangLinkingHelper {
         EObject _eObject = rset.getEObject(_eObjectURI, false);
         _xifexpression_1 = ((AtomRefTarget) _eObject);
       }
-      _xblockexpression = (_xifexpression_1);
+      _xblockexpression = _xifexpression_1;
     }
     return _xblockexpression;
   }
@@ -399,8 +401,7 @@ public class ErlangLinkingHelper {
         Expression _function = parent.getFunction();
         String _sourceText = this._modelExtensions.getSourceText(_function);
         int _parseInt = Integer.parseInt(arity);
-        Function _function_1 = this._modelExtensions.getFunction(_owningModule, _sourceText, _parseInt);
-        _xtrycatchfinallyexpression = _function_1;
+        _xtrycatchfinallyexpression = this._modelExtensions.getFunction(_owningModule, _sourceText, _parseInt);
       } catch (final Throwable _t) {
         if (_t instanceof Exception) {
           final Exception e = (Exception)_t;
@@ -409,7 +410,7 @@ public class ErlangLinkingHelper {
           throw Exceptions.sneakyThrow(_t);
         }
       }
-      _xblockexpression = (_xtrycatchfinallyexpression);
+      _xblockexpression = _xtrycatchfinallyexpression;
     }
     return _xblockexpression;
   }
@@ -425,7 +426,7 @@ public class ErlangLinkingHelper {
       }
       String _sourceText = this._modelExtensions.getSourceText(atom);
       final QualifiedName qname = QualifiedName.create(moduleName, _sourceText);
-      final Iterable<IEObjectDescription> rfun = index.getExportedObjects(Literals.RECORD_ATTRIBUTE, qname, false);
+      final Iterable<IEObjectDescription> rfun = index.getExportedObjects(ErlangPackage.Literals.RECORD_ATTRIBUTE, qname, false);
       AtomRefTarget _xifexpression = null;
       boolean _isEmpty = IterableExtensions.isEmpty(rfun);
       boolean _not = (!_isEmpty);
@@ -435,7 +436,7 @@ public class ErlangLinkingHelper {
         EObject _eObject = rset.getEObject(_eObjectURI, false);
         _xifexpression = ((AtomRefTarget) _eObject);
       }
-      _xblockexpression = (_xifexpression);
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }
@@ -445,15 +446,13 @@ public class ErlangLinkingHelper {
     boolean _matched = false;
     if (!_matched) {
       if (field instanceof RecordExpr) {
-        final RecordExpr _recordExpr = (RecordExpr)field;
         _matched=true;
-        _switchResult = ((RecordExpr) _recordExpr);
+        _switchResult = ((RecordExpr) field);
       }
     }
     if (!_matched) {
       EObject _eContainer = field.eContainer();
-      RecordExpr _recordExprForField = this.getRecordExprForField(_eContainer);
-      _switchResult = _recordExprForField;
+      _switchResult = this.getRecordExprForField(_eContainer);
     }
     return _switchResult;
   }
@@ -470,16 +469,15 @@ public class ErlangLinkingHelper {
         return null;
       }
       EList<RecordFieldDef> _fields = record.getFields();
-      final Function1<RecordFieldDef,Boolean> _function = new Function1<RecordFieldDef,Boolean>() {
-          public Boolean apply(final RecordFieldDef it) {
-            String _name = it.getName();
-            String _sourceText = ErlangLinkingHelper.this._modelExtensions.getSourceText(atom);
-            boolean _equals = Objects.equal(_name, _sourceText);
-            return Boolean.valueOf(_equals);
-          }
-        };
-      RecordFieldDef _findFirst = IterableExtensions.<RecordFieldDef>findFirst(_fields, _function);
-      _xblockexpression = (_findFirst);
+      final Function1<RecordFieldDef, Boolean> _function = new Function1<RecordFieldDef, Boolean>() {
+        @Override
+        public Boolean apply(final RecordFieldDef it) {
+          String _name = it.getName();
+          String _sourceText = ErlangLinkingHelper.this._modelExtensions.getSourceText(atom);
+          return Boolean.valueOf(Objects.equal(_name, _sourceText));
+        }
+      };
+      _xblockexpression = IterableExtensions.<RecordFieldDef>findFirst(_fields, _function);
     }
     return _xblockexpression;
   }
@@ -495,7 +493,7 @@ public class ErlangLinkingHelper {
       }
       String _sourceText = this._modelExtensions.getSourceText(atom);
       final QualifiedName qname = QualifiedName.create(moduleName, _sourceText);
-      final Iterable<IEObjectDescription> rtyp = index.getExportedObjects(Literals.TYPE_ATTRIBUTE, qname, false);
+      final Iterable<IEObjectDescription> rtyp = index.getExportedObjects(ErlangPackage.Literals.TYPE_ATTRIBUTE, qname, false);
       AtomRefTarget _xifexpression = null;
       boolean _isEmpty = IterableExtensions.isEmpty(rtyp);
       boolean _not = (!_isEmpty);
@@ -505,7 +503,7 @@ public class ErlangLinkingHelper {
         EObject _eObject = rset.getEObject(_eObjectURI, false);
         _xifexpression = ((AtomRefTarget) _eObject);
       }
-      _xblockexpression = (_xifexpression);
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }
@@ -513,16 +511,15 @@ public class ErlangLinkingHelper {
   public DefineAttribute getMacroReference(final Macro macro) {
     Module _owningModule = this._modelExtensions.getOwningModule(macro);
     Collection<DefineAttribute> _allItemsOfType = this._modelExtensions.<DefineAttribute>getAllItemsOfType(_owningModule, DefineAttribute.class);
-    final Function1<DefineAttribute,Boolean> _function = new Function1<DefineAttribute,Boolean>() {
-        public Boolean apply(final DefineAttribute it) {
-          String _macroName = it.getMacroName();
-          String _macroName_1 = ErlangLinkingHelper.this.getMacroName(macro);
-          boolean _equals = Objects.equal(_macroName, _macroName_1);
-          return Boolean.valueOf(_equals);
-        }
-      };
-    DefineAttribute _findFirst = IterableExtensions.<DefineAttribute>findFirst(_allItemsOfType, _function);
-    return _findFirst;
+    final Function1<DefineAttribute, Boolean> _function = new Function1<DefineAttribute, Boolean>() {
+      @Override
+      public Boolean apply(final DefineAttribute it) {
+        String _macroName = it.getMacroName();
+        String _macroName_1 = ErlangLinkingHelper.this.getMacroName(macro);
+        return Boolean.valueOf(Objects.equal(_macroName, _macroName_1));
+      }
+    };
+    return IterableExtensions.<DefineAttribute>findFirst(_allItemsOfType, _function);
   }
   
   public String getMacroName(final Macro macro) {
@@ -532,12 +529,11 @@ public class ErlangLinkingHelper {
       String _xifexpression = null;
       boolean _startsWith = txt.startsWith("? ");
       if (_startsWith) {
-        String _substring = txt.substring(2);
-        _xifexpression = _substring;
+        _xifexpression = txt.substring(2);
       } else {
         _xifexpression = txt;
       }
-      _xblockexpression = (_xifexpression);
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }

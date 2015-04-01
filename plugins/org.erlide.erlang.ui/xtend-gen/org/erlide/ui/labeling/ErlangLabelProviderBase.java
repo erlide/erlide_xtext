@@ -7,12 +7,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.StyledString;
-import org.eclipse.jface.viewers.StyledString.Styler;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -37,23 +37,26 @@ import org.erlide.ui.labeling.ErlideStyler;
  */
 @SuppressWarnings("all")
 public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
-  private final Styler grayStyler;
+  private final StyledString.Styler grayStyler;
   
   @Inject
+  @Extension
   private ModelExtensions _modelExtensions;
   
   @Inject
   public ErlangLabelProviderBase(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
     Display _current = Display.getCurrent();
-    Color _systemColor = _current==null?(Color)null:_current.getSystemColor(SWT.COLOR_GRAY);
-    Styler _createStyler = ErlangLabelProviderBase.createStyler(null, _systemColor);
+    Color _systemColor = null;
+    if (_current!=null) {
+      _systemColor=_current.getSystemColor(SWT.COLOR_GRAY);
+    }
+    StyledString.Styler _createStyler = ErlangLabelProviderBase.createStyler(null, _systemColor);
     this.grayStyler = _createStyler;
   }
   
   public Object text(final Module module) {
-    StyledString _styledString = new StyledString();
-    final StyledString s = _styledString;
+    final StyledString s = new StyledString();
     s.append("module ", this.grayStyler);
     String _name = this._modelExtensions.getName(module);
     s.append(_name);
@@ -61,8 +64,7 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
   }
   
   public Object text(final DefineAttribute attribute) {
-    StyledString _styledString = new StyledString();
-    final StyledString s = _styledString;
+    final StyledString s = new StyledString();
     String _tag = attribute.getTag();
     s.append(_tag, this.grayStyler);
     s.append(" ");
@@ -72,8 +74,7 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
   }
   
   public Object text(final RecordAttribute attribute) {
-    StyledString _styledString = new StyledString();
-    final StyledString s = _styledString;
+    final StyledString s = new StyledString();
     String _tag = attribute.getTag();
     s.append(_tag, this.grayStyler);
     s.append(" ");
@@ -83,8 +84,7 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
   }
   
   public Object text(final CustomAttribute attribute) {
-    StyledString _styledString = new StyledString();
-    final StyledString s = _styledString;
+    final StyledString s = new StyledString();
     String _tag = attribute.getTag();
     s.append(_tag, this.grayStyler);
     s.append(" ");
@@ -104,13 +104,12 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
       EList<FunctionClause> _clauses_1 = function.getClauses();
       int _size = _clauses_1.size();
       boolean _equals_1 = (_size == 0);
-      _or = (_equals || _equals_1);
+      _or = _equals_1;
     }
     if (_or) {
       return "???";
     }
-    StyledString _styledString = new StyledString();
-    final StyledString s = _styledString;
+    final StyledString s = new StyledString();
     s.append("function", this.grayStyler);
     s.append(" ");
     String _name = function.getName();
@@ -124,17 +123,15 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
     if (_equals_2) {
       _xifexpression = "0";
     } else {
-      int _size_1 = params.size();
-      _xifexpression = _size_1;
+      _xifexpression = Integer.valueOf(params.size());
     }
-    String _plus = ("/" + ((Comparable<Object>)_xifexpression));
+    String _plus = ("/" + ((Comparable<?>)_xifexpression));
     s.append(_plus);
     return s;
   }
   
   public Object text(final FunctionClause clause) {
-    StyledString _styledString = new StyledString();
-    final StyledString s = _styledString;
+    final StyledString s = new StyledString();
     Expressions _params = clause.getParams();
     final String args = this._modelExtensions.getSourceText(_params);
     EObject _eContainer = clause.eContainer();
@@ -148,8 +145,7 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
   
   public String text(final Attribute ele) {
     final String tag = ele.getTag();
-    String _plus = ("-" + tag);
-    return (_plus + " -- ");
+    return (("-" + tag) + " -- ");
   }
   
   public String text(final FunRef c) {
@@ -158,20 +154,20 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
   
   public String text(final EObject element) {
     String _sourceText = this._modelExtensions.getSourceText(element);
-    String _plus = ("\u00A7 " + _sourceText);
+    String _plus = ("� " + _sourceText);
     String _plus_1 = (_plus + " -- ");
-    Class<? extends Object> _class = element.getClass();
+    Class<? extends EObject> _class = element.getClass();
     String _name = _class.getName();
     return (_plus_1 + _name);
   }
   
   public String getListText(final EList<Expression> list) {
-    final Function1<Expression,String> _function = new Function1<Expression,String>() {
-        public String apply(final Expression it) {
-          String _sourceText = ErlangLabelProviderBase.this._modelExtensions.getSourceText(it);
-          return _sourceText;
-        }
-      };
+    final Function1<Expression, String> _function = new Function1<Expression, String>() {
+      @Override
+      public String apply(final Expression it) {
+        return ErlangLabelProviderBase.this._modelExtensions.getSourceText(it);
+      }
+    };
     List<String> _map = ListExtensions.<Expression, String>map(list, _function);
     return IterableExtensions.join(_map, ", ");
   }
@@ -199,8 +195,7 @@ public class ErlangLabelProviderBase extends DefaultEObjectLabelProvider {
     return _xifexpression;
   }
   
-  private static Styler createStyler(final Font font, final Color color) {
-    ErlideStyler _erlideStyler = new ErlideStyler(font, color);
-    return _erlideStyler;
+  private static StyledString.Styler createStyler(final Font font, final Color color) {
+    return new ErlideStyler(font, color);
   }
 }

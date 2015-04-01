@@ -7,15 +7,15 @@ import org.osgi.framework.Bundle;
 
 @SuppressWarnings("all")
 public class BuilderExtensionFactory extends AbstractGuiceAwareExecutableExtensionFactory {
+  @Override
   protected Bundle getBundle() {
     BuilderPlugin _instance = BuilderPlugin.getInstance();
-    Bundle _bundle = _instance.getBundle();
-    return _bundle;
+    return _instance.getBundle();
   }
   
+  @Override
   protected Injector getInjector() {
     BuilderPlugin _instance = BuilderPlugin.getInstance();
-    Injector _injector = _instance.getInjector();
-    return _injector;
+    return _instance.getInjector();
   }
 }

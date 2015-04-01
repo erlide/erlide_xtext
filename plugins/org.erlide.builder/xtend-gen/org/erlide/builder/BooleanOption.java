@@ -20,8 +20,7 @@ public class BooleanOption extends CompilerOption {
   public OtpErlangObject toTerm(final boolean currentValue) {
     OtpErlangAtom _xifexpression = null;
     if (currentValue) {
-      OtpErlangAtom _otpErlangAtom = new OtpErlangAtom(this.name);
-      _xifexpression = _otpErlangAtom;
+      _xifexpression = new OtpErlangAtom(this.name);
     } else {
       _xifexpression = null;
     }

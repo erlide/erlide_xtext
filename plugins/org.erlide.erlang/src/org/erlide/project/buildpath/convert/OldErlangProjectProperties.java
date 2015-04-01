@@ -47,7 +47,7 @@ public final class OldErlangProjectProperties {
         super();
         project = prj;
         final IEclipsePreferences root = new ProjectScope(project)
-                .getNode(ERLANG_CORE_PLUGIN_ID);
+        .getNode(ERLANG_CORE_PLUGIN_ID);
         // TODO load() should not be in constructor!
         load(root);
     }
@@ -141,7 +141,7 @@ public final class OldErlangProjectProperties {
 
     public void preferenceChange(final PreferenceChangeEvent event) {
         final IEclipsePreferences root = new ProjectScope(project)
-                .getNode(ERLANG_CORE_PLUGIN_ID);
+        .getNode(ERLANG_CORE_PLUGIN_ID);
         load(root);
     }
 

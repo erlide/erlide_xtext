@@ -10,7 +10,7 @@ import org.erlide.erlang.Variable;
 import com.google.inject.Inject;
 
 public class ErlangLinkingDiagnosticMessageProvider extends
-        LinkingDiagnosticMessageProvider {
+LinkingDiagnosticMessageProvider {
 
     @Inject
     ModelExtensions me;

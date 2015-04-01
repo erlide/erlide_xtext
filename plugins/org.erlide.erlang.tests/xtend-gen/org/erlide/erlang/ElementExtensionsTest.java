@@ -7,6 +7,7 @@ import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.erlide.ErlangInjectorProvider;
 import org.erlide.erlang.Expression;
@@ -21,14 +22,15 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = ErlangInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(ErlangInjectorProvider.class)
 @SuppressWarnings("all")
 public class ElementExtensionsTest {
   @Inject
   private ParseHelper<Module> parser;
   
   @Inject
+  @Extension
   private ModelExtensions _modelExtensions;
   
   @Test
@@ -56,7 +58,7 @@ public class ElementExtensionsTest {
       Module _owningModule_1 = this._modelExtensions.getOwningModule(fexpr);
       Matcher<? super Module> _is_1 = Matchers.<Module>is(module);
       MatcherAssert.<Module>assertThat(_owningModule_1, _is_1);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

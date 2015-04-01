@@ -27,8 +27,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(value = XtextRunner.class)
-@InjectWith(value = ErlangInjectorProvider.class)
+@RunWith(XtextRunner.class)
+@InjectWith(ErlangInjectorProvider.class)
 @SuppressWarnings("all")
 public class ParserTest {
   @Inject
@@ -48,7 +48,7 @@ public class ParserTest {
       Assert.assertEquals(_tag, "module");
       final String mod = entity.getModuleName();
       Assert.assertEquals(mod, "x");
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -60,7 +60,7 @@ public class ParserTest {
       _builder.append("x+1.");
       _builder.newLine();
       final Module model = this.parser.parse(_builder);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -77,7 +77,7 @@ public class ParserTest {
       final SpecAttribute entity = ((SpecAttribute) _head);
       String _tag = entity.getTag();
       Assert.assertEquals(_tag, "spec");
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -95,7 +95,7 @@ public class ParserTest {
       String _tag = entity.getTag();
       Assert.assertEquals(_tag, "type");
       final String key = entity.getName();
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -112,7 +112,7 @@ public class ParserTest {
       final RecordAttribute entity = ((RecordAttribute) _head);
       String _tag = entity.getTag();
       Assert.assertEquals(_tag, "record");
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -129,7 +129,7 @@ public class ParserTest {
       final DefineAttribute entity = ((DefineAttribute) _head);
       String _tag = entity.getTag();
       Assert.assertEquals(_tag, "define");
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -146,7 +146,7 @@ public class ParserTest {
       final DefineAttribute entity = ((DefineAttribute) _head);
       String _tag = entity.getTag();
       Assert.assertEquals(_tag, "define");
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -166,7 +166,7 @@ public class ParserTest {
       final EList<Expression> mod = entity.getValue();
       Expression _get = mod.get(0);
       Assert.assertTrue((_get instanceof ErlList));
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -196,7 +196,7 @@ public class ParserTest {
       Expression _head_3 = IterableExtensions.<Expression>head(_tail);
       boolean _isLine_1 = _head_3.isLine();
       Assert.assertFalse(_isLine_1);
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -220,7 +220,7 @@ public class ParserTest {
       EList<Expression> _exprs_1 = body.getExprs();
       final Expression expr = IterableExtensions.<Expression>head(_exprs_1);
       Assert.assertTrue((expr instanceof Atom));
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
@@ -243,7 +243,7 @@ public class ParserTest {
       EList<Expression> _exprs_1 = body.getExprs();
       final Expression expr = IterableExtensions.<Expression>head(_exprs_1);
       Assert.assertTrue((expr instanceof Atom));
-    } catch (Exception _e) {
+    } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }

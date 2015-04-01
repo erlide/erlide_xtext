@@ -3,7 +3,6 @@ package org.erlide.builder;
 import com.ericsson.otp.erlang.OtpErlang;
 import com.ericsson.otp.erlang.OtpErlangAtom;
 import com.ericsson.otp.erlang.OtpErlangObject;
-import com.ericsson.otp.erlang.OtpErlangTuple;
 import org.erlide.builder.CompilerOption;
 
 @SuppressWarnings("all")
@@ -15,8 +14,7 @@ public class ModuleOption extends CompilerOption {
   public OtpErlangObject toTerm(final String value) {
     OtpErlangAtom _otpErlangAtom = new OtpErlangAtom(this.name);
     OtpErlangAtom _otpErlangAtom_1 = new OtpErlangAtom(value);
-    OtpErlangTuple _mkTuple = OtpErlang.mkTuple(_otpErlangAtom, _otpErlangAtom_1);
-    return _mkTuple;
+    return OtpErlang.mkTuple(_otpErlangAtom, _otpErlangAtom_1);
   }
   
   public static String toString(final String value) {

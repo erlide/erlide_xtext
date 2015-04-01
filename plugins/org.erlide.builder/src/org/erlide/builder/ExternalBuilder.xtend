@@ -2,6 +2,7 @@ package org.erlide.builder
 
 import com.google.common.eventbus.EventBus
 import com.google.inject.Inject
+import java.util.ArrayList
 import java.util.List
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
@@ -9,6 +10,7 @@ import org.eclipse.core.resources.IResourceDelta
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.OperationCanceledException
 import org.eclipse.core.runtime.Path
 import org.eclipse.core.runtime.SubMonitor
@@ -16,8 +18,6 @@ import org.eclipse.xtend.lib.Property
 import org.erlide.common.util.ErlLogger
 
 import static extension org.erlide.builder.ProjectBuilderExtensions.*
-import java.util.ArrayList
-import org.eclipse.core.runtime.NullProgressMonitor
 
 abstract class ExternalBuilder extends AbstractErlangBuilder {
 
