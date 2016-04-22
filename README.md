@@ -1,3 +1,5 @@
+> This track is abandoned, the code is kept only for reference
+
 This is a fresh version of erlide, based on the Xtext framework. 
 
 The main advantages of using Xtext are:
